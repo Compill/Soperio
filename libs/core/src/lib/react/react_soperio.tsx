@@ -1,3 +1,8 @@
+// Copy of original behavior without Emotion
+// Keep it because we plan of getting rid of Emotion
+// at some point, so this "old" version might come
+// in handy
+
 import murmurhash from "murmurhash";
 import React from "react";
 import { SVGSoperioProps } from "../CSS/SVG";
@@ -5,7 +10,6 @@ import { getStyleConfig } from "../CSS/utils";
 import { CSSPropKeys, CSSPropsMap } from "../CSSProps";
 import { SoperioComponent } from "../SoperioComponent";
 import { insertCss } from "../utils/insertCss";
-import { jsx as emotionJsx, css as emotionCss } from "@emotion/react";
 
 // on augmente les types des éléments DOM
 declare module "react" {
@@ -64,9 +68,10 @@ function hash(str: string)
     return murmurhash.v2(str, 1).toString(36);
 }
 
-const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
+const pseudoClasses: string[] = ["focus", "hover"];
+const pseudoElements: string[] = ["placeholder", "before", "after"];
 
-function parseRules(css: Record<string, string | any>, wrap = true): string
+function parseRules(className: string, css: Record<string, string | any>, wrap = true): string
 {
     let content = "";
     const pseudos: string[] = [];
@@ -74,14 +79,18 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
 
     Object.keys(css).sort().forEach(key =>
     {
-        if (pseudoClasses.includes(key) )
+        if (pseudoClasses.includes(key))
         {
-            pseudos.push(`&:${key} {\n${parseRules(css[key], false)}}`);
+            pseudos.push(`.${className}:${key} {\n${parseRules(className, css[key], false)}}`);
+        }
+        else if (pseudoElements.includes(key))
+        {
+            pseudos.push(`.${className}::${key} {\n${parseRules(className, css[key], false)}}`);
         }
         else if (key.startsWith("media-"))
         {
             const breakpoint = key.split("-")[1];
-            mediaQueries.push(`@media screen and (min-width: ${getStyleConfig("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
+            mediaQueries.push(`@media screen and (min-width: ${getStyleConfig("breakpoints", breakpoint)}) {\n\t${parseRules(className, css[key], false)}\n}`);
         }
         else
         {
@@ -89,8 +98,8 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
         }
     });
 
-    // if (wrap)
-    //     content = `.${className} {\n${content}}`;
+    if (wrap)
+        content = `.${className} {\n${content}}`;
 
     if (pseudos)
         content += `${wrap ? "\n\n" : ""}${pseudos.join("\n\n")}`;
@@ -103,23 +112,23 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
 
 const cache: any = {};
 
-// export function insertStyle(css: Record<string, string | any>)
-// {
-//     const className = hash(JSON.stringify(css));
-//     const finalClassName = `so-${className}`;
+export function insertStyle(css: Record<string, string | any>)
+{
+    const className = hash(JSON.stringify(css));
+    const finalClassName = `so-${className}`;
 
-//     // Dumb cache for now
-//     if (cache[className] !== undefined)
-//         return finalClassName;
-//     else
-//         cache[className] = true;
+    // Dumb cache for now
+    if (cache[className] !== undefined)
+        return finalClassName;
+    else
+        cache[className] = true;
 
-//     const content = parseRules(finalClassName, css);
+    const content = parseRules(finalClassName, css);
 
-//     insertCss(content);
+    insertCss(content);
 
-//     return finalClassName;
-// }
+    return finalClassName;
+}
 
 // on override la fonction createElement de React
 export function jsx<P extends SoperioComponent>(
@@ -183,17 +192,14 @@ export function jsx<P extends SoperioComponent>(
                 // delete newProps[prop];
             }
 
-            const generatedCSS = parseRules(css)
-            console.log(Component)
-            console.log(generatedCSS)
-
-            newProps.css = {...emotionCss(generatedCSS), ...props.css };
+            const className = insertStyle(css);
+            newProps.className = (props.className ? newProps.className + " " : "") + className;
         }
     }
 
     // Basically, the idea is to use Emotion's jsx instead of React
     // and just add the css prop to the props with the CSS we have generated
-    return emotionJsx(Component, newProps, ...children)
+    return React.createElement(Component, newProps, ...children);
 }
 
 /**

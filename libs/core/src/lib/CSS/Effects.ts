@@ -16,9 +16,9 @@ export interface Effects
 
 export function shadow(configProperty?: string): (value: any) => Style
 {
-    return (value: any) => 
+    return (value: any) =>
     {
-        let style = css("--so-shadow", "effects.boxShadow")(value);
+        const style = css("--so-shadow", "effects.boxShadow")(value);
         style["box-shadow"] = "var(--so-ring-offset-shadow, 0 0 #0000), var(--so-ring-shadow, 0 0 #0000), var(--so-shadow)";
         return style;
     };

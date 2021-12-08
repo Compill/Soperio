@@ -1,31 +1,31 @@
 import { css, cssValue, cssValueFn, getStyleConfig, Style, StyleProp, StyleProps } from "./utils";
 
-export type SpacingPositiveScale = 
+export type SpacingPositiveScale =
     "0"
-    | "px" 
-    | "0.5" 
-    | "1" 
-    | "1.5" 
-    | "2" 
-    | "2.5" 
-    | "3" 
-    | "3.5" 
-    | "4" 
-    | "5" 
-    | "6" 
-    | "7" 
-    | "8" 
-    | "9" 
-    | "10" 
-    | "11" 
-    | "12" 
-    | "14" 
-    | "16" 
-    | "20" 
-    | "24" 
-    | "28" 
-    | "32" 
-    | "36" 
+    | "px"
+    | "0.5"
+    | "1"
+    | "1.5"
+    | "2"
+    | "2.5"
+    | "3"
+    | "3.5"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "11"
+    | "12"
+    | "14"
+    | "16"
+    | "20"
+    | "24"
+    | "28"
+    | "32"
+    | "36"
     | "40"
     | "44"
     | "48"
@@ -97,6 +97,7 @@ export interface Spacing {
     spaceYReverse?: false | boolean,
 }
 
+// TODO Apply on children
 function spaceX(value: any): Style
 {
     const dimension = getStyleConfig("spacing.positiveNegative", value) || value;
@@ -108,6 +109,7 @@ function spaceX(value: any): Style
     };
 }
 
+// TODO Apply on children
 function spaceY(value: any): Style
 {
     const dimension = getStyleConfig("spacing.positiveNegative", value) || value;
@@ -122,7 +124,7 @@ function spaceY(value: any): Style
 // TODO this is to apply to children
 function spacing(cssProperty: string | string[], configProperty?: string)
 {
-    return (value: StyleProp) => 
+    return (value: StyleProp) =>
     {
         const parsedValue = value === "px" ? "1px" : (value === "-px" ? "-1px" : value as string)
 
