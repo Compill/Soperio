@@ -1,7 +1,12 @@
 {
   "version": 2,
   "projects": {
+    "cli": "libs/cli",
+    "core": "libs/core",
     "demo": "apps/demo",
-    "demo-e2e": "apps/demo-e2e"
+    "demo-e2e": "apps/demo-e2e",
+    "theming": "libs/theming",
+    "ui": "libs/ui",
+    "utils": "libs/utils"
   }
 }

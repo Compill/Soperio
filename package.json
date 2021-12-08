@@ -4,12 +4,16 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
+    "start demo": "nx serve demo",
     "build": "nx build",
     "test": "nx test"
   },
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.16.0",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
+    "murmurhash": "^2.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "regenerator-runtime": "0.13.7",

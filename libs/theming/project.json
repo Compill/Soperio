@@ -1,0 +1,42 @@
+{
+  "root": "libs/theming",
+  "sourceRoot": "libs/theming/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/theming",
+        "tsConfig": "libs/theming/tsconfig.lib.json",
+        "project": "libs/theming/package.json",
+        "entryFile": "libs/theming/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "assets": [
+          {
+            "glob": "libs/theming/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/theming/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/theming"],
+      "options": {
+        "jestConfig": "libs/theming/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
