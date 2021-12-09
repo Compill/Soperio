@@ -6,6 +6,7 @@ import Page3 from "./Page3";
 import Page4 from "./Page4";
 import Page5 from "./Page5";
 import Page6 from "./Page6";
+import Page7 from "./Page7";
 import React from "react";
 import {jsx, init, NormalizeCSS } from "@soperio/core";
 import { Button } from "@soperio/ui";
@@ -33,6 +34,7 @@ function App()
         <Button onClick={() => setState(4)}>Radio</Button>
         <Button onClick={() => setState(5)}>Badge</Button>
         <Button onClick={() => setState(6)}>Card</Button>
+        <Button onClick={() => setState(7)}>Select</Button>
       </div>
       <div>
         {state === 1 && <Page />}
@@ -41,6 +43,7 @@ function App()
         {state === 4 && <Page4 />}
         {state === 5 && <Page5 />}
         {state === 6 && <Page6 />}
+        {state === 7 && <Page7 />}
       </div>
     </>
   );

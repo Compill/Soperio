@@ -1,3 +1,4 @@
+export * from './lib/select/Select';
 export * from './lib/badge/Badge';
 export * from './lib/button';
 export * from './lib/card/Card';

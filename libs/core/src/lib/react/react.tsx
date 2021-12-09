@@ -190,6 +190,8 @@ export function jsx<P extends SoperioComponent>(
 
             const generatedCSS = parseRules(css)
 
+            // console.log(Component, props.css)
+
             newProps.css = {...emotionCss(generatedCSS), ...props.css };
         }
     }
