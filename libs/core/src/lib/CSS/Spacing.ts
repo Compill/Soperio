@@ -1,4 +1,4 @@
-import { css, cssValue, cssValueFn, getStyleConfig, Style, StyleProp, StyleProps } from "./utils";
+import { css, cssValueFn, getStyleConfig, Style, StyleProp, StyleProps } from "./utils";
 
 export type SpacingPositiveScale =
     "0"
@@ -104,8 +104,10 @@ function spaceX(value: any): Style
 
     return {
         "--so-space-x-reverse": 0,
-        "margin-right": `calc(${dimension} * var(--so-space-x-reverse))`,
-        "margin-left": `calc(${dimension} * calc(1 - var(--so-space-x-reverse)))`
+        ">:not([hidden])~:not([hidden])": {
+          "margin-right": `calc(${dimension} * var(--so-space-x-reverse))`,
+          "margin-left": `calc(${dimension} * calc(1 - var(--so-space-x-reverse)))`
+        }
     };
 }
 
@@ -121,7 +123,6 @@ function spaceY(value: any): Style
     };
 }
 
-// TODO this is to apply to children
 function spacing(cssProperty: string | string[], configProperty?: string)
 {
     return (value: StyleProp) =>

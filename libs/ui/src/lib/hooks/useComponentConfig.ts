@@ -18,10 +18,7 @@ export function useComponentConfig<T extends SoperioComponentConfig>(component =
         const c = customConfig(theme);
 
         if (c.mode === "extends")
-        {
-            console.log("customConfig", { ...(defaultConfig ? defaultConfig(theme) : null), ...c.config })
             return deepmerge(defaultConfig ? defaultConfig(theme): {}, c.config) as T;
-        }
 
         return c.config;
     }

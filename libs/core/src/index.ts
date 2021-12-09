@@ -9,4 +9,4 @@ export * from './lib/NormalizeCSS';
 export * from './lib/react/react';
 export * from './lib/SoperioCore';
 export * from './lib/SoperioComponent';
-export { SpacingScale, SpacingNegativeScale, SpacingPositiveScale } from './lib/CSS/Spacing';
+export type { SpacingScale, SpacingNegativeScale, SpacingPositiveScale } from './lib/CSS/Spacing';

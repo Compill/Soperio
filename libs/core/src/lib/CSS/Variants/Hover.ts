@@ -4,7 +4,7 @@ import { Breakpoints } from "../../Breakpoints";
 import { Color } from "../../PropTypes/Color";
 import { Opacity } from "../../PropTypes/Opacity";
 
-export interface Hover 
+export interface Hover
 {
     bgColor?: Color,
     bgOpacity?: Opacity,
@@ -40,18 +40,13 @@ export const HoverMapping =
     to: "to",
     opacity: "opacity",
     rotate: "rotate",
-    rotateN: "-rotate",
     scale: "scale",
     scaleX: "scale-x",
     scaleY: "scale-y",
     skewX: "skew-x",
-    skewXN: "-skew-x",
     skewY: "skew-y",
-    skewYN: "-skew-y",
     translateX: "translate-x",
-    translateXN: "-translate-x",
     translateY: "translate-y",
-    translateYN: "-translate-y",
     textColor: "text",
     textDecoration: "",
     textOpacity: "text-opacity"

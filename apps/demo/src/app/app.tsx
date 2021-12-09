@@ -26,12 +26,12 @@ function App()
   return (
     <>
       <NormalizeCSS />
-      <div dflex flexRow px="16" py="8" bgColor="gray">
-        <Button onClick={() => setState(1)} mr="3">Button</Button>
-        <Button onClick={() => setState(2)} mr="3">Checkbox</Button>
-        <Button onClick={() => setState(3)} mr="3">Form</Button>
-        <Button onClick={() => setState(4)} mr="3">Radio</Button>
-        <Button onClick={() => setState(5)} mr="3">Badge</Button>
+      <div dflex flexRow px="16" py="8" bgColor="gray" spaceX="3">
+        <Button onClick={() => setState(1)}>Button</Button>
+        <Button onClick={() => setState(2)}>Checkbox</Button>
+        <Button onClick={() => setState(3)}>Form</Button>
+        <Button onClick={() => setState(4)}>Radio</Button>
+        <Button onClick={() => setState(5)}>Badge</Button>
         <Button onClick={() => setState(6)}>Card</Button>
       </div>
       <div>

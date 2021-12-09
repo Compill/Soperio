@@ -11,8 +11,8 @@ import { jsx } from "@soperio/core";
 export default function Page({ ...props })
 {
     return (
-        <Container center h="screen" bgColor="root.bg-color-3">
-            <Container center breakpoint="xl" h="screen" p="20">
+        <Container center minH="screen" bgColor="root.bg-color-3">
+            <Container center breakpoint="xl" p="20">
 
                 <Card w="50%" mb="10" shadow>
                     <Card.Header showBorder minH="70px" dflex alignItems="center">

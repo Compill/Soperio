@@ -5,7 +5,7 @@ const _ = require("lodash");
 
 // TODO get user merged config instead of default
 
-export type Style = Record<string, string | number>;
+export type Style = Record<string, string | number | Record<string, string | number>>;
 export type StyleProp = boolean | string | number;
 export type StyleFn = (value: StyleProp) => Style;
 export type StyleProps = Record<string, StyleFn>;

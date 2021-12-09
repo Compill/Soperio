@@ -85,7 +85,12 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
         }
         else
         {
+          const cssRule = css[key]
+
+          if (typeof cssRule === "string" || typeof cssRule === "number")
             content += `\t${key}: ${css[key]};\n`;
+          else
+            pseudos.push(`&${key} {\n${parseRules(css[key], false)}}`);
         }
     });
 
@@ -184,8 +189,6 @@ export function jsx<P extends SoperioComponent>(
             }
 
             const generatedCSS = parseRules(css)
-            console.log(Component)
-            console.log(generatedCSS)
 
             newProps.css = {...emotionCss(generatedCSS), ...props.css };
         }

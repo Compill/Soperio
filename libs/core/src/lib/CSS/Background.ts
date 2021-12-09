@@ -6,7 +6,7 @@ export interface Background {
     bgAtt?: false | "fixed" | "local" | "scroll",
     bgClip?: false | "border" | "padding" | "content" | "text",
     bgColor?: false | string,
-    /* 
+    /*
         Apply trasnparency to background color.
         Attention, this will not be applied if you have defined an RGBA
         color for background. Only applied for RGB background colors
@@ -22,9 +22,6 @@ export interface Background {
     // via?: string,
     // to?: string,
 }
-
-// TODO handle default value for true value
-// Ex: for bgRepeat, true must be trasnlated to "repeat"
 
 export const BackgroundMapping: StyleProps = {
     bgAtt: css("background-attachment"),
