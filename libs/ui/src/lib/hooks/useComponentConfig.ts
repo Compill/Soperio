@@ -8,6 +8,7 @@ import { Soperio } from "../Soperio";
 
 export function useComponentConfig<T extends SoperioComponentConfig>(component = "", theme: ColorTheme, customConfig: CustomComponentConfigFn<T> | undefined): T
 {
+  // const isDark = useDarkColor(); // TODO
     const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component));
 
     if (!defaultConfig && IS_DEV)
@@ -18,7 +19,7 @@ export function useComponentConfig<T extends SoperioComponentConfig>(component =
         const c = customConfig(theme);
 
         if (c.mode === "extends")
-            return deepmerge(defaultConfig ? defaultConfig(theme): {}, c.config) as T;
+            return deepmerge(defaultConfig ? defaultConfig(theme) : {}, c.config) as T;
 
         return c.config;
     }
