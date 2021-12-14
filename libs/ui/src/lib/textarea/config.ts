@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { TextAreaConfig } from "./types";
 
-export default function config(theme: ColorTheme):TextAreaConfig
+export default function config(theme: ColorTheme, darkMode: boolean):TextAreaConfig
 {
     return {
         size: {

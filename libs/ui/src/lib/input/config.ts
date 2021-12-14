@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { InputConfig } from "./types";
 
-export default function config(theme: ColorTheme):InputConfig
+export default function config(theme: ColorTheme, darkMode: boolean):InputConfig
 {
     return {
         size: {

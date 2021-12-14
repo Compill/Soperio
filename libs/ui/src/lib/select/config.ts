@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { SelectConfig } from "./types";
 
-export default function config(theme: ColorTheme):SelectConfig
+export default function config(theme: ColorTheme, darkMode: boolean):SelectConfig
 {
     return {
         size: {

@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { CheckboxConfig } from "./types";
 
-export default function config(theme: ColorTheme): CheckboxConfig
+export default function config(theme: ColorTheme, darkMode: boolean): CheckboxConfig
 {
     return {
         otherNameThanSize: {

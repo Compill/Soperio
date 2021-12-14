@@ -1,13 +1,18 @@
 /** @jsx jsx */
 
-import { jsx } from "@soperio/core";
+import { jsx, useTheme } from "@soperio/core";
 import { Soperio } from "../Soperio";
 import { IS_DEV } from "@soperio/utils";
 import { sanitizeProps } from "../utils";
 import React from "react";
 import { getStyledConfig } from "../utils";
-import config from "./config";
+import defaultConfig from "./config";
 import { CheckboxConfig, CheckboxProps } from "./types";
+import { useComponentConfig } from "../hooks/useComponentConfig";
+
+const COMPONENT_ID = "Soperio.Checkbox";
+
+Soperio.registerComponent(COMPONENT_ID, defaultConfig)
 
 /**
  * A simple checkbox to be used with or without a surrounding form.
@@ -20,11 +25,14 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
     otherNameThanSize = "lg",
     variant = "default",
     shape = "rounded",
+    config,
     checked,
     ...props
   }, ref) =>
 {
-  const styles: CheckboxConfig = getStyledConfig(theme, config, "Checkbox");
+  const colorTheme = useTheme(theme);
+
+  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
   const sVariant = styles.variant?.[variant];
   const sSize = styles.otherNameThanSize?.[otherNameThanSize];
   const sShape = styles.shape?.[shape];

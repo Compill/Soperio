@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { RadioConfig } from "./types";
 
-export default function config(theme: ColorTheme): RadioConfig
+export default function config(theme: ColorTheme, darkMode: boolean): RadioConfig
 {
     return {
         otherNameThanSize: {

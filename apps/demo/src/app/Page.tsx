@@ -44,7 +44,7 @@ export default function Page({ ...props })
       <Container center breakpoint="xl" h="screen" bgColor={darkMode ? "root.text-color-1" : "white"} dflex gap="20" justifyContent="center" pt="20">
 
         <div flexRow>
-          <Button config={buttonConfig} variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("left")} z="1001">Open Left</Button>
+          <Button /*config={buttonConfig}*/ variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("left")} z="1001">Open Left</Button>
           <Button config={buttonConfig} variant="light" block mx="auto" my="5">Light button</Button>
           <Button config={buttonConfig} variant="link" block mx="auto" my="5">Link button</Button>
           <Button config={buttonConfig} variant="outline" block mx="auto" my="5">Outline button</Button>

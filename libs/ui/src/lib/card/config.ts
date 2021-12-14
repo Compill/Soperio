@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { CardConfig } from "./types";
 
-export default function config(theme: ColorTheme): CardConfig
+export default function config(theme: ColorTheme, darkMode: boolean): CardConfig
 {
     return {
         variant: {

@@ -8,6 +8,6 @@ export interface ComponentConfig<T extends SoperioComponentConfig>
   config: T;
 }
 
-export type SoperioComponentConfigFn<T extends SoperioComponentConfig> = (t: ColorTheme) => T;
+export type SoperioComponentConfigFn<T extends SoperioComponentConfig> = (theme: ColorTheme, darkMode: boolean) => T;
 
-export type CustomComponentConfigFn<T extends SoperioComponentConfig> = (t:ColorTheme) => ComponentConfig<T>
+export type CustomComponentConfigFn<T extends SoperioComponentConfig> = (theme:ColorTheme, darkMode: boolean) => ComponentConfig<T>

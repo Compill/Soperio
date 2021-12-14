@@ -1,14 +1,18 @@
 /** @jsx jsx */
 /** @jsxFrag jsx */
 
-import { jsx } from "@soperio/core";
-import { Soperio } from "../Soperio";
+import { jsx, useTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
-import { sanitizeProps } from "../utils";
 import React from "react";
-import { getStyledConfig } from "../utils";
-import config from "./config";
-import { RadioConfig, RadioProps } from "./types";
+import { useComponentConfig } from "../hooks/useComponentConfig";
+import { Soperio } from "../Soperio";
+import { sanitizeProps } from "../utils";
+import defaultConfig from "./config";
+import { RadioProps } from "./types";
+
+const COMPONENT_ID = "Soperio.Radio";
+
+Soperio.registerComponent(COMPONENT_ID, defaultConfig)
 
 /**
  * A simple checkbox to be used with or without a surrounding form.
@@ -22,10 +26,13 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
     variant = "default",
     dotSize = "lg",
     checked,
+    config,
     ...props
   }, ref) =>
 {
-  const styles: RadioConfig = getStyledConfig(theme, config, "Radio");
+  const colorTheme = useTheme(theme);
+
+  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
   const sVariant = styles.variant?.[variant];
   const sSize = styles.otherNameThanSize?.[otherNameThanSize];
 

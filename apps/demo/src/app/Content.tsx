@@ -2,13 +2,13 @@
 
 import { Button } from "@soperio/ui";
 import Page from "./Page";
-import Page2 from "./Page2";
-import Page3 from "./Page3";
-import Page4 from "./Page4";
-import Page5 from "./Page5";
-import Page6 from "./Page6";
-import Page7 from "./Page7";
-import Page8 from "./Page8";
+// import Page2 from "./Page2";
+// import Page3 from "./Page3";
+// import Page4 from "./Page4";
+// import Page5 from "./Page5";
+// import Page6 from "./Page6";
+// import Page7 from "./Page7";
+// import Page8 from "./Page8";
 import React from "react";
 import { jsx, useDarkMode, useToggleDarkMode } from "@soperio/core";
 
@@ -35,13 +35,13 @@ export function Content()
       </div>
       <div>
         {state === 1 && <Page />}
-        {state === 2 && <Page2 />}
+        {/* {state === 2 && <Page2 />}
         {state === 3 && <Page3 />}
         {state === 4 && <Page4 />}
         {state === 5 && <Page5 />}
         {state === 6 && <Page6 />}
         {state === 7 && <Page7 />}
-        {state === 8 && <Page8 />}
+        {state === 8 && <Page8 />} */}
       </div>
     </>
   );

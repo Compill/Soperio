@@ -1,12 +1,18 @@
 /** @jsx jsx */
 
-import { jsx, SoperioComponent } from "@soperio/core";
+import { jsx, SoperioComponent, useTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
 import { sanitizeProps } from "../utils";
 import React from "react";
 import { getStyledConfig } from "../utils";
-import config from "./config";
+import defaultConfig from "./config";
 import { InputConfig, InputProps } from "./types";
+import { Soperio } from "../Soperio";
+import { useComponentConfig } from "../hooks/useComponentConfig";
+
+const COMPONENT_ID = "Soperio.Input";
+
+Soperio.registerComponent(COMPONENT_ID, defaultConfig)
 
 /**
  *
@@ -19,10 +25,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
         corners = "default",
         theme = "default",
         length,
+        config,
         ...props
     }, ref) =>
 {
-    const styles: InputConfig = getStyledConfig(theme, config, "Input");
+  const colorTheme = useTheme(theme);
+
+  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
     const sVariant = styles.variant?.[variant];
     const sSize = styles.size?.[size];
     const sCorners = styles.corners?.[corners];

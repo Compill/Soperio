@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { ButtonConfig } from "./types";
 
-export default function config(theme: ColorTheme): ButtonConfig
+export default function config(theme: ColorTheme, darkMode: boolean): ButtonConfig
 {
     return {
         size: {
