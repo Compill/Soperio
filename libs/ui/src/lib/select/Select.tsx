@@ -1,14 +1,13 @@
 /** @jsx jsx */
 
-import { jsx, SoperioComponent, useTheme } from "@soperio/core";
-import { Soperio } from "../Soperio";
+import { jsx, SoperioComponent, useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
-import { sanitizeProps } from "../utils";
 import React from "react";
-import { getStyledConfig } from "../utils";
+import { useComponentConfig } from "../hooks/useComponentConfig";
+import { Soperio } from "../Soperio";
+import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
 import { SelectConfig, SelectProps } from "./types";
-import { useComponentConfig } from "../hooks/useComponentConfig";
 
 const COMPONENT_ID = "Soperio.Select";
 
@@ -30,7 +29,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
     ...props
   }, ref) =>
 {
-  const colorTheme = useTheme(theme);
+  const colorTheme = useColorTheme(theme);
 
   const styles: SelectConfig = useComponentConfig(COMPONENT_ID, colorTheme, config);
   const sVariant = styles.variant?.[variant];

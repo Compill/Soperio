@@ -1,12 +1,16 @@
 /** @jsx jsx */
 
-import React from "react";
-import { jsx } from "@soperio/core";
-import { BadgeConfig, BadgeProps } from "./types";
-import { getStyledConfig } from "../utils";
-import config from "./config";
+import { jsx, useColorTheme } from "@soperio/core";
+import { useComponentConfig } from "../hooks/useComponentConfig";
 import { IS_DEV } from "@soperio/utils";
+import React from "react";
+import { Soperio } from "../Soperio";
+import defaultConfig from "./config";
+import { BadgeProps } from "./types";
 
+const COMPONENT_ID = "Soperio.Badge";
+
+Soperio.registerComponent(COMPONENT_ID, defaultConfig)
 
 /**
  *
@@ -17,11 +21,14 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
     size = "md",
     shape = "rounded",
     theme = "default",
+    config,
     children,
     ...props
 }: BadgeProps, ref) =>
 {
-    const styles: BadgeConfig = getStyledConfig(theme, config, "Badge");
+  const colorTheme = useColorTheme(theme);
+
+  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
     const sVariant = styles.variant?.[variant];
     const sSize = styles.size?.[size];
     const sShape = styles.shape?.[shape];

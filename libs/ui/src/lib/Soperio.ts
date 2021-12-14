@@ -1,6 +1,6 @@
 import { SoperioComponentConfig } from "./ComponentConfig";
 import { ColorTheme } from "@soperio/core";
-import { getStyleConfig } from "@soperio/core";
+import { getThemeStyle } from "@soperio/core";
 import { CSSPropKeys } from "@soperio/core";
 import { SoperioComponentConfigFn } from "./ComponentConfig";
 import { omit, split } from "./utils";
@@ -10,21 +10,21 @@ import { IS_DEV } from "@soperio/utils";
 
 export class Soperio
 {
-    static getTheme(theme: string | ColorTheme, component = ""): ColorTheme | null
+    static getColorTheme(theme: string | ColorTheme, component = ""): ColorTheme | null
     {
         if (typeof theme === "string")
         {
-            const configTheme = getStyleConfig("themes", theme) as ColorTheme;
+          const indexedColorTheme = getThemeStyle("themes", theme) as ColorTheme;
 
-            if (!theme)
+            if (!indexedColorTheme)
             {
                 if (IS_DEV)
-                    console.log(`[Soperio ${component}]: the theme ${theme} does not exist in your config.`);
+                    console.log(`[Soperio ${component}]: the color theme ${theme} does not exist in your theme.`);
 
                 return null;
             }
 
-            return configTheme;
+            return indexedColorTheme;
         }
 
         return theme;

@@ -1,14 +1,13 @@
 /** @jsx jsx */
 
-import { jsx, SoperioComponent, useTheme } from "@soperio/core";
+import { jsx, SoperioComponent, useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
-import { sanitizeProps } from "../utils";
 import React from "react";
-import { getStyledConfig } from "../utils";
-import defaultConfig from "./config";
-import { InputConfig, InputProps } from "./types";
-import { Soperio } from "../Soperio";
 import { useComponentConfig } from "../hooks/useComponentConfig";
+import { Soperio } from "../Soperio";
+import { sanitizeProps } from "../utils";
+import defaultConfig from "./config";
+import { InputProps } from "./types";
 
 const COMPONENT_ID = "Soperio.Input";
 
@@ -29,7 +28,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
         ...props
     }, ref) =>
 {
-  const colorTheme = useTheme(theme);
+  const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
     const sVariant = styles.variant?.[variant];

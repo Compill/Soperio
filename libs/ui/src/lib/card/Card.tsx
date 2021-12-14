@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /** @jsxFrag jsx */
 
-import { jsx, ParentComponent, SoperioComponent, SpacingPositiveScale, useTheme } from "@soperio/core";
+import { jsx, ParentComponent, SoperioComponent, SpacingPositiveScale, useColorTheme } from "@soperio/core";
 import { IS_DEV, OrString } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
@@ -26,7 +26,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({
   ...props
 }: CardProps, ref) =>
 {
-  const colorTheme = useTheme(theme);
+  const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config);
   const sVariant = styles.variant?.[variant];
@@ -59,7 +59,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
   children,
   ...props }, ref) =>
 {
-  const colorTheme = useTheme();
+  const colorTheme = useColorTheme();
 
   return (
     // Style should be flex with space between children
@@ -100,7 +100,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
   children,
   ...props }, ref) =>
 {
-  const colorTheme = useTheme();
+  const colorTheme = useColorTheme();
 
   return (
     // Style should be flex with space between children

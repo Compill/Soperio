@@ -1,32 +1,32 @@
 import { Breakpoints } from "../Breakpoints";
 import { SpacingPositiveScale } from "./Spacing";
-import { getStyleConfig, OrString, StyleFn, StyleProp, StyleProps } from "./utils";
+import { getThemeStyle, OrString, StyleFn, StyleProp, StyleProps } from "./utils";
 
-export type WidthScale = 
-    "1/2" 
-    | "1/3" 
-    | "2/3" 
-    | "1/4" 
-    | "2/4" 
-    | "3/4" 
-    | "1/5" 
-    | "2/5" 
-    | "3/5" 
-    | "4/5" 
-    | "1/6" 
-    | "2/6" 
-    | "3/6" 
-    | "4/6" 
-    | "5/6" 
-    | "1/12" 
-    | "2/12" 
-    | "3/12" 
-    | "4/12" 
-    | "5/12" 
-    | "6/12" 
-    | "7/12" 
-    | "8/12" 
-    | "9/12" 
+export type WidthScale =
+    "1/2"
+    | "1/3"
+    | "2/3"
+    | "1/4"
+    | "2/4"
+    | "3/4"
+    | "1/5"
+    | "2/5"
+    | "3/5"
+    | "4/5"
+    | "1/6"
+    | "2/6"
+    | "3/6"
+    | "4/6"
+    | "5/6"
+    | "1/12"
+    | "2/12"
+    | "3/12"
+    | "4/12"
+    | "5/12"
+    | "6/12"
+    | "7/12"
+    | "8/12"
+    | "9/12"
     | "10/12"
     | "11/12"
     | "auto"
@@ -66,20 +66,20 @@ export interface Sizing {
     maxH?: false | OrString<"full" | "screen" | SpacingPositiveScale>,
 }
 
-function processValue(cssProperty: string, configProperty:string): StyleFn
+function processValue(cssProperty: string, themeProperty:string): StyleFn
 {
-    return (value: StyleProp) => 
+    return (value: StyleProp) =>
     {
         if (!value || value === true)
             return {}
 
         let parsedValue = value;
 
-        const configValue = getStyleConfig(configProperty, value);
+        const themeValue = getThemeStyle(themeProperty, value);
 
-        if (configValue !== undefined)
+        if (themeValue !== undefined)
         {
-            parsedValue = configValue;
+            parsedValue = themeValue;
         }
         else if (typeof value === "string" && value.includes("/"))
         {

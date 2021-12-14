@@ -1,4 +1,4 @@
-import { css, cssValue, getStyleConfig, OrString, Style, StyleFn, StyleProp, StyleProps } from "./utils";
+import { css, cssValue, getThemeStyle, OrString, Style, StyleFn, StyleProp, StyleProps } from "./utils";
 
 export interface Transitions
 {
@@ -14,9 +14,9 @@ const defaultTransition = {
     "transition-duration": "150ms"
 };
 
-function transition(value: any): Style 
+function transition(value: any): Style
 {
-    const transitionProperty = getStyleConfig("transition.transitionProperty", value)!;
+    const transitionProperty = getThemeStyle("transition.transitionProperty", value)!;
 
     return {
         "transition-property": transitionProperty,
@@ -26,7 +26,7 @@ function transition(value: any): Style
 
 function duration(value: any)
 {
-    let parsedValue = getStyleConfig("transition.transitionProperty", value);
+    let parsedValue = getThemeStyle("transition.transitionProperty", value);
 
     if (parsedValue === undefined)
         parsedValue = `${value}ms`;

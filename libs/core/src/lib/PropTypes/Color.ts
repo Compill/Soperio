@@ -1,4 +1,4 @@
-import { getStyleConfig, StyleFn, StyleProp } from "../CSS/utils";
+import { getThemeStyle, StyleFn, StyleProp } from "../CSS/utils";
 
 export type Color = string
 
@@ -9,7 +9,7 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
         if (!value || value === true || typeof value === "number")
             return {};
 
-        let parsedColor = getStyleConfig("colors", value) || value
+        let parsedColor = getThemeStyle("colors", value) || value
 
         parsedColor = parseColor(parsedColor, alphaVarName)
 
@@ -64,7 +64,7 @@ export function parseColor(value: string, alphaCSSVarName?: string):string
 
     if (value.startsWith("root."))
     {
-        // Global vars (from config's rootColors) are defined
+        // Global vars (from theme's rootColors) are defined
         // like this: --so-my-var: 255, 0, 255 // That would be equal to #FF00FF
         // Although this value (255, 0, 255) is not valid per se,
         // we use it in the rgba function as values for r, g and b.
@@ -136,7 +136,7 @@ export function applyTransparenceToRGBColor(color:string, alpha: number): string
 //     // TODO get color CSS vars
 //     // for values like var(--color-light)
 
-//     // TODO get color from config
+//     // TODO get color from theme
 
 //     // if (value in namedColors)
 //     // {

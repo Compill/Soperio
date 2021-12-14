@@ -1,18 +1,18 @@
-import config from "../defaultConfig";
+import { defaultTheme } from "../defaultTheme";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const _ = require("lodash");
 
-// TODO get user merged config instead of default
+// TODO get user merged theme instead of default
 
 export type Style = Record<string, string | number | Record<string, string | number>>;
 export type StyleProp = boolean | string | number;
 export type StyleFn = (value: StyleProp) => Style;
 export type StyleProps = Record<string, StyleFn>;
 
-export function getStyleConfig(configProperty: string, key: string | number): any
+export function getThemeStyle(themeProperty: string, key: string | number): any
 {
-    const c =  _.get(config, configProperty);
+    const c =  _.get(defaultTheme, themeProperty);
 
     if (c)
         return c[key];
@@ -20,7 +20,7 @@ export function getStyleConfig(configProperty: string, key: string | number): an
     return undefined;
 }
 
-export function css(cssProperty: string | string[], configProperty?: string, defaultValue?: string): StyleFn
+export function css(cssProperty: string | string[], themeProperty?: string, defaultValue?: string): StyleFn
 {
     return (value: StyleProp) =>
     {
@@ -29,8 +29,8 @@ export function css(cssProperty: string | string[], configProperty?: string, def
 
         let parsedValue:string | number | undefined
 
-        if (configProperty)
-            parsedValue = getStyleConfig(configProperty, value === true ? "default" : value);
+        if (themeProperty)
+            parsedValue = getThemeStyle(themeProperty, value === true ? "default" : value);
 
         if (parsedValue === undefined && value === true)
             parsedValue = defaultValue

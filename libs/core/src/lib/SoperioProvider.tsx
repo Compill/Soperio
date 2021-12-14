@@ -2,16 +2,16 @@
 
 import { ParentComponent } from "./HTMLTagProps";
 import { jsx } from "./react/react";
-import ConfigCache from "./ConfigCache";
-import { SoperioConfig } from "./defaultConfig";
+import ThemeCache from "./ThemeCache";
+import { SoperioTheme } from "./defaultTheme";
 
 interface SoperioProviderProps extends ParentComponent
 {
-    theme?: SoperioConfig
+    theme?: SoperioTheme
 }
 
 // Init config
-ConfigCache.get();
+ThemeCache.get();
 
 /**
  *

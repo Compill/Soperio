@@ -1,14 +1,13 @@
 /** @jsx jsx */
 
-import { jsx, useTheme } from "@soperio/core";
-import { Soperio } from "../Soperio";
+import { jsx, useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
-import { sanitizeProps } from "../utils";
 import React from "react";
-import { getStyledConfig } from "../utils";
-import defaultConfig from "./config";
-import { CheckboxConfig, CheckboxProps } from "./types";
 import { useComponentConfig } from "../hooks/useComponentConfig";
+import { Soperio } from "../Soperio";
+import { sanitizeProps } from "../utils";
+import defaultConfig from "./config";
+import { CheckboxProps } from "./types";
 
 const COMPONENT_ID = "Soperio.Checkbox";
 
@@ -30,7 +29,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
     ...props
   }, ref) =>
 {
-  const colorTheme = useTheme(theme);
+  const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
   const sVariant = styles.variant?.[variant];

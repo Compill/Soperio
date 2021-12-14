@@ -12,7 +12,7 @@ interface DarkModeListener
 // Other libraries are using a Provider component, but since we're not
 // using any React.Context, I don't see the point of adding extra
 // complexity to the app
-let darkModeInternal = false; // // TODO Get value from config?
+let darkModeInternal = false; // // TODO Get value from theme?
 const listeners: DarkModeListener[] = [];
 
 function setDarkModeInternal(darkMode: boolean)

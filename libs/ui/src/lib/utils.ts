@@ -6,7 +6,7 @@ export function getStyledConfig<T extends any>(themeProp: ComponentTheme | undef
     if (!themeProp)
         return {};
 
-    const theme = Soperio.getTheme(themeProp, component);
+    const theme = Soperio.getColorTheme(themeProp, component);
 
     if (!theme)
         return {};

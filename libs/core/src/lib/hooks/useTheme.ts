@@ -1,23 +1,20 @@
-import { ColorTheme } from "../ColorTheme";
-import { IS_DEV } from "@soperio/utils";
-import { useConfig } from "./useConfig";
+import React from "react";
+import ThemeCache from "../ThemeCache";
+import { Theme } from "../Theme";
 
-export function useTheme(theme?: false | string | ColorTheme): ColorTheme
+export function useTheme(): Theme
 {
-    const config = useConfig();
+    const [theme, setTheme] = React.useState(ThemeCache.get().theme);
 
-    if (!theme || typeof theme === "string")
+    const onChange = React.useCallback(() =>
     {
-        const configTheme = config.themes[theme || "default"];
+        setTheme(ThemeCache.get().theme);
+    }, [setTheme]);
 
-        if (!configTheme)
-        {
-            if (IS_DEV)
-                console.log(`[Soperio]: the theme ${theme} does not exist in your config.`);
-        }
-
-        return configTheme || {};
-    }
+    React.useEffect(() =>
+    {
+        ThemeCache.get().addListener(onChange);
+    }, [onChange]);
 
     return theme;
 }

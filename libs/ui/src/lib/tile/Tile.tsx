@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, useTheme } from "@soperio/core";
+import { jsx, useColorTheme } from "@soperio/core";
 import React from "react";
 import { TileProps } from "./types";
 
@@ -15,7 +15,7 @@ export const Tile = React.forwardRef<HTMLDivElement, TileProps>(({
     ...props
 }: TileProps, ref) =>
 {
-    const theme = useTheme();
+    const theme = useColorTheme();
 
     return (
         <div

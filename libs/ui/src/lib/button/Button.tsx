@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, useTheme, SoperioComponent } from "@soperio/core";
+import { jsx, useColorTheme, SoperioComponent } from "@soperio/core";
 import { Soperio } from "../Soperio";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { IS_DEV } from "@soperio/utils";
@@ -41,7 +41,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         onClick && onClick(event);
     }, [onClick]);
 
-    const colorTheme = useTheme(theme);
+    const colorTheme = useColorTheme(theme);
 
     const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
     const sVariant = styles.variant?.[variant];

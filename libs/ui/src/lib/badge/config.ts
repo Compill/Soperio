@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/core";
 import { BadgeConfig } from "./types";
 
-export default function config(theme: ColorTheme): BadgeConfig
+export default function config(theme: ColorTheme, darkMode: boolean): BadgeConfig
 {
     return {
         size: {

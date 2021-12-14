@@ -6,7 +6,7 @@
 import murmurhash from "murmurhash";
 import React from "react";
 import { SVGSoperioProps } from "../CSS/SVG";
-import { getStyleConfig } from "../CSS/utils";
+import { getThemeStyle } from "../CSS/utils";
 import { CSSPropKeys, CSSPropsMap } from "../CSSProps";
 import { SoperioComponent } from "../SoperioComponent";
 import { insertCss } from "../utils/insertCss";
@@ -90,7 +90,7 @@ function parseRules(className: string, css: Record<string, string | any>, wrap =
         else if (key.startsWith("media-"))
         {
             const breakpoint = key.split("-")[1];
-            mediaQueries.push(`@media screen and (min-width: ${getStyleConfig("breakpoints", breakpoint)}) {\n\t${parseRules(className, css[key], false)}\n}`);
+            mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(className, css[key], false)}\n}`);
         }
         else
         {

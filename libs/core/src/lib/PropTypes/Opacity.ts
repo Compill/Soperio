@@ -1,4 +1,4 @@
-import { getStyleConfig, Style } from "../CSS/utils";
+import { getThemeStyle, Style } from "../CSS/utils";
 
 export type Opacity =
     "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" |
@@ -17,7 +17,7 @@ export function opacity(cssProperty: string): (value: any) => Style
 {
     return (value: any) =>
     {
-        let parsedValue = getStyleConfig("opacity", value)
+        let parsedValue = getThemeStyle("opacity", value)
 
         if (parsedValue === undefined)
         {

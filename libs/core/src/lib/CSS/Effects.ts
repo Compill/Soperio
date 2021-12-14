@@ -14,7 +14,7 @@ export interface Effects
     bgBlend?: false | BlendMode,
 }
 
-export function shadow(configProperty?: string): (value: any) => Style
+export function shadow(themeProperty?: string): (value: any) => Style
 {
     return (value: any) =>
     {

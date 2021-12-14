@@ -1,6 +1,6 @@
 import { Color, colorize } from "../PropTypes/Color";
 import { opacity, Opacity } from "../PropTypes/Opacity";
-import { css, cssValue, getStyleConfig, OrString, Style, StyleProps } from "./utils";
+import { css, cssValue, getThemeStyle, OrString, Style, StyleProps } from "./utils";
 
 export interface Typography
 {
@@ -34,13 +34,13 @@ export interface Typography
 
 function fontSize(value: any): Style
 {
-    let configValue:any = getStyleConfig("typography.fontSize", value);
+    const themeValue:any = getThemeStyle("typography.fontSize", value);
 
-    if (configValue)
+    if (themeValue)
     {
         return {
-            "font-size": configValue[0],
-            "line-height": configValue[1]
+            "font-size": themeValue[0],
+            "line-height": themeValue[1]
         };
     }
 

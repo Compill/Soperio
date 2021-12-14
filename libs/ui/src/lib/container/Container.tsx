@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { Breakpoints, getStyleConfig, jsx, ParentComponent, SoperioComponent } from "@soperio/core";
+import { Breakpoints, getThemeStyle, jsx, ParentComponent, SoperioComponent } from "@soperio/core";
 import React from 'react';
 
 interface ContainerProps extends SoperioComponent, ParentComponent, React.HTMLAttributes<HTMLDivElement>
@@ -18,7 +18,7 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(({ bre
     return (
         <div
             w={!breakpoint && "full"}
-            maxW={breakpoint && getStyleConfig("breakpoints", breakpoint)}
+            maxW={breakpoint && getThemeStyle("breakpoints", breakpoint)}
             mx={center && "auto"}
             {...props}
             ref={ref}>

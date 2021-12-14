@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /** @jsxFrag jsx */
 
-import { jsx, useTheme } from "@soperio/core";
+import { jsx, useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
@@ -30,7 +30,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
     ...props
   }, ref) =>
 {
-  const colorTheme = useTheme(theme);
+  const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
   const sVariant = styles.variant?.[variant];

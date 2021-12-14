@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, SoperioComponent, useTheme } from "@soperio/core";
+import { jsx, SoperioComponent, useColorTheme } from "@soperio/core";
 import { useComponentConfig } from "@soperio/ui";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
@@ -27,7 +27,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((
     ...props
   }, ref) =>
 {
-  const colorTheme = useTheme(theme);
+  const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config);
   const sVariant = styles.variant?.[variant];

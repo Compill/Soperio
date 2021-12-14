@@ -1,4 +1,4 @@
-import { css, cssValueFn, getStyleConfig, Style, StyleProp, StyleProps } from "./utils";
+import { css, cssValueFn, getThemeStyle, Style, StyleProp, StyleProps } from "./utils";
 
 export type SpacingPositiveScale =
     "0"
@@ -100,7 +100,7 @@ export interface Spacing {
 // TODO Apply on children
 function spaceX(value: any): Style
 {
-    const dimension = getStyleConfig("spacing.positiveNegative", value) || value;
+    const dimension = getThemeStyle("spacing.positiveNegative", value) || value;
 
     return {
         "--so-space-x-reverse": 0,
@@ -114,7 +114,7 @@ function spaceX(value: any): Style
 // TODO Apply on children
 function spaceY(value: any): Style
 {
-    const dimension = getStyleConfig("spacing.positiveNegative", value) || value;
+    const dimension = getThemeStyle("spacing.positiveNegative", value) || value;
 
     return {
         "--so-space-y-reverse": 0,
@@ -123,13 +123,13 @@ function spaceY(value: any): Style
     };
 }
 
-function spacing(cssProperty: string | string[], configProperty?: string)
+function spacing(cssProperty: string | string[], themeProperty?: string)
 {
     return (value: StyleProp) =>
     {
         const parsedValue = value === "px" ? "1px" : (value === "-px" ? "-1px" : value as string)
 
-        return css(cssProperty, configProperty)(parsedValue)
+        return css(cssProperty, themeProperty)(parsedValue)
     }
 }
 

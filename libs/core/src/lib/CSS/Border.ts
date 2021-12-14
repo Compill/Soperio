@@ -1,7 +1,7 @@
 import { Breakpoints } from "../Breakpoints";
 import { colorize } from "../PropTypes/Color";
 import { opacity, Opacity } from "../PropTypes/Opacity";
-import { css, cssValueFn, getStyleConfig, Style, StyleProps } from "./utils";
+import { css, cssValueFn, getThemeStyle, Style, StyleProps } from "./utils";
 
 export interface Border
 {
@@ -48,7 +48,7 @@ export interface Border
 
 export function divideX(value: any): Style
 {
-    const dimension = value === true ? "1px" : (getStyleConfig("border.width", value) || value)
+    const dimension = value === true ? "1px" : (getThemeStyle("border.width", value) || value)
 
     return {
         "--so-divide-x-reverse": 0,
@@ -59,7 +59,7 @@ export function divideX(value: any): Style
 
 export function divideY(value: any): Style
 {
-    const dimension = value === true ? "1px" : (getStyleConfig("border.width", value) || value)
+    const dimension = value === true ? "1px" : (getThemeStyle("border.width", value) || value)
 
     return {
         "--so-divide-y-reverse": 0,

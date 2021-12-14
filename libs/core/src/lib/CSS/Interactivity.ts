@@ -1,4 +1,4 @@
-import { css, getStyleConfig, Style, StyleProps } from "./utils";
+import { css, getThemeStyle, Style, StyleProps } from "./utils";
 
 export interface Interactivity
 {
@@ -12,7 +12,7 @@ export interface Interactivity
 
 function outline(value: any): Style
 {
-    const parsedValue = getStyleConfig("interactivity.outline", value)!;
+    const parsedValue = getThemeStyle("interactivity.outline", value)!;
 
     return {
         "outline": parsedValue[0],

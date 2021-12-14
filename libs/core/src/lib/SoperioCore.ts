@@ -1,6 +1,6 @@
 import { IS_DEV } from "@soperio/utils";
-import { getStyleConfig } from "./CSS/utils";
-import config from "./defaultConfig";
+import { getThemeStyle } from "./CSS/utils";
+import { defaultTheme } from "./defaultTheme";
 import { transformColorToGlobalVar } from "./PropTypes/Color";
 import { insertCss } from "./utils/insertCss";
 
@@ -8,10 +8,11 @@ import { insertCss } from "./utils/insertCss";
 // Find a better way to do this part
 export function init()
 {
-    if (!config.rootColors && IS_DEV)
-        console.log("[Soperio Core]: Your config is invalid and is missing the \"rootColors\" property object");
+  // TODO should not use defaultTheme but useTheme()
+    if (!defaultTheme.rootColors && IS_DEV)
+        console.log("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
 
-    const rootColors: any = config.rootColors;
+    const rootColors: any = defaultTheme.rootColors;
 
     let css = ":root {\n";
 
@@ -19,7 +20,7 @@ export function init()
     {
         const color: string = rootColors[cssVar] as string;
 
-        let parsedColor = getStyleConfig("colors", color) || color;
+        let parsedColor = getThemeStyle("colors", color) || color;
 
         parsedColor = transformColorToGlobalVar(parsedColor);
 
