@@ -22,7 +22,7 @@ export function Content()
 
   return (
     <>
-      <div dflex flexRow px="16" py="8" bgColor={darkMode ? "gray" : "white"} spaceX="3">
+      <div dflex flexRow px="16" py="8" bgColor="root.bg-color-1" spaceX="3">
         <Button onClick={() => setState(1)}>Button</Button>
         <Button onClick={() => setState(2)}>Checkbox</Button>
         <Button onClick={() => setState(3)}>Form</Button>

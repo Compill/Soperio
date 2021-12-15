@@ -1,6 +1,22 @@
 import { getThemeStyle, StyleFn, StyleProp } from "../CSS/utils";
+import { getDarkMode } from "../hooks/useDarkMode";
 
+// TODO Color types should contain all theme colors + all root colors + an exemple color like "any ARGB/RGB color like #FF36D9"
 export type Color = string
+
+function getColor(value:string)
+{
+  if (getDarkMode())
+  {
+    const darkColor = getThemeStyle(["darkModeOverride", "colors"], value)
+
+    if (darkColor)
+      return darkColor
+  }
+
+  return getThemeStyle("colors", value)
+;
+}
 
 export function colorize(cssProperty: string, alphaVarName: string): StyleFn
 {
@@ -9,7 +25,7 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
         if (!value || value === true || typeof value === "number")
             return {};
 
-        let parsedColor = getThemeStyle("colors", value) || value
+        let parsedColor = getColor(value) || value
 
         parsedColor = parseColor(parsedColor, alphaVarName)
 
@@ -102,24 +118,6 @@ export function parseColor(value: string, alphaCSSVarName?: string):string
     return value;
 }
 
-/**
- * Add an opacity value to an RGB color
- * @param {string} color  RGB color, starting with #
- * @param {number} alpha  Opacity, from to 0 (transparent) to 100 (opaque)
- * @returns #RGBA color
- */
-export function applyTransparenceToRGBColor(color:string, alpha: number): string
-{
-    if (color.length === 7 && alpha >= 0 && alpha <= 100)
-    {
-        const base16 = Math.round((alpha / 100) * 255)
-        const hex = (base16 < 16 ? "0" : "") + base16.toString(16)
-        return `${color}${hex}`
-    }
-
-    return color;
-}
-
 // export function parseColor(value: string, alphaCSSVarName: string)
 // {
 //     if (typeof value !== 'string')
@@ -176,10 +174,3 @@ export function applyTransparenceToRGBColor(color:string, alpha: number): string
 
 //     return null;
 // }
-
-// TODO Alpha is not good, should be 0..255 instead of /alpha
-export function formatColor({ mode, color, alpha }: { mode: string, color: string[], alpha: string; }): string
-{
-    const hasAlpha = alpha !== undefined;
-    return `${mode}(${color.join(' ')}${hasAlpha ? ` / ${alpha}` : ''})`;
-}

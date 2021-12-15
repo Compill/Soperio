@@ -3,11 +3,11 @@
 import { ParentComponent } from "./HTMLTagProps";
 import { jsx } from "./react/react";
 import ThemeCache from "./ThemeCache";
-import { SoperioTheme } from "./defaultTheme";
+import { Theme } from "./Theme";
 
 interface SoperioProviderProps extends ParentComponent
 {
-    theme?: SoperioTheme
+    theme?: Theme
 }
 
 // Init config

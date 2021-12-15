@@ -1,5 +1,5 @@
 import { ColorTheme } from "./ColorTheme";
-import { applyTransparenceToRGBColor } from "./PropTypes/Color";
+import { applyTransparenceToRGBColor } from "@soperio/utils";
 import { Theme } from "./Theme";
 
 const breakpoints = {
@@ -116,33 +116,13 @@ const defaultColorTheme: ColorTheme = {
 };
 
 // TODO Rename 2xl, 3xl, ... to x2, x3, x4, ...
-
+console.log("default theme 0")
 export const defaultTheme: Theme = {
-  breakpoints: breakpoints,
-  border: {
-    radius: {
-      none: '0',
-      sm: '0.125rem',
-      default: '0.25rem',
-      md: '0.375rem',
-      lg: '0.5rem',
-      xl: '0.75rem',
-      'xxl': '1rem',
-      '3xl': '1.5rem',
-      full: '9999px',
-    },
-    width: {
-      default: '1px',
-      '0': '0',
-      '2': '2px',
-      '4': '4px',
-      '8': '8px',
-    },
-  },
   // Colors that will be added to :root {} in CSS
   // Since those are CSS vars, the prefix "--" will be added for each var
   // But you can just reference them in the code as "root.myvar" on any color prop,
   // "myvar" being the name of the color var
+  darkMode: "light",
   rootColors: {
     /* Required color vars by Soperio */
     /* Delete one of those and components will miss some colors :\ */
@@ -328,7 +308,7 @@ export const defaultTheme: Theme = {
     "sky-800": '#075985',
     "sky-900": '#0c4a6e',
   },
-  themes: {
+  colorThemes: {
     default: defaultColorTheme,
     success: {
       ...defaultColorTheme,
@@ -377,6 +357,74 @@ export const defaultTheme: Theme = {
       // textDark3: "root.text-color-inverse-3",
       // textDark4: "root.text-color-inverse-4",
       // textDarkDisabled: "root.text-color-inverse-disabled",
+    },
+  },
+  darkModeOverride: {
+    rootColors: {
+      /* Required color vars by Soperio */
+    /* Delete one of those and components will miss some colors :\ */
+    /* Please only use RGB colors, the alpha component will be ignored */
+
+    // Dark text colors if light theme, light colors if dark theme
+    "text-color-1": "#FFFFFF",
+    "text-color-2": "#F9F9F9",
+    "text-color-3": "#F0F0F0",
+    "text-color-4": "#E9E9E9",
+    "text-color-disabled": "#E0E0E0",
+
+    // Light text colors if light theme, dark colors if dark theme
+    "text-color-inverse-1": "coolGray-900",
+    "text-color-inverse-2": "coolGray-800",
+    "text-color-inverse-3": "coolGray-700",
+    "text-color-inverse-4": "coolGray-600",
+    "text-color-inverse-disabled": "coolGray-600",
+
+    // Light background colors if light theme, dark colors if dark theme
+    "bg-color-1": "coolGray-900",
+    "bg-color-2": "coolGray-800",
+    "bg-color-3": "coolGray-700",
+    "bg-color-4": "coolGray-600",
+    "bg-color-5": "coolGray-500",
+    // Ex: the backround color of a disabled text input
+    "bg-color-disabled": "coolGray-500",
+    // Used to separate sections of your app
+    // Example
+    // The border between the left sidebar and the main content
+    // Or the header and the subheader and the main content
+    // Or the buttons of a toolbar
+    "border-color-0": "coolGray-100",
+    "border-color-1": "coolGray-200",
+    "border-color-disabled": "#FFFFFF",
+
+    "shadow-color": "#FFFFFF",
+
+
+    /* End required colors */
+
+    /* You can add your custom global color vars below */
+    // Ex: "my-super-color": #123456
+    }
+  },
+
+  breakpoints: breakpoints,
+  border: {
+    radius: {
+      none: '0',
+      sm: '0.125rem',
+      default: '0.25rem',
+      md: '0.375rem',
+      lg: '0.5rem',
+      xl: '0.75rem',
+      'xxl': '1rem',
+      '3xl': '1.5rem',
+      full: '9999px',
+    },
+    width: {
+      default: '1px',
+      '0': '0',
+      '2': '2px',
+      '4': '4px',
+      '8': '8px',
     },
   },
   effects: {
@@ -830,3 +878,4 @@ export const defaultTheme: Theme = {
     },
   },
 };
+console.log("default theme 1")

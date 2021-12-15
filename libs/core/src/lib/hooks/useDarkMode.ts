@@ -2,6 +2,7 @@ import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { getThemeStyle } from "../CSS/utils";
 import { transformColorToGlobalVar } from "../PropTypes/Color";
+import { RootColors } from "../ThemeTypes";
 import { useTheme } from "./useTheme";
 
 interface DarkModeListener
@@ -18,6 +19,12 @@ interface DarkModeListener
 // complexity to the app
 let darkModeInternal = false; // // TODO Get value from theme?
 const listeners: DarkModeListener[] = [];
+
+// For usage in color props, in this library only
+export function getDarkMode(): boolean
+{
+  return darkModeInternal;
+}
 
 function setDarkModeInternal(darkMode: boolean)
 {
@@ -70,7 +77,7 @@ export function useDarkMode()
     if (!theme.rootColors && IS_DEV)
       console.log("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
 
-    const rootColors: any = theme.rootColors;
+    const rootColors: RootColors = { ...theme.rootColors, ...(darkMode ? theme.darkModeOverride?.rootColors : null) };
 
     let css = ":root {\n";
 
@@ -88,12 +95,8 @@ export function useDarkMode()
 
     css += "}";
 
-    // TODO I should use a CSS Sheet so that I can
-    // reinsert the same globals vars when I switch
-    // to dark theme for example
-    // Otherwise, I will end up with a lot of style tags
-    // overidding each other
-
+    // Inserting style tag with root colors
+    // removing existing if any
     const existingStyleTag = document.getElementById(ROOT_COLORS_STYLE_ID)
 
     if (existingStyleTag != null)

@@ -1,4 +1,4 @@
-// export * from './lib/utils';
+export * from './lib/colors';
 
 export const IS_DEV: boolean = process.env.NODE_ENV !== "production";
 

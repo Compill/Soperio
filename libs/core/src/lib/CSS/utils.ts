@@ -10,9 +10,11 @@ export type StyleProp = boolean | string | number;
 export type StyleFn = (value: StyleProp) => Style;
 export type StyleProps = Record<string, StyleFn>;
 
-export function getThemeStyle(themeProperty: string, key: string | number): any
+export function getThemeStyle(themeProperty: string | string[], key: string | number): any
 {
-    const c =  _.get(defaultTheme, themeProperty);
+    // const c =  _.get(defaultTheme, themeProperty);
+    // TODO should use useTheme
+    const c =  _.property(themeProperty)(defaultTheme);
 
     if (c)
         return c[key];

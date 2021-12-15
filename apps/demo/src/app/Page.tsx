@@ -40,8 +40,8 @@ export default function Page({ ...props })
   }
 
   return (
-    <Container center h="screen" bgColor="root.bg-color-3">
-      <Container center breakpoint="xl" h="screen" bgColor={darkMode ? "root.text-color-1" : "white"} dflex gap="20" justifyContent="center" pt="20">
+    <Container center h="screen" bgColor="root.bg-color-2">
+      <Container center breakpoint="xl" h="screen" bgColor="root.bg-color-3" dflex gap="20" justifyContent="center" pt="20">
 
         <div flexRow>
           <Button /*config={buttonConfig}*/ variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("left")} z="1001">Open Left</Button>

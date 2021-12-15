@@ -1,15 +1,25 @@
-import { ColorTheme } from "./ColorTheme";
+import { ColorThemes, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
-type KeyValueObject<T> = Record<string, T>;
-type StringKeyValueObject = KeyValueObject<string>;
+
 
 export interface Theme
 {
-  breakpoints: StringKeyValueObject,
-  border: { radius: StringKeyValueObject, width: StringKeyValueObject; },
-  themes: { default: ColorTheme, [k: string]: ColorTheme; },
-  rootColors: StringKeyValueObject,
+  // Colors
+  darkMode: "light" | "dark" | "system",
+  rootColors: RootColors,
   colors: StringKeyValueObject,
+  colorThemes: ColorThemes,
+  darkModeOverride?: {
+    colorThemes?: ColorThemes;
+    rootColors?: RootColors;
+  };
+
+  // Global styles
+  breakpoints: StringKeyValueObject,
+  border: {
+    radius: StringKeyValueObject,
+    width: StringKeyValueObject;
+  },
   effects: { boxShadow: StringKeyValueObject; },
   flexbox: {
     flex: StringKeyValueObject,
@@ -31,7 +41,10 @@ export interface Theme
     minWidth: StringKeyValueObject,
     maxWidth: StringKeyValueObject,
   },
-  spacing: { positive: StringKeyValueObject, positiveNegative: StringKeyValueObject; };
+  spacing: {
+    positive: StringKeyValueObject,
+    positiveNegative: StringKeyValueObject;
+  };
   transform: {
     scale: StringKeyValueObject,
     rotate: StringKeyValueObject,
