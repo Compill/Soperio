@@ -7,7 +7,6 @@ export * from './lib/hooks/useColorTheme';
 export * from './lib/hooks/useDarkMode';
 export * from './lib/HTMLTagProps';
 export * from './lib/react/react';
-export * from './lib/SoperioCore';
 export * from './lib/SoperioComponent';
 export * from './lib/SoperioInit';
 export type { SpacingScale, SpacingNegativeScale, SpacingPositiveScale } from './lib/CSS/Spacing';

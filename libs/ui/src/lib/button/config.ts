@@ -33,7 +33,7 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
         },
         variant: {
             default: {
-                bgColor: theme.default,
+                bgColor: /*darkMode ? "#ff00ff" : */theme.default,
                 hover_bgColor: theme.defaultHover,
                 textColor: theme.textLight1,
                 outline: "none",

@@ -2,12 +2,10 @@
 
 
 import React from "react";
-import {jsx, init, SoperioInit } from "@soperio/core";
+import {jsx, SoperioInit } from "@soperio/core";
 import { Content } from "./Content";
 
 // jsx("div", {});
-
-init();
 
 function App()
 {

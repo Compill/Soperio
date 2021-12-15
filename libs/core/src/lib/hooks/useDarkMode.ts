@@ -1,4 +1,8 @@
+import { IS_DEV } from "@soperio/utils";
 import React from "react";
+import { getThemeStyle } from "../CSS/utils";
+import { transformColorToGlobalVar } from "../PropTypes/Color";
+import { useTheme } from "./useTheme";
 
 interface DarkModeListener
 {
@@ -24,7 +28,7 @@ function setDarkModeInternal(darkMode: boolean)
 
 function toggleDarkModeInternal()
 {
-  setDarkModeInternal(!darkModeInternal)
+  setDarkModeInternal(!darkModeInternal);
 }
 
 function addListener(listener: DarkModeListener)
@@ -37,13 +41,16 @@ function removeListener(listener: DarkModeListener)
   const index = listeners.indexOf(listener);
 
   if (index > -1)
-    listeners.splice(index, 1)
+    listeners.splice(index, 1);
 
 }
 
+const ROOT_COLORS_STYLE_ID = "soperio-root-colors"
 
 export function useDarkMode()
 {
+  const theme = useTheme();
+
   const [darkMode, setDarkMode] = React.useState(darkModeInternal);
   const cb = React.useCallback((darkMode) => setDarkMode(darkMode), [setDarkMode]);
 
@@ -51,12 +58,56 @@ export function useDarkMode()
   {
     addListener(cb);
 
-    return () => {
+    return () =>
+    {
       removeListener(cb);
-    }
-})
+    };
+  }, []);
 
-return darkMode;
+  React.useEffect(() =>
+  {
+
+    if (!theme.rootColors && IS_DEV)
+      console.log("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
+
+    const rootColors: any = theme.rootColors;
+
+    let css = ":root {\n";
+
+    for (const cssVar in rootColors)
+    {
+      const color: string = rootColors[cssVar] as string;
+
+      let parsedColor = getThemeStyle("colors", color) || color;
+
+      parsedColor = transformColorToGlobalVar(parsedColor);
+
+      if (parsedColor)
+        css += `\t--so-${cssVar}: ${parsedColor};\n`;
+    }
+
+    css += "}";
+
+    // TODO I should use a CSS Sheet so that I can
+    // reinsert the same globals vars when I switch
+    // to dark theme for example
+    // Otherwise, I will end up with a lot of style tags
+    // overidding each other
+
+    const existingStyleTag = document.getElementById(ROOT_COLORS_STYLE_ID)
+
+    if (existingStyleTag != null)
+      document.head.removeChild(existingStyleTag);
+
+    const styleEl = document.createElement("style");
+    styleEl.id = ROOT_COLORS_STYLE_ID;
+    styleEl.appendChild(document.createTextNode(""));
+    styleEl.innerHTML = css;
+    document.head.appendChild(styleEl);
+
+  }, [theme, darkMode])
+
+  return darkMode;
 }
 
 export function useSetDarkMode()

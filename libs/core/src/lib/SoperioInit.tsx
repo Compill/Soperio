@@ -2,9 +2,7 @@ import React from "react";
 import { useSetDarkMode } from "./hooks/useDarkMode";
 import { NormalizeCSS } from "./NormalizeCSS";
 import { Theme } from "./Theme";
-import { defaultTheme } from "./defaultTheme"; // TODO extract to its own file since this will rewritten by CLI
-// TODO rename as theme, not config
-
+import { defaultTheme } from "./defaultTheme";
 
 type SoperioInitProps = {
   resetCss?: boolean,
@@ -19,7 +17,6 @@ export function SoperioInit({
 }: SoperioInitProps)
 {
   // TODO define theme if set
-
 
   const setDarkMode = useSetDarkMode();
   console.log("soperio init");
