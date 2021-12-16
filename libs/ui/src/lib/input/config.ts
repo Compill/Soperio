@@ -36,9 +36,10 @@ export default function config(theme: ColorTheme, darkMode: boolean):InputConfig
                 border: "2",
                 textColor: theme.textDark2,
                 fontWeight: "500",
-                bgColor: theme.background1,
-                borderColor: theme.textDark3,
-                placeholderColor: theme.textDark4 // TODO with CSS prop
+                bgColor: "transparent",
+                borderColor: theme.border0,
+                placeholderColor: theme.textDark4, // TODO with CSS prop,
+                outline: "none"
             },
             solid: {
                 border: "0",
@@ -50,8 +51,9 @@ export default function config(theme: ColorTheme, darkMode: boolean):InputConfig
             underline: {
                 borderB: "2",
                 fontWeight: "500",
+                bgColor: "transparent",
                 textColor: theme.textDark2,
-                borderColor: theme.textDark3,
+                borderColor: theme.border0,
                 outline: "none",
                 rounded: false
             }

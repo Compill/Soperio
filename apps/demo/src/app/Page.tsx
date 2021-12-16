@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 import React from 'react';
-import { jsx, ColorTheme, useDarkMode } from "@soperio/core";
+import { jsx, ColorTheme, useDarkMode, defaultColorTheme } from "@soperio/core";
 import { Button, Container, Sidebar } from "@soperio/ui";
 import { ButtonConfig, ComponentConfig } from "@soperio/ui";
 
@@ -23,6 +23,18 @@ const buttonConfig: (theme: ColorTheme) => ComponentConfig<ButtonConfig> = (them
   }
 });
 
+const blackTheme: ColorTheme = {
+  ...defaultColorTheme,
+  default: "#333333",
+  defaultActive: "#333333",
+}
+
+const lightTheme: ColorTheme = {
+  ...defaultColorTheme,
+  default: "#e0e0e0",
+  defaultActive: "#e0e0e0",
+}
+
 /**
  *
  *
@@ -40,8 +52,7 @@ export default function Page({ ...props })
   }
 
   return (
-    <Container center h="screen" bgColor="root.bg-color-2">
-      <Container center breakpoint="xl" h="screen" bgColor="root.bg-color-3" dflex gap="20" justifyContent="center" pt="20">
+      <Container center breakpoint="xxl" dflex gap="20" justifyContent="center" py="20">
 
         <div flexRow>
           <Button /*config={buttonConfig}*/ variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("left")} z="1001">Open Left</Button>
@@ -49,6 +60,14 @@ export default function Page({ ...props })
           <Button config={buttonConfig} variant="link" block mx="auto" my="5">Link button</Button>
           <Button config={buttonConfig} variant="outline" block mx="auto" my="5">Outline button</Button>
           <Button config={buttonConfig} variant="borderless" block mx="auto" my="5">Borderless</Button>
+        </div>
+
+        <div flexRow>
+          <Button /*config={buttonConfig}*/ theme={blackTheme} variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("left")} z="1001">Open Left</Button>
+          <Button theme={blackTheme} variant="light" block mx="auto" my="5">Light button</Button>
+          <Button theme={blackTheme} variant="link" block mx="auto" my="5">Link button</Button>
+          <Button theme={blackTheme} variant="outline" block mx="auto" my="5">Outline button</Button>
+          <Button theme={blackTheme} variant="borderless" block mx="auto" my="5">Borderless</Button>
         </div>
 
         <div flexRow>
@@ -111,6 +130,5 @@ export default function Page({ ...props })
           <div p="8">Hello</div>
         </Sidebar>
       </Container>
-    </Container>
   );
 }

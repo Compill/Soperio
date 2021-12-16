@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
+    "@ctrl/tinycolor": "^3.4.0",
     "@emotion/react": "^11.7.0",
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",

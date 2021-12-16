@@ -1,12 +1,13 @@
 export * from './lib/Breakpoints';
 export * from './lib/ColorTheme';
+export type { SpacingNegativeScale, SpacingPositiveScale, SpacingScale } from './lib/CSS/Spacing';
 export { getThemeStyle } from './lib/CSS/utils';
 export { CSSPropKeys } from './lib/CSSProps';
-export * from './lib/hooks/useTheme';
+export * from './lib/defaultColorTheme';
 export * from './lib/hooks/useColorTheme';
 export { useDarkMode, useSetDarkMode, useToggleDarkMode } from './lib/hooks/useDarkMode';
+export * from './lib/hooks/useTheme';
 export * from './lib/HTMLTagProps';
 export * from './lib/react/react';
 export * from './lib/SoperioComponent';
 export * from './lib/SoperioInit';
-export type { SpacingScale, SpacingNegativeScale, SpacingPositiveScale } from './lib/CSS/Spacing';

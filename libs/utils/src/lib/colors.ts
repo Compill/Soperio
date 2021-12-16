@@ -1,3 +1,4 @@
+import { TinyColor } from "@ctrl/tinycolor"
 
 /**
  * Add an opacity value to an RGB color
@@ -22,4 +23,79 @@ export function formatColor({ mode, color, alpha }: { mode: string, color: strin
 {
   const hasAlpha = alpha !== undefined;
   return `${mode}(${color.join(' ')}${hasAlpha ? ` / ${alpha}` : ''})`;
+}
+
+
+export function tone(color: string)
+{
+  const isDark = new TinyColor(color).isDark();
+  return isDark ? "dark" : "light";
+};
+
+/**
+ * Determines if a color tone is "dark"
+ * @param color - the color in hex, rgb, or hsl
+ */
+export function isDark(color: string)
+{
+  return tone(color) === "dark";
+}
+
+/**
+ * Determines if a color tone is "light"
+ * @param color - the color in hex, rgb, or hsl
+ */
+export function isLight(color: string)
+{
+  return tone(color) === "light";
+}
+
+/**
+ * Make a color transparent
+ * @param color - the color in hex, rgb, or hsl
+ * @param opacity - the amount of opacity the color should have (0-1)
+ */
+export function transparentize(color: string, opacity: number)
+{
+  return new TinyColor(color).setAlpha(opacity).toRgbString();
+};
+
+/**
+ * Add white to a color
+ * @param color - the color in hex, rgb, or hsl
+ * @param amount - the amount white to add (0-100)
+ */
+export function whiten(color: string, amount: number)
+{
+  return new TinyColor(color).mix("#fff", amount).toHexString();
+};
+
+/**
+ * Add black to a color
+ * @param color - the color in hex, rgb, or hsl
+ * @param amount - the amount black to add (0-100)
+ */
+export function blacken(color: string, amount: number)
+{
+  return new TinyColor(color).mix("#000", amount).toHexString();
+};
+
+/**
+ * Darken a specified color
+ * @param color - the color in hex, rgb, or hsl
+ * @param amount - the amount to darken (0-100)
+ */
+export function darken(color: string, amount: number)
+{
+  return new TinyColor(color).darken(amount).toHexString();
+};
+
+/**
+ * Lighten a specified color
+ * @param color - the color in hex, rgb, or hsl
+ * @param amount - the amount to lighten (0-100)
+ */
+export function lighten(color: string, amount: number)
+{
+  return new TinyColor(color).lighten(amount).toHexString();
 }

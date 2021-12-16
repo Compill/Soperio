@@ -36,7 +36,7 @@ export default function config(theme: ColorTheme, darkMode: boolean):SelectConfi
                 border: "2",
                 textColor: theme.textDark2,
                 fontWeight: "500",
-                bgColor: theme.background1,
+                bgColor: "transparent",
                 borderColor: theme.textDark3,
                 placeholderColor: theme.textDark4, // TODO with CSS prop
             },
@@ -50,6 +50,7 @@ export default function config(theme: ColorTheme, darkMode: boolean):SelectConfi
             underline: {
                 borderB: "2",
                 fontWeight: "500",
+              bgColor: theme.background3,
                 textColor: theme.textDark2,
                 borderColor: theme.textDark3,
                 outline: "none",

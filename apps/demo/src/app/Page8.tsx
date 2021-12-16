@@ -14,8 +14,7 @@ export default function Page({ ...props })
 {
 
     return (
-        <Container center h="screen" bgColor="root.bg-color-3">
-            <Container center breakpoint="xl" h="screen" bgColor="root.bg-color-1"  p="20">
+      <Container center breakpoint="xxl" gap="20" justifyContent="center" py="20">
                 <div mb="10">
                     <TextArea block size="sm" variant="default" mb="5" rows={3} placeholder="Hello" />
                     <TextArea block size="sm" variant="solid" mb="5" rows={3} placeholder="Hello" />
@@ -44,6 +43,5 @@ export default function Page({ ...props })
                     <TextArea block size="x2" variant="underline" mb="5" rows={3} placeholder="Hello" />
                 </div>
             </Container>
-        </Container>
     );
 }

@@ -38,7 +38,7 @@ export default function config(theme: ColorTheme, darkMode: boolean): CheckboxCo
                 bgColor: theme.background5,
                 outline: "none",
                 border: "0",
-                textColor: "white",
+                textColor: darkMode ? theme.textLight1 : theme.textDark1,
                 checked: {
                     bgColor: theme.default,
                 },

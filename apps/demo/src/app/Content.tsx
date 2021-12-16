@@ -1,6 +1,6 @@
 // @jsx jsx */
 
-import { Button } from "@soperio/ui";
+import { Button, Container } from "@soperio/ui";
 import Page from "./Page";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
@@ -22,7 +22,7 @@ export function Content()
 
   return (
     <>
-      <div dflex flexRow px="16" py="8" bgColor="root.bg-color-1" spaceX="3">
+      <div dflex flexRow px="16" py="8" bgColor="root.bg-color-2" spaceX="3">
         <Button onClick={() => setState(1)}>Button</Button>
         <Button onClick={() => setState(2)}>Checkbox</Button>
         <Button onClick={() => setState(3)}>Form</Button>
@@ -33,7 +33,7 @@ export function Content()
         <Button onClick={() => setState(8)}>TextArea</Button>
         <Button onClick={() => toggleDarkMode()}>Toggle Dark Mode</Button>
       </div>
-      <div>
+      <div h="full" bgColor="root.bg-color-3">
         {state === 1 && <Page />}
         {state === 2 && <Page2 />}
         {state === 3 && <Page3 />}

@@ -6,8 +6,9 @@ export default function config(theme: ColorTheme, darkMode: boolean): CardConfig
     return {
         variant: {
             default: {
-                bgColor: theme.background1,
+                bgColor: darkMode ? theme.background2 : theme.background1,
                 border: "0",
+                textColor: theme.textDark1
             },
             bordered: {
                 bgColor: theme.background1,
