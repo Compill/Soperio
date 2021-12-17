@@ -1,9 +1,9 @@
 import { ColorTheme } from "../ColorTheme";
 import { IS_DEV } from "@soperio/utils";
 import { useTheme } from "./useTheme";
-import { useDarkMode } from "./useDarkMode";
+import { useDarkMode } from "@soperio/core";
 
-export function useColorTheme(colorTheme?: false | string | ColorTheme): ColorTheme
+export function useColor(colorTheme?: false | string | ColorTheme): ColorTheme
 {
   const theme = useTheme();
   const darkMode = useDarkMode();

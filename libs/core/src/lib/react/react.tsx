@@ -152,10 +152,10 @@ export function jsx<P extends SoperioComponent>(
 
                 const variants = prop.split("_");
                 const propName: string = variants.pop()!;
-
+                
                 if (!CSSPropKeys.includes(propName))
                     continue;
-
+                
                 let current = css;
                 variants.forEach(variant =>
                 {
@@ -188,11 +188,14 @@ export function jsx<P extends SoperioComponent>(
                 // delete newProps[prop];
             }
 
+            // Our props might generate the emotion css prop
+            // So remove it before parsing
+            const soperioCss = css.css;
+            delete css.css;
+            
             const generatedCSS = parseRules(css)
-
-            // console.log(Component, props.css)
-
-            newProps.css = {...emotionCss(generatedCSS), ...props.css };
+            
+            newProps.css = [ emotionCss(generatedCSS), soperioCss,  props.css ];
         }
     }
 

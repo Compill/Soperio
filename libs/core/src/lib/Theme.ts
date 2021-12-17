@@ -56,7 +56,7 @@ export interface Theme
     duration: StringKeyValueObject,
     delay: StringKeyValueObject,
     animation: StringKeyValueObject,
-    // keyframes: StringKeyValueObject,
+    keyframes: StringKeyValueObject,
     transitionProperty: StringKeyValueObject,
   },
   typography: {

@@ -78,7 +78,6 @@ function prefix(config: Record<string, string>, prefix: string): Record<string, 
 
 
 // TODO Rename 2xl, 3xl, ... to x2, x3, x4, ...
-console.log("default theme 0")
 export const defaultTheme: Theme = {
   // Colors that will be added to :root {} in CSS
   // Since those are CSS vars, the prefix "--" will be added for each var
@@ -732,6 +731,15 @@ export const defaultTheme: Theme = {
     },
   },
   transition: {
+    transitionProperty: {
+      none: 'none',
+      all: 'all',
+      default: 'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
+      colors: 'color, background-color, border-color, text-decoration-color, fill, stroke',
+      opacity: 'opacity',
+      shadow: 'box-shadow',
+      transform: 'transform',
+    },
     ease: {
       linear: 'linear',
       in: 'cubic-bezier(0.4, 0, 1, 1)',
@@ -760,40 +768,44 @@ export const defaultTheme: Theme = {
     },
     animation: {
       none: 'none',
-      spin: 'spin 1s linear infinite',
-      ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
-      pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-      bounce: 'bounce 1s infinite',
+      spin: '1s linear infinite',
+      ping: '1s cubic-bezier(0, 0, 0.2, 1) infinite',
+      pulse: '2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      bounce: '1s infinite',
     },
-    // keyframes: {
-    //   spin: {
-    //     to: { transform: 'rotate(360deg)' },
-    //   },
-    //   ping: {
-    //     '75%, 100%': { transform: 'scale(2)', opacity: '0' },
-    //   },
-    //   pulse: {
-    //     '50%': { opacity: '.5' },
-    //   },
-    //   bounce: {
-    //     '0%, 100%': {
-    //       transform: 'translateY(-25%)',
-    //       animationTimingFunction: 'cubic-bezier(0.8,0,1,1)',
-    //     },
-    //     '50%': {
-    //       transform: 'none',
-    //       animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
-    //     },
-    //   },
-    // },
-    transitionProperty: {
-      none: 'none',
-      all: 'all',
-      default: 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
-      colors: 'background-color, border-color, color, fill, stroke',
-      opacity: 'opacity',
-      shadow: 'box-shadow',
-      transform: 'transform',
+    keyframes: {
+      spin: `
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      `,
+      ping: `
+        75%, 100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      `,
+      pulse: `
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: .5;
+        }
+      `,
+      bounce: `
+        0%, 100% {
+          transform: translateY(-25%);
+          animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+          transform: translateY(0);
+          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+      `,
     },
   },
   typography: {
@@ -840,4 +852,3 @@ export const defaultTheme: Theme = {
     },
   },
 };
-console.log("default theme 1")

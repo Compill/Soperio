@@ -1,6 +1,7 @@
+import { OrString } from "@soperio/utils";
 import { css, cssValueFn, getThemeStyle, Style, StyleProp, StyleProps } from "./utils";
 
-export type SpacingPositiveScale =
+export type SpacingPositiveScale = OrString<
     "0"
     | "px"
     | "0.5"
@@ -35,9 +36,9 @@ export type SpacingPositiveScale =
     | "64"
     | "72"
     | "80"
-    | "96"
+    | "96" >
 
-export type SpacingNegativeScale =
+export type SpacingNegativeScale = OrString<
     "-0"
     | "-px"
     | "-0.5"
@@ -72,7 +73,7 @@ export type SpacingNegativeScale =
     | "-64"
     | "-72"
     | "-80"
-    | "-96"
+    | "-96" >
 
 export type SpacingScale = SpacingPositiveScale | SpacingNegativeScale
 

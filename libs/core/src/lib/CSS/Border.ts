@@ -1,5 +1,6 @@
+import { OrString } from "@soperio/utils";
 import { Breakpoints } from "../Breakpoints";
-import { colorize } from "../PropTypes/Color";
+import { Color, colorize } from "../PropTypes/Color";
 import { opacity, Opacity } from "../PropTypes/Opacity";
 import { css, cssValueFn, getThemeStyle, Style, StyleProps } from "./utils";
 
@@ -14,12 +15,17 @@ export interface Border
     roundedTR?: true | false | "none" | Breakpoints | "x2" | "full",
     roundedBL?: true | false | "none" | Breakpoints | "x2" | "full",
     roundedBR?: true | false | "none" | Breakpoints | "x2" | "full",
-    border?: true | false | "0" | "2" | "4" | "8",
-    borderT?: true | false | "0" | "2" | "4" | "8",
-    borderB?: true | false | "0" | "2" | "4" | "8",
-    borderL?: true | false | "0" | "2" | "4" | "8",
-    borderR?: true | false | "0" | "2" | "4" | "8",
-    borderColor?: false | string,
+    border?: true | false | OrString<"0" | "2" | "4" | "8">,
+    borderT?: true | false | OrString<"0" | "2" | "4" | "8">,
+    borderB?: true | false | OrString<"0" | "2" | "4" | "8">,
+    borderL?: true | false | OrString<"0" | "2" | "4" | "8">,
+    borderR?: true | false | OrString<"0" | "2" | "4" | "8">,
+    borderColor?: false | Color,
+    borderTColor?: false | Color,
+    borderBColor?: false | Color,
+    borderLColor?: false | Color,
+    borderRColor?: false | Color,
+    // border top, bottom, ... color. ex: borderTColor
     borderOpacity?: false | Opacity,
     borderStyle?: false | "solid" | "dashed" | "dotter" | "double" | "none",
     /**
@@ -85,6 +91,10 @@ export const BorderMapping: StyleProps =
     borderL: css("border-left-width", "border.width"),
     borderR: css("border-right-width", "border.width"),
     borderColor: colorize("border-color", "--so-border-opacity"),
+    borderTColor: colorize("border-top-color", "--so-border-opacity"),
+    borderBColor: colorize("border-bottom-color", "--so-border-opacity"),
+    borderLColor: colorize("border-left-color", "--so-border-opacity"),
+    borderRColor: colorize("border-right-color", "--so-border-opacity"),
     borderOpacity: opacity("--so-border-opacity"),
     borderStyle: css("border-style"),
     divideX: divideX,

@@ -33,7 +33,7 @@ export function SoperioInit({
     }
   }
 
-  setDarkMode(initDarkMode);
+  // setDarkMode(initDarkMode);
 
   return resetCss ? <NormalizeCSS /> : null;
 }

@@ -1,3 +1,7 @@
+export * from './lib/spinner/Spinner';
+export type { SpinnerProps, SpinnerConfig } from './lib/spinner/types';
+
+// TODO Export props & config of each component
 export * from './lib/textarea/TextArea';
 export * from './lib/select/Select';
 export * from './lib/badge/Badge';
