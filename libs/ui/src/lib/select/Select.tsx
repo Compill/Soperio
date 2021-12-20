@@ -4,6 +4,7 @@ import { jsx, SoperioComponent, useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
+import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
@@ -29,6 +30,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
     ...props
   }, ref) =>
 {
+  const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 
   const styles: SelectConfig = useComponentConfig(COMPONENT_ID, colorTheme, config);
@@ -43,6 +45,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
 
   return (
     <select
+      transition={firstRender ? "none" : "all"}
       {...sanitizeProps(sSize, "disabled")}
       {...sanitizeProps(sCorners, "disabled")}
       {...sanitizeProps(sVariant, "disabled")}

@@ -4,6 +4,7 @@ import { jsx, SoperioComponent, useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
+import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
@@ -28,9 +29,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
         ...props
     }, ref) =>
 {
-  const colorTheme = useColorTheme(theme);
+    const firstRender = useFirstRender();
+    const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
+    const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
     const sVariant = styles.variant?.[variant];
     const sSize = styles.size?.[size];
     const sCorners = styles.corners?.[corners];
@@ -42,6 +44,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
 
     return (
         <input
+            transition={firstRender ? "none" : "all"}
             {...sanitizeProps(sSize, "disabled")}
             {...sanitizeProps(sCorners, "disabled")}
             {...sanitizeProps(sVariant, "disabled")}

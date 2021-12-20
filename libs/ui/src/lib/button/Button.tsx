@@ -8,6 +8,7 @@ import React from 'react';
 import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
 import { ButtonProps } from "./types";
+import { useFirstRender } from "../hooks/useFirstRender";
 
 const COMPONENT_ID = "Soperio.Button"
 
@@ -29,6 +30,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     ...props
 }: ButtonProps, ref) =>
 {
+    const firstRender = useFirstRender();
     const preventFocus = React.useCallback((event) =>
     {
         event.preventDefault();
@@ -57,7 +59,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 
     return (
         <button
-            transition="all"
+            transition={firstRender ? "none" : "all"}
             easing="linear"
             duration="300"
             fontWeight="500"

@@ -38,7 +38,7 @@ export default function config(theme: ColorTheme, darkMode: boolean): SpinnerCon
       },
       track: {
         textColor: theme.default,
-        trackColor: "coolGray-200"
+        trackColor: theme.light
       },
     },
   };

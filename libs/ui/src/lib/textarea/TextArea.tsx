@@ -4,6 +4,7 @@ import { jsx, SoperioComponent, useColorTheme } from "@soperio/core";
 import { useComponentConfig } from "@soperio/ui";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
+import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
@@ -27,6 +28,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((
     ...props
   }, ref) =>
 {
+  const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config);
@@ -41,6 +43,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((
 
   return (
     <textarea
+      transition={firstRender ? "none" : "all"}
       {...sanitizeProps(sSize, "disabled")}
       {...sanitizeProps(sCorners, "disabled")}
       {...sanitizeProps(sVariant, "disabled")}

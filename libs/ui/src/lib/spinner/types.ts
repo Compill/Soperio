@@ -29,5 +29,5 @@ export interface SpinnerProps extends SoperioComponent, HTMLDivProps
   config?: CustomComponentConfigFn<SpinnerConfig>;
   thickness?: SpacingPositiveScale,
   trackColor?: Color,
-  progress: SpinnerProgress
+  progress?: SpinnerProgress
 }

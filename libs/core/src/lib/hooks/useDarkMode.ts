@@ -28,6 +28,7 @@ export function getDarkMode(): boolean
 
 function setDarkModeInternal(darkMode: boolean)
 {
+  console.log("set dark mode", darkMode)
   darkModeInternal = darkMode;
 
   listeners.forEach(item => item(darkModeInternal));

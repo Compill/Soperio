@@ -5,6 +5,7 @@ import { jsx, useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
+import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
@@ -30,6 +31,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
     ...props
   }, ref) =>
 {
+  const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
@@ -70,7 +72,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
           bgColor="sky-500"
           color="white"
           display="inline-block"
-          transition="all"
+          transition={firstRender ? "none" : "all"}
           easing={checked ? "out" : "linear"}
           duration="300"
           rounded="full"

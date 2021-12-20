@@ -1,8 +1,9 @@
 /** @jsx jsx */
 
-import { Color, ColorTheme, ComponentTheme, jsx, SoperioComponent, SpacingPositiveScale, useColorTheme } from "@soperio/core"
+import { jsx, SoperioComponent, useColor, useColorTheme } from "@soperio/core";
+import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
-import { HTMLDivProps } from "../HTMLTagProps";
+import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
@@ -22,27 +23,31 @@ function getBorders(trackColor: string, progress: number): SoperioComponent
   }
 }
 
-export function Spinner({
+export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
   thickness="2px",
-  trackColor="transparent",
+  trackColor,
   theme = "default",
   size = "md",
   variant = "default",
   progress = 75,
   config,
   ...props
-}: SpinnerProps) 
+}: SpinnerProps, ref) =>
 {
+  const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
-  // const x = useColor(trackColor)
+
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
   const sVariant = styles.variant?.[variant];
   const sSize = styles.size?.[size];
 
+  const parsedTrackColor = useColor(trackColor || sVariant?.trackColor || "transparent")
+
   return (
     <div 
+      transition={firstRender ? "none" : "all"}
       display="inline-block"
-      {...getBorders(trackColor, progress)}
+      {...getBorders(parsedTrackColor, progress)}
       borderStyle="solid"
       rounded="full"
       border={thickness}
@@ -50,9 +55,8 @@ export function Spinner({
       {...sanitizeProps(sVariant, "trackColor")}
       {...sSize}
       {...props}
+      ref={ref}
       >
     </div>
   );
-}
-
-export default Spinner;
+});

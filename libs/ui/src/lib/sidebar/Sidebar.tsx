@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { jsx, ParentComponent, SoperioComponent } from "@soperio/core";
+import { useFirstRender } from '../hooks/useFirstRender';
 
 interface SidebarProps extends SoperioComponent, ParentComponent {
     side?: "left" | "right" | "top" | "bottom",
@@ -21,6 +22,8 @@ const DEFAULT_EASING = "in"
  */
 export function Sidebar({ side = "left", onClose, show, children, ...props }: SidebarProps)
 {
+    const firstRender = useFirstRender();
+    
     const isX = side === "left" || side === "right"
     const width = isX ? "1/5" : "full";
     const height = isX ? "full" : "1/5";
@@ -43,7 +46,7 @@ export function Sidebar({ side = "left", onClose, show, children, ...props }: Si
             overflow="hidden"
             inset="0"
             bgColor="black"
-            transition="colors"
+            transition={firstRender ? "none" : "colors"}
             easing={props.easing || DEFAULT_EASING}
             duration={props.duration || DEFAULT_DURATION}
             onClick={onClose}

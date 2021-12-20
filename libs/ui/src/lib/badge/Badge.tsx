@@ -7,6 +7,7 @@ import React from "react";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
 import { BadgeProps } from "./types";
+import { useFirstRender } from "../hooks/useFirstRender";
 
 const COMPONENT_ID = "Soperio.Badge";
 
@@ -26,9 +27,10 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
     ...props
 }: BadgeProps, ref) =>
 {
-  const colorTheme = useColorTheme(theme);
+    const firstRender = useFirstRender();
+    const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
+    const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
     const sVariant = styles.variant?.[variant];
     const sSize = styles.size?.[size];
     const sShape = styles.shape?.[shape];
@@ -38,6 +40,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
 
     return (
         <span
+            transition={firstRender ? "none" : "all"}
             w="auto"
             verticalAlign="middle"
             {...sVariant}

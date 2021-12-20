@@ -5,6 +5,7 @@ import { jsx, ParentComponent, SoperioComponent, SpacingPositiveScale, useColorT
 import { IS_DEV, OrString } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
+import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
 import { CardProps } from "./types";
@@ -26,6 +27,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({
   ...props
 }: CardProps, ref) =>
 {
+  const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config);
@@ -37,6 +39,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({
 
   return (
     <div
+      transition={firstRender ? "none" : "all"}
       {...sVariant}
       {...sCorners}
       {...props}

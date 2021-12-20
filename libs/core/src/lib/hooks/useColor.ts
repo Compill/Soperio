@@ -1,33 +1,16 @@
-import { ColorTheme } from "../ColorTheme";
-import { IS_DEV } from "@soperio/utils";
+import { Color } from "../PropTypes/Color";
 import { useTheme } from "./useTheme";
-import { useDarkMode } from "@soperio/core";
 
-export function useColor(colorTheme?: false | string | ColorTheme): ColorTheme
+export function useColor(color: Color): string 
 {
   const theme = useTheme();
-  const darkMode = useDarkMode();
 
-  if (!colorTheme || typeof colorTheme === "string")
-  {
-    if (darkMode)
-    {
-      const darkThemeColor = theme?.darkModeOverride?.colorThemes?.[colorTheme || "default"];
+  if (theme.colors[color])
+    return theme.colors[color];
 
-      if (darkThemeColor)
-        return darkThemeColor;
-    }
+  if (color.startsWith("root."))
+    return `rgb(var(--so-${color.substring(5)}))`
 
-    const indexedColorTheme = theme.colorThemes[colorTheme || "default"];
-
-    if (!indexedColorTheme)
-    {
-      if (IS_DEV)
-        console.log(`[Soperio]: the color theme ${colorTheme} does not exist in your theme.`);
-    }
-
-    return indexedColorTheme || {};
-  }
-
-  return colorTheme;
+  // Can be transparent, blue, #FF0000, rgb(x, x, x), ...
+  return color;
 }

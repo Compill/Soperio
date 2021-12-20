@@ -4,6 +4,7 @@ export type { SpacingNegativeScale, SpacingPositiveScale, SpacingScale } from '.
 export { getThemeStyle } from './lib/CSS/utils';
 export { CSSPropKeys } from './lib/CSSProps';
 export * from './lib/defaultColorTheme';
+export * from './lib/hooks/useColor';
 export * from './lib/hooks/useColorTheme';
 export { useDarkMode, useSetDarkMode, useToggleDarkMode } from './lib/hooks/useDarkMode';
 export * from './lib/hooks/useTheme';
