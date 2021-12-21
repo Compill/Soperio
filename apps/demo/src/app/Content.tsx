@@ -10,6 +10,7 @@ import Page6 from "./Page6";
 import Page7 from "./Page7";
 import Page8 from "./Page8";
 import Page9 from "./Page9";
+import Page10 from "./Page10";
 import React from "react";
 import { jsx, useDarkMode, useToggleDarkMode } from "@soperio/core";
 
@@ -33,6 +34,7 @@ export function Content()
         <Button onClick={() => setState(7)}>Select</Button>
         <Button onClick={() => setState(8)}>TextArea</Button>
         <Button onClick={() => setState(9)}>Spinner</Button>
+        <Button onClick={() => setState(10)}>Text</Button>
         <Button onClick={() => toggleDarkMode()}>Toggle Dark Mode</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
@@ -45,6 +47,7 @@ export function Content()
         {state === 7 && <Page7 />}
         {state === 8 && <Page8 />}
         {state === 9 && <Page9 />}
+        {state === 10 && <Page10 />}
       </div>
     </>
   );

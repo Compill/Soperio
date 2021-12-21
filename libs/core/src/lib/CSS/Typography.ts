@@ -1,5 +1,6 @@
 import { Color, colorize } from "../PropTypes/Color";
 import { opacity, Opacity } from "../PropTypes/Opacity";
+import { SpacingPositiveScale } from "./Spacing";
 import { css, cssValue, getThemeStyle, OrString, Style, StyleProps } from "./utils";
 
 export interface Typography
@@ -30,6 +31,13 @@ export interface Typography
     verticalAlign?: "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
     whitespace?: "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
     wordBreak?: "normal" | "words" | "all",
+    textColumns?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">,
+    /**
+     * Alias for "gap"
+     * Gap between the text columns
+     */
+
+    textColumnsGap?: SpacingPositiveScale
 }
 
 function fontSize(value: any): Style
@@ -97,5 +105,7 @@ export const TypographyMapping: StyleProps =
     textOverflow: textOverflow,
     verticalAlign: css("vertical-align"),
     whitespace: css("white-space"),
-    wordBreak: wordBreak
+    wordBreak: wordBreak,
+    textColumns: css("column-count"),
+    textColumnsGap: css("gap", "spacing.positive"),
 };
