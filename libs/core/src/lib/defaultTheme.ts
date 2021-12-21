@@ -79,6 +79,8 @@ function prefix(config: Record<string, string>, prefix: string): Record<string, 
 
 // TODO Rename 2xl, 3xl, ... to x2, x3, x4, ...
 export const defaultTheme: Theme = {
+  direction: "ltr",
+
   // Colors that will be added to :root {} in CSS
   // Since those are CSS vars, the prefix "--" will be added for each var
   // But you can just reference them in the code as "root.myvar" on any color prop,

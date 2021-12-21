@@ -1,3 +1,4 @@
+import { getDirection } from "../hooks/useDirection";
 import { SpacingScale } from "./Spacing";
 import { css, OrString, Style, StyleProps } from "./utils";
 
@@ -6,7 +7,7 @@ export type ScalingScale = "0" | "50" | "75" | "90" | "95" | "100" | "105" | "11
 export interface Transform
 {
     transform?: true | "gpu" | "none",
-    transformOrigin?: "center" | "top" | "top right" | "right" | "bottom right" | "bottom" | "bottom left" | "left" | "top left",
+    transformOrigin?: "center" | "top" | "top-end" | "end" | "bottom-end" | "bottom" | "bottom-start" | "start" | "top-start",
     scale?: OrString<ScalingScale> | number,
     scaleX?: OrString<ScalingScale> | number,
     scaleY?: OrString<ScalingScale> | number,
@@ -47,6 +48,26 @@ function transform(value: any): Style
     }
 
     return { transform: "none" };
+}
+
+export function transformOrigin(value: any)
+{
+    let parsedValue = value;
+
+    if (value === "start")
+        parsedValue = getDirection() ? "left" : "right";
+        else if (value === "top-start")
+        parsedValue = getDirection() ? "top left" : "top right";
+    else if (value === "bottom-start")
+        parsedValue = getDirection() ? "bottom left" : "bottom right";
+    else if (value === "end")
+        parsedValue = getDirection() ? "right" : "left";
+    else if (value === "top-end")
+        parsedValue = getDirection() ? "top right" : "top left";
+    else if (value === "bottom-end")
+        parsedValue = getDirection() ? "bottom right" : "bottom left";
+    
+    return css("transform-origin")(parsedValue)
 }
 
 export const TransformMapping: StyleProps = {

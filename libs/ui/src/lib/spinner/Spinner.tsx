@@ -17,9 +17,9 @@ function getBorders(trackColor: string, progress: number): SoperioComponent
 {
   return {
     borderTColor: progress > 0 ? "currentColor" : trackColor,
-    borderRColor: progress > 25 ? "currentColor" : trackColor,
+    borderEColor: progress > 25 ? "currentColor" : trackColor,
     borderBColor: progress > 50 ? "currentColor" : trackColor,
-    borderLColor: progress > 75 ? "currentColor" : trackColor
+    borderSColor: progress > 75 ? "currentColor" : trackColor
   }
 }
 

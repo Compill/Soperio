@@ -11,5 +11,5 @@ export * from './lib/hooks/useTheme';
 export * from './lib/HTMLTagProps';
 export * from './lib/react/react';
 export * from './lib/SoperioComponent';
-export * from './lib/SoperioInit';
+export * from './lib/SoperioProvider';
 export type { Color } from './lib/PropTypes/Color';

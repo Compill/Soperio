@@ -1,26 +1,57 @@
 /** @jsx jsx */
 
-import { ParentComponent } from "./HTMLTagProps";
 import { jsx } from "./react/react";
-import ThemeCache from "./ThemeCache";
+import { ParentComponent } from "..";
+import { defaultTheme } from "./defaultTheme";
+import { useSetDarkMode } from "./hooks/useDarkMode";
+import { useSetDirection } from "./hooks/useDirection";
+import { NormalizeCSS } from "./NormalizeCSS";
 import { Theme } from "./Theme";
 
-interface SoperioProviderProps extends ParentComponent
+
+interface SoperioProviderProps extends ParentComponent {
+  resetCss?: boolean,
+  theme?: Theme,
+  darkMode?: "light" | "dark" | "system";
+  direction?: "rtl" | "ltr"
+};
+
+export function SoperioProvider({
+  resetCss = true,
+  theme = defaultTheme,
+  direction,
+  darkMode,
+  children
+}: SoperioProviderProps) 
 {
-    theme?: Theme
-}
+  // TODO define theme if set
 
-// Init config
-ThemeCache.get();
+  console.log("SoperioProvider")
 
-/**
- *
- *
- */
-export default function SoperioProvider({ children, ...props }: SoperioProviderProps)
-{
+  const setDarkMode = useSetDarkMode();
+  const setDirection = useSetDirection();
+  console.log("soperio init");
 
-    return (
-      {children}
-    );
+  let initDarkMode = false;
+
+  if (darkMode) 
+  {
+    if (darkMode === "dark")
+      initDarkMode = true;
+    else if (darkMode === "system") {
+      // TODO
+    }
+  }
+
+  setDarkMode(initDarkMode);
+  setDirection(direction || theme.direction || "ltr");
+
+  return (
+    <div>
+      {resetCss ? <NormalizeCSS /> : null}
+      <div dir={direction || theme.direction || "ltr"} textColor="root.text-color-1">
+        {children}
+      </div>
+    </div>
+  )
 }

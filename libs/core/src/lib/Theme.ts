@@ -1,9 +1,12 @@
-import { ColorThemes, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
+import { ColorThemes, Direction, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 
 
 export interface Theme
 {
+  // Config
+  direction?: Direction,
+
   // Colors
   darkMode: "light" | "dark" | "system",
   rootColors: RootColors,

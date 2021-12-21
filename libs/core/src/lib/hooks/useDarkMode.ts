@@ -29,9 +29,12 @@ export function getDarkMode(): boolean
 function setDarkModeInternal(darkMode: boolean)
 {
   console.log("set dark mode", darkMode)
-  darkModeInternal = darkMode;
-
-  listeners.forEach(item => item(darkModeInternal));
+  if (darkModeInternal !== darkMode)
+  {
+    console.log("set dark mode because different", darkMode)
+    darkModeInternal = darkMode;
+    listeners.forEach(item => item(darkModeInternal));
+  }
 }
 
 function toggleDarkModeInternal()
@@ -70,7 +73,7 @@ export function useDarkMode()
     {
       removeListener(cb);
     };
-  }, []);
+  }, [cb]);
 
   React.useEffect(() =>
   {

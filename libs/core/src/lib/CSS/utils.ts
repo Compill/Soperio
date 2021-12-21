@@ -1,4 +1,5 @@
 import { defaultTheme } from "../defaultTheme";
+import { getDirection } from "../hooks/useDirection";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const _ = require("lodash");
@@ -46,6 +47,40 @@ export function css(cssProperty: string | string[], themeProperty?: string, defa
         const style: Style = {};
         cssProperty.forEach(property => style[property] = parsedValue as string | number);
         return style;
+    };
+}
+
+export function direction(cssPropertyStart: string | string[], cssPropertyEnd: string | string[], themeProperty?: string, defaultValue?: string): StyleFn
+{
+    return (value: StyleProp) =>
+    {
+        if (!value || value === undefined)
+            return {}
+
+        let parsedValue:string | number | undefined
+
+        if (themeProperty)
+            parsedValue = getThemeStyle(themeProperty, value === true ? "default" : value);
+
+        if (parsedValue === undefined && value === true)
+            parsedValue = defaultValue
+
+        if (parsedValue === undefined)
+            parsedValue = value as string | number
+
+        if (typeof cssPropertyStart === "string" && typeof cssPropertyEnd === "string")
+        {
+            return { [getDirection() ? cssPropertyStart : cssPropertyEnd]: parsedValue as string | number };
+        }
+        else if (Array.isArray(cssPropertyStart) && Array.isArray(cssPropertyEnd))
+        {
+            const style: Style = {};
+            const cssProperty = getDirection() ? cssPropertyStart : cssPropertyEnd;
+            cssProperty.forEach(property => style[property] = parsedValue as string | number);
+            return style;
+        }
+
+        throw new Error("cssPropertyStart and cssPropertyEnd must be of the same type, either string or string[]")
     };
 }
 

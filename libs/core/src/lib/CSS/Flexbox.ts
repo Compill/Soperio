@@ -1,5 +1,6 @@
+import { getDirection } from "../hooks/useDirection";
 import { SpacingPositiveScale } from "./Spacing";
-import { css, OrString, StyleProps } from "./utils";
+import { css, OrString, StyleProp, StyleProps } from "./utils";
 
 export interface Flexbox
 {

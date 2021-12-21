@@ -3,6 +3,8 @@ import { ColorTheme } from "..";
 export type KeyValueObject<T> = Record<string, T>;
 export type StringKeyValueObject = KeyValueObject<string>;
 
+export type Direction = "ltr" | "rtl" | undefined
+
 export interface ColorThemes
 {
   default: ColorTheme,

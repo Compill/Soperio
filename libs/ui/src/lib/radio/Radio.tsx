@@ -90,7 +90,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
           )}
         </div>
       </label>
-      {label && <span ml="3">{label}</span>}
+      {label && <span ms="3">{label}</span>}
     </div>
   );
 });

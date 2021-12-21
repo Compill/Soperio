@@ -30,6 +30,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
     ...props
   }, ref) =>
 {
+  console.log("checkbox")
   const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 
@@ -84,7 +85,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
           {checked && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2px"><polyline points="20 6 9 17 4 12"></polyline></svg>}
         </div>
       </label>
-      {label && <span ml="3">{label}</span>}
+      {label && <span ms="3">{label}</span>}
     </div>
   );
 });

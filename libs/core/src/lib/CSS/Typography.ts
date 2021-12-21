@@ -1,7 +1,8 @@
+import { getDirection } from "../hooks/useDirection";
 import { Color, colorize } from "../PropTypes/Color";
 import { opacity, Opacity } from "../PropTypes/Opacity";
 import { SpacingPositiveScale } from "./Spacing";
-import { css, cssValue, getThemeStyle, OrString, Style, StyleProps } from "./utils";
+import { css, cssValue, getThemeStyle, OrString, Style, StyleProp, StyleProps } from "./utils";
 
 export interface Typography
 {
@@ -19,7 +20,7 @@ export interface Typography
     listStylePosition?: "inside" | "outside",
     placeholderColor?: Color,
     placeholderOpacity?: Opacity,
-    textAlign?: "left" | "center" | "right" | "justify",
+    textAlign?: "start" | "center" | "end" | "justify",
     /**
      * Utilities for controlling the text color of an element.
      */
@@ -82,6 +83,18 @@ function wordBreak(value: any): Style
     return cssValue("word-break", "break-" + value);
 }
 
+function textAlign(value: any)
+{
+    let parsedValue = value;
+
+    if (value === "start")
+        parsedValue = getDirection() ? "left" : "right";
+    else if (value === "end")
+        parsedValue = getDirection() ? "right" : "left";
+    
+    return css("text-align")(parsedValue)
+}
+
 
 export const TypographyMapping: StyleProps =
 {
@@ -97,7 +110,7 @@ export const TypographyMapping: StyleProps =
     listStylePosition: css("list-style-position"),
     placeholderColor: colorize("::placeholder", "--so-placeholder-opacity"),
     placeholderOpacity: opacity("--so-placeholder-opacity"),
-    textAlign: css("text-align"),
+    textAlign: textAlign,
     textColor: colorize("color", "--so-text-opacity"),
     textOpacity: opacity("--so-text-opacity"),
     textDecoration: css("text-decoration"),
