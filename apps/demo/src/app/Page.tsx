@@ -5,7 +5,7 @@ import { jsx, ColorTheme, useDarkMode, defaultColorTheme } from "@soperio/core";
 import { Button, Container, Sidebar } from "@soperio/ui";
 import { ButtonConfig, ComponentConfig } from "@soperio/ui";
 
-type Side = "left" | "right" | "top" | "bottom";
+type Side = "start" | "end" | "top" | "bottom";
 
 const buttonConfig: (theme: ColorTheme) => ComponentConfig<ButtonConfig> = (theme) => ({
   mode: "extends",
@@ -55,7 +55,7 @@ export default function Page({ ...props })
       <Container center breakpoint="xxl" dflex gap="20" justifyContent="center" py="20">
 
         <div flexRow>
-          <Button /*config={buttonConfig}*/ variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("left")} z="1001">Open Left</Button>
+          <Button /*config={buttonConfig}*/ variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("start")} z="1001">Open Left</Button>
           <Button config={buttonConfig} variant="light" block mx="auto" my="5">Light button</Button>
           <Button config={buttonConfig} variant="link" block mx="auto" my="5">Link button</Button>
           <Button config={buttonConfig} variant="outline" block mx="auto" my="5">Outline button</Button>
@@ -63,7 +63,7 @@ export default function Page({ ...props })
         </div>
 
         <div flexRow>
-          <Button /*config={buttonConfig}*/ theme={blackTheme} variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("left")} z="1001">Open Left</Button>
+          <Button /*config={buttonConfig}*/ theme={blackTheme} variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("start")} z="1001">Open Left</Button>
           <Button theme={blackTheme} variant="light" block mx="auto" my="5">Light button</Button>
           <Button theme={blackTheme} variant="link" block mx="auto" my="5">Link button</Button>
           <Button theme={blackTheme} variant="outline" block mx="auto" my="5">Outline button</Button>
@@ -71,7 +71,7 @@ export default function Page({ ...props })
         </div>
 
         <div flexRow>
-          <Button theme={"success"} variant="default" block mx="auto" my="5" textTransform="uppercase" onClick={() => openDialog("right")} >Open Right</Button>
+          <Button theme={"success"} variant="default" block mx="auto" my="5" textTransform="uppercase" onClick={() => openDialog("end")} >Open Right</Button>
           <Button theme={"success"} variant="light" block mx="auto" my="5" textTransform="uppercase">Light button</Button>
           <Button theme={"success"} variant="link" block mx="auto" my="5" textTransform="uppercase">Link button</Button>
           <Button theme={"success"} variant="outline" block mx="auto" my="5" textTransform="uppercase">Outline button</Button>

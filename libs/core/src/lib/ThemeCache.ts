@@ -11,13 +11,13 @@ export default class ThemeCache
     }
 
     theme: Theme;
-    private listeners:any[] = []
+    private listeners: any[] = []
 
     private constructor()
     {
-      console.log("theme cache init")
-      this.theme = defaultTheme;
-      console.log("theme cache end init")
+        console.log("theme cache init")
+        this.theme = defaultTheme;
+        console.log("theme cache end init")
     }
 
     private merge(newTheme: Theme): Theme
@@ -33,7 +33,7 @@ export default class ThemeCache
         this.listeners.forEach(listener => listener())
     }
 
-    addListener(listener:any)
+    addListener(listener: any)
     {
         this.listeners.push(listener);
     }

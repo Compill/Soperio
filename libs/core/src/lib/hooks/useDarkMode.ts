@@ -1,13 +1,20 @@
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
 import { getThemeStyle } from "../CSS/utils";
-import { transformColorToGlobalVar } from "../PropTypes/Color";
 import { RootColors } from "../ThemeTypes";
-import { useTheme } from "./useTheme";
+import { transformColorToGlobalVar } from "../utils/colorUtils";
+import { getTheme } from "./useTheme";
+
+type DarkMode = "light" | "dark" | "system"
 
 interface DarkModeListener
 {
   (darkMode: boolean): void;
+}
+
+interface DarkModeConfigListener
+{
+  (darkMode: DarkMode): void
 }
 
 // This var will be initialized with the right value by a call
@@ -17,13 +24,52 @@ interface DarkModeListener
 // Other libraries are using a Provider component, but since we're not
 // using any React.Context, I don't see the point of adding extra
 // complexity to the app
-let darkModeInternal = false; // // TODO Get value from theme?
+
+let darkModeInternal = false;
 const listeners: DarkModeListener[] = [];
+const configListeners: DarkModeConfigListener[] = [];
+
+let darkModeConfigInternal = getTheme().darkMode;
+let firstRender = false;
+
+setDarkModeConfigInternal(darkModeConfigInternal);
+
+function isSystemDark()
+{
+  const mediaQueryList = window.matchMedia?.("(prefers-color-scheme: dark)")
+  if (!mediaQueryList)
+  {
+    return undefined
+  }
+  return !!mediaQueryList.media === mediaQueryList.matches
+}
+
+function setDarkModeConfigInternal(darkMode: DarkMode)
+{
+  if (darkModeConfigInternal !== darkMode || !firstRender)
+  {
+    darkModeConfigInternal = darkMode
+
+    if (darkMode === "dark")
+      setDarkModeInternal(true)
+    else if (darkMode === "light")
+      setDarkModeInternal(false)
+    else
+      setDarkModeInternal(isSystemDark() || false)
+
+    configListeners.forEach(item => item(darkModeConfigInternal));
+  }
+}
 
 // For usage in color props, in this library only
 export function getDarkMode(): boolean
 {
   return darkModeInternal;
+}
+
+export function getDarkModeConfig(): DarkMode
+{
+  return darkModeConfigInternal;
 }
 
 function setDarkModeInternal(darkMode: boolean)
@@ -33,7 +79,16 @@ function setDarkModeInternal(darkMode: boolean)
   {
     console.log("set dark mode because different", darkMode)
     darkModeInternal = darkMode;
+
+    replaceRootColors();
+
     listeners.forEach(item => item(darkModeInternal));
+  }
+
+  if (!firstRender)
+  {
+    firstRender = true;
+    replaceRootColors();
   }
 }
 
@@ -53,17 +108,67 @@ function removeListener(listener: DarkModeListener)
 
   if (index > -1)
     listeners.splice(index, 1);
-
 }
 
-const ROOT_COLORS_STYLE_ID = "soperio-root-colors"
+function addConfigListener(listener: DarkModeConfigListener)
+{
+  configListeners.push(listener);
+}
+
+function removeConfigListener(listener: DarkModeConfigListener)
+{
+  const index = configListeners.indexOf(listener);
+
+  if (index > -1)
+    listeners.splice(index, 1);
+}
+
+
+function replaceRootColors()
+{
+  const ROOT_COLORS_STYLE_ID = "soperio-root-colors";
+  console.log("replace root colors")
+  const theme = getTheme()
+
+  if (!theme.rootColors && IS_DEV)
+    console.log("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
+
+  const rootColors: RootColors = { ...theme.rootColors, ...(darkModeInternal ? theme.darkModeOverride?.rootColors : null) };
+
+  let css = ":root {\n";
+
+  for (const cssVar in rootColors)
+  {
+    const color: string = rootColors[cssVar] as string;
+
+    let parsedColor = getThemeStyle("colors", color) || color;
+
+    parsedColor = transformColorToGlobalVar(parsedColor);
+
+    if (parsedColor)
+      css += `\t--so-${cssVar}: ${parsedColor};\n`;
+  }
+
+  css += "}";
+
+  // Inserting style tag with root colors
+  // removing existing if any
+  const existingStyleTag = document.getElementById(ROOT_COLORS_STYLE_ID)
+
+  if (existingStyleTag != null)
+    document.head.removeChild(existingStyleTag);
+
+  const styleEl = document.createElement("style");
+  styleEl.id = ROOT_COLORS_STYLE_ID;
+  styleEl.appendChild(document.createTextNode(""));
+  styleEl.innerHTML = css;
+  document.head.appendChild(styleEl);
+}
 
 export function useDarkMode()
 {
-  const theme = useTheme();
-
   const [darkMode, setDarkMode] = React.useState(darkModeInternal);
-  const cb = React.useCallback((darkMode) => setDarkMode(darkMode), [setDarkMode]);
+  const cb = React.useCallback((darkMode: boolean) => setDarkMode(darkMode), [setDarkMode]);
 
   React.useEffect(() =>
   {
@@ -75,51 +180,37 @@ export function useDarkMode()
     };
   }, [cb]);
 
+  return darkMode;
+}
+
+export function useDarkModeConfig()
+{
+  const [darkMode, setDarkMode] = React.useState(darkModeConfigInternal);
+  const cb = React.useCallback((darkMode: DarkMode) => setDarkMode(darkMode), [setDarkMode]);
+
   React.useEffect(() =>
   {
+    addConfigListener(cb);
 
-    if (!theme.rootColors && IS_DEV)
-      console.log("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
-
-    const rootColors: RootColors = { ...theme.rootColors, ...(darkMode ? theme.darkModeOverride?.rootColors : null) };
-
-    let css = ":root {\n";
-
-    for (const cssVar in rootColors)
+    return () =>
     {
-      const color: string = rootColors[cssVar] as string;
-
-      let parsedColor = getThemeStyle("colors", color) || color;
-
-      parsedColor = transformColorToGlobalVar(parsedColor);
-
-      if (parsedColor)
-        css += `\t--so-${cssVar}: ${parsedColor};\n`;
-    }
-
-    css += "}";
-
-    // Inserting style tag with root colors
-    // removing existing if any
-    const existingStyleTag = document.getElementById(ROOT_COLORS_STYLE_ID)
-
-    if (existingStyleTag != null)
-      document.head.removeChild(existingStyleTag);
-
-    const styleEl = document.createElement("style");
-    styleEl.id = ROOT_COLORS_STYLE_ID;
-    styleEl.appendChild(document.createTextNode(""));
-    styleEl.innerHTML = css;
-    document.head.appendChild(styleEl);
-
-  }, [theme, darkMode])
+      removeConfigListener(cb);
+    };
+  }, [cb]);
 
   return darkMode;
 }
 
 export function useSetDarkMode()
 {
-  const cb = React.useCallback((darkMode) => setDarkModeInternal(darkMode), []);
+  const cb = React.useCallback((darkMode: boolean) => setDarkModeInternal(darkMode), []);
+
+  return cb;
+}
+
+export function useSetDarkModeConfig()
+{
+  const cb = React.useCallback((darkMode: DarkMode) => setDarkModeConfigInternal(darkMode), []);
 
   return cb;
 }

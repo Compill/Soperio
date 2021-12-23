@@ -1,21 +1,25 @@
 /** @jsx jsx */
 
 import { jsx } from "./react/react";
-import { ParentComponent } from "..";
+import { ParentComponent, useSetTheme } from "..";
 import { defaultTheme } from "./defaultTheme";
-import { useSetDarkMode } from "./hooks/useDarkMode";
+import { useSetDarkMode, useSetDarkModeConfig } from "./hooks/useDarkMode";
 import { useSetDirection } from "./hooks/useDirection";
 import { NormalizeCSS } from "./NormalizeCSS";
 import { Theme } from "./Theme";
+import React from "react";
 
 
-interface SoperioProviderProps extends ParentComponent {
+interface SoperioProviderProps extends ParentComponent
+{
   resetCss?: boolean,
   theme?: Theme,
   darkMode?: "light" | "dark" | "system";
   direction?: "rtl" | "ltr"
 };
 
+// SoperioProvider is out initializer
+// Devs must add it to their code and put the components as children
 export function SoperioProvider({
   resetCss = true,
   theme = defaultTheme,
@@ -28,23 +32,39 @@ export function SoperioProvider({
 
   console.log("SoperioProvider")
 
-  const setDarkMode = useSetDarkMode();
+  const ref = React.useRef(0);
+  const setTheme = useSetTheme();
+  const setDarkModeConfig = useSetDarkModeConfig();
   const setDirection = useSetDirection();
-  console.log("soperio init");
 
-  let initDarkMode = false;
-
-  if (darkMode) 
+  // The idea is that the UI is not built yet
+  // So we do the first initialization of the theme and darkMode
+  // instantly, and not in useEffect
+  // Otherwise, if we use useEffect, the component will be built, then our initialization
+  // in useEffect will be called, meaning there might be some flickering if
+  // the theme or dark mode change from its default values
+  if (ref.current === 0)
   {
-    if (darkMode === "dark")
-      initDarkMode = true;
-    else if (darkMode === "system") {
-      // TODO
-    }
+    setTheme(theme)
+    setDarkModeConfig(darkMode || theme.darkMode)
+    setDirection(direction || theme.direction || "ltr");
   }
 
-  setDarkMode(initDarkMode);
-  setDirection(direction || theme.direction || "ltr");
+  // Use useEffect only when theme or dark mode props change
+  React.useEffect(() => 
+  {
+    if (ref.current === 0)
+    {
+      ref.current = 1
+    }
+    else
+    {
+      // Something like Soperio.initTheme(theme, darkMode)
+      setTheme(theme)
+      setDarkModeConfig(darkMode || theme.darkMode)
+      setDirection(direction || theme.direction || "ltr");
+    }
+  }, [theme, setTheme, darkMode, setDarkModeConfig, direction, setDirection])
 
   return (
     <div>

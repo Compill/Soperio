@@ -6,6 +6,7 @@ export { CSSPropKeys } from './lib/CSSProps';
 export * from './lib/defaultColorTheme';
 export * from './lib/hooks/useColor';
 export * from './lib/hooks/useColorTheme';
+export * from './lib/hooks/useDirection';
 export { useDarkMode, useSetDarkMode, useToggleDarkMode } from './lib/hooks/useDarkMode';
 export * from './lib/hooks/useTheme';
 export * from './lib/HTMLTagProps';

@@ -86,6 +86,7 @@ export const defaultTheme: Theme = {
   // But you can just reference them in the code as "root.myvar" on any color prop,
   // "myvar" being the name of the color var
   darkMode: "light",
+  darkModeFallback: "light",
   rootColors: {
     /* Required color vars by Soperio */
     /* Delete one of those and components will miss some colors :\ */

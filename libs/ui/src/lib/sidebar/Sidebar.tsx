@@ -5,7 +5,7 @@ import { jsx, ParentComponent, SoperioComponent } from "@soperio/core";
 import { useFirstRender } from '../hooks/useFirstRender';
 
 interface SidebarProps extends SoperioComponent, ParentComponent {
-    side?: "left" | "right" | "top" | "bottom",
+    side?: "start" | "end" | "top" | "bottom",
     closeOnMaskClick?: boolean,
     closeOnEsc?: boolean,
     show?: boolean,
@@ -20,17 +20,18 @@ const DEFAULT_EASING = "in"
  *
  *
  */
-export function Sidebar({ side = "left", onClose, show, children, ...props }: SidebarProps)
+export function Sidebar({ side = "start", onClose, show, children, ...props }: SidebarProps)
 {
     const firstRender = useFirstRender();
+    // TODO useDirection()
     
-    const isX = side === "left" || side === "right"
+    const isX = side === "start" || side === "end"
     const width = isX ? "1/5" : "full";
     const height = isX ? "full" : "1/5";
 
-    const translateX = isX ? (show ? "0": (side === "left" ? "-full" : "full") ) : "0"
+    const translateX = isX ? (show ? "0": (side === "start" ? "-full" : "full") ) : "0"
     const translateY = !isX ? (show ? "0" : (side === "top" ? "-full" : "full") ) : "0"
-    const justify = side === "left" || side === "top" ? "start": "end"
+    const justify = side === "start" || side === "top" ? "start": "end"
 
     // TODO This is not working when changing side
     // See https://github.com/DouyinFE/semi-design/blob/main/packages/semi-animation-react/src/Transition.tsx

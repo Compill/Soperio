@@ -1,24 +1,25 @@
 // @jsx jsx */
 
-
-import React from "react";
-import { jsx, SoperioProvider } from "@soperio/core";
-import { Content } from "./Content";
+import { jsx, SoperioProvider, useDirection, useToggleDirection } from "@soperio/core";
 import { Button } from "@soperio/ui";
+import React from "react";
+import { Content } from "./Content";
 
 // jsx("div", {});
 
 function App() 
 {
-  const [direction, setDirection] = React.useState(false)
+  const direction = useDirection();
+  const toggleDirection = useToggleDirection();
 
-  React.useEffect(() => {
+  React.useEffect(() =>
+  {
     // init();
   }, []);
 
   return (
-    <SoperioProvider direction={direction ? "rtl" : "ltr"} darkMode="dark">
-      <Button onClick={() => setDirection(!direction)}>Toggle direction</Button>
+    <SoperioProvider direction={direction ? "ltr" : "rtl"}>
+      <Button onClick={toggleDirection}>Toggle direction</Button>
       <Content />
     </SoperioProvider>
   );

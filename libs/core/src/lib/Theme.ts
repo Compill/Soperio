@@ -9,6 +9,7 @@ export interface Theme
 
   // Colors
   darkMode: "light" | "dark" | "system",
+  darkModeFallback: "light" | "dark",
   rootColors: RootColors,
   colors: StringKeyValueObject,
   colorThemes: ColorThemes,

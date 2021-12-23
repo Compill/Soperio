@@ -16,7 +16,7 @@ import { jsx, useDarkMode, useToggleDarkMode } from "@soperio/core";
 
 export function Content()
 {
-  const [state, setState] = React.useState(9);
+  const [state, setState] = React.useState(1);
   const darkMode = useDarkMode();
   const toggleDarkMode = useToggleDarkMode();
 
