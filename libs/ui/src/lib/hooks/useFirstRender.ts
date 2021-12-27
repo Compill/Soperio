@@ -8,5 +8,5 @@ export function useFirstRender()
         firstRender.current = false;
     }, []);
 
-    return firstRender;
+    return firstRender.current;
 }

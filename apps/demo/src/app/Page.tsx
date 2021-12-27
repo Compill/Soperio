@@ -42,7 +42,7 @@ const lightTheme: ColorTheme = {
 export default function Page({ ...props })
 {
   const [showDialog, setShowDialog] = React.useState(false);
-  const [side, setSide] = React.useState("left");
+  const [side, setSide] = React.useState("start");
   const darkMode = useDarkMode();
 
   function openDialog(side: Side)

@@ -17,6 +17,7 @@
     "paths": {
       "@soperio/cli": ["libs/cli/src/index.ts"],
       "@soperio/core": ["libs/core/src/index.ts"],
+      "@soperio/jsx-runtime": ["libs/jsx-runtime/src/index.ts"],
       "@soperio/theming": ["libs/theming/src/index.ts"],
       "@soperio/ui": ["libs/ui/src/index.ts"],
       "@soperio/utils": ["libs/utils/src/index.ts"]

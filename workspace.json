@@ -5,6 +5,7 @@
     "core": "libs/core",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
+    "jsx-runtime": "libs/jsx-runtime",
     "theming": "libs/theming",
     "ui": "libs/ui",
     "utils": "libs/utils"
