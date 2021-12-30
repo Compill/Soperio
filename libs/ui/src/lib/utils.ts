@@ -1,18 +1,4 @@
-import { ColorTheme, ComponentTheme, SoperioComponent } from "@soperio/core";
-import { Soperio } from "./Soperio";
-
-export function getStyledConfig<T extends any>(themeProp: ComponentTheme | undefined, config: (theme: ColorTheme) => T, component = ""): T | any
-{
-    if (!themeProp)
-        return {};
-
-    const theme = Soperio.getColorTheme(themeProp, component);
-
-    if (!theme)
-        return {};
-
-    return config(theme);
-}
+import { SoperioComponent } from "@soperio/core";
 
 export function sanitizeProps<T>(props: T | undefined, ...toRemove: (keyof T)[]): SoperioComponent
 {

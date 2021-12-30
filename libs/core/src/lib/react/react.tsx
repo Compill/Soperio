@@ -9,7 +9,7 @@ import { jsx as emotionJsx, css as emotionCss } from "@emotion/react";
 
 // on augmente les types des éléments DOM
 declare module "react" {
-    interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T>, SoperioComponent
+    interface HTMLAttributes<T> extends React.AriaAttributes, React.DOMAttributes<T>, SoperioComponent
     {
 
     }
@@ -152,10 +152,10 @@ export function jsx<P extends SoperioComponent>(
 
                 const variants = prop.split("_");
                 const propName: string = variants.pop()!;
-                
+
                 if (!CSSPropKeys.includes(propName))
                     continue;
-                
+
                 let current = css;
                 variants.forEach(variant =>
                 {
@@ -192,9 +192,9 @@ export function jsx<P extends SoperioComponent>(
             // So remove it before parsing
             const soperioCss = css.css;
             delete css.css;
-            
+
             const generatedCSS = parseRules(css)
-            
+
             newProps.css = [ emotionCss(generatedCSS), soperioCss,  props.css ];
         }
     }

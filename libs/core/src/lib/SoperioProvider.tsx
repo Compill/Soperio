@@ -1,13 +1,14 @@
 /** @jsx jsx */
 
-import { jsx } from "./react/react";
-import { ParentComponent, useSetTheme } from "..";
+import React from "react";
+import { ParentComponent } from "./HTMLTagProps";
+import { useSetTheme } from "./hooks/useTheme";
 import { defaultTheme } from "./defaultTheme";
-import { useSetDarkMode, useSetDarkModeConfig } from "./hooks/useDarkMode";
+import { useSetDarkModeConfig } from "./hooks/useDarkMode";
 import { useSetDirection } from "./hooks/useDirection";
 import { NormalizeCSS } from "./NormalizeCSS";
+import { jsx } from "./react/react";
 import { Theme } from "./Theme";
-import React from "react";
 
 
 interface SoperioProviderProps extends ParentComponent
@@ -26,7 +27,7 @@ export function SoperioProvider({
   direction,
   darkMode,
   children
-}: SoperioProviderProps) 
+}: SoperioProviderProps)
 {
   // TODO define theme if set
 
@@ -51,7 +52,7 @@ export function SoperioProvider({
   }
 
   // Use useEffect only when theme or dark mode props change
-  React.useEffect(() => 
+  React.useEffect(() =>
   {
     if (ref.current === 0)
     {
