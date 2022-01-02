@@ -1,6 +1,3 @@
-export * from './lib/Breakpoints';
-export * from './lib/ColorTheme';
-export type { SpacingNegativeScale, SpacingPositiveScale, SpacingScale } from './lib/CSS/Spacing';
 export { getThemeStyle } from './lib/CSS/utils';
 export { CSSPropKeys } from './lib/CSSProps';
 export * from './lib/defaultColorTheme';
@@ -13,4 +10,4 @@ export * from './lib/HTMLTagProps';
 export * from './lib/react/react';
 export * from './lib/SoperioComponent';
 export * from './lib/SoperioProvider';
-export type { Color } from './lib/PropTypes/Color';
+export * from './lib/ComponentTheme';

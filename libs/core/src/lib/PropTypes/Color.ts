@@ -2,9 +2,6 @@ import { getThemeStyle, StyleFn, StyleProp } from "../CSS/utils";
 import { getDarkMode } from "../hooks/useDarkMode";
 import { parseColor } from "../utils/colorUtils";
 
-// TODO Color types should contain all theme colors + all root colors + an exemple color like "any ARGB/RGB color like #FF36D9"
-export type Color = string
-
 
 function getColor(value: string)
 {

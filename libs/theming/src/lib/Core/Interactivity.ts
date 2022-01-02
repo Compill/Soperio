@@ -1,4 +1,4 @@
 export default interface ThemeInteractivity
 {
-    outline: string,
+  outline: "none" | "white" | "black",
 }

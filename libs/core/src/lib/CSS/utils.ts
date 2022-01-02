@@ -99,7 +99,3 @@ export function cssValueFn(cssProperty: string, cssValue: string | number): Styl
         return { [cssProperty]: cssValue };
     };
 }
-
-export type LiteralUnion<T extends U, U = string> = T | (U & { zz_IGNORE_ME?: never; });
-
-export type OrString<T extends string> = LiteralUnion<T, string>;

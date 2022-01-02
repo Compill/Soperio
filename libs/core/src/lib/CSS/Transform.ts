@@ -1,22 +1,5 @@
 import { getDirection } from "../hooks/useDirection";
-import { SpacingScale } from "./Spacing";
-import { css, OrString, Style, StyleProps } from "./utils";
-
-export type ScalingScale = "0" | "50" | "75" | "90" | "95" | "100" | "105" | "110" | "125" | "150";
-
-export interface Transform
-{
-    transform?: true | "gpu" | "none",
-    transformOrigin?: "center" | "top" | "top-end" | "end" | "bottom-end" | "bottom" | "bottom-start" | "start" | "top-start",
-    scale?: OrString<ScalingScale> | number,
-    scaleX?: OrString<ScalingScale> | number,
-    scaleY?: OrString<ScalingScale> | number,
-    rotate?: OrString<"0" | "1" | "2" | "2" | "6" | "12" | "45" | "90" | "180" | "-1" | "-2" | "-2" | "-6" | "-12" | "-45" | "-90" | "-180">;
-    translateX?: OrString<SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "-1/2" | "-1/3" | "-2/3" | "-1/4" | "-2/4" | "-3/4" | "full">,
-    translateY?: OrString<SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "-1/2" | "-1/3" | "-2/3" | "-1/4" | "-2/4" | "-3/4" | "full">,
-    skewX?: OrString<"0" | "1" | "2" | "2" | "6" | "12">;
-    skewY?: OrString<"0" | "1" | "2" | "2" | "6" | "12">;
-}
+import { css, Style, StyleProps } from "./utils";
 
 function transform(value: any): Style
 {
@@ -66,7 +49,7 @@ export function transformOrigin(value: any)
         parsedValue = getDirection() ? "top right" : "top left";
     else if (value === "bottom-end")
         parsedValue = getDirection() ? "bottom right" : "bottom left";
-    
+
     return css("transform-origin")(parsedValue)
 }
 

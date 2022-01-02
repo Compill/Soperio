@@ -1,11 +1,11 @@
 export default interface ThemeFlexbox
 {
-    flex: string,
-    gridAutoColumns: string,
-    gridAutoRows: string,
-    gridColumn: string,
-    gridRow: string,
-    gridTemplateColumns: string,
-    gridTemplateRows: string,
-    order: string,
+  flex: "1" | "auto" | "initial" | "none",
+  gridAutoColumns: "auto" | "min" | "max" | "fr",
+  gridAutoRows: "auto" | "min" | "max" | "fr",
+  gridColumn: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "none",
+  gridRow: "1" | "2" | "3" | "4" | "5" | "6" | "none",
+  gridTemplateColumns: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "none",
+  gridTemplateRows: "1" | "2" | "3" | "4" | "5" | "6" | "none",
+  order: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "first" | "last" | "none",
 }

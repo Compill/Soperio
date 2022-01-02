@@ -1,10 +1,17 @@
 import { css as emotionCss, jsx as emotionJsx } from "@emotion/react";
+import { OrString } from "@soperio/utils";
 import murmurhash from "murmurhash";
 import React from "react";
-import { SVGSoperioProps } from "../CSS/SVG";
 import { getThemeStyle } from "../CSS/utils";
 import { CSSPropKeys, CSSPropsMap } from "../CSSProps";
 import { SoperioComponent } from "../SoperioComponent";
+
+export interface SVGSoperioProps
+{
+  fillCurrent?: boolean,
+  strikeCurrent?: boolean,
+  strokeWidth?: OrString<"0" | "1" | "2 "> | number;
+}
 
 // on augmente les types des éléments DOM
 declare module "react" {

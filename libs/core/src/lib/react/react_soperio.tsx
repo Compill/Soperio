@@ -3,13 +3,20 @@
 // at some point, so this "old" version might come
 // in handy
 
+import { OrString } from "@soperio/utils";
 import murmurhash from "murmurhash";
 import React from "react";
-import { SVGSoperioProps } from "../CSS/SVG";
 import { getThemeStyle } from "../CSS/utils";
 import { CSSPropKeys, CSSPropsMap } from "../CSSProps";
 import { SoperioComponent } from "../SoperioComponent";
 import { insertCss } from "../utils/insertCss";
+
+export interface SVGSoperioProps
+{
+  fillCurrent?: boolean,
+  strikeCurrent?: boolean,
+  strokeWidth?: OrString<"0" | "1" | "2 "> | number;
+}
 
 // on augmente les types des éléments DOM
 declare module "react" {

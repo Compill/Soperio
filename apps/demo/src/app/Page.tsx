@@ -1,9 +1,10 @@
 /** @jsx jsx */
 
 import React from 'react';
-import { jsx, ColorTheme, useDarkMode, defaultColorTheme } from "@soperio/core";
+import { jsx, useDarkMode, defaultColorTheme } from "@soperio/core";
 import { Button, Container, Sidebar } from "@soperio/ui";
 import { ButtonConfig, ComponentConfig } from "@soperio/ui";
+import { ColorTheme } from "@soperio/theming";
 
 type Side = "start" | "end" | "top" | "bottom";
 

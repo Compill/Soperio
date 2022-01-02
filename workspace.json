@@ -3,9 +3,11 @@
   "projects": {
     "cli": "libs/cli",
     "core": "libs/core",
+    "css": "libs/css",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
     "jsx-runtime": "libs/jsx-runtime",
+    "react": "libs/react",
     "theming": "libs/theming",
     "ui": "libs/ui",
     "utils": "libs/utils"

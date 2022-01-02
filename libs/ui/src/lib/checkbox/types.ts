@@ -1,4 +1,5 @@
-import { ColorTheme, SoperioComponent } from "@soperio/core";
+import { SoperioComponent } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
 import { HTMLInputProps } from "../HTMLTagProps";
 

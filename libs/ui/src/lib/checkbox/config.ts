@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 import { CheckboxConfig } from "./types";
 
 export default function config(theme: ColorTheme, darkMode: boolean): CheckboxConfig

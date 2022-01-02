@@ -1,7 +1,5 @@
 import { ColorThemes, Direction, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
-
-
 export interface Theme
 {
   // Config

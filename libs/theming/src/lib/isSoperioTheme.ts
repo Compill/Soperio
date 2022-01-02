@@ -4,7 +4,7 @@ const requiredSoperioThemeKeys: (keyof SoperioTheme)[] = [
     "breakpoints",
     "rootColors",
     "colors",
-    "themes",
+    "colorThemes",
     "borders",
     "effects",
     "flexbox",
@@ -19,6 +19,6 @@ const requiredSoperioThemeKeys: (keyof SoperioTheme)[] = [
 export function isSoperioTheme(theme:any): boolean
 {
     // Check if theme is object first
-    
+
     return requiredSoperioThemeKeys.every(key => Object.prototype.hasOwnProperty.call(theme, key))
 }

@@ -1,5 +1,3 @@
-import { OrString } from "./CSS/utils";
-
 export interface ColorTheme
 {
     default: string,
@@ -39,5 +37,3 @@ export interface ColorTheme
 
     custom?: { [k:string]: string }
 }
-
-export type ComponentTheme = OrString<"default"> | ColorTheme;

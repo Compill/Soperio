@@ -1,57 +1,7 @@
-import { OrString } from "@soperio/utils";
-import { Breakpoints } from "../Breakpoints";
 import { getDirection } from "../hooks/useDirection";
-import { Color, colorize } from "../PropTypes/Color";
-import { opacity, Opacity } from "../PropTypes/Opacity";
+import { colorize } from "../PropTypes/Color";
+import { opacity } from "../PropTypes/Opacity";
 import { css, cssValueFn, direction, getThemeStyle, Style, StyleProps } from "./utils";
-
-export interface Border
-{
-    rounded?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedT?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedB?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedS?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedE?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedTS?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedTE?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedBS?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedBE?: true | false | "none" | Breakpoints | "x2" | "full",
-    border?: true | false | OrString<"0" | "2" | "4" | "8">,
-    borderT?: true | false | OrString<"0" | "2" | "4" | "8">,
-    borderB?: true | false | OrString<"0" | "2" | "4" | "8">,
-    borderS?: true | false | OrString<"0" | "2" | "4" | "8">,
-    borderE?: true | false | OrString<"0" | "2" | "4" | "8">,
-    borderColor?: false | Color,
-    borderTColor?: false | Color,
-    borderBColor?: false | Color,
-    borderSColor?: false | Color,
-    borderEColor?: false | Color,
-    // border top, bottom, ... color. ex: borderTColor
-    borderOpacity?: false | Opacity,
-    borderStyle?: false | "solid" | "dashed" | "dotter" | "double" | "none",
-    /**
-     * true is equal to (inexisting, default) value 1
-     */
-    divideX?: true | false | "0" | "2" | "4" | "8",
-    /**
-     * true is equal to (inexisting, default) value 1
-     */
-    divideY?: true | false | "0" | "2" | "4" | "8",
-    divideXReverse?: boolean,
-    divideYReverse?: boolean,
-    divideColor?: false | string,
-    divideOpacity?: false | Opacity,
-    divideStyle?: false | "solid" | "dashed" | "dotter" | "double" | "none",
-    /**
-     * true is equal to (inexisting, default) value 3
-     */
-    // ringColor?: string,
-    // ringOffset?: "0" | "1" | "2" | "4" | "8",
-    // ringOffsetColor?: string;
-    // ringOpacity?: Opacity,
-    // ringWidth?: true | false | "0" | "1" | "2" | "4" | "8" | "inset",
-
-}
 
 function divideX(value: any): Style
 {

@@ -1,4 +1,5 @@
-import { ColorTheme, ParentComponent, SoperioComponent } from "@soperio/core";
+import { ParentComponent, SoperioComponent } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
 
 // export interface BadgeThemeProps extends SoperioComponent

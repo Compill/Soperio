@@ -1,22 +1,13 @@
 import { css as cssEmotion, keyframes } from "@emotion/react";
-import { css, getThemeStyle, OrString, Style, StyleProps } from "./utils";
+import { css, getThemeStyle, Style, StyleProps } from "./utils";
 
-export interface Transitions 
-{
-    transition?: true | false | "all" | "none" | "colors" | "opacity" | "shadow" | "transform",
-    duration?: OrString<"75" | "100" | "150" | "200" | "300" | "500" | "700" | "1000"> | number,
-    easing?: OrString<"linear" | "in" | "out" | "in-out">,
-    delay?: OrString<"75" | "100" | "150" | "200" | "300" | "500" | "700" | "1000">,
-    animate?: "none" | "spin" | "ping" | "pulse";
-}
-
-const defaultTransition = 
+const defaultTransition =
 {
     "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
     "transition-duration": "150ms"
 };
 
-function transition(value: any): Style 
+function transition(value: any): Style
 {
     const transitionProperty = getThemeStyle("transition.transitionProperty", value === true ? "default" : value)!;
 
@@ -26,7 +17,7 @@ function transition(value: any): Style
     };
 }
 
-function duration(value: any) 
+function duration(value: any)
 {
     let parsedValue = getThemeStyle("transition.duration", value);
 
@@ -36,7 +27,7 @@ function duration(value: any)
     return { "transition-duration": parsedValue };
 }
 
-function animate(value: any) 
+function animate(value: any)
 {
     if (value === "none")
         return { animation: "none" }
@@ -46,7 +37,7 @@ function animate(value: any)
     const frames = keyframes(getThemeStyle("transition.keyframes", value))
 
     const emotion = cssEmotion`animation: ${frames} ${animation}`
-    
+
     return {
         css: emotion
     }

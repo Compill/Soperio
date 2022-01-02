@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 import { darken, isDark, lighten, transparentize } from "@soperio/utils";
 import { ButtonConfig } from "./types";
 

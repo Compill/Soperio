@@ -1,45 +1,7 @@
 import { getDirection } from "../hooks/useDirection";
-import { Color, colorize } from "../PropTypes/Color";
-import { opacity, Opacity } from "../PropTypes/Opacity";
-import { SpacingPositiveScale } from "./Spacing";
-import { css, cssValue, getThemeStyle, OrString, Style, StyleProp, StyleProps } from "./utils";
-
-export interface Typography
-{
-    font?: "sans" | "serif" | "mono",
-    fontSize?: OrString<"xs" | "sm" | "md" | "lg" | "xl" | "x2" | "x3" | "x4" | "x5" | "x6" | "x7" | "x8" | "x9" | "base">,
-    italic?: boolean,
-    notItalic?: boolean;
-    // TODO alias for not-italic
-    // normal?: boolean,
-    fontWeight?: "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900",
-    numericFontVariant?: "normal-nums" | "ordinal" | "slashed-zero" | "lining-nums" | "oldstyle-nums" | "proportional-nums" | "tabular-nums" | "diagonal-fractions" | "stacked-fractions",
-    letterSpacing?: "tighter" | "tight" | "normal" | "wide" | "wider" | "widest",
-    lineHeight?: OrString<"3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "none" | "tight" | "snug" | "normal" | "relaxed" | "loose">,
-    listStyle?: "none" | "disc" | "decimal",
-    listStylePosition?: "inside" | "outside",
-    placeholderColor?: Color,
-    placeholderOpacity?: Opacity,
-    textAlign?: "start" | "center" | "end" | "justify",
-    /**
-     * Utilities for controlling the text color of an element.
-     */
-    textColor?: Color,
-    textDecoration?: "underline" | "line-through" | "no-underline",
-    textOpacity?: Opacity,
-    textTransform?: "uppercase" | "lowercase" | "capitalize" | "normal-case",
-    textOverflow?: "truncate" | "overflow-ellipsis" | "overflow-clip",
-    verticalAlign?: "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
-    whitespace?: "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
-    wordBreak?: "normal" | "words" | "all",
-    textColumns?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">,
-    /**
-     * Alias for "gap"
-     * Gap between the text columns
-     */
-
-    textColumnsGap?: SpacingPositiveScale
-}
+import { colorize } from "../PropTypes/Color";
+import { opacity } from "../PropTypes/Opacity";
+import { css, cssValue, getThemeStyle, Style, StyleProps } from "./utils";
 
 function fontSize(value: any): Style
 {
@@ -91,7 +53,7 @@ function textAlign(value: any)
         parsedValue = getDirection() ? "left" : "right";
     else if (value === "end")
         parsedValue = getDirection() ? "right" : "left";
-    
+
     return css("text-align")(parsedValue)
 }
 

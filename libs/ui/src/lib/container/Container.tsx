@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
-import { Breakpoints, getThemeStyle, jsx, ParentComponent, SoperioComponent } from "@soperio/core";
+import { getThemeStyle, jsx, ParentComponent, SoperioComponent } from "@soperio/core";
+import { Breakpoints } from "@soperio/theming";
 import React from 'react';
 
 interface ContainerProps extends SoperioComponent, ParentComponent, React.HTMLAttributes<HTMLDivElement>

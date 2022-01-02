@@ -1,7 +1,7 @@
-import { ColorTheme } from "../ColorTheme";
 import { IS_DEV } from "@soperio/utils";
 import { useTheme } from "./useTheme";
 import { useDarkMode } from "./useDarkMode";
+import { ColorTheme } from "@soperio/theming";
 
 export function useColorTheme(colorTheme?: false | string | ColorTheme): ColorTheme
 {

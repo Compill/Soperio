@@ -1,41 +1,4 @@
-import { getDirection } from "../hooks/useDirection";
-import { SpacingPositiveScale } from "./Spacing";
-import { css, OrString, StyleProp, StyleProps } from "./utils";
-
-export interface Flexbox
-{
-    flexRow?: true | false | "reverse",
-    flexCol?: true | false | "reverse",
-    flexDirection?: true | false | "row" | "column" | "row-reverse" | "col-reverse",
-    flexWrap?: true | "reverse" | "no",
-    flex?: "1" | "auto" | "initial" | "none";
-    flexGrow?: true | string | number,
-    flexShrink?: true | string | number,
-    order?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "first" | "last" | "none"> | number,
-    gridCols?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "none"> | number,
-    colSpan?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "full"> | number,
-    colStart?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "13" | "auto"> | number,
-    colEnd?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "13" | "auto"> | number,
-    gridRows?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "none"> | number,
-    rowSpan?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "full"> | number,
-    rowStart?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
-    rowEnd?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
-    gridFlow?: "row" | "col" | "dense" |"row dense" | "col dense",
-    gridAutoCols?: OrString<"auto" | "min" | "max" | "fr">,
-    gridAutoRows?: OrString<"auto" | "min" | "max" | "fr">,
-    gap?: OrString<SpacingPositiveScale>,
-    gapX?: OrString<SpacingPositiveScale>,
-    gapY?: OrString<SpacingPositiveScale>,
-    justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly",
-    justifyItems?: "start" | "end" | "center" | "stretch",
-    justifySelf?: "auto" | "start" | "end" | "center" | "stretch",
-    alignContent?: "start" | "end" | "center" | "between" | "around" | "evenly",
-    alignItems?: "start" | "end" | "center" | "baseline" | "stretch",
-    alignSelf?: "auto" | "start" | "end" | "center" | "stretch" | "baseline",
-    placeContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch",
-    placeItems?: "start" | "end" | "center" | "stretch",
-    placeSelf?: "auto" | "start" | "end" | "center" | "stretch",
-}
+import { css, StyleProps } from "./utils";
 
 export const FlexboxMapping: StyleProps = {
     flexRow: css("flex-direction", undefined, "row"),

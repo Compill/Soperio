@@ -25,5 +25,4 @@ export default interface ThemeRootColors
     "border-color-disabled": string,
 
     "shadow-color": string,
-    
 }

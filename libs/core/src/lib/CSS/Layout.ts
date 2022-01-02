@@ -1,40 +1,6 @@
 import { getDirection } from "../hooks/useDirection";
-import { directionSpacing, spacing, SpacingScale } from "./Spacing";
-import { css, cssValueFn, OrString, StyleProps } from "./utils";
-
-export default interface Layout {
-    boxDecorationBreak?: "slice" | "clone",
-    boxSizing?: "border-box" | "content-box",
-    block?: boolean,
-    inline?: boolean,
-    dflex?: boolean,
-    display?: "block" | "contents" | "flow" | "flow-root" | "inline" | "inline-block" | "inline-flex" | "inline-grid" | "flex" | "grid"| "none" | "run-in" | "table"
-    grid?: boolean,
-    hidden?: boolean,
-    float?: "start" | "end" | "none",
-    clear?: "start" | "end" | "both" | "none",
-    isolation?: true | "auto",
-    objectFit?: "contain" | "cover" | "fill" | "none" | "scale-down",
-    objectPosition?: "bottom" | "center" | "start" | "start-bottom" | "start-top" | "end" | "end-bottom" | "end-top" | "top",
-    overflow?: "auto" | "hidden" | "visible" | "scroll",
-    overflowX?: "auto" | "hidden" | "visible" | "scroll",
-    overflowY?: "auto" | "hidden" | "visible" | "scroll",
-    overscroll?: "auto" | "hidden" | "visible" | "scroll",
-    overscrollX?: "auto" | "hidden" | "visible" | "scroll",
-    overscrollY?: "auto" | "hidden" | "visible" | "scroll",
-    overscrollBehavior?: ""
-    position?: "static" | "fixed" | "absolute" | "relative" | "sticky"
-    top?: OrString<SpacingScale> | number,
-    bottom?: OrString<SpacingScale> | number,
-    start?: OrString<SpacingScale> | number,
-    end?: OrString<SpacingScale> | number,
-    inset?: OrString<SpacingScale> | number,
-    insetX?: OrString<SpacingScale> | number,
-    insetY?: OrString<SpacingScale> | number,
-    visible?: boolean,
-    invisible?: boolean,
-    z?: OrString<"0" | "10" | "20" | "30" | "40" | "50" | "auto"> | number
-}
+import { directionSpacing, spacing } from "./Spacing";
+import { css, cssValueFn, StyleProps } from "./utils";
 
 function float(value: any)
 {
@@ -44,7 +10,7 @@ function float(value: any)
         parsedValue = getDirection() ? "left" : "right";
     else if (value === "end")
         parsedValue = getDirection() ? "right" : "left";
-    
+
     return css("float")(parsedValue)
 }
 
@@ -56,7 +22,7 @@ function clear(value: any)
         parsedValue = getDirection() ? "left" : "right";
     else if (value === "end")
         parsedValue = getDirection() ? "right" : "left";
-    
+
     return css("clear")(parsedValue)
 }
 
@@ -76,7 +42,7 @@ function objectPosition(value: any)
         parsedValue = getDirection() ? "right top" : "left top";
     else if (value === "end-bottom")
         parsedValue = getDirection() ? "right bottom" : "left bottom";
-    
+
     return css("object-position")(parsedValue)
 }
 

@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/core";
+import { ColorTheme } from "../ColorTheme";
 
 export default interface ThemeThemes
 {

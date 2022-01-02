@@ -1,7 +1,7 @@
-import { Color } from "../PropTypes/Color";
+import { Color } from "@soperio/theming";
 import { useTheme } from "./useTheme";
 
-export function useColor(color: Color): string 
+export function useColor(color: Color): string
 {
   const theme = useTheme();
 

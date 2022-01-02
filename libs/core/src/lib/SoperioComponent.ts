@@ -1,4 +1,4 @@
-import { ResponsiveCSSProps } from "./CSSProps";
+import { ResponsiveCSSProps } from "@soperio/css";
 
 export interface SoperioComponent extends ResponsiveCSSProps
 {

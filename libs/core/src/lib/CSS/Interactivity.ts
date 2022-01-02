@@ -1,15 +1,5 @@
 import { css, getThemeStyle, Style, StyleProps } from "./utils";
 
-export interface Interactivity
-{
-    appearanceNone?: boolean,
-    cursor?: "auto" | "default" | "pointer" | "wait" | "text" | "move" | "help" | "not-allowed",
-    outline?: "none" | "white" | "black",
-    pointerEvents?: "none" | "auto",
-    resize?: true | "both" | "none" | "x" | "y";
-    userSelect?: "none" | "text" | "all" | "auto";
-}
-
 function outline(value: any): Style
 {
     const parsedValue = getThemeStyle("interactivity.outline", value)!;

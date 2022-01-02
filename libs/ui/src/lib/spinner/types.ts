@@ -1,12 +1,12 @@
-import { ComponentTheme, SoperioComponent, SpacingPositiveScale } from "@soperio/core";
-import { Color } from "@soperio/core";
+import { ComponentTheme, SoperioComponent } from "@soperio/core";
+import { Color, SpacingPositive } from "@soperio/theming";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
 import { HTMLDivProps } from "../HTMLTagProps";
 
 export interface SpinnerThemeProps extends SoperioComponent
 {
   trackColor?: Color
-  
+
 }
 
 export const variants = ["default", "track"] as const;
@@ -27,7 +27,7 @@ export interface SpinnerProps extends SoperioComponent, HTMLDivProps
   size?: SpinnerSize,
   theme?: ComponentTheme,
   config?: CustomComponentConfigFn<SpinnerConfig>;
-  thickness?: SpacingPositiveScale,
+  thickness?: SpacingPositive,
   trackColor?: Color,
   progress?: SpinnerProgress
 }

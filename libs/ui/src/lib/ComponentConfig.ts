@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 
 export type SoperioComponentConfig = Record<string, unknown>;
 

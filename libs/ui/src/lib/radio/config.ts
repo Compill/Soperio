@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 import { RadioConfig } from "./types";
 
 export default function config(theme: ColorTheme, darkMode: boolean): RadioConfig

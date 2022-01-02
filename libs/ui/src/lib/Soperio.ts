@@ -1,5 +1,5 @@
 import { SoperioComponentConfig } from "./ComponentConfig";
-import { ColorTheme } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 import { getThemeStyle } from "@soperio/core";
 import { CSSPropKeys } from "@soperio/core";
 import { SoperioComponentConfigFn } from "./ComponentConfig";

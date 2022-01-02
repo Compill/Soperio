@@ -1,5 +1,5 @@
+import { ColorTheme } from "@soperio/theming";
 import { applyTransparenceToRGBColor } from "@soperio/utils";
-import { ColorTheme } from "..";
 
 export const defaultColorTheme: ColorTheme = {
   default: "sky-500",

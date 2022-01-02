@@ -1,4 +1,5 @@
-import { ColorTheme, useDarkMode } from "@soperio/core";
+import { useDarkMode } from "@soperio/core";
+import { ColorTheme } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";

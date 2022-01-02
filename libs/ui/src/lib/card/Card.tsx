@@ -1,7 +1,8 @@
 /** @jsx jsx */
 /** @jsxFrag jsx */
 
-import { jsx, ParentComponent, SoperioComponent, SpacingPositiveScale, useColorTheme } from "@soperio/core";
+import { jsx, ParentComponent, SoperioComponent, useColorTheme } from "@soperio/core";
+import { SpacingPositive } from "@soperio/theming";
 import { IS_DEV, OrString } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
@@ -71,7 +72,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
       <div px="7" py="3" {...props} ref={ref} borderColor={colorTheme.border1} borderB={showBorder && borderWidth === "full" ? true : "0"}>
         {children}
       </div>
-      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositiveScale} />}
+      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
     </React.Fragment>
   );
 });
@@ -109,7 +110,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
     <React.Fragment>
-      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositiveScale} />}
+      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
       <div px="7" py="3" {...props} ref={ref} borderColor={colorTheme.border1} borderT={showBorder && borderWidth === "full" ? true : "0"}>
         {children}
       </div>

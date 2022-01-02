@@ -1,4 +1,4 @@
-import { ColorTheme } from "..";
+import { ColorTheme } from "@soperio/theming";
 
 export type KeyValueObject<T> = Record<string, T>;
 export type StringKeyValueObject = KeyValueObject<string>;
