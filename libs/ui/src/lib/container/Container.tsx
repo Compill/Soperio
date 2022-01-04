@@ -1,14 +1,8 @@
 /** @jsx jsx */
 
-import { getThemeStyle, jsx, ParentComponent, SoperioComponent } from "@soperio/core";
-import { Breakpoints } from "@soperio/theming";
+import { getThemeStyle, jsx } from "@soperio/core";
 import React from 'react';
-
-interface ContainerProps extends SoperioComponent, ParentComponent, React.HTMLAttributes<HTMLDivElement>
-{
-    breakpoint?: Breakpoints;
-    center?: true | false | "sm" | "md" | "lg" | "xl" | "xxl";
-};
+import { ContainerProps } from "./types";
 
 /**
  *

@@ -1,19 +1,10 @@
 /** @jsx jsx */
 
+import { jsx, useDirection } from "@soperio/core";
 import React from 'react';
-import { jsx, ParentComponent, SoperioComponent, useDirection } from "@soperio/core";
 import { useFirstRender } from '../hooks/useFirstRender';
 import usePrevious from '../hooks/usePrevious';
-
-interface SidebarProps extends SoperioComponent, ParentComponent
-{
-  side?: "start" | "end" | "top" | "bottom",
-  closeOnMaskClick?: boolean,
-  closeOnEsc?: boolean,
-  show: boolean,
-  size?: string,
-  onClose?: () => void;
-}
+import { SidebarProps } from "./types";
 
 const DEFAULT_DURATION = "500";
 const DEFAULT_EASING = "in";

@@ -1,7 +1,17 @@
 export * from './lib/spinner/Spinner';
 export type { SpinnerProps, SpinnerConfig } from './lib/spinner/types';
+export type { TextAreaProps, TextAreaConfig } from './lib/textarea/types';
+export type { SelectProps, SelectConfig } from './lib/select/types';
+export type { BadgeProps, BadgeConfig } from './lib/badge/types';
+export type { ButtonProps, ButtonConfig } from './lib/button/types';
+export type { CardProps, CardConfig } from './lib/card/types';
+export type { CheckboxProps, CheckboxConfig } from './lib/checkbox/types';
+export type { ContainerProps } from './lib/container/types';
+export type { InputProps, InputConfig } from './lib/input/types';
+export type { RadioProps, RadioConfig } from './lib/radio/types';
+export type { SidebarProps } from './lib/sidebar/types';
+export type { TileProps } from './lib/tile/types';
 
-// TODO Export props & config of each component
 export * from './lib/textarea/TextArea';
 export * from './lib/select/Select';
 export * from './lib/badge/Badge';
