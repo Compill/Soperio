@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx } from "@soperio/core";
+import { jsx } from "@soperio/react";
 import { Container, Spinner } from "@soperio/ui";
 
 

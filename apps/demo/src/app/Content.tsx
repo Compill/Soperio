@@ -1,5 +1,6 @@
 // @jsx jsx */
 
+import { jsx } from "@soperio/react";
 import { Button, Container } from "@soperio/ui";
 import Page from "./Page";
 import Page2 from "./Page2";
@@ -12,7 +13,7 @@ import Page8 from "./Page8";
 import Page9 from "./Page9";
 import Page10 from "./Page10";
 import React from "react";
-import { jsx, useDarkMode, useToggleDarkMode } from "@soperio/core";
+import { useDarkMode, useToggleDarkMode } from "@soperio/core";
 
 export function Content()
 {

@@ -1,8 +1,7 @@
 /** @jsx jsx */
 
+import { jsx } from "@soperio/react";
 import { Checkbox, Container } from "@soperio/ui";
-import { jsx } from "@soperio/core";
-
 
 type Side = "left" | "right" | "top" | "bottom";
 

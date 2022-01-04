@@ -1,13 +1,14 @@
 // @jsx jsx */
 
-import { jsx, SoperioProvider, useDirection, useToggleDirection } from "@soperio/core";
+import { jsx } from "@soperio/react";
+import { SoperioProvider, useDirection, useToggleDirection } from "@soperio/core";
 import { Button } from "@soperio/ui";
 import React from "react";
 import { Content } from "./Content";
 
 // jsx("div", {});
 
-function App() 
+function App()
 {
   const direction = useDirection();
   const toggleDirection = useToggleDirection();

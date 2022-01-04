@@ -15,9 +15,7 @@ export default class ThemeCache
 
     private constructor()
     {
-        console.log("theme cache init")
         this.theme = defaultTheme;
-        console.log("theme cache end init")
     }
 
     private merge(newTheme: Theme): Theme

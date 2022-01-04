@@ -1,7 +1,8 @@
 /** @jsx jsx */
 
+import { jsx } from "@soperio/react";
 import { Checkbox, Container, Input } from "@soperio/ui";
-import { jsx, useDarkMode } from "@soperio/core";
+import { useDarkMode } from "@soperio/core";
 
 
 type Side = "left" | "right" | "top" | "bottom";

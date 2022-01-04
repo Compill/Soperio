@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
-import { jsx, useDirection } from "@soperio/core";
+import { jsx } from "@soperio/react";
+import { useDirection } from "@soperio/core";
 import React from 'react';
 import { useFirstRender } from '../hooks/useFirstRender';
 import usePrevious from '../hooks/usePrevious';
@@ -69,7 +70,7 @@ export function Sidebar({ side = "start", onClose, show = false, children, ...pr
       <div
         w={width}
         h={height}
-        bgColor={props.bgColor || "white"} // TODO theme() function to get theme.bg-color-1
+        bgColor={props.bgColor || "root.bg-color-1"}
         transition={firstRender || (side === previousSide && direction === previousDirection) ? "transform" : "none"}
         transform
         easing={props.easing || DEFAULT_EASING}

@@ -1,5 +1,5 @@
 export { getThemeStyle } from './lib/CSS/utils';
-export { CSSPropKeys } from './lib/CSSProps';
+export { CSSPropsMap, CSSPropKeys } from './lib/CSSProps';
 export * from './lib/defaultColorTheme';
 export * from './lib/hooks/useColor';
 export * from './lib/hooks/useColorTheme';
@@ -7,7 +7,6 @@ export * from './lib/hooks/useDirection';
 export { useDarkMode, useSetDarkMode, useToggleDarkMode } from './lib/hooks/useDarkMode';
 export * from './lib/hooks/useTheme';
 export * from './lib/HTMLTagProps';
-export * from './lib/react/react';
 export * from './lib/SoperioComponent';
 export * from './lib/SoperioProvider';
 export * from './lib/ComponentTheme';

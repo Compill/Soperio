@@ -17,7 +17,7 @@ type Direction = "ltr" | "rtl"
 // Other libraries are using a Provider component, but since we're not
 // using any React.Context, I don't see the point of adding extra
 // complexity to the app
-let directionInternal = true; // TODO Get value from theme?
+let directionInternal = true;
 const listeners: DirectionListener[] = [];
 
 // For usage in color props, in this library only
@@ -28,12 +28,10 @@ export function getDirection(): boolean
 
 function setDirectionInternal(direction: Direction)
 {
-  console.log("set direction", direction)
   const nexDirection = direction === LTR;
 
   if (directionInternal !== nexDirection)
   {
-    console.log("set direction because different", direction)
     directionInternal = nexDirection;
     listeners.forEach(item => item(directionInternal));
   }
@@ -41,7 +39,6 @@ function setDirectionInternal(direction: Direction)
 
 function toggleDirectionInternal()
 {
-  console.log("toggle direction internal")
   setDirectionInternal(directionInternal ? RTL : LTR);
 }
 
@@ -62,9 +59,7 @@ function removeListener(listener: DirectionListener)
 export function useDirection()
 {
   const [direction, setDirection] = React.useState(directionInternal);
-  const cb = React.useCallback((direction) => {console.log("use direction callback ", direction); setDirection(direction)}, [setDirection]);
-
-  console.log("use direction", direction)
+  const cb = React.useCallback((direction) => setDirection(direction), [setDirection]);
 
   React.useEffect(() =>
   {
@@ -81,7 +76,6 @@ export function useDirection()
 
 export function useSetDirection()
 {
-  console.log("use set direction")
   const cb = React.useCallback((direction: Direction) => setDirectionInternal(direction), []);
 
   return cb;
@@ -89,7 +83,6 @@ export function useSetDirection()
 
 export function useToggleDirection()
 {
-  console.log("use toggle direction")
   const cb = React.useCallback(() => toggleDirectionInternal(), []);
 
   return cb;

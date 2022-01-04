@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
-import { jsx, useColorTheme } from "@soperio/core";
+import { jsx } from "@soperio/react";
+import { useColorTheme } from "@soperio/core";
 import React from "react";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { TileProps } from "./types";

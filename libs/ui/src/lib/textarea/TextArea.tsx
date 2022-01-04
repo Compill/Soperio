@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
-import { jsx, SoperioComponent, useColorTheme } from "@soperio/core";
+import { jsx } from "@soperio/react";
+import { SoperioComponent, useColorTheme } from "@soperio/core";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";

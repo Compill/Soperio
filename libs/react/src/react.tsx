@@ -2,9 +2,7 @@ import { css as emotionCss, jsx as emotionJsx } from "@emotion/react";
 import murmurhash from "murmurhash";
 import React from "react";
 import { SVGSoperioProps } from "./SVG";
-import { getThemeStyle } from "./CSS/utils";
-import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
-import { SoperioComponent } from "./SoperioComponent";
+import { CSSPropKeys, CSSPropsMap, getThemeStyle, SoperioComponent } from "@soperio/core";
 
 // on augmente les types des éléments DOM
 declare module "react" {
@@ -53,7 +51,7 @@ const head = document.head;
 type Value = string | number;
 
 // "Style" est un objet dont les valeurs sont de type Value
-export type Style = {
+type Style = {
   [name: string]: Value,
 };
 

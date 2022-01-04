@@ -1,5 +1,3 @@
-/** @jsx jsx */
-
 import React from "react";
 import { ParentComponent } from "./HTMLTagProps";
 import { useSetTheme } from "./hooks/useTheme";
@@ -7,7 +5,6 @@ import { defaultTheme } from "./defaultTheme";
 import { useSetDarkModeConfig } from "./hooks/useDarkMode";
 import { useSetDirection } from "./hooks/useDirection";
 import { NormalizeCSS } from "./NormalizeCSS";
-import { jsx } from "./react/react";
 import { Theme } from "./Theme";
 
 
@@ -16,7 +13,7 @@ interface SoperioProviderProps extends ParentComponent
   resetCss?: boolean,
   theme?: Theme,
   darkMode?: "light" | "dark" | "system";
-  direction?: "rtl" | "ltr"
+  direction?: "rtl" | "ltr";
 };
 
 // SoperioProvider is out initializer
@@ -29,9 +26,7 @@ export function SoperioProvider({
   children
 }: SoperioProviderProps)
 {
-  // TODO define theme if set
-
-  console.log("SoperioProvider")
+  console.log("SoperioProvider");
 
   const ref = React.useRef(0);
   const setTheme = useSetTheme();
@@ -46,8 +41,8 @@ export function SoperioProvider({
   // the theme or dark mode change from its default values
   if (ref.current === 0)
   {
-    setTheme(theme)
-    setDarkModeConfig(darkMode || theme.darkMode)
+    setTheme(theme);
+    setDarkModeConfig(darkMode || theme.darkMode);
     setDirection(direction || theme.direction || "ltr");
   }
 
@@ -56,23 +51,22 @@ export function SoperioProvider({
   {
     if (ref.current === 0)
     {
-      ref.current = 1
+      ref.current = 1;
     }
     else
     {
       // Something like Soperio.initTheme(theme, darkMode)
-      setTheme(theme)
-      setDarkModeConfig(darkMode || theme.darkMode)
+      setTheme(theme);
+      setDarkModeConfig(darkMode || theme.darkMode);
       setDirection(direction || theme.direction || "ltr");
     }
-  }, [theme, setTheme, darkMode, setDarkModeConfig, direction, setDirection])
+  }, [theme, setTheme, darkMode, setDarkModeConfig, direction, setDirection]);
 
   return (
-    <div>
+    // TODO --so should be dynamic
+    <div dir={direction || theme.direction || "ltr"} style={{ color: "rgb(var(--so-text-color-1))" }} /*textColor="root.text-color-1"*/>
       {resetCss ? <NormalizeCSS /> : null}
-      <div dir={direction || theme.direction || "ltr"} textColor="root.text-color-1">
-        {children}
-      </div>
+      {children}
     </div>
-  )
+  );
 }

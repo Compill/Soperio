@@ -1,4 +1,4 @@
-import { jsx } from "./react/react";
+import React from "react"
 import "./normalize.css";
 
 /**

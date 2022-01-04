@@ -1,8 +1,7 @@
 /** @jsx jsx */
 
 import { Badge, Button, Card, Container } from "@soperio/ui";
-import { jsx } from "@soperio/core";
-
+import { jsx } from "@soperio/react";
 
 /**
  *

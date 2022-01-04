@@ -8,8 +8,12 @@ export function opacity(cssProperty: string): (value: any) => Style
 
         if (parsedValue === undefined)
         {
-            // TODO if value > 1, divide by 100
-            parsedValue = ""
+          const floatValue = parseFloat(parsedValue)
+
+          if (floatValue > 100)
+            console.log(`[Soperio] Opacity value should not be superior to 100, ${parsedValue} given`)
+          else if (floatValue > 1)
+            parsedValue = "" + floatValue / 100
         }
 
         return { [cssProperty]: parsedValue };

@@ -74,10 +74,8 @@ export function getDarkModeConfig(): DarkMode
 
 function setDarkModeInternal(darkMode: boolean)
 {
-  console.log("set dark mode", darkMode)
   if (darkModeInternal !== darkMode)
   {
-    console.log("set dark mode because different", darkMode)
     darkModeInternal = darkMode;
 
     replaceRootColors();
@@ -127,7 +125,7 @@ function removeConfigListener(listener: DarkModeConfigListener)
 function replaceRootColors()
 {
   const ROOT_COLORS_STYLE_ID = "soperio-root-colors";
-  console.log("replace root colors")
+
   const theme = getTheme()
 
   if (!theme.rootColors && IS_DEV)

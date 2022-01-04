@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
-import { jsx, SoperioComponent, useColor, useColorTheme } from "@soperio/core";
+import { jsx } from "@soperio/react";
+import { SoperioComponent, useColor, useColorTheme } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
@@ -44,7 +45,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
   const parsedTrackColor = useColor(trackColor || sVariant?.trackColor || "transparent")
 
   return (
-    <div 
+    <div
       transition={firstRender ? "none" : "all"}
       display="inline-block"
       {...getBorders(parsedTrackColor, progress)}

@@ -1,7 +1,8 @@
 /** @jsx jsx */
 
+import { jsx } from "@soperio/react";
 import React from 'react';
-import { jsx, useDarkMode, defaultColorTheme } from "@soperio/core";
+import { useDarkMode, defaultColorTheme } from "@soperio/core";
 import { Button, Container, Sidebar } from "@soperio/ui";
 import { ButtonConfig, ComponentConfig } from "@soperio/ui";
 import { ColorTheme } from "@soperio/theming";
