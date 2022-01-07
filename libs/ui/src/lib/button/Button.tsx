@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { useColorTheme, SoperioComponent } from "@soperio/core";
 import { Soperio } from "../Soperio";
 import { useComponentConfig } from "../hooks/useComponentConfig";
@@ -31,7 +28,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     ...props
 }: ButtonProps, ref) =>
 {
-    console.log("Button")
     const firstRender = useFirstRender();
     const preventFocus = React.useCallback((event) =>
     {

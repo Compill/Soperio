@@ -1,7 +1,3 @@
-/** @jsx jsx */
-/** @jsxFrag jsx */
-
-import { jsx } from "@soperio/react";
 import { useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";

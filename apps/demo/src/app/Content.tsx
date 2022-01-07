@@ -1,6 +1,3 @@
-// @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { Button, Container } from "@soperio/ui";
 import Page from "./Page";
 import Page2 from "./Page2";

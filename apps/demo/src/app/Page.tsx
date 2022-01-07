@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import React from 'react';
 import { useDarkMode, defaultColorTheme } from "@soperio/core";
 import { Button, Container, Sidebar } from "@soperio/ui";

@@ -1,6 +1,3 @@
-// @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { SoperioProvider, useDirection, useToggleDirection } from "@soperio/core";
 import { Button } from "@soperio/ui";
 import React from "react";

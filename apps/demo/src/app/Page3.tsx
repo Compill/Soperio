@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { Checkbox, Container, Input } from "@soperio/ui";
 import { useDarkMode } from "@soperio/core";
 

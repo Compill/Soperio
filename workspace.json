@@ -6,6 +6,7 @@
     "css": "libs/css",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
+    "jsx-dev-runtime": "libs/jsx-dev-runtime",
     "jsx-runtime": "libs/jsx-runtime",
     "react": "libs/react",
     "theming": "libs/theming",

@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { useColorTheme } from "@soperio/core";
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
@@ -31,7 +28,6 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
     ...props
   }, ref) =>
 {
-  console.log("checkbox")
   const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 

@@ -26,8 +26,6 @@ export function SoperioProvider({
   children
 }: SoperioProviderProps)
 {
-  console.log("SoperioProvider");
-
   const ref = React.useRef(0);
   const setTheme = useSetTheme();
   const setDarkModeConfig = useSetDarkModeConfig();

@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { Checkbox, Container, Input, Radio } from "@soperio/ui";
 import React from "react";
 

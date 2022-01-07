@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { useDirection } from "@soperio/core";
 import React from 'react';
 import { useFirstRender } from '../hooks/useFirstRender';

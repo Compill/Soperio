@@ -1,6 +1,5 @@
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom';
-import { jsx } from "@soperio/react";
 
 import App from './app/app';
 

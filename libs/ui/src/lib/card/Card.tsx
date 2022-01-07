@@ -1,7 +1,3 @@
-/** @jsx jsx */
-/** @jsxFrag jsx */
-
-import { jsx } from "@soperio/react";
 import { ParentComponent, SoperioComponent, useColorTheme } from "@soperio/core";
 import { SpacingPositive } from "@soperio/theming";
 import { IS_DEV, OrString } from "@soperio/utils";

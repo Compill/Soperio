@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { getThemeStyle } from "@soperio/core";
 import React from 'react';
 import { ContainerProps } from "./types";

@@ -2,8 +2,8 @@ const nrwlConfig = require("@nrwl/react/plugins/webpack.js"); // require the mai
 
 module.exports = (config, context) =>
 {
-  nrwlConfig(config); // first call it so that it @nrwl/react plugin adds its configs,
-  console.log("HELLOOOOOOOOOOOOOOOOOOOO")
+  return nrwlConfig(config); // first call it so that it @nrwl/react plugin adds its configs,
+  /*console.log("HELLOOOOOOOOOOOOOOOOOOOO")
 
   console.log({
     ...config,
@@ -27,7 +27,7 @@ module.exports = (config, context) =>
         "react/jsx-runtime": "react/jsx-runtime"
       }
     },
-  };
+  };*/
 };
 
 

@@ -10,3 +10,4 @@ export * from './lib/HTMLTagProps';
 export * from './lib/SoperioComponent';
 export * from './lib/SoperioProvider';
 export * from './lib/ComponentTheme';
+export * from './lib/parseProps';

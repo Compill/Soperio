@@ -18,6 +18,7 @@
       "@soperio/cli": ["libs/cli/src/index.ts"],
       "@soperio/core": ["libs/core/src/index.ts"],
       "@soperio/css": ["libs/css/src/index.ts"],
+      "@soperio/jsx-dev-runtime": ["libs/jsx-dev-runtime/src/index.ts"],
       "@soperio/jsx-runtime": ["libs/jsx-runtime/src/index.ts"],
       "@soperio/react": ["libs/react/src/index.ts"],
       "@soperio/theming": ["libs/theming/src/index.ts"],

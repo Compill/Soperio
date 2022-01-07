@@ -1,6 +1,3 @@
-/** @jsx jsx */
-
-import { jsx } from "@soperio/react";
 import { useColorTheme } from "@soperio/core";
 import React from "react";
 import { useFirstRender } from "../hooks/useFirstRender";
