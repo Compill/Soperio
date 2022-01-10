@@ -1,4 +1,17 @@
 {
   "name": "@soperio/jsx-runtime",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "description": "React CSS-IN-JS framework",
+  "keywords": ["react", "ui", "framework"],
+  "homepage": "https://github.com/jonathangerbaud/SoperioUI",
+  "bugs": {
+    "url": "https://github.com/jonathangerbaud/SoperioUI/issues",
+    "email": "dev@soperio-ui.com"
+  },
+  "license": "MIT",
+  "author": "Jonathan Gerbaud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathangerbaud/SoperioUI.git"
+  }
 }
