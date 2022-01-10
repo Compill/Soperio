@@ -1,11 +1,9 @@
-// @ts-ignore
-import { jsxDEV as emotionJsxDEV } from '@emotion/react/jsx-dev-runtime';
-import { parseProps, SoperioComponent } from '@soperio/core';
-import { SoperioJSX } from "./jsx-namespace";
-import { SVGSoperioProps } from "./SVG";
-import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime'
-import { Soperio } from "./Soperio";
+import { SoperioComponent } from '@soperio/core';
 import React from "react";
+import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
+import { SoperioJSX } from "./jsx-namespace";
+import { Soperio } from "./Soperio";
+import { SVGSoperioProps } from "./SVG";
 
 export { Fragment } from 'react';
 export type { SoperioJSX as JSX } from './jsx-namespace';
@@ -45,6 +43,7 @@ export function jsxDEV<P>(
 {
   if (typeof type === "string")
   {
+    // @ts-ignore
     return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
   }
 
@@ -52,6 +51,7 @@ export function jsxDEV<P>(
   //  instead of passing type, they put the type in a special prop
   // and use type "Emotion" to create the component
   // return emotionJsxDEV(Soperio, parseProps(props), key, isStaticChildren, source, self);
+  // @ts-ignore
   return ReactJSXRuntimeDev.jsxDEV(type, props, key, isStaticChildren, source, self);
     // return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
 }

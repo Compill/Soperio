@@ -2,7 +2,7 @@ import { css as emotionCss } from "@emotion/react";
 import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
 import { SoperioComponent } from "./SoperioComponent";
 import murmurhash from "murmurhash";
-import { getThemeStyle } from "..";
+import { getThemeStyle } from "./CSS/utils";
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 
