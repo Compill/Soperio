@@ -13,7 +13,9 @@
         "project": "libs/core/package.json",
         "entryFile": "libs/core/src/index.ts",
         "external": ["react/jsx-runtime"],
+        "styles": ["normalize.module.css"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "webpackConfig": "./webpack.config.js",
         "assets": [
           {
             "glob": "libs/core/README.md",
