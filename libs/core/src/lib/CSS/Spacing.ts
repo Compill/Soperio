@@ -21,8 +21,10 @@ function spaceY(value: any): Style
 
     return {
         "--so-space-y-reverse": 0,
-        "margin-top": `calc(${dimension} * var(--so-space-y-reverse))`,
-        "margin-bottom": `calc(${dimension} * calc(1 - var(--so-space-y-reverse)))`
+        ">:not([hidden])~:not([hidden])": {
+          "margin-top": `calc(${dimension} * var(--so-space-y-reverse))`,
+          "margin-bottom": `calc(${dimension} * calc(1 - var(--so-space-y-reverse)))`
+        }
     };
 }
 
