@@ -5,7 +5,7 @@ import { RootColors } from "../ThemeTypes";
 import { transformColorToGlobalVar } from "../utils/colorUtils";
 import { getTheme } from "./useTheme";
 
-type DarkMode = "light" | "dark" | "system"
+type DarkMode = "light" | "dark" | "system";
 
 interface DarkModeListener
 {
@@ -14,7 +14,7 @@ interface DarkModeListener
 
 interface DarkModeConfigListener
 {
-  (darkMode: DarkMode): void
+  (darkMode: DarkMode): void;
 }
 
 // This var will be initialized with the right value by a call
@@ -36,26 +36,26 @@ setDarkModeConfigInternal(darkModeConfigInternal);
 
 function isSystemDark()
 {
-  const mediaQueryList = window.matchMedia?.("(prefers-color-scheme: dark)")
+  const mediaQueryList = window.matchMedia?.("(prefers-color-scheme: dark)");
   if (!mediaQueryList)
   {
-    return undefined
+    return undefined;
   }
-  return !!mediaQueryList.media === mediaQueryList.matches
+  return !!mediaQueryList.media === mediaQueryList.matches;
 }
 
 function setDarkModeConfigInternal(darkMode: DarkMode)
 {
   if (darkModeConfigInternal !== darkMode || !firstRender)
   {
-    darkModeConfigInternal = darkMode
+    darkModeConfigInternal = darkMode;
 
     if (darkMode === "dark")
-      setDarkModeInternal(true)
+      setDarkModeInternal(true);
     else if (darkMode === "light")
-      setDarkModeInternal(false)
+      setDarkModeInternal(false);
     else
-      setDarkModeInternal(isSystemDark() || false)
+      setDarkModeInternal(isSystemDark() || false);
 
     configListeners.forEach(item => item(darkModeConfigInternal));
   }
@@ -126,7 +126,7 @@ function replaceRootColors()
 {
   const ROOT_COLORS_STYLE_ID = "soperio-root-colors";
 
-  const theme = getTheme()
+  const theme = getTheme();
 
   if (!theme.rootColors && IS_DEV)
     console.log("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
@@ -149,18 +149,30 @@ function replaceRootColors()
 
   css += "}";
 
-  // Inserting style tag with root colors
-  // removing existing if any
-  const existingStyleTag = document.getElementById(ROOT_COLORS_STYLE_ID)
+  const canUseDOM = !!(
+    typeof window !== 'undefined' &&
+    window.document &&
+    window.document.createElement
+  );
 
-  if (existingStyleTag != null)
-    document.head.removeChild(existingStyleTag);
+  // If Soperio is used Server-Side (Next/Gatsby/...)
+  // document is not available so wait until the code
+  // is rendered on the client side
+  if (canUseDOM)
+  {
+    // Inserting style tag with root colors
+    // removing existing if any
+    const existingStyleTag = document.getElementById(ROOT_COLORS_STYLE_ID);
 
-  const styleEl = document.createElement("style");
-  styleEl.id = ROOT_COLORS_STYLE_ID;
-  styleEl.appendChild(document.createTextNode(""));
-  styleEl.innerHTML = css;
-  document.head.appendChild(styleEl);
+    if (existingStyleTag != null)
+      document.head.removeChild(existingStyleTag);
+
+    const styleEl = document.createElement("style");
+    styleEl.id = ROOT_COLORS_STYLE_ID;
+    styleEl.appendChild(document.createTextNode(""));
+    styleEl.innerHTML = css;
+    document.head.appendChild(styleEl);
+  }
 }
 
 export function useDarkMode()

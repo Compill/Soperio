@@ -145,7 +145,7 @@ export function parseProps<P extends SoperioComponent>(props: P)
  * I just hope that it doesn't retransform my string into an object
  * then transform the object back into a string...
  */
-const head = document.head;
+// const head = document.head;
 
 // const sheet = styleEl.sheet as CSSStyleSheet;
 
