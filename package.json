@@ -6,7 +6,9 @@
     "start": "nx serve",
     "start demo": "nx serve demo --port 4201",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "deploy core": "nx deploy core",
+    "deploy ui": "nx deploy ui"
   },
   "private": true,
   "dependencies": {
