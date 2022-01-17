@@ -8,6 +8,7 @@
     "build": "nx build",
     "test": "nx test",
     "deploy core": "nx deploy core",
+    "deploy jsx-runtime": "nx deploy jsx-runtime",
     "deploy ui": "nx deploy ui"
   },
   "private": true,
