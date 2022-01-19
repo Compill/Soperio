@@ -66,7 +66,7 @@ export const TypographyMapping: StyleProps =
     notItalic: css("font-style", undefined, "normal"),
     fontWeight: css("font-weight"),
     numericFontVariant: css("font-variant-numeric"),
-    letterSpacing: css("tracking", "typography.letterSpacing"),
+    letterSpacing: css("letter-spacing", "typography.letterSpacing"),
     lineHeight: css("line-height", "typography.lineHeight"),
     listStyle: css("list-style-type"),
     listStylePosition: css("list-style-position"),
