@@ -1,3 +1,4 @@
+import { Global } from "@emotion/react";
 import React from "react"
 
 const css = `
@@ -574,5 +575,5 @@ video {
  */
 export function NormalizeCSS()
 {
-    return <style>{css}</style>;
+    return <Global styles={css} />;
 }

@@ -1,5 +1,6 @@
 import { SoperioProvider, useDirection, useToggleDirection } from "@soperio/core";
 import { Button } from "@soperio/ui";
+import { defaultTheme } from "@soperio/core";
 import React from "react";
 import { Content } from "./Content";
 
@@ -15,8 +16,14 @@ function App()
     // init();
   }, []);
 
+  const customTheme = {...defaultTheme, globalStyles: {
+    body: {
+      fontFamily: "Inter, sans-serif"
+    }
+  }}
+
   return (
-    <SoperioProvider direction={direction ? "ltr" : "rtl"}>
+    <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={customTheme}>
       <Button onClick={toggleDirection}>Toggle direction</Button>
       <Content />
     </SoperioProvider>

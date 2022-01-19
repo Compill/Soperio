@@ -1,7 +1,8 @@
-import { ColorThemes, Direction, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
+import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 export interface Theme
 {
+  globalStyles?: GlobalStyles,
   // Config
   direction?: Direction,
 

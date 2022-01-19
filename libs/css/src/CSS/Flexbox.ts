@@ -3,13 +3,13 @@ import { OrString } from "@soperio/utils";
 
 export interface Flexbox
 {
-    flexRow?: true | false | "reverse",
-    flexCol?: true | false | "reverse",
-    flexDirection?: true | false | "row" | "column" | "row-reverse" | "col-reverse",
-    flexWrap?: true | "reverse" | "no",
+  flexRow?: true | false | "reverse",
+  flexCol?: true | false | "reverse",
+  flexDirection?: true | false | "row" | "column" | "row-reverse" | "col-reverse",
+  flexWrap?: true | "reverse" | "no",
   flex?: false | Flex;
-    flexGrow?: true | string | number,
-    flexShrink?: true | string | number,
+  flexGrow?: true | string | number,
+  flexShrink?: true | string | number,
   order?: false | Order | number,
   gridCols?: false | GridColumn | number,
   colSpan?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "full"> | number,
@@ -19,7 +19,7 @@ export interface Flexbox
   rowSpan?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "full"> | number,
   rowStart?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
   rowEnd?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
-  gridFlow?: false | "row" | "col" | "dense" |"row dense" | "col dense",
+  gridFlow?: false | "row" | "col" | "dense" | "row dense" | "col dense",
   gridAutoCols?: false | GridAutoColumns,
   gridAutoRows?: false | GridAutoRows,
   gridTemplateCols?: false | GridTemplateColumns,
