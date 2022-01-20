@@ -16,11 +16,16 @@ function App()
     // init();
   }, []);
 
-  const customTheme = {...defaultTheme, globalStyles: {
-    body: {
-      fontFamily: "Inter, sans-serif"
+  const customTheme = {
+    ...defaultTheme, globalStyles: {
+      body: {
+        fontFamily: "Inter, sans-serif",
+        fontFeatureSettings: "'kern'",
+        webkitFontSmoothing: "antialiased",
+        textRendering: "optimizelegibility"
+      }
     }
-  }}
+  };
 
   return (
     <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={customTheme}>

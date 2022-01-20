@@ -1,5 +1,6 @@
 import { Global } from "@emotion/react";
-import React from "react"
+
+// TODO Update from Tailwind v3 https://unpkg.com/tailwindcss@3.0.15/src/css/preflight.css
 
 const css = `
   /*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com */
