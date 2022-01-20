@@ -14,9 +14,9 @@ export interface Background
   bgOpacity?: false | Opacity,
   bgImage?: false | OrString<"none" | "url()">,
   bgOrigin?: false | "border" | "padding" | "content",
-  bgPosition?: false | "bottom" | "center" | "start" | "start-top" | "start-bottom" | "end" | "end-top" | "end-bottom" | "top";
+  bgPosition?: false | OrString<"bottom" | "center" | "start" | "start-top" | "start-bottom" | "end" | "end-top" | "end-bottom" | "top">;
   bgRepeat?: true | false | "x" | "y" | "round" | "space" | "no-repeat",
-  bgSize?: false | "auto" | "cover" | "contain",
+  bgSize?: false | OrString<"auto" | "cover" | "contain">,
   // bgGradient?: "to-t" | "to-tr" | "to-r" | "to-br" | "to-b" | "to-bl" | "to-l" | "to-tl",
   // from?: string,
   // via?: string,
