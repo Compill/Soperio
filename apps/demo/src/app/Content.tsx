@@ -11,6 +11,7 @@ import Page9 from "./Page9";
 import Page10 from "./Page10";
 import React from "react";
 import { useDarkMode, useToggleDarkMode } from "@soperio/core";
+import { Test } from "./Test";
 
 export function Content()
 {
@@ -22,6 +23,7 @@ export function Content()
 
   return (
     <>
+      <Test bgColor="red" borderB="2" pt="16" />
       <div dflex flexRow px="16" py="8" bgColor="root.bg-color-2" spaceX="3">
         <Button onClick={() => setState(1)}>Button</Button>
         <Button onClick={() => setState(2)}>Checkbox</Button>
