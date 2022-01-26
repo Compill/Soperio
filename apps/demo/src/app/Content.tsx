@@ -1,5 +1,8 @@
-import { Button, Container } from "@soperio/ui";
+import { useDarkMode, useToggleDarkMode } from "@soperio/core";
+import { Button } from "@soperio/ui";
+import React from "react";
 import Page from "./Page";
+import Page10 from "./Page10";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
 import Page4 from "./Page4";
@@ -8,9 +11,7 @@ import Page6 from "./Page6";
 import Page7 from "./Page7";
 import Page8 from "./Page8";
 import Page9 from "./Page9";
-import Page10 from "./Page10";
-import React from "react";
-import { useDarkMode, useToggleDarkMode } from "@soperio/core";
+import Page11 from "./Page11";
 import { Test } from "./Test";
 
 export function Content()
@@ -19,7 +20,7 @@ export function Content()
   const darkMode = useDarkMode();
   const toggleDarkMode = useToggleDarkMode();
 
-  console.log("darkMode", darkMode)
+  console.log("darkMode", darkMode);
 
   return (
     <>
@@ -35,6 +36,7 @@ export function Content()
         <Button onClick={() => setState(8)}>TextArea</Button>
         <Button onClick={() => setState(9)}>Spinner</Button>
         <Button onClick={() => setState(10)}>Text</Button>
+        <Button onClick={() => setState(11)}>Test</Button>
         <Button onClick={() => toggleDarkMode()}>Toggle Dark Mode</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
@@ -48,6 +50,7 @@ export function Content()
         {state === 8 && <Page8 />}
         {state === 9 && <Page9 />}
         {state === 10 && <Page10 />}
+        {state === 10 && <Page11 />}
       </div>
     </>
   );

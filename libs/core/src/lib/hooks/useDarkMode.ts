@@ -147,6 +147,27 @@ function replaceRootColors()
       css += `\t--so-${cssVar}: ${parsedColor};\n`;
   }
 
+  // Filters default vars
+  css += `\t--so-filter-blur: ;\n`;
+  css += `\t--so-filter-brightness: ;\n`;
+  css += `\t--so-filter-contrast: ;\n`;
+  css += `\t--so-filter-drop-shadow: ;\n`;
+  css += `\t--so-filter-grayscale: ;\n`;
+  css += `\t--so-filter-hue-rotate: ;\n`;
+  css += `\t--so-filter-invert: ;\n`;
+  css += `\t--so-filter-saturate: ;\n`;
+  css += `\t--so-filter-sepia: ;\n`;
+
+  css += `\t--so-backdrop-filter-blur: ;\n`;
+  css += `\t--so-backdrop-filter-brightness: ;\n`;
+  css += `\t--so-backdrop-filter-contrast: ;\n`;
+  css += `\t--so-backdrop-filter-grayscale: ;\n`;
+  css += `\t--so-backdrop-filter-hue-rotate: ;\n`;
+  css += `\t--so-backdrop-filter-invert: ;\n`;
+  css += `\t--so-backdrop-filter-opacity: ;\n`;
+  css += `\t--so-backdrop-filter-saturate: ;\n`;
+  css += `\t--so-backdrop-filter-sepia: ;\n`;
+
   css += "}";
 
   const canUseDOM = !!(

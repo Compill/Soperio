@@ -2,6 +2,7 @@ import { AccessibilityMapping } from "./CSS/Accessibility";
 import { BackgroundMapping } from "./CSS/Background";
 import { BorderMapping } from "./CSS/Border";
 import { EffectsMapping } from "./CSS/Effects";
+import { FiltersMapping } from "./CSS/Filters";
 import { FlexboxMapping } from "./CSS/Flexbox";
 import { InteractivityMapping } from "./CSS/Interactivity";
 import { LayoutMapping } from "./CSS/Layout";
@@ -19,6 +20,7 @@ export const CSSPropsMap:any = {
     ...BorderMapping,
     ...EffectsMapping,
     ...FlexboxMapping,
+    ...FiltersMapping,
     ...InteractivityMapping,
     ...LayoutMapping,
     ...SizingMapping,

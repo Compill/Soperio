@@ -3,7 +3,7 @@ import { Button } from "@soperio/ui";
 import { defaultTheme } from "@soperio/core";
 import React from "react";
 import { Content } from "./Content";
-
+import Page11 from "./Page11"
 // jsx("div", {});
 
 function App()
@@ -30,6 +30,8 @@ function App()
   return (
     <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={customTheme}>
       <Button onClick={toggleDirection}>Toggle direction</Button>
+
+      {/* <Page11 /> */}
       <Content />
     </SoperioProvider>
   );

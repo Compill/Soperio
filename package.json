@@ -9,6 +9,7 @@
     "test": "nx test",
     "deploy core": "nx deploy core",
     "deploy css": "nx deploy css",
+    "deploy jsx-dev-runtime": "nx deploy jsx-dev-runtime",
     "deploy jsx-runtime": "nx deploy jsx-runtime",
     "deploy ui": "nx deploy ui"
   },
@@ -19,6 +20,7 @@
     "@emotion/react": "^11.7.0",
     "@fontsource/inter": "^4.5.1",
     "core-js": "^3.6.5",
+    "formik": "^2.2.9",
     "lodash": "^4.17.21",
     "murmurhash": "^2.0.0",
     "react": "17.0.2",

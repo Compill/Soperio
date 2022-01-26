@@ -20,13 +20,6 @@ declare module "react" {
 
   }
 
-  interface ReactElement<P extends SoperioComponent, T extends string | JSXElementConstructor<any> = string | JSXElementConstructor<any>>
-  {
-    type: T;
-    props: P;
-    key: Key | null;
-  }
-
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface Attributes extends SoperioComponent { }
 

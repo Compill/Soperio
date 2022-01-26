@@ -81,3 +81,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         </button >
     );
 });
+
+Button.displayName = "Soperio Button"

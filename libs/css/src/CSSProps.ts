@@ -2,6 +2,7 @@ import { Accessibility } from "./CSS/Accessibility";
 import { Background } from "./CSS/Background";
 import { Border } from "./CSS/Border";
 import { Effects } from "./CSS/Effects";
+import { Filters } from "./CSS/Filters";
 import { Flexbox } from "./CSS/Flexbox";
 import { Interactivity } from "./CSS/Interactivity";
 import Layout from "./CSS/Layout";
@@ -23,6 +24,7 @@ export interface CSSProps extends
     Border,
     Effects,
     Flexbox,
+    Filters,
     Layout,
     Interactivity,
     Sizing,

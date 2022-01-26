@@ -9,7 +9,7 @@ export default function Page({ ...props })
   return (
     <Container center breakpoint="xxl" gap="20" justifyContent="center" py="20">
 
-      <Card w="50%" mb="10" shadow>
+      <Card w="50%" mb="10" shadow blur="sm" sepia>
         <Card.Header showBorder minH="70px" dflex alignItems="center">
           <span fontSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>

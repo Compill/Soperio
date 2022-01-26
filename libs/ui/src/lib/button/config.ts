@@ -80,6 +80,9 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
         }
       },
       link: {
+        px: "0",
+        py: "0",
+        p: "0",
         appearanceNone: true,
         bgColor: "transparent",
         textColor: theme.default,
