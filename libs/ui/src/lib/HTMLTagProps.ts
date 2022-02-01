@@ -5,3 +5,4 @@ export type HTMLDivProps = HTMLParentComponent<HTMLDivElement>;
 export type HTMLInputProps = React.InputHTMLAttributes<HTMLInputElement>;
 export type HTMLSelectProps = React.SelectHTMLAttributes<HTMLSelectElement>;
 export type HTMLTextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+export type HTMLTextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;

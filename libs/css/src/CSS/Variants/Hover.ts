@@ -1,6 +1,7 @@
 import { Breakpoints, Color, Opacity } from "@soperio/theming";
+import { Transitions } from "../Transitions";
 
-export interface Hover
+export interface Hover extends Transitions
 {
   bgColor?: Color,
   bgOpacity?: Opacity,

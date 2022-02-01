@@ -2,7 +2,7 @@ import { Outline } from "@soperio/theming";
 
 export interface Interactivity
 {
-    appearanceNone?: boolean,
+  appearanceNone?: boolean,
   cursor?: false | "auto" | "default" | "pointer" | "wait" | "text" | "move" | "help" | "not-allowed",
   outline?: false | Outline,
   pointerEvents?: false | "none" | "auto",

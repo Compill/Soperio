@@ -58,6 +58,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     return (
         <button
             transition={firstRender ? "none" : "all"}
+            hover_transition="all"
             easing="linear"
             duration="300"
             fontWeight="500"
