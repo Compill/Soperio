@@ -22,7 +22,12 @@ function duration(value: any)
     let parsedValue = getThemeStyle("transition.duration", value);
 
     if (parsedValue === undefined)
+    {
+      if (typeof value === "number")
         parsedValue = `${value}ms`;
+      else
+        parsedValue = value
+    }
 
     return { "transition-duration": parsedValue };
 }
