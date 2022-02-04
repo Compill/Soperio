@@ -63,6 +63,8 @@ export class Soperio
     static getComponentConfig(name: string): SoperioComponentConfigFn<SoperioComponentConfig> | undefined
     {
         // TODO Merge with config from soperio-components.config.ts
+        // Do the merge at startup, instead of every time
+        // Or maybe cache the result
         return this.components[name]
     }
 }

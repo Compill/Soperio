@@ -4,6 +4,10 @@ import { SpinnerConfig } from "./types";
 export default function config(theme: ColorTheme, darkMode: boolean): SpinnerConfig
 {
   return {
+    default: {
+      thickness: "2px",
+      progress: 75
+    },
     size: {
       "sm": {
         w: "4",

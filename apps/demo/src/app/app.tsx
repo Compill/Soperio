@@ -1,9 +1,10 @@
-import { SoperioProvider, useDirection, useToggleDirection } from "@soperio/core";
+import { SoperioProvider, useDarkMode, useDirection, useToggleDirection } from "@soperio/core";
 import { Button } from "@soperio/ui";
 import { defaultTheme } from "@soperio/core";
 import React from "react";
 import { Content } from "./Content";
-import Page11 from "./Page11"
+// import { Content } from "./Content";
+// import Page11 from "./Page11"
 // jsx("div", {});
 
 function App()

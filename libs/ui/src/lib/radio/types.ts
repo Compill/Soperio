@@ -1,6 +1,7 @@
 import { SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
+import { CheckedDisabledThemeProps, CheckedThemeProps, DisabledThemeProps } from "../ComponentStates";
 import { HTMLInputProps } from "../HTMLTagProps";
 
 export interface RadioProps extends SoperioComponent, HTMLInputProps
@@ -13,10 +14,9 @@ export interface RadioProps extends SoperioComponent, HTMLInputProps
   config?: CustomComponentConfigFn<RadioConfig>;
 }
 
-export interface RadioThemeProps extends SoperioComponent
+export interface RadioThemeProps extends SoperioComponent, CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps
 {
-  checked?: SoperioComponent,
-  disabled?: SoperioComponent,
+
 }
 
 export interface RadioConfig extends SoperioComponentConfig

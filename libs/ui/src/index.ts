@@ -27,5 +27,6 @@ export * from './lib/sidebar/Sidebar';
 export * from './lib/tile/Tile';
 
 export * from './lib/HTMLTagProps';
+export * from './lib/ComponentStates';
 export * from './lib/Soperio';
 export * from "./lib/hooks/usePrevious";

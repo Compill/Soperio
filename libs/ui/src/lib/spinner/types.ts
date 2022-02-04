@@ -6,7 +6,6 @@ import { HTMLDivProps } from "../HTMLTagProps";
 export interface SpinnerThemeProps extends SoperioComponent
 {
   trackColor?: Color
-
 }
 
 export const variants = ["default", "track"] as const;

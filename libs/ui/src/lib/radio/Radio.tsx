@@ -31,15 +31,18 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
   const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
-  const sVariant = styles.variant?.[variant];
-  const sSize = styles.otherNameThanSize?.[otherNameThanSize];
+  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, otherNameThanSize }, props)
 
-  if (!sVariant && IS_DEV)
-    console.log(`[Soperio Radio Component]: variant ${variant} does not exist in your theme/config`);
 
-  const checkedProps = (sVariant && checked && sVariant.checked) || {};
-  const disabledProps = (sVariant && props.disabled && sVariant.disabled) || {};
+  // const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
+  // const sVariant = styles.variant?.[variant];
+  // const sSize = styles.otherNameThanSize?.[otherNameThanSize];
+
+  // if (!sVariant && IS_DEV)
+  //   console.log(`[Soperio Radio Component]: variant ${variant} does not exist in your theme/config`);
+
+  // const checkedProps = (sVariant && checked && sVariant.checked) || {};
+  // const disabledProps = (sVariant && props.disabled && sVariant.disabled) || {};
 
   const [soperioProps, inputProps] = Soperio.splitComponentProps(props);
 
@@ -73,10 +76,11 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
           easing={checked ? "out" : "linear"}
           duration="300"
           rounded="full"
-          {...sanitizeProps(sVariant, "disabled", "checked")}
-          {...sanitizeProps(sSize, "disabled", "checked")}
-          {...checkedProps}
-          {...disabledProps}
+          // {...sanitizeProps(sVariant, "disabled", "checked")}
+          // {...sanitizeProps(sSize, "disabled", "checked")}
+          // {...checkedProps}
+          // {...disabledProps}
+          {...styles}
         >
           {checked && (
             <React.Fragment>

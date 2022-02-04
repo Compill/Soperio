@@ -22,12 +22,12 @@ function getBorders(trackColor: string, progress: number): SoperioComponent
 }
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
-  thickness="2px",
+  thickness,
   trackColor,
   theme = "default",
   size = "md",
   variant = "default",
-  progress = 75,
+  progress,
   config,
   ...props
 }: SpinnerProps, ref) =>
@@ -35,23 +35,28 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
   const firstRender = useFirstRender();
   const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
-  const sVariant = styles.variant?.[variant];
-  const sSize = styles.size?.[size];
+  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size }, {...props, trackColor, thickness, progress})
 
-  const parsedTrackColor = useColor(trackColor || sVariant?.trackColor || "transparent")
+  // const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
+  // const sVariant = styles.variant?.[variant];
+  // const sSize = styles.size?.[size];
+
+  const parsedTrackColor = useColor(trackColor || styles?.trackColor || "transparent")
+  const parsedThickness = thickness || styles?.thickness
+  const parsedProgress = progress || styles?.progress || 75
 
   return (
     <div
       transition={firstRender ? "none" : "all"}
       display="inline-block"
-      {...getBorders(parsedTrackColor, progress)}
+      {...getBorders(parsedTrackColor, parsedProgress)}
       borderStyle="solid"
       rounded="full"
-      border={thickness}
-      animate={progress > 0 && progress < 100 ? "spin" : "none"}
-      {...sanitizeProps(sVariant, "trackColor")}
-      {...sSize}
+      border={parsedThickness}
+      animate={parsedProgress > 0 && parsedProgress < 100 ? "spin" : "none"}
+      // {...sanitizeProps(sVariant, "trackColor")}
+      // {...sSize}
+      {...styles}
       {...props}
       ref={ref}
       >

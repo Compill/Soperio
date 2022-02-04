@@ -1,10 +1,11 @@
 import { ComponentTheme, SoperioComponent } from "@soperio/core";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
+import { DisabledThemeProps } from "../ComponentStates";
 import { HTMLInputProps } from "../HTMLTagProps";
 
-export interface InputThemeProps extends SoperioComponent
+export interface InputThemeProps extends SoperioComponent, DisabledThemeProps
 {
-  disabled?: SoperioComponent,
+
 }
 
 export interface InputConfig extends SoperioComponentConfig

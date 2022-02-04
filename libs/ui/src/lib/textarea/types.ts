@@ -1,10 +1,11 @@
 import { ComponentTheme, SoperioComponent } from "@soperio/core";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
+import { DisabledThemeProps } from "../ComponentStates";
 import { HTMLTextAreaProps } from "../HTMLTagProps";
 
-export interface TextAreaThemeProps extends SoperioComponent
+export interface TextAreaThemeProps extends SoperioComponent, DisabledThemeProps, Omit<HTMLTextAreaProps, "disabled">
 {
-  disabled?: SoperioComponent,
+
 }
 
 export const variants = ["default", "solid", "underline"] as const;

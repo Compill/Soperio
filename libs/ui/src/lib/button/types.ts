@@ -1,13 +1,9 @@
 import { ComponentTheme, ParentComponent, SoperioComponent } from "@soperio/core";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
+import { DisabledThemeProps, SelectedDisabledThemeProps, SelectedThemeProps } from "../ComponentStates";
 import { HTMLButtonProps } from "../HTMLTagProps";
 
-export interface ButtonThemeProps extends SoperioComponent
-{
-  selected?: SoperioComponent,
-  disabled?: SoperioComponent,
-  selectedDisabled?: SoperioComponent,
-}
+export interface ButtonThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 export const variants = ["default", "light", "outline", "link", "borderless"] as const;
 

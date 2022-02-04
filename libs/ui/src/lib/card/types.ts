@@ -1,6 +1,7 @@
 import { SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
+import { DisabledThemeProps, SelectedDisabledThemeProps, SelectedThemeProps } from "../ComponentStates";
 import { HTMLDivProps } from "../HTMLTagProps";
 
 export const variants = ["default", "bordered"] as const;
@@ -8,11 +9,9 @@ export const variants = ["default", "bordered"] as const;
 export type CardVariants = typeof variants[number];
 export type CardCorners = "default" | "square" | "pill";
 
-export interface CardThemeProps extends SoperioComponent
+export interface CardThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps
 {
-  selected?: SoperioComponent,
-  disabled?: SoperioComponent,
-  selectedDisabled?: SoperioComponent,
+
 }
 
 export interface CardConfig extends SoperioComponentConfig

@@ -98,7 +98,6 @@ export function parseProps<P extends SoperioComponent>(props: P)
       Object.assign(current, CSSPropsMap[propName](newProps[prop]));
 
       // css = { ...css, ...style };
-      // console.log("for end", prop, css, style)
       delete newProps[prop];
 
       // const p = prop.substring(1);

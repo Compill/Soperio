@@ -24,7 +24,7 @@ export function Content()
 
   return (
     <>
-      <Test bgColor="red" borderB="2" pt="16" />
+      {/* <Test bgColor="red" borderB="2" pt="16" /> */}
       <div dflex flexRow px="16" py="8" bgColor="root.bg-color-2" spaceX="3">
         <Button onClick={() => setState(1)}>Button</Button>
         <Button onClick={() => setState(2)}>Checkbox</Button>
