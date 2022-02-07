@@ -14,11 +14,13 @@ export interface CardThemeProps extends SoperioComponent, SelectedThemeProps, Di
 
 }
 
-export interface CardConfig extends ComponentConfig<CardThemeProps>
+type ConfigVariants =
 {
   variant?: { [Property in CardVariants]?: CardThemeProps; },
   corners?: { [Property in CardCorners]?: CardThemeProps; },
 }
+
+export type CardConfig = ComponentConfig<CardThemeProps, ConfigVariants>
 
 export interface CardProps extends SoperioComponent, HTMLDivProps
 {

@@ -1,10 +1,8 @@
-import { SoperioComponent, useColorTheme } from "@soperio/core";
-import { IS_DEV } from "@soperio/utils";
+import { useColorTheme } from "@soperio/core";
 import React from 'react';
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
-import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
 import { ButtonProps } from "./types";
 
@@ -18,9 +16,9 @@ Soperio.registerComponent(COMPONENT_ID, defaultConfig)
  */
 // TODO Fix disabled style
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
-    size = "md",
-    variant = "default",
-    corners = "default",
+    size,
+    variant,
+    corners,
     theme = "default",
     config,
     selected = false,

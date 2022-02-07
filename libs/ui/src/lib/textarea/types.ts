@@ -14,12 +14,14 @@ export type TextAreaVariants = typeof variants[number];
 export type TextAreaSize = "sm" | "md" | "lg" | "xl" | "x2";
 export type TextAreaCorners = "default" | "square" | "pill";
 
-export interface TextAreaConfig extends ComponentConfig<TextAreaThemeProps>
+type ConfigVariants =
 {
   variant?: { [Property in TextAreaVariants]?: TextAreaThemeProps; },
   size?: { [Property in TextAreaSize]?: TextAreaThemeProps; },
   corners?: { [Property in TextAreaCorners]?: TextAreaThemeProps; },
 }
+
+export type TextAreaConfig = ComponentConfig<TextAreaThemeProps, ConfigVariants>
 
 export interface TextAreaProps extends SoperioComponent, DisabledState, Omit<HTMLTextAreaProps, "disabled">
 {

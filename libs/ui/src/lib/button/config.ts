@@ -5,55 +5,74 @@ import { ButtonConfig } from "./types";
 export default function config(theme: ColorTheme, darkMode: boolean): ButtonConfig
 {
   return {
-    variants: {
-      size: {
-        "sm": {
+    defaultVariants:
+    {
+      variant: "default",
+      corners: "default",
+      size: "md"
+    },
+    variants:
+    {
+      size:
+      {
+        "sm":
+        {
           px: "2",
           py: "1.5",
           fontSize: "sm"
         },
-        "md": {
+        "md":
+        {
           px: "2.5",
           py: "1.5",
           fontSize: "md"
         },
-        "lg": {
+        "lg":
+        {
           px: "3",
           py: "2",
           fontSize: "lg"
         },
-        "xl": {
+        "xl":
+        {
           px: "3.5",
           py: "2.5",
           fontSize: "xl"
         },
-        "x2": {
+        "x2":
+        {
           px: "4",
           py: "2.5",
           fontSize: "x2"
         }
       },
-      variant: {
-        default: {
+      variant:
+      {
+        default:
+        {
           bgColor: /*darkMode ? "#ff00ff" : */theme.default,
           hover_bgColor: theme.defaultHover,
           textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           outline: "none",
           border: "0",
-          stateSelected: {
+          stateSelected:
+          {
             bgColor: theme.defaultActive
           },
-          stateDisabled: {
+          stateDisabled:
+          {
             bgColor: theme.default,
             bgOpacity: "70",
             textOpacity: "85",
             cursor: "default"
           },
-          stateSelectedDisabled: {
+          stateSelectedDisabled:
+          {
             bgColor: theme.defaultActive
           }
         },
-        light: {
+        light:
+        {
           // bgColor: theme.light,
           bgColor: theme.default,
           bgOpacity: darkMode ? "30" : "15",
@@ -62,25 +81,29 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
           textColor: darkMode ? theme.textDark4 : theme.defaultActive,
           hover_bgColor: theme.default,
           hover_textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
-          stateSelected: {
+          stateSelected:
+          {
             bgColor: theme.defaultActive,
             textColor: isDark(theme.defaultActive) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
             hover_bgColor: theme.defaultActive,
           },
-          stateDisabled: {
+          stateDisabled:
+          {
             bgOpacity: "5",
             textColor: theme.defaultActive,
             textOpacity: "50",
             cursor: "default"
           },
-          stateSelectedDisabled: {
+          stateSelectedDisabled:
+          {
             bgColor: theme.defaultActive,
             textColor: theme.textLight1,
             bgOpacity: "70",
             textOpacity: "85",
           }
         },
-        link: {
+        link:
+        {
           px: "0",
           py: "0",
           p: "0",
@@ -89,35 +112,42 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
           textColor: theme.default,
           hover_textDecoration: "underline",
           outline: "none",
-          stateSelected: {
+          stateSelected:
+          {
             textDecoration: "underline",
           },
-          stateDisabled: {
+          stateDisabled:
+          {
             textOpacity: "60"
           }
         },
-        outline: {
+        outline:
+        {
           bgColor: "transparent",
           border: "2",
           borderColor: theme.default,
           textColor: theme.default,
           hover_bgColor: theme.default,
           hover_textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
-          stateSelected: {
+          stateSelected:
+          {
             bgColor: theme.default,
             textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           },
-          stateDisabled: {
+          stateDisabled:
+          {
             textOpacity: "70",
             borderOpacity: "70",
             bgOpacity: "70",
             hover_bgColor: "transparent",
           },
-          stateSelectedDisabled: {
+          stateSelectedDisabled:
+          {
             textOpacity: "85"
           }
         },
-        borderless: {
+        borderless:
+        {
           bgColor: "transparent",
           textColor: theme.default,
           hover_bgColor: theme.default,
@@ -125,17 +155,20 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
           hover_textColor: darkMode ? theme.textDark4 : theme.defaultActive,
           outline: "none",
           border: "0",
-          stateSelected: {
+          stateSelected:
+          {
             bgColor: theme.light,
           },
-          stateDisabled: {
+          stateDisabled:
+          {
             textOpacity: "60",
             bgOpacity: "60",
             hover_bgColor: "transparent",
           }
         }
       },
-      corners: {
+      corners:
+      {
         square: {},
         default: { rounded: true },
         pill: { rounded: "full" }

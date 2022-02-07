@@ -15,15 +15,16 @@ export interface CheckboxProps extends SoperioComponent, CheckedState, DisabledS
   config?: ExtendComponentConfig<CheckboxThemeProps, CheckboxConfig>;
 }
 
-export interface CheckboxThemeProps extends SoperioComponent, CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps
+interface CheckboxThemeProps extends SoperioComponent, CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps
 {
-  checked?: SoperioComponent,
-  disabled?: SoperioComponent,
+
 }
 
-export interface CheckboxConfig extends ComponentConfig<CheckboxThemeProps>
-{
+type ConfigVariants = {
+  // TODO Find a better property name
   otherNameThanSize?: Record<string, CheckboxThemeProps>,
   variant?: Record<string, CheckboxThemeProps>,
   shape?: Record<string, CheckboxThemeProps>,
 }
+
+export type CheckboxConfig = ComponentConfig<CheckboxThemeProps, ConfigVariants>

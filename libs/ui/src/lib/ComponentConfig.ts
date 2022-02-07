@@ -29,7 +29,7 @@ type VariantConfig<T extends SoperioComponent> = {
 // for applying the logic for setting the defaults automatically
 // and then any other key to define a kind of "variant" like variant,
 // size, shape, corners, etc...
-type BaseComponentConfig<T extends SoperioComponent, C extends VariantConfig<T> = Record<string, Record<string, T>>> =
+export type BaseComponentConfig<T extends SoperioComponent, C extends VariantConfig<T> = Record<string, Record<string, T>>> =
 {
   defaultProps?: T,
   defaultVariants?: { [key: string]: string; };

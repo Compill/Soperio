@@ -14,13 +14,14 @@ export type BadgeVariants = typeof variants[number];
 export type BadgeSize = "xs" | "sm" | "md" | "lg" | "xl" | "x2";
 export type BadgeShape = "default" | "rounded" | "pill" | "square";
 
-
-export interface BadgeConfig extends ComponentConfig<SoperioComponent>
+type ConfigVariants =
 {
   variant?: { [Property in BadgeVariants]?: SoperioComponent; },
   size?: { [Property in BadgeSize]?: SoperioComponent; },
   shape?: { [Property in BadgeShape]?: SoperioComponent; },
 }
+
+export type BadgeConfig = ComponentConfig<BadgeThemeProps, ConfigVariants>
 
 export interface BadgeProps extends SoperioComponent, ParentComponent
 {

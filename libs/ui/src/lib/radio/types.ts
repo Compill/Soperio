@@ -19,8 +19,9 @@ export interface RadioThemeProps extends SoperioComponent, CheckedThemeProps, Di
 
 }
 
-export interface RadioConfig extends ComponentConfig
-{
+type ConfigVariants = {
   otherNameThanSize?: Record<string, RadioThemeProps>,
   variant?: Record<string, RadioThemeProps>,
 }
+
+export type RadioConfig = ComponentConfig<RadioThemeProps, ConfigVariants>

@@ -12,11 +12,12 @@ type ConfigVariants = {
 };
 
 export type ButtonConfig = ComponentConfig<ButtonThemeProps, ConfigVariants>
+export type ExtendButtonConfig = ExtendComponentConfig<ButtonThemeProps, ButtonConfig>
 
 export interface ButtonProps extends SoperioComponent, ParentComponent, SelectedState, DisabledState, SelectedDisabledState, Omit<HTMLButtonProps, "disabled">, ButtonGeneratedProps
 {
   theme?: ComponentTheme,
-  config?: ExtendComponentConfig<ButtonThemeProps, ButtonConfig>;
+  config?: ExtendButtonConfig;
 }
 
 // TODO This should be in another file that will be overridden by CLI

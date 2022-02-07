@@ -33,7 +33,7 @@ function App()
       <Button onClick={toggleDirection}>Toggle direction</Button>
 
       {/* <Page11 /> */}
-      {/* <Content /> */}
+      <Content />
     </SoperioProvider>
   );
 }

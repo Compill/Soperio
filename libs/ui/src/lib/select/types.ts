@@ -8,12 +8,14 @@ export interface SelectThemeProps extends SoperioComponent, DisabledThemeProps
 
 }
 
-export interface SelectConfig extends ComponentConfig
+type ConfigVariants =
 {
   size?: Record<string, SelectThemeProps>,
   variant?: Record<string, SelectThemeProps>,
   corners?: Record<string, SelectThemeProps>,
 }
+
+export type SelectConfig = ComponentConfig<SelectThemeProps, ConfigVariants>
 
 export interface SelectProps extends SoperioComponent, ParentComponent,DisabledState,  Omit<HTMLSelectProps, "size" | "disabled">
 {

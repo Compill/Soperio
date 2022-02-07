@@ -8,12 +8,14 @@ export interface InputThemeProps extends SoperioComponent, DisabledThemeProps
 
 }
 
-export interface InputConfig extends ComponentConfig<InputThemeProps>
+type ConfigVariants =
 {
   size?: Record<string, InputThemeProps>,
   variant?: Record<string, InputThemeProps>,
   corners?: Record<string, InputThemeProps>,
 }
+
+export type InputConfig = ComponentConfig<InputThemeProps>
 
 export interface InputProps extends SoperioComponent, DisabledState, Omit<HTMLInputProps, "size" |"disabled">
 {

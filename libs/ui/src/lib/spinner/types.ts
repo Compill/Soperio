@@ -16,11 +16,14 @@ export type SpinnerVariants = typeof variants[number];
 export type SpinnerSize = "sm" | "md" | "lg" | "xl" | "x2";
 export type SpinnerProgress = 0 | 25 | 50 | 75 | 100;
 
-export interface SpinnerConfig extends ComponentConfig<SpinnerThemeProps>
+
+type ConfigVariants =
 {
   variant?: { [Property in SpinnerVariants]?: SpinnerThemeProps; },
   size?: { [Property in SpinnerSize]?: SpinnerThemeProps; },
 }
+
+export type SpinnerConfig = ComponentConfig<SpinnerThemeProps, ConfigVariants>
 
 export interface SpinnerProps extends SoperioComponent, HTMLDivProps
 {
