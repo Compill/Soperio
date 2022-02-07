@@ -1,6 +1,6 @@
 import { ComponentTheme, ParentComponent, SoperioComponent } from "@soperio/core";
-import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
-import { DisabledThemeProps } from "../ComponentStates";
+import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
+import { DisabledState, DisabledThemeProps } from "../ComponentStates";
 import { HTMLSelectProps } from "../HTMLTagProps";
 
 export interface SelectThemeProps extends SoperioComponent, DisabledThemeProps
@@ -8,14 +8,14 @@ export interface SelectThemeProps extends SoperioComponent, DisabledThemeProps
 
 }
 
-export interface SelectConfig extends SoperioComponentConfig
+export interface SelectConfig extends ComponentConfig
 {
   size?: Record<string, SelectThemeProps>,
   variant?: Record<string, SelectThemeProps>,
   corners?: Record<string, SelectThemeProps>,
 }
 
-export interface SelectProps extends SoperioComponent, ParentComponent, Omit<HTMLSelectProps, "size">
+export interface SelectProps extends SoperioComponent, ParentComponent,DisabledState,  Omit<HTMLSelectProps, "size" | "disabled">
 {
   size?: "sm" | "md" | "lg" | "xl" | "x2",
   variant?: "default" | "solid" | "underline",
@@ -24,6 +24,6 @@ export interface SelectProps extends SoperioComponent, ParentComponent, Omit<HTM
    */
   corners?: "default" | "square" | "pill",
   theme?: ComponentTheme,
-  config?: CustomComponentConfigFn<SelectConfig>;
+  config?: ExtendComponentConfig<SelectThemeProps, SelectConfig>;
   length?: number;
 }

@@ -45,5 +45,9 @@ export default function config(theme: ColorTheme, darkMode: boolean): SpinnerCon
         trackColor: theme.light
       },
     },
+    defaultVariants: {
+      variant: "default",
+      size: "md"
+    }
   };
 }

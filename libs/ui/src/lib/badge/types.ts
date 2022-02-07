@@ -1,11 +1,12 @@
 import { ParentComponent, SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
-import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
+import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 
-// export interface BadgeThemeProps extends SoperioComponent
-// {
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface BadgeThemeProps extends SoperioComponent
+{
 
-// }
+}
 
 export const variants = ["default", "light", "outline", "light-outline"] as const;
 
@@ -14,7 +15,7 @@ export type BadgeSize = "xs" | "sm" | "md" | "lg" | "xl" | "x2";
 export type BadgeShape = "default" | "rounded" | "pill" | "square";
 
 
-export interface BadgeConfig extends SoperioComponentConfig
+export interface BadgeConfig extends ComponentConfig<SoperioComponent>
 {
   variant?: { [Property in BadgeVariants]?: SoperioComponent; },
   size?: { [Property in BadgeSize]?: SoperioComponent; },
@@ -27,5 +28,5 @@ export interface BadgeProps extends SoperioComponent, ParentComponent
   theme?: string | ColorTheme,
   shape?: BadgeShape,
   size?: BadgeSize,
-  config?: CustomComponentConfigFn<BadgeConfig>;
+  config?: ExtendComponentConfig<BadgeThemeProps, BadgeConfig>;
 }

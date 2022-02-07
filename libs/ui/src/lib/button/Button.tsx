@@ -16,6 +16,7 @@ Soperio.registerComponent(COMPONENT_ID, defaultConfig)
  *
  *
  */
+// TODO Fix disabled style
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     size = "md",
     variant = "default",

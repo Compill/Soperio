@@ -3,8 +3,8 @@ import { ColorTheme } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";
-import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
-import { ComponentState } from "../ComponentStates";
+import { ComponentConfigFn, ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
+import { ActiveDisabledState, ActiveState, CheckedDisabledState, CheckedState, ComponentState, DisabledState, InvalidState, SelectedDisabledState, SelectedState, ValidState } from "../ComponentStates";
 import { Soperio } from "../Soperio";
 
 type KeysOf<T> =
@@ -12,12 +12,34 @@ type KeysOf<T> =
   [Property in keyof T]: string
 }
 
-export function useComponentConfig<T extends SoperioComponentConfig, P extends SoperioComponent>(
+type OmitStates<T> = Omit<T, "active" | "checked" | "disabled" | "invalid" | "selected" | "valid" | "activeDisabled" | "checkedDisabled" | "selectedDisabled">
+interface SoperioComponentWithStates extends SoperioComponent, ActiveState, CheckedState, DisabledState, InvalidState, SelectedState, ValidState, ActiveDisabledState, CheckedDisabledState, SelectedDisabledState {}
+
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+function isFunction<T extends Function = Function>(
+  value: any,
+): value is T
+{
+  return typeof value === "function";
+}
+
+function runIfFn<T>(
+  // Won't work because of fucking generic with type Config
+  // valueOrFn: T | ((...fnArgs: any[]) => T),
+  valueOrFn: any | ((...fnArgs: any[]) => any),
+  ...args: any[]
+): T
+{
+  return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
+}
+
+export function useComponentConfig<T extends SoperioComponent, P extends ComponentConfig<T>>(
   component = "",
   theme: ColorTheme,
-  customConfig: CustomComponentConfigFn<T> | undefined,
-  componentConfig: KeysOf<T>,
-  props?: P): P
+  customConfig: ExtendComponentConfig<T, P> | undefined,
+  componentConfig: KeysOf<P>,
+  props?: T): OmitStates<T>
 {
   const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component));
   const darkMode = useDarkMode();
@@ -29,39 +51,44 @@ export function useComponentConfig<T extends SoperioComponentConfig, P extends S
 
   if (customConfig)
   {
-    const c = customConfig(theme, darkMode);
+    const c = runIfFn<ComponentConfig<T>>(customConfig.config, theme, darkMode)
 
-    if (c.mode === "extends")
-      config = deepmerge(defaultConfig ? defaultConfig(theme, darkMode) : {}, c.config) as T;
+    if (customConfig.mode === "extends")
+      config = deepmerge(runIfFn(defaultConfig, theme, darkMode) ?? {}, c) as T;
     else
-      config = c.config;
+      config = c;
   }
   else if (defaultConfig)
   {
-    config = defaultConfig(theme, darkMode) as T;
+    config = runIfFn<ComponentConfig<T>>(defaultConfig, theme, darkMode);
   }
 
   if (config)
-    return mergeProps(config, componentConfig, props) as P;
+    return mergeProps(config as ComponentConfig<T>, componentConfig, props) as OmitStates<T>;
 
-  return {} as P;
+  return {} as OmitStates<T>;
 }
 
 // Get the right set of soperio props from the config variants (variant, size, corners, ...)
-function mergeProps<T extends SoperioComponent>(config: SoperioComponentConfig, componentConfig: KeysOf<T>, props: any): T
+function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(config: ComponentConfig<T>, componentConfig: KeysOf<P>, props: any): OmitStates<T>
 {
   // Let's start with the component default values
-  let finalProps = { ...(config.default as T)};
+  let finalProps = { ...(config.defaultProps as T)};
 
   // Now remove the default so that we can override the defaults with the other "variants"
   // Like variant, size, borders, shape, etc...
-  delete config.default
+  delete config.defaultProps
+
+  const defaultVariants = config.defaultVariants
+  delete config.defaultVariants
+
+  const c = config as any
 
   for (const key in componentConfig)
   {
-    const variant = config[key]
+    const variant = c[key]
 
-    const configProps = variant ? (variant as any)[componentConfig[key]] : null;
+    const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null;
 
     if (configProps)
       finalProps = deepmerge(finalProps, configProps) as T
@@ -72,7 +99,7 @@ function mergeProps<T extends SoperioComponent>(config: SoperioComponentConfig, 
 
 // Final step : merge the props with the state props
 // checked, selected, disabled, ...
-function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): T
+function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): OmitStates<T>
 {
   let finalProps = {...configProps};
 
@@ -104,5 +131,5 @@ function mergeStateProps<T extends SoperioComponent>(configProps: any, props: an
   if (props[ComponentState.DISABLED])
     finalProps = { ...finalProps, ...configProps[ComponentState.DISABLED] };
 
-  return finalProps as T;
+  return finalProps as OmitStates<T>;
 }

@@ -1,6 +1,6 @@
 import { ComponentTheme, SoperioComponent } from "@soperio/core";
-import { CustomComponentConfigFn, SoperioComponentConfig } from "../ComponentConfig";
-import { DisabledThemeProps } from "../ComponentStates";
+import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
+import { DisabledState, DisabledThemeProps } from "../ComponentStates";
 import { HTMLTextAreaProps } from "../HTMLTagProps";
 
 export interface TextAreaThemeProps extends SoperioComponent, DisabledThemeProps, Omit<HTMLTextAreaProps, "disabled">
@@ -14,14 +14,14 @@ export type TextAreaVariants = typeof variants[number];
 export type TextAreaSize = "sm" | "md" | "lg" | "xl" | "x2";
 export type TextAreaCorners = "default" | "square" | "pill";
 
-export interface TextAreaConfig extends SoperioComponentConfig
+export interface TextAreaConfig extends ComponentConfig<TextAreaThemeProps>
 {
   variant?: { [Property in TextAreaVariants]?: TextAreaThemeProps; },
   size?: { [Property in TextAreaSize]?: TextAreaThemeProps; },
   corners?: { [Property in TextAreaCorners]?: TextAreaThemeProps; },
 }
 
-export interface TextAreaProps extends SoperioComponent, HTMLTextAreaProps
+export interface TextAreaProps extends SoperioComponent, DisabledState, Omit<HTMLTextAreaProps, "disabled">
 {
   size?: TextAreaSize,
   variant?: TextAreaVariants,
@@ -30,5 +30,5 @@ export interface TextAreaProps extends SoperioComponent, HTMLTextAreaProps
    */
   corners?: TextAreaCorners,
   theme?: ComponentTheme,
-  config?: CustomComponentConfigFn<TextAreaConfig>;
+  config?: ExtendComponentConfig<TextAreaThemeProps, TextAreaConfig>;
 }
