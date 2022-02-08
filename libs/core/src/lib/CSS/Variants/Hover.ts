@@ -1,8 +1,4 @@
-// import { SpacingScale } from "../Utilities/Spacing";
-// import { ScalingScale } from "../Utilities/Transform";
-import { Breakpoints } from "../../Breakpoints";
-import { Color } from "../../PropTypes/Color";
-import { Opacity } from "../../PropTypes/Opacity";
+import { Breakpoints, Color, Opacity } from "@soperio/theming";
 
 export interface Hover
 {

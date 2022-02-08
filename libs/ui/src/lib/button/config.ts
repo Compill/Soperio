@@ -83,6 +83,7 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
           border: "0",
           textColor: darkMode ? theme.textDark4 : theme.defaultActive,
           hover_bgColor: theme.default,
+          hover_bgOpacity: "100",
           hover_textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           stateSelected:
           {
@@ -123,7 +124,9 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
           },
           stateDisabled:
           {
-            textOpacity: "60"
+            textOpacity: "60",
+            hover_textDecoration: "no-underline",
+            cursor: "default"
           }
         },
         outline:
@@ -144,7 +147,9 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
             textOpacity: "70",
             borderOpacity: "70",
             bgOpacity: "70",
+            hover_textColor: theme.default,
             hover_bgColor: "transparent",
+            cursor: "default"
           },
           stateSelectedDisabled:
           {
@@ -169,6 +174,8 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
             textOpacity: "60",
             bgOpacity: "60",
             hover_bgColor: "transparent",
+            hover_textColor: theme.default,
+            cursor: "default"
           }
         }
       },
