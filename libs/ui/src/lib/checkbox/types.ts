@@ -1,11 +1,11 @@
 import { SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { CheckedDisabledState, CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, DisabledState, DisabledThemeProps } from "../ComponentStates";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, DisabledState, DisabledThemeProps } from "../ComponentStates";
 import { HTMLInputProps } from "../HTMLTagProps";
 
 // CheckedThemeProps, DisabledThemeProps checked and disabled are already in HTMLInputProps
-export interface CheckboxProps extends SoperioComponent, CheckedState, DisabledState, CheckedDisabledState, Omit<HTMLInputProps, "disabled">
+export interface CheckboxProps extends SoperioComponent, CheckedState, DisabledState, Omit<HTMLInputProps, "disabled">
 {
   label?: string,
   otherNameThanSize?: "md" | "lg",

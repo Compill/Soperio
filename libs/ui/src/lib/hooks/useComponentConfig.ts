@@ -4,7 +4,7 @@ import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";
 import { BaseComponentConfig, ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { ComponentState } from "../ComponentStates";
+import { ComponentState, ComponentThemeState } from "../ComponentStates";
 import { Soperio } from "../Soperio";
 
 type KeysOf<T> =
@@ -42,8 +42,6 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
   const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component));
   const darkMode = useDarkMode();
 
-  console.log("default config", defaultConfig)
-
   if (!defaultConfig && IS_DEV)
     console.log(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
 
@@ -63,9 +61,6 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
     config = runIfFn<ComponentConfig<T>>(defaultConfig, theme, darkMode);
   }
 
-  console.log("step 1 config", config)
-  console.log("step 1 config default variants", (config as any)["defaultVariants"])
-
   if (config)
     return mergeProps(config as BaseComponentConfig<T>, componentConfig, props) as T;
 
@@ -75,11 +70,8 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
 // Get the right set of soperio props from the config variants (variant, size, corners, ...)
 function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(config: BaseComponentConfig<T>, componentConfig: KeysOf<P>, props: any): OmitStates<T>
 {
-  console.log("merge props", config)
   // Let's start with the component default values
   let finalProps = { ...(config.defaultProps as T)};
-
-  console.log("finalProps 0", finalProps)
 
   // Now remove the default so that we can override the defaults with the other "variants"
   // Like variant, size, borders, shape, etc...
@@ -89,8 +81,6 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(co
   delete config.defaultVariants
 
   const c = config as any
-  console.log("config", config)
-  console.log("component config", componentConfig)
 
   const variants = c.variants
 
@@ -98,15 +88,11 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(co
   {
     const variant = variants[key]
 
-    console.log("variant", key, variant)
-
     const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null;
-    console.log("variant", key, configProps)
+
     if (configProps)
       finalProps = deepmerge(finalProps, configProps) as T
   }
-
-  console.log("finalProps 1", finalProps)
 
   return mergeStateProps(finalProps, props)
 }
@@ -117,33 +103,53 @@ function mergeStateProps<T extends SoperioComponent>(configProps: any, props: an
 {
   let finalProps = {...configProps};
 
-  delete finalProps[ComponentState.VALID]
-  delete finalProps[ComponentState.INVALID]
-  delete finalProps[ComponentState.ACTIVE]
-  delete finalProps[ComponentState.ACTIVE_DISABLED]
-  delete finalProps[ComponentState.CHECKED]
-  delete finalProps[ComponentState.CHECKED_DISABLED]
-  delete finalProps[ComponentState.SELECTED]
-  delete finalProps[ComponentState.SELECTED_DISABLED]
-  delete finalProps[ComponentState.DISABLED]
+  // Remove theme states from final props
+  // Soperio props don't have stateActive, stateDisabled, etc
+  // only their html counterparts like disabled, selected, checked, ...
+  //
+  // Theme props :
+  // stateDisabled: {
+  //  // bunch of soperio props
+  // }
+  //
+  // Soperio props
+  // disabled: true
+  delete finalProps[ComponentThemeState.VALID]
+  delete finalProps[ComponentThemeState.INVALID]
+  delete finalProps[ComponentThemeState.ACTIVE]
+  delete finalProps[ComponentThemeState.ACTIVE_DISABLED]
+  delete finalProps[ComponentThemeState.CHECKED]
+  delete finalProps[ComponentThemeState.CHECKED_DISABLED]
+  delete finalProps[ComponentThemeState.SELECTED]
+  delete finalProps[ComponentThemeState.SELECTED_DISABLED]
+  delete finalProps[ComponentThemeState.DISABLED]
 
   if (props[ComponentState.VALID])
-    finalProps = { ...finalProps, ...configProps[ComponentState.VALID] };
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.VALID] };
 
   if (props[ComponentState.INVALID])
-    finalProps = { ...finalProps, ...configProps[ComponentState.INVALID] };
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.INVALID] };
 
   if (props[ComponentState.ACTIVE])
-    finalProps = { ...finalProps, ...configProps[ComponentState.ACTIVE], ...(configProps[ComponentState.DISABLED] ? configProps[ComponentState.ACTIVE_DISABLED] : null)};
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE] };
 
   if (props[ComponentState.CHECKED])
-    finalProps = { ...finalProps, ...configProps[ComponentState.CHECKED], ...(configProps[ComponentState.DISABLED] ? configProps[ComponentState.CHECKED_DISABLED] : null) };
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED] };
 
   if (props[ComponentState.SELECTED])
-    finalProps = { ...finalProps, ...configProps[ComponentState.SELECTED], ...(configProps[ComponentState.DISABLED] ? configProps[ComponentState.SELECTED_DISABLED] : null) };
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED] };
 
   if (props[ComponentState.DISABLED])
-    finalProps = { ...finalProps, ...configProps[ComponentState.DISABLED] };
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.DISABLED] };
+
+  if (props[ComponentState.DISABLED] && props[ComponentState.ACTIVE])
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE_DISABLED] };
+
+  if (props[ComponentState.DISABLED] && props[ComponentState.CHECKED])
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED_DISABLED] };
+
+  if (props[ComponentState.DISABLED] && props[ComponentState.SELECTED])
+    finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED_DISABLED] };
 
   return finalProps as OmitStates<T>;
 }

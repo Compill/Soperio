@@ -1,8 +1,7 @@
-import React from 'react';
-import { useDarkMode, defaultColorTheme } from "@soperio/core";
-import { Button, Container, ExtendButtonConfig, Sidebar } from "@soperio/ui";
-import { ButtonConfig, ComponentConfig } from "@soperio/ui";
+import { defaultColorTheme, useDarkMode } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
+import { Button, Container, ExtendButtonConfig, Sidebar } from "@soperio/ui";
+import React from 'react';
 
 type Side = "start" | "end" | "top" | "bottom";
 
@@ -56,7 +55,7 @@ export default function Page({ ...props })
     <Container center breakpoint="xxl" dflex gap="20" justifyContent="center" py="20">
 
       <div flexRow>
-        <Button /*config={buttonConfig}*/ variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("start")} z="1001">Open Left</Button>
+        <Button config={buttonConfig} variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("start")} z="1001">Open Left</Button>
         <Button config={buttonConfig} variant="light" block mx="auto" my="5">Light button</Button>
         <Button config={buttonConfig} variant="link" block mx="auto" my="5">Link button</Button>
         <Button config={buttonConfig} variant="outline" block mx="auto" my="5">Outline button</Button>

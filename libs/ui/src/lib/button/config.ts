@@ -57,12 +57,15 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
           border: "0",
           stateSelected:
           {
-            bgColor: theme.defaultActive
+            bgColor: theme.defaultActive,
+            hover_bgColor: theme.defaultActive,
           },
           stateDisabled:
           {
             bgColor: theme.default,
+            hover_bgColor: theme.default,
             bgOpacity: "70",
+            // hover_bgOpacity: "70",
             textOpacity: "85",
             cursor: "default"
           },
@@ -90,7 +93,9 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
           stateDisabled:
           {
             bgOpacity: "5",
+            // hover_bgOpacity: "5",
             textColor: theme.defaultActive,
+            hover_textColor: theme.defaultActive,
             textOpacity: "50",
             cursor: "default"
           },

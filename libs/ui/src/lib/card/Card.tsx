@@ -1,6 +1,6 @@
 import { ParentComponent, SoperioComponent, useColorTheme } from "@soperio/core";
 import { SpacingPositive } from "@soperio/theming";
-import { IS_DEV, OrString } from "@soperio/utils";
+import { OrString } from "@soperio/utils";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
@@ -30,18 +30,9 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, corners }, props)
 
-  // const styles = useComponentConfig(COMPONENT_ID, colorTheme, config);
-  // const sVariant = styles.variant?.[variant];
-  // const sCorners = styles.corners?.[corners];
-
-  // if (!sVariant && IS_DEV)
-  //   console.log(`[Soperio Card Component]: variant ${variant} does not exist in your theme/config`);
-
   return (
     <div
       transition={firstRender ? "none" : "all"}
-      // {...sVariant}
-      // {...sCorners}
       {...styles}
       {...props}
       ref={ref}

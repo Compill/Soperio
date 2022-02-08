@@ -1,6 +1,6 @@
 import { ComponentTheme, ParentComponent, SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { DisabledState, DisabledThemeProps, SelectedDisabledState, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
+import { DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
 import { HTMLButtonProps } from "../HTMLTagProps";
 
 export interface ButtonThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
@@ -14,7 +14,7 @@ type ConfigVariants = {
 export type ButtonConfig = ComponentConfig<ButtonThemeProps, ConfigVariants>
 export type ExtendButtonConfig = ExtendComponentConfig<ButtonThemeProps, ButtonConfig>
 
-export interface ButtonProps extends SoperioComponent, ParentComponent, SelectedState, DisabledState, SelectedDisabledState, Omit<HTMLButtonProps, "disabled">, ButtonGeneratedProps
+export interface ButtonProps extends SoperioComponent, ParentComponent, SelectedState, DisabledState, Omit<HTMLButtonProps, "disabled">, ButtonGeneratedProps
 {
   theme?: ComponentTheme,
   config?: ExtendButtonConfig;

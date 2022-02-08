@@ -3,7 +3,6 @@ import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
-import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
 import { SpinnerProps } from "./types";
 
@@ -37,10 +36,6 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size }, {...props, trackColor, thickness, progress})
 
-  // const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
-  // const sVariant = styles.variant?.[variant];
-  // const sSize = styles.size?.[size];
-
   const parsedTrackColor = useColor(trackColor || styles?.trackColor || "transparent")
   const parsedThickness = thickness || styles?.thickness
   const parsedProgress = progress || styles?.progress || 75
@@ -54,8 +49,6 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
       rounded="full"
       border={parsedThickness}
       animate={parsedProgress > 0 && parsedProgress < 100 ? "spin" : "none"}
-      // {...sanitizeProps(sVariant, "trackColor")}
-      // {...sSize}
       {...styles}
       {...props}
       ref={ref}

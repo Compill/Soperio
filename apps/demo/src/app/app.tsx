@@ -1,8 +1,9 @@
 import { SoperioProvider, useDarkMode, useDirection, useToggleDirection } from "@soperio/core";
-import { Button } from "@soperio/ui";
+import { Button, ExtendButtonConfig } from "@soperio/ui";
 import { defaultTheme } from "@soperio/core";
 import React from "react";
 import { Content } from "./Content";
+import { ColorTheme } from "@soperio/theming";
 // import { Content } from "./Content";
 // import Page11 from "./Page11"
 // jsx("div", {});
@@ -28,9 +29,27 @@ function App()
     }
   };
 
+  const buttonConfig: ExtendButtonConfig = {
+    mode: "extends",
+    config: (theme: ColorTheme, darkMode: boolean) => ({
+      variants: {
+        variant: {
+          default: {
+            bgColor: "#ff0000",
+            textColor: "white"
+          },
+          outline: {
+            bgColor: "#ff00ff",
+            textColor: "white"
+          }
+        }
+      },
+    })
+  };
+
   return (
     <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={customTheme}>
-      <Button onClick={toggleDirection}>Toggle direction</Button>
+      <Button onClick={toggleDirection} disabled>Toggle direction</Button>
 
       {/* <Page11 /> */}
       <Content />

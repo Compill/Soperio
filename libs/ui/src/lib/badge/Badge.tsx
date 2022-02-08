@@ -1,11 +1,10 @@
 import { useColorTheme } from "@soperio/core";
-import { useComponentConfig } from "../hooks/useComponentConfig";
-import { IS_DEV } from "@soperio/utils";
 import React from "react";
+import { useComponentConfig } from "../hooks/useComponentConfig";
+import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
 import { BadgeProps } from "./types";
-import { useFirstRender } from "../hooks/useFirstRender";
 
 const COMPONENT_ID = "Soperio.Badge";
 
@@ -30,23 +29,11 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size, shape }, props);
 
-
-  // const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
-  // const sVariant = styles.variant?.[variant];
-  // const sSize = styles.size?.[size];
-  // const sShape = styles.shape?.[shape];
-
-  // if (!sVariant && IS_DEV)
-  //     console.log(`[Soperio Badge Component]: variant ${variant} does not exist in your theme/config`);
-
   return (
     <span
       transition={firstRender ? "none" : "all"}
       w="auto"
       verticalAlign="middle"
-      // {...sVariant}
-      // {...sSize}
-      // {...sShape}
       {...styles}
       {...props}
       ref={ref}

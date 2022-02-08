@@ -28,7 +28,6 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
         parsedColor = parseColor(parsedColor, alphaVarName)
 
         return {
-            [alphaVarName]: 1,
             [cssProperty]: parsedColor
         };
     }

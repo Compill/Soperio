@@ -1,10 +1,8 @@
-import { SoperioComponent, useColorTheme } from "@soperio/core";
-import { IS_DEV } from "@soperio/utils";
+import { useColorTheme } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
-import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
 import { InputProps } from "./types";
 
@@ -32,24 +30,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size, corners }, props)
 
-    // const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
-    // const sVariant = styles.variant?.[variant];
-    // const sSize = styles.size?.[size];
-    // const sCorners = styles.corners?.[corners];
-
-    // if (!sVariant && IS_DEV)
-    //     console.log(`[Soperio Input Component]: variant ${variant} does not exist in your theme/config`);
-
-    // const disabledProps: SoperioComponent = { ...(sVariant && props.disabled && { ...sVariant.disabled, pointerEvents: "none" }) };
-
     return (
         <input
             transition={firstRender ? "none" : "all"}
-            // {...sanitizeProps(sSize, "disabled")}
-            // {...sanitizeProps(sCorners, "disabled")}
-            // {...sanitizeProps(sVariant, "disabled")}
             {...(length ? { size: length} : null)}
-            // {...disabledProps}
             {...styles}
             {...props}
             ref={ref}

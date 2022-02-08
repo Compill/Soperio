@@ -1,10 +1,10 @@
 import { SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { CheckedDisabledThemeProps, CheckedThemeProps, CheckedState, DisabledState, DisabledThemeProps, CheckedDisabledState } from "../ComponentStates";
+import { CheckedDisabledThemeProps, CheckedThemeProps, CheckedState, DisabledState, DisabledThemeProps } from "../ComponentStates";
 import { HTMLInputProps } from "../HTMLTagProps";
 
-export interface RadioProps extends SoperioComponent, CheckedState, DisabledState, CheckedDisabledState, Omit<HTMLInputProps, "disabled">
+export interface RadioProps extends SoperioComponent, CheckedState, DisabledState, Omit<HTMLInputProps, "disabled">
 {
   label?: string,
   otherNameThanSize?: "md" | "lg",

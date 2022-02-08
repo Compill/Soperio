@@ -7,9 +7,18 @@ export const ComponentState = {
   INVALID: "invalid",
   SELECTED: "selected",
   VALID: "valid",
-  ACTIVE_DISABLED: "activeDisabled",
-  CHECKED_DISABLED: "checkedDisabled",
-  SELECTED_DISABLED: "selectedDisabled",
+}
+
+export const ComponentThemeState = {
+  ACTIVE: "stateActive",
+  CHECKED: "stateChecked",
+  DISABLED: "stateDisabled",
+  INVALID: "stateInvalid",
+  SELECTED: "stateSelected",
+  VALID: "stateValid",
+  ACTIVE_DISABLED: "stateActiveDisabled",
+  CHECKED_DISABLED: "stateCheckedDisabled",
+  SELECTED_DISABLED: "stateSelectedDisabled",
 }
 
 export interface ActiveState { active?: boolean; }
@@ -18,9 +27,6 @@ export interface DisabledState { disabled?: boolean; }
 export interface InvalidState { invalid?: boolean; }
 export interface SelectedState { selected?: boolean; }
 export interface ValidState { valid?: boolean; }
-export interface ActiveDisabledState { activeDisabled?: boolean; }
-export interface CheckedDisabledState { checkedDisabled?: boolean; }
-export interface SelectedDisabledState { selectedDisabled?: boolean; }
 
 export interface ActiveThemeProps<T = SoperioComponent> { stateActive?: T; };
 export interface CheckedThemeProps<T = SoperioComponent> { stateChecked?: T; };

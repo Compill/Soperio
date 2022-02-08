@@ -1,12 +1,10 @@
-import { SoperioComponent, useColorTheme } from "@soperio/core";
-import { IS_DEV } from "@soperio/utils";
+import { useColorTheme } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
-import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
-import { SelectConfig, SelectProps } from "./types";
+import { SelectProps } from "./types";
 
 const COMPONENT_ID = "Soperio.Select";
 
@@ -33,24 +31,10 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
 
   const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size, corners }, props)
 
-  // const styles: SelectConfig = useComponentConfig(COMPONENT_ID, colorTheme, config);
-  // const sVariant = styles.variant?.[variant];
-  // const sSize = styles.size?.[size];
-  // const sCorners = styles.corners?.[corners];
-
-  // if (!sVariant && IS_DEV)
-  //   console.log(`[Soperio Select Component]: variant ${variant} does not exist in your theme/config`);
-
-  // const disabledProps: SoperioComponent = { ...(sVariant && props.disabled && { ...sVariant.disabled, pointerEvents: "none" }) };
-
   return (
     <select
       transition={firstRender ? "none" : "all"}
-      // {...sanitizeProps(sSize, "disabled")}
-      // {...sanitizeProps(sCorners, "disabled")}
-      // {...sanitizeProps(sVariant, "disabled")}
       {...(length ? { size: length } : null)}
-      // {...disabledProps}
       {...styles}
       {...props}
       ref={ref}

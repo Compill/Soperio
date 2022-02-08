@@ -3,8 +3,6 @@ import React from "react";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { TileProps } from "./types";
 
-
-
 /**
  *
  *

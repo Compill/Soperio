@@ -20,8 +20,6 @@ export function Content()
   const darkMode = useDarkMode();
   const toggleDarkMode = useToggleDarkMode();
 
-  console.log("darkMode", darkMode);
-
   return (
     <>
       {/* <Test bgColor="red" borderB="2" pt="16" /> */}
