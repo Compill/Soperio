@@ -32,3 +32,21 @@ interface ButtonGeneratedProps
   size?: ButtonSize,
   corners?: ButtonCorners;
 }
+
+
+// TODO TO use with CLI to regenerate types
+/*
+  // Put this in another file. This will be the file that will be overwritten
+  export const variants = ["default", "bordered"] as const;
+  export const corners = ["square", "rounded", "pill"] as const;
+
+  // This file
+  import { variants, corners } from "./GeneratedTypes"
+  export type CardVariants = typeof variants[number];
+  export type CardCorners = typeof corners[number];
+
+
+
+
+
+*/

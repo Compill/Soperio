@@ -1,4 +1,4 @@
-import { ParentComponent, SoperioComponent } from "@soperio/core";
+import { ComponentTheme, ParentComponent, SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 
@@ -26,7 +26,7 @@ export type BadgeConfig = ComponentConfig<BadgeThemeProps, ConfigVariants>
 export interface BadgeProps extends SoperioComponent, ParentComponent
 {
   variant?: BadgeVariants,
-  theme?: string | ColorTheme,
+  theme?: ComponentTheme,
   shape?: BadgeShape,
   size?: BadgeSize,
   config?: ExtendComponentConfig<BadgeThemeProps, BadgeConfig>;

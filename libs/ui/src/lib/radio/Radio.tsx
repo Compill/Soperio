@@ -27,9 +27,8 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
   }, ref) =>
 {
   const firstRender = useFirstRender();
-  const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, otherNameThanSize }, props)
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, otherNameThanSize }, props)
 
   const [soperioProps, inputProps] = Soperio.splitComponentProps(props);
 

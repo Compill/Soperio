@@ -1,6 +1,7 @@
 import { CSSPropKeys, getThemeStyle, SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
+import { MultiPartComponentConfig } from "..";
 import { ComponentConfig } from "./ComponentConfig";
 import { omit, split } from "./utils";
 
@@ -49,14 +50,14 @@ export class Soperio
     return split(props, CSSPropKeys);
   }
 
-  static components: Record<string, ComponentConfig<SoperioComponent>> = {};
+  static components: Record<string, ComponentConfig<SoperioComponent> | MultiPartComponentConfig<SoperioComponent>> = {};
 
-  static registerComponent<T extends SoperioComponent>(name: string, componentConfig: ComponentConfig<T>)
+  static registerComponent<T extends SoperioComponent, C extends ComponentConfig<T> | MultiPartComponentConfig<T>>(name: string, componentConfig: C)
   {
     this.components[name] = componentConfig;
   }
 
-  static getComponentConfig(name: string): ComponentConfig<SoperioComponent> | undefined
+  static getComponentConfig(name: string): ComponentConfig<SoperioComponent> | MultiPartComponentConfig<SoperioComponent> | undefined
   {
     // TODO Merge with config from soperio-components.config.ts
     // Do the merge at startup, instead of every time

@@ -1,4 +1,3 @@
-import { useColorTheme } from "@soperio/core";
 import React from 'react';
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
@@ -40,9 +39,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         onClick && onClick(event);
     }, [onClick]);
 
-    const colorTheme = useColorTheme(theme);
-
-    const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size, corners }, props)
+    const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
 
     return (
         <button

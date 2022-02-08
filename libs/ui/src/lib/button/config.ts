@@ -1,8 +1,8 @@
 import { ColorTheme } from "@soperio/theming";
-import { darken, isDark, lighten, transparentize } from "@soperio/utils";
+import { isDark } from "@soperio/utils";
 import { ButtonConfig } from "./types";
 
-export default function config(theme: ColorTheme, darkMode: boolean): ButtonConfig
+const config: ButtonConfig = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     defaultVariants:
@@ -188,3 +188,5 @@ export default function config(theme: ColorTheme, darkMode: boolean): ButtonConf
     }
   };
 }
+
+export default config

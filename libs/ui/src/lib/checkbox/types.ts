@@ -1,4 +1,4 @@
-import { SoperioComponent } from "@soperio/core";
+import { ComponentTheme, SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, DisabledState, DisabledThemeProps } from "../ComponentStates";
@@ -11,7 +11,7 @@ export interface CheckboxProps extends SoperioComponent, CheckedState, DisabledS
   otherNameThanSize?: "md" | "lg",
   variant?: string,
   shape?: "rounded" | "circle" | "square",
-  theme?: string | ColorTheme;
+  theme?: ComponentTheme;
   config?: ExtendComponentConfig<CheckboxThemeProps, CheckboxConfig>;
 }
 

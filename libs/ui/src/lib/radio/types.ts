@@ -1,4 +1,4 @@
-import { SoperioComponent } from "@soperio/core";
+import { ComponentTheme, SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { CheckedDisabledThemeProps, CheckedThemeProps, CheckedState, DisabledState, DisabledThemeProps } from "../ComponentStates";
@@ -9,7 +9,7 @@ export interface RadioProps extends SoperioComponent, CheckedState, DisabledStat
   label?: string,
   otherNameThanSize?: "md" | "lg",
   variant?: string,
-  theme?: string | ColorTheme;
+  theme?: ComponentTheme;
   dotSize?: "sm" | "md" | "lg";
   config?: ExtendComponentConfig<RadioThemeProps, RadioConfig>;
 }

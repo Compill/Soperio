@@ -27,9 +27,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
   }, ref) =>
 {
   const firstRender = useFirstRender();
-  const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, otherNameThanSize, shape }, props)
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, otherNameThanSize, shape }, props)
 
   const [soperioProps, inputProps] = Soperio.splitComponentProps(props)
 

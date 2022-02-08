@@ -27,9 +27,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
   }, ref) =>
 {
   const firstRender = useFirstRender();
-  const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size, corners }, props)
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
 
   return (
     <select

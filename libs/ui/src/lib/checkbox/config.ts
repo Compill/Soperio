@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
 import { CheckboxConfig } from "./types";
 
-export default function config(theme: ColorTheme, darkMode: boolean): CheckboxConfig
+const config: CheckboxConfig = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants:
@@ -88,3 +88,5 @@ export default function config(theme: ColorTheme, darkMode: boolean): CheckboxCo
     }
   };
 }
+
+export default config

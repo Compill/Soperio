@@ -32,9 +32,8 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
 }: SpinnerProps, ref) =>
 {
   const firstRender = useFirstRender();
-  const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size }, {...props, trackColor, thickness, progress})
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size }, {...props, trackColor, thickness, progress})
 
   const parsedTrackColor = useColor(trackColor || styles?.trackColor || "transparent")
   const parsedThickness = thickness || styles?.thickness

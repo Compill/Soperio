@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
 import { BadgeConfig } from "./types";
 
-export default function config(theme: ColorTheme, darkMode: boolean): BadgeConfig
+export const config: BadgeConfig = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants: {
@@ -76,3 +76,5 @@ export default function config(theme: ColorTheme, darkMode: boolean): BadgeConfi
     }
   };
 }
+
+export default config

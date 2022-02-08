@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
 import { SelectConfig } from "./types";
 
-export default function config(theme: ColorTheme, darkMode: boolean): SelectConfig
+const config: SelectConfig = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants:
@@ -78,3 +78,5 @@ export default function config(theme: ColorTheme, darkMode: boolean): SelectConf
     }
   };
 }
+
+export default config

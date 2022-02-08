@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
 import { TextAreaConfig } from "./types";
 
-export default function config(theme: ColorTheme, darkMode: boolean): TextAreaConfig
+const config: TextAreaConfig = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants:
@@ -77,3 +77,5 @@ export default function config(theme: ColorTheme, darkMode: boolean): TextAreaCo
     }
   };
 }
+
+export default config

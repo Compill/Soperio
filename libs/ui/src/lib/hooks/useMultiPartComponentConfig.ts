@@ -3,7 +3,7 @@ import { ColorTheme } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";
-import { BaseComponentConfig, ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
+import { BaseComponentConfig, BaseMultiPartComponentConfig, ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "../ComponentConfig";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
 import { Soperio } from "../Soperio";
 
@@ -32,14 +32,21 @@ function runIfFn<T>(
   return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
 }
 
-export function useComponentConfig<T extends SoperioComponent, P extends ComponentConfig<T>>(
-  component = "",
-  theme: ComponentTheme,
-  customConfig: ExtendComponentConfig<T, P> | undefined,
-  componentConfig: KeysOf<P> = {} as KeysOf<P>,
-  props?: T): T
+type MultiPartProps<T extends SoperioComponent, P extends BaseMultiPartComponentConfig<T>> =
 {
-  const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component) as ComponentConfig<T>);
+  // [E in P as Property in keyof E["subComponents"]]: T
+  // [Property in keyof Extract<P, "subComponents">]: T
+  [Property in keyof P]: T
+}
+
+export function useMultiPartComponentConfig<T extends SoperioComponent, P extends MultiPartComponentConfig<T>>(
+  component = "",
+  theme: ComponentTheme = "default",
+  customConfig: ExtendMultiPartComponentConfig<T, P> | undefined,
+  componentConfig: KeysOf<P> = {} as KeysOf<P>,
+  props?: T): Record<string, T>//MultiPartProps<T, BaseMultiPartComponentConfig<T>>
+{
+  const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component) as MultiPartComponentConfig<T>);
   const darkMode = useDarkMode();
 
   if (!defaultConfig && IS_DEV)
@@ -51,52 +58,63 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
 
   if (customConfig)
   {
-    const c = runIfFn<ComponentConfig<T>>(customConfig.config, colorTheme, darkMode) as ComponentConfig<T>
+    const c = runIfFn<MultiPartComponentConfig<T>>(customConfig.config, colorTheme, darkMode) as MultiPartComponentConfig<T>
 
     if (customConfig.mode === "extends")
-      config = deepmerge(runIfFn(defaultConfig, colorTheme, darkMode) ?? {}, c as Partial<T>) as T;
+      config = deepmerge(runIfFn(defaultConfig, colorTheme, darkMode) ?? {}, c as unknown as Partial<T>) as T;
     else
       config = c;
   }
   else if (defaultConfig)
   {
-    config = runIfFn<ComponentConfig<T>>(defaultConfig, colorTheme, darkMode);
+    config = runIfFn<MultiPartComponentConfig<T>>(defaultConfig, colorTheme, darkMode);
   }
 
   if (config)
-    return mergeProps(config as BaseComponentConfig<T>, componentConfig, props) as T;
+    return mergeProps(config as BaseMultiPartComponentConfig<T>, componentConfig, props)// as MultiPartProps<T, BaseMultiPartComponentConfig<T>>;
 
-  return {} as T;
+  return {}// as MultiPartProps<T, P>;
 }
 
 // Get the right set of soperio props from the config variants (variant, size, corners, ...)
-function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(config: BaseComponentConfig<T>, componentConfig: KeysOf<P>, props: any): OmitStates<T>
+function mergeProps<T extends SoperioComponent, P extends MultiPartComponentConfig<T>>(config: BaseMultiPartComponentConfig<T>, componentConfig: KeysOf<P>, props: any): Record<string, T>
 {
-  // Let's start with the component default values
-  let finalProps = { ...(config.defaultProps as T)};
+  const subComponents = config.subComponents
 
-  const defaultVariants = config.defaultVariants
+  const parsedConfig:any = { }
 
-  const c = config as any
-
-  const variants = c.variants
-
-  for (const key in componentConfig)
+  for (const subComponent in subComponents)
   {
-    const variant = variants[key]
+    // Let's start with the component default values
+    let finalProps = { ...(config.defaultProps?.[subComponent] as T) };
 
-    const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null;
+    const defaultVariants = config.defaultVariants;
 
-    if (configProps)
-      finalProps = deepmerge(finalProps, configProps) as T
+    const c = config as any;
+
+    const variants = c.variants;
+
+    for (const key in componentConfig)
+    {
+      const variant = variants[key]?.[subComponent];
+
+      const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null;
+
+      if (configProps)
+        finalProps = deepmerge(finalProps, configProps) as T;
+    }
+
+    finalProps = mergeStateProps(finalProps, props)
+
+    parsedConfig[subComponent] = finalProps;
   }
 
-  return mergeStateProps(finalProps, props)
+  return parsedConfig
 }
 
 // Final step : merge the props with the state props
 // checked, selected, disabled, ...
-function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): OmitStates<T>
+function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): T
 {
   let finalProps = {...configProps};
 
@@ -148,5 +166,5 @@ function mergeStateProps<T extends SoperioComponent>(configProps: any, props: an
   if (props[ComponentState.DISABLED] && props[ComponentState.SELECTED])
     finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED_DISABLED] };
 
-  return finalProps as OmitStates<T>;
+  return finalProps;
 }

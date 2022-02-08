@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
 import { SpinnerConfig } from "./types";
 
-export default function config(theme: ColorTheme, darkMode: boolean): SpinnerConfig
+const config: SpinnerConfig = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     defaultProps:
@@ -64,3 +64,5 @@ export default function config(theme: ColorTheme, darkMode: boolean): SpinnerCon
     }
   };
 }
+
+export default config

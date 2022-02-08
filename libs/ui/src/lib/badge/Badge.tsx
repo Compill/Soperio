@@ -25,9 +25,8 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(({
 }: BadgeProps, ref) =>
 {
   const firstRender = useFirstRender();
-  const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, size, shape }, props);
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, shape }, props);
 
   return (
     <span

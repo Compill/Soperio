@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
 import { InputConfig } from "./types";
 
-export default function config(theme: ColorTheme, darkMode: boolean): InputConfig
+const config: InputConfig = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants:
@@ -78,3 +78,5 @@ export default function config(theme: ColorTheme, darkMode: boolean): InputConfi
     }
   };
 }
+
+export default config

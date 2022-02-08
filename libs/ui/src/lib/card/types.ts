@@ -1,6 +1,6 @@
-import { SoperioComponent } from "@soperio/core";
+import { ComponentTheme, SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
-import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
+import { ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "../ComponentConfig";
 import { DisabledThemeProps, SelectedDisabledThemeProps, SelectedThemeProps } from "../ComponentStates";
 import { HTMLDivProps } from "../HTMLTagProps";
 
@@ -14,18 +14,24 @@ export interface CardThemeProps extends SoperioComponent, SelectedThemeProps, Di
 
 }
 
-type ConfigVariants =
-{
-  variant?: { [Property in CardVariants]?: CardThemeProps; },
-  corners?: { [Property in CardCorners]?: CardThemeProps; },
-}
+type CardComponentProps = {
+  card?: CardThemeProps,
+  header?: CardThemeProps, // CardHeaderThemeProps
+  content?: CardThemeProps, // CardContentThemeProps
+  footer?: CardThemeProps, // CardFooterThemeProps
+};
 
-export type CardConfig = ComponentConfig<CardThemeProps, ConfigVariants>
+type ConfigVariants = {
+  variant?: { [Property in CardVariants]?: CardComponentProps },
+  corners?: { [Property in CardCorners]?: CardComponentProps },
+};
+
+export type CardConfig = MultiPartComponentConfig<CardThemeProps, ConfigVariants>;
 
 export interface CardProps extends SoperioComponent, HTMLDivProps
 {
-  theme?: string | ColorTheme;
+  theme?: ComponentTheme;
   variant?: CardVariants;
   corners?: CardCorners;
-  config?: ExtendComponentConfig<CardThemeProps, CardConfig>;
+  config?: ExtendMultiPartComponentConfig<CardThemeProps, CardConfig>;
 }

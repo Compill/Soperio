@@ -2,8 +2,8 @@ import { ParentComponent, SoperioComponent, useColorTheme } from "@soperio/core"
 import { SpacingPositive } from "@soperio/theming";
 import { OrString } from "@soperio/utils";
 import React from "react";
-import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
+import { useMultiPartComponentConfig } from "../hooks/useMultiPartComponentConfig";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
 import { CardProps } from "./types";
@@ -17,8 +17,8 @@ Soperio.registerComponent(COMPONENT_ID, defaultConfig);
  *
  */
 const Card = React.forwardRef<HTMLDivElement, CardProps>(({
-  variant = "default",
-  corners = "default",
+  variant,
+  corners,
   theme = "default",
   config,
   children,
@@ -26,14 +26,13 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({
 }: CardProps, ref) =>
 {
   const firstRender = useFirstRender();
-  const colorTheme = useColorTheme(theme);
 
-  const styles = useComponentConfig(COMPONENT_ID, colorTheme, config, { variant, corners }, props)
+  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props)
 
   return (
     <div
       transition={firstRender ? "none" : "all"}
-      {...styles}
+      {...styles["card"]}
       {...props}
       ref={ref}
     >
