@@ -44,7 +44,7 @@ export function useMultiPartComponentConfig<T extends SoperioComponent, P extend
   theme: ComponentTheme = "default",
   customConfig: ExtendMultiPartComponentConfig<T, P> | undefined,
   componentConfig: KeysOf<P> = {} as KeysOf<P>,
-  props?: T): Record<string, T>//MultiPartProps<T, BaseMultiPartComponentConfig<T>>
+  props?: T): Record<string, SoperioComponent>//MultiPartProps<T, BaseMultiPartComponentConfig<T>>
 {
   const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component) as MultiPartComponentConfig<T>);
   const darkMode = useDarkMode();
@@ -70,6 +70,8 @@ export function useMultiPartComponentConfig<T extends SoperioComponent, P extend
     config = runIfFn<MultiPartComponentConfig<T>>(defaultConfig, colorTheme, darkMode);
   }
 
+  console.log("config", config)
+
   if (config)
     return mergeProps(config as BaseMultiPartComponentConfig<T>, componentConfig, props)// as MultiPartProps<T, BaseMultiPartComponentConfig<T>>;
 
@@ -83,7 +85,9 @@ function mergeProps<T extends SoperioComponent, P extends MultiPartComponentConf
 
   const parsedConfig:any = { }
 
-  for (const subComponent in subComponents)
+  console.log("componentConfig", componentConfig)
+
+  for (const subComponent of subComponents)
   {
     // Let's start with the component default values
     let finalProps = { ...(config.defaultProps?.[subComponent] as T) };
@@ -96,10 +100,13 @@ function mergeProps<T extends SoperioComponent, P extends MultiPartComponentConf
 
     for (const key in componentConfig)
     {
-      const variant = variants[key]?.[subComponent];
-
-      const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null;
-
+      console.log("key", key)
+      console.log("variants[key]", variants[key])
+      const variant = variants[key];
+      const selectedVariant = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null
+      console.log("variant", variant)
+      const configProps = selectedVariant?.[subComponent];
+      console.log("configProps", configProps)
       if (configProps)
         finalProps = deepmerge(finalProps, configProps) as T;
     }
@@ -108,6 +115,8 @@ function mergeProps<T extends SoperioComponent, P extends MultiPartComponentConf
 
     parsedConfig[subComponent] = finalProps;
   }
+
+  console.log("parsedConfig", parsedConfig)
 
   return parsedConfig
 }

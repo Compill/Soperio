@@ -84,10 +84,7 @@ function filter(themeProperty: string, filter:string, backdrop?: boolean): Style
     let parsedValue = value;
 
     if (typeof value !== "number")
-    {
       parsedValue = getThemeStyle(`filters.${themeProperty}`, value === true ? "default" : value) || value;
-      console.log("filter", themeProperty, value, getThemeStyle(`filters.${themeProperty}`, value === true ? "default" : value))
-    }
 
     return processFilterObject(filter, parsedValue, backdrop)
   };

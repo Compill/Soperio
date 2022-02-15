@@ -22,15 +22,15 @@ const config: CardConfig = (theme: ColorTheme, darkMode: boolean) =>
             bgColor: darkMode ? theme.background2 : theme.background1,
             border: "0",
             textColor: theme.textDark1
-          },
+          }
         },
         bordered:
         {
           card:
           {
-            bgColor: theme.background1,
+            bgColor: darkMode ? theme.background2 : theme.background1,
             border: "2",
-            borderColor: theme.border0,
+            borderColor: theme.border1,
           },
         },
       },

@@ -4,6 +4,7 @@ import { OrString } from "@soperio/utils";
 import React from "react";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { useMultiPartComponentConfig } from "../hooks/useMultiPartComponentConfig";
+import { MultiPartStyleProvider, useMultiPartStyles } from "../MultiPartStyleProvider";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
 import { CardProps } from "./types";
@@ -11,6 +12,8 @@ import { CardProps } from "./types";
 const COMPONENT_ID = "Soperio.Card";
 
 Soperio.registerComponent(COMPONENT_ID, defaultConfig);
+
+
 
 /**
  *
@@ -27,16 +30,19 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({
 {
   const firstRender = useFirstRender();
 
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props)
+  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props);
+  console.log("card styles", styles)
 
   return (
     <div
       transition={firstRender ? "none" : "all"}
-      {...styles["card"]}
+      {...styles.card}
       {...props}
       ref={ref}
     >
-      {children}
+      <MultiPartStyleProvider value={styles}>
+        {children}
+      </MultiPartStyleProvider>
     </div>
   );
 });
@@ -54,16 +60,25 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
   ...props }, ref) =>
 {
   const colorTheme = useColorTheme();
+  const styles = useMultiPartStyles();
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
-    <React.Fragment>
-      <div px="7" py="3" {...props} ref={ref} borderColor={colorTheme.border1} borderB={showBorder && borderWidth === "full" ? true : "0"}>
+    <>
+      <div
+        px="7"
+        py="3"
+        ref={ref}
+        borderColor={colorTheme.border1}
+        borderB={showBorder && borderWidth === "full" ? true : "0"}
+        {...styles.header}
+        {...props}
+      >
         {children}
       </div>
       {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
-    </React.Fragment>
+    </>
   );
 });
 
@@ -74,8 +89,10 @@ interface CardBodyProps extends SoperioComponent, ParentComponent
 
 const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ children, ...props }, ref) =>
 {
+  const styles = useMultiPartStyles();
+
   return (
-    <div px="7" py="5" fontSize="sm" {...props} ref={ref}>
+    <div px="7" py="5" fontSize="sm" {...styles.body} {...props} ref={ref}>
       {children}
     </div>
   );
@@ -95,13 +112,22 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
   ...props }, ref) =>
 {
   const colorTheme = useColorTheme();
+  const styles = useMultiPartStyles();
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
     <React.Fragment>
       {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
-      <div px="7" py="3" {...props} ref={ref} borderColor={colorTheme.border1} borderT={showBorder && borderWidth === "full" ? true : "0"}>
+      <div
+        px="7"
+        py="3"
+        ref={ref}
+        borderColor={colorTheme.border1}
+        borderT={showBorder && borderWidth === "full" ? true : "0"}
+        {...styles.footer}
+        {...props}
+      >
         {children}
       </div>
     </React.Fragment>

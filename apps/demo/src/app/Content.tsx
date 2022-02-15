@@ -1,17 +1,17 @@
 import { useDarkMode, useToggleDarkMode } from "@soperio/core";
 import { Button } from "@soperio/ui";
 import React from "react";
-import Page from "./Page";
-import Page10 from "./Page10";
-import Page2 from "./Page2";
-import Page3 from "./Page3";
-import Page4 from "./Page4";
-import Page5 from "./Page5";
-import Page6 from "./Page6";
-import Page7 from "./Page7";
-import Page8 from "./Page8";
-import Page9 from "./Page9";
-import Page11 from "./Page11";
+import ButtonPage from "./Button";
+import TextAlign from "./TextAlign";
+import Checkbox from "./Checkbox";
+import Input from "./Input";
+import Radio from "./Radio";
+import Badge from "./Badge";
+import Card from "./Card";
+import Select from "./Select";
+import TextArea from "./TextArea";
+import Spinner from "./Spinner";
+import Form from "./Formik";
 import { Test } from "./Test";
 
 export function Content()
@@ -38,17 +38,17 @@ export function Content()
         <Button onClick={() => toggleDarkMode()}>Toggle Dark Mode</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
-        {state === 1 && <Page />}
-        {state === 2 && <Page2 />}
-        {state === 3 && <Page3 />}
-        {state === 4 && <Page4 />}
-        {state === 5 && <Page5 />}
-        {state === 6 && <Page6 />}
-        {state === 7 && <Page7 />}
-        {state === 8 && <Page8 />}
-        {state === 9 && <Page9 />}
-        {state === 10 && <Page10 />}
-        {state === 10 && <Page11 />}
+        {state === 1 && <ButtonPage />}
+        {state === 2 && <Checkbox />}
+        {state === 3 && <Input />}
+        {state === 4 && <Radio />}
+        {state === 5 && <Badge />}
+        {state === 6 && <Card />}
+        {state === 7 && <Select />}
+        {state === 8 && <TextArea />}
+        {state === 9 && <Spinner />}
+        {state === 10 && <TextAlign />}
+        {state === 10 && <Form />}
       </div>
     </>
   );
