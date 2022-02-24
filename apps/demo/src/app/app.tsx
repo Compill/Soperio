@@ -49,7 +49,7 @@ function App()
 
   return (
     <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={customTheme}>
-      <Button onClick={toggleDirection} disabled>Toggle direction</Button>
+      <Button variant="default" onClick={toggleDirection}>Toggle direction</Button>
 
       {/* <Page11 /> */}
       <Content />

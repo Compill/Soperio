@@ -24,6 +24,15 @@ type VariantConfig<T extends SoperioComponent> = {
 };
 
 
+type ComponentState = {
+  active?: true,
+  checked?: true,
+  disabled?: true,
+  invalid?: true,
+  selected?: true,
+  valid?: true,
+}
+
 // Basic component config
 // We got two reserved keys, defaultProps and defaultVariants
 // for applying the logic for setting the defaults automatically
@@ -34,6 +43,7 @@ export type BaseComponentConfig<T extends SoperioComponent, C extends VariantCon
     defaultProps?: T,
     defaultVariants?: { [key: string]: string; };
     variants?: C | undefined;
+    states?: ComponentState
   };
 
 
@@ -42,7 +52,7 @@ export type BaseComponentConfig<T extends SoperioComponent, C extends VariantCon
 type ComponentConfigFn<T extends SoperioComponent, C extends VariantConfig<T>> = (theme: ColorTheme, darkMode: boolean) => BaseComponentConfig<T, C>;
 
 
-export type ComponentConfig<T extends SoperioComponent, C extends VariantConfig<T> = Record<string, Record<string, T>>> = BaseComponentConfig<T, C> | ComponentConfigFn<T, C>;
+export type ComponentConfig<T extends SoperioComponent, C extends VariantConfig<T> = Record<string, Record<string, T>>> = BaseComponentConfig<T, C>// | ComponentConfigFn<T, C>;
 
 
 // Custom component config to extends or override the theme's

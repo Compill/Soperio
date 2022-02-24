@@ -1,12 +1,9 @@
 import { ComponentTheme, SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { DisabledState, DisabledThemeProps } from "../ComponentStates";
+import { DisabledState, DisabledThemeProps, InvalidThemeProps, ValidThemeProps } from "../ComponentStates";
 import { HTMLInputProps } from "../HTMLTagProps";
 
-export interface InputThemeProps extends SoperioComponent, DisabledThemeProps
-{
-
-}
+export interface InputThemeProps extends SoperioComponent, DisabledThemeProps, ValidThemeProps, InvalidThemeProps {}
 
 type ConfigVariants =
 {
@@ -15,7 +12,7 @@ type ConfigVariants =
   corners?: Record<string, InputThemeProps>,
 }
 
-export type InputConfig = ComponentConfig<InputThemeProps>
+export type InputConfig = ComponentConfig<InputThemeProps, ConfigVariants>
 
 export interface InputProps extends SoperioComponent, DisabledState, Omit<HTMLInputProps, "size" |"disabled">
 {

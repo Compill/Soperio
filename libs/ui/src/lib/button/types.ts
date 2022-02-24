@@ -1,52 +1,106 @@
-import { ComponentTheme, ParentComponent, SoperioComponent } from "@soperio/core";
+import { SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
-import { HTMLButtonProps } from "../HTMLTagProps";
 
-export interface ButtonThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
+export const variants = ["default", "light", "outline", "light-outline"] as const;
 
-type ConfigVariants = {
-  variant?: { [Property in ButtonVariants]?: ButtonThemeProps; },
-  size?: { [Property in ButtonSize]?: ButtonThemeProps; },
-  corners?: { [Property in ButtonCorners]?: ButtonThemeProps; },
+// type Variants = typeof variants[number];
+
+type Variants = "default" | "light" | "outline" | "link" | "borderless";
+type Sizes = "sm" | "md" | "lg" | "xl" | "x2";
+type Corners = "default" | "square" | "pill";
+
+export type VariantProps = {
+  variant: Variants;
+  size?: Sizes,
+  corners?: Corners;
+}
+export type GeneratedProps = SoperioComponent & SelectedState & DisabledState
+
+type B<Type, T> = {
+  [key in keyof Type]?: T
+}
+
+export type ConfigVariants<T extends SoperioComponent> =
+{
+  [key in keyof VariantProps]?: B<VariantProps[key], T>
 };
 
-export type ButtonConfig = ComponentConfig<ButtonThemeProps, ConfigVariants>
-export type ExtendButtonConfig = ExtendComponentConfig<ButtonThemeProps, ButtonConfig>
+export interface ThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
-export interface ButtonProps extends SoperioComponent, ParentComponent, SelectedState, DisabledState, Omit<HTMLButtonProps, "disabled">, ButtonGeneratedProps
+type A = ConfigVariants<ThemeProps>
+
+export type Config = ComponentConfig<ThemeProps, ConfigVariants<ThemeProps>>;
+export type ExtendConfig = ExtendComponentConfig<ThemeProps, Config>;
+
+// export type Config<T = any> = ComponentConfig<ThemeProps & T, ConfigVariants<ThemeProps & T>>;
+// export type ExtendConfig<T = any> = ExtendComponentConfig<ThemeProps & T, Config<T>>;
+
+// export type Config<T extends any | undefined> = ComponentConfig<T extends any ? ThemeProps & T : ThemeProps, ConfigVariants<T extends any ? ThemeProps & T : ThemeProps>>;
+// export type ExtendConfig<T extends any | undefined> = ExtendComponentConfig<T extends any ? ThemeProps & T : ThemeProps, Config<T>>;
+
+
+// Note to myself
+// Now that we have only one props interface in the types file
+// We can move this definition to the component file
+// and name the generated file "types.ts"
+
+/* Code Generator
+
+Scan for variants in json config
+
+# Step 1: Create types
+
+Ex: for variant "size", transform the name to camel case and add an "s" at the end
+Then transform the array of variant in to a pipe ["sm", "md", "lg"] => "sm" | "md" | "lg"
+
+Create the associated type
+export type Sizes = "sm" | "md" | "lg";64
+
+
+# Step 2 : Create GeneratedProps type
+
+Take each variant and associate it to its newly created type at step 1
+This type extends SoperioComponent
+Don't forget to add the states from the config if present
+
+type GeneratedProps = SoperioComponent & SelectedStage & DisabledState &
 {
-  theme?: ComponentTheme,
-  config?: ExtendButtonConfig;
+  variant?: Variants;
+  size?: Sizes,
+  corners?: Corners;
 }
 
-// TODO This should be in another file that will be overridden by CLI
+# Step 3 : Create ConfigVariant type
 
-export type ButtonVariants = "default" | "light" | "outline" | "link" | "borderless";
-export type ButtonSize = "sm" | "md" | "lg" | "xl" | "x2";
-export type ButtonCorners = "default" | "square" | "pill";
-
-interface ButtonGeneratedProps
-{
-  variant?: ButtonVariants;
-  size?: ButtonSize,
-  corners?: ButtonCorners;
+type ConfigVariants<T extends SoperioComponent> = {
+  [Property in keyof GeneratedProps]?: { [Prop in keyof GeneratedProps[Property]]?: T }
 }
 
+Don't forget to import SoperioComponent
+import { SoperioComponent } from "@soperio/core";
 
-// TODO TO use with CLI to regenerate types
-/*
-  // Put this in another file. This will be the file that will be overwritten
-  export const variants = ["default", "bordered"] as const;
-  export const corners = ["square", "rounded", "pill"] as const;
+# Step 4 : Create ThemeProps interface
 
-  // This file
-  import { variants, corners } from "./GeneratedTypes"
-  export type CardVariants = typeof variants[number];
-  export type CardCorners = typeof corners[number];
+Defaults to extends SoperioComponent
 
+Analyze component json config and extends other state interfaces as needed
 
+config: {
+  ...,
+  state: {
+    disabled: true
+    checked: true
+  }
+}
 
+=> interface ThemeProps extends SoperioComponent extends CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps
 
+# Step 5 : Generate Config and ExtendConfig interfaces
+
+export type Config = ComponentConfig<ThemeProps, ConfigVariants<ThemeProps>>;
+export type ExtendConfig = ExtendComponentConfig<ThemeProps, Config>;
+
+Detect if json config is multipart component or not
 
 */

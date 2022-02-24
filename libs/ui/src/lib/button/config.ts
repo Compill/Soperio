@@ -1,10 +1,14 @@
+import { SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { isDark } from "@soperio/utils";
-import { ButtonConfig } from "./types";
+import { Config } from "./types";
 
-const config: ButtonConfig = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config = //(theme: ColorTheme, darkMode: boolean) =>
 {
-  return {
+  //return {
+    defaultProps: {
+
+    },
     defaultVariants:
     {
       variant: "default",
@@ -20,7 +24,7 @@ const config: ButtonConfig = (theme: ColorTheme, darkMode: boolean) =>
           px: "2",
           py: "1.5",
           fontSize: "sm"
-        },
+        } as SoperioComponent,
         "md":
         {
           px: "2.5",
@@ -187,6 +191,6 @@ const config: ButtonConfig = (theme: ColorTheme, darkMode: boolean) =>
       }
     }
   };
-}
+//}
 
 export default config

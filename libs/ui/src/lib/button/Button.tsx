@@ -1,13 +1,28 @@
+import { ComponentTheme, ParentComponent } from "@soperio/core";
 import React from 'react';
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
+import { HTMLButtonProps } from "../HTMLTagProps";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
-import { ButtonProps } from "./types";
+import { ExtendConfig, GeneratedProps } from "./types";
 
 const COMPONENT_ID = "Soperio.Button"
 
 Soperio.registerComponent(COMPONENT_ID, defaultConfig)
+
+// Accessible from config but non-customizable
+type SharedProps = {
+  customProp?: "1" | "2" | "3",
+  anotherProp?: boolean
+}
+
+export interface ButtonProps extends GeneratedProps, SharedProps, ParentComponent, HTMLButtonProps
+{
+  theme?: ComponentTheme,
+  config?: ExtendConfig;
+}
+
 
 /**
  *
@@ -40,6 +55,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     }, [onClick]);
 
     const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
+
+
 
     return (
         <button

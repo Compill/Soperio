@@ -3,7 +3,10 @@ export type { SpinnerProps, SpinnerConfig } from './lib/spinner/types';
 export type { TextAreaProps, TextAreaConfig } from './lib/textarea/types';
 export type { SelectProps, SelectConfig } from './lib/select/types';
 export type { BadgeProps, BadgeConfig } from './lib/badge/types';
-export type { ButtonProps, ButtonConfig } from './lib/button/types';
+
+export type { ButtonProps } from './lib/button/Button';
+export type { Config as ButtonConfig, ExtendConfig as ExtendButtonConfig } from './lib/button/types';
+
 export type { CardProps, CardConfig } from './lib/card/types';
 export type { CheckboxProps, CheckboxConfig } from './lib/checkbox/types';
 export type { ContainerProps } from './lib/container/types';
