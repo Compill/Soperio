@@ -2,35 +2,29 @@ import { SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
 
-export const variants = ["default", "light", "outline", "light-outline"] as const;
-
-// type Variants = typeof variants[number];
-
 type Variants = "default" | "light" | "outline" | "link" | "borderless";
 type Sizes = "sm" | "md" | "lg" | "xl" | "x2";
 type Corners = "default" | "square" | "pill";
 
 export type VariantProps = {
-  variant: Variants;
+  variant?: Variants;
   size?: Sizes,
   corners?: Corners;
-}
-export type GeneratedProps = SoperioComponent & SelectedState & DisabledState
-
-type B<Type, T> = {
-  [key in keyof Type]?: T
-}
-
-export type ConfigVariants<T extends SoperioComponent> =
-{
-  [key in keyof VariantProps]?: B<VariantProps[key], T>
 };
+export type GeneratedProps = SoperioComponent & SelectedState & DisabledState;
+
+// TODO Export in other file, and import
+type ConfigVariants<V extends { [k: string]: any; }, T> = {
+  [key in keyof V]: { [Property in NonNullable<V[key]>]?: T; }
+};
+// export type ConfigVariants<T> =
+//   {
+//     [key in keyof VariantProps]: { [Property in NonNullable<VariantProps[key]>]?: T }
+//   };
 
 export interface ThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
-type A = ConfigVariants<ThemeProps>
-
-export type Config = ComponentConfig<ThemeProps, ConfigVariants<ThemeProps>>;
+export type Config = ComponentConfig<ThemeProps, ConfigVariants<VariantProps, ThemeProps>>;
 export type ExtendConfig = ExtendComponentConfig<ThemeProps, Config>;
 
 // export type Config<T = any> = ComponentConfig<ThemeProps & T, ConfigVariants<ThemeProps & T>>;
