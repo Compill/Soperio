@@ -1,36 +1,13 @@
-import { ComponentTheme, SoperioComponent } from "@soperio/core";
+import { ComponentTypings } from "@soperio/components-theming";
+import { SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { DisabledState, DisabledThemeProps } from "../ComponentStates";
-import { HTMLTextAreaProps } from "../HTMLTagProps";
+import { DisabledState, DisabledThemeProps, InvalidState, InvalidThemeProps, ValidState, ValidThemeProps } from "../ComponentStates";
 
-export interface TextAreaThemeProps extends SoperioComponent, DisabledThemeProps, Omit<HTMLTextAreaProps, "disabled">
-{
+type VariantProps = ComponentTypings<"Soperio.TextArea">;
 
-}
+export type ComponentProps = SoperioComponent & VariantProps & ValidState & InvalidState & DisabledState;
 
-export const variants = ["default", "solid", "underline"] as const;
+interface ConfigStateProps extends ValidThemeProps, InvalidThemeProps, DisabledThemeProps { }
 
-export type TextAreaVariants = typeof variants[number];
-export type TextAreaSize = "sm" | "md" | "lg" | "xl" | "x2";
-export type TextAreaCorners = "default" | "square" | "pill";
-
-type ConfigVariants =
-{
-  variant?: { [Property in TextAreaVariants]?: TextAreaThemeProps; },
-  size?: { [Property in TextAreaSize]?: TextAreaThemeProps; },
-  corners?: { [Property in TextAreaCorners]?: TextAreaThemeProps; },
-}
-
-export type TextAreaConfig = ComponentConfig<TextAreaThemeProps, ConfigVariants>
-
-export interface TextAreaProps extends SoperioComponent, DisabledState, Omit<HTMLTextAreaProps, "disabled">
-{
-  size?: TextAreaSize,
-  variant?: TextAreaVariants,
-  /**
-   * Define the input's border radius. Useless if variant is set to "underline"
-   */
-  corners?: TextAreaCorners,
-  theme?: ComponentTheme,
-  config?: ExtendComponentConfig<TextAreaThemeProps, TextAreaConfig>;
-}
+export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

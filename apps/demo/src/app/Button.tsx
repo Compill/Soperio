@@ -52,7 +52,7 @@ export default function Page({ ...props })
   }
 
   return (
-    <Container center breakpoint="xxl" dflex gap="20" justifyContent="center" py="20">
+    <Container center size="xxl" dflex gap="20" justifyContent="center" py="20">
 
       <div flexRow>
         <Button config={buttonConfig} variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("start")} z="1001">Open Left</Button>

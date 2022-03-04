@@ -1,37 +1,18 @@
-import { ComponentTheme, SoperioComponent } from "@soperio/core";
+import { ComponentTypings } from "@soperio/components-theming";
+import { SoperioComponent } from "@soperio/core";
 import { Color, SpacingPositive } from "@soperio/theming";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { HTMLDivProps } from "../HTMLTagProps";
 
-export interface SpinnerThemeProps extends SoperioComponent
+type VariantProps = ComponentTypings<"Soperio.Spinner">
+
+interface SpinnerProps extends SoperioComponent
 {
   trackColor?: Color,
   thickness?: SpacingPositive,
-  progress?: SpinnerProgress
+  progress?: 0 | 25 | 50 | 75 | 100
 }
 
-export const variants = ["default", "track"] as const;
+export type ComponentProps = SoperioComponent & VariantProps & SpinnerProps
 
-export type SpinnerVariants = typeof variants[number];
-export type SpinnerSize = "sm" | "md" | "lg" | "xl" | "x2";
-export type SpinnerProgress = 0 | 25 | 50 | 75 | 100;
-
-
-type ConfigVariants =
-{
-  variant?: { [Property in SpinnerVariants]?: SpinnerThemeProps; },
-  size?: { [Property in SpinnerSize]?: SpinnerThemeProps; },
-}
-
-export type SpinnerConfig = ComponentConfig<SpinnerThemeProps, ConfigVariants>
-
-export interface SpinnerProps extends SoperioComponent, HTMLDivProps
-{
-  variant?: SpinnerVariants;
-  size?: SpinnerSize,
-  theme?: ComponentTheme,
-  config?: ExtendComponentConfig<SpinnerThemeProps, SpinnerConfig>;
-  thickness?: SpacingPositive,
-  trackColor?: Color,
-  progress?: SpinnerProgress
-}
+export type Config = ComponentConfig<SpinnerProps, VariantProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

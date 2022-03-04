@@ -1,11 +1,12 @@
 import { ColorTheme } from "@soperio/theming";
-import { SpinnerConfig } from "./types";
+import { Config } from "./types";
 
-const config: SpinnerConfig = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     defaultProps:
     {
+      absdv: "",
       thickness: "2px",
       progress: 75
     },
@@ -21,7 +22,7 @@ const config: SpinnerConfig = (theme: ColorTheme, darkMode: boolean) =>
         {
           w: "4",
           h: "4",
-          border: "2"
+          border: "2",
         },
         "md":
         {

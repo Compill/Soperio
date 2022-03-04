@@ -7,7 +7,7 @@ import { Badge, Container } from "@soperio/ui";
 export default function Page({ ...props })
 {
   return (
-    <Container center breakpoint="xxl" gap="20" justifyContent="center" py="20">
+    <Container center size="xxl" gap="20" justifyContent="center" py="20">
 
       <div mb="10">
         <Badge size="xs" mx="2" my="2">Badge</Badge>

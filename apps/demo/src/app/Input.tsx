@@ -13,7 +13,7 @@ export default function Page({ ...props })
   const darkMode = useDarkMode();
 
   return (
-    <Container center breakpoint="xxl" gap="20" bgColor={ darkMode ? "root.bg-color-4" : "white" } px="10" justifyContent="center" py="20">
+    <Container center size="xxl" gap="20" bgColor={ darkMode ? "root.bg-color-4" : "white" } px="10" justifyContent="center" py="20">
 
       <div mb="10">
         <Input block size="sm" variant="default" mb="5" length={50} placeholder="Hello" />

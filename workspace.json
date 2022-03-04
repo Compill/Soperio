@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "cli": "libs/cli",
+    "components-theming": "libs/components-theming",
     "core": "libs/core",
     "css": "libs/css",
     "demo": "apps/demo",

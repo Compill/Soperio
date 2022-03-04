@@ -1,3 +1,4 @@
+// import { Components } from "@soperio/components-theming";
 import ThemeBorder from "./Core/Border";
 import ThemeBreakpoints from "./Core/Breakpoints";
 import ThemeColors from "./Core/Colors";
@@ -30,4 +31,5 @@ export interface ThemeTypings extends ThemeOpacity
   transform: ThemeTransform,
   transition: ThemeTransition,
   typography: ThemeTypography;
+  // components: Components
 }

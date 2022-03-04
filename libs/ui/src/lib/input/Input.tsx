@@ -1,14 +1,18 @@
-import { useColorTheme } from "@soperio/core";
+import { ComponentTheme } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
-import { Soperio } from "../Soperio";
-import defaultConfig from "./config";
-import { InputProps } from "./types";
+import { HTMLInputProps } from "../HTMLTagProps";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Input";
 
-Soperio.registerComponent(COMPONENT_ID, defaultConfig)
+export interface InputProps extends ComponentProps, Omit<HTMLInputProps, "size">
+{
+    theme?: ComponentTheme,
+    length?: number;
+    config?: ExtendConfig;
+}
 
 /**
  *
@@ -27,12 +31,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
 {
     const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
+    const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props);
 
     return (
         <input
             transition={firstRender ? "none" : "all"}
-            {...(length ? { size: length} : null)}
+            {...(length ? { size: length } : null)}
             {...styles}
             {...props}
             ref={ref}

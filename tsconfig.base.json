@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@soperio/cli": ["libs/cli/src/index.ts"],
+      "@soperio/components-theming": ["libs/components-theming/src/index.ts"],
       "@soperio/core": ["libs/core/src/index.ts"],
       "@soperio/css": ["libs/css/src/index.ts"],
       "@soperio/jsx-dev-runtime": ["libs/jsx-dev-runtime/src/index.ts"],

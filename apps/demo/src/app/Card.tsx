@@ -7,7 +7,7 @@ import { Badge, Button, Card, Container } from "@soperio/ui";
 export default function Page({ ...props })
 {
   return (
-    <Container center breakpoint="xxl" gap="20" justifyContent="center" p="20" spaceY="10" >
+    <Container center size="xxl" gap="20" justifyContent="center" p="20" spaceY="10" >
 
       <Card w="50%">
         <Card.Header minH="70px" dflex alignItems="center">

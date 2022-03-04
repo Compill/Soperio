@@ -1,30 +1,13 @@
-import { ComponentTheme, SoperioComponent } from "@soperio/core";
-import { ColorTheme } from "@soperio/theming";
+import { ComponentTypings } from "@soperio/components-theming";
+import { SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, DisabledState, DisabledThemeProps } from "../ComponentStates";
-import { HTMLInputProps } from "../HTMLTagProps";
 
-// CheckedThemeProps, DisabledThemeProps checked and disabled are already in HTMLInputProps
-export interface CheckboxProps extends SoperioComponent, CheckedState, DisabledState, Omit<HTMLInputProps, "disabled">
-{
-  label?: string,
-  otherNameThanSize?: "md" | "lg",
-  variant?: string,
-  shape?: "rounded" | "circle" | "square",
-  theme?: ComponentTheme;
-  config?: ExtendComponentConfig<CheckboxThemeProps, CheckboxConfig>;
-}
+type VariantProps = ComponentTypings<"Soperio.Checkbox">
 
-interface CheckboxThemeProps extends SoperioComponent, CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps
-{
+export type ComponentProps = SoperioComponent & VariantProps & CheckedState & DisabledState;
 
-}
+interface ConfigStateProps extends CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps { }
 
-type ConfigVariants = {
-  // TODO Find a better property name
-  otherNameThanSize?: Record<string, CheckboxThemeProps>,
-  variant?: Record<string, CheckboxThemeProps>,
-  shape?: Record<string, CheckboxThemeProps>,
-}
-
-export type CheckboxConfig = ComponentConfig<CheckboxThemeProps, ConfigVariants>
+export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

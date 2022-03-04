@@ -1,5 +1,4 @@
 import { ComponentTheme, SoperioComponent, useColorTheme, useDarkMode } from "@soperio/core";
-import { ColorTheme } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";
@@ -35,7 +34,7 @@ function runIfFn<T>(
 export function useComponentConfig<T extends SoperioComponent, P extends ComponentConfig<T>>(
   component = "",
   theme: ComponentTheme,
-  customConfig: ExtendComponentConfig<T, P> | undefined,
+  customConfig: ExtendComponentConfig<P> | undefined,
   componentConfig: KeysOf<P> = {} as KeysOf<P>,
   props?: T): T
 {

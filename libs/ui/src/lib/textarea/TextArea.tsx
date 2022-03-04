@@ -1,14 +1,17 @@
-import { useColorTheme } from "@soperio/core";
+import { ComponentTheme } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
-import { Soperio } from "../Soperio";
-import defaultConfig from "./config";
-import { TextAreaProps } from "./types";
+import { HTMLTextAreaProps } from "../HTMLTagProps";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.TextArea";
 
-Soperio.registerComponent(COMPONENT_ID, defaultConfig);
+export interface TextAreaProps extends ComponentProps, HTMLTextAreaProps
+{
+  theme?: ComponentTheme,
+  config?: ExtendConfig
+}
 
 /**
  *

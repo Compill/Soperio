@@ -3,21 +3,15 @@ import React from 'react';
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { HTMLButtonProps } from "../HTMLTagProps";
-import { Soperio } from "../Soperio";
-import defaultConfig from "./config";
-import { ExtendConfig, GeneratedProps } from "./types";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Button"
 
-Soperio.registerComponent(COMPONENT_ID, defaultConfig)
+// TODO This will disappear
+// Soperio.registerComponent(COMPONENT_ID, defaultConfig)
+// TO put the config in theme instead
 
-// Accessible from config but non-customizable
-type SharedProps = {
-  customProp?: "1" | "2" | "3",
-  anotherProp?: boolean
-}
-
-export interface ButtonProps extends GeneratedProps, SharedProps, ParentComponent, HTMLButtonProps
+export interface ButtonProps extends ComponentProps, ParentComponent, HTMLButtonProps
 {
   theme?: ComponentTheme,
   config?: ExtendConfig;

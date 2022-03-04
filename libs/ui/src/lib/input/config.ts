@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
-import { InputConfig } from "./types";
+import { Config } from "./types";
 
-const config: InputConfig = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants:

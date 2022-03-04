@@ -1,37 +1,20 @@
-import { ComponentTheme, SoperioComponent } from "@soperio/core";
-import { ColorTheme } from "@soperio/theming";
-import { ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "../ComponentConfig";
-import { DisabledThemeProps, SelectedDisabledThemeProps, SelectedThemeProps } from "../ComponentStates";
-import { HTMLDivProps } from "../HTMLTagProps";
+import { ComponentTypings } from "@soperio/components-theming";
+import { SoperioComponent } from "@soperio/core";
+import { ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartVariants } from "../ComponentConfig";
+import { DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
 
-export const variants = ["default", "bordered"] as const;
+type VariantProps = ComponentTypings<"Soperio.Card">;
 
-export type CardVariants = typeof variants[number];
-export type CardCorners = "default" | "square" | "pill";
+export type ComponentProps = SoperioComponent & VariantProps & SelectedState & DisabledState;
 
-export interface CardThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps
-{
-
-}
+interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 type CardComponentProps = {
-  card?: CardThemeProps,
-  header?: CardThemeProps, // CardHeaderThemeProps
-  content?: CardThemeProps, // CardContentThemeProps
-  footer?: CardThemeProps, // CardFooterThemeProps
-};
-
-type ConfigVariants = {
-  variant?: { [Property in CardVariants]?: CardComponentProps },
-  corners?: { [Property in CardCorners]?: CardComponentProps },
-};
-
-export type CardConfig = MultiPartComponentConfig<CardThemeProps, ConfigVariants>;
-
-export interface CardProps extends SoperioComponent, HTMLDivProps
-{
-  theme?: ComponentTheme;
-  variant?: CardVariants;
-  corners?: CardCorners;
-  config?: ExtendMultiPartComponentConfig<CardThemeProps, CardConfig>;
+  card?: SoperioComponent & ConfigStateProps,
+  header?: SoperioComponent & ConfigStateProps, // CardHeaderThemeProps
+  content?: SoperioComponent & ConfigStateProps, // CardContentThemeProps
+  footer?: SoperioComponent & ConfigStateProps, // CardFooterThemeProps
 }
+
+export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartVariants<VariantProps, CardComponentProps>>;
+export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;

@@ -1,31 +1,13 @@
-import { ComponentTheme, ParentComponent, SoperioComponent } from "@soperio/core";
+import { ComponentTypings } from "@soperio/components-theming";
+import { SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { DisabledState, DisabledThemeProps } from "../ComponentStates";
-import { HTMLSelectProps } from "../HTMLTagProps";
+import { DisabledState, DisabledThemeProps, InvalidState, InvalidThemeProps, ValidState, ValidThemeProps } from "../ComponentStates";
 
-export interface SelectThemeProps extends SoperioComponent, DisabledThemeProps
-{
+type VariantProps = ComponentTypings<"Soperio.Select">;
 
-}
+export type ComponentProps = SoperioComponent & VariantProps & ValidState & InvalidState & DisabledState;
 
-type ConfigVariants =
-{
-  size?: Record<string, SelectThemeProps>,
-  variant?: Record<string, SelectThemeProps>,
-  corners?: Record<string, SelectThemeProps>,
-}
+interface ConfigStateProps extends ValidThemeProps, InvalidThemeProps, DisabledThemeProps { }
 
-export type SelectConfig = ComponentConfig<SelectThemeProps, ConfigVariants>
-
-export interface SelectProps extends SoperioComponent, ParentComponent,DisabledState,  Omit<HTMLSelectProps, "size" | "disabled">
-{
-  size?: "sm" | "md" | "lg" | "xl" | "x2",
-  variant?: "default" | "solid" | "underline",
-  /**
-   * Define the input's border radius. Useless if variant is set to "underline"
-   */
-  corners?: "default" | "square" | "pill",
-  theme?: ComponentTheme,
-  config?: ExtendComponentConfig<SelectThemeProps, SelectConfig>;
-  length?: number;
-}
+export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

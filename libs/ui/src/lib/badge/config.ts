@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
-import { BadgeConfig } from "./types";
+import { Config } from "./types";
 
-export const config: BadgeConfig = (theme: ColorTheme, darkMode: boolean) =>
+export const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants: {

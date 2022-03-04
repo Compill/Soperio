@@ -1,10 +1,12 @@
-import { SoperioComponent, useColor, useColorTheme } from "@soperio/core";
+import { ComponentTheme, SoperioComponent, useColor, useColorTheme } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
+import { HTMLDivProps } from "../HTMLTagProps";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
-import { SpinnerProps } from "./types";
+import { ComponentProps, ExtendConfig
+ } from "./types";
 
 const COMPONENT_ID = "Soperio.Spinner"
 
@@ -18,6 +20,12 @@ function getBorders(trackColor: string, progress: number): SoperioComponent
     borderBColor: progress > 50 ? "currentColor" : trackColor,
     borderSColor: progress > 75 ? "currentColor" : trackColor
   }
+}
+
+export interface SpinnerProps extends ComponentProps, HTMLDivProps
+{
+  theme?: ComponentTheme,
+  config?: ExtendConfig;
 }
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({

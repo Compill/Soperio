@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
-import { RadioConfig } from "./types";
+import { Config } from "./types";
 
-const config: RadioConfig = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     variants:
@@ -34,7 +34,7 @@ const config: RadioConfig = (theme: ColorTheme, darkMode: boolean) =>
           py: "2.5",
           fontSize: "xl"
         },
-        "2x":
+        "x2":
         {
           px: "4",
           py: "2.5",

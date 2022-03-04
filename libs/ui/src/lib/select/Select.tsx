@@ -1,14 +1,18 @@
-import { useColorTheme } from "@soperio/core";
+import { ComponentTheme, ParentComponent } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
-import { Soperio } from "../Soperio";
-import defaultConfig from "./config";
-import { SelectProps } from "./types";
+import { HTMLSelectProps } from "../HTMLTagProps";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Select";
 
-Soperio.registerComponent(COMPONENT_ID, defaultConfig);
+export interface SelectProps extends ComponentProps, ParentComponent, Omit<HTMLSelectProps, "size">
+{
+  theme?: ComponentTheme,
+  config?: ExtendConfig,
+  length?: number;
+}
 
 /**
  *

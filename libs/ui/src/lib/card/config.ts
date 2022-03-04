@@ -1,7 +1,7 @@
 import { ColorTheme } from "@soperio/theming";
-import { CardConfig } from "./types";
+import { Config } from "./types";
 
-const config: CardConfig = (theme: ColorTheme, darkMode: boolean) =>
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
     defaultVariants:
@@ -9,6 +9,10 @@ const config: CardConfig = (theme: ColorTheme, darkMode: boolean) =>
       variant: "default",
       corners: "default",
 
+    },
+    defaultProps: 
+    {
+      mx: "2"
     },
     subComponents: ["card", "header", "content", "footer"],
     variants:

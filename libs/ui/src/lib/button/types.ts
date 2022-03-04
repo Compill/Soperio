@@ -1,38 +1,16 @@
+import { ComponentTypings } from "@soperio/components-theming";
 import { SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
 
-type Variants = "default" | "light" | "outline" | "link" | "borderless";
-type Sizes = "sm" | "md" | "lg" | "xl" | "x2";
-type Corners = "default" | "square" | "pill";
+type VariantProps = ComponentTypings<"Soperio.Button">
 
-export type VariantProps = {
-  variant?: Variants;
-  size?: Sizes,
-  corners?: Corners;
-};
-export type GeneratedProps = SoperioComponent & SelectedState & DisabledState;
+export type ComponentProps = SoperioComponent & VariantProps & SelectedState & DisabledState;
 
-// TODO Export in other file, and import
-type ConfigVariants<V extends { [k: string]: any; }, T> = {
-  [key in keyof V]: { [Property in NonNullable<V[key]>]?: T; }
-};
-// export type ConfigVariants<T> =
-//   {
-//     [key in keyof VariantProps]: { [Property in NonNullable<VariantProps[key]>]?: T }
-//   };
+interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
-export interface ThemeProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
-
-export type Config = ComponentConfig<ThemeProps, ConfigVariants<VariantProps, ThemeProps>>;
-export type ExtendConfig = ExtendComponentConfig<ThemeProps, Config>;
-
-// export type Config<T = any> = ComponentConfig<ThemeProps & T, ConfigVariants<ThemeProps & T>>;
-// export type ExtendConfig<T = any> = ExtendComponentConfig<ThemeProps & T, Config<T>>;
-
-// export type Config<T extends any | undefined> = ComponentConfig<T extends any ? ThemeProps & T : ThemeProps, ConfigVariants<T extends any ? ThemeProps & T : ThemeProps>>;
-// export type ExtendConfig<T extends any | undefined> = ExtendComponentConfig<T extends any ? ThemeProps & T : ThemeProps, Config<T>>;
-
+export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;
 
 // Note to myself
 // Now that we have only one props interface in the types file

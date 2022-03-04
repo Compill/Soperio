@@ -3,9 +3,9 @@ import { ColorTheme } from "@soperio/theming";
 import { isDark } from "@soperio/utils";
 import { Config } from "./types";
 
-const config: Config = //(theme: ColorTheme, darkMode: boolean) =>
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
-  //return {
+  return {
     defaultProps: {
 
     },
@@ -191,6 +191,6 @@ const config: Config = //(theme: ColorTheme, darkMode: boolean) =>
       }
     }
   };
-//}
+}
 
 export default config

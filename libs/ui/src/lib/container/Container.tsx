@@ -6,12 +6,12 @@ import { ContainerProps } from "./types";
  *
  *
  */
-export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(({ breakpoint, center, className, children, ...props }: ContainerProps, ref) =>
+export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(({ size, center, className, children, ...props }: ContainerProps, ref) =>
 {
     return (
         <div
-            w={!breakpoint && "full"}
-            maxW={breakpoint && getThemeStyle("breakpoints", breakpoint)}
+            w={!size && "full"}
+            maxW={size && getThemeStyle("breakpoints", size)}
             mx={center && "auto"}
             {...props}
             ref={ref}>

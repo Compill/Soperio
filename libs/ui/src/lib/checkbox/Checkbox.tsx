@@ -1,14 +1,18 @@
-import { useColorTheme } from "@soperio/core";
+import { ComponentTheme } from "@soperio/core";
 import React from "react";
 import { useComponentConfig } from "../hooks/useComponentConfig";
 import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
-import defaultConfig from "./config";
-import { CheckboxProps } from "./types";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Checkbox";
 
-Soperio.registerComponent(COMPONENT_ID, defaultConfig)
+export interface CheckboxProps extends ComponentProps
+{
+  label?: string,
+  theme?: ComponentTheme;
+  config?: ExtendConfig;
+}
 
 /**
  * A simple checkbox to be used with or without a surrounding form.

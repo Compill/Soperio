@@ -1,27 +1,13 @@
-import { ComponentTheme, SoperioComponent } from "@soperio/core";
-import { ColorTheme } from "@soperio/theming";
+import { ComponentTypings } from "@soperio/components-theming";
+import { SoperioComponent } from "@soperio/core";
 import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { CheckedDisabledThemeProps, CheckedThemeProps, CheckedState, DisabledState, DisabledThemeProps } from "../ComponentStates";
-import { HTMLInputProps } from "../HTMLTagProps";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, DisabledState, DisabledThemeProps } from "../ComponentStates";
 
-export interface RadioProps extends SoperioComponent, CheckedState, DisabledState, Omit<HTMLInputProps, "disabled">
-{
-  label?: string,
-  otherNameThanSize?: "md" | "lg",
-  variant?: string,
-  theme?: ComponentTheme;
-  dotSize?: "sm" | "md" | "lg";
-  config?: ExtendComponentConfig<RadioThemeProps, RadioConfig>;
-}
+type VariantProps = ComponentTypings<"Soperio.Radio">;
 
-export interface RadioThemeProps extends SoperioComponent, CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps
-{
+export type ComponentProps = SoperioComponent & VariantProps & CheckedState & DisabledState;
 
-}
+interface ConfigStateProps extends CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps { }
 
-type ConfigVariants = {
-  otherNameThanSize?: Record<string, RadioThemeProps>,
-  variant?: Record<string, RadioThemeProps>,
-}
-
-export type RadioConfig = ComponentConfig<RadioThemeProps, ConfigVariants>
+export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

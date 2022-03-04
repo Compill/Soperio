@@ -37,3 +37,16 @@ export interface ValidThemeProps<T = SoperioComponent> { stateValid?: T; };
 export interface ActiveDisabledThemeProps<T = SoperioComponent> { stateActiveDisabled?: T; };
 export interface CheckedDisabledThemeProps<T = SoperioComponent> { stateCheckedDisabled?: T; };
 export interface SelectedDisabledThemeProps<T = SoperioComponent> { stateSelectedDisabled?: T; };
+
+export type ComponentStateProps<T = SoperioComponent> = Partial<ActiveThemeProps<T> 
+          & CheckedThemeProps<T>
+          & DisabledThemeProps<T>
+          & InvalidThemeProps<T>
+          & SelectedThemeProps<T>
+          & ValidThemeProps<T>
+          & ActiveDisabledThemeProps<T>
+          & CheckedDisabledThemeProps<T>
+          & SelectedDisabledThemeProps<T>>
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NoStateProps {}
