@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/theming";
+import { ColorTheme } from "./ColorTheme";
 import { applyTransparenceToRGBColor } from "@soperio/utils";
 
 export const defaultColorTheme: ColorTheme = {

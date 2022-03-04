@@ -1,7 +1,6 @@
-import { useDirection } from "@soperio/core";
+import { useFirstRender, usePrevious } from "@soperio/components";
+import { useDirection } from "@soperio/theming";
 import React from 'react';
-import { useFirstRender } from '../hooks/useFirstRender';
-import { usePrevious } from '../hooks/usePrevious';
 import { SidebarProps } from "./types";
 
 const DEFAULT_DURATION = "500";

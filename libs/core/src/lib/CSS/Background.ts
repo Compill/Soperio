@@ -1,4 +1,4 @@
-import { getDirection } from "../hooks/useDirection";
+import { getDirection } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, StyleProps } from "./utils";

@@ -6,22 +6,6 @@ const SEP = `(?:\\s*,\\s*|\\s+)`;
 const ALPHA_SEP = `\\s*[,/]\\s*`;
 const RGB_HSL = new RegExp(`^(rgb|hsl)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`);
 
-export function transformColorToGlobalVar(color: string): string | false
-{
-    const hex = color
-        .replace(SHORT_HEX, (_, r, g, b, a) => ['#', r, r, g, g, b, b, a ? a + a : ''].join(''))
-        .match(HEX);
-
-    if (hex !== null)
-    {
-        const r = parseInt(hex[1], 16);
-        const g = parseInt(hex[2], 16);
-        const b = parseInt(hex[3], 16);
-        return `${r}, ${g}, ${b}`;
-    }
-
-    return false;
-}
 
 export function parseColor(value: string, alphaCSSVarName?: string): string
 {

@@ -1,9 +1,9 @@
-import { ComponentTheme, SoperioComponent, useColorTheme, useDarkMode } from "@soperio/core";
-import { ColorTheme } from "@soperio/theming";
+import { ComponentTheme, SoperioComponent } from "@soperio/components";
+import { useColorTheme, useDarkMode } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";
-import { BaseComponentConfig, BaseMultiPartComponentConfig, ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "../ComponentConfig";
+import { BaseMultiPartComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "../ComponentConfig";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
 import { Soperio } from "../Soperio";
 
@@ -42,7 +42,7 @@ type MultiPartProps<T extends SoperioComponent, P extends BaseMultiPartComponent
 export function useMultiPartComponentConfig<T extends SoperioComponent, P extends MultiPartComponentConfig<T>>(
   component = "",
   theme: ComponentTheme = "default",
-  customConfig: ExtendMultiPartComponentConfig<T, P> | undefined,
+  customConfig: ExtendMultiPartComponentConfig<P> | undefined,
   componentConfig: KeysOf<P> = {} as KeysOf<P>,
   props?: T): Record<string, SoperioComponent>//MultiPartProps<T, BaseMultiPartComponentConfig<T>>
 {

@@ -1,7 +1,5 @@
-import { ComponentTypings } from "@soperio/components-theming";
-import { SoperioComponent } from "@soperio/core";
+import { ComponentConfig, ComponentTypings, ExtendComponentConfig, SoperioComponent } from "@soperio/components";
 import { Color, SpacingPositive } from "@soperio/theming";
-import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 
 type VariantProps = ComponentTypings<"Soperio.Spinner">
 

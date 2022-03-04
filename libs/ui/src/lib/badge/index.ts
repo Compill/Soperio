@@ -1,2 +1,2 @@
-export { Config as badgeConfig, ExtendConfig as ExtendBadgeConfig } from "./types"
+export type { Config as BadgeConfig, ExtendConfig as ExtendBadgeConfig } from "./types"
 export * from "./Badge"

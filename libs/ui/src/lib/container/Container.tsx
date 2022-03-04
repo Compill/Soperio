@@ -1,4 +1,4 @@
-import { getThemeStyle } from "@soperio/core";
+import { getThemeStyle } from "@soperio/theming";
 import React from 'react';
 import { ContainerProps } from "./types";
 

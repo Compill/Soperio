@@ -1,4 +1,5 @@
-import { getThemeStyle, Style } from "../CSS/utils";
+import { getThemeStyle } from "@soperio/theming";
+import { Style } from "../CSS/utils";
 
 export function opacity(cssProperty: string): (value: any) => Style
 {

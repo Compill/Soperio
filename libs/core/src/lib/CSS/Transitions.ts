@@ -1,5 +1,6 @@
 import { css as cssEmotion, keyframes } from "@emotion/react";
-import { css, getThemeStyle, Style, StyleProps } from "./utils";
+import { css, Style, StyleProps } from "./utils";
+import { getThemeStyle } from "@soperio/theming";
 
 const defaultTransition =
 {

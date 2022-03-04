@@ -1,7 +1,8 @@
-import { getDirection } from "../hooks/useDirection";
+import { getDirection } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
-import { css, cssValue, getThemeStyle, Style, StyleProps } from "./utils";
+import { css, cssValue, Style, StyleProps } from "./utils";
+import { getThemeStyle } from "@soperio/theming";
 
 function fontSize(value: any): Style
 {

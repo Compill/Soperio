@@ -1,4 +1,4 @@
-import { useDarkMode, useToggleDarkMode } from "@soperio/core";
+import { useDarkMode, useToggleDarkMode } from "@soperio/theming";
 import { Button } from "@soperio/ui";
 import React from "react";
 import ButtonPage from "./Button";

@@ -1,8 +1,5 @@
-import { ComponentTheme } from "@soperio/core";
+import { ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
-import { useComponentConfig } from "../hooks/useComponentConfig";
-import { useFirstRender } from "../hooks/useFirstRender";
-import { HTMLInputProps } from "../HTMLTagProps";
 import { Soperio } from "../Soperio";
 import { ComponentProps, ExtendConfig } from "./types";
 

@@ -1,6 +1,6 @@
 import { IS_DEV } from "@soperio/utils";
 import React from "react";
-import { getThemeStyle } from "../CSS/utils";
+import { getThemeStyle } from "../utils/utils";
 import { RootColors } from "../ThemeTypes";
 import { transformColorToGlobalVar } from "../utils/colorUtils";
 import { getTheme } from "./useTheme";

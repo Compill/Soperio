@@ -1,6 +1,5 @@
-import { SoperioProvider, useDarkMode, useDirection, useToggleDirection } from "@soperio/core";
+import { SoperioProvider, useDarkMode, useDirection, useToggleDirection } from "@soperio/theming";
 import { Button, ExtendButtonConfig } from "@soperio/ui";
-import { defaultTheme } from "@soperio/core";
 import React from "react";
 import { Content } from "./Content";
 import { ColorTheme } from "@soperio/theming";
@@ -18,16 +17,16 @@ function App()
     // init();
   }, []);
 
-  const customTheme = {
-    ...defaultTheme, globalStyles: {
-      body: {
-        fontFamily: "Inter, sans-serif",
-        fontFeatureSettings: "'kern'",
-        webkitFontSmoothing: "antialiased",
-        textRendering: "optimizelegibility"
-      }
-    }
-  };
+  // const customTheme = {
+  //   ...defaultTheme, globalStyles: {
+  //     body: {
+  //       fontFamily: "Inter, sans-serif",
+  //       fontFeatureSettings: "'kern'",
+  //       webkitFontSmoothing: "antialiased",
+  //       textRendering: "optimizelegibility"
+  //     }
+  //   }
+  // };
 
   const buttonConfig: ExtendButtonConfig = {
     mode: "extends",
@@ -48,7 +47,7 @@ function App()
   };
 
   return (
-    <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={customTheme}>
+    <SoperioProvider direction={direction ? "ltr" : "rtl"} /*theme={customTheme}*/>
       <Button variant="default" onClick={toggleDirection}>Toggle direction</Button>
 
       {/* <Page11 /> */}

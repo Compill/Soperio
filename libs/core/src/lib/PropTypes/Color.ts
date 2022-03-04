@@ -1,20 +1,6 @@
-import { getThemeStyle, StyleFn, StyleProp } from "../CSS/utils";
-import { getDarkMode } from "../hooks/useDarkMode";
+import { getColor } from "@soperio/theming";
+import { StyleFn, StyleProp } from "../CSS/utils";
 import { parseColor } from "../utils/colorUtils";
-
-
-function getColor(value: string)
-{
-    if (getDarkMode())
-    {
-        const darkColor = getThemeStyle(["darkModeOverride", "colors"], value)
-
-        if (darkColor)
-            return darkColor
-    }
-
-    return getThemeStyle("colors", value);
-}
 
 export function colorize(cssProperty: string, alphaVarName: string): StyleFn
 {

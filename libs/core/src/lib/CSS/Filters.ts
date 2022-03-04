@@ -1,4 +1,5 @@
-import { css, getThemeStyle, Style, StyleFn, StyleProp, StyleProps } from "./utils";
+import { getThemeStyle } from "@soperio/theming";
+import { css, Style, StyleFn, StyleProp, StyleProps } from "./utils";
 
 
 function content(cssProperty: any)

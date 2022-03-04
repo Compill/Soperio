@@ -1,12 +1,9 @@
-import { ComponentTheme, SoperioComponent, useColor, useColorTheme } from "@soperio/core";
+import { ComponentTheme, HTMLDivProps, SoperioComponent, useComponentConfig, useFirstRender } from "@soperio/components";
+import { useColor } from "@soperio/theming";
 import React from "react";
-import { useComponentConfig } from "../hooks/useComponentConfig";
-import { useFirstRender } from "../hooks/useFirstRender";
-import { HTMLDivProps } from "../HTMLTagProps";
 import { Soperio } from "../Soperio";
 import defaultConfig from "./config";
-import { ComponentProps, ExtendConfig
- } from "./types";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Spinner"
 

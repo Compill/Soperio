@@ -1,7 +1,4 @@
-import { ComponentTypings } from "@soperio/components-theming";
-import { SoperioComponent } from "@soperio/core";
-import { ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartVariants } from "../ComponentConfig";
-import { DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartVariants, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/components";
 
 type VariantProps = ComponentTypings<"Soperio.Card">;
 

@@ -1,4 +1,4 @@
-import { Color } from "@soperio/theming";
+import { Color } from "../CSSTypes";
 import { useTheme } from "./useTheme";
 
 export function useColor(color: Color): string

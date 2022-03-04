@@ -1,10 +1,18 @@
-import { ComponentTheme, SoperioComponent, useColorTheme, useDarkMode } from "@soperio/core";
+import { useColorTheme, useDarkMode } from "@soperio/theming";
+import { ComponentTheme } from "../ComponentTheme";
+import { SoperioComponent } from "../SoperioComponent";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";
 import { BaseComponentConfig, ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
 import { Soperio } from "../Soperio";
+
+
+/*
+  TODO Now I need to refactorise all the stuff in core that shoud be in theming like useTheme, useColor, useDarkMode, ...
+*/
+
 
 type KeysOf<T> =
 {

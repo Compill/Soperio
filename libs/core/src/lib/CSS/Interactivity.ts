@@ -1,4 +1,5 @@
-import { css, getThemeStyle, Style, StyleProps } from "./utils";
+import { getThemeStyle } from "@soperio/theming";
+import { css, Style, StyleProps } from "./utils";
 
 function outline(value: any): Style
 {

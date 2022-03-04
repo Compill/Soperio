@@ -1,7 +1,5 @@
-import { ComponentTypings } from "@soperio/components-theming";
-import { SoperioComponent } from "@soperio/core";
-import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { DisabledState, DisabledThemeProps, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps } from "../ComponentStates";
+import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/components";
+
 
 type VariantProps = ComponentTypings<"Soperio.Button">
 

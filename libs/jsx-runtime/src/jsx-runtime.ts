@@ -1,4 +1,4 @@
-import { SoperioComponent } from "@soperio/core";
+import { SoperioComponent } from "@soperio/components";
 import * as ReactJSXRuntime from "react/jsx-runtime";
 import { SoperioJSX } from "./jsx-namespace";
 import { Soperio } from "./Soperio";

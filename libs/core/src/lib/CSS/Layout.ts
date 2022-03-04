@@ -1,4 +1,4 @@
-import { getDirection } from "../hooks/useDirection";
+import { getDirection } from "@soperio/theming";
 import { directionSpacing, spacing } from "./Spacing";
 import { css, cssValueFn, StyleProps } from "./utils";
 

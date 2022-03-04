@@ -1,6 +1,6 @@
 {
-  "root": "libs/components-theming",
-  "sourceRoot": "libs/components-theming/src",
+  "root": "libs/components",
+  "sourceRoot": "libs/components/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -8,16 +8,16 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/components-theming",
-        "tsConfig": "libs/components-theming/tsconfig.lib.json",
-        "project": "libs/components-theming/package.json",
-        "entryFile": "libs/components-theming/src/index.ts",
+        "outputPath": "dist/libs/components",
+        "tsConfig": "libs/components/tsconfig.lib.json",
+        "project": "libs/components/package.json",
+        "entryFile": "libs/components/src/index.ts",
         "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
-            "glob": "libs/components-theming/README.md",
+            "glob": "libs/components/README.md",
             "input": ".",
             "output": "."
           }
@@ -28,14 +28,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/components-theming/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/components/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/components-theming"],
+      "outputs": ["coverage/libs/components"],
       "options": {
-        "jestConfig": "libs/components-theming/jest.config.js",
+        "jestConfig": "libs/components/jest.config.js",
         "passWithNoTests": true
       }
     }

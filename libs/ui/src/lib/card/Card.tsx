@@ -1,11 +1,7 @@
-import { ComponentTheme, ParentComponent, SoperioComponent, useColorTheme } from "@soperio/core";
-import { SpacingPositive } from "@soperio/theming";
+import { ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/components";
+import { SpacingPositive, useColorTheme } from "@soperio/theming";
 import { OrString } from "@soperio/utils";
 import React from "react";
-import { useFirstRender } from "../hooks/useFirstRender";
-import { useMultiPartComponentConfig } from "../hooks/useMultiPartComponentConfig";
-import { HTMLDivProps } from "../HTMLTagProps";
-import { MultiPartStyleProvider, useMultiPartStyles } from "../MultiPartStyleProvider";
 import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Card";
@@ -13,7 +9,7 @@ const COMPONENT_ID = "Soperio.Card";
 export interface CardProps extends ComponentProps, HTMLDivProps
 {
   theme?: ComponentTheme;
-  config: ExtendConfig
+  config?: ExtendConfig
 }
 
 /**

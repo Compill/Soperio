@@ -1,7 +1,5 @@
-import { ComponentTheme } from "@soperio/core";
+import { ComponentTheme, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
-import { useComponentConfig } from "../hooks/useComponentConfig";
-import { useFirstRender } from "../hooks/useFirstRender";
 import { Soperio } from "../Soperio";
 import { ComponentProps, ExtendConfig } from "./types";
 

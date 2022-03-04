@@ -1,5 +1,5 @@
 import { Checkbox, Container, Input } from "@soperio/ui";
-import { useDarkMode } from "@soperio/core";
+import { useDarkMode } from "@soperio/theming";
 
 
 type Side = "left" | "right" | "top" | "bottom";

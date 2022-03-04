@@ -1,7 +1,7 @@
-import { getDirection } from "../hooks/useDirection";
+import { getDirection, getThemeStyle } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
-import { css, cssValueFn, direction, getThemeStyle, Style, StyleProps } from "./utils";
+import { css, cssValueFn, direction, Style, StyleProps } from "./utils";
 
 function divideX(value: any): Style
 {

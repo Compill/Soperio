@@ -1,5 +1,7 @@
-import { getDirection } from "../hooks/useDirection";
-import { css, cssValueFn, getThemeStyle, Style, StyleProp, StyleProps } from "./utils";
+import { getDirection } from "@soperio/theming";
+import { css, cssValueFn, Style, StyleProp, StyleProps } from "./utils";
+import { getThemeStyle } from "@soperio/theming";
+
 
 function spaceX(value: any): Style
 {

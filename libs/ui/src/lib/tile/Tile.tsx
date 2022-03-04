@@ -1,6 +1,6 @@
-import { useColorTheme } from "@soperio/core";
+import { useColorTheme } from "@soperio/theming";
 import React from "react";
-import { useFirstRender } from "../hooks/useFirstRender";
+import { useFirstRender } from "@soperio/components";
 import { TileProps } from "./types";
 
 /**

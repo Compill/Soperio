@@ -1,6 +1,6 @@
-import { SoperioComponent } from "@soperio/core";
+import { SoperioComponent } from "./SoperioComponent";
 import { ColorTheme } from "@soperio/theming";
-import { ComponentStateProps, NoStateProps } from "..";
+import { ComponentStateProps, NoStateProps } from "./ComponentStates";
 
 // export type SoperioComponentConfig = Record<string, unknown>;
 // export interface SoperioComponentConfig<T extends SoperioComponent> {

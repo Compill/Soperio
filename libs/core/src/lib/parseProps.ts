@@ -1,8 +1,8 @@
 import { css as emotionCss } from "@emotion/react";
 import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
-import { SoperioComponent } from "./SoperioComponent";
 import murmurhash from "murmurhash";
-import { getThemeStyle } from "./CSS/utils";
+import { getThemeStyle } from "@soperio/theming";
+import { SoperioComponent } from "@soperio/components"
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 

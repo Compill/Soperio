@@ -1,12 +1,10 @@
 import React from "react";
-import { ParentComponent } from "./HTMLTagProps";
-import { useSetTheme } from "./hooks/useTheme";
+import { ParentComponent } from "@soperio/components";
+import { NormalizeCSS } from "./NormalizeCSS";
+import { css, Global } from "@emotion/react";
+import { Theme, useSetDirection, useSetTheme } from "@soperio/theming";
 import { defaultTheme } from "./defaultTheme";
 import { useSetDarkModeConfig } from "./hooks/useDarkMode";
-import { useSetDirection } from "./hooks/useDirection";
-import { NormalizeCSS } from "./NormalizeCSS";
-import { Theme } from "./Theme";
-import { css, Global } from "@emotion/react";
 
 
 interface SoperioProviderProps extends ParentComponent

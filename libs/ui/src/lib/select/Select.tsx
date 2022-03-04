@@ -1,8 +1,5 @@
-import { ComponentTheme, ParentComponent } from "@soperio/core";
+import { ComponentTheme, HTMLSelectProps, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
-import { useComponentConfig } from "../hooks/useComponentConfig";
-import { useFirstRender } from "../hooks/useFirstRender";
-import { HTMLSelectProps } from "../HTMLTagProps";
 import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Select";

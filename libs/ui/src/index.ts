@@ -11,15 +11,5 @@ export * from './lib/spinner/';
 export * from './lib/textarea/';
 export * from './lib/tile/';
 
-export * from './lib/hooks/useComponentConfig';
-export * from './lib/hooks/useFirstRender';
-export * from './lib/hooks/useMultiPartComponentConfig';
-export * from './lib/hooks/usePrevious';
-
-export * from './lib/HTMLTagProps';
-export * from './lib/ComponentStates';
 export * from './lib/Soperio';
-export * from "./lib/hooks/usePrevious";
-
-export * from './lib/ComponentConfig';
 export * from "./lib/theming";

@@ -1,4 +1,3 @@
-import { SoperioComponent } from "@soperio/core";
 import { ColorTheme } from "@soperio/theming";
 import { isDark } from "@soperio/utils";
 import { Config } from "./types";
@@ -24,7 +23,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           px: "2",
           py: "1.5",
           fontSize: "sm"
-        } as SoperioComponent,
+        },
         "md":
         {
           px: "2.5",

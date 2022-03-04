@@ -1,4 +1,4 @@
-import { getDirection } from "../hooks/useDirection";
+import { getDirection } from "@soperio/theming";
 import { css, Style, StyleProps } from "./utils";
 
 function transform(value: any): Style

@@ -1,7 +1,4 @@
-import { ComponentTypings } from "@soperio/components-theming";
-import { SoperioComponent } from "@soperio/core";
-import { ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, DisabledState, DisabledThemeProps } from "../ComponentStates";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, SoperioComponent } from "@soperio/components";
 
 type VariantProps = ComponentTypings<"Soperio.Radio">;
 

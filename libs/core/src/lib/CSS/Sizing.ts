@@ -1,4 +1,5 @@
-import { getThemeStyle, StyleFn, StyleProp, StyleProps } from "./utils";
+import { StyleFn, StyleProp, StyleProps } from "./utils";
+import { getThemeStyle } from "@soperio/theming";
 
 function processValue(cssProperty: string, themeProperty:string): StyleFn
 {

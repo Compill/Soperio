@@ -1,4 +1,4 @@
-// import { Components } from "@soperio/components-theming";
+// import { Components } from "@soperio/components";
 import ThemeBorder from "./Core/Border";
 import ThemeBreakpoints from "./Core/Breakpoints";
 import ThemeColors from "./Core/Colors";

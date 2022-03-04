@@ -1,27 +1,10 @@
-import { defaultTheme } from "../defaultTheme";
-import { getDirection } from "../hooks/useDirection";
+import { getDirection, getThemeStyle } from "@soperio/theming";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const _ = require("lodash");
-
-// TODO get user merged theme instead of default
 
 export type Style = Record<string, string | number | Record<string, string | number> | any>;
 export type StyleProp = boolean | string | number;
 export type StyleFn = (value: StyleProp) => Style;
 export type StyleProps = Record<string, StyleFn>;
-
-export function getThemeStyle(themeProperty: string | string[], key: string | number): any
-{
-    // const c =  _.get(defaultTheme, themeProperty);
-    // TODO should use useTheme
-    const c =  _.property(themeProperty)(defaultTheme);
-
-    if (c)
-        return c[key];
-
-    return undefined;
-}
 
 export function css(cssProperty: string | string[], themeProperty?: string, defaultValue?: string): StyleFn
 {
