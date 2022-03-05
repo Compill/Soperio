@@ -1,4 +1,4 @@
-import { Height, MaxHeight, MaxWidth, MinHeight, MinWidth, SpacingPositive, Width } from "@soperio/theming";
+import { Height, MaxHeight, MaxWidth, MinHeight, MinWidth, SpacingPositive, Width } from "../CSSTypes";
 
 export interface Sizing {
     w?: false | Width,

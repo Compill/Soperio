@@ -1,4 +1,3 @@
-import { ComponentConfig, MultiPartComponentConfig, SoperioComponent } from "@soperio/components";
 import { CSSPropKeys } from "@soperio/core";
 import { ColorTheme, getThemeStyle } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
@@ -24,28 +23,5 @@ export class Soperio
     }
 
     return theme;
-  }
-
-  /**
-   * Returns all props that are not base Soperio props (like bgColor, m, hover_xx, ...)
-   *
-   * @param props
-   * @returns props without Soperio props
-   */
-  static omitComponentProps(props: Record<string, any>): Record<string, any>
-  {
-    return omit(props, CSSPropKeys);
-  }
-
-  /**
-   * Returns an array of two prop objects
-   * [0] contains Soperio props (like bgColor, m, hover_xx, ...)
-   * [1] contains non-Soperio props
-   * @param props
-   * @returns
-   */
-  static splitComponentProps(props: Record<string, any>): Record<string, any>[]
-  {
-    return split(props, CSSPropKeys);
   }
 }

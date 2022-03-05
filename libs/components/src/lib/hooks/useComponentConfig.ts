@@ -6,7 +6,7 @@ import deepmerge from "deepmerge";
 import React from "react";
 import { BaseComponentConfig, ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
-import { Soperio } from "../Soperio";
+import { ComponentManager } from "../ComponentManager";
 
 
 /*
@@ -46,7 +46,7 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
   componentConfig: KeysOf<P> = {} as KeysOf<P>,
   props?: T): T
 {
-  const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component) as ComponentConfig<T>);
+  const [defaultConfig] = React.useState(() => ComponentManager.getComponentConfig(component) as ComponentConfig<T>);
   const darkMode = useDarkMode();
 
   if (!defaultConfig && IS_DEV)

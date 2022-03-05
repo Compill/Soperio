@@ -13,3 +13,4 @@ export * from './lib/SoperioTheme';
 export * from './lib/Theme';
 export * from './lib/ThemingToken';
 export * from "./lib/utils/utils";
+export * from "./lib/CSSProps";

@@ -1,4 +1,4 @@
-import { Flex, GridAutoColumns, GridAutoRows, GridColumn, GridRow, GridTemplateColumns, GridTemplateRows, Order, SpacingPositive } from "@soperio/theming";
+import { Flex, GridAutoColumns, GridAutoRows, GridColumn, GridRow, GridTemplateColumns, GridTemplateRows, Order, SpacingPositive } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Flexbox

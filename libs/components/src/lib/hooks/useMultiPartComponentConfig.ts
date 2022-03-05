@@ -1,11 +1,12 @@
-import { ComponentTheme, SoperioComponent } from "@soperio/components";
+import { SoperioComponent } from "../SoperioComponent";
+import { ComponentTheme } from "../ComponentTheme";
 import { useColorTheme, useDarkMode } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
 import React from "react";
 import { BaseMultiPartComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig } from "../ComponentConfig";
 import { ComponentState, ComponentThemeState } from "../ComponentStates";
-import { Soperio } from "../Soperio";
+import { ComponentManager } from "../ComponentManager";
 
 type KeysOf<T> =
 {
@@ -46,7 +47,7 @@ export function useMultiPartComponentConfig<T extends SoperioComponent, P extend
   componentConfig: KeysOf<P> = {} as KeysOf<P>,
   props?: T): Record<string, SoperioComponent>//MultiPartProps<T, BaseMultiPartComponentConfig<T>>
 {
-  const [defaultConfig] = React.useState(() => Soperio.getComponentConfig(component) as MultiPartComponentConfig<T>);
+  const [defaultConfig] = React.useState(() => ComponentManager.getComponentConfig(component) as MultiPartComponentConfig<T>);
   const darkMode = useDarkMode();
 
   if (!defaultConfig && IS_DEV)
@@ -90,7 +91,7 @@ function mergeProps<T extends SoperioComponent, P extends MultiPartComponentConf
   for (const subComponent of subComponents)
   {
     // Let's start with the component default values
-    let finalProps = { ...(config.defaultProps?.[subComponent] as T) };
+    let finalProps = { ...(config.defaultProps?.[subComponent] as any) };
 
     const defaultVariants = config.defaultVariants;
 

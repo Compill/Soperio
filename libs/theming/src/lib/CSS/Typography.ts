@@ -1,4 +1,4 @@
-import { Color, Font, FontSize, LetterSpacing, LineHeight, Opacity, SpacingPositive } from "@soperio/theming";
+import { Color, Font, FontSize, LetterSpacing, LineHeight, Opacity, SpacingPositive } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Typography

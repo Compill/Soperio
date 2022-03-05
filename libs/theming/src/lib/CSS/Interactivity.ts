@@ -1,4 +1,4 @@
-import { Outline } from "@soperio/theming";
+import { Outline } from "../CSSTypes";
 
 export interface Interactivity
 {

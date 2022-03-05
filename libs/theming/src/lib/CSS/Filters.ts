@@ -1,4 +1,4 @@
-import { SpacingPositive } from "@soperio/theming";
+import { SpacingPositive } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Filters

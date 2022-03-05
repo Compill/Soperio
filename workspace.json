@@ -4,7 +4,6 @@
     "cli": "libs/cli",
     "components": "libs/components",
     "core": "libs/core",
-    "css": "libs/css",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
     "jsx-dev-runtime": "libs/jsx-dev-runtime",

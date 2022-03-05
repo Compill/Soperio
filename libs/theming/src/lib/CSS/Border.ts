@@ -1,4 +1,4 @@
-import { BorderRadius, BorderWidth, Color, Opacity } from "@soperio/theming";
+import { BorderRadius, BorderWidth, Color, Opacity } from "../CSSTypes";
 
 export interface Border
 {

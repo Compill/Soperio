@@ -1,4 +1,4 @@
-import { Spacing as SpacingScale, SpacingPositive } from "@soperio/theming";
+import { Spacing as SpacingScale, SpacingPositive } from "../CSSTypes";
 
 export interface Spacing
 {

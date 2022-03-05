@@ -1,18 +1,22 @@
 import React from "react";
-import { ParentComponent } from "@soperio/components";
 import { NormalizeCSS } from "./NormalizeCSS";
 import { css, Global } from "@emotion/react";
-import { Theme, useSetDirection, useSetTheme } from "@soperio/theming";
 import { defaultTheme } from "./defaultTheme";
 import { useSetDarkModeConfig } from "./hooks/useDarkMode";
+import { Theme } from "./Theme";
+import { useSetDirection } from "./hooks/useDirection";
+import { useSetTheme } from "./hooks/useTheme";
 
 
-interface SoperioProviderProps extends ParentComponent
+// We could extend from ParentComponent but we would have a circular
+// reference with components library
+interface SoperioProviderProps// extends ParentComponent
 {
   resetCss?: boolean,
   theme?: Theme,
   darkMode?: "light" | "dark" | "system";
   direction?: "rtl" | "ltr";
+  children?: React.ReactNode
 };
 
 // SoperioProvider is out initializer

@@ -1,4 +1,4 @@
-import { Animation, Delay, Duration, Ease, TransitionProperty } from "@soperio/theming";
+import { Animation, Delay, Duration, Ease, TransitionProperty } from "../CSSTypes";
 
 export interface Transitions
 {

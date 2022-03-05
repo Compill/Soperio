@@ -36,7 +36,7 @@ export default function Page({ ...props })
   return (
     <Container center size="xxl" gap="20" justifyContent="center" py="20">
       <div mb="10">
-        <Checkbox shape="rounded" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
+        <Checkbox shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
       </div>
 
       <div mb="10" dflex flexCol spaceY="20">

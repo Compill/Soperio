@@ -1,6 +1,4 @@
-import { SoperioComponent } from "./SoperioComponent";
-
-const keys = keyof SoperoComponent
+import { CSSPropKeys } from "@soperio/core";
 
 /**
    * Returns all props that are not base Soperio props (like bgColor, m, hover_xx, ...)
@@ -10,7 +8,7 @@ const keys = keyof SoperoComponent
    */
   export function omitComponentProps(props: Record<string, any>): Record < string, any >
   {
-      return omit(props, keyof SoperioComponent);
+      return omit(props, CSSPropKeys);
   }
 
   /**

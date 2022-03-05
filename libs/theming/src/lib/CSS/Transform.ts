@@ -1,4 +1,4 @@
-import { Rotate, Scale, Skew, Spacing, Translate } from "@soperio/theming";
+import { Rotate, Scale, Skew, Spacing, Translate } from "../CSSTypes";
 
 
 export interface Transform

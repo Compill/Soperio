@@ -1,4 +1,4 @@
-import { Color, Opacity } from "@soperio/theming";
+import { Color, Opacity } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Background

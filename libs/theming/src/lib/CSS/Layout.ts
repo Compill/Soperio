@@ -1,4 +1,4 @@
-import { Spacing } from "@soperio/theming";
+import { Spacing } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export default interface Layout {

@@ -1,11 +1,11 @@
-import { ComponentTheme, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
 import { Soperio } from "../Soperio";
 import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Checkbox";
 
-export interface CheckboxProps extends ComponentProps
+export interface CheckboxProps extends ComponentProps, HTMLInputProps
 {
   label?: string,
   theme?: ComponentTheme;
