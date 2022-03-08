@@ -211,7 +211,7 @@ export const defaultTheme: Theme = {
     "text-color-inverse-disabled": "coolGray-300",
 
     // Light background colors if light theme, dark colors if dark theme
-    "bg-color-1": "#FFFFFF",
+    "bg-color-1": "#FFFFFFFF",
     "bg-color-2": "coolGray-50",
     "bg-color-3": "coolGray-100",
     "bg-color-4": "coolGray-200",

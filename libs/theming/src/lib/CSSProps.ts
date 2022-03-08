@@ -42,6 +42,7 @@ type LG<Type> = { [Property in keyof Type as `lg_${string & Property}`]: Type[Pr
 type XL<Type> = { [Property in keyof Type as `xl_${string & Property}`]: Type[Property]; };
 type XXL<Type> = { [Property in keyof Type as `xxl_${string & Property}`]: Type[Property]; };
 
+// TODO Define as truly responsive via theme breakpoints values
 export type ResponsiveCSSProps =
     CSSProps
     & SM<CSSProps>
