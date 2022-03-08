@@ -1,6 +1,5 @@
-import { ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentTheme, HTMLInputProps, splitComponentProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
-import { Soperio } from "../Soperio";
 import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Checkbox";
@@ -32,7 +31,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
 
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, otherNameThanSize, shape }, props)
 
-  const [soperioProps, inputProps] = Soperio.splitComponentProps(props)
+  const [soperioProps, inputProps] = splitComponentProps(props)
 
   return (
     <div {...soperioProps}>

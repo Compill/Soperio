@@ -1,16 +1,17 @@
-import { ComponentConfig, ComponentTypings, ExtendComponentConfig, SoperioComponent } from "@soperio/components";
+import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, NoStateProps, SelectedDisabledThemeProps, SelectedThemeProps, SoperioComponent } from "@soperio/components";
 import { Color, SpacingPositive } from "@soperio/theming";
 
 type VariantProps = ComponentTypings<"Soperio.Spinner">
 
-interface SpinnerProps extends SoperioComponent
+interface CustomProps extends SoperioComponent 
 {
   trackColor?: Color,
   thickness?: SpacingPositive,
   progress?: 0 | 25 | 50 | 75 | 100
 }
 
-export type ComponentProps = SoperioComponent & VariantProps & SpinnerProps
+interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
+export type ComponentProps = VariantProps & CustomProps
 
-export type Config = ComponentConfig<SpinnerProps, VariantProps>;
+export type Config = ComponentConfig<CustomProps, VariantProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;

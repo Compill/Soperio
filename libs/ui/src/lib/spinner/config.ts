@@ -6,7 +6,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
   return {
     defaultProps:
     {
-      absdv: "",
       thickness: "2px",
       progress: 75
     },

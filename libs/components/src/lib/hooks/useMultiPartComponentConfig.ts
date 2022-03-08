@@ -40,7 +40,7 @@ type MultiPartProps<T extends SoperioComponent, P extends BaseMultiPartComponent
   [Property in keyof P]: T
 }
 
-export function useMultiPartComponentConfig<T extends SoperioComponent, P extends MultiPartComponentConfig<T>>(
+export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfig<T>>(
   component = "",
   theme: ComponentTheme = "default",
   customConfig: ExtendMultiPartComponentConfig<P> | undefined,
@@ -80,7 +80,7 @@ export function useMultiPartComponentConfig<T extends SoperioComponent, P extend
 }
 
 // Get the right set of soperio props from the config variants (variant, size, corners, ...)
-function mergeProps<T extends SoperioComponent, P extends MultiPartComponentConfig<T>>(config: BaseMultiPartComponentConfig<T>, componentConfig: KeysOf<P>, props: any): Record<string, T>
+function mergeProps<T, P extends MultiPartComponentConfig<T>>(config: BaseMultiPartComponentConfig<T>, componentConfig: KeysOf<P>, props: any): Record<string, T>
 {
   const subComponents = config.subComponents
 

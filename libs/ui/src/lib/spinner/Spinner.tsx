@@ -18,7 +18,7 @@ function getBorders(trackColor: string, progress: number): SoperioComponent
   }
 }
 
-export interface SpinnerProps extends ComponentProps, HTMLDivProps
+export interface SpinnerProps extends ComponentProps//, HTMLDivProps
 {
   theme?: ComponentTheme,
   config?: ExtendConfig;
@@ -26,7 +26,7 @@ export interface SpinnerProps extends ComponentProps, HTMLDivProps
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
   thickness,
-  trackColor,
+  trackColor = undefined,
   theme = "default",
   size = "md",
   variant = "default",
@@ -37,7 +37,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size }, {...props, trackColor, thickness, progress})
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size }, { trackColor, thickness, progress, ...props} as ComponentProps)
 
   const parsedTrackColor = useColor(trackColor || styles?.trackColor || "transparent")
   const parsedThickness = thickness || styles?.thickness

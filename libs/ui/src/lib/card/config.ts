@@ -12,7 +12,9 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
     },
     defaultProps: 
     {
-      mx: "2"
+      card: {
+        mx: "2"
+      }
     },
     subComponents: ["card", "header", "content", "footer"],
     variants:

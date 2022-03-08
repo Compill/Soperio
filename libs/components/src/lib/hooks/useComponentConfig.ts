@@ -9,11 +9,6 @@ import { ComponentState, ComponentThemeState } from "../ComponentStates";
 import { ComponentManager } from "../ComponentManager";
 
 
-/*
-  TODO Now I need to refactorise all the stuff in core that shoud be in theming like useTheme, useColor, useDarkMode, ...
-*/
-
-
 type KeysOf<T> =
 {
   [Property in keyof T]: string

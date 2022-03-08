@@ -1,4 +1,7 @@
-import { CSSPropKeys } from "@soperio/core";
+import { omit, split } from "@soperio/utils";
+
+// TODO: Find a way to build Soperio props array
+const CSSPropKeys: string[] = [];
 
 /**
    * Returns all props that are not base Soperio props (like bgColor, m, hover_xx, ...)
@@ -6,19 +9,19 @@ import { CSSPropKeys } from "@soperio/core";
    * @param props
    * @returns props without Soperio props
    */
-  export function omitComponentProps(props: Record<string, any>): Record < string, any >
-  {
-      return omit(props, CSSPropKeys);
-  }
+export function omitComponentProps(props: Record<string, any>): Record<string, any>
+{
+    return omit(props, CSSPropKeys);
+}
 
-  /**
-   * Returns an array of two prop objects
-   * [0] contains Soperio props (like bgColor, m, hover_xx, ...)
-   * [1] contains non-Soperio props
-   * @param props
-   * @returns
-   */
-  export function splitComponentProps(props: Record<string, any>): Record < string, any > []
-  {
-          return split(props, CSSPropKeys);
-      };
+/**
+ * Returns an array of two prop objects
+ * [0] contains Soperio props (like bgColor, m, hover_xx, ...)
+ * [1] contains non-Soperio props
+ * @param props
+ * @returns
+ */
+export function splitComponentProps(props: Record<string, any>): Record<string, any>[]
+{
+    return split(props, CSSPropKeys);
+};

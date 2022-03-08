@@ -11,5 +11,4 @@ export * from './lib/spinner/';
 export * from './lib/textarea/';
 export * from './lib/tile/';
 
-export * from './lib/Soperio';
 export * from "./lib/theming";

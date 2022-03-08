@@ -89,15 +89,15 @@ export type MultiPartVariants<V extends Record<string, string>, T> = {
 };
 
 type MultiPartVariantConfig<T> = {
-  [key: string]: { [key: string]: { [key: string]: SoperioComponent & T; }; };
+  [key: string]: { [key: string]: { [key: string]: T }; };
 };
 
-export type BaseMultiPartComponentConfig<T extends StateAndExtraProps, C extends MultiPartVariantConfig<T> = Record<string, Record<string, Record<string, T>>>> =
+export type BaseMultiPartComponentConfig<T extends StateAndExtraProps = NoStateProps, C extends MultiPartVariantConfig<T> = Record<string, Record<string, Record<string, T>>>> =
   {
-    defaultProps?: SoperioComponent & T,
+    subComponents: string[];
+    defaultProps?: { [key: string]: SoperioComponent & T},
     defaultVariants?: { [key: string]: string; };
     variants?: C | undefined;
-    subComponents: string[];
   };
 
 type MultiPartComponentConfigFn<T extends StateAndExtraProps, C extends MultiPartVariantConfig<T> = Record<string, Record<string, Record<string, T>>>> = (theme: ColorTheme, darkMode: boolean) => BaseMultiPartComponentConfig<T, C>;

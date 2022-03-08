@@ -1,6 +1,5 @@
-import { ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentTheme, HTMLInputProps, splitComponentProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
-import { Soperio } from "../Soperio";
 import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Radio";
@@ -35,7 +34,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
 
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, otherNameThanSize }, props)
 
-  const [soperioProps, inputProps] = Soperio.splitComponentProps(props);
+  const [soperioProps, inputProps] = splitComponentProps(props);
 
   return (
     <div {...soperioProps}>
