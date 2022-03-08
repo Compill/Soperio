@@ -72,3 +72,19 @@ export function pick<T extends Dict, K extends keyof T>(object: T, keys: K[])
 
   return result;
 }
+
+// Array assertions
+export function isArray<T>(value: any): value is Array<T>
+{
+  return Array.isArray(value);
+}
+
+export default function isObject(value: any): value is Dict
+{
+  const type = typeof value;
+  return (
+    value != null &&
+    (type === "object" || type === "function") &&
+    !isArray(value)
+  );
+}

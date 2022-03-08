@@ -223,8 +223,8 @@ export const defaultTheme: Theme = {
     // The border between the left sidebar and the main content
     // Or the header and the subheader and the main content
     // Or the buttons of a toolbar
-    "border-color-0": "coolGray-100",
-    "border-color-1": "coolGray-200",
+    "border-color-1": "coolGray-100",
+    "border-color-2": "coolGray-200",
     "border-color-disabled": "#FFFFFF",
 
     "shadow-color": "#000000",
@@ -460,8 +460,8 @@ export const defaultTheme: Theme = {
     // The border between the left sidebar and the main content
     // Or the header and the subheader and the main content
     // Or the buttons of a toolbar
-    "border-color-0": "coolGray-700",
-    "border-color-1": "coolGray-800",
+    "border-color-1": "coolGray-700",
+    "border-color-2": "coolGray-800",
     "border-color-disabled": "#FFFFFF",
 
     "shadow-color": "#FFFFFF",

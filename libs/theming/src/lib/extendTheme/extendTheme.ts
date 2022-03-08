@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { default as mergeWith } from "lodash.mergewith";
 import { defaultTheme } from "../defaultTheme";
-import { ExtendTheme } from ".";
+import { ExtendTheme } from "../ExtendTheme";
 import { isSoperioTheme } from "../isSoperioTheme";
 import { Theme } from "../Theme";
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const _ = require("lodash");
 
 type AnyFunction<T = any> = (...args: T[]) => any;
 
@@ -91,7 +93,7 @@ export function extendTheme(...extensions: ExtendTheme[]): Theme
 export function mergeThemeOverride(...overrides: any[]): any
 {
     // console.log('mergeThemeoverrides', mergeWith({}, ...overrides));
-    return mergeWith({}, ...overrides);
+    return _.mergeWith({}, ...overrides);
 }
 function mergeThemeCustomizer(
     source: unknown,
@@ -110,7 +112,7 @@ function mergeThemeCustomizer(
             const sourceValue = isFunction(source) ? source(...args) : source;
 
             const overrideValue = isFunction(override) ? override(...args) : override;
-            return mergeWith({}, sourceValue, overrideValue, mergeThemeCustomizer);
+            return _.mergeWith({}, sourceValue, overrideValue, mergeThemeCustomizer);
         };
     }
 

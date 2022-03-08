@@ -41,8 +41,8 @@ export interface RootColors
   // The border between the left sidebar and the main content
   // Or the header and the subheader and the main content
   // Or the buttons of a toolbar
-  "border-color-0": string,
   "border-color-1": string,
+  "border-color-2": string,
   "border-color-disabled": string,
 
   "shadow-color": string,
