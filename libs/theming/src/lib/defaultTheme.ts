@@ -976,6 +976,11 @@ export const defaultTheme: Theme = {
     },
   },
   typography: {
+    font: {
+      sans: "sans",
+      serif: "serif",
+      mono: "mono"
+    },
     // Second argument is for line-height
     fontSize: {
       xs: ['0.75rem', '1rem'],

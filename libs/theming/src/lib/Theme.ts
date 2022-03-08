@@ -83,6 +83,7 @@ export interface Theme
     transitionProperty: StringKeyValueObject,
   },
   typography: {
+    font: StringKeyValueObject,
     fontSize: KeyValueObject<string[]>,
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,

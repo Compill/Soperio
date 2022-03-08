@@ -1,14 +1,23 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "lib": ["dom", "esnext"],
+    "module": "commonjs",
+    "target": "ES2020"
+  },
+  "paths": {
+    "*": ["node_modules/*", "src/types/*", "src/scrips/*"]
+  },
+  "ts-node": {
+    "transpileOnly": true
   },
   "files": [],
   "include": [],

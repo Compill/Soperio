@@ -13,18 +13,47 @@ import ThemeThemes from "./Core/Themes";
 import ThemeTransform from "./Core/Transform";
 import ThemeTransition from "./Core/Transition";
 import ThemeTypography from "./Core/Typography";
+import { Direction, GlobalStyles, StringKeyValueObject } from "./ThemeTypes";
 
 // This file will be rewritten by CLI if the user creates a custom theme
 // This way, the user will have the right value for types in autocompletion
 export interface ThemeTypings extends ThemeOpacity
 {
-  breakpoints: ThemeBreakpoints,
+  globalStyles: GlobalStyles;
+  direction: Direction;
+  darkMode: 'light' | 'dark' | 'system';
+  darkModeFallback: 'light' | 'dark';
+  darkModeOverride: {
+    colorThemes: ThemeThemes;
+    rootColors: ThemeRootColors;
+  },
   rootColors: ThemeRootColors,
   colors: ThemeColors,
   colorThemes: ThemeThemes,
+  breakpoints: ThemeBreakpoints,
   borders: ThemeBorder,
   effects: ThemeEffects,
   flexbox: ThemeFlexbox,
+  filters: {
+    blur: StringKeyValueObject,
+    brightness: StringKeyValueObject,
+    contrast: StringKeyValueObject,
+    dropShadow: StringKeyValueObject,
+    grayscale: StringKeyValueObject,
+    hueRotate: StringKeyValueObject,
+    invert: StringKeyValueObject,
+    saturate: StringKeyValueObject,
+    sepia: StringKeyValueObject,
+    backdropBlur: StringKeyValueObject,
+    backdropBrightness: StringKeyValueObject,
+    backdropContrast: StringKeyValueObject,
+    backdropGrayscale: StringKeyValueObject,
+    backdropHueRotate: StringKeyValueObject,
+    backdropInvert: StringKeyValueObject,
+    backdropOpacity: StringKeyValueObject,
+    backdropSaturate: StringKeyValueObject,
+    backdropSepia: StringKeyValueObject,
+  };
   interactivity: ThemeInteractivity,
   sizing: ThemeSizing,
   spacing: ThemeSpacing,
