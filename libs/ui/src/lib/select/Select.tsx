@@ -1,8 +1,12 @@
-import { ComponentTheme, HTMLSelectProps, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLSelectProps, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 
+import defaultConfig from "./config";
+
 const COMPONENT_ID = "Soperio.Select";
+
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface SelectProps extends ComponentProps, ParentComponent, Omit<HTMLSelectProps, "size">
 {

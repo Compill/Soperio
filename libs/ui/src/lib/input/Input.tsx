@@ -1,8 +1,11 @@
-import { ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
+import defaultConfig from "./config"
 
 const COMPONENT_ID = "Soperio.Input";
+
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface InputProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {

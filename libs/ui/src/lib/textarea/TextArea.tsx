@@ -1,8 +1,12 @@
-import { ComponentTheme, HTMLTextAreaProps, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLTextAreaProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 
+import defaultConfig from "./config";
+
 const COMPONENT_ID = "Soperio.TextArea";
+
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface TextAreaProps extends ComponentProps, HTMLTextAreaProps
 {

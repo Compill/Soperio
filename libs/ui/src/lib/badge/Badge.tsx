@@ -1,8 +1,11 @@
-import { ComponentTheme, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentManager, ComponentTheme, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
+import defaultConfig from "./config";
 
 const COMPONENT_ID = "Soperio.Badge";
+
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface BadgeProps extends ComponentProps, ParentComponent
 {

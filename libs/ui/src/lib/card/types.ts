@@ -4,7 +4,7 @@ type VariantProps = ComponentTypings<"Soperio.Card">;
 
 export type ComponentProps = SoperioComponent & VariantProps & SelectedState & DisabledState;
 
-interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
+interface ConfigStateProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
 type CardComponentProps = {
   card?: SoperioComponent & ConfigStateProps,

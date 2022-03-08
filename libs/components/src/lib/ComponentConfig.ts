@@ -89,7 +89,7 @@ export type MultiPartVariants<V extends Record<string, string>, T> = {
 };
 
 type MultiPartVariantConfig<T> = {
-  [key: string]: { [key: string]: { [key: string]: T }; };
+  [key: string]: { [key: string]: { [key: string]: SoperioComponent & T }; };
 };
 
 export type BaseMultiPartComponentConfig<T extends StateAndExtraProps = NoStateProps, C extends MultiPartVariantConfig<T> = Record<string, Record<string, Record<string, T>>>> =

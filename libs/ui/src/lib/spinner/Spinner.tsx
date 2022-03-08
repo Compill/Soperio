@@ -26,7 +26,7 @@ export interface SpinnerProps extends ComponentProps//, HTMLDivProps
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
   thickness,
-  trackColor = undefined,
+  trackColor,
   theme = "default",
   size = "md",
   variant = "default",
@@ -42,6 +42,10 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
   const parsedTrackColor = useColor(trackColor || styles?.trackColor || "transparent")
   const parsedThickness = thickness || styles?.thickness
   const parsedProgress = progress || styles?.progress || 75
+
+  delete styles.trackColor
+  delete styles.thickness
+  delete styles.progress
 
   return (
     <div

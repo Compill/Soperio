@@ -1,12 +1,11 @@
-import { ComponentTheme, HTMLButtonProps, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLButtonProps, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from 'react';
 import { ComponentProps, ExtendConfig } from "./types";
+import defaultConfig from "./config"
 
 const COMPONENT_ID = "Soperio.Button"
 
-// TODO This will disappear
-// Soperio.registerComponent(COMPONENT_ID, defaultConfig)
-// TO put the config in theme instead
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface ButtonProps extends ComponentProps, ParentComponent, HTMLButtonProps
 {
