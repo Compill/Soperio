@@ -13,8 +13,9 @@
         "project": "libs/components/package.json",
         "entryFile": "libs/components/src/index.ts",
         "external": ["react/jsx-runtime"],
+        "styles": ["normalize.module.css"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-        "compiler": "babel",
+        "webpackConfig": "./webpack.config.js",
         "assets": [
           {
             "glob": "libs/components/README.md",
@@ -37,6 +38,12 @@
       "options": {
         "jestConfig": "libs/components/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
       }
     }
   }
