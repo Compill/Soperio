@@ -1,4 +1,4 @@
-import { SoperioProvider, useDarkMode, useDirection, useToggleDirection } from "@soperio/theming";
+import { extendTheme, SoperioProvider, useDarkMode, useDirection, useToggleDirection } from "@soperio/theming";
 import { Button, ExtendButtonConfig } from "@soperio/ui";
 import React from "react";
 import { Content } from "./Content";
@@ -7,15 +7,39 @@ import { ColorTheme } from "@soperio/theming";
 // import Page11 from "./Page11"
 // jsx("div", {});
 
+const defaultTheme = extendTheme({})
+const customTheme = extendTheme({
+  colorThemes: {
+    default: {
+      default: "#ffff0099"
+    },
+  },
+  spacing: {
+    positive: {
+      "5": "100px"
+    },
+    positiveNegative: {
+      "5": "100px"
+    }
+  }
+})
+
 function App()
 {
   const direction = useDirection();
   const toggleDirection = useToggleDirection();
 
+  const [theme, setTheme] = React.useState(false)
+
   React.useEffect(() =>
   {
     // init();
   }, []);
+
+  function toggleTheme()
+  {
+    setTheme(!theme)
+  }
 
   // const customTheme = {
   //   ...defaultTheme, globalStyles: {
@@ -47,8 +71,9 @@ function App()
   };
 
   return (
-    <SoperioProvider direction={direction ? "ltr" : "rtl"} /*theme={customTheme}*/>
+    <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={theme ? customTheme : defaultTheme}>
       <Button variant="default" onClick={toggleDirection}>Toggle direction</Button>
+      <Button variant="default" onClick={toggleTheme} ms="3">Toggle theme</Button>
 
       {/* <Page11 /> */}
       <Content />
