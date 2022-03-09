@@ -15,4 +15,5 @@ export * from "./lib/SoperioProvider";
 export * from './lib/SoperioTheme';
 export * from './lib/Theme';
 export * from './lib/ThemingToken';
+export * from "./lib/utils/getThemeStyle";
 export * from "./lib/utils/utils";
