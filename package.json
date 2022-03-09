@@ -7,11 +7,14 @@
     "start demo": "nx serve demo --port 4201",
     "build": "nx build",
     "test": "nx test",
+    "deploy components": "nx deploy components",
     "deploy core": "nx deploy core",
     "deploy css": "nx deploy css",
     "deploy jsx-dev-runtime": "nx deploy jsx-dev-runtime",
     "deploy jsx-runtime": "nx deploy jsx-runtime",
-    "deploy ui": "nx deploy ui"
+    "deploy theming": "nx deploy theming",
+    "deploy ui": "nx deploy ui",
+    "deploy utils": "nx deploy utils"
   },
   "private": true,
   "dependencies": {
