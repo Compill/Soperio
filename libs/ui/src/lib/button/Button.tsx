@@ -56,6 +56,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
             duration="300"
             hover_duration="300"
             fontWeight="500"
+            type="button"
             // focus_ringOffset="2"
             // focus_ringOffsetColor="blue-300"
             // focus_ringWidth="2"
