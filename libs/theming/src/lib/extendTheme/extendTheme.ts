@@ -92,7 +92,6 @@ export function extendTheme(...extensions: ExtendTheme[]): Theme
 
 export function mergeThemeOverride(...overrides: any[]): any
 {
-    // console.log('mergeThemeoverrides', mergeWith({}, ...overrides));
     return _.mergeWith({}, ...overrides);
 }
 function mergeThemeCustomizer(

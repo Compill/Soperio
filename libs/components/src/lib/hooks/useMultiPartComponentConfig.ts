@@ -71,8 +71,6 @@ export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfi
     config = runIfFn<MultiPartComponentConfig<T>>(defaultConfig, colorTheme, darkMode);
   }
 
-  console.log("config", config)
-
   if (config)
     return mergeProps(config as BaseMultiPartComponentConfig<T>, componentConfig, props)// as MultiPartProps<T, BaseMultiPartComponentConfig<T>>;
 
@@ -85,8 +83,6 @@ function mergeProps<T, P extends MultiPartComponentConfig<T>>(config: BaseMultiP
   const subComponents = config.subComponents
 
   const parsedConfig:any = { }
-
-  console.log("componentConfig", componentConfig)
 
   for (const subComponent of subComponents)
   {
@@ -101,13 +97,11 @@ function mergeProps<T, P extends MultiPartComponentConfig<T>>(config: BaseMultiP
 
     for (const key in componentConfig)
     {
-      console.log("key", key)
-      console.log("variants[key]", variants[key])
       const variant = variants[key];
       const selectedVariant = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null
-      console.log("variant", variant)
+      
       const configProps = selectedVariant?.[subComponent];
-      console.log("configProps", configProps)
+      
       if (configProps)
         finalProps = deepmerge(finalProps, configProps) as T;
     }
@@ -116,8 +110,6 @@ function mergeProps<T, P extends MultiPartComponentConfig<T>>(config: BaseMultiP
 
     parsedConfig[subComponent] = finalProps;
   }
-
-  console.log("parsedConfig", parsedConfig)
 
   return parsedConfig
 }

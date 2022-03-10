@@ -1,13 +1,13 @@
-import { ComponentManager, ComponentTheme, HTMLButtonProps, ParentComponent, useComponentConfig, useFirstRender } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLButtonProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from 'react';
+import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
-import defaultConfig from "./config"
 
 const COMPONENT_ID = "Soperio.Button"
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface ButtonProps extends ComponentProps, ParentComponent, HTMLButtonProps
+export interface ButtonProps extends ComponentProps, HTMLButtonProps
 {
   theme?: ComponentTheme,
   config?: ExtendConfig;
@@ -45,8 +45,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     }, [onClick]);
 
     const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
-
-
 
     return (
         <button
