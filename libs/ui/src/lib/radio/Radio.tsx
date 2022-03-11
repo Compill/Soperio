@@ -8,7 +8,7 @@ const COMPONENT_ID = "Soperio.Radio";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface RadioProps extends ComponentProps, HTMLInputProps
+export interface RadioProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {
   label?: string,
   theme?: ComponentTheme;
@@ -25,7 +25,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
   {
     theme = "default",
     label = "",
-    otherNameThanSize = "lg",
+    size = "lg",
     variant = "default",
     dotSize = "lg",
     shape = "default",
@@ -36,7 +36,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, otherNameThanSize }, props)
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props);
 

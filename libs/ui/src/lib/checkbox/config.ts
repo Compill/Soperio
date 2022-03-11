@@ -6,7 +6,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
   return {
     traits:
     {
-      otherNameThanSize:
+      size:
       {
         "sm":
         {

@@ -7,7 +7,7 @@ const COMPONENT_ID = "Soperio.Checkbox";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface CheckboxProps extends ComponentProps, HTMLInputProps
+export interface CheckboxProps extends ComponentProps, Omit<HTMLInputProps, "size">
 {
   label?: string,
   theme?: ComponentTheme;
@@ -22,7 +22,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
   {
     theme = "default",
     label = "",
-    otherNameThanSize = "lg",
+    size = "lg",
     variant = "default",
     shape = "rounded",
     config,
@@ -32,7 +32,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
 {
   const firstRender = useFirstRender();
 
-  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, otherNameThanSize, shape }, props)
+  const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, shape }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props)
 

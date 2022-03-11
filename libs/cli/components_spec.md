@@ -4,7 +4,7 @@ https://chakra-ui.com/docs/styled-system/theming/component-style
 
 https://github.com/chakra-ui/chakra-ui/blob/main/tooling/cli/src/command/tokens/extract-component-types.ts
 
-Le but est de générer les types de composants. Comme pour Chakra UI, on peut ajouter des "variants" qui sont des styles prédéfinis de composants.
+Le but est de générer les types de composants. Comme pour Chakra UI, on peut ajouter des "traits" qui sont des styles prédéfinis de composants.
 
 Par exemple, un bouton peut avoir :
 - un variant par défaut avec un background opaque
@@ -13,11 +13,14 @@ Par exemple, un bouton peut avoir :
 - un variant "link" avec juste le texte du bouton
 - un variant "borderless" avec un background qui ne s'affiche que sur le hover
 
-A l'inverse de Chakra UI, on ne limite pas la définition de "variants" à juste "variant" et "size".
-
-Il faudrait que je trouve un autre terme pour variant par ce que la suite va prêter à confusion, même dans le code
+A l'inverse de Chakra UI, on ne limite pas la définition de "traits" à juste "variant" et "size".
 
 En gros, on a donc des variants, comme pour bootstrap. Mais on peut aussi ajouter d'autres variants qui ne sont pas des variants type bootstrap, comme "size" ou "corners"
+
+On peut donc avoir un composant avec 3 traits différents:
+- variant: default, light, outline, link, borderless
+- size: sm, md, lg, xl
+- corners: default, pill, square
 
 ## Config object
 
@@ -33,13 +36,13 @@ En gros, on a donc des variants, comme pour bootstrap. Mais on peut aussi ajoute
         mx: "2",
         pt: "5"
     },
-    defaultVariants:
+    defaultTraits:
     {
         variant: "default",
         size: "default",
         corners: "default"
     }
-    variants: {
+    traits: {
         variant: {
             default: {
                 // soperio props
@@ -89,18 +92,18 @@ En gros, on a donc des variants, comme pour bootstrap. Mais on peut aussi ajoute
 }
 ```
 
-Dans l'exemple ci-dessus (pour un bouton), les variants de Soperio sont `variant`, `size` et `corners`
+Dans l'exemple ci-dessus (pour un bouton), les traits de Soperio sont `variant`, `size` et `corners`
 
-Même si on définit un variant nommé "variant" qui définit le style principal du bouton
+Variant définit le style principal du bouton
 Size modifie seulement la taille du bouton
 Corners modifie seulement les arrondis
 
 
-Chakra UI se contente de seulement définir variant et size. Soperio permet de définir autant de variants que l'on souhaite.
+Chakra UI se contente de seulement définir variant et size. Soperio permet de définir autant de traits que l'on souhaite.
 
 `defaultProps` constitue les propriétés initiales du composant, le style qui va être appliqué à tous les variants (même si on peut overrider ces propriétés dans les variants)
 
-`defaultVariants` défini le variant par défaut de chaque variant (ici, variant, size et corners, on applique le variant `default` de chaque)
+`defaultTraits` défini le trait par défaut de chaque trait (ici, variant, size et corners, on applique le trait `default` de chaque)
 
 ## Composant multi part
 
@@ -114,7 +117,7 @@ On a donc besoin de pouvoir definir le style de chaque composant: Card, Header, 
 
 On ajoute une propriété `subComponents` pour définir un composant comme étant un composant multi part (il faudra pouvoir faire la différence dans le CLI entre un composant normal et un composant multi part)
 
-Les valeurs de `defaultProps` et `variants` changent alors pour pouvoir appliquer des styles à chaque composant
+Les valeurs de `defaultProps` et `traits` changent alors pour pouvoir appliquer des styles à chaque composant
 
 Ex pour defaultProps, composant normal
 
@@ -153,7 +156,7 @@ defaultProps:
 
 ```json
 {
-    defaultVariants:
+    defaultTraits:
     {
       variant: "default",
       corners: "default",
@@ -166,7 +169,7 @@ defaultProps:
       }
     },
     subComponents: ["card", "header", "content", "footer"],
-    variants:
+    traits:
     {
       variant:
       {
@@ -220,8 +223,8 @@ On va ajouter une propiété `components` dans le thème, qui va contenir un obj
     components: {
         "Soperio.Button": {
             defaultProps: {},
-            defaultVariants: {},
-            variants: {
+            defaultTraits: {},
+            traits: {
                 variant: {},
                 size: {},
                 corners: {},
@@ -229,8 +232,8 @@ On va ajouter une propiété `components` dans le thème, qui va contenir un obj
         },
         "Soperio.Badge": {
             defaultProps: {},
-            defaultVariants: {},
-            variants: {
+            defaultTraits: {},
+            traits: {
                 variant: {},
                 size: {},
                 corners: {},
@@ -238,8 +241,8 @@ On va ajouter une propiété `components` dans le thème, qui va contenir un obj
         },
         "Soperio.Spinner": {
             defaultProps: {},
-            defaultVariants: {},
-            variants: {
+            defaultTraits: {},
+            traits: {
                 variant: {},
                 size: {}
             },
@@ -263,7 +266,6 @@ export interface Components
 {
     "Soperio.Badge":
     {
-
         variant: "default" | "light" | "outline" | "light-outline";
         size: "xs" | "sm" | "md" | "lg" | "xl" | "x2";
         shape: "default" | "rounded" | "pill" | "square";
@@ -323,13 +325,13 @@ On utilise ensuite ComponentTypings<"ID_DU_COMPOSANT"> pour définir les types d
 Exemple pour Button
 
 ```ts
-type VariantProps = ComponentTypings<"Soperio.Button">
+type TraitProps = ComponentTypings<"Soperio.Button">
 
-export type ComponentProps = SoperioComponent & VariantProps & SelectedState & DisabledState;
+export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
-export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type Config = ComponentConfig<ConfigStateProps, TraitProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;
 
 export interface ButtonProps extends ComponentProps, HTMLButtonProps

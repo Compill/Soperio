@@ -20,7 +20,7 @@ export interface Components
     },
     "Soperio.Checkbox":
     {
-        otherNameThanSize: "sm" | "md" | "lg" | "xl" | "x2";
+        size: "sm" | "md" | "lg" | "xl" | "x2";
         variant: "default" | "outline";
         shape: "square" | "default" | "circle";
     },
@@ -32,7 +32,7 @@ export interface Components
     },
     "Soperio.Radio":
     {
-        otherNameThanSize: "sm" | "md" | "lg" | "xl" | "x2";
+        size: "sm" | "md" | "lg" | "xl" | "x2";
         variant: "default" | "outline";
         shape: "square" | "default" | "circle";
         dotSize?: "sm" | "md" | "lg";
