@@ -12,24 +12,37 @@ const writeFileAsync = promisify(writeFile);
 
 async function runTemplateWorker(themeFile: string): Promise<string> {
   const worker = fork(
-    path.join(__dirname, '..', 'dist', 'scripts', 'read-theme-file.worker.js'),
+    path.join(__dirname, '.', 'scripts', 'read-theme-file.worker.js'),
     [themeFile],
     {
       stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
       cwd: process.cwd(),
     }
   );
-
+  
   return new Promise((resolve, reject) => {
     worker.on('message', (message: ErrorRecord | Serializable) => {
       const errMessage = (message as ErrorRecord)?.err;
 
       if (errMessage) {
+        console.log("error", errMessage)
         reject(new Error(errMessage));
       }
       return resolve(String(message));
     });
-    worker.on('error', reject);
+    worker.on('error', (error) => {
+      console.log("error", error)
+      reject(error)
+    });
+    worker.stdout?.on('data', (data) =>
+    {
+      console.log(`child stdout:\n${data}`);
+    });
+
+    worker.stderr?.on('data', (data) =>
+    {
+      console.error(`child stderr:\n${data}`);
+    });
   });
 }
 
@@ -37,7 +50,6 @@ export async function generateThemeTypings(themeFile: string, out: string) {
   const spinner = ora('Generating chakra theme typings').start();
   try {
     const outPath = await resolveOutputPath(out);
-
     const template = await runTemplateWorker(themeFile);
     
 
@@ -49,7 +61,7 @@ export async function generateThemeTypings(themeFile: string, out: string) {
   } catch (e) {
     spinner.fail('An error occurred');
     if (e instanceof Error) {
-      //console.log(e);
+      console.log(e);
     }
   } finally {
     spinner.stop();
