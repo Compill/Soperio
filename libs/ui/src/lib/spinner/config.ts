@@ -9,12 +9,12 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
       thickness: "2px",
       progress: 75
     },
-    defaultVariants:
+    defaultTraits:
     {
       variant: "default",
       size: "md"
     },
-    variants:
+    traits:
     {
       size: {
         "sm":

@@ -55,7 +55,7 @@ function App()
   const buttonConfig: ExtendButtonConfig = {
     mode: "extends",
     config: (theme: ColorTheme, darkMode: boolean) => ({
-      variants: {
+      traits: {
         variant: {
           default: {
             bgColor: "#ff0000",

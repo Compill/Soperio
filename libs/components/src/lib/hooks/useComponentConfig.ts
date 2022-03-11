@@ -71,23 +71,23 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
   return {} as T;
 }
 
-// Get the right set of soperio props from the config variants (variant, size, corners, ...)
+// Get the right set of soperio props from the config traits (variant, size, corners, ...)
 function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(config: BaseComponentConfig<T>, componentConfig: KeysOf<P>, props: any): OmitStates<T>
 {
   // Let's start with the component default values
   let finalProps = { ...(config.defaultProps as T)};
 
-  const defaultVariants = config.defaultVariants
+  const defaultTraits = config.defaultTraits
 
   const c = config as any
 
-  const variants = c.variants
+  const traits = c.traits
 
   for (const key in componentConfig)
   {
-    const variant = variants[key]
+    const variant = traits[key]
 
-    const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null;
+    const configProps = variant ? (variant as any)[componentConfig[key] ?? defaultTraits?.[key]] : null;
 
     if (configProps)
       finalProps = deepmerge(finalProps, configProps) as T

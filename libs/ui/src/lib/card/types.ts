@@ -1,8 +1,8 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartVariants, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/components";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/components";
 
-type VariantProps = ComponentTypings<"Soperio.Card">;
+type TraitProps = ComponentTypings<"Soperio.Card">;
 
-export type ComponentProps = SoperioComponent & VariantProps & SelectedState & DisabledState;
+export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
 
 interface ConfigStateProps extends SoperioComponent, SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
@@ -13,5 +13,5 @@ type CardComponentProps = {
   footer?: SoperioComponent & ConfigStateProps, // CardFooterThemeProps
 }
 
-export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartVariants<VariantProps, CardComponentProps>>;
+export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartTraits<TraitProps, CardComponentProps>>;
 export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;

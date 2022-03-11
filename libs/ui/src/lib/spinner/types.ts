@@ -1,7 +1,7 @@
 import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, NoStateProps, SelectedDisabledThemeProps, SelectedThemeProps, SoperioComponent } from "@soperio/components";
 import { Color, SpacingPositive } from "@soperio/theming";
 
-type VariantProps = ComponentTypings<"Soperio.Spinner">
+type TraitProps = ComponentTypings<"Soperio.Spinner">
 
 interface CustomProps extends SoperioComponent 
 {
@@ -11,7 +11,7 @@ interface CustomProps extends SoperioComponent
 }
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
-export type ComponentProps = VariantProps & CustomProps
+export type ComponentProps = TraitProps & CustomProps
 
-export type Config = ComponentConfig<CustomProps, VariantProps>;
+export type Config = ComponentConfig<CustomProps, TraitProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;

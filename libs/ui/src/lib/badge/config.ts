@@ -4,7 +4,7 @@ import { Config } from "./types";
 export const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
-    variants: {
+    traits: {
       size: {
         "xs": {
           px: "2.5",

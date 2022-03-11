@@ -77,7 +77,7 @@ export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfi
   return {}// as MultiPartProps<T, P>;
 }
 
-// Get the right set of soperio props from the config variants (variant, size, corners, ...)
+// Get the right set of soperio props from the config traits (variant, size, corners, ...)
 function mergeProps<T, P extends MultiPartComponentConfig<T>>(config: BaseMultiPartComponentConfig<T>, componentConfig: KeysOf<P>, props: any): Record<string, T>
 {
   const subComponents = config.subComponents
@@ -89,16 +89,16 @@ function mergeProps<T, P extends MultiPartComponentConfig<T>>(config: BaseMultiP
     // Let's start with the component default values
     let finalProps = { ...(config.defaultProps?.[subComponent] as any) };
 
-    const defaultVariants = config.defaultVariants;
+    const defaultTraits = config.defaultTraits;
 
     const c = config as any;
 
-    const variants = c.variants;
+    const traits = c.traits;
 
     for (const key in componentConfig)
     {
-      const variant = variants[key];
-      const selectedVariant = variant ? (variant as any)[componentConfig[key] ?? defaultVariants?.[key]] : null
+      const variant = traits[key];
+      const selectedVariant = variant ? (variant as any)[componentConfig[key] ?? defaultTraits?.[key]] : null
       
       const configProps = selectedVariant?.[subComponent];
       

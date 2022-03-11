@@ -8,13 +8,13 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
     defaultProps: {
 
     },
-    defaultVariants:
+    defaultTraits:
     {
       variant: "default",
       corners: "default",
       size: "md"
     },
-    variants:
+    traits:
     {
       size:
       {

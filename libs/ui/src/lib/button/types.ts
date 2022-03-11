@@ -1,13 +1,13 @@
 import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/components";
 
 
-type VariantProps = ComponentTypings<"Soperio.Button">
+type TraitProps = ComponentTypings<"Soperio.Button">
 
-export type ComponentProps = SoperioComponent & VariantProps & SelectedState & DisabledState;
+export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
 
 interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 
-export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type Config = ComponentConfig<ConfigStateProps, TraitProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;
 
 // Note to myself
@@ -17,7 +17,7 @@ export type ExtendConfig = ExtendComponentConfig<Config>;
 
 /* Code Generator
 
-Scan for variants in json config
+Scan for traits in json config
 
 # Step 1: Create types
 
@@ -36,14 +36,14 @@ Don't forget to add the states from the config if present
 
 type GeneratedProps = SoperioComponent & SelectedStage & DisabledState &
 {
-  variant?: Variants;
+  variant?: Traits;
   size?: Sizes,
   corners?: Corners;
 }
 
-# Step 3 : Create ConfigVariant type
+# Step 3 : Create ConfigTrait type
 
-type ConfigVariants<T extends SoperioComponent> = {
+type ConfigTraits<T extends SoperioComponent> = {
   [Property in keyof GeneratedProps]?: { [Prop in keyof GeneratedProps[Property]]?: T }
 }
 
@@ -68,7 +68,7 @@ config: {
 
 # Step 5 : Generate Config and ExtendConfig interfaces
 
-export type Config = ComponentConfig<ThemeProps, ConfigVariants<ThemeProps>>;
+export type Config = ComponentConfig<ThemeProps, ConfigTraits<ThemeProps>>;
 export type ExtendConfig = ExtendComponentConfig<ThemeProps, Config>;
 
 Detect if json config is multipart component or not

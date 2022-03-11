@@ -4,7 +4,7 @@ import { Config } from "./types";
 const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
-    variants:
+    traits:
     {
       otherNameThanSize:
       {

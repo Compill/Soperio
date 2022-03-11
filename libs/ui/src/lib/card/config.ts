@@ -4,7 +4,7 @@ import { Config } from "./types";
 const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
   return {
-    defaultVariants:
+    defaultTraits:
     {
       variant: "default",
       corners: "default",
@@ -17,7 +17,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
       }
     },
     subComponents: ["card", "header", "content", "footer"],
-    variants:
+    traits:
     {
       variant:
       {
