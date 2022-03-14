@@ -66,4 +66,5 @@ export interface ExtendTheme
     transform?: OptionalAny<ThemeTransform>;
     transition?: OptionalAny<ThemeTransition>;
     typography?: OptionalAny<ThemeTypography>;
+    components?: Record<string, Record<string, string>>
 }

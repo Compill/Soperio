@@ -1,3 +1,11 @@
+// Attention: This file will be overwritten by CLI
+// to regenerate components' typings
+export type ComponentTypings<Component extends keyof Components> =
+{
+    [key in keyof Components[Component]]?: Components[Component][key]
+};
+
+// Static definition that will be deleted by CLI
 export interface Components
 {
     "Soperio.Badge":
@@ -56,8 +64,3 @@ export interface Components
         corners: "square" | "default" | "pill";
     },
 }
-
-export type ComponentTypings<Component extends keyof Components> =
-    {
-        [key in keyof Components[Component]]?: Components[Component][key]
-    };

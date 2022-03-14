@@ -60,5 +60,5 @@ export interface ThemeTypings extends ThemeOpacity
   transform: ThemeTransform,
   transition: ThemeTransition,
   typography: ThemeTypography;
-  // components: Components
+  components: Record<string, Record<string, string>>
 }
