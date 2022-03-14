@@ -88,5 +88,5 @@ export interface Theme
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
   };
-  components: Record<string, Record<string, string>>;
+  components?: Record<string, Record<string, string>>;
 };
