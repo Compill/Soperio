@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import { Dict, isFunction } from "@soperio/utils";
 import { defaultTheme } from "../defaultTheme";
 import { ExtendTheme } from "../ExtendTheme";
 import { isSoperioTheme } from "../isSoperioTheme";
@@ -9,15 +10,6 @@ const _ = require("lodash");
 
 type AnyFunction<T = any> = (...args: T[]) => any;
 
-export function isFunction<T extends Function = Function>(
-    value: any,
-): value is T
-{
-    return typeof value === "function";
-}
-
-export type Dict<T = any> = Record<string, T>;
-
 const pipe =
     <R>(...fns: Array<(a: R) => R>) =>
         (v: R) =>
@@ -25,7 +17,7 @@ const pipe =
 
 type CloneKey<Target, Key> = Key extends keyof Target ? Target[Key] : unknown;
 
-export type DeepPartial<T> = {
+type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
 };
 
@@ -46,14 +38,14 @@ type DeepThemeExtension<BaseTheme, ThemeType> = {
     ? DeepThemeExtension<DeepPartial<BaseTheme[Key]>, CloneKey<ThemeType, Key>>
     : CloneKey<ThemeType, Key>
 };
-export declare type ThemeOverride<BaseTheme = Theme> =
+declare type ThemeOverride<BaseTheme = Theme> =
     DeepPartial<ExtendTheme> & DeepThemeExtension<BaseTheme, ExtendTheme> & Dict;
 
-export type ThemeExtension<Override extends ThemeOverride = ThemeOverride> = (
+type ThemeExtension<Override extends ThemeOverride = ThemeOverride> = (
     themeOverride: Override,
 ) => Override;
 
-export type BaseThemeWithExtensions<
+type BaseThemeWithExtensions<
     BaseTheme extends ExtendTheme,
     Extensions extends readonly [...any],
     > = BaseTheme &
@@ -90,7 +82,7 @@ export function extendTheme(...extensions: ExtendTheme[]): Theme
     )(baseTheme);
 }
 
-export function mergeThemeOverride(...overrides: any[]): any
+function mergeThemeOverride(...overrides: any[]): any
 {
     return _.mergeWith({}, ...overrides);
 }

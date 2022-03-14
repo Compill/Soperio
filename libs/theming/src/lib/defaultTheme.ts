@@ -1,5 +1,4 @@
 import { applyTransparenceToRGBColor } from "@soperio/utils";
-import { defaultColorTheme } from "./defaultColorTheme";
 import { Theme } from "./Theme";
 
 const breakpoints = {
@@ -112,7 +111,7 @@ const opacity = {
   "98": "0.98",
   "99": "0.99",
   "100": "1"
-}
+};
 
 const spacing = {
   px: '1px',
@@ -174,6 +173,44 @@ function prefix(config: Record<string, string>, prefix: string): Record<string, 
   return newConfig;
 }
 
+const defaultColorTheme = {
+  default: "sky-500",
+  defaultHover: "sky-600",
+  defaultActive: "sky-600",
+  defaultDisabled: "sky-300",
+
+  // light: applyTransparenceToRGBColor("#7dd3fc", 15), // sky-300
+  light: applyTransparenceToRGBColor("#0ea5e9", 15), // sky-500
+  // light: "sky-100", // sky-300
+  lightActive: "sky-600",
+  lightHover: "sky-500",
+  lightDisabled: "sky-50",
+
+  textDark1: "root.text-color-1",
+  textDark2: "root.text-color-2",
+  textDark3: "root.text-color-3",
+  textDark4: "root.text-color-4",
+  textDarkDisabled: "coolGray-300",
+
+  textLight1: "root.text-color-inverse-1",
+  textLight2: "root.text-color-inverse-2",
+  textLight3: "root.text-color-inverse-3",
+  textLight4: "root.text-color-inverse-4",
+  textLightDisabled: "root.text-color-inverse-disabled",
+
+  background1: "root.bg-color-1",
+  background2: "root.bg-color-2",
+  background3: "root.bg-color-3",
+  background4: "root.bg-color-4",
+  background5: "root.bg-color-5",
+  backgroundDisabled: "root.color-disabled",
+
+  border0: "root.border-color-0",
+  border1: "root.border-color-1",
+  borderDisabled: "root.border-color-disabled",
+
+  shadow: "#000000",
+}
 
 // function theme(color: string): () => string
 // {
@@ -430,47 +467,47 @@ export const defaultTheme: Theme = {
   darkModeOverride: {
     rootColors: {
       /* Required color vars by Soperio */
-    /* Delete one of those and components will miss some colors :\ */
-    /* Please only use RGB colors, the alpha component will be ignored */
+      /* Delete one of those and components will miss some colors :\ */
+      /* Please only use RGB colors, the alpha component will be ignored */
 
-    // Dark text colors if light theme, light colors if dark theme
-    "text-color-1": "#FFFFFF",
-    "text-color-2": "#F9F9F9",
-    "text-color-3": "#F0F0F0",
-    "text-color-4": "#E9E9E9",
-    "text-color-disabled": "#E0E0E0",
+      // Dark text colors if light theme, light colors if dark theme
+      "text-color-1": "#FFFFFF",
+      "text-color-2": "#F9F9F9",
+      "text-color-3": "#F0F0F0",
+      "text-color-4": "#E9E9E9",
+      "text-color-disabled": "#E0E0E0",
 
-    // Light text colors if light theme, dark colors if dark theme
-    "text-color-inverse-1": "coolGray-900",
-    "text-color-inverse-2": "coolGray-800",
-    "text-color-inverse-3": "coolGray-700",
-    "text-color-inverse-4": "coolGray-600",
-    "text-color-inverse-disabled": "coolGray-600",
+      // Light text colors if light theme, dark colors if dark theme
+      "text-color-inverse-1": "coolGray-900",
+      "text-color-inverse-2": "coolGray-800",
+      "text-color-inverse-3": "coolGray-700",
+      "text-color-inverse-4": "coolGray-600",
+      "text-color-inverse-disabled": "coolGray-600",
 
-    // Light background colors if light theme, dark colors if dark theme
-    "bg-color-1": "coolGray-500",
-    "bg-color-2": "coolGray-600",
-    "bg-color-3": "coolGray-700",
-    "bg-color-4": "coolGray-800",
-    "bg-color-5": "coolGray-900",
-    // Ex: the backround color of a disabled text input
-    "bg-color-disabled": "coolGray-500",
-    // Used to separate sections of your app
-    // Example
-    // The border between the left sidebar and the main content
-    // Or the header and the subheader and the main content
-    // Or the buttons of a toolbar
-    "border-color-1": "coolGray-700",
-    "border-color-2": "coolGray-800",
-    "border-color-disabled": "#FFFFFF",
+      // Light background colors if light theme, dark colors if dark theme
+      "bg-color-1": "coolGray-500",
+      "bg-color-2": "coolGray-600",
+      "bg-color-3": "coolGray-700",
+      "bg-color-4": "coolGray-800",
+      "bg-color-5": "coolGray-900",
+      // Ex: the backround color of a disabled text input
+      "bg-color-disabled": "coolGray-500",
+      // Used to separate sections of your app
+      // Example
+      // The border between the left sidebar and the main content
+      // Or the header and the subheader and the main content
+      // Or the buttons of a toolbar
+      "border-color-1": "coolGray-700",
+      "border-color-2": "coolGray-800",
+      "border-color-disabled": "#FFFFFF",
 
-    "shadow-color": "#FFFFFF",
+      "shadow-color": "#FFFFFF",
 
 
-    /* End required colors */
+      /* End required colors */
 
-    /* You can add your custom global color vars below */
-    // Ex: "my-super-color": #123456
+      /* You can add your custom global color vars below */
+      // Ex: "my-super-color": #123456
     }
   },
 

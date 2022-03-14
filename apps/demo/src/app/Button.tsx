@@ -1,4 +1,4 @@
-import { defaultColorTheme, useDarkMode } from "@soperio/theming";
+import { useDarkMode, useDefaultColorTheme } from "@soperio/theming";
 import { ColorTheme } from "@soperio/theming";
 import { Button, Container, ExtendButtonConfig, Sidebar } from "@soperio/ui";
 import React from 'react';
@@ -23,18 +23,6 @@ const buttonConfig: ExtendButtonConfig = {
   })
 };
 
-const blackTheme: ColorTheme = {
-  ...defaultColorTheme,
-  default: "#333333",
-  defaultActive: "#333333",
-};
-
-const lightTheme: ColorTheme = {
-  ...defaultColorTheme,
-  default: "#e0e0e0",
-  defaultActive: "#e0e0e0",
-};
-
 /**
  *
  *
@@ -44,6 +32,19 @@ export default function Page({ ...props })
   const [showDialog, setShowDialog] = React.useState(false);
   const [side, setSide] = React.useState("start");
   const darkMode = useDarkMode();
+  const defaultColorTheme = useDefaultColorTheme()
+
+  const blackTheme: ColorTheme = {
+    ...defaultColorTheme,
+    default: "#333333",
+    defaultActive: "#333333",
+  };
+
+  const lightTheme: ColorTheme = {
+    ...defaultColorTheme,
+    default: "#e0e0e0",
+    defaultActive: "#e0e0e0",
+  };
 
   function openDialog(side: Side)
   {

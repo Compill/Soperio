@@ -1,7 +1,7 @@
 // import { Accessibility, AccessibilityMapping } from "../Utilities/Accessibility";
 // import { SpacingScale } from "../Utilities/Spacing";
 
-import { Opacity } from "@soperio/theming";
+import { Opacity } from "../../CSSTypes";
 
 // import { ScalingScale } from "../Utilities/Transform";
 export interface Focus/* extends Accessibility*/

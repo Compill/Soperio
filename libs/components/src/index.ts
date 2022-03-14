@@ -1,4 +1,4 @@
-export * from "./lib/ComponentConfig";
+export type { ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits} from "./lib/ComponentConfig";
 export * from "./lib/ComponentManager";
 export * from "./lib/ComponentStates";
 export * from './lib/ComponentTheme';

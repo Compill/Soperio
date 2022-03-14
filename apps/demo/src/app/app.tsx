@@ -1,8 +1,7 @@
-import { extendTheme, SoperioProvider, useDarkMode, useDirection, useToggleDirection } from "@soperio/theming";
+import { ColorTheme, Components, extendTheme, SoperioProvider, useDirection, useToggleDirection } from "@soperio/react";
 import { Button, ExtendButtonConfig } from "@soperio/ui";
 import React from "react";
 import { Content } from "./Content";
-import { ColorTheme } from "@soperio/theming";
 // import { Content } from "./Content";
 // import Page11 from "./Page11"
 // jsx("div", {});
