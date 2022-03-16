@@ -1,4 +1,4 @@
-import { ColorTheme, Components, extendTheme, SoperioProvider, useDirection, useToggleDirection } from "@soperio/react";
+import { ColorTheme, extendTheme, SoperioProvider, useDirection, useToggleDirection, useToggleDarkMode } from "@soperio/react";
 import { Button, ExtendButtonConfig } from "@soperio/ui";
 import React from "react";
 import { Content } from "./Content";
@@ -27,7 +27,7 @@ function App()
 {
   const direction = useDirection();
   const toggleDirection = useToggleDirection();
-
+  const toggleDarkMode = useToggleDarkMode();
   const [theme, setTheme] = React.useState(false)
 
   React.useEffect(() =>
@@ -73,6 +73,8 @@ function App()
     <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={theme ? customTheme : defaultTheme}>
       <Button variant="default" onClick={toggleDirection}>Toggle direction</Button>
       <Button variant="default" onClick={toggleTheme} ms="3">Toggle theme</Button>
+      <Button onClick={() => toggleDarkMode()} ms="3">Toggle Dark Mode</Button>
+
 
       {/* <Page11 /> */}
       <Content />

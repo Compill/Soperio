@@ -9,7 +9,7 @@ export * from './lib/hooks/useColor';
 export * from './lib/hooks/useColorTheme';
 export { useDarkMode, useSetDarkMode, useToggleDarkMode } from './lib/hooks/useDarkMode';
 export * from './lib/hooks/useDefaultColorTheme';
-export { useDirection, useToggleDirection } from './lib/hooks/useDirection';
+export { useDirection, useToggleDirection, getDirection } from './lib/hooks/useDirection';
 export { useTheme } from './lib/hooks/useTheme';
 export * from "./lib/NormalizeCSS";
 export * from "./lib/SoperioProvider";

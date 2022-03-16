@@ -1,9 +1,44 @@
 import { isObject } from "lodash"
 
+const AutoCompleteStringType = "(string & {})"
+
+function wrapWithQuotes(value: unknown) {
+  return `"${value}"`
+}
+
+function printUnionType(values: string[], strict = true) {
+  if (!values.length) {
+    return strict ? "never" : AutoCompleteStringType
+  }
+
+  return values
+    .map(wrapWithQuotes)
+    .concat(strict ? [] : [AutoCompleteStringType])
+    .join(" | ")
+}
+
+/**
+ * @example
+ * { colors: ['red.500', 'green.500'] } => `colors: "red.500" | "green.500"`
+ */
+export function printUnionMap(
+  unions: Record<string, string[]>,
+  strict = false,
+) {
+  return Object.entries(unions)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(
+      ([targetKey, union]) => `${targetKey}: ${printUnionType(union, strict)};`,
+    )
+    .join("\n")
+}
+
+
+
+
 export function printUnions(unions: any, initial = true):string
 {
   let res = initial ? "" : "{ "
-
   const keys = Object.keys(unions)
   const length = keys.length
 

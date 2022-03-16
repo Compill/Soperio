@@ -66,9 +66,13 @@ export interface ExtendTheme
     transform?: OptionalAny<ThemeTransform>;
     transition?: OptionalAny<ThemeTransition>;
     typography?: OptionalAny<ThemeTypography>;
-    components?: Record<string, {
-        defaultProps?:/* SoperioComponent | */any,
-        defaultTraits?: Record<string, string>,
-        traits: Record<string, /*SoperioComponent | */any> | Record<string, Record<string, /*SoperioComponent |*/ any>>;
-    }>;
+    // components?: any
+    components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
+}
+
+type ComponentConfig = {
+    defaultProps?:/* SoperioComponent | */any,
+    defaultTraits?: Record<string, string>,
+    subComponents?: string[],
+    traits?: Record<string, Record<string, /*SoperioComponent |*/ any>> | Record<string, Record<string, /*SoperioComponent |*/ Record<string, any>>>;
 }

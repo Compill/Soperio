@@ -1,5 +1,6 @@
 // regenerate by running
 // npx @Soperio/cli build-theme path/to/your/theme.(js|ts)
+
 export interface ThemeTypings {
   rootColors:
     | 'text-color-1'

@@ -1,24 +1,21 @@
-import { useDarkMode, useToggleDarkMode } from "@soperio/theming";
 import { Button } from "@soperio/ui";
 import React from "react";
+import Badge from "./Badge";
 import ButtonPage from "./Button";
-import TextAlign from "./TextAlign";
+import Card from "./Card";
 import Checkbox from "./Checkbox";
+import Form from "./Formik";
 import Input from "./Input";
 import Radio from "./Radio";
-import Badge from "./Badge";
-import Card from "./Card";
 import Select from "./Select";
-import TextArea from "./TextArea";
 import Spinner from "./Spinner";
-import Form from "./Formik";
-import { Test } from "./Test";
+import TextAlign from "./TextAlign";
+import TextArea from "./TextArea";
 
 export function Content()
 {
   const [state, setState] = React.useState(1);
-  const darkMode = useDarkMode();
-  const toggleDarkMode = useToggleDarkMode();
+  
 
   return (
     <>
@@ -35,7 +32,6 @@ export function Content()
         <Button onClick={() => setState(9)}>Spinner</Button>
         <Button onClick={() => setState(10)}>Text</Button>
         <Button onClick={() => setState(11)}>Test</Button>
-        <Button onClick={() => toggleDarkMode()}>Toggle Dark Mode</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
         {state === 1 && <ButtonPage />}

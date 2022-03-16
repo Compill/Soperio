@@ -1055,5 +1055,5 @@ export const defaultTheme: Theme = {
       '9': '2.25rem',
       '10': '2.5rem',
     },
-  },
+  }
 };

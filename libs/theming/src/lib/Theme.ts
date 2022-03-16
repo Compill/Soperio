@@ -1,3 +1,4 @@
+import { ColorTheme } from "./ColorTheme";
 import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 export interface Theme
@@ -88,9 +89,12 @@ export interface Theme
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
   };
-  components?: Record<string, {
-    defaultProps?:  /*SoperioComponent | */any,
-    defaultTraits?: Record<string, string>,
-    traits: Record<string, /*SoperioComponent | */any> | Record<string, Record<string, /*SoperioComponent |*/ any >>
-  }>;
+  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
+}
+
+type ComponentConfig = {
+  defaultProps?:/* SoperioComponent | */any,
+  defaultTraits?: Record<string, string>,
+  subComponents?: string[],
+  traits?: Record<string, Record<string, /*SoperioComponent |*/ any>> | Record<string, Record<string, /*SoperioComponent |*/ Record<string, any>>>;
 };

@@ -4,20 +4,18 @@ import fs from "fs";
 import * as tsNode from "ts-node";
 import * as tsConfigPaths from "tsconfig-paths";
 import moduleAlias from "module-alias";
-import { createThemeTypingsInterface } from "../create-theme-typings-interface";
 import { themeKeyConfiguration } from "../config";
+import { createThemeTypingsInterface } from "./create-theme-typings-interface";
 
 export type Dict<T = any> = Record<string, T>;
 
 const bold = (text: string) => `\x1b[1m${text}\x1b[22m`;
 
-function isArray<T>(value: any): value is Array<T>
-{
+function isArray<T>(value: any): value is Array<T> {
   return Array.isArray(value);
 }
 
-function isObject(value: any): value is Dict
-{
+function isObject(value: any): value is Dict {
   const type = typeof value;
   return (
     value != null &&
@@ -128,15 +126,16 @@ export async function run(file = null) {
     throw new Error("Theme not found in default or named `theme` export");
   }
 
+ 
   const template = await createThemeTypingsInterface(theme, {
     config: themeKeyConfiguration,
     strictComponentTypes,
   });
+
   if (process.send) {
 
     process.send(template);
   } else {
-
     process.stdout.write(template);
   }
 }

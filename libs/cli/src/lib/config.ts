@@ -1,4 +1,4 @@
-import { ThemeKeyOptions } from "./create-theme-typings-interface"
+import { ThemeKeyOptions } from "./theme/create-theme-typings-interface"
 
 export const themeKeyConfiguration: ThemeKeyOptions[] = [
   { key: "rootColors" },

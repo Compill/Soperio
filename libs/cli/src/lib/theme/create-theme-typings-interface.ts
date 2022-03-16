@@ -1,7 +1,7 @@
 
 import { isObject } from "lodash"
 import { extractPropertyPaths, printUnions } from "./extract-property-paths"
-import { formatWithPrettierIfAvailable } from "./format-with-prettier"
+import { formatWithPrettierIfAvailable } from "../utils/format-with-prettier"
 
 export interface ThemeKeyOptions {
   /**
@@ -41,8 +41,7 @@ export async function createThemeTypingsInterface(
   theme: Record<string, unknown>,
   { config, strictComponentTypes = false }: CreateThemeTypingsInterfaceOptions,
 ) {
-  // console.log("generating colorThemes")
-  // extractPropertyPaths(theme["colorThemes"], 1)
+
 
   const unions = config.reduce(
     (
@@ -62,16 +61,19 @@ export async function createThemeTypingsInterface(
     },
     {} as Record<string, any>,
   )
-
+  // const componentTypes = extractComponentTypes(theme)
 
   const template =
     // language=ts
     `// regenerate by running
 // npx @Soperio/cli build-theme path/to/your/theme.(js|ts)
+
 export interface ThemeTypings {
   ${printUnions(unions)}
+
 }
 
 `
+
   return formatWithPrettierIfAvailable(template)
 }
