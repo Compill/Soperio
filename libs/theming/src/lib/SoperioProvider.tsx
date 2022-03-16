@@ -9,7 +9,7 @@ import { useSetTheme } from "./hooks/useTheme";
 
 
 // We could extend from ParentComponent but we would have a circular
-// reference with components library
+// dependency with components library
 interface SoperioProviderProps// extends ParentComponent
 {
   resetCss?: boolean,

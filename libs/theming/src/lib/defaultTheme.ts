@@ -1,4 +1,5 @@
 import { applyTransparenceToRGBColor } from "@soperio/utils";
+import { ColorTheme } from "./ColorTheme";
 import { Theme } from "./Theme";
 
 const breakpoints = {
@@ -173,7 +174,7 @@ function prefix(config: Record<string, string>, prefix: string): Record<string, 
   return newConfig;
 }
 
-const defaultColorTheme = {
+const defaultColorTheme: ColorTheme = {
   default: "sky-500",
   defaultHover: "sky-600",
   defaultActive: "sky-600",
@@ -211,11 +212,6 @@ const defaultColorTheme = {
 
   shadow: "#000000",
 }
-
-// function theme(color: string): () => string
-// {
-//   return () => getStyleConfig("colors", color);
-// }
 
 
 // TODO Rename 2xl, 3xl, ... to x2, x3, x4, ...

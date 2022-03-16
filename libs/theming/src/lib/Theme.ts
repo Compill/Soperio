@@ -88,5 +88,9 @@ export interface Theme
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
   };
-  components?: Record<string, Record<string, string>>;
+  components?: Record<string, {
+    defaultProps?:  /*SoperioComponent | */any,
+    defaultTraits?: Record<string, string>,
+    traits: Record<string, /*SoperioComponent | */any> | Record<string, Record<string, /*SoperioComponent |*/ any >>
+  }>;
 };
