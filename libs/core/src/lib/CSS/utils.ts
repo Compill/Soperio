@@ -1,26 +1,12 @@
-import config from "../defaultConfig";
+import { getDirection, getThemeStyle } from "@soperio/theming";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const _ = require("lodash");
 
-// TODO get user merged config instead of default
-
-export type Style = Record<string, string | number | Record<string, string | number>>;
+export type Style = Record<string, string | number | Record<string, string | number> | any>;
 export type StyleProp = boolean | string | number;
 export type StyleFn = (value: StyleProp) => Style;
 export type StyleProps = Record<string, StyleFn>;
 
-export function getStyleConfig(configProperty: string, key: string | number): any
-{
-    const c =  _.get(config, configProperty);
-
-    if (c)
-        return c[key];
-
-    return undefined;
-}
-
-export function css(cssProperty: string | string[], configProperty?: string, defaultValue?: string): StyleFn
+export function css(cssProperty: string | string[], themeProperty?: string, defaultValue?: string): StyleFn
 {
     return (value: StyleProp) =>
     {
@@ -29,8 +15,8 @@ export function css(cssProperty: string | string[], configProperty?: string, def
 
         let parsedValue:string | number | undefined
 
-        if (configProperty)
-            parsedValue = getStyleConfig(configProperty, value === true ? "default" : value);
+        if (themeProperty)
+            parsedValue = getThemeStyle(themeProperty, value === true ? "default" : value);
 
         if (parsedValue === undefined && value === true)
             parsedValue = defaultValue
@@ -44,6 +30,40 @@ export function css(cssProperty: string | string[], configProperty?: string, def
         const style: Style = {};
         cssProperty.forEach(property => style[property] = parsedValue as string | number);
         return style;
+    };
+}
+
+export function direction(cssPropertyStart: string | string[], cssPropertyEnd: string | string[], themeProperty?: string, defaultValue?: string): StyleFn
+{
+    return (value: StyleProp) =>
+    {
+        if (!value || value === undefined)
+            return {}
+
+        let parsedValue:string | number | undefined
+
+        if (themeProperty)
+            parsedValue = getThemeStyle(themeProperty, value === true ? "default" : value);
+
+        if (parsedValue === undefined && value === true)
+            parsedValue = defaultValue
+
+        if (parsedValue === undefined)
+            parsedValue = value as string | number
+
+        if (typeof cssPropertyStart === "string" && typeof cssPropertyEnd === "string")
+        {
+            return { [getDirection() ? cssPropertyStart : cssPropertyEnd]: parsedValue as string | number };
+        }
+        else if (Array.isArray(cssPropertyStart) && Array.isArray(cssPropertyEnd))
+        {
+            const style: Style = {};
+            const cssProperty = getDirection() ? cssPropertyStart : cssPropertyEnd;
+            cssProperty.forEach(property => style[property] = parsedValue as string | number);
+            return style;
+        }
+
+        throw new Error("cssPropertyStart and cssPropertyEnd must be of the same type, either string or string[]")
     };
 }
 
@@ -62,7 +82,3 @@ export function cssValueFn(cssProperty: string, cssValue: string | number): Styl
         return { [cssProperty]: cssValue };
     };
 }
-
-export type LiteralUnion<T extends U, U = string> = T | (U & { zz_IGNORE_ME?: never; });
-
-export type OrString<T extends string> = LiteralUnion<T, string>;

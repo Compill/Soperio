@@ -1,12 +1,18 @@
-/** @jsx jsx */
-
-import { jsx, SoperioComponent } from "@soperio/core";
-import { IS_DEV } from "@soperio/utils";
-import { sanitizeProps } from "../utils";
+import { ComponentManager, ComponentTheme, HTMLInputProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from "react";
-import { getStyledConfig } from "../utils";
-import config from "./config";
-import { InputConfig, InputProps } from "./types";
+import { ComponentProps, ExtendConfig } from "./types";
+import defaultConfig from "./config"
+
+const COMPONENT_ID = "Soperio.Input";
+
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
+
+export interface InputProps extends ComponentProps, Omit<HTMLInputProps, "size">
+{
+    theme?: ComponentTheme,
+    length?: number;
+    config?: ExtendConfig;
+}
 
 /**
  *
@@ -19,26 +25,19 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
         corners = "default",
         theme = "default",
         length,
+        config,
         ...props
     }, ref) =>
 {
-    const styles: InputConfig = getStyledConfig(theme, config, "Input");
-    const sVariant = styles.variant?.[variant];
-    const sSize = styles.size?.[size];
-    const sCorners = styles.corners?.[corners];
+    const firstRender = useFirstRender();
 
-    if (!sVariant && IS_DEV)
-        console.log(`[Soperio Input Component]: variant ${variant} does not exist in your theme/config`);
-
-    const disabledProps: SoperioComponent = { ...(sVariant && props.disabled && { ...sVariant.disabled, pointerEvents: "none" }) };
+    const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props);
 
     return (
         <input
-            {...sanitizeProps(sSize, "disabled")}
-            {...sanitizeProps(sCorners, "disabled")}
-            {...sanitizeProps(sVariant, "disabled")}
-            {...(length ? { size: length} : null)}
-            {...disabledProps}
+            transition={firstRender ? "none" : "all"}
+            {...(length ? { size: length } : null)}
+            {...styles}
             {...props}
             ref={ref}
         />

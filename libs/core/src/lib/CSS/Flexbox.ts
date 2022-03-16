@@ -1,71 +1,96 @@
-import { SpacingPositiveScale } from "./Spacing";
-import { css, OrString, StyleProps } from "./utils";
+import { css, StyleProp, StyleProps } from "./utils";
 
-export interface Flexbox
+
+function content(cssProperty: any)
 {
-    flexRow?: true | false | "reverse",
-    flexCol?: true | false | "reverse",
-    flexDirection?: true | false | "row" | "column" | "row-reverse" | "col-reverse",
-    flexWrap?: true | "reverse" | "no",
-    flex?: "1" | "auto" | "initial" | "none";
-    flexGrow?: true | string | number,
-    flexShrink?: true | string | number,
-    order?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "first" | "last" | "none"> | number,
-    gridCols?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "none"> | number,
-    colSpan?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "full"> | number,
-    colStart?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "13" | "auto"> | number,
-    colEnd?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "8" | "9" | "10" | "11" | "12" | "13" | "auto"> | number,
-    gridRows?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "none"> | number,
-    rowSpan?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "full"> | number,
-    rowStart?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
-    rowEnd?: OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
-    gridFlow?: "row" | "col" | "dense" |"row dense" | "col dense",
-    gridAutoCols?: OrString<"auto" | "min" | "max" | "fr">,
-    gridAutoRows?: OrString<"auto" | "min" | "max" | "fr">,
-    gap?: OrString<SpacingPositiveScale>,
-    gapX?: OrString<SpacingPositiveScale>,
-    gapY?: OrString<SpacingPositiveScale>,
-    justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly",
-    justifyItems?: "start" | "end" | "center" | "stretch",
-    justifySelf?: "auto" | "start" | "end" | "center" | "stretch",
-    alignContent?: "start" | "end" | "center" | "between" | "around" | "evenly",
-    alignItems?: "start" | "end" | "center" | "baseline" | "stretch",
-    alignSelf?: "auto" | "start" | "end" | "center" | "stretch" | "baseline",
-    placeContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch",
-    placeItems?: "start" | "end" | "center" | "stretch",
-    placeSelf?: "auto" | "start" | "end" | "center" | "stretch",
+  return (value: StyleProp) =>
+  {
+    let parsedValue = value;
+
+    switch (value)
+    {
+      case "start": {
+        parsedValue = "flex-start";
+        break;
+      }
+      case "end": {
+        parsedValue = "flex-end";
+        break;
+      }
+      case "between": {
+        parsedValue = "space-between";
+        break;
+      }
+      case "around": {
+        parsedValue = "space-around";
+        break;
+      }
+      case "evenly": {
+        parsedValue = "space-evenly";
+        break;
+      }
+    }
+
+    return { [cssProperty]: parsedValue };
+  };
+}
+
+function placeContent(cssProperty: any)
+{
+  return (value: StyleProp) =>
+  {
+    let parsedValue = value;
+
+    switch (value)
+    {
+      case "between": {
+        parsedValue = "space-between";
+        break;
+      }
+      case "around": {
+        parsedValue = "space-around";
+        break;
+      }
+      case "evenly": {
+        parsedValue = "space-evenly";
+        break;
+      }
+    }
+
+    return { [cssProperty]: parsedValue };
+  };
 }
 
 export const FlexboxMapping: StyleProps = {
-    flexRow: css("flex-direction", undefined, "row"),
-    flexCol: css("flex-direction", undefined, "column"),
-    flexDirection: css("flex-direction"),
-    flexWrap: css("flex-wrap", undefined, "wrap"),
-    flex: css("flex", "flexbox.flex"),
-    flexGrow: css("flex-grow", undefined, "1"),
-    flexShrink: css("flex-shrink", undefined, "1"),
-    order: css("order", "flexbox.order"),
-    gridCols: css("grid-template-columns", "flexbox.gridTemplateColumns"),
-    colSpan: css("grid-column", "flexbox.gridColumn"),
-    colStart: css("grid-column-start"),
-    colEnd: css("grid-column-end"),
-    gridRows: css("grid-template-rows", "flexbox.gridTemplateRows"),
-    rowSpan: css("grid-row", "flexbox.gridRow"),
-    rowStart: css("grid-row-start"),
-    rowEnd: css("grid-row-end"),
-    gridFlow: css("grid-auto-flow"),
-    gridAutoCols: css("grid-auto-columns", "flexbox.gridAutoColumns"),
-    gridAutoRows: css("grid-auto-rows", "flexbox.gridAutoRows"),
-    gap: css("gap", "spacing.positive"),
-    gapX: css("column-gap", "spacing.positive"),
-    gapY: css("row-gap", "spacing.positive"),
-    justifyContent: css("justify-content"),
-    justifyItems: css("justify-items"),
-    justifySelf: css("justify-self"),
-    alignContent: css("align-content"),
-    alignItems: css("align-items"),
-    alignSelf: css("align-self"),
-    placeContent: css("place-content"),
-    placeItems: css("place-items"),
-    placeSelf: css("place-self"),
+  flexRow: css("flex-direction", undefined, "row"),
+  flexCol: css("flex-direction", undefined, "column"),
+  flexDirection: css("flex-direction"),
+  flexWrap: css("flex-wrap", undefined, "wrap"),
+  flex: css("flex", "flexbox.flex"),
+  flexGrow: css("flex-grow", undefined, "1"),
+  flexShrink: css("flex-shrink", undefined, "1"),
+  order: css("order", "flexbox.order"),
+  gridCols: css("grid-template-columns", "flexbox.gridTemplateColumns"),
+  colSpan: css("grid-column", "flexbox.gridColumn"),
+  colStart: css("grid-column-start"),
+  colEnd: css("grid-column-end"),
+  gridRows: css("grid-template-rows", "flexbox.gridTemplateRows"),
+  rowSpan: css("grid-row", "flexbox.gridRow"),
+  rowStart: css("grid-row-start"),
+  rowEnd: css("grid-row-end"),
+  gridFlow: css("grid-auto-flow"),
+  gridAutoCols: css("grid-auto-columns", "flexbox.gridAutoColumns"),
+  gridAutoRows: css("grid-auto-rows", "flexbox.gridAutoRows"),
+  gap: css("gap", "spacing.positive"),
+  gapX: css("column-gap", "spacing.positive"),
+  gapY: css("row-gap", "spacing.positive"),
+  justifyContent: content("justify-content"),
+  justifyItems: css("justify-items"),
+  justifySelf: css("justify-self"),
+  alignContent: content("align-content"),
+  alignItems: css("align-items"),
+  alignSelf: css("align-self"),
+  placeContent: placeContent("place-content"),
+  placeItems: css("place-items"),
+  placeSelf: css("place-self"),
 };

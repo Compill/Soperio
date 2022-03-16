@@ -1,16 +1,9 @@
-import { ColorTheme, ParentComponent, SoperioComponent } from "@soperio/core";
+import { ComponentConfig, ComponentTypings, ExtendComponentConfig, NoStateProps, SoperioComponent } from "@soperio/components";
 
-export interface BadgeProps extends SoperioComponent, ParentComponent
-{
-    variant?: string,
-    theme?: string | ColorTheme,
-    shape?: "rounded" | "pill" | "square",
-    size?: "xs" | "sm" | "md" | "lg" | "xl" | "x2",
-}
 
-export interface BadgeConfig
-{
-    variant?: Record<string, SoperioComponent>,
-    shape?: Record<string, SoperioComponent>,
-    size?: Record<string, SoperioComponent>,
-}
+type TraitProps = ComponentTypings<"Soperio.Badge">;
+
+export type ComponentProps = SoperioComponent & TraitProps
+
+export type Config = ComponentConfig<NoStateProps, TraitProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

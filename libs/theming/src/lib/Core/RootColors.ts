@@ -19,11 +19,9 @@ export default interface ThemeRootColors
     "bg-color-5": string,
     "bg-color-disabled": string,
 
-    // TODO Why starting at 0?
-    "border-color-0": string,
     "border-color-1": string,
+    "border-color-2": string,
     "border-color-disabled": string,
 
     "shadow-color": string,
-    
 }

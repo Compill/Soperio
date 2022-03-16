@@ -1,11 +1,5 @@
 import { Style, StyleProps } from "./utils";
 
-export interface Accessibility
-{
-    srOnly?: boolean,
-    notSrOnly?: boolean;
-}
-
 function screenReaderOnly(value: any): Style
 {
     return {

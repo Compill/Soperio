@@ -1,10 +1,7 @@
-/** @jsx jsx */
-
-import { jsx, useTheme } from "@soperio/core";
+import { useColorTheme } from "@soperio/theming";
 import React from "react";
+import { useFirstRender } from "@soperio/components";
 import { TileProps } from "./types";
-
-
 
 /**
  *
@@ -15,10 +12,12 @@ export const Tile = React.forwardRef<HTMLDivElement, TileProps>(({
     ...props
 }: TileProps, ref) =>
 {
-    const theme = useTheme();
+    const firstRender = useFirstRender();
+    const theme = useColorTheme();
 
     return (
         <div
+            transition={firstRender ? "none" : "all"}
             rounded
             bgColor={theme.background1}
             color={theme.textDark1}

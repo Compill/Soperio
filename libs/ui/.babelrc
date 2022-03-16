@@ -1,24 +1,14 @@
 {
   "presets": [
-    [
-      "@nrwl/react/babel",
-      {
-        // "runtime": "automatic",
-        "runtime": "classic",
-        "jsxFactory": "jsx",
-        "jsxFragmentFactory": "jsx",
-        "useBuiltIns": "usage"
-      }
-    ]
+    ["@nrwl/react/babel", { "runtime": "automatic", "importSource": "@soperio" }]
   ],
-  "plugins": [
-    [
-      "@babel/plugin-transform-react-jsx",
-      {
-        "runtime": "classic", // defaults to classic
-        "jsxFactory": "jsx",
-        "jsxFragmentFactory": "jsx",
-      }
-    ]
-  ]
+  // "plugins": [
+  //   [ "@babel/plugin-transform-react-jsx", {
+  //     // "runtime": "automatic",
+  //     "runtime": "classic",
+  //     // "importSource": "'react"
+  //     "jsxFactory": "jsx",
+  //     "jsxFragmentFactory": "jsx",
+  //   }]
+  // ]
 }

@@ -1,24 +1,65 @@
-import { ColorTheme } from "@soperio/core";
-import { CardConfig } from "./types";
+import { ColorTheme } from "@soperio/theming";
+import { Config } from "./types";
 
-export default function config(theme: ColorTheme): CardConfig
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
-    return {
-        variant: {
-            default: {
-                bgColor: theme.background1,
-                border: "0",
-            },
-            bordered: {
-                bgColor: theme.background1,
-                border: "2",
-                borderColor: theme.border0,
-            },
+  return {
+    defaultTraits:
+    {
+      variant: "default",
+      corners: "default",
+
+    },
+    defaultProps: 
+    {
+      card: {
+        mx: "2"
+      }
+    },
+    subComponents: ["card", "header", "content", "footer"],
+    traits:
+    {
+      variant:
+      {
+        default:
+        {
+          card:
+          {
+            bgColor: darkMode ? theme.background2 : theme.background1,
+            border: "0",
+            textColor: theme.textDark1
+          }
         },
-        corners: {
-            square: {},
-            default: { rounded: true },
-            pill: { rounded: "full" }
+        bordered:
+        {
+          card:
+          {
+            bgColor: darkMode ? theme.background2 : theme.background1,
+            border: "2",
+            borderColor: theme.border1,
+          },
+        },
+      },
+      corners:
+      {
+        square: {},
+        default:
+        {
+          card:
+          {
+            rounded: true
+          }
+        },
+        pill:
+        {
+          card:
+          {
+            rounded: "full"
+          }
         }
-    };
-}
+      }
+    }
+  };
+};
+
+export default config

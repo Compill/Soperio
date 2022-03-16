@@ -1,14 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "module": "commonjs",
     "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "strict": false,
+    "noImplicitAny": false,
+    "esModuleInterop": true
+  },
+  "paths": {
+    "*": ["node_modules/*", "src/types/*", "src/scripts/*"]
+  },
+  "ts-node": {
+    "transpileOnly": true
   },
   "files": [],
   "include": [],

@@ -1,24 +1,10 @@
-import { ColorTheme, SoperioComponent } from "@soperio/core";
-import { HTMLInputProps } from "../HTMLTagProps";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, SoperioComponent } from "@soperio/components";
 
-export interface CheckboxProps extends SoperioComponent, HTMLInputProps
-{
-    label?: string,
-    otherNameThanSize?: "md" | "lg",
-    variant?: string,
-    shape?: "rounded" | "circle" | "square",
-    theme?: string | ColorTheme;
-}
+type VariantProps = ComponentTypings<"Soperio.Checkbox">
 
-export interface CheckboxThemeProps extends SoperioComponent
-{
-    checked?: SoperioComponent,
-    disabled?: SoperioComponent,
-}
+export type ComponentProps = SoperioComponent & VariantProps & CheckedState & DisabledState;
 
-export interface CheckboxConfig
-{
-    otherNameThanSize?: Record<string, CheckboxThemeProps>,
-    variant?: Record<string, CheckboxThemeProps>,
-    shape?: Record<string, CheckboxThemeProps>,
-}
+interface ConfigStateProps extends CheckedThemeProps, DisabledThemeProps, CheckedDisabledThemeProps { }
+
+export type Config = ComponentConfig<ConfigStateProps, VariantProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

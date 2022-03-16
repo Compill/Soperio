@@ -1,73 +1,92 @@
-import { ColorTheme } from "@soperio/core";
-import { CheckboxConfig } from "./types";
+import { ColorTheme } from "@soperio/theming";
+import { Config } from "./types";
 
-export default function config(theme: ColorTheme): CheckboxConfig
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
 {
-    return {
-        otherNameThanSize: {
-            "sm": {
-                px: "2",
-                py: "1.5",
-                fontSize: "sm"
-            },
-            "md": {
-                px: "2.5",
-                py: "1.5",
-                fontSize: "md",
-                w: "20px",
-                h: "20px",
-            },
-            "lg": {
-                fontSize: "lg",
-                w: "24px",
-                h: "24px",
-            },
-            "xl": {
-                px: "3.5",
-                py: "2.5",
-                fontSize: "xl"
-            },
-            "2x": {
-                px: "4",
-                py: "2.5",
-                fontSize: "x2"
-            }
+  return {
+    traits:
+    {
+      size:
+      {
+        "sm":
+        {
+          px: "2",
+          py: "1.5",
+          fontSize: "sm"
         },
-        variant: {
-            default: {
-                bgColor: theme.background5,
-                outline: "none",
-                border: "0",
-                textColor: "white",
-                checked: {
-                    bgColor: theme.default,
-                },
-                disabled: {
-                    bgOpacity: "40",
-                    textOpacity: "70",
-                    cursor: "default"
-                }
-            },
-            outline: {
-                bgColor: "transparent",
-                border: "2",
-                borderColor: theme.background5,
-                textColor: "transparent",
-                checked: {
-                    borderColor: theme.default,
-                    textColor: theme.default,
-                },
-                disabled: {
-                    borderOpacity: "40",
-                    textOpacity: "40",
-                    cursor: "default"
-                }
-            },
+        "md":
+        {
+          px: "2.5",
+          py: "1.5",
+          fontSize: "md",
+          w: "20px",
+          h: "20px",
         },
-        shape: {
-            square: { rounded: "none" },
-            default: { rounded: true },
-            circle: { rounded: "full" }
+        "lg":
+        {
+          fontSize: "lg",
+          w: "24px",
+          h: "24px",
+        },
+        "xl":
+        {
+          px: "3.5",
+          py: "2.5",
+          fontSize: "xl"
+        },
+        "2x":
+        {
+          px: "4",
+          py: "2.5",
+          fontSize: "x2"
         }
-    };
+      },
+      variant:
+      {
+        default:
+        {
+          bgColor: theme.background5,
+          outline: "none",
+          border: "0",
+          textColor: darkMode ? theme.textLight1 : theme.textDark1,
+          stateChecked:
+          {
+            bgColor: theme.default,
+          },
+          stateDisabled:
+          {
+            bgOpacity: "40",
+            textOpacity: "70",
+            cursor: "default"
+          }
+        },
+        outline:
+        {
+          bgColor: "transparent",
+          border: "2",
+          borderColor: theme.background5,
+          textColor: "transparent",
+          stateChecked:
+          {
+            borderColor: theme.default,
+            textColor: theme.default,
+          },
+          stateDisabled:
+          {
+            borderOpacity: "40",
+            textOpacity: "40",
+            cursor: "default"
+          }
+        },
+      },
+      shape:
+      {
+        square: { rounded: "none" },
+        default: { rounded: true },
+        circle: { rounded: "full" }
+      }
+    }
+  };
 }
+
+export default config

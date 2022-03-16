@@ -1,18 +1,9 @@
-import { css, getStyleConfig, Style, StyleProps } from "./utils";
-
-export interface Interactivity
-{
-    appearanceNone?: boolean,
-    cursor?: "auto" | "default" | "pointer" | "wait" | "text" | "move" | "help" | "not-allowed",
-    outline?: "none" | "white" | "black",
-    pointerEvents?: "none" | "auto",
-    resize?: true | "both" | "none" | "x" | "y";
-    userSelect?: "none" | "text" | "all" | "auto";
-}
+import { getThemeStyle } from "@soperio/theming";
+import { css, Style, StyleProps } from "./utils";
 
 function outline(value: any): Style
 {
-    const parsedValue = getStyleConfig("interactivity.outline", value)!;
+    const parsedValue = getThemeStyle("interactivity.outline", value)!;
 
     return {
         "outline": parsedValue[0],

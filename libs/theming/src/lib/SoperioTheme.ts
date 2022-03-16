@@ -18,7 +18,7 @@ export interface SoperioTheme
     breakpoints: ThemeBreakpoints,
     rootColors: ThemeRootColors,
     colors: ThemeColors,
-    themes: ThemeThemes,
+    colorThemes: ThemeThemes,
     borders: ThemeBorder,
     effects: ThemeEffects,
     flexbox: ThemeFlexbox,

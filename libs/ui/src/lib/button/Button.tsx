@@ -1,26 +1,28 @@
-/** @jsx jsx */
-
-import { jsx, useTheme, SoperioComponent } from "@soperio/core";
-import { Soperio } from "../Soperio";
-import { useComponentConfig } from "../hooks/useComponentConfig";
-import { IS_DEV } from "@soperio/utils";
+import { ComponentManager, ComponentTheme, HTMLButtonProps, useComponentConfig, useFirstRender } from "@soperio/components";
 import React from 'react';
-import { sanitizeProps } from "../utils";
 import defaultConfig from "./config";
-import { ButtonProps } from "./types";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Button"
 
-Soperio.registerComponent(COMPONENT_ID, defaultConfig)
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
+
+export interface ButtonProps extends ComponentProps, HTMLButtonProps
+{
+  theme?: ComponentTheme,
+  config?: ExtendConfig;
+}
+
 
 /**
  *
  *
  */
+// TODO Fix disabled style
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
-    size = "md",
-    variant = "default",
-    corners = "default",
+    size,
+    variant,
+    corners,
     theme = "default",
     config,
     selected = false,
@@ -29,6 +31,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     ...props
 }: ButtonProps, ref) =>
 {
+    const firstRender = useFirstRender();
     const preventFocus = React.useCallback((event) =>
     {
         event.preventDefault();
@@ -41,37 +44,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         onClick && onClick(event);
     }, [onClick]);
 
-    const colorTheme = useTheme(theme);
-
-    const styles = useComponentConfig(COMPONENT_ID, colorTheme, config)
-    const sVariant = styles.variant?.[variant];
-    const sSize = styles.size?.[size];
-    const sCorners = styles.corners?.[corners];
-
-    if (!sVariant && IS_DEV)
-        console.log(`[Soperio Button Component]: variant ${variant} does not exist in your (custom) theme/config`);
-
-    const selectedProps = (sVariant && selected && sVariant.selected) || {};
-    const disabledProps: SoperioComponent = { ...(sVariant && props.disabled && { ...sVariant.disabled, pointerEvents: "none" }) };
-    const selectedDisabledProps = sVariant && selected && props.disabled ? sVariant.selectedDisabled : {};
+    const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, corners }, props)
 
     return (
         <button
-            transition="all"
+            transition={firstRender ? "none" : "all"}
+            hover_transition="all"
             easing="linear"
             duration="300"
+            hover_duration="300"
             fontWeight="500"
+            type="button"
             // focus_ringOffset="2"
             // focus_ringOffsetColor="blue-300"
             // focus_ringWidth="2"
             // focus_outline="none"
-            // font="sans"
-            {...sanitizeProps(sSize, "selected", "disabled", "selectedDisabled")}
-            {...sanitizeProps(sVariant, "selected", "disabled", "selectedDisabled")}
-            {...sanitizeProps(sCorners, "selected", "disabled", "selectedDisabled")}
-            {...selectedProps}
-            {...disabledProps}
-            {...selectedDisabledProps}
+            {...styles}
             onMouseDown={preventFocus}
             onClick={looseFocus}
             {...props}
@@ -81,3 +69,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         </button >
     );
 });
+
+Button.displayName = "Soperio Button"

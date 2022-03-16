@@ -1,107 +1,136 @@
-/** @jsx jsx */
-/** @jsxFrag jsx */
-
-import { jsx, ParentComponent, SoperioComponent, SpacingPositiveScale, useTheme } from "@soperio/core";
+import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/components";
+import { SpacingPositive, useColorTheme } from "@soperio/theming";
+import { OrString } from "@soperio/utils";
 import React from "react";
-import config from "./config";
-import { getStyledConfig } from "../utils";
-import { CardConfig, CardProps } from "./types";
-import { IS_DEV, OrString } from "@soperio/utils";
+import { ComponentProps, ExtendConfig } from "./types";
+import defaultConfig from "./config"
+
+const COMPONENT_ID = "Soperio.Card";
+
+ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
+
+export interface CardProps extends ComponentProps, ParentComponent, HTMLDivProps
+{
+  theme?: ComponentTheme;
+  config?: ExtendConfig
+}
 
 /**
  *
  *
  */
 const Card = React.forwardRef<HTMLDivElement, CardProps>(({
-    variant = "default",
-    corners = "default",
-    children,
-    ...props
+  variant,
+  corners,
+  theme = "default",
+  config,
+  children,
+  ...props
 }: CardProps, ref) =>
 {
-    const colorTheme = useTheme();
+  const firstRender = useFirstRender();
 
-    const styles: CardConfig = getStyledConfig(colorTheme, config, "Button");
-    const sVariant = styles.variant?.[variant];
-    const sCorners = styles.corners?.[corners];
-
-    if (!sVariant && IS_DEV)
-        console.log(`[Soperio Card Component]: variant ${variant} does not exist in your theme/config`);
-
-    return (
-        <div
-            {...sVariant}
-            {...sCorners}
-            {...props}
-            ref={ref}
-        >
-            {children}
-        </div>
-    );
+  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props);
+  
+  return (
+    <div
+      transition={firstRender ? "none" : "all"}
+      {...styles.card}
+      {...props}
+      ref={ref}
+    >
+      <MultiPartStyleProvider value={styles}>
+        {children}
+      </MultiPartStyleProvider>
+    </div>
+  );
 });
 
-interface CardHeaderProps extends SoperioComponent, ParentComponent {
-    showBorder?: boolean;
-    borderWidth?: OrString<"full" | "padded">;
+interface CardHeaderProps extends SoperioComponent, ParentComponent
+{
+  showBorder?: boolean;
+  borderWidth?: OrString<"full" | "padded">;
 };
 
 const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
-    showBorder,
-    borderWidth,
-    children,
-    ...props }, ref) =>
+  showBorder,
+  borderWidth,
+  children,
+  ...props }, ref) =>
 {
-    const colorTheme = useTheme();
+  const colorTheme = useColorTheme();
+  const styles = useMultiPartStyles();
 
-    return (
-        // Style should be flex with space between children
-        // So that we get title + fill space + toolbar/more button
-        <React.Fragment>
-            <div px="7" py="3" {...props} ref={ref} borderColor={colorTheme.border1} borderB={showBorder && borderWidth === "full" ? true : "0"}>
-                {children}
-            </div>
-            {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositiveScale} />}
-        </React.Fragment>
-    );
+  return (
+    // Style should be flex with space between children
+    // So that we get title + fill space + toolbar/more button
+    <>
+      <div
+        px="7"
+        py="3"
+        ref={ref}
+        borderColor={colorTheme.border1}
+        borderB={showBorder && borderWidth === "full" ? true : "0"}
+        {...styles.header}
+        {...props}
+      >
+        {children}
+      </div>
+      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
+    </>
+  );
 });
 
-interface CardBodyProps extends SoperioComponent, ParentComponent {
-    scrollable?: boolean, // If fixed height
+interface CardBodyProps extends SoperioComponent, ParentComponent
+{
+  scrollable?: boolean, // If fixed height
 };
 
 const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ children, ...props }, ref) =>
 {
-    return (
-        <div px="7" py="5" fontSize="sm" {...props} ref={ref}>
-            {children}
-        </div>
-    );
+  const styles = useMultiPartStyles();
+
+  return (
+    <div px="7" py="5" fontSize="sm" {...styles.body} {...props} ref={ref}>
+      {children}
+    </div>
+  );
 });
 
-interface CardFooterProps extends SoperioComponent, ParentComponent {
-    showBorder?: boolean;
-    borderWidth?: OrString<"full" | "padded">;
-    align?: "right" | "left" | "center";
+interface CardFooterProps extends SoperioComponent, ParentComponent
+{
+  showBorder?: boolean;
+  borderWidth?: OrString<"full" | "padded">;
+  align?: "right" | "left" | "center";
 };
 
 const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
-    showBorder,
-    borderWidth,
-    children,
-    ...props }, ref) =>
+  showBorder,
+  borderWidth,
+  children,
+  ...props }, ref) =>
 {
-    const colorTheme = useTheme();
+  const colorTheme = useColorTheme();
+  const styles = useMultiPartStyles();
 
-    return (
-        // Style should be flex with space between children
-        // So that we get title + fill space + toolbar/more button
-        <React.Fragment>
-            {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositiveScale} />}
-            <div px="7" py="3" {...props} ref={ref} borderColor={colorTheme.border1} borderT={showBorder && borderWidth === "full" ? true : "0"}>
-                {children}
-            </div>
-        </React.Fragment>
-    );
+  return (
+    // Style should be flex with space between children
+    // So that we get title + fill space + toolbar/more button
+    <React.Fragment>
+      {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
+      <div
+        px="7"
+        py="3"
+        ref={ref}
+        borderColor={colorTheme.border1}
+        borderT={showBorder && borderWidth === "full" ? true : "0"}
+        {...styles.footer}
+        {...props}
+      >
+        {children}
+      </div>
+    </React.Fragment>
+  );
 });
 
 

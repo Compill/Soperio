@@ -1,11 +1,4 @@
-import { css, cssValueFn, OrString, StyleProps } from "./utils";
-
-export interface SVGSoperioProps 
-{
-    fillCurrent?: boolean,
-    strikeCurrent?: boolean,
-    strokeWidth?: OrString<"0" | "1" | "2 "> | number
-}
+import { css, cssValueFn, StyleProps } from "./utils";
 
 export const SVGMapping: StyleProps =
 {

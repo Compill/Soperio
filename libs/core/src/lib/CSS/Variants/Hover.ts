@@ -1,8 +1,4 @@
-// import { SpacingScale } from "../Utilities/Spacing";
-// import { ScalingScale } from "../Utilities/Transform";
-import { Breakpoints } from "../../Breakpoints";
-import { Color } from "../../PropTypes/Color";
-import { Opacity } from "../../PropTypes/Opacity";
+import { Breakpoints, Color, Opacity } from "@soperio/theming";
 
 export interface Hover
 {
@@ -23,7 +19,7 @@ export interface Hover
     // skewY?: "0" | "1" | "2" | "2" | "6" | "12",
     textColor?: Color,
     textDecoration?: "underline" | "line-through" | "no-underline",
-    // textOpacity?: Opacity,
+    textOpacity?: Opacity,
     // translateX?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
     // translateY?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
 }

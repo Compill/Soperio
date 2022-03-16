@@ -1,22 +1,5 @@
 {
   "presets": [
-    [
-      "@nrwl/react/babel",
-      {
-        // "runtime": "automatic"
-        "runtime": "classic",
-        "jsxFactory": "jsx",
-        "jsxFragmentFactory": "jsx",
-      }
-    ]
+    ["@nrwl/react/babel", { "runtime": "automatic", "importSource": "@soperio" }]
   ],
-  "plugins": [
-    [ "@babel/plugin-transform-react-jsx", {
-      // "runtime": "automatic",
-      "runtime": "classic",
-      // "importSource": "'react"
-      "jsxFactory": "jsx",
-      "jsxFragmentFactory": "jsx",
-    }]
-  ]
 }

@@ -1,65 +1,22 @@
-import { Breakpoints } from "../Breakpoints";
+import { getDirection, getThemeStyle } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
-import { opacity, Opacity } from "../PropTypes/Opacity";
-import { css, cssValueFn, getStyleConfig, Style, StyleProps } from "./utils";
+import { opacity } from "../PropTypes/Opacity";
+import { css, cssValueFn, direction, Style, StyleProps } from "./utils";
 
-export interface Border
+function divideX(value: any): Style
 {
-    rounded?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedT?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedB?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedL?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedR?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedTL?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedTR?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedBL?: true | false | "none" | Breakpoints | "x2" | "full",
-    roundedBR?: true | false | "none" | Breakpoints | "x2" | "full",
-    border?: true | false | "0" | "2" | "4" | "8",
-    borderT?: true | false | "0" | "2" | "4" | "8",
-    borderB?: true | false | "0" | "2" | "4" | "8",
-    borderL?: true | false | "0" | "2" | "4" | "8",
-    borderR?: true | false | "0" | "2" | "4" | "8",
-    borderColor?: false | string,
-    borderOpacity?: false | Opacity,
-    borderStyle?: false | "solid" | "dashed" | "dotter" | "double" | "none",
-    /**
-     * true is equal to (inexisting, default) value 1
-     */
-    divideX?: true | false | "0" | "2" | "4" | "8",
-    /**
-     * true is equal to (inexisting, default) value 1
-     */
-    divideY?: true | false | "0" | "2" | "4" | "8",
-    divideXReverse?: boolean,
-    divideYReverse?: boolean,
-    divideColor?: false | string,
-    divideOpacity?: false | Opacity,
-    divideStyle?: false | "solid" | "dashed" | "dotter" | "double" | "none",
-    /**
-     * true is equal to (inexisting, default) value 3
-     */
-    // ringColor?: string,
-    // ringOffset?: "0" | "1" | "2" | "4" | "8",
-    // ringOffsetColor?: string;
-    // ringOpacity?: Opacity,
-    // ringWidth?: true | false | "0" | "1" | "2" | "4" | "8" | "inset",
-
-}
-
-export function divideX(value: any): Style
-{
-    const dimension = value === true ? "1px" : (getStyleConfig("border.width", value) || value)
+    const dimension = value === true ? "1px" : (getThemeStyle("border.width", value) || value)
 
     return {
         "--so-divide-x-reverse": 0,
-        "border-right-width": `calc(${dimension} * var(--so-divide-x-reverse))`,
-        "border-left-width": `calc(${dimension} * calc(1 - var(--so-divide-x-reverse)))`
+        [getDirection() ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse))`,
+        [getDirection() ? "border-left-width" : "boder-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse)))`
     }
 }
 
-export function divideY(value: any): Style
+function divideY(value: any): Style
 {
-    const dimension = value === true ? "1px" : (getStyleConfig("border.width", value) || value)
+    const dimension = value === true ? "1px" : (getThemeStyle("border.width", value) || value)
 
     return {
         "--so-divide-y-reverse": 0,
@@ -68,23 +25,37 @@ export function divideY(value: any): Style
     };
 }
 
+function borderStartColor(value: any)
+{
+    return colorize(getDirection() ? "border-left-color" : "border-right-color", "--so-border-opacity")(value)
+}
+
+function borderEndColor(value: any)
+{
+    return colorize(getDirection() ? "border-right-color" : "border-left-color", "--so-border-opacity")(value)
+}
+
 export const BorderMapping: StyleProps =
 {
     rounded: css("border-radius", "border.radius"),
     roundedT: css(["border-radius-top-left", "border-radius-top-right"], "border.radius"),
     roundedB: css(["border-radius-bottom-left", "border-radius-bottom-right"], "border.radius"),
-    roundedL: css(["border-radius-top-left", "border-radius-bottom-left"], "border.radius"),
-    roundedR: css(["border-radius-top-right", "border-radius-bottom-right"], "border.radius"),
-    roundedTL: css("border-radius-top-left", "border.radius"),
-    roundedTR: css("border-radius-top-right", "border.radius"),
-    roundedBL: css("border-radius-bottom-left", "border.radius"),
-    roundedBR: css("border-radius-bottom-right", "border.radius"),
+    roundedS: direction(["border-radius-top-left", "border-radius-bottom-left"], ["border-radius-top-right", "border-radius-bottom-right"], "border.radius"),
+    roundedE: direction(["border-radius-top-right", "border-radius-bottom-right"], ["border-radius-top-left", "border-radius-bottom-left"], "border.radius"),
+    roundedTS: direction("border-radius-top-left", "border-radius-top-right", "border.radius"),
+    roundedTE: direction("border-radius-top-right", "border-radius-top-left", "border.radius"),
+    roundedBS: direction("border-radius-bottom-left", "border-radius-bottom-right", "border.radius"),
+    roundedBE: direction("border-radius-bottom-right", "border-radius-bottom-left", "border.radius"),
     border: css("border-width", "border.width"),
     borderT: css("border-top-width", "border.width"),
     borderB: css("border-bottom-width", "border.width"),
-    borderL: css("border-left-width", "border.width"),
-    borderR: css("border-right-width", "border.width"),
+    borderS: direction("border-left-width", "border-right-width", "border.width"),
+    borderE: direction("border-right-width", "border-left-width", "border.width"),
     borderColor: colorize("border-color", "--so-border-opacity"),
+    borderTColor: colorize("border-top-color", "--so-border-opacity"),
+    borderBColor: colorize("border-bottom-color", "--so-border-opacity"),
+    borderSColor: borderStartColor,
+    borderEColor: borderEndColor,
     borderOpacity: opacity("--so-border-opacity"),
     borderStyle: css("border-style"),
     divideX: divideX,

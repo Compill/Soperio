@@ -1,26 +1,10 @@
-import { ComponentTheme, SoperioComponent } from "@soperio/core";
-import { HTMLInputProps } from "../HTMLTagProps";
+import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, ExtendComponentConfig, InvalidState, InvalidThemeProps, SoperioComponent, ValidState, ValidThemeProps } from "@soperio/components";
 
-export interface InputThemeProps extends SoperioComponent
-{
-    disabled?: SoperioComponent,
-}
+type TraitProps = ComponentTypings<"Soperio.Input">;
 
-export interface InputConfig
-{
-    size?: Record<string, InputThemeProps>,
-    variant?: Record<string, InputThemeProps>,
-    corners?: Record<string, InputThemeProps>,
-}
+export type ComponentProps = SoperioComponent & TraitProps & ValidState & InvalidState & DisabledState;
 
-export interface InputProps extends SoperioComponent, Omit<HTMLInputProps, "size">
-{
-    size?: "sm" | "md" | "lg" | "xl" | "x2",
-    variant?: "default" | "solid" | "underline",
-    /**
-     * Define the input's border radius. Useless if variant is set to "underline"
-     */
-    corners?: "default" | "square" | "pill",
-    theme?: ComponentTheme,
-    length?: number;
-}
+interface ConfigStateProps extends ValidThemeProps, InvalidThemeProps, DisabledThemeProps { }
+
+export type Config = ComponentConfig<ConfigStateProps, TraitProps>;
+export type ExtendConfig = ExtendComponentConfig<Config>;

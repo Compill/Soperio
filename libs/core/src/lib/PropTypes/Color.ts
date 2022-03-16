@@ -1,6 +1,6 @@
-import { getStyleConfig, StyleFn, StyleProp } from "../CSS/utils";
-
-export type Color = string
+import { getColor } from "@soperio/theming";
+import { StyleFn, StyleProp } from "../CSS/utils";
+import { parseColor } from "../utils/colorUtils";
 
 export function colorize(cssProperty: string, alphaVarName: string): StyleFn
 {
@@ -9,7 +9,7 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
         if (!value || value === true || typeof value === "number")
             return {};
 
-        let parsedColor = getStyleConfig("colors", value) || value
+        let parsedColor = getColor(value) || value
 
         parsedColor = parseColor(parsedColor, alphaVarName)
 
@@ -18,106 +18,6 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
             [cssProperty]: parsedColor
         };
     }
-}
-
-export function transformColorToGlobalVar(color: string): string | false
-{
-    const hex = color
-        .replace(SHORT_HEX, (_, r, g, b, a) => ['#', r, r, g, g, b, b, a ? a + a : ''].join(''))
-        .match(HEX);
-
-    if (hex !== null)
-    {
-        const r = parseInt(hex[1], 16);
-        const g = parseInt(hex[2], 16);
-        const b = parseInt(hex[3], 16);
-        return `${r}, ${g}, ${b}`;
-    }
-
-    return false;
-}
-
-const HEX = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i;
-const SHORT_HEX = /^#([a-f\d])([a-f\d])([a-f\d])([a-f\d])?$/i;
-const VALUE = `(?:\\d+|\\d*\\.\\d+)%?`;
-const SEP = `(?:\\s*,\\s*|\\s+)`;
-const ALPHA_SEP = `\\s*[,/]\\s*`;
-const RGB_HSL = new RegExp(
-    `^(rgb|hsl)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`
-);
-
-export function parseColor(value: string, alphaCSSVarName?: string):string
-{
-    if (typeof value !== 'string')
-    {
-        return "invalidcolor";
-    }
-
-    value = value.trim();
-    if (value === 'transparent')
-    {
-        return value;
-        // return { mode: 'rgb', color: ['0', '0', '0'], alpha: '0' };
-    }
-
-    const alpha = alphaCSSVarName ? `var(${alphaCSSVarName}, 1)` : 1
-
-    if (value.startsWith("root."))
-    {
-        // Global vars (from config's rootColors) are defined
-        // like this: --so-my-var: 255, 0, 255 // That would be equal to #FF00FF
-        // Although this value (255, 0, 255) is not valid per se,
-        // we use it in the rgba function as values for r, g and b.
-        // We just have to add the alpha value (from the opacity var)
-        // and we're done!
-
-        value = `var(--so-${value.substring(5)})` // Remove "root." prefix, and convert to CSS var
-        return `rgba(${value}, ${alpha})`
-    }
-
-    const hex = value
-        .replace(SHORT_HEX, (_, r, g, b, a) => ['#', r, r, g, g, b, b, a ? a + a : ''].join(''))
-        .match(HEX);
-
-    if (hex !== null)
-    {
-        const r = parseInt(hex[1], 16)
-        const g = parseInt(hex[2], 16)
-        const b = parseInt(hex[3], 16)
-        const a = hex[4] ? (parseInt(hex[4], 16) / 255).toPrecision(2).toString() : alpha
-        return `rgba(${r}, ${g}, ${b}, ${a})`
-    }
-
-    const match = value.match(RGB_HSL);
-
-    if (match !== null)
-    {
-        const h = match[2]
-        const s = match[3]
-        const l = match[4]
-        const a = match[5] ? match[5] : alpha;
-        return `hsl(${h}, ${s}, ${l}, ${a})`
-    }
-
-    return value;
-}
-
-/**
- * Add an opacity value to an RGB color
- * @param {string} color  RGB color, starting with #
- * @param {number} alpha  Opacity, from to 0 (transparent) to 100 (opaque)
- * @returns #RGBA color
- */
-export function applyTransparenceToRGBColor(color:string, alpha: number): string
-{
-    if (color.length === 7 && alpha >= 0 && alpha <= 100)
-    {
-        const base16 = Math.round((alpha / 100) * 255)
-        const hex = (base16 < 16 ? "0" : "") + base16.toString(16)
-        return `${color}${hex}`
-    }
-
-    return color;
 }
 
 // export function parseColor(value: string, alphaCSSVarName: string)
@@ -136,7 +36,7 @@ export function applyTransparenceToRGBColor(color:string, alpha: number): string
 //     // TODO get color CSS vars
 //     // for values like var(--color-light)
 
-//     // TODO get color from config
+//     // TODO get color from theme
 
 //     // if (value in namedColors)
 //     // {
@@ -176,10 +76,3 @@ export function applyTransparenceToRGBColor(color:string, alpha: number): string
 
 //     return null;
 // }
-
-// TODO Alpha is not good, should be 0..255 instead of /alpha
-export function formatColor({ mode, color, alpha }: { mode: string, color: string[], alpha: string; }): string
-{
-    const hasAlpha = alpha !== undefined;
-    return `${mode}(${color.join(' ')}${hasAlpha ? ` / ${alpha}` : ''})`;
-}

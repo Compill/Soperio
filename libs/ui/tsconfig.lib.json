@@ -16,7 +16,7 @@
     "**/*.spec.js",
     "**/*.test.js",
     "**/*.spec.jsx",
-    "**/*.test.jsx"
+    "**/*.test.jsx",
   ],
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "../core/src/lib/SoperioComponent.ts"]
+  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
 }
