@@ -15,3 +15,5 @@ export * from './lib/sidebar/';
 export * from './lib/spinner/';
 export * from './lib/textarea/';
 export * from './lib/tile/';
+export * from './lib/switch/';
+export * from './lib/divider/'

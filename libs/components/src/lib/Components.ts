@@ -2,8 +2,7 @@
 // to regenerate components' typings
 
 // Static definition that will be overwritten by CLI
-export interface Components
-{
+export interface Components {
     "Soperio.Badge":
     {
         variant: "default" | "light" | "outline" | "light-outline";
@@ -58,4 +57,18 @@ export interface Components
         variant: "default" | "solid" | "underline";
         corners: "square" | "default" | "pill";
     },
+    "Soperio.Divider":
+    {
+
+        variant: "default" | "dashed";
+        orientation: "horizontal" | "vertical";
+
+    },
+    "Soperio.Switch":
+    {
+        
+        variant?: "default" | "bordered";
+        corners?: "default" | "square" | "pill";
+    },
+
 }

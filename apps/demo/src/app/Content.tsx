@@ -1,4 +1,4 @@
-import { Button } from "@soperio/ui";
+import { Button,  } from "@soperio/ui";
 import React from "react";
 import Badge from "./Badge";
 import ButtonPage from "./Button";
@@ -11,6 +11,8 @@ import Select from "./Select";
 import Spinner from "./Spinner";
 import TextAlign from "./TextAlign";
 import TextArea from "./TextArea";
+import Divider from "./Divider";
+import Switch from "./Switch";
 
 export function Content()
 {
@@ -31,7 +33,8 @@ export function Content()
         <Button onClick={() => setState(8)}>TextArea</Button>
         <Button onClick={() => setState(9)}>Spinner</Button>
         <Button onClick={() => setState(10)}>Text</Button>
-        <Button onClick={() => setState(11)}>Test</Button>
+        <Button onClick={() => setState(11)}>Divider</Button>
+        <Button onClick={() => setState(12)}>Switch</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
         {state === 1 && <ButtonPage />}
@@ -45,6 +48,8 @@ export function Content()
         {state === 9 && <Spinner />}
         {state === 10 && <TextAlign />}
         {state === 10 && <Form />}
+        {state === 11 && <Divider />}
+        {state === 12 && <Switch/>}
       </div>
     </>
   );
