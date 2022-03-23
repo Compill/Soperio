@@ -10,7 +10,6 @@ interface CustomProps extends SoperioComponent
   progress?: 0 | 25 | 50 | 75 | 100
 }
 
-interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 export type ComponentProps = TraitProps & CustomProps
 
 export type Config = ComponentConfig<CustomProps, TraitProps>;
