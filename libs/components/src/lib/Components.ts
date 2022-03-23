@@ -67,7 +67,7 @@ export interface Components {
     "Soperio.Switch":
     {
         
-        variant?: "default" | "bordered";
+        variant?: "default" | "inverse"| "fullColor";
         corners?: "default" | "square" | "pill";
     },
 

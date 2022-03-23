@@ -2,8 +2,8 @@ import { Container, Switch } from "@soperio/ui";
 import React from "react";
 
 
-export default function Page({ ...props })
-{const [checked, setChecked] = React.useState(true);
+export default function Page({ ...props }) {
+  const [checked, setChecked] = React.useState(true);
 
   function handleClick(e: any) {
     console.log("click");
@@ -11,14 +11,16 @@ export default function Page({ ...props })
   }
 
   function handleChange(e: any) {
-    
+
     setChecked(!checked);
     console.log("change", e);
   }
-  console.log("checked",checked);
+  console.log("checked", checked);
   return (
     <Container center size="xxl" dflex gap="20" justifyContent="center" py="20">
-     <Switch checked={checked} onClick={handleClick} onChange={handleChange} />
+      <Switch checked={checked} onClick={handleClick} onChange={handleChange} ></Switch>
+      <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} ></Switch>
+      <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} corners="square" ></Switch>
     </Container>
   );
 }

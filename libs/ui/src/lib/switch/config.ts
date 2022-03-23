@@ -5,26 +5,16 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
   return {
     defaultProps:
     {
-      // switch: {
-      //   display: "inline-block",
-      //   position: "relative",
-      //   verticalAlign: "middle",
-      //   lineHeight: "0",
-      // },
-      // track: {
-      //   display: "inline-flex",
-      //   flexShrink: "0",
-      //   justifyContent: "start",
-      //   boxSizing: "content-box",
-      //   cursor: "pointer",
-      // },
-      // thumb: {
-
-      // },
-      // label: {
-      //   userSelect: "none",
-      //   ms: "2",
-      // }
+      switch: {
+      },
+      track: {
+        display: "inline-block",
+        position: "relative",
+        cursor: "pointer"
+      },
+      thumb: {
+        position: "absolute"
+      },
 
     },
     defaultTraits: {
@@ -78,12 +68,12 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             h: "1.5rem",
           },
           track: {
-            w: "2.875rem",
-            h: "1.5rem",
+            w: "46px",
+            h: "28px",
           },
           thumb: {
-            w: "1.5rem",
-            h: "1.5rem",
+            w: "24px",
+            h: "24px",
           },
           label: {
             w: "1.375rem",
@@ -96,21 +86,17 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
       {
         default:
         {
-          switch:
-          {
-            // bgColor: darkMode ? theme.background2 : theme.background1,
-            // border: "0",
-          },
           track:
           {
 
-            
-            // transitionProperty: "common",
-            // transitionDuration: "fast",
-            bgColor: "grey",
+            bgColor: theme.background5,
+            shadow: " 0 0 5px grey",
+            easing: "linear",
+            duration: "300",
+
             stateChecked:
             {
-              bgColor: "blue",
+              bgColor: theme.default,
             },
             stateDisabled:
             {
@@ -122,29 +108,72 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           },
           thumb:
           {
-            bgColor: "white",
-            my: "1px",
-            // transitionProperty: "transform",
-            // transitionDuration: "normal",
-            // borderRadius: "inherit",
-            // width: "0.75rem",
-            // height: "0.3rem",
+            bgColor: theme.background1,
+            ms: "2px",
+            mt: "2px",
+            easing: "linear",
+            duration: "300",
+
             stateChecked:
             {
               transform: true,
-              translateX : "-100%"
-            },
-
+              translateX: "-100%",
+              ms: "calc(100% - 2px)",
+              easing: "out"
+            }
+          },
+          label: {
+            fontSize: "lg",
+            textAlign: "center"
           }
         },
-        bordered:
+        inverse:
         {
-          switch:
+          track:
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "2",
-            borderColor: theme.border1,
+
+            bgColor: theme.background5,
+            shadow: " 0 0 5px grey",
+            easing: "linear",
+            duration: "300",
+
+
+            stateChecked:
+            {
+              bgColor: theme.default,
+              bgOpacity: "50",
+              
+
+            },
+            stateDisabled:
+            {
+              bgOpacity: "40",
+
+              cursor: "default"
+            }
+
           },
+          thumb:
+          {
+            bgColor: theme.background1,
+            ms: "2px",
+            mt: "2px",
+            easing: "linear",
+            duration: "300",
+
+            stateChecked:
+            {
+              transform: true,
+              translateX: "-100%",
+              ms: "calc(100% - 2px)",
+              easing: "out",
+              bgColor: theme.default,
+            }
+          },
+          label: {
+            fontSize: "lg",
+            textAlign: "center"
+          }
         },
       },
       corners:
