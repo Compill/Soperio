@@ -28,47 +28,46 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
       size: {
         sm: {
           switch: {
-            w: "1.375rem",
-            h: "0.75rem",
+            w: "38px",
+            h: "14px",
           },
           track: {
-            w: "1.375rem",
-            h: "0.75rem",
+            w: "38px",
+            h: "14px",
           },
           thumb: {
-            w: "0.7rem",
-            h: "0.4rem",
+            w: "10px",
+            h: "10px",
           },
           label: {
-            w: "1.375rem",
-            h: "0.75rem",
+            
           },
         },
         md: {
           switch: {
-            w: "1.875rem",
-            h: "1rem",
+            w: "44px",
+            h: "20px",
           },
           track: {
-            w: "1.875rem",
-            h: "1rem",
+            w: "44px",
+            h: "20px",
           },
           thumb: {
-            w: "0.9rem",
-            h: "0.9rem",
+            w: "16px",
+            h: "16px",
           },
           label: {
-            w: "1.375rem",
-            h: "0.75rem",
+            
           },
+
         },
         lg: {
           switch: {
-            w: "2.875rem",
-            h: "1.5rem",
+            w: "52px",
+            h: "28px",
           },
           track: {
-            w: "46px",
+            w: "52px",
             h: "28px",
           },
           thumb: {
@@ -76,11 +75,47 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             h: "24px",
           },
           label: {
-            w: "1.375rem",
-            h: "0.75rem",
+            
           },
 
         },
+        xl: {
+          switch: {
+            w: "52px",
+            h: "28px",
+          },
+          track: {
+            w: "52px",
+            h: "28px",
+          },
+          thumb: {
+            w: "24px",
+            h: "24px",
+          },
+          label: {
+            
+          },
+
+        },
+        x2: {
+          switch: {
+            w: "52px",
+            h: "28px",
+          },
+          track: {
+            w: "52px",
+            h: "28px",
+          },
+          thumb: {
+            w: "24px",
+            h: "24px",
+          },
+          label: {
+            
+          },
+
+        },
+        
       },
       variant:
       {

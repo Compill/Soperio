@@ -8,7 +8,7 @@ const COMPONENT_ID = "Soperio.Switch";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
-export interface SwitchProps extends ComponentProps, ParentComponent, HTMLInputProps {
+export interface SwitchProps extends ComponentProps, ParentComponent, Omit<HTMLInputProps, "size"> {
   theme?: ComponentTheme;
   config?: ExtendConfig
 }
@@ -43,7 +43,6 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
   const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners, size }, props);
 
   const [soperioProps, inputProps] = splitComponentProps(props)
-  console.log(styles);
   return (
     <label
 

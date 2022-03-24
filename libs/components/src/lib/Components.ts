@@ -66,9 +66,14 @@ export interface Components {
     },
     "Soperio.Switch":
     {
-        
+        size?: "sm" | "md" | "lg" | "xl" | "x2";
         variant?: "default" | "inverse"| "fullColor";
         corners?: "default" | "square" | "pill";
+    },
+    "Soperio.Avatar":
+    {
+        size?: "sm" | "md" | "lg" | "xl" | "x2";
+        corners?: "default" | "square" ;
     },
 
 }

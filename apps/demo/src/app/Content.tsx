@@ -13,6 +13,7 @@ import TextAlign from "./TextAlign";
 import TextArea from "./TextArea";
 import Divider from "./Divider";
 import Switch from "./Switch";
+import Avatar from "./Avatar";
 
 export function Content()
 {
@@ -35,6 +36,7 @@ export function Content()
         <Button onClick={() => setState(10)}>Text</Button>
         <Button onClick={() => setState(11)}>Divider</Button>
         <Button onClick={() => setState(12)}>Switch</Button>
+        <Button onClick={() => setState(13)}>Avatar</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
         {state === 1 && <ButtonPage />}
@@ -50,6 +52,7 @@ export function Content()
         {state === 10 && <Form />}
         {state === 11 && <Divider />}
         {state === 12 && <Switch/>}
+        {state === 13 && <Avatar/>}
       </div>
     </>
   );
