@@ -1,4 +1,4 @@
-import { ComponentConfig, ComponentTypings, ExtendComponentConfig, NoStateProps, SoperioComponent } from "@soperio/components";
+import { ComponentConfig, ComponentTypings, ExtendComponentConfig, NoStateProps, SoperioComponent } from "@soperio/react";
 
 
 type TraitProps = ComponentTypings<"Soperio.Badge">;

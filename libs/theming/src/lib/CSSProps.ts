@@ -14,11 +14,12 @@ import { Transitions } from "./CSS/Transitions";
 import { Typography } from "./CSS/Typography";
 import { Focus } from "./CSS/Variants/Focus";
 import { Hover } from "./CSS/Variants/Hover";
+import { Breakpoints } from "./CSSTypes"
 
 type FocusVariant = { [Property in keyof Focus as `focus_${string & Property}`]: Focus[Property]; };
 type HoverVariant = { [Property in keyof Hover as `hover_${string & Property}`]: Hover[Property]; };
 
-export interface CSSProps extends
+interface CSSProps extends
     Accessibility,
     Background,
     Border,
@@ -36,20 +37,12 @@ export interface CSSProps extends
     FocusVariant,
     HoverVariant {};
 
-type SM<Type> = { [Property in keyof Type as `sm_${string & Property}`]: Type[Property]; };
-type MD<Type> = { [Property in keyof Type as `md_${string & Property}`]: Type[Property]; };
-type LG<Type> = { [Property in keyof Type as `lg_${string & Property}`]: Type[Property]; };
-type XL<Type> = { [Property in keyof Type as `xl_${string & Property}`]: Type[Property]; };
-type XXL<Type> = { [Property in keyof Type as `xxl_${string & Property}`]: Type[Property]; };
+export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Breakpoints}_${string & Property}`]: Type[Property]; }>;
 
-// TODO Define as truly responsive via theme breakpoints values
-export type ResponsiveCSSProps =
-    CSSProps
-    & SM<CSSProps>
-    & MD<CSSProps>
-    & LG<CSSProps>
-    & XL<CSSProps>
-    & XXL<CSSProps>
+export type ResponsiveCSSProps = ResponsiveProps<CSSProps>
+
+
+
 
 const accessibility = ["srOnly", "notSrOnly"];
 const background = ["bgAtt", "bgClip", "bgColor", "bgOpacity", "bgImage", "bgOrigin", "bgPosition", "bgRepeat", "bgSize"/*, "bgGradient", "from", "via", "to"*/];

@@ -1,4 +1,4 @@
-import { SoperioComponent } from "@soperio/components";
+import { SoperioComponent } from "@soperio/react";
 import { Button } from "@soperio/ui";
 
 interface TestProps extends SoperioComponent

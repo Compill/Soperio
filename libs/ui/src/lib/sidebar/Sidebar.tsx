@@ -1,5 +1,4 @@
-import { useFirstRender, usePrevious } from "@soperio/components";
-import { useDirection } from "@soperio/theming";
+import { useDirection, useFirstRender, usePrevious } from "@soperio/react";
 import React from 'react';
 import { SidebarProps } from "./types";
 

@@ -8,6 +8,8 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "outputPath": "dist/libs/components",
         "tsConfig": "libs/components/tsconfig.lib.json",
         "project": "libs/components/package.json",

@@ -1,5 +1,4 @@
-import { useDarkMode, useDefaultColorTheme } from "@soperio/theming";
-import { ColorTheme } from "@soperio/theming";
+import { ColorTheme, useDarkMode, useDefaultColorTheme } from "@soperio/react";
 import { Button, Container, ExtendButtonConfig, Sidebar } from "@soperio/ui";
 import React from 'react';
 

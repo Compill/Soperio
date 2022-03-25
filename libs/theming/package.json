@@ -1,6 +1,6 @@
 {
   "name": "@soperio/theming",
-    "version": "0.0.3",
+    "version": "0.0.4",
   "description": "React CSS-IN-JS framework",
   "keywords": ["react", "ui", "framework"],
   "homepage": "https://github.com/jonathangerbaud/SoperioUI",
@@ -13,5 +13,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jonathangerbaud/SoperioUI.git"
+  },
+  "peerDependencies": {
+    "react": "17.0.2",
+    "@emotion/react": "^11.7.0"
   }
 }

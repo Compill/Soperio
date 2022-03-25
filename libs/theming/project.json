@@ -8,11 +8,13 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "outputPath": "dist/libs/theming",
         "tsConfig": "libs/theming/tsconfig.lib.json",
         "project": "libs/theming/package.json",
         "entryFile": "libs/theming/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": ["react/jsx-runtime", "@ctrl/tinycolor"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "assets": [
           {

@@ -8,11 +8,13 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "outputPath": "dist/libs/ui",
         "tsConfig": "libs/ui/tsconfig.lib.json",
         "project": "libs/ui/package.json",
         "entryFile": "libs/ui/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": ["react/jsx-runtime", "react", "react-dom"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "assets": [
           {

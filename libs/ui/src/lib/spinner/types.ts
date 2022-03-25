@@ -1,5 +1,4 @@
-import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, NoStateProps, SelectedDisabledThemeProps, SelectedThemeProps, SoperioComponent } from "@soperio/components";
-import { Color, SpacingPositive } from "@soperio/theming";
+import { Color, ComponentConfig, ComponentTypings, ExtendComponentConfig, SoperioComponent, SpacingPositive } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Soperio.Spinner">
 
@@ -10,7 +9,6 @@ interface CustomProps extends SoperioComponent
   progress?: 0 | 25 | 50 | 75 | 100
 }
 
-interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
 export type ComponentProps = TraitProps & CustomProps
 
 export type Config = ComponentConfig<CustomProps, TraitProps>;

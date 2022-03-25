@@ -1,4 +1,4 @@
-import { ParentComponent, SoperioComponent } from "@soperio/components";
+import { ParentComponent, SoperioComponent } from "@soperio/react";
 
 export interface SidebarProps extends SoperioComponent, ParentComponent
 {

@@ -8,6 +8,8 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "outputPath": "dist/libs/jsx-runtime",
         "tsConfig": "libs/jsx-runtime/tsconfig.lib.json",
         "project": "libs/jsx-runtime/package.json",

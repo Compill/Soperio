@@ -8,6 +8,7 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
         "outputPath": "dist/libs/cli",
         "tsConfig": "libs/cli/tsconfig.lib.json",
         "project": "libs/cli/package.json",
