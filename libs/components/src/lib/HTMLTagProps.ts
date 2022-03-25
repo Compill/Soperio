@@ -20,4 +20,3 @@ export type HTMLSelectProps = HTMLParentComponent<HTMLSelectElement> & React.Sel
 export type HTMLSpanProps = HTMLParentComponent<HTMLSpanElement> & HTMLComponent<HTMLSpanElement>;
 export type HTMLTableProps = HTMLParentComponent<HTMLTableElement> & React.TableHTMLAttributes<HTMLTableElement>;
 export type HTMLTextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
-export type HTMLVideoProps = React.VideoHTMLAttributes<HTMLVideoElement>;
