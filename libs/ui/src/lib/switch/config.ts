@@ -154,7 +154,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
               transform: true,
               translateX: "-100%",
               ms: "calc(100% - 2px)",
-              easing: "out"
+              easing: "out",
             }
           },
           label: {
@@ -231,7 +231,18 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         },
         pill:
         {
+          switch:
+          {
 
+          },
+          track:
+          {
+            rounded: true 
+          },
+          thumb:
+          {
+            rounded: true 
+          },
         }
       }
     }

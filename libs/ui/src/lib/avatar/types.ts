@@ -9,7 +9,8 @@ interface ConfigStateProps extends SoperioComponent,  DisabledThemeProps, Checke
 type SwitchComponentProps = {
   avatar?: SoperioComponent & ConfigStateProps,
   image?: SoperioComponent & ConfigStateProps, // SwitchHeaderThemeProps
-  initials?: SoperioComponent & ConfigStateProps, // SwitchContentThemeProps
+  initials?: SoperioComponent & ConfigStateProps,
+  badge?: SoperioComponent & ConfigStateProps,  // SwitchContentThemeProps
 }
 
 export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartTraits<TraitProps, SwitchComponentProps>>;

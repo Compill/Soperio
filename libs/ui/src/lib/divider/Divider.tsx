@@ -26,8 +26,6 @@ export const Divider = React.forwardRef<HTMLHRElement,DividerProps>(({
   const firstRender = useFirstRender();
 
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant,orientation }, props);
-console.log(styles);
-console.log(props);
   return (
     <hr
     

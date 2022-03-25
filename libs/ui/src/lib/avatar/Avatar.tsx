@@ -1,4 +1,4 @@
-import { ComponentManager, ComponentTheme, HTMLImageProps, HTMLSpanProps, ParentComponent, SoperioComponent, splitComponentProps, useFirstRender, useMultiPartComponentConfig, } from "@soperio/components";
+import { ComponentManager, ComponentTheme, useFirstRender, useMultiPartComponentConfig, } from "@soperio/components";
 
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -38,6 +38,9 @@ export interface AvatarProps extends ComponentProps {
   name?: string
   getInitials?: (name: string) => string
   icon?: React.ReactElement
+  badge?: boolean,
+  badgeColor?: string,
+  badgePosition?: "bottomEnd" | "bottomStart" | "topEnd" | "topStart"
 
 }
 
@@ -53,11 +56,25 @@ function initials(name: string) {
  *
  *
  */
+function randomColor(str: string) {
+  let hash = 0
+  if (str.length === 0) return hash.toString()
+  for (let i = 0; i < str.length; i += 1) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash)
+    hash = hash & hash
+  }
+  let color = "#"
+  for (let j = 0; j < 3; j += 1) {
+    const value = (hash >> (j * 8)) & 255
+    color += `00${value.toString(16)}`.substr(-2)
+  }
+  return color
+}
 
 
 
 export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
-  corners,
+  corners = "default",
   size,
   theme = "default",
   config,
@@ -65,44 +82,51 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
   name,
   icon = <DefaultIcon />,
   getInitials = initials,
+  badge,
+  badgeColor,
+  badgePosition = "bottomEnd",
   ...props
 }: AvatarProps, ref) => {
-  
+
   const firstRender = useFirstRender();
 
   const [activeSrc, setActiveSrc] = React.useState(src);
 
-  function randomColor(str: string) {
-    let hash = 0
-    if (str.length === 0) return hash.toString()
-    for (let i = 0; i < str.length; i += 1) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash)
-      hash = hash & hash
-    }
-    let color = "#"
-    for (let j = 0; j < 3; j += 1) {
-      const value = (hash >> (j * 8)) & 255
-      color += `00${value.toString(16)}`.substr(-2)
-    }
-    return color
-  }
-
+  const [position, setPosition] = React.useState({
+    translateX: "50%",
+    translateY: "50%",
+    top: false,
+    bottom: "0",
+    start: false,
+    end: "0"
+  });
   const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { corners, size }, props);
+ console.log(corners);
 
-  
   const colorTheme = useColorTheme();
+
   const bg = name ? randomColor(name) : colorTheme.default
+
+  const translateX = (badgePosition === "bottomStart" || badgePosition === "topStart") ? "-40%" : "40%"
+  const translateY = (badgePosition === "topEnd" || badgePosition === "topStart") ? " - 40%" : "40%"
+  const top = (badgePosition === "topEnd" || badgePosition === "topStart") ? corners ==="default"?"0":"-5%" : false
+  const bottom = (badgePosition === "bottomEnd" || badgePosition === "bottomStart")? corners ==="default"?"0":"-5%" : false
+  const start = (badgePosition === "bottomStart" || badgePosition === "topStart")? corners ==="default"?"0":"-5%" : false
+  const end = (badgePosition === "bottomEnd" || badgePosition === "topEnd") ? corners ==="default"?"0":"-5%" : false
+
 
   return (
     <span
       transition={firstRender ? "none" : "all"}
       ref={ref}
       bgColor={bg}
-      {...styles["avatar"]} >
+      {...styles["avatar"]}
+      {...props} >
 
 
       {activeSrc ?
         <img
+
           transition={firstRender ? "none" : "all"}
           alt={name}
           width="100%"
@@ -115,7 +139,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
         : name ? (
 
           <span
-          
+
             transition={firstRender ? "none" : "all"}
             {...styles["initials"]}
           >
@@ -127,7 +151,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
           : (
             <span
               border="2"
-              
+
               {...styles["image"]}
             >
               {React.cloneElement(icon, {
@@ -139,8 +163,25 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
           )
 
       }
+      {badge &&
+        <div
+          top={top}
+          bottom={bottom}
+          start={start}
+          end={end}
+          translateX={translateX}
+          translateY={translateY}
+          rounded="full"
+          transform={true}
+
+          bgColor={badgeColor || "green"}
+
+          {...styles["badge"]}>
+
+        </div>}
+
+    </span >
 
 
-    </span>
   );
 });

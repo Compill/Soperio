@@ -62,14 +62,13 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
         transition={firstRender ? "none" : "all"}
         shadow=" 0 0 10px grey"
         {...styles["track"]}
-      > { /* Track */}
+      > 
 
         <span
           transition={firstRender ? "none" : "all"}
 
-          // style={checkedstyle}
           {...styles["thumb"]}
-        > {/* thumb */}
+        > 
           
         </span>
         

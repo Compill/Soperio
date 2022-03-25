@@ -29,7 +29,7 @@ export default function Page({ ...props }) {
       <Switch checked={checked} onClick={handleClick} onChange={handleChange} ></Switch>
       <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="sm" ></Switch>
       <Switch checked={checked} theme={"success"} onClick={handleClick} onChange={handleChange} size="md" disabled  ></Switch>
-      <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} ></Switch>
+      <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} corners="pill"  ></Switch>
       <Switch variant="inverse" checked={checked} onClick={handleClick} onChange={handleChange} corners="square" ></Switch>
       </Stack>
     </Container>

@@ -23,10 +23,17 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         height: "100%",
         objectFit: "cover",
       },
-      initials: {
+      badge: {
+        position: "absolute",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxSizing: 'border-box',
+        border: "2",
+        borderColor: theme.background5,
+
 
       }
-
 
     },
     defaultTraits: {
@@ -34,7 +41,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
       corners: "default",
 
     },
-    subComponents: ["avatar", "image", "initials"],
+    subComponents: ["avatar", "image", "initials", "badge"],
     traits:
     {
 
@@ -44,14 +51,15 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             w: "25px",
             h: "25px",
           },
-          image: {
-            // w: "38px",
-            // h: "14px",
-          },
+
           initials: {
 
             fontSize: "sm"
           },
+          badge: {
+            w: "10px",
+            h: "10px",
+          }
 
         },
         md: {
@@ -60,14 +68,15 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             h: "50px",
 
           },
-          image: {
-            // w: "44px",
-            // h: "20px",
-          },
+
           initials: {
 
             fontSize: "md"
           },
+          badge: {
+            w: "15px",
+            h: "15px",
+          }
 
 
         },
@@ -76,14 +85,15 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             w: "100px",
             h: "100px",
           },
-          // image: {
-          //   w: "52px",
-          //   h: "28px",
-          // },
+
           initials: {
 
             fontSize: "2.5rem"
           },
+          badge: {
+            w: "25px",
+            h: "25px",
+          }
 
 
         },
@@ -92,13 +102,14 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             w: "150px",
             h: "150px",
           },
-          image: {
-            // w: "52px",
-            // h: "28px",
-          },
+
           initials: {
             fontSize: "3.5rem"
           },
+          badge: {
+            w: "30px",
+            h: "30px",
+          }
 
 
         },
@@ -107,14 +118,14 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             w: "200px",
             h: "200px",
           },
-          image: {
-            // w: "52px",
-            // h: "28px",
-          },
+
           initials: {
             fontSize: "4rem"
           },
-
+          badge: {
+            w: "40px",
+            h: "40px",
+          }
 
         },
 
@@ -134,8 +145,21 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           },
           initials:
           {
-
+            rounded: "full"
           },
+
+        },
+        pill:
+        {
+          avatar:
+          {
+            rounded: "lg"
+          },
+          image:
+          {
+            rounded: "lg"
+          },
+
         },
       }
     }
