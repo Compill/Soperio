@@ -1,4 +1,4 @@
-import { getThemeStyle } from "@soperio/theming";
+import { getThemeStyle } from "@soperio/react";
 import React from 'react';
 import { StackProps } from "./types";
 

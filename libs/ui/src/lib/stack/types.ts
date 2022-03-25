@@ -1,6 +1,6 @@
 
-import { ParentComponent, SoperioComponent } from "@soperio/components";
-import { Breakpoints } from "@soperio/theming";
+import { ParentComponent, SoperioComponent } from "@soperio/react";
+import { Breakpoints } from "@soperio/react";
 
 export interface StackProps extends SoperioComponent, ParentComponent, React.HTMLAttributes<HTMLDivElement>
 {

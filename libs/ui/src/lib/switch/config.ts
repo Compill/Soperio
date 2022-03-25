@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/theming";
+import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config = (theme: ColorTheme, darkMode: boolean) => {

@@ -1,4 +1,4 @@
-import { ComponentManager, ComponentTheme, HTMLInputProps, ParentComponent, SoperioComponent, splitComponentProps, useFirstRender, useMultiPartComponentConfig, } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLInputProps, ParentComponent, SoperioComponent, splitComponentProps, useFirstRender, useMultiPartComponentConfig, } from "@soperio/react";
 
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -83,5 +83,3 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
     </label>
   );
 });
-
-

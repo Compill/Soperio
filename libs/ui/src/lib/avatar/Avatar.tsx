@@ -1,9 +1,8 @@
-import { ComponentManager, ComponentTheme, useFirstRender, useMultiPartComponentConfig, } from "@soperio/components";
-
+import { ComponentManager, ComponentTheme, useColorTheme, useFirstRender, useMultiPartComponentConfig } from "@soperio/react";
 import React from "react";
+import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
-import defaultConfig from "./config"
-import { useColorTheme } from "@soperio/theming";
+
 
 
 const COMPONENT_ID = "Soperio.Avatar";

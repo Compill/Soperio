@@ -1,4 +1,4 @@
-import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits,  SoperioComponent } from "@soperio/components";
+import { CheckedDisabledThemeProps, CheckedState, CheckedThemeProps, ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits, SoperioComponent } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Soperio.Avatar">;
 
@@ -15,6 +15,3 @@ type SwitchComponentProps = {
 
 export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartTraits<TraitProps, SwitchComponentProps>>;
 export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;
-
-
-
