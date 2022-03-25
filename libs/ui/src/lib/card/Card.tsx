@@ -1,6 +1,6 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/components";
-import { SpacingPositive, useColorTheme } from "@soperio/theming";
-import { OrString } from "@soperio/utils";
+import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
+import { SpacingPositive, useColorTheme } from "@soperio/react";
+import { OrString } from "@soperio/react";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 import defaultConfig from "./config"

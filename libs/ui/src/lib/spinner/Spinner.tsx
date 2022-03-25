@@ -1,5 +1,4 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, SoperioComponent, useComponentConfig, useFirstRender } from "@soperio/components";
-import { useColor } from "@soperio/theming";
+import { ComponentManager, ComponentTheme, SoperioComponent, useColor, useComponentConfig, useFirstRender } from "@soperio/react";
 import React from "react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";

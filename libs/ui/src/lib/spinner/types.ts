@@ -1,5 +1,4 @@
-import { ComponentConfig, ComponentTypings, DisabledThemeProps, ExtendComponentConfig, NoStateProps, SelectedDisabledThemeProps, SelectedThemeProps, SoperioComponent } from "@soperio/components";
-import { Color, SpacingPositive } from "@soperio/theming";
+import { Color, ComponentConfig, ComponentTypings, ExtendComponentConfig, SoperioComponent, SpacingPositive } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Soperio.Spinner">
 

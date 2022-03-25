@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { program } from 'commander';
 import 'regenerator-runtime/runtime';
 import { overwriteFrameworkFile } from "./lib/overwriteFile";
@@ -6,7 +5,9 @@ import checkNode from "cli-check-node";
 import welcome from "cli-welcome";
 import updateNotifier from "update-notifier";
 import unhandledError from "cli-handle-unhandled";
-import pkgJSON from "../package.json";
+// NX can't use file outside of src/
+// TODO Will need to find a workaround
+// import pkgJSON from "../package.json";
 
 async function initCLI()
 {
@@ -16,19 +17,20 @@ async function initCLI()
 
   welcome({
     title: "Soperio UI CLI",
-    tagLine: `by Compill\n${pkgJSON.description}`,
+    tagLine: `by Compill\nA CLI to create custom themes and components`,
+    // tagLine: `by Compill\n${pkgJSON.description}`,
     bgColor: `#319795`,
     color: `#FFFFFF`,
     bold: true,
     clear: false,
-    version: pkgJSON.version,
+    version: "1.0.0",
   });
 
-  updateNotifier({
-    pkg: pkgJSON,
-    shouldNotifyInNpmScript: true,
-    updateCheckInterval: 1000 * 60 * 60 * 24 * 3, // 3 days
-  }).notify({ isGlobal: true });
+  // updateNotifier({
+  //   pkg: pkgJSON,
+  //   shouldNotifyInNpmScript: true,
+  //   updateCheckInterval: 1000 * 60 * 60 * 24 * 3, // 3 days
+  // }).notify({ isGlobal: true });
 }
 
 export async function run()

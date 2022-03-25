@@ -1,4 +1,4 @@
-import { SoperioComponent } from "@soperio/components";
+import { SoperioComponent } from "@soperio/react";
 
 export function sanitizeProps<T>(props: T | undefined, ...toRemove: (keyof T)[]): SoperioComponent
 {
