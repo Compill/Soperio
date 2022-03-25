@@ -40,7 +40,7 @@ export interface AvatarProps extends ComponentProps {
   icon?: React.ReactElement
   badge?: boolean,
   badgeColor?: string,
-  badgePosition?: "bottomEnd" | "bottomStart" | "topEnd" | "topStart",
+  badgePosition?: "bottomEnd" | "bottomStart" | "topEnd" | "topStart" | "centerEnd" | "centerStart",
   badgeText ? :string | number
 
 }
@@ -88,6 +88,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
   badgeColor,
   badgePosition = "bottomEnd",
   badgeText,
+  
   ...props
 }: AvatarProps, ref) => {
 
@@ -109,6 +110,8 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
   const bottom = (badgePosition === "bottomEnd" || badgePosition === "bottomStart")? corners ==="default"?"0":"-5%" : false
   const start = (badgePosition === "bottomStart" || badgePosition === "topStart")? corners ==="default"?"0":"-5%" : false
   const end = (badgePosition === "bottomEnd" || badgePosition === "topEnd") ? corners ==="default"?"0":"-5%" : false
+
+  
 
 
   return (
@@ -156,12 +159,12 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
       }
       {badge &&
         <div
-          top={top}
+          top={(badgePosition==="centerEnd"||badgePosition==="centerStart") ?"40%":top}
           bottom={bottom}
-          start={start}
-          end={end}
-          translateX={translateX}
-          translateY={translateY}
+          start={badgePosition==="centerStart" ?"-15%":start}
+          end={badgePosition==="centerEnd" ?"-15%":end}
+          translateX={(badgePosition==="centerEnd"||badgePosition==="centerStart") ?false:translateX}
+          translateY={(badgePosition==="centerEnd"||badgePosition==="centerStart") ?false:translateY}
           rounded="full"
           transform={true}
 
