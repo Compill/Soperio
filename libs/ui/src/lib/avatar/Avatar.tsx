@@ -40,7 +40,8 @@ export interface AvatarProps extends ComponentProps {
   icon?: React.ReactElement
   badge?: boolean,
   badgeColor?: string,
-  badgePosition?: "bottomEnd" | "bottomStart" | "topEnd" | "topStart"
+  badgePosition?: "bottomEnd" | "bottomStart" | "topEnd" | "topStart",
+  badgeText ? :string | number
 
 }
 
@@ -76,6 +77,7 @@ function randomColor(str: string) {
 export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
   corners = "default",
   size,
+  variant =  "default",
   theme = "default",
   config,
   src,
@@ -85,6 +87,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
   badge,
   badgeColor,
   badgePosition = "bottomEnd",
+  badgeText,
   ...props
 }: AvatarProps, ref) => {
 
@@ -92,16 +95,9 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
 
   const [activeSrc, setActiveSrc] = React.useState(src);
 
-  const [position, setPosition] = React.useState({
-    translateX: "50%",
-    translateY: "50%",
-    top: false,
-    bottom: "0",
-    start: false,
-    end: "0"
-  });
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { corners, size }, props);
- console.log(corners);
+  
+  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { corners, size,variant }, props);
+
 
   const colorTheme = useColorTheme();
 
@@ -129,9 +125,6 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
 
           transition={firstRender ? "none" : "all"}
           alt={name}
-          width="100%"
-          height="100%"
-          objectFit="cover"
           src={activeSrc}
           onError={() => setActiveSrc("")}
           {...styles["image"]}
@@ -139,7 +132,6 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
         : name ? (
 
           <span
-
             transition={firstRender ? "none" : "all"}
             {...styles["initials"]}
           >
@@ -151,7 +143,6 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
           : (
             <span
               border="2"
-
               {...styles["image"]}
             >
               {React.cloneElement(icon, {
@@ -176,7 +167,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
 
           bgColor={badgeColor || "green"}
 
-          {...styles["badge"]}>
+          {...styles["badge"]}>{badgeText}
 
         </div>}
 

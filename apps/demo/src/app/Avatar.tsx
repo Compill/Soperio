@@ -9,7 +9,7 @@ export default function Page({ ...props }) {
       <Avatar src="../assets/photo.jpg" name="Yohan Gerbaud" badge />
       <Avatar />
       <Avatar name="Yohan Gerbaud" badge badgePosition="topStart" corners="pill" />
-      <Avatar src="../assets/pho.jpg" badge badgePosition="topEnd"/>
+      <Avatar src="../assets/pho.jpg" badge badgePosition="topEnd" badgeText={5}/>
       <Avatar src="../assets/pho.jpg" name="Yohan Gerbaud"badge  />
 
       <Avatar src="../assets/photo.jpg" size="xl" name="albin erd" badge  badgeColor="red" />

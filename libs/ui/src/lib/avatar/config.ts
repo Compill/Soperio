@@ -1,4 +1,5 @@
 import { ColorTheme } from "@soperio/theming";
+import { isDark } from "@soperio/utils";
 import { Config } from "./types";
 
 const config: Config = (theme: ColorTheme, darkMode: boolean) => {
@@ -22,16 +23,15 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         width: "100%",
         height: "100%",
         objectFit: "cover",
+
       },
+
       badge: {
         position: "absolute",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         boxSizing: 'border-box',
-        border: "2",
-        borderColor: theme.background5,
-
 
       }
 
@@ -39,6 +39,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
     defaultTraits: {
       size: "lg",
       corners: "default",
+      variant :"default"
 
     },
     subComponents: ["avatar", "image", "initials", "badge"],
@@ -59,6 +60,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           badge: {
             w: "10px",
             h: "10px",
+            fontSize: "sm"
           }
 
         },
@@ -76,6 +78,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           badge: {
             w: "15px",
             h: "15px",
+            fontSize: "sm"
           }
 
 
@@ -86,6 +89,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             h: "100px",
           },
 
+
           initials: {
 
             fontSize: "2.5rem"
@@ -93,6 +97,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           badge: {
             w: "25px",
             h: "25px",
+            fontSize: "sm"
           }
 
 
@@ -130,6 +135,27 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         },
 
       },
+      variant:{ 
+        default:{
+          avatar: {
+            fontWeight: "500",
+          },
+          image: {
+
+          },
+          initials: {
+    
+            textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+          },
+          badge: {
+            border: "2",
+            borderColor: theme.background5,
+            textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+    
+    
+          }
+      }},
+     
       corners:
       {
         square: {},

@@ -73,6 +73,7 @@ export interface Components {
     "Soperio.Avatar":
     {
         size?: "sm" | "md" | "lg" | "xl" | "x2";
+        variant?: "default" ;
         corners?: "default" | "square" | "pill";
     },
 
