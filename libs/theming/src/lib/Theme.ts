@@ -1,4 +1,5 @@
 import { ColorTheme } from "./ColorTheme";
+import ThemeBreakpoints from "./Core/Breakpoints";
 import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 export interface Theme
@@ -19,7 +20,7 @@ export interface Theme
   };
 
   // Global styles
-  breakpoints: StringKeyValueObject,
+  breakpoints: ThemeBreakpoints,
   border: {
     radius: StringKeyValueObject,
     width: StringKeyValueObject;

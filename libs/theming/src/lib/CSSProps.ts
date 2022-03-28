@@ -37,11 +37,13 @@ interface CSSProps extends
     FocusVariant,
     HoverVariant {};
 
-export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Breakpoints}_${string & Property}`]: Type[Property]; }>;
+type _Breakpoints = Omit<Breakpoints, "default">
+
+export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
 
 export type ResponsiveCSSProps = ResponsiveProps<CSSProps>
 
-
+// export type ResponsiveProp<Key extends string, T> = { Key?: T} & 
 
 
 const accessibility = ["srOnly", "notSrOnly"];

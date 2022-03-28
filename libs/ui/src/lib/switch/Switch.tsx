@@ -1,4 +1,4 @@
-import { ComponentManager, ComponentTheme, HTMLInputProps, ParentComponent, SoperioComponent, splitComponentProps, useFirstRender, useMultiPartComponentConfig, } from "@soperio/react";
+import { ComponentManager, ComponentTheme, HTMLInputProps, ParentComponent, splitComponentProps, useFirstRender, useMultiPartComponentConfig, } from "@soperio/react";
 
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -43,16 +43,17 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
   const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners, size }, props);
 
   const [soperioProps, inputProps] = splitComponentProps(props)
+
   return (
     <label
-
-      {...styles["switch"]} > {/* Container */}
+      {...styles["switch"]}
+      {...soperioProps}> {/* Container */}
 
       <input type="checkbox" name="switch" id="switch"
         w="0"
         h="0"
         hidden
-        defaultChecked={props.checked}
+        checked={props.checked}
         onMouseDown={preventFocus}
         onClick={looseFocus}
         ref={ref}

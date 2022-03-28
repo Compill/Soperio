@@ -1,66 +1,83 @@
-import React from "react"
+import { useBreakpoint } from "@soperio/theming"
 import { SoperioComponent } from "../SoperioComponent"
 
-interface UseResponsivePropsProps<T extends SoperioComponent>
-{
-    responsiveProps: string | string[],
-    soperioProps: T
-}
+const breakpoints = [ "default", "sm", "md", "lg", "xl", "xxl"]
 
-function useResponsiveProps<T extends SoperioComponent>({ responsiveProps, soperioProps }: UseResponsivePropsProps<T>): any | any[]
+export function useResponsiveProp<T extends SoperioComponent>(responsiveProp: keyof T, soperioProps: T): any
 {
-    const breakpoints = useBreakpoints() // Get all breakpoints
     const breakpoint = useBreakpoint() // Get current breakpoint
 
-    if (typeof responsiveProps === "string")
-    {
-        // Démerde toi pour récupérer la bonne valeur en fonction du breakpoint
-        // donc il faut tester soperioProps[responsiveProps], soperioProps[`breakpoints[0]_responsiveProps`], soperioProps[`breakpoints[1]_responsiveProps`], ...
+    let val = undefined
 
-        return ""
+    if (!breakpoint)
+    {
+        val = soperioProps[responsiveProp]
+    }
+    else
+    {
+        const index = breakpoints.indexOf(breakpoint.name)
+
+        for (let i = index; i >= 0; i--)
+        {
+            const bp = i > 0 ? `${breakpoints[i]}_` : ""
+
+            // eslint-disable-next-line no-prototype-builtins
+            if ((soperioProps as any).hasOwnProperty(`${bp}${responsiveProp}`))
+            {
+                val = (soperioProps as any)[`${bp}${responsiveProp}`]
+                break
+            }
+        }
     }
 
-    return 0
+    // Remove responsive props in case they are passed to another component
+    delete (soperioProps as any)[responsiveProp]
+    delete (soperioProps as any)[`sm_${responsiveProp}`]
+    delete (soperioProps as any)[`md_${responsiveProp}`]
+    delete (soperioProps as any)[`lg_${responsiveProp}`]
+    delete (soperioProps as any)[`xl_${responsiveProp}`]
+    delete (soperioProps as any)[`xxl_${responsiveProp}`]
+
+    return val
 }
 
-function useBreakpoints()
+export function useResponsiveProps<T extends SoperioComponent>(responsiveProps: (keyof T)[], soperioProps: T): any[]
 {
-    // get breakpoints from theme
-    return []
+    const breakpoint = useBreakpoint() // Get current breakpoint
+
+    return responsiveProps.map(prop =>
+    {
+        let val = undefined
+
+        if (!breakpoint)
+        {
+            val = soperioProps[prop]
+        }
+        else
+        {
+            const index = breakpoints.indexOf(breakpoint.name)
+
+            for (let i = index; i >= 0; i--)
+            {
+                const bp = i > 0 ? `${breakpoints[i]}_` : ""
+
+                // eslint-disable-next-line no-prototype-builtins
+                if ((soperioProps as any).hasOwnProperty(`${bp}${prop}`))
+                {
+                    val = (soperioProps as any)[`${bp}${prop}`]
+                    break
+                }
+            }
+        }
+
+        // // Remove responsive props in case they are passed to another component
+        delete (soperioProps as any)[prop]
+        delete (soperioProps as any)[`sm_${prop}`]
+        delete (soperioProps as any)[`md_${prop}`]
+        delete (soperioProps as any)[`lg_${prop}`]
+        delete (soperioProps as any)[`xl_${prop}`]
+        delete (soperioProps as any)[`xxl_${prop}`]
+
+        return val
+    })
 }
-
-function useBreakpoint()
-{
-    const breakpoints = useBreakpoints()
-    const [width, setWidth] = React.useState(window.outerWidth)
-
-    const listener = React.useCallback(() => {
-        console.log("hello")
-    }, [])
-
-
-    React.useEffect(() => {
-        window.addEventListener("onSizeChange", listener)
-
-        return window.removeEventListener("onSizeChange", listener)
-    }, [listener])
-
-    
-    const breakpoint = getBreakpoint(width, breakpoints)
-
-    return breakpoint
-}
-
-function getBreakpoint(width: number, breakpoints: any[]):any
-{
-    // This is where the real shit happens
-
-    return 0
-}
-
-
-/*
-
-
-
-*/
