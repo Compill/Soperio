@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es2019", "dom"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "@soperio",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "esnext",
+      "resolveJsonModule": true,
+      "noImplicitAny": false
+    }
+  },
+  "include": ["src","*/.ts"]
+}
