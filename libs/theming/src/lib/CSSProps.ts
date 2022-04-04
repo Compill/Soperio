@@ -101,7 +101,7 @@ function buildBreakpointProps(breakpoint:string, props:string[]): string[]
     return props.map((value, index) => `${prefix}${value}`)
 }
 
-export const CSSPropKeys = ([] as string[])
+export const CSSPropKeys = props
     .concat(buildBreakpointProps("sm", props))
     .concat(buildBreakpointProps("md", props))
     .concat(buildBreakpointProps("lg", props))
