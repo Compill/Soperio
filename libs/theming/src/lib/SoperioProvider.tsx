@@ -1,6 +1,6 @@
 import React from "react";
 import { NormalizeCSS } from "./NormalizeCSS";
-import { css, Global } from "@emotion/react";
+import { css, Global, ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "./defaultTheme";
 import { useSetDarkModeConfig } from "./hooks/useDarkMode";
 import { Theme } from "./Theme";
@@ -66,10 +66,12 @@ export function SoperioProvider({
   return (
     // TODO --so should be dynamic
     <div dir={direction || theme.direction || "ltr"} style={{ color: "rgb(var(--so-text-color-1))" }} /*textColor="root.text-color-1"*/>
-      {resetCss ? <NormalizeCSS /> : null}
-      {/* TODO Implement GlobalStyle https://github.com/chakra-ui/chakra-ui/blob/f77fd9999ec1105cf846cd830019d2c3ba5a0f4e/packages/system/src/providers.tsx */}
-      {theme.globalStyles && <Global styles={css(theme.globalStyles)} />}
-      {children}
+      <ThemeProvider theme={theme}>
+        {resetCss ? <NormalizeCSS /> : null}
+        {/* TODO Implement GlobalStyle https://github.com/chakra-ui/chakra-ui/blob/f77fd9999ec1105cf846cd830019d2c3ba5a0f4e/packages/system/src/providers.tsx */}
+        {theme.globalStyles && <Global styles={css(theme.globalStyles)} />}
+        {children}
+      </ThemeProvider>
     </div>
   );
 }
