@@ -4,6 +4,7 @@ import { OrString } from "@soperio/react";
 import React from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 import defaultConfig from "./config"
+import { IS_DEV } from "@soperio/utils"
 
 const COMPONENT_ID = "Soperio.Card";
 
@@ -135,6 +136,9 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
 
 
 const CardNamespace = Object.assign(Card, { Header: CardHeader, Body: CardBody, Footer: CardFooter });
+
+if (IS_DEV)
+  CardNamespace.displayName = "Soperio Card"
 
 export { CardNamespace as Card };
 

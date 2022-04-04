@@ -2,6 +2,7 @@ import { ComponentManager, ComponentTheme, HTMLButtonProps, useComponentConfig, 
 import React from 'react';
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
+import { IS_DEV } from "@soperio/utils"
 
 const COMPONENT_ID = "Soperio.Button"
 
@@ -70,4 +71,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     );
 });
 
-Button.displayName = "Soperio Button"
+if (IS_DEV)
+{
+    Button.displayName = "Soperio Button"
+}

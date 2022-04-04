@@ -51,7 +51,7 @@ const background = ["bgAtt", "bgClip", "bgColor", "bgOpacity", "bgImage", "bgOri
 const border = [
     "rounded", "roundedT", "roundedB", "roundedS", "roundedE",
     "border", "borderT", "borderB", "borderS", "borderE",
-    "borderColor", "borderColorT", "borderColorB", "borderColorS", "borderColorE",
+    "borderColor", "borderTColor", "borderBColor", "borderSColor", "borderEColor",
     "borderOpacity", "borderStyle",
     "divideX", "divideY",
     "divideXReverse", "divideYReverse",
@@ -62,13 +62,13 @@ const border = [
 const effects = ["shadow", "opacity", "mixBlend", "bgBlend"];
 const filters = [
     "blur", "brightness", "contrast", "dropShadow", "grayscale", "hueRotate", "invert", "saturate", "sepia",
-    "backdropBlur", "backdropBrightness", "backdropContrast", "backdropGrayscale", "backdropHueRotate", "backdropInvert", "backdropOpacity", "backdropSaturate", "backdropSepia",
+    "backdropBlur", "backdropBrightness", "backdropContrast", "backdropDropShadow", "backdropGrayscale", "backdropHueRotate", "backdropInvert", "backdropOpacity", "backdropSaturate", "backdropSepia",
 ];
-const flexbox = ["flexRow", "flexCol", "flexDirection", "flexWrap", "flex", "flexGrow", "flexShrink", "order", "gridCols", "colSpan", "colStart", "colEnd", "gridRows", "rowSpan", "rowStart", "rowEnd", "gridFlow", "gridAutoCols", "gridAutoRows", "gap", "gapX", "gapY", "justifyContent", "justifyItems", "justifySelf", "alignContent", "alignItems", "alignSelf", "placeContent", "placeItems", "placeSelf"];
+const flexbox = ["flexRow", "flexCol", "flexDirection", "flexWrap", "flex", "flexGrow", "flexShrink", "order", "gridCols", "colSpan", "colStart", "colEnd", "gridRows", "rowSpan", "rowStart", "rowEnd", "gridFlow", "gridAutoCols", "gridAutoRows", "gridTemplateCols", "gridTemplateRows", "gap", "gapX", "gapY", "justifyContent", "justifyItems", "justifySelf", "alignContent", "alignItems", "alignSelf", "placeContent", "placeItems", "placeSelf"];
 
 const interactivity = ["appearanceNone", "cursor", "outline", "pointerEvents", "resize", "userSelect"];
 
-const layout = ["boxDecorationBreak", "boxSizing", "block", "dflex", "display", "inline", "grid", "hidden", "float", "clear", "isolation", "objectFit", "objectPosition", "overflow", "overflowX", "overflowY", "overscrollX", "overscrollY", "overscrollBehavior", "overscrollBehaviorX", "overscrollBehaviorY", "position", "top", "bottom", "start", "end", "inset", "insetX", "insetY", "visible", "invisible", "z"];
+const layout = ["boxDecorationBreak", "boxSizing", "block", "dflex", "display", "inline", "grid", "hidden", "float", "clear", "isolation", "objectFit", "objectPosition", "overflow", "overflowX", "overflowY", "overscroll", "overscrollX", "overscrollY", "overscrollBehavior", "overscrollBehaviorX", "overscrollBehaviorY", "position", "top", "bottom", "start", "end", "inset", "insetX", "insetY", "visible", "invisible", "z"];
 
 const sizing = ["w", "h", "minW", "minH", "maxW", "maxH"];
 const spacing = ["p", "pt", "pb", "ps", "pe", "px", "py", "m", "mt", "mb", "ms", "me", "mx", "my", "spaceX", "spaceY", "spaceXReverse", "spaceYReverse"];
@@ -101,7 +101,9 @@ function buildBreakpointProps(breakpoint:string, props:string[]): string[]
     return props.map((value, index) => `${prefix}${value}`)
 }
 
-export const CSSPropKeys = ([] as string[])
+
+// TODO Add variants (focus, hover)
+export const CSSPropKeys = props
     .concat(buildBreakpointProps("sm", props))
     .concat(buildBreakpointProps("md", props))
     .concat(buildBreakpointProps("lg", props))
