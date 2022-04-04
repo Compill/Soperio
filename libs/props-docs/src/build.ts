@@ -7,7 +7,7 @@ import * as docgen from "react-docgen-typescript"
 import { ComponentDoc } from "react-docgen-typescript"
 import mkdirp from "mkdirp"
 // import { propNames } from "@chakra-ui/styled-system"
-import {CSSPropKeys} from "@soperio/theming"
+import {CSSPropKeys} from "../../theming/src/lib/CSSProps"
 
 type ComponentInfo = {
   def: ComponentDoc
@@ -25,14 +25,9 @@ const excludedPropNames = CSSPropKeys.concat([
   "sx",
   "__css",
   "css",
+  "className",
+  "style"
 ])
-.concat(CSSPropKeys.map((prop)=>  `sm_${prop}` ))
-.concat(CSSPropKeys.map((prop)=>  `md_${prop}` ))
-.concat(CSSPropKeys.map((prop)=>  `lg_${prop}` ))
-.concat(CSSPropKeys.map((prop)=>  `xl_${prop}` ))
-.concat(CSSPropKeys.map((prop)=>  `xxl_${prop}` ))
-
-
 const rootDir = path.join(__dirname, "..", "..", "..")
 
 
@@ -43,9 +38,9 @@ const outputPath = path.join(__dirname, "..", "dist", "components")
 
 
 const basePath = path.join(__dirname, "..", "dist")
-const cjsIndexFilePath = path.join(basePath, "chakra-ui-props-docs.cjs.js")
-const esmIndexFilePath = path.join(basePath, "chakra-ui-props-docs.esm.js")
-const typeFilePath = path.join(basePath, "chakra-ui-props-docs.cjs.d.ts")
+const cjsIndexFilePath = path.join(basePath, "soperio-ui-props-docs.cjs.js")
+const esmIndexFilePath = path.join(basePath, "soperio-ui-props-docs.esm.js")
+const typeFilePath = path.join(basePath, "soperio-ui-props-docs.cjs.d.ts")
 
 const tsConfigPath = path.join(sourcePath, "tsconfig.json")
 
@@ -82,7 +77,7 @@ if (require.main === module) {
  * Find all TypeScript files which could contain component definitions
  */
 async function findComponentFiles() {
-  const tsFiles = await globAsync("src/**/*.@(ts|tsx)", {
+  const tsFiles = await globAsync("src/**/*.@(tsx)", {
     cwd: sourcePath,
   })
 
