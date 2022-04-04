@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import { ComponentManager, ComponentTheme, useColorTheme, useFirstRender, useMultiPartComponentConfig } from "@soperio/react";
 import React from "react";
 import defaultConfig from "./config";
@@ -178,3 +179,4 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
 
   );
 });
+

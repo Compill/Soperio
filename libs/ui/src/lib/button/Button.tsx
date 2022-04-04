@@ -71,7 +71,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     );
 });
 
+<<<<<<< HEAD
 if (IS_DEV)
 {
     Button.displayName = "Soperio Button"
 }
+=======
+Button.displayName = "Soperio Button"
+
+
+>>>>>>> e4b4b0f8e5cab5f6c46cc437bffe694e59ea0e91

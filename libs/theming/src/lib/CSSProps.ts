@@ -101,8 +101,11 @@ function buildBreakpointProps(breakpoint:string, props:string[]): string[]
     return props.map((value, index) => `${prefix}${value}`)
 }
 
+<<<<<<< HEAD
 
 // TODO Add variants (focus, hover)
+=======
+>>>>>>> e4b4b0f8e5cab5f6c46cc437bffe694e59ea0e91
 export const CSSPropKeys = props
     .concat(buildBreakpointProps("sm", props))
     .concat(buildBreakpointProps("md", props))
