@@ -6,7 +6,6 @@ import { writeFileSync } from "fs"
 import * as docgen from "react-docgen-typescript"
 import { ComponentDoc } from "react-docgen-typescript"
 import mkdirp from "mkdirp"
-// import { propNames } from "@chakra-ui/styled-system"
 import {CSSPropKeys} from "../../theming/src/lib/CSSProps"
 
 type ComponentInfo = {
