@@ -18,5 +18,5 @@
     "**/*.spec.jsx",
     "**/*.test.jsx"
   ],
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "../theming/src/lib/hooks/useBreakpoint.ts"]
+  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
 }
