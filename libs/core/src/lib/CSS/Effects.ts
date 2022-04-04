@@ -1,3 +1,4 @@
+import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, Style, StyleProps } from "./utils";
 
@@ -14,7 +15,7 @@ export function shadow(themeProperty?: string): (value: any) => Style
 export const EffectsMapping: StyleProps =
 {
     shadow: shadow("effects.boxShadow"),
-    shadowColor: css("--so-shadow-color"),
+    shadowColor: colorize("--so-shadowed-color", ""),
     opacity: opacity("opacity"),
     mixBlend: css("mix-blend-mode"),
     bgBlend: css("background-blend-mode")

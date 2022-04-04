@@ -54,7 +54,7 @@ export default function Page({ ...props })
         </Card.Footer>
       </Card>
 
-      <Card w="50%" shadow>
+      <Card w="50%" shadow shadowColor="sky-500">
         <Card.Header minH="70px" dflex alignItems="center">
           <span fontSize="lg" fontWeight="600">Basic Card</span>
         </Card.Header>
