@@ -1,15 +1,11 @@
-import PropTypes from "prop-types"
 import { ComponentManager, ComponentTheme, useColorTheme, useFirstRender, useMultiPartComponentConfig } from "@soperio/react";
 import React from "react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
-
-
 const COMPONENT_ID = "Soperio.Avatar";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
-
 
 
 const DefaultIcon = () => (
@@ -18,7 +14,6 @@ const DefaultIcon = () => (
     color="#fff"
     width="100%"
     height="100%"
-
   >
     <path
       fill="currentColor"
@@ -31,7 +26,8 @@ const DefaultIcon = () => (
   </svg>
 )
 
-export interface AvatarProps extends ComponentProps {
+export interface AvatarProps extends ComponentProps
+{
   theme?: ComponentTheme;
   config?: ExtendConfig;
   src?: string;
@@ -41,43 +37,51 @@ export interface AvatarProps extends ComponentProps {
   badge?: boolean,
   badgeColor?: string,
   badgePosition?: "bottomEnd" | "bottomStart" | "topEnd" | "topStart" | "centerEnd" | "centerStart",
-  badgeText ? :string | number
-
+  badgeText?: string | number
 }
 
-
-function initials(name: string) {
+function initials(name: string)
+{
   const [firstName, lastName] = name.split(" ")
   return firstName && lastName
     ? `${firstName.charAt(0)}${lastName.charAt(0)}`
     : firstName.charAt(0)
 }
+
 /**
  * 
  *
  *
  */
-function randomColor(str: string) {
+function randomColor(str: string)
+{
   let hash = 0
-  if (str.length === 0) return hash.toString()
-  for (let i = 0; i < str.length; i += 1) {
+
+  if (str.length === 0) 
+    return hash.toString()
+
+  for (let i = 0; i < str.length; i += 1)
+  {
     hash = str.charCodeAt(i) + ((hash << 5) - hash)
     hash = hash & hash
   }
+
   let color = "#"
-  for (let j = 0; j < 3; j += 1) {
+  for (let j = 0; j < 3; j += 1)
+  {
     const value = (hash >> (j * 8)) & 255
     color += `00${value.toString(16)}`.substr(-2)
   }
+
   return color
 }
 
 
-
-export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
+export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((
+{
   corners = "default",
   size,
-  variant =  "default",
+  variant = "default",
   theme = "default",
   config,
   src,
@@ -88,31 +92,23 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
   badgeColor,
   badgePosition = "bottomEnd",
   badgeText,
-  
   ...props
-}: AvatarProps, ref) => {
-
+}: AvatarProps, ref) =>
+{
   const firstRender = useFirstRender();
-
   const [activeSrc, setActiveSrc] = React.useState(src);
-
-  
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { corners, size,variant }, props);
-
-
+  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { corners, size, variant }, props);
   const colorTheme = useColorTheme();
 
   const bg = name ? randomColor(name) : colorTheme.default
 
   const translateX = (badgePosition === "bottomStart" || badgePosition === "topStart") ? "-40%" : "40%"
   const translateY = (badgePosition === "topEnd" || badgePosition === "topStart") ? " - 40%" : "40%"
-  const top = (badgePosition === "topEnd" || badgePosition === "topStart") ? corners ==="default"?"0":"-5%" : false
-  const bottom = (badgePosition === "bottomEnd" || badgePosition === "bottomStart")? corners ==="default"?"0":"-5%" : false
-  const start = (badgePosition === "bottomStart" || badgePosition === "topStart")? corners ==="default"?"0":"-5%" : false
-  const end = (badgePosition === "bottomEnd" || badgePosition === "topEnd") ? corners ==="default"?"0":"-5%" : false
 
-  
-
+  const top = (badgePosition === "topEnd" || badgePosition === "topStart") ? corners === "default" ? "0" : "-5%" : false
+  const bottom = (badgePosition === "bottomEnd" || badgePosition === "bottomStart") ? corners === "default" ? "0" : "-5%" : false
+  const start = (badgePosition === "bottomStart" || badgePosition === "topStart") ? corners === "default" ? "0" : "-5%" : false
+  const end = (badgePosition === "bottomEnd" || badgePosition === "topEnd") ? corners === "default" ? "0" : "-5%" : false
 
   return (
     <span
@@ -120,12 +116,10 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
       ref={ref}
       bgColor={bg}
       {...styles["avatar"]}
-      {...props} >
-
-
+      {...props} 
+    >
       {activeSrc ?
         <img
-
           transition={firstRender ? "none" : "all"}
           alt={name}
           src={activeSrc}
@@ -133,14 +127,11 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
           {...styles["image"]}
         />
         : name ? (
-
           <span
             transition={firstRender ? "none" : "all"}
             {...styles["initials"]}
           >
-
             {getInitials?.(name)}
-
           </span>
         )
           : (
@@ -153,30 +144,25 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(({
                 "aria-label": name,
               })}
             </span>
-
           )
-
       }
+
       {badge &&
         <div
-          top={(badgePosition==="centerEnd"||badgePosition==="centerStart") ?"40%":top}
+          top={(badgePosition === "centerEnd" || badgePosition === "centerStart") ? "40%" : top}
           bottom={bottom}
-          start={badgePosition==="centerStart" ?"-15%":start}
-          end={badgePosition==="centerEnd" ?"-15%":end}
-          translateX={(badgePosition==="centerEnd"||badgePosition==="centerStart") ?false:translateX}
-          translateY={(badgePosition==="centerEnd"||badgePosition==="centerStart") ?false:translateY}
+          start={badgePosition === "centerStart" ? "-15%" : start}
+          end={badgePosition === "centerEnd" ? "-15%" : end}
+          translateX={(badgePosition === "centerEnd" || badgePosition === "centerStart") ? false : translateX}
+          translateY={(badgePosition === "centerEnd" || badgePosition === "centerStart") ? false : translateY}
           rounded="full"
           transform={true}
-
           bgColor={badgeColor || "green"}
-
-          {...styles["badge"]}>{badgeText}
-
+          {...styles["badge"]}
+        >
+          {badgeText}
         </div>}
 
     </span >
-
-
   );
 });
-

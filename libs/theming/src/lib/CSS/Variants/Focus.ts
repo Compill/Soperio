@@ -1,14 +1,11 @@
-// import { Accessibility, AccessibilityMapping } from "../Utilities/Accessibility";
-// import { SpacingScale } from "../Utilities/Spacing";
-
+import { Color } from "ora";
 import { Opacity } from "../../CSSTypes";
 
-// import { ScalingScale } from "../Utilities/Transform";
-export interface Focus/* extends Accessibility*/
+export interface Focus
 {
-    bgColor?: string,
+    bgColor?: Color,
     bgOpacity?: Opacity,
-    borderColor?: string,
+    borderColor?: Color,
     borderOpacity?: Opacity,
     // shadow?: true | false | "sm" | Breakpoints | "inner" | "none",
     // from?: string,
@@ -29,7 +26,7 @@ export interface Focus/* extends Accessibility*/
     // scaleY?: ScalingScale,
     // skewX?: "0" | "1" | "2" | "2" | "6" | "12",
     // skewY?: "0" | "1" | "2" | "2" | "6" | "12",
-    // textColor?: string,
+    textColor?: Color,
     // textDecoration?: "underline" | "line-through" | "no-underline",
     // textOpacity?: Opacity,
     // translateX?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",

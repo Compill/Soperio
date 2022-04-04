@@ -20,7 +20,7 @@ export interface CardProps extends ComponentProps, ParentComponent, HTMLDivProps
  *
  *
  */
-const Card = React.forwardRef<HTMLDivElement, CardProps>(({
+const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
   variant,
   corners,
   theme = "default",
@@ -53,7 +53,7 @@ interface CardHeaderProps extends SoperioComponent, ParentComponent
   borderWidth?: OrString<"full" | "padded">;
 };
 
-const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
+export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
   showBorder,
   borderWidth,
   children,
@@ -87,7 +87,7 @@ interface CardBodyProps extends SoperioComponent, ParentComponent
   scrollable?: boolean, // If fixed height
 };
 
-const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ children, ...props }, ref) =>
+export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ children, ...props }, ref) =>
 {
   const styles = useMultiPartStyles();
 
@@ -105,7 +105,7 @@ interface CardFooterProps extends SoperioComponent, ParentComponent
   align?: "right" | "left" | "center";
 };
 
-const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
+export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
   showBorder,
   borderWidth,
   children,
@@ -134,13 +134,12 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
   );
 });
 
-
-const CardNamespace = Object.assign(Card, { Header: CardHeader, Body: CardBody, Footer: CardFooter });
+export const Card = Object.assign(CardContainer, { Header: CardHeader, Body: CardBody, Footer: CardFooter });
 
 if (IS_DEV)
-  CardNamespace.displayName = "Soperio Card"
-
-export { CardNamespace as Card };
+  Card.displayName = "Soperio Card"
+else
+  Card.displayName = "Card"
 
 // CardTitle : icon + title + subtitle, stack = vertical or horizontal
 // Card Toolbar

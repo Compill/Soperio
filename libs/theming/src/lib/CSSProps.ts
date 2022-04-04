@@ -37,19 +37,16 @@ interface CSSProps extends
     FocusVariant,
     HoverVariant {};
 
-type _Breakpoints = Omit<Breakpoints, "default">
-
 export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
 
 export type ResponsiveCSSProps = ResponsiveProps<CSSProps>
-
-// export type ResponsiveProp<Key extends string, T> = { Key?: T} & 
 
 
 const accessibility = ["srOnly", "notSrOnly"];
 const background = ["bgAtt", "bgClip", "bgColor", "bgOpacity", "bgImage", "bgOrigin", "bgPosition", "bgRepeat", "bgSize"/*, "bgGradient", "from", "via", "to"*/];
 const border = [
     "rounded", "roundedT", "roundedB", "roundedS", "roundedE",
+    "roundedTS", "roundedTE", "roundedBS", "roundedBE",
     "border", "borderT", "borderB", "borderS", "borderE",
     "borderColor", "borderTColor", "borderBColor", "borderSColor", "borderEColor",
     "borderOpacity", "borderStyle",
@@ -79,6 +76,10 @@ const transform = ["transform", "transformOrigin", "scale", "scaleX", "scaleY", 
 const transitions = ["transition", "duration", "easing", "delay", "animate"];
 const typography = ["font", "fontSize", "italic", "notItalic", "fontWeight", "numericFontVariant", "letterSpacing", "lineHeight", "listStyle", "listStylePosition", "placeholderColor", "placeholderOpacity", "textAlign", "textColor", "textOpacity", "textDecoration", "textTransform", "textOverflow", "verticalAlign", "whitespace", "wordBreak", "textColumns", "textColumnsGap"];
 
+const hover = [ "top", "bottom", "start", "end", "bgColor", "bgOpacity", "borderColor", "borderOpacity", "shadow", "opacity", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "translateX", "translateY", "translateZ", "skewX", "skewY", "textColor", "textDecoration", "textOpacity", "transition", "duration", "easing", "delay", "animate" ]
+
+const focus = [ "bgColor", "bgOpacity", "borderColor", "borderOpacity", "textColor" ]
+
 const props = ([] as string[]).concat(accessibility)
     .concat(background)
     .concat(border)
@@ -95,20 +96,21 @@ const props = ([] as string[]).concat(accessibility)
     .concat(transitions)
     .concat(typography);
 
-function buildBreakpointProps(breakpoint:string, props:string[]): string[]
+function buildProps(breakpoint:string, props:string[]): string[]
 {
     const prefix = `${breakpoint}_`
     return props.map((value, index) => `${prefix}${value}`)
 }
 
-<<<<<<< HEAD
+const variants = props
+    .concat(buildProps("hover", hover))
+    .concat(buildProps("focus", focus))
+
 
 // TODO Add variants (focus, hover)
-=======
->>>>>>> e4b4b0f8e5cab5f6c46cc437bffe694e59ea0e91
-export const CSSPropKeys = props
-    .concat(buildBreakpointProps("sm", props))
-    .concat(buildBreakpointProps("md", props))
-    .concat(buildBreakpointProps("lg", props))
-    .concat(buildBreakpointProps("xl", props))
-    .concat(buildBreakpointProps("xxl", props))
+export const CSSPropKeys = variants
+    .concat(buildProps("sm", variants))
+    .concat(buildProps("md", variants))
+    .concat(buildProps("lg", variants))
+    .concat(buildProps("xl", variants))
+    .concat(buildProps("xxl", variants))

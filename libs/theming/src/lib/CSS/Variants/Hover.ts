@@ -1,8 +1,12 @@
-import { Breakpoints, Color, Opacity } from "../../CSSTypes";
+import { Breakpoints, Color, Opacity, Rotate, Scale, Skew, Spacing, Translate } from "../../CSSTypes";
 import { Transitions } from "../Transitions";
 
 export interface Hover extends Transitions
 {
+  top?: false | Spacing | number,
+  bottom?: false | Spacing | number,
+  start?: false | Spacing | number,
+  end?: false | Spacing | number,
   bgColor?: Color,
   bgOpacity?: Opacity,
   borderColor?: Color,
@@ -11,16 +15,21 @@ export interface Hover extends Transitions
   // from?: string,
   // via?: string,
   // to?: string,
-  // opacity?: Opacity,
-  // rotate?: "0" | "1" | "2" | "2" | "6" | "12" | "45" | "90" | "180";
-  // scale?: ScalingScale,
-  // scaleX?: ScalingScale,
-  // scaleY?: ScalingScale,
-  // skewX?: "0" | "1" | "2" | "2" | "6" | "12",
-  // skewY?: "0" | "1" | "2" | "2" | "6" | "12",
+  opacity?: Opacity,
+  scale?: false | Scale | number,
+  scaleX?: false | Scale | number,
+  scaleY?: false | Scale | number,
+  scaleZ?: false | Scale | number,
+  rotate?: false | Rotate;
+  rotateX?: false | Rotate;
+  rotateY?: false | Rotate;
+  rotateZ?: false | Rotate;
+  translateX?: false | Spacing | Translate,
+  translateY?: false | Spacing | Translate,
+  translateZ?: false | Spacing | Translate,
+  skewX?: false | Skew;
+  skewY?: false | Skew;
   textColor?: Color,
   textDecoration?: "underline" | "line-through" | "no-underline",
   textOpacity?: Opacity,
-  // translateX?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
-  // translateY?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
 }

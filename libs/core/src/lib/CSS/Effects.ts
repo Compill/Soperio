@@ -14,6 +14,7 @@ export function shadow(themeProperty?: string): (value: any) => Style
 export const EffectsMapping: StyleProps =
 {
     shadow: shadow("effects.boxShadow"),
+    shadowColor: css("--so-shadow-color"),
     opacity: opacity("opacity"),
     mixBlend: css("mix-blend-mode"),
     bgBlend: css("background-blend-mode")
