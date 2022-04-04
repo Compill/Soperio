@@ -1,0 +1,51 @@
+{
+  "root": "libs/props-docs",
+  "sourceRoot": "libs/props-docs/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "outputPath": "dist/libs/props-docs",
+        "tsConfig": "libs/props-docs/tsconfig.lib.json",
+        "project": "libs/props-docs/package.json",
+        "entryFile": "libs/props-docs/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "styles": ["normalize.module.css"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "webpackConfig": "./webpack.config.js",
+        "assets": [
+          {
+            "glob": "libs/props-docs/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/props-docs/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/props-docs"],
+      "options": {
+        "jestConfig": "libs/props-docs/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  }
+}
