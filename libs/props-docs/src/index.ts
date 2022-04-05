@@ -6,7 +6,8 @@ import { writeFileSync } from "fs"
 import * as docgen from "react-docgen-typescript"
 import { ComponentDoc } from "react-docgen-typescript"
 import mkdirp from "mkdirp"
-import {CSSPropKeys} from "../../theming/src/lib/CSSProps"
+import fs from "fs"
+import { CSSPropKeys } from "../../theming/src/lib/CSSProps"
 
 type ComponentInfo = {
   def: ComponentDoc
@@ -30,23 +31,26 @@ const excludedPropNames = CSSPropKeys.concat([
 const rootDir = path.join(__dirname, "..", "..", "..")
 
 
-const sourcePath = path.join(rootDir, "libs","ui")
+const sourcePath = path.join(rootDir, "libs", "ui")
+
+const outPath = path.join(rootDir, "dist", "libs", "props-docs")
 
 
-const outputPath = path.join(__dirname, "..", "dist", "components")
+const outputPath = path.join(outPath, "components")
 
 
-const basePath = path.join(__dirname, "..", "dist")
-const cjsIndexFilePath = path.join(basePath, "soperio-ui-props-docs.cjs.js")
-const esmIndexFilePath = path.join(basePath, "soperio-ui-props-docs.esm.js")
-const typeFilePath = path.join(basePath, "soperio-ui-props-docs.cjs.d.ts")
+const cjsIndexFilePath = path.join(outPath, "soperio-ui-props-docs.cjs.js")
+const esmIndexFilePath = path.join(outPath, "soperio-ui-props-docs.esm.js")
+const typeFilePath = path.join(outPath, "soperio-ui-props-docs.cjs.d.ts")
 
 const tsConfigPath = path.join(sourcePath, "tsconfig.json")
 
 
-export async function main() {
+export async function main()
+{
   const componentFiles = await findComponentFiles()
-  if (componentFiles.length) {
+  if (componentFiles.length)
+  {
     await mkdirp.sync(outputPath)
   }
 
@@ -64,10 +68,14 @@ export async function main() {
   writeIndexESM(componentInfo)
   writeTypes(componentInfo)
 
+  log("Writing package.json...")
+  writePackageJSON()
+
   log(`Processed ${componentInfo.length} components`)
 }
 
-if (require.main === module) {
+if (require.main === module)
+{
   // run main function if called via cli
   main().catch(console.error)
 }
@@ -75,7 +83,8 @@ if (require.main === module) {
 /**
  * Find all TypeScript files which could contain component definitions
  */
-async function findComponentFiles() {
+async function findComponentFiles()
+{
   const tsFiles = await globAsync("src/**/*.@(tsx)", {
     cwd: sourcePath,
   })
@@ -86,13 +95,15 @@ async function findComponentFiles() {
 /**
  * Parse files with react-doc-gen-typescript
  */
-function parseInfo(filePaths: string[]) {
+function parseInfo(filePaths: string[])
+{
   const { parse } = docgen.withCustomConfig(tsConfigPath, {
-    
-    propFilter: (prop, component) => {
+
+    propFilter: (prop, component) =>
+    {
       const isStyledSystemProp = excludedPropNames.includes(prop.name)
 
-      
+
       const isHTMLElementProp =
         prop.parent?.fileName.includes("node_modules") ?? false
 
@@ -101,16 +112,17 @@ function parseInfo(filePaths: string[]) {
       const isTypeScriptNative =
         prop.parent?.fileName.includes("node_modules/typescript") ?? false
       return (
-        
+
         (isHook && !isTypeScriptNative) ||
         !(isStyledSystemProp || isHTMLElementProp)
       )
     },
   })
 
-  return filePaths.flatMap((file) => {
+  return filePaths.flatMap((file) =>
+  {
     const absoluteFilePath = path.join(sourcePath, file)
-    
+
     return parse(absoluteFilePath)
   })
 }
@@ -118,20 +130,25 @@ function parseInfo(filePaths: string[]) {
 /**
  * Extract meta data of component docs
  */
-function extractComponentInfo(docs: ComponentDoc[]) {
-  return docs.reduce((acc, def) => {
-    if (!Object.keys(def.props || {}).length) {
+function extractComponentInfo(docs: ComponentDoc[])
+{
+  return docs.reduce((acc, def) =>
+  {
+    if (!Object.keys(def.props || {}).length)
+    {
       return acc
     }
 
-    function createUniqueName(displayName: string) {
+    function createUniqueName(displayName: string)
+    {
       const existing = acc.filter(
         (prev) =>
           String(prev.def.displayName).toLowerCase() ===
           displayName.toLowerCase(),
       )
 
-      if (!existing.length) {
+      if (!existing.length)
+      {
         return displayName
       }
 
@@ -155,8 +172,10 @@ function extractComponentInfo(docs: ComponentDoc[]) {
 /**
  * Write component info as JSON to disk
  */
-function writeComponentInfoFiles(componentInfo: ComponentInfo[]) {
-  for (const info of componentInfo) {
+function writeComponentInfoFiles(componentInfo: ComponentInfo[])
+{
+  for (const info of componentInfo)
+  {
     const filePath = path.join(outputPath, info.fileName)
     const content = JSON.stringify(info.def)
     writeFileSync(filePath, content)
@@ -166,7 +185,8 @@ function writeComponentInfoFiles(componentInfo: ComponentInfo[]) {
 /**
  * Create and write the index file in CJS format
  */
-function writeIndexCJS(componentInfo: ComponentInfo[]) {
+function writeIndexCJS(componentInfo: ComponentInfo[])
+{
   const cjsExports = componentInfo.map(
     ({ displayName, importPath }) =>
       `module.exports['${displayName}'] = require('${importPath}')`,
@@ -177,7 +197,8 @@ function writeIndexCJS(componentInfo: ComponentInfo[]) {
 /**
  * Create and write the index file in ESM format
  */
-function writeIndexESM(componentInfo: ComponentInfo[]) {
+function writeIndexESM(componentInfo: ComponentInfo[])
+{
   const esmPropImports = componentInfo
     .map(
       ({ exportName, importPath }) =>
@@ -196,7 +217,8 @@ ${esmPropExports}`,
   )
 }
 
-function writeTypes(componentInfo: ComponentInfo[]) {
+function writeTypes(componentInfo: ComponentInfo[])
+{
   const typeExports = componentInfo
     .map(({ exportName }) => `export declare const ${exportName}: PropDoc`)
     .join("\n")
@@ -238,6 +260,12 @@ function writeTypes(componentInfo: ComponentInfo[]) {
   writeFileSync(typeFilePath, `${baseType}\n${typeExports}`)
 }
 
-function log(...args: unknown[]) {
+function writePackageJSON()
+{
+  fs.copyFile(path.join(".", "package.json"), path.join(outPath, "package.json"), (error) => console.log("error copying package.json", error))
+}
+
+function log(...args: unknown[])
+{
   console.info(`[props-docs]`, ...args)
 }

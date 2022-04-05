@@ -1,24 +1,32 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "lib": ["esnext", "dom"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "@soperio",
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+      "isolatedModules": true
   },
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs",
       "resolveJsonModule": true,
-      "noImplicitAny": false
+      "noImplicitAny": false,
+      "isolatedModules": true
     }
   },
-  "include": ["src","*/.ts"]
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

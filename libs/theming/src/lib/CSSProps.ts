@@ -56,7 +56,7 @@ const border = [
     // "ringColor", "ringOffset", "ringOffsetColor", "ringOpacity", "ringWidth"
 ];
 
-const effects = ["shadow", "opacity", "mixBlend", "bgBlend"];
+const effects = ["shadow", "shadowColor", "opacity", "mixBlend", "bgBlend"];
 const filters = [
     "blur", "brightness", "contrast", "dropShadow", "grayscale", "hueRotate", "invert", "saturate", "sepia",
     "backdropBlur", "backdropBrightness", "backdropContrast", "backdropDropShadow", "backdropGrayscale", "backdropHueRotate", "backdropInvert", "backdropOpacity", "backdropSaturate", "backdropSepia",

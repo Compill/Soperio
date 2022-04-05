@@ -1,5 +1,4 @@
-import { Color } from "ora";
-import { Opacity } from "../../CSSTypes";
+import { Color, Opacity } from "../../CSSTypes";
 
 export interface Focus
 {

@@ -13,6 +13,7 @@
     "deploy core": "nx deploy core",
     "deploy jsx-dev-runtime": "nx deploy jsx-dev-runtime",
     "deploy jsx-runtime": "nx deploy jsx-runtime",
+    "deploy props-docs": "nx deploy props-docs",
     "deploy react": "nx deploy react",
     "deploy theming": "nx deploy theming",
     "deploy ui": "nx deploy ui",

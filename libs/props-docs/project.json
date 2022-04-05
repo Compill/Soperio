@@ -5,18 +5,16 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nrwl/workspace:run-script",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "script": "build",
         "outputPath": "dist/libs/props-docs",
         "tsConfig": "libs/props-docs/tsconfig.lib.json",
         "project": "libs/props-docs/package.json",
         "entryFile": "libs/props-docs/src/index.ts",
-        "external": ["react/jsx-runtime"],
-        "styles": ["normalize.module.css"],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-        "webpackConfig": "./webpack.config.js",
         "assets": [
           {
             "glob": "libs/props-docs/README.md",

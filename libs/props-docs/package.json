@@ -1,6 +1,6 @@
 {
   "name": "@soperio/props-docs",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "React CSS-IN-JS framework",
   "keywords": [
     "react",
@@ -21,15 +21,18 @@
   "devDependencies": {
     "@types/glob": "^7.1.3"
   },
-  "main": "dist/chakra-ui-props-docs.cjs.js",
-  "module": "dist/chakra-ui-props-docs.esm.js",
-  "types": "dist/chakra-ui-props-docs.cjs.d.ts",
+  "main": "soperio-ui-props-docs.cjs.js",
+  "module": "soperio-ui-props-docs.esm.js",
+  "types": "soperio-ui-props-docs.cjs.d.ts",
   "files": [
-    "dist"
+    "components",
+    "soperio-ui-props-docs.cjs.js",
+    "soperio-ui-props-docs.esm.js",
+    "soperio-ui-props-docs.cjs.d.ts"
   ],
   "sideEffects": false,
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "ts-node -T src/build.ts"
+    "build": "ts-node -T src/index.ts"
   }
 }
