@@ -18,4 +18,5 @@ export * from './lib/textarea/';
 export * from './lib/tile/';
 export * from './lib/switch/';
 export * from './lib/divider/';
+export * from './lib/list/';
 export * from './lib/avatar/'

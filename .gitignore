@@ -40,3 +40,6 @@ testem.log
 Thumbs.db
 
 libs/cli/dist
+
+# Contentlayer
+.contentlayer

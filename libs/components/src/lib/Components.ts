@@ -67,14 +67,20 @@ export interface Components {
     "Soperio.Switch":
     {
         size?: "sm" | "md" | "lg" | "xl" | "x2";
-        variant?: "default" | "inverse"| "fullColor";
+        variant?: "default" | "inverse" | "fullColor";
         corners?: "default" | "square" | "pill";
     },
     "Soperio.Avatar":
     {
         size?: "sm" | "md" | "lg" | "xl" | "x2";
-        variant?: "default" ;
+        variant?: "default";
         corners?: "default" | "square" | "pill";
+    },
+    "Soperio.List":
+    {
+        size?: "sm" | "md" | "lg" | "xl" | "x2";
+        variant?: "default" | "bordered";
+        corners?: "default" | "square";
     },
 
 }
