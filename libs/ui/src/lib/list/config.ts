@@ -7,7 +7,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
     {
       variant: "default",
       corners: "default",
-      size:"lg"
+      size:"md"
 
     },
     defaultProps:
@@ -33,7 +33,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
       listItemIcon: {
         display: 'flex',
         justifyContent: 'start',
-        
         me:"10px",
         w: '100%',
         

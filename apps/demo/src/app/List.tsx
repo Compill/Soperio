@@ -31,28 +31,29 @@ export default function Page({ ...props }) {
 
       <List  >
         <List.ListItem  >
-          <List.ListItemIcon>
+          <List.ListItemIcon >
             <Inbox />
           </List.ListItemIcon >
           Inbox
         </List.ListItem>
-        <List.ListItem>
-          <List.ListItemIcon >
+        <List.ListItem >
+          <List.ListItemIcon  >
             <Web />
           </List.ListItemIcon >
           Web
-          </List.ListItem>
+        </List.ListItem>
         <List.ListItem >
           <List.ListItemIcon>
             <DefaultIcon />
           </List.ListItemIcon >
-          user
+          User
         </List.ListItem>
       </List>
 
       <List size="sm" variant="bordered" >
-        <List.ListItem >Item 1</List.ListItem>
+        <List.ListItem>Item 1</List.ListItem>
         <List.ListItem>Item 2</List.ListItem>
+        <List.ListItem>Item 3</List.ListItem>
       </List>
 
     </Container>
