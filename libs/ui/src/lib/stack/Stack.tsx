@@ -11,8 +11,6 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>(({ size, cente
     const _props = { ...props, direction }
     const responsiveDirection = useResponsiveProp("direction", _props)
 
-    console.log("stack, direction", responsiveDirection)
-
     return (
         <div
             w={!size && "full"}

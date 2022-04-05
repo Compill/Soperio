@@ -71,13 +71,12 @@ export function useBreakpoint(
         const allUnregisterFns = queries.map(({ breakpoint, query }) =>
         {
             const mediaQueryList = /*env.*/window.matchMedia(query)
-            console.log(query)
+            
             if (mediaQueryList.matches)
                 setCurrentBreakpoint(breakpoint)
 
             const handleChange = (ev: MediaQueryListEvent) =>
             {
-                console.log("handleChange", ev.matches, breakpoint)
                 if (ev.matches)
                     setCurrentBreakpoint(breakpoint)
             }
