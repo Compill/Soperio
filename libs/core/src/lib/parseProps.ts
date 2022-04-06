@@ -9,39 +9,43 @@ const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "aft
 function parseRules(css: Record<string, string | any>, wrap = true): string
 {
   let content = "";
-  const pseudos: string[] = [];
-  const mediaQueries: string[] = [];
-
-  Object.keys(css).sort().forEach(key =>
+  
+  if (css)
   {
-    if (pseudoClasses.includes(key))
-    {
-      pseudos.push(`&:${key} {\n${parseRules(css[key], false)}}`);
-    }
-    else if (key.startsWith("media-"))
-    {
-      const breakpoint = key.split("-")[1];
-      mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
-    }
-    else
-    {
-      const cssRule = css[key];
+    const pseudos: string[] = [];
+    const mediaQueries: string[] = [];
 
-      if (typeof cssRule === "string" || typeof cssRule === "number")
-        content += `\t${key}: ${css[key]};\n`;
+    Object.keys(css).sort().forEach(key =>
+    {
+      if (pseudoClasses.includes(key))
+      {
+        pseudos.push(`&:${key} {\n${parseRules(css[key], false)}}`);
+      }
+      else if (key.startsWith("media-"))
+      {
+        const breakpoint = key.split("-")[1];
+        mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
+      }
       else
-        pseudos.push(`&${key} {\n${parseRules(css[key], false)}}`);
-    }
-  });
+      {
+        const cssRule = css[key];
 
-  // if (wrap)
-  //     content = `.${className} {\n${content}}`;
+        if (typeof cssRule === "string" || typeof cssRule === "number")
+          content += `\t${key}: ${cssRule};\n`;
+        else
+          pseudos.push(`&${key} {\n${parseRules(cssRule, false)}}`);
+      }
+    });
 
-  if (pseudos)
-    content += `${wrap ? "\n\n" : ""}${pseudos.join("\n\n")}`;
+    // if (wrap)
+    //     content = `.${className} {\n${content}}`;
 
-  if (mediaQueries)
-    content += `${wrap ? "\n\n" : ""}${mediaQueries.join("\n\n")}`;
+    if (pseudos)
+      content += `${wrap ? "\n\n" : ""}${pseudos.join("\n\n")}`;
+
+    if (mediaQueries)
+      content += `${wrap ? "\n\n" : ""}${mediaQueries.join("\n\n")}`;
+  }
 
   return content;
 }
