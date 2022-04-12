@@ -20,7 +20,6 @@ export interface SelectProps extends ComponentProps, ParentComponent, Omit<HTMLS
  *
  */
 
-//TODO length ne fonctionne pas
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>((
   {
     size = "md",

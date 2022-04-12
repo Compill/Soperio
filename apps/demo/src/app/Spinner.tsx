@@ -35,9 +35,9 @@ export default function Page({ ...props })
                 </div>
 
                 <div mb="10">
-                    <Spinner size="sm" me="5" trackColor="orange-800" />
+                    <Spinner size="sm" me="5" trackColor="orange-800"  />
                     <Spinner size="md" me="5" trackColor="orange-800" />
-                    <Spinner size="lg" me="5" trackColor="orange-800" />
+                    <Spinner size="lg" me="5" trackColor="orange-800" thickness= "8px" />
                     <Spinner size="xl" me="5" trackColor="orange-800" />
                     <Spinner size="x2" me="5" trackColor="orange-800" />
                 </div>
@@ -51,7 +51,7 @@ export default function Page({ ...props })
                 </div>
 
                 <div mb="10">
-                    <Spinner w="10" h="10" me="5" />
+                    <Spinner w="10" h="10" me="5" thickness= "10px" />
                     <Spinner w="11" h="11" me="5" />
                     <Spinner w="12" h="12" me="5" />
                     <Spinner w="14" h="14" me="5" />
