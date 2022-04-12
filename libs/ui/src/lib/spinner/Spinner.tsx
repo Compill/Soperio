@@ -23,6 +23,8 @@ export interface SpinnerProps extends ComponentProps//, HTMLDivProps
   config?: ExtendConfig;
 }
 
+
+//TODO thickness ne fonctionne pas
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
   thickness,
   trackColor,
