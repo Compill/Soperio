@@ -136,7 +136,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((
         )
           : (
             <span
-              border="2"
+              border="1"
               {...styles["image"]}
             >
               {React.cloneElement(icon, {

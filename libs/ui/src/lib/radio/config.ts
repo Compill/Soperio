@@ -19,26 +19,32 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           px: "2.5",
           py: "1.5",
           fontSize: "md",
-          w: "20px",
-          h: "20px",
+          w: "4",
+          h: "4"
         },
         "lg":
         {
+          px: "3",
+          py: "2",
           fontSize: "lg",
-          w: "24px",
-          h: "24px",
+          w: "5",
+          h: "5",
         },
         "xl":
         {
           px: "3.5",
           py: "2.5",
-          fontSize: "xl"
+          fontSize: "xl",
+          w: "6",
+          h: "6",
         },
         "x2":
         {
           px: "4",
           py: "2.5",
-          fontSize: "x2"
+          fontSize: "x2",
+          w: "7",
+          h: "7",
         }
       },
       variant:
@@ -79,6 +85,12 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           }
         },
       },
+      shape:
+      {
+        square: { rounded: "none" },
+        default: { rounded: true },
+        circle: { rounded: "full" }
+      }
     }
   };
 }

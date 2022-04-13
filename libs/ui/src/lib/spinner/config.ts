@@ -21,31 +21,26 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         {
           w: "4",
           h: "4",
-          border: "2",
         },
         "md":
         {
           w: "5",
           h: "5",
-          border: "2"
         },
         "lg":
         {
           w: "6",
           h: "6",
-          border: "2"
         },
         "xl":
         {
           w: "7",
           h: "7",
-          border: "2"
         },
         "x2":
         {
           w: "8",
           h: "8",
-          border: "2"
         }
       },
       variant:
