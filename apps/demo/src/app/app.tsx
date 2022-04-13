@@ -6,7 +6,22 @@ import { Content } from "./Content";
 // import Page11 from "./Page11"
 // jsx("div", {});
 
-const defaultTheme = extendTheme({})
+const defaultTheme = extendTheme({
+  components:
+  {
+    "Soperio.Button": {
+      traits: {
+        variant: {
+          default: {
+            bgColor: "#000000",
+            textColor: "#FF0000",
+            textSize: "24px",
+          }
+        }
+      }
+    }
+  }
+})
 const customTheme = extendTheme({
   colorThemes: {
     default: {
@@ -19,6 +34,20 @@ const customTheme = extendTheme({
     },
     positiveNegative: {
       "5": "100px"
+    }
+  },
+  components:
+  {
+    "Soperio.Button": {
+      traits: {
+        variant: {
+          default: {
+            bgColor: "#000000",
+            textColor: "#FF0000",
+            textSize: "24px",
+          }
+        }
+      }
     }
   }
 })

@@ -53,9 +53,9 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(({
       {...getBorders(parsedTrackColor, parsedProgress)}
       borderStyle="solid"
       rounded="full"
-      border={parsedThickness}
       animate={parsedProgress > 0 && parsedProgress < 100 ? "spin" : "none"}
       {...styles}
+      border={parsedThickness}
       {...props}
       ref={ref}
       >

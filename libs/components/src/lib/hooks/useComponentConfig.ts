@@ -1,4 +1,4 @@
-import { useColorTheme, useDarkMode } from "@soperio/theming";
+import { useColorTheme, useDarkMode, useTheme } from "@soperio/theming";
 import { ComponentTheme } from "../ComponentTheme";
 import { SoperioComponent } from "../SoperioComponent";
 import { IS_DEV } from "@soperio/utils";
@@ -34,6 +34,23 @@ function runIfFn<T>(
   return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
 }
 
+function useMergedComponentConfig<T extends SoperioComponent>(component: string, theme: ComponentTheme)
+{
+  const sTheme = useTheme()
+  const darkMode = useDarkMode();
+  const colorTheme = useColorTheme(theme);
+  
+  const componentTheme = sTheme.components?.[component]
+  const defaultConfig = ComponentManager.getComponentConfig(component) as ComponentConfig<T>
+
+  if (componentTheme)
+  {
+    return deepmerge(runIfFn<ComponentConfig<T>>(defaultConfig, colorTheme, darkMode) as any, runIfFn<ComponentConfig<T>>(componentTheme, colorTheme, darkMode) as any);
+  }
+
+  return runIfFn<ComponentConfig<T>>(defaultConfig, colorTheme, darkMode)
+}
+
 export function useComponentConfig<T extends SoperioComponent, P extends ComponentConfig<T>>(
   component = "",
   theme: ComponentTheme,
@@ -41,7 +58,9 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
   componentConfig: KeysOf<P> = {} as KeysOf<P>,
   props?: T): T
 {
-  const [defaultConfig] = React.useState(() => ComponentManager.getComponentConfig(component) as ComponentConfig<T>);
+  // const [defaultConfig] = React.useState(() => ComponentManager.getComponentConfig(component) as ComponentConfig<T>);
+  const defaultConfig = useMergedComponentConfig(component, theme)
+  
   const darkMode = useDarkMode();
 
   if (!defaultConfig && IS_DEV)
