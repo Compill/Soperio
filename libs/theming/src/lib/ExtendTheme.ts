@@ -32,8 +32,8 @@ export interface ExtendTheme
         [k: string]: Partial<ColorTheme>;
     };
     darkModeOverride?: {
-        colorThemes?: ThemeThemes;
-        rootColors?: ThemeRootColor;
+        colorThemes?: Partial<ThemeThemes>;
+        rootColors?: Partial<ThemeRootColor>;
     };
     breakpoints?: Partial<ThemeBreakpoint>;
     border?: OptionalAny<ThemeBorder>;
