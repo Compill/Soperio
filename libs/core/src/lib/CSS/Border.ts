@@ -9,8 +9,11 @@ function divideX(value: any): Style
 
     return {
         "--so-divide-x-reverse": 0,
-        [getDirection() ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse))`,
-        [getDirection() ? "border-left-width" : "boder-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse)))`
+        "> * + *":
+        {
+            [getDirection() ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse))`,
+            [getDirection() ? "border-left-width" : "boder-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse)))`
+        }
     }
 }
 
@@ -20,8 +23,11 @@ function divideY(value: any): Style
 
     return {
         "--so-divide-y-reverse": 0,
-        "border-top-width": `calc(${dimension} * var(--so-divide-x-reverse))`,
-        "border-bottom-width": `calc(${dimension} * calc(1 - var(--so-divide-x-reverse)))`
+        "> * + *":
+        {
+            "border-top-width": `calc(${dimension} * var(--so-divide-y-reverse))`,
+            "border-bottom-width": `calc(${dimension} * calc(1 - var(--so-divide-y-reverse)))`
+        }
     };
 }
 

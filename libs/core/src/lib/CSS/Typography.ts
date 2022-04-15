@@ -12,7 +12,7 @@ function fontSize(value: any): Style
   {
     return {
       "font-size": themeValue[0],
-      "line-height": themeValue[1]
+      "line-height": themeValue[1] ?? "normal"
     };
   }
 

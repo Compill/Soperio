@@ -1017,6 +1017,9 @@ export const defaultTheme: Theme = {
     },
     // Second argument is for line-height
     fontSize: {
+      // TODO Should I really define line-heights ? Because it makes the UI weird is some cases
+      // when I try to vetically center the text and the line-height doesn't match with the 
+      // font-size, in buttons for example
       xs: ['0.75rem', '1rem'],
       sm: ['0.875rem', "1.25rem"],
       md: ['1rem', "1.5rem"],
@@ -1041,6 +1044,8 @@ export const defaultTheme: Theme = {
       widest: '0.1em',
     },
     lineHeight: {
+      // TODO THis sucks when you want to set "normal" as value
+      // and you get "1.5" instead
       none: '1',
       tight: '1.25',
       snug: '1.375',
