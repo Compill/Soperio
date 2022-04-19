@@ -1,6 +1,25 @@
-import { getColor } from "@soperio/theming";
+import { getColor, ThemeCache } from "@soperio/theming";
 import { StyleFn, StyleProp } from "../CSS/utils";
 import { parseColor } from "../utils/colorUtils";
+
+// TODO : How to cache this?
+// export function colorize(cssProperty: string, alphaVarName: string): StyleFn
+// {
+//     return (value: StyleProp) =>
+//     {
+//         if (!value || value === true || typeof value === "number")
+//             return {};
+
+//         let parsedColor = getColor(value) || value
+
+//         parsedColor = parseColor(parsedColor, alphaVarName)
+
+//         return {
+//             [alphaVarName]: 1,
+//             [cssProperty]: parsedColor
+//         };
+//     }
+// }
 
 export function colorize(cssProperty: string, alphaVarName: string): StyleFn
 {
@@ -9,16 +28,41 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
         if (!value || value === true || typeof value === "number")
             return {};
 
-        let parsedColor = getColor(value) || value
+        const styleKey = `colorize-${cssProperty}${alphaVarName}${value}`
 
-        parsedColor = parseColor(parsedColor, alphaVarName)
+        const s = ThemeCache.get().get(styleKey);
+        if (s)
+            return s
 
-        return {
+        let key = `color-${value}`
+        let parsedColor = ThemeCache.get().get(key);
+
+        if (!parsedColor)
+        {
+            parsedColor = getColor(value) || value
+            ThemeCache.get().put(key, parsedColor);
+        }
+
+        key = `alphacolor-${value}${alphaVarName}`
+        let alphaColor = ThemeCache.get().get(key); 
+
+        if (!alphaColor)
+        {
+            alphaColor = parseColor(parsedColor, alphaVarName)
+            ThemeCache.get().put(key, alphaColor);
+        }
+
+        const style = {
             [alphaVarName]: 1,
-            [cssProperty]: parsedColor
+            [cssProperty]: alphaColor
         };
+
+        ThemeCache.get().put(styleKey, style);
+
+        return style
     }
 }
+
 
 // export function parseColor(value: string, alphaCSSVarName: string)
 // {

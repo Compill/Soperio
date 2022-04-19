@@ -13,9 +13,9 @@ const defaultTheme = extendTheme({
       traits: {
         variant: {
           default: {
-            bgColor: "#000000",
-            textColor: "#FF0000",
-            textSize: "24px",
+            // bgColor: "#000000",
+            // textColor: "#FF0000",
+            // textSize: "24px",
           }
         }
       }

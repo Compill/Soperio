@@ -11,6 +11,7 @@ export * from './lib/divider/';
 export * from './lib/input/';
 export * from './lib/list/';
 export * from './lib/radio/';
+export * from './lib/scrollable/';
 export * from './lib/select/';
 export * from './lib/sidebar/';
 export * from './lib/spinner/';

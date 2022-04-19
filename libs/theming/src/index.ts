@@ -18,3 +18,4 @@ export * from './lib/SoperioTheme';
 export * from './lib/Theme';
 export * from "./lib/utils/getThemeStyle";
 export * from "./lib/utils/utils";
+export * from "./lib/ThemeCache";
