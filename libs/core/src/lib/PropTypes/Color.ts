@@ -57,7 +57,7 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
         }
 
         const style = {
-            [alphaVarName]: 1,
+            // [alphaVarName]: 1,
             [cssProperty]: alphaColor
         };
 

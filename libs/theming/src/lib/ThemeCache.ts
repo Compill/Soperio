@@ -38,6 +38,6 @@ export class ThemeCache
 
     get(type:string, property:string): any
     {
-        return this.cache[property]
+        return this.cache[type][property]
     }
 }
