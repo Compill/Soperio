@@ -5,6 +5,7 @@ import { getThemeStyle, ThemeCache } from "@soperio/theming";
 import { SoperioComponent } from "@soperio/components"
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
+const CACHE_TYPE = "prop"
 
 function parseRules(css: Record<string, string | any>, wrap = true): string
 {
@@ -100,13 +101,13 @@ export function parseProps<P extends SoperioComponent>(props: P)
       });
 
       const propValue = newProps[prop]
-      const key = `prop-${propName}${propValue}`
-      let parsed = ThemeCache.get().get(key)
+      const key = `${propName}${propValue}`
+      let parsed = ThemeCache.get().get(CACHE_TYPE, key)
 
       if (!parsed)
       {
         parsed = CSSPropsMap[propName](newProps[prop])
-        ThemeCache.get().put(key, parsed)
+        ThemeCache.get().put(CACHE_TYPE, key, parsed)
       }
 
       Object.assign(current, parsed);

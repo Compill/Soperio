@@ -11,20 +11,32 @@ export class ThemeCache
 
     private constructor()
     {
-        this.cache = {}
+        this.cache = {
+            color: {},
+            colorize: {},
+            colorTheme: {},
+            alphaColor: {},
+            prop: {}
+        }
     }
 
     clear()
     {
-        this.cache = {}
+        this.cache = {
+            color: {},
+            colorize: {},
+            colorTheme: {},
+            alphaColor: {},
+            prop: {}
+        }
     }
 
-    put(property: string, value: any)
+    put(type: string, property: string, value: any)
     {
-        this.cache[property] = value
+        this.cache[type][property] = value
     }
 
-    get(property:string): any
+    get(type:string, property:string): any
     {
         return this.cache[property]
     }

@@ -38,7 +38,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                         },
                         "&::-webkit-scrollbar-thumb:hover":
                         {
-                            color: theme.default
+                            color: theme.defaultHover
                         },
                         "&::-webkit-scrollbar-button": 
                         {

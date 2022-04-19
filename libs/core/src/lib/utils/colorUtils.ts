@@ -35,6 +35,10 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
         value = `var(--so-${value.substring(5)})` // Remove "root." prefix, and convert to CSS var
         return `rgba(${value}, ${alpha})`
     }
+    else if (value.startsWith("var("))
+    {
+        return `rgba(${value}, ${alpha})`
+    }
 
     const hex = value
         .replace(SHORT_HEX, (_, r, g, b, a) => ['#', r, r, g, g, b, b, a ? a + a : ''].join(''))
