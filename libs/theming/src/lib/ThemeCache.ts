@@ -21,7 +21,6 @@ export class ThemeCache
 
     put(property: string, value: any)
     {
-        console.log("put ", property, value)
         this.cache[property] = value
     }
 
