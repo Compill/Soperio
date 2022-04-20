@@ -1,4 +1,5 @@
 import { SoperioComponent } from "@soperio/components";
+import React from "react";
 import * as ReactJSXRuntime from "react/jsx-runtime";
 import { SoperioJSX } from "./jsx-namespace";
 import { Soperio } from "./Soperio";
@@ -68,4 +69,24 @@ export function jsxs<P>(
   // return emotionJsx(type, props, key);
   // @ts-ignore
   return ReactJSXRuntime.jsxs(type, props, key);
+}
+
+export function createElement(
+  type: any,
+  props: any,
+  children?: React.ReactNode[]
+): SoperioJSX.Element
+{
+  // Basically, the idea is to use Emotion's jsx instead of React
+  // and just add the css prop to the props with the CSS we have generated
+  if (typeof type === "string")
+  {
+    // return emotionJsx(type, parseProps(props), key);
+    // @ts-ignore
+    return ReactJSXRuntime.jsx(Soperio, createSoperioProps(type, {...props, children}));
+  }
+
+  // return emotionJsx(type, props, key);
+  // @ts-ignore
+  return ReactJSXRuntime.jsx(type, {...props, children});
 }
