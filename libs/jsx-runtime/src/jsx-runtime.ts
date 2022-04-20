@@ -83,7 +83,7 @@ export function createElement(
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
-    return ReactJSXRuntime.jsx(Soperio, createSoperioProps(type, {...props, children}));
+    return ReactJSXRuntime.jsxs(Soperio, createSoperioProps(type, {...props, children}));
   }
 
   // return emotionJsx(type, props, key);

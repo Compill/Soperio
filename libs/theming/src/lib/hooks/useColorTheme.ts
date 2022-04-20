@@ -30,10 +30,10 @@ export function useColorTheme(colorTheme?: false | string | ColorTheme): ColorTh
         console.log(`[Soperio]: the color theme ${colorTheme} does not exist in your theme.`);
     }
 
-    return processTheme(indexedColorTheme) || {};
+    return processTheme(indexedColorTheme|| {});
   }
 
-  return processTheme(colorTheme);
+  return colorTheme ? processTheme(colorTheme) : colorTheme;
 }
 
 function processTheme(colorTheme: ColorTheme)
