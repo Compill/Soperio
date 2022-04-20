@@ -1,6 +1,29 @@
-import { getColor } from "@soperio/theming";
+import { getColor, ThemeCache } from "@soperio/theming";
 import { StyleFn, StyleProp } from "../CSS/utils";
 import { parseColor } from "../utils/colorUtils";
+
+// TODO : How to cache this?
+// export function colorize(cssProperty: string, alphaVarName: string): StyleFn
+// {
+//     return (value: StyleProp) =>
+//     {
+//         if (!value || value === true || typeof value === "number")
+//             return {};
+
+//         let parsedColor = getColor(value) || value
+
+//         parsedColor = parseColor(parsedColor, alphaVarName)
+
+//         return {
+//             [alphaVarName]: 1,
+//             [cssProperty]: parsedColor
+//         };
+//     }
+// }
+
+const COLORIZE_CACHE_TYPE = "colorize"
+const COLOR_CACHE_TYPE = "color"
+const ALPHACOLOR_CACHE_TYPE = "alphaColor"
 
 export function colorize(cssProperty: string, alphaVarName: string): StyleFn
 {
@@ -9,16 +32,41 @@ export function colorize(cssProperty: string, alphaVarName: string): StyleFn
         if (!value || value === true || typeof value === "number")
             return {};
 
-        let parsedColor = getColor(value) || value
+        const styleKey = `${cssProperty}${alphaVarName}${value}`
 
-        parsedColor = parseColor(parsedColor, alphaVarName)
+        const s = ThemeCache.get().get(COLORIZE_CACHE_TYPE, styleKey);
+        if (s)
+            return s
 
-        return {
-            [alphaVarName]: 1,
-            [cssProperty]: parsedColor
+        let key = `color-${value}`
+        let parsedColor = ThemeCache.get().get(COLOR_CACHE_TYPE, key);
+
+        if (!parsedColor)
+        {
+            parsedColor = getColor(value) || value
+            ThemeCache.get().put(COLOR_CACHE_TYPE, key, parsedColor);
+        }
+
+        key = `alphacolor-${value}${alphaVarName}`
+        let alphaColor = ThemeCache.get().get(ALPHACOLOR_CACHE_TYPE, key); 
+
+        if (!alphaColor)
+        {
+            alphaColor = parseColor(parsedColor, alphaVarName)
+            ThemeCache.get().put(ALPHACOLOR_CACHE_TYPE, key, alphaColor);
+        }
+
+        const style = {
+            // [alphaVarName]: 1,
+            [cssProperty]: alphaColor
         };
+
+        ThemeCache.get().put(COLORIZE_CACHE_TYPE, styleKey, style);
+
+        return style
     }
 }
+
 
 // export function parseColor(value: string, alphaCSSVarName: string)
 // {

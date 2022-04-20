@@ -8,7 +8,6 @@ export default function Page({ ...props })
 
   function handleClick(e: any)
   {
-    console.log("click");
     // console.log("click", e)
   }
 
@@ -16,7 +15,6 @@ export default function Page({ ...props })
   {
 
     setChecked(!checked);
-    console.log("change", e);
   }, [checked, setChecked])
   
   return (

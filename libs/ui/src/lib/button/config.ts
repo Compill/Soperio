@@ -1,4 +1,4 @@
-import { ColorTheme, isDark } from "@soperio/react";
+import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config = (theme: ColorTheme, darkMode: boolean) =>
@@ -54,7 +54,8 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         {
           bgColor: /*darkMode ? "#ff00ff" : */theme.default,
           hover_bgColor: theme.defaultHover,
-          textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+          textColor: darkMode ? theme.textDark1 : theme.textLight1,//(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+          hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           outline: "none",
           border: "0",
           stateSelected:
@@ -73,7 +74,8 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           },
           stateSelectedDisabled:
           {
-            bgColor: theme.defaultActive
+            bgColor: theme.defaultActive,
+            hover_bgColor: theme.defaultActive,
           }
         },
         light:
@@ -86,17 +88,17 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           textColor: darkMode ? theme.textDark4 : theme.defaultActive,
           hover_bgColor: theme.default,
           hover_bgOpacity: "100",
-          hover_textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+          hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           stateSelected:
           {
             bgColor: theme.defaultActive,
-            textColor: isDark(theme.defaultActive) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+            textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.defaultActive) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
             hover_bgColor: theme.defaultActive,
           },
           stateDisabled:
           {
             bgOpacity: "5",
-            // hover_bgOpacity: "5",
+            hover_bgOpacity: "5",
             textColor: theme.defaultActive,
             hover_textColor: theme.defaultActive,
             textOpacity: "50",
@@ -138,11 +140,11 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           borderColor: theme.default,
           textColor: theme.default,
           hover_bgColor: theme.default,
-          hover_textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+          hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           stateSelected:
           {
             bgColor: theme.default,
-            textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
+            textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           },
           stateDisabled:
           {

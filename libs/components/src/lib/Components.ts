@@ -59,6 +59,12 @@ export interface Components
         shape: "square" | "default" | "circle";
         dotSize?: "sm" | "md" | "lg";
     },
+    "Soperio.Scrollable":
+    {
+        size: "sm" | "md" | "lg" | "xl" | "x2";
+        variant: "default" | "solid" | "underline";
+        corners: "square" | "default" | "pill";
+    },
     "Soperio.Select":
     {
         size: "sm" | "md" | "lg" | "xl" | "x2";

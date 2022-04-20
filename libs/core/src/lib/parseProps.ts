@@ -1,10 +1,11 @@
 import { css as emotionCss } from "@emotion/react";
 import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
 import murmurhash from "murmurhash";
-import { getThemeStyle } from "@soperio/theming";
+import { getThemeStyle, ThemeCache } from "@soperio/theming";
 import { SoperioComponent } from "@soperio/components"
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
+const CACHE_TYPE = "prop"
 
 function parseRules(css: Record<string, string | any>, wrap = true): string
 {
@@ -99,7 +100,17 @@ export function parseProps<P extends SoperioComponent>(props: P)
         }
       });
 
-      Object.assign(current, CSSPropsMap[propName](newProps[prop]));
+      const propValue = newProps[prop]
+      const key = `${propName}${propValue}`
+      let parsed = ThemeCache.get().get(CACHE_TYPE, key)
+
+      if (!parsed)
+      {
+        parsed = CSSPropsMap[propName](newProps[prop])
+        ThemeCache.get().put(CACHE_TYPE, key, parsed)
+      }
+
+      Object.assign(current, parsed);
 
       // css = { ...css, ...style };
       delete newProps[prop];

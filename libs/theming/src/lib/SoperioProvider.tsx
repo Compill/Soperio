@@ -6,6 +6,7 @@ import { useSetDarkModeConfig } from "./hooks/useDarkMode";
 import { Theme } from "./Theme";
 import { useSetDirection } from "./hooks/useDirection";
 import { useSetTheme } from "./hooks/useTheme";
+import { ThemeCache } from "./ThemeCache";
 
 
 // We could extend from ParentComponent but we would have a circular
@@ -60,6 +61,7 @@ export function SoperioProvider({
       setTheme(theme);
       setDarkModeConfig(darkMode || theme.darkMode);
       setDirection(direction || theme.direction || "ltr");
+      ThemeCache.get().clear()
     }
   }, [theme, setTheme, darkMode, setDarkModeConfig, direction, setDirection]);
 

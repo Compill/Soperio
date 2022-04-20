@@ -15,22 +15,17 @@ export default function Page({ ...props })
 
   function handleClick(e: any)
   {
-    console.log("click");
     // console.log("click", e)
   }
 
   function handleChange(e: any)
   {
-    console.log("change");
     setChecked(!checked);
-    console.log("change", e);
   }
 
   function handleRadioChange(e: any)
   {
-    console.log("change");
     setRadioChecked(!radioChecked);
-    console.log("change", e);
   }
 
   return (

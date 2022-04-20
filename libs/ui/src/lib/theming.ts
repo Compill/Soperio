@@ -6,6 +6,7 @@ import checkboxConfig from "./checkbox/config"
 import dividerConfig from "./divider/config"
 import inputConfig from "./input/config"
 import radioConfig from "./radio/config"
+import scrollableConfig from "./scrollable/config"
 import selectConfig from "./select/config"
 import spinnerConfig from "./spinner/config"
 import switchConfig from "./switch/config"
@@ -20,6 +21,7 @@ export const theming = {
     "Soperio.Divider": dividerConfig,
     "Soperio.Input": inputConfig,
     "Soperio.Radio": radioConfig,
+    "Soperio.Scrollable": scrollableConfig,
     "Soperio.Select": selectConfig,
     "Soperio.Switch": switchConfig,
     "Soperio.Spinner": spinnerConfig,
