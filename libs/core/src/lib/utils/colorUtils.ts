@@ -4,7 +4,8 @@ const SHORT_HEX = /^#([a-f\d])([a-f\d])([a-f\d])([a-f\d])?$/i;
 const VALUE = `(?:\\d+|\\d*\\.\\d+)%?`;
 const SEP = `(?:\\s*,\\s*|\\s+)`;
 const ALPHA_SEP = `\\s*[,/]\\s*`;
-const RGB_HSL = new RegExp(`^(rgb|hsl)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`);
+const RGB = new RegExp(`^(rgb)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`);
+const HSL = new RegExp(`^(hsl)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`);
 
 
 export function parseColor(value: string, alphaCSSVarName?: string): string
@@ -53,7 +54,18 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
         return `rgba(${r}, ${g}, ${b}, ${a})`
     }
 
-    const match = value.match(RGB_HSL);
+    const rgb = value.match(RGB);
+
+    if (rgb !== null)
+    {
+        const h = rgb[2]
+        const s = rgb[3]
+        const l = rgb[4]
+        const a = rgb[5] ? rgb[5] : alpha;
+        return `rgba(${h}, ${s}, ${l}, ${a})`
+    }
+
+    const match = value.match(HSL);
 
     if (match !== null)
     {

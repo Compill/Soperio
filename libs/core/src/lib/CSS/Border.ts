@@ -43,7 +43,7 @@ function borderEndColor(value: any)
 
 export const BorderMapping: StyleProps =
 {
-    rounded: css("border-radius", "border.radius"),
+    rounded: css("border-radius", "border.radius"), // TODO generate the 4 props instead of the global one. Do the same for margin & padding
     roundedT: css(["border-top-left-radius", "border-top-right-radius"], "border.radius"),
     roundedB: css(["border-bottom-left-radius", "border-bottom-right-radius"], "border.radius"),
     roundedS: direction(["border-top-left-radius", "border-bottom-left-radius"], ["border-top-right-radius", "border-bottom-right-radius"], "border.radius"),

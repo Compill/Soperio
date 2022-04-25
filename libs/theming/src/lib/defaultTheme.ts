@@ -482,11 +482,11 @@ export const defaultTheme: Theme = {
       "text-color-inverse-disabled": "coolGray-600",
 
       // Light background colors if light theme, dark colors if dark theme
-      "bg-color-1": "coolGray-500",
-      "bg-color-2": "coolGray-600",
+      "bg-color-1": "coolGray-900",
+      "bg-color-2": "coolGray-800",
       "bg-color-3": "coolGray-700",
-      "bg-color-4": "coolGray-800",
-      "bg-color-5": "coolGray-900",
+      "bg-color-4": "coolGray-600",
+      "bg-color-5": "coolGray-500",
       // Ex: the backround color of a disabled text input
       "bg-color-disabled": "coolGray-500",
       // Used to separate sections of your app

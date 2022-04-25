@@ -29,7 +29,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         sm: {
           switch: {
             w: "38px",
-            h: "14px",
           },
           track: {
             w: "38px",
@@ -46,7 +45,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         md: {
           switch: {
             w: "44px",
-            h: "20px",
           },
           track: {
             w: "44px",
@@ -64,7 +62,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         lg: {
           switch: {
             w: "52px",
-            h: "28px",
           },
           track: {
             w: "52px",
@@ -82,7 +79,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         xl: {
           switch: {
             w: "52px",
-            h: "28px",
           },
           track: {
             w: "52px",
@@ -100,7 +96,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         x2: {
           switch: {
             w: "52px",
-            h: "28px",
           },
           track: {
             w: "52px",
@@ -113,9 +108,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           label: {
             
           },
-
         },
-        
       },
       variant:
       {
