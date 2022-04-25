@@ -27,7 +27,7 @@ export interface Typography
   textTransform?: false | "uppercase" | "lowercase" | "capitalize" | "normal-case",
   textOverflow?: false | "truncate" | "overflow-ellipsis" | "overflow-clip",
   verticalAlign?: false | "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
-  whitespace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
+  whiteSpace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
   wordBreak?: false | "normal" | "words" | "all",
   textColumns?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">,
   /**

@@ -16,6 +16,7 @@ import Switch from "./Switch";
 import Avatar from "./Avatar";
 import List from "./List";
 import Scrollable from "./Scrollable";
+import { Test } from "./Test";
 
 export function Content()
 {
@@ -41,6 +42,7 @@ export function Content()
         <Button onClick={() => setState(13)}>Avatar</Button>
         <Button onClick={() => setState(14)}>List</Button>
         <Button onClick={() => setState(15)}>Scrollable</Button>
+        <Button onClick={() => setState(16)}>Test</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
         {state === 1 && <ButtonPage />}
@@ -59,6 +61,7 @@ export function Content()
         {state === 13 && <Avatar/>}
         {state === 14 && <List/>}
         {state === 15 && <Scrollable/>}
+        {state === 16 && <Test />}
       </div>
     </>
   );

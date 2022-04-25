@@ -8,6 +8,8 @@ function spaceX(value: any): Style
     const dimension = getThemeStyle("spacing.positiveNegative", value) || value;
     const direction = getDirection();
 
+    // TODO if we set spaceX and spaceY at the time,
+    // ">:not([hidden])~:not([hidden])" will be overwritten by the latter
     return {
         "--so-space-x-reverse": 0,
         ">:not([hidden])~:not([hidden])": {

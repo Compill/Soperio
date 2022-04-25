@@ -23,20 +23,20 @@ export interface Border
     borderEColor?: false | Color,
     // border top, bottom, ... color. ex: borderTColor
     borderOpacity?: false | Opacity,
-    borderStyle?: false | "solid" | "dashed" | "dotter" | "double" | "none",
+    borderStyle?: false | "solid" | "dashed" | "dotted" | "double" | "none",
     /**
      * true is equal to (inexisting, default) value 1
      */
-    divideX?: true | false | "0" | "2" | "4" | "8",
+    divideX?: true | false | BorderWidth,
     /**
      * true is equal to (inexisting, default) value 1
      */
-    divideY?: true | false | "0" | "2" | "4" | "8",
+    divideY?: true | false | BorderWidth,
     divideXReverse?: boolean,
     divideYReverse?: boolean,
     divideColor?: false | string,
     divideOpacity?: false | Opacity,
-    divideStyle?: false | "solid" | "dashed" | "dotter" | "double" | "none",
+    divideStyle?: false | "solid" | "dashed" | "dotted" | "double" | "none",
     /**
      * true is equal to (inexisting, default) value 3
      */

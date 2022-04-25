@@ -80,7 +80,7 @@ export const TypographyMapping: StyleProps =
   textTransform: css("text-transform"),
   textOverflow: textOverflow,
   verticalAlign: css("vertical-align"),
-  whitespace: css("white-space"),
+  whiteSpace: css("white-space"),
   wordBreak: wordBreak,
   textColumns: css("column-count"),
   textColumnsGap: css("gap", "spacing.positive"),

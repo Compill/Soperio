@@ -68,7 +68,7 @@ export function SoperioProvider({
 
   return (
     // TODO --so should be dynamic
-    <div dir={direction || theme.direction || "ltr"} style={{ color: "rgb(var(--so-text-color-1))" }} /*textColor="root.text-color-1"*/ css={{ "--so-filter-blur": "#FF0000" }} {...props}>
+    <div dir={direction || theme.direction || "ltr"} style={{ color: "rgb(var(--so-text-color-1))" }} /*textColor="root.text-color-1"*/ {...props}>
       <ThemeProvider theme={theme} >
         {resetCss ? <NormalizeCSS /> : null}
         {/* TODO Implement GlobalStyle https://github.com/chakra-ui/chakra-ui/blob/f77fd9999ec1105cf846cd830019d2c3ba5a0f4e/packages/system/src/providers.tsx */}

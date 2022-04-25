@@ -3,6 +3,8 @@ import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, cssValueFn, direction, Style, StyleProps } from "./utils";
 
+// TODO If we use divideX or divideY and divideColor at the same time
+// "> * + *" will be overwritten by the latter
 function divideX(value: any): Style
 {
     const dimension = value === true ? "1px" : (getThemeStyle("border.width", value) || value)
@@ -25,8 +27,19 @@ function divideY(value: any): Style
         "--so-divide-y-reverse": 0,
         "> * + *":
         {
-            "border-top-width": `calc(${dimension} * var(--so-divide-y-reverse))`,
-            "border-bottom-width": `calc(${dimension} * calc(1 - var(--so-divide-y-reverse)))`
+            "border-top-width": `calc(${dimension} * calc(1 - var(--so-divide-y-reverse)))`,
+            "border-bottom-width": `calc(${dimension} * var(--so-divide-y-reverse))`
+        }
+    };
+}
+
+function divideColor(value: any): Style
+{
+    return {
+        "--so-divide-opacity": 0,
+        "> * + *": 
+        {
+            ...colorize("border-color", "--so-divide-opacity")(value)
         }
     };
 }
@@ -68,7 +81,7 @@ export const BorderMapping: StyleProps =
     divideY: divideY,
     divideXReverse: cssValueFn("--so-divide-x-reverse", 1),
     divideYReverse: cssValueFn("--so-divide-y-reverse", 1),
-    divideColor: colorize("border-color", "--so-divide-opacity"),
+    divideColor: divideColor,
     divideOpacity: opacity("--so-divide-opacity"),
     divideStyle: css("border-style"),
     // ringColor: "ring",

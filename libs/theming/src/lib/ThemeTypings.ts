@@ -3,6 +3,7 @@ import ThemeBorder from "./Core/Border";
 import ThemeBreakpoints from "./Core/Breakpoints";
 import ThemeColors from "./Core/Colors";
 import ThemeEffects from "./Core/Effects";
+import ThemeFilters from "./Core/Filters";
 import ThemeFlexbox from "./Core/Flexbox";
 import ThemeInteractivity from "./Core/Interactivity";
 import ThemeOpacity from "./Core/Opacity";
@@ -34,26 +35,7 @@ export interface ThemeTypings extends ThemeOpacity
   borders: ThemeBorder,
   effects: ThemeEffects,
   flexbox: ThemeFlexbox,
-  filters: {
-    blur: StringKeyValueObject,
-    brightness: StringKeyValueObject,
-    contrast: StringKeyValueObject,
-    dropShadow: StringKeyValueObject,
-    grayscale: StringKeyValueObject,
-    hueRotate: StringKeyValueObject,
-    invert: StringKeyValueObject,
-    saturate: StringKeyValueObject,
-    sepia: StringKeyValueObject,
-    backdropBlur: StringKeyValueObject,
-    backdropBrightness: StringKeyValueObject,
-    backdropContrast: StringKeyValueObject,
-    backdropGrayscale: StringKeyValueObject,
-    backdropHueRotate: StringKeyValueObject,
-    backdropInvert: StringKeyValueObject,
-    backdropOpacity: StringKeyValueObject,
-    backdropSaturate: StringKeyValueObject,
-    backdropSepia: StringKeyValueObject,
-  };
+  filters: ThemeFilters,
   interactivity: ThemeInteractivity,
   sizing: ThemeSizing,
   spacing: ThemeSpacing,
