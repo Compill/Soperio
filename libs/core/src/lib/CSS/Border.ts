@@ -56,7 +56,7 @@ function borderEndColor(value: any)
 
 export const BorderMapping: StyleProps =
 {
-    rounded: css("border-radius", "border.radius"), // TODO generate the 4 props instead of the global one. Do the same for margin & padding
+    rounded: css(["border-top-left-radius", "border-top-right-radius", "border-bottom-left-radius", "border-bottom-right-radius"] , "border.radius"),
     roundedT: css(["border-top-left-radius", "border-top-right-radius"], "border.radius"),
     roundedB: css(["border-bottom-left-radius", "border-bottom-right-radius"], "border.radius"),
     roundedS: direction(["border-top-left-radius", "border-bottom-left-radius"], ["border-top-right-radius", "border-bottom-right-radius"], "border.radius"),
@@ -65,7 +65,7 @@ export const BorderMapping: StyleProps =
     roundedTE: direction("border-top-right-radius", "border-top-left-radius", "border.radius"),
     roundedBS: direction("border-bottom-left-radius", "border-bottom-right-radius", "border.radius"),
     roundedBE: direction("border-bottom-right-radius", "border-bottom-left-radius", "border.radius"),
-    border: css("border-width", "border.width"),
+    border: css(["border-top-width", "border-bottom-width", "border-left-width", "border-right-width"], "border.width"),
     borderT: css("border-top-width", "border.width"),
     borderB: css("border-bottom-width", "border.width"),
     borderS: direction("border-left-width", "border-right-width", "border.width"),

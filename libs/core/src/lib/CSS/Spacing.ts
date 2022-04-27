@@ -53,14 +53,14 @@ export function directionSpacing(cssPropertyStart: string, cssPropertyEnd: strin
 
 
 export const SpacingMapping: StyleProps = {
-    p: spacing("padding", "spacing.positive"),
+    p: spacing(["padding-top", "padding-bottom", "padding-left", "padding-right"], "spacing.positive"),
     pt: spacing("padding-top", "spacing.positive"),
     pb: spacing("padding-bottom", "spacing.positive"),
     ps: directionSpacing("padding-left", "padding-right", "spacing.positive"),
     pe: directionSpacing("padding-right", "padding-left", "spacing.positive"),
     px: spacing(["padding-left", "padding-right"], "spacing.positive"),
     py: spacing(["padding-top", "padding-bottom"], "spacing.positive"),
-    m: spacing("margin", "spacing.positiveNegative"),
+    m: spacing(["margin-top", "margin-bottom", "margin-left", "margin-right"], "spacing.positiveNegative"),
     mt: spacing("margin-top", "spacing.positiveNegative"),
     mb: spacing("margin-bottom", "spacing.positiveNegative"),
     ms: directionSpacing("margin-left", "margin-right", "spacing.positiveNegative"),
