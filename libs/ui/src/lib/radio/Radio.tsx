@@ -29,7 +29,6 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
     variant = "default",
     dotSize = "lg",
     shape = "default",
-    checked,
     config,
     ...props
   }, ref) =>
@@ -51,14 +50,13 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
           overflow="hidden"
           p="0"
           position="absolute"
-          whitespace="nowrap"
+          whiteSpace="nowrap"
           // TODO CSS prop
           style={{
             clip: "rect(0 0 0 0)",
             clipPath: "inset(50%)"
           }}
           type="radio"
-          defaultChecked={checked}
           {...inputProps}
           ref={ref}
         />
@@ -67,18 +65,18 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
           color="white"
           display="inline-block"
           transition={firstRender ? "none" : "all"}
-          easing={checked ? "out" : "linear"}
+          easing={props.checked ? "out" : "linear"}
           duration="300"
           rounded="full"
           {...styles}
         >
-          {checked && (
+          {props.checked && (
             <React.Fragment>
               {/* TODO Use multipart component properties to set width & height on svg */}
               {/* Use circle svg if shape is circle, square svg if shape is square */}
-              {checked && dotSize === "sm" && <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,10A2,2 0 0,0 10,12C10,13.11 10.9,14 12,14C13.11,14 14,13.11 14,12A2,2 0 0,0 12,10Z" /></svg>}
-              {checked && dotSize === "md" && <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" /></svg>}
-              {checked && dotSize === "lg" && <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 6A6 6 0 1 1 6 12A6 6 0 0 1 12 6M6 12A6 6 0 0 0 15Z" /></svg>}
+              {props.checked && dotSize === "sm" && <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,10A2,2 0 0,0 10,12C10,13.11 10.9,14 12,14C13.11,14 14,13.11 14,12A2,2 0 0,0 12,10Z" /></svg>}
+              {props.checked && dotSize === "md" && <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" /></svg>}
+              {props.checked && dotSize === "lg" && <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 6A6 6 0 1 1 6 12A6 6 0 0 1 12 6M6 12A6 6 0 0 0 15Z" /></svg>}
             </React.Fragment>
           )}
         </div>

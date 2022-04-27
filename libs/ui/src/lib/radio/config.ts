@@ -12,7 +12,9 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         {
           px: "2",
           py: "1.5",
-          fontSize: "sm"
+          fontSize: "sm",
+          w: "3",
+          h: "3"
         },
         "md":
         {

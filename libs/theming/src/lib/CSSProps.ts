@@ -74,7 +74,7 @@ const svg = ["fillCurrent", "strokeCurrent", "strokeWidth"];
 const table = ["borderCollapse", "tableLayout"];
 const transform = ["transform", "transformOrigin", "scale", "scaleX", "scaleY", "scaleZ", "rotate", "rotateX", "rotateY", "rotateZ", "skewX", "skewY", "translateX", "translateY", "translateZ"];
 const transitions = ["transition", "duration", "easing", "delay", "animate"];
-const typography = ["font", "fontSize", "italic", "notItalic", "fontWeight", "numericFontVariant", "letterSpacing", "lineHeight", "listStyle", "listStylePosition", "placeholderColor", "placeholderOpacity", "textAlign", "textColor", "textOpacity", "textDecoration", "textTransform", "textOverflow", "verticalAlign", "whitespace", "wordBreak", "textColumns", "textColumnsGap"];
+const typography = ["font", "fontSize", "italic", "notItalic", "fontWeight", "numericFontVariant", "letterSpacing", "lineHeight", "listStyle", "listStylePosition", "placeholderColor", "placeholderOpacity", "textAlign", "textColor", "textOpacity", "textDecoration", "textTransform", "textOverflow", "verticalAlign", "whiteSpace", "wordBreak", "textColumns", "textColumnsGap"];
 
 const hover = [ "top", "bottom", "start", "end", "bgColor", "bgOpacity", "borderColor", "borderOpacity", "shadow", "opacity", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "translateX", "translateY", "translateZ", "skewX", "skewY", "textColor", "textDecoration", "textOpacity", "transition", "duration", "easing", "delay", "animate" ]
 

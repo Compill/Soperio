@@ -20,15 +20,9 @@ export function Test(/*{ label, mx, ...props }: TestProps*/)
     //   <div>List Item 6</div>
     // </div>
 
-    <div 
-      bgColor="sky-500"
-      sm_bgColor="purple-500"
-      md_bgColor="emerald-500"
-      lg_bgColor="pink-500"
-      xl_bgColor="orange-500"
-      xxl_bgColor="red-500"
-      textColor="white">
-      This is some responsive text block
+    <div spaceX="3">
+      <Button>Button</Button>
+      <Button selected>Button</Button>
     </div>
   )
 }

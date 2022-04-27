@@ -26,7 +26,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     corners,
     theme = "default",
     config,
-    selected = false,
     onMouseDown,
     onClick,
     ...props
