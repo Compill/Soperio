@@ -7,10 +7,14 @@ import { SoperioComponent } from "@soperio/components"
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 const CACHE_TYPE = "prop"
 
+const breakpointIndex = {
+  sm: "0",
+  md: "1",
+  lg: "2",
+  xl: "3",
+  xxl: "4",
+}
 
-// TODO CSS media query rule insertion is broken
-// They are not inserted in ascending order (nor descending by the way)
-// So the result is messy
 function parseRules(css: Record<string, string | any>, wrap = true): string
 {
   let content = "";
@@ -18,7 +22,7 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
   if (css)
   {
     const pseudos: string[] = [];
-    const mediaQueries: string[] = [];
+    const mediaQueries: Record<string, string> = {};
 
     Object.keys(css).sort().forEach(key =>
     {
@@ -29,7 +33,8 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
       else if (key.startsWith("media-"))
       {
         const breakpoint = key.split("-")[1];
-        mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
+        mediaQueries[breakpointIndex[breakpoint as keyof typeof breakpointIndex]] = `@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`
+        // mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
       }
       else
       {
@@ -49,7 +54,8 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
       content += `${wrap ? "\n\n" : ""}${pseudos.join("\n\n")}`;
 
     if (mediaQueries)
-      content += `${wrap ? "\n\n" : ""}${mediaQueries.join("\n\n")}`;
+      // Make sure mediaQueries are inserted in the right order, from  smaller to larger breakpoint
+      content += `${wrap ? "\n\n" : ""}${Object.keys(mediaQueries).sort().map(key => mediaQueries[key as keyof typeof mediaQueries]).join("\n\n")}`;
   }
 
   return content;
