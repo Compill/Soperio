@@ -106,8 +106,6 @@ const variants = props
     .concat(buildProps("hover", hover))
     .concat(buildProps("focus", focus))
 
-
-// TODO Add variants (focus, hover)
 export const CSSPropKeys = variants
     .concat(buildProps("sm", variants))
     .concat(buildProps("md", variants))

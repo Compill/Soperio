@@ -214,8 +214,6 @@ const defaultColorTheme: ColorTheme = {
   shadow: "#000000",
 }
 
-
-// TODO Rename 2xl, 3xl, ... to x2, x3, x4, ...
 export const defaultTheme: Theme = {
   direction: "ltr",
 
@@ -517,8 +515,8 @@ export const defaultTheme: Theme = {
       md: '0.375rem',
       lg: '0.5rem',
       xl: '0.75rem',
-      'xxl': '1rem',
-      '3xl': '1.5rem',
+      x2: '1rem',
+      x3: '1.5rem',
       full: '9999px',
     },
     width: {
@@ -818,11 +816,11 @@ export const defaultTheme: Theme = {
       md: '28rem',
       lg: '32rem',
       xl: '36rem',
-      '2xl': '42rem',
-      '3xl': '48rem',
-      '4xl': '56rem',
-      '5xl': '64rem',
-      '6xl': '72rem',
+      x2: '42rem',
+      x3: '48rem',
+      x4: '56rem',
+      x5: '64rem',
+      x6: '72rem',
       full: '100%',
       ...prefix(breakpoints, "screen-"),
     },
