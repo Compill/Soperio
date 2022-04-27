@@ -562,7 +562,7 @@ export const defaultTheme: Theme = {
       max: 'max-content',
       fr: 'minmax(0, 1fr)',
     },
-    gridColumn: {
+    gridColumnSpan: {
       auto: 'auto',
       'span-1': 'span 1 / span 1',
       'span-2': 'span 2 / span 2',
@@ -578,7 +578,7 @@ export const defaultTheme: Theme = {
       'span-12': 'span 12 / span 12',
       'span-full': '1 / -1',
     },
-    gridRow: {
+    gridRowSpan: {
       auto: 'auto',
       'span-1': 'span 1 / span 1',
       'span-2': 'span 2 / span 2',

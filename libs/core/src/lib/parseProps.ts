@@ -7,6 +7,10 @@ import { SoperioComponent } from "@soperio/components"
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 const CACHE_TYPE = "prop"
 
+
+// TODO CSS media query rule insertion is broken
+// They are not inserted in ascending order (nor descending by the way)
+// So the result is messy
 function parseRules(css: Record<string, string | any>, wrap = true): string
 {
   let content = "";

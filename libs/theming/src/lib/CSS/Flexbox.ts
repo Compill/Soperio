@@ -1,5 +1,5 @@
-import { Flex, GridAutoColumns, GridAutoRows, GridColumn, GridRow, GridTemplateColumns, GridTemplateRows, Order, SpacingPositive } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
+import { Flex, GridAutoColumns, GridAutoRows, GridColumnSpan, GridRowSpan, GridTemplateColumns, GridTemplateRows, Order, SpacingPositive } from "../CSSTypes";
 
 export interface Flexbox
 {
@@ -11,19 +11,17 @@ export interface Flexbox
   flexGrow?: true | string | number,
   flexShrink?: true | string | number,
   order?: false | Order | number,
-  gridCols?: false | GridColumn | number,
-  colSpan?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "full"> | number,
+  gridCols?: false | GridColumnSpan | number,
+  colSpan?: false | GridTemplateColumns | number,
   colStart?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "13" | "auto"> | number,
   colEnd?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "13" | "auto"> | number,
-  gridRows?: false | GridRow | number,
-  rowSpan?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "full"> | number,
+  gridRows?: false | GridTemplateRows | number,
+  rowSpan?: false | GridRowSpan | number,
   rowStart?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
   rowEnd?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
   gridFlow?: false | "row" | "col" | "dense" | "row dense" | "col dense",
   gridAutoCols?: false | GridAutoColumns,
   gridAutoRows?: false | GridAutoRows,
-  gridTemplateCols?: false | GridTemplateColumns,
-  gridTemplateRows?: false | GridTemplateRows,
   gap?: false | SpacingPositive,
   gapX?: false | SpacingPositive,
   gapY?: false | SpacingPositive,
