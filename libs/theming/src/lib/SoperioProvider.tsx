@@ -11,7 +11,7 @@ import { ThemeCache } from "./ThemeCache";
 
 // We could extend from ParentComponent but we would have a circular
 // dependency with components library
-interface SoperioProviderProps// extends ParentComponent
+export interface SoperioProviderProps// extends ParentComponent
 {
   resetCss?: boolean,
   theme?: Theme,
