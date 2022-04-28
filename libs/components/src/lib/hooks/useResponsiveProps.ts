@@ -7,7 +7,7 @@ export function useResponsiveProp<T extends SoperioComponent>(responsiveProp: ke
 {
     const breakpoint = useBreakpoint() // Get current breakpoint
 
-    let val = undefined
+    let val: T[keyof T] | undefined = undefined
 
     if (!breakpoint)
     {
@@ -47,7 +47,7 @@ export function useResponsiveProps<T extends SoperioComponent>(responsiveProps: 
 
     return responsiveProps.map(prop =>
     {
-        let val = undefined
+        let val: T[keyof T] | undefined = undefined
 
         if (!breakpoint)
         {

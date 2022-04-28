@@ -30,12 +30,12 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(({
 }: SwitchProps, ref) => {
   const firstRender = useFirstRender();
 
-  const preventFocus = React.useCallback((event) => {
+  const preventFocus = React.useCallback((event:any) => {
     event.preventDefault();
     onMouseDown && onMouseDown(event);
   }, [onMouseDown]);
 
-  const looseFocus = React.useCallback((event) => {
+  const looseFocus = React.useCallback((event:any) => {
     (document.activeElement as HTMLElement).blur();
     onClick && onClick(event);
   }, [onClick]);

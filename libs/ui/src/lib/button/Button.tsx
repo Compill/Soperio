@@ -32,13 +32,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 }: ButtonProps, ref) =>
 {
     const firstRender = useFirstRender();
-    const preventFocus = React.useCallback((event) =>
+    const preventFocus = React.useCallback((event:any) =>
     {
         event.preventDefault();
         onMouseDown && onMouseDown(event);
     }, [onMouseDown]);
 
-    const looseFocus = React.useCallback((event) =>
+    const looseFocus = React.useCallback((event:any) =>
     {
         (document.activeElement as HTMLElement).blur();
         onClick && onClick(event);

@@ -68,7 +68,7 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
 
   const colorTheme = useColorTheme(theme);
 
-  let config = null
+  let config
 
   if (customConfig)
   {

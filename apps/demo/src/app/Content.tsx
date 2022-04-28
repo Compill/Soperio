@@ -4,7 +4,6 @@ import Badge from "./Badge";
 import ButtonPage from "./Button";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
-import Form from "./Formik";
 import Input from "./Input";
 import Radio from "./Radio";
 import Select from "./Select";
@@ -55,7 +54,6 @@ export function Content()
         {state === 8 && <TextArea />}
         {state === 9 && <Spinner />}
         {state === 10 && <TextAlign />}
-        {state === 10 && <Form />}
         {state === 11 && <Divider />}
         {state === 12 && <Switch/>}
         {state === 13 && <Avatar/>}

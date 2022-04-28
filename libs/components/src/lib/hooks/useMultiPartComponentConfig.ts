@@ -55,7 +55,7 @@ export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfi
 
   const colorTheme = useColorTheme(theme);
 
-  let config = null
+  let config
 
   if (customConfig)
   {

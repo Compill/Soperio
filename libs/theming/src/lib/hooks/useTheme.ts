@@ -42,7 +42,7 @@ function removeListener(listener: ThemeListener)
 export function useTheme()
 {
     const [theme, setTheme] = React.useState(themeInternal);
-    const cb = React.useCallback((theme) => setTheme(theme), [setTheme]);
+    const cb = React.useCallback((theme: Theme) => setTheme(theme), [setTheme]);
 
     React.useEffect(() =>
     {
@@ -59,7 +59,7 @@ export function useTheme()
 
 export function useSetTheme()
 {
-    const cb = React.useCallback((theme) => setThemeInternal(theme), []);
+    const cb = React.useCallback((theme:Theme) => setThemeInternal(theme), []);
 
     return cb;
 }
