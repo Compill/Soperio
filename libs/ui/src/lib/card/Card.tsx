@@ -47,7 +47,7 @@ const CardContainer = React.forwardRef<HTMLDivElement, CardProps>(({
   );
 });
 
-interface CardHeaderProps extends SoperioComponent, ParentComponent
+export interface CardHeaderProps extends SoperioComponent, ParentComponent
 {
   showBorder?: boolean;
   borderWidth?: OrString<"full" | "padded">;
@@ -82,7 +82,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({
   );
 });
 
-interface CardBodyProps extends SoperioComponent, ParentComponent
+export interface CardBodyProps extends SoperioComponent, ParentComponent
 {
   scrollable?: boolean, // If fixed height
 };
@@ -98,7 +98,7 @@ export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ child
   );
 });
 
-interface CardFooterProps extends SoperioComponent, ParentComponent
+export interface CardFooterProps extends SoperioComponent, ParentComponent
 {
   showBorder?: boolean;
   borderWidth?: OrString<"full" | "padded">;

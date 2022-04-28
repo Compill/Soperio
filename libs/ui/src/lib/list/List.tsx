@@ -46,13 +46,13 @@ const List = React.forwardRef<HTMLUListElement, ListProps>(({
     );
 });
 
-interface ListItemProps extends SoperioComponent, ParentComponent
+export interface ListItemProps extends SoperioComponent, ParentComponent
 {
     showBorder?: boolean;
     borderWidth?: OrString<"full" | "padded">;
 };
 
-const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
+export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
     showBorder,
     borderWidth,
     children,
@@ -78,7 +78,7 @@ export interface ListItemIconProps extends ComponentProps, ParentComponent
 
 }
 
-const ListItemIcon = React.forwardRef<HTMLSpanElement, ListItemIconProps>((
+export const ListItemIcon = React.forwardRef<HTMLSpanElement, ListItemIconProps>((
 {
     children,
     ...props 
