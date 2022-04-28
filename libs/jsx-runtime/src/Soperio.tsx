@@ -8,7 +8,7 @@ export const Soperio = React.forwardRef((props:any, ref) =>
 {
   const type = props[SOPERIO_TYPE];
 
-  const newProps = typeof type === "string" ? parseProps(props) : props;
+  const newProps = typeof type === "string" ? parseProps(props) : {...props};
   newProps.ref = ref;
 
   return EmotionJSX(type, newProps, newProps.children);

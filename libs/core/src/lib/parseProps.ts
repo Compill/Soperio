@@ -141,7 +141,7 @@ export function parseProps<P extends SoperioComponent>(props: P)
     return newProps;
   }
 
-  return props;
+  return {...props};
 }
 
 /**
