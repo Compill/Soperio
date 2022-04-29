@@ -15,7 +15,7 @@
     "url": "https://github.com/jonathangerbaud/SoperioUI.git"
   },
   "peerDependencies": {
-    "react": "17.0.2",
-    "@emotion/react": "11.8.2"
+    "react": "^17.0.2 || ^18.0.0",
+    "@emotion/react": "11.9.0"
   }
 }

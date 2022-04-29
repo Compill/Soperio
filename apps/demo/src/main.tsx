@@ -8,7 +8,7 @@ import "@fontsource/inter/700.css";
 import "@fontsource/inter/800.css";
 import "@fontsource/inter/900.css";
 import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client'; import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './app/app';
 
 const container = document.getElementById('root')
