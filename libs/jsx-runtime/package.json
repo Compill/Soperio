@@ -1,6 +1,6 @@
 {
   "name": "@soperio/jsx-runtime",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "React CSS-IN-JS framework",
   "keywords": ["react", "ui", "framework"],
   "homepage": "https://github.com/jonathangerbaud/SoperioUI",
