@@ -13,8 +13,8 @@ function spaceX(value: any): Style
     return {
         "--so-space-x-reverse": 0,
         ">:not([hidden])~:not([hidden])": {
-          [direction ? "margin-right" : "margin-left"]: `calc(${dimension} * var(--so-space-x-reverse))`,
-          [direction ? "margin-left" : "margin-right"]: `calc(${dimension} * calc(1 - var(--so-space-x-reverse)))`
+            [direction ? "margin-right" : "margin-left"]: `calc(${dimension} * var(--so-space-x-reverse)) !important`,
+            [direction ? "margin-left" : "margin-right"]: `calc(${dimension} * calc(1 - var(--so-space-x-reverse))) !important`
         }
     };
 }
@@ -26,8 +26,8 @@ function spaceY(value: any): Style
     return {
         "--so-space-y-reverse": 0,
         ">:not([hidden])~:not([hidden])": {
-          "margin-top": `calc(${dimension} * calc(1 - var(--so-space-y-reverse)))`,
-          "margin-bottom": `calc(${dimension} * var(--so-space-y-reverse))`
+            "margin-top": `calc(${dimension} * calc(1 - var(--so-space-y-reverse))) !important`,
+            "margin-bottom": `calc(${dimension} * var(--so-space-y-reverse)) !important`
         }
     };
 }

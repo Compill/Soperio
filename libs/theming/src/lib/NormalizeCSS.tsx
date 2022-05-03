@@ -1,7 +1,5 @@
 import { Global } from "@emotion/react";
 
-// TODO Update from Tailwind v3 https://unpkg.com/tailwindcss@3.0.15/src/css/preflight.css
-
 const css = `
   /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -14,7 +12,7 @@ const css = `
   box-sizing: border-box; /* 1 */
   border-width: 0; /* 2 */
   border-style: solid; /* 2 */
-  border-color: theme('borderColor.DEFAULT', currentColor); /* 2 */
+  border-color: currentColor; /* 2 */
 }
 
 ::before,
@@ -108,7 +106,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: theme('fontFamily.mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace); /* 1 */
+  font-family:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -316,7 +314,7 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   opacity: 1; /* 1 */
-  color: theme('colors.gray.400', #9ca3af); /* 2 */
+  color: #9ca3af; /* 2 */
 }
 
 /*

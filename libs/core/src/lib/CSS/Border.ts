@@ -13,8 +13,8 @@ function divideX(value: any): Style
         "--so-divide-x-reverse": 0,
         "> * + *":
         {
-            [getDirection() ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse))`,
-            [getDirection() ? "border-left-width" : "border-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse)))`
+            [getDirection() ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse)) !important`,
+            [getDirection() ? "border-left-width" : "border-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse))) !important`
         }
     }
 }
@@ -27,8 +27,8 @@ function divideY(value: any): Style
         "--so-divide-y-reverse": 0,
         "> * + *":
         {
-            "border-top-width": `calc(${dimension} * calc(1 - var(--so-divide-y-reverse)))`,
-            "border-bottom-width": `calc(${dimension} * var(--so-divide-y-reverse))`
+            "border-top-width": `calc(${dimension} * calc(1 - var(--so-divide-y-reverse))) !important`,
+            "border-bottom-width": `calc(${dimension} * var(--so-divide-y-reverse)) !important`
         }
     };
 }
@@ -36,7 +36,7 @@ function divideY(value: any): Style
 function divideColor(value: any): Style
 {
     return {
-        "--so-divide-opacity": 0,
+        "--so-divide-opacity": 1,
         "> * + *": 
         {
             ...colorize("border-color", "--so-divide-opacity")(value)

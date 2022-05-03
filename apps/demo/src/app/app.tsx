@@ -44,7 +44,7 @@ const customTheme = extendTheme({
           default: {
             bgColor: "#000000",
             textColor: "#FF0000",
-            textSize: "24px",
+            fontSize: "24px",
           }
         }
       }

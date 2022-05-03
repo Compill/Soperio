@@ -3,6 +3,7 @@ import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
 import murmurhash from "murmurhash";
 import { getThemeStyle, ThemeCache } from "@soperio/theming";
 import { SoperioComponent } from "@soperio/components"
+import deepmerge from "deepmerge";
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 const CACHE_TYPE = "prop"
@@ -120,7 +121,10 @@ export function parseProps<P extends SoperioComponent>(props: P)
         ThemeCache.get().put(CACHE_TYPE, key, parsed)
       }
 
-      Object.assign(current, parsed);
+      // Need to merge since some rare props are generating the
+      // same objects with different css props
+      Object.assign(current, deepmerge(current, parsed));
+      // Object.assign(current, parsed);
 
       // css = { ...css, ...style };
       delete newProps[prop];
