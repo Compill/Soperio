@@ -7,6 +7,7 @@ import deepmerge from "deepmerge";
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 const CACHE_TYPE = "prop"
+const REMOVE_IF_VARIANT = "remove_if_variant"
 
 const breakpointIndex = {
   sm: "0",
@@ -118,13 +119,16 @@ export function parseProps<P extends SoperioComponent>(props: P)
       if (!parsed)
       {
         parsed = CSSPropsMap[propName](newProps[prop])
-        ThemeCache.get().put(CACHE_TYPE, key, parsed)
-      }
 
-      if (variants.length > 0 && parsed["remove_if_variant"])
-      {
-        delete parsed[parsed["remove_if_variant"]]
-        delete parsed["remove_if_variant"]
+        if (parsed[REMOVE_IF_VARIANT])
+        {
+          if( variants.length > 0)
+            delete parsed[parsed[REMOVE_IF_VARIANT]]
+
+          delete parsed[REMOVE_IF_VARIANT]
+        }
+
+        ThemeCache.get().put(CACHE_TYPE, key, parsed)
       }
 
       // Need to merge since some rare props are generating the
