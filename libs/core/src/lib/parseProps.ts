@@ -123,10 +123,8 @@ export function parseProps<P extends SoperioComponent>(props: P)
 
       if (variants.length > 0 && parsed["remove_if_variant"])
       {
-        console.log("remove qmsdfjq", prop, parsed)
         delete parsed[parsed["remove_if_variant"]]
         delete parsed["remove_if_variant"]
-        console.log("removeresult", parsed)
       }
 
       // Need to merge since some rare props are generating the
