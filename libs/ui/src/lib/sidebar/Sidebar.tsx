@@ -9,7 +9,7 @@ const DEFAULT_EASING = "in";
  *
  *
  */
-export function Sidebar({ side = "start", onClose, show = false, children, ...props }: SidebarProps)
+export function Sidebar({ side = "start", onClose, show = false, sidebarWidth, sidebarHeight, children, ...props }: SidebarProps)
 {
   const [internalShow, setInternalShow] = React.useState(false);
   const previousSide = usePrevious(side);
@@ -19,8 +19,8 @@ export function Sidebar({ side = "start", onClose, show = false, children, ...pr
   const previousDirection = usePrevious(direction);
 
   const isX = side === "start" || side === "end";
-  const width = isX ? "1/5" : "full";
-  const height = isX ? "full" : "1/5";
+  const width = isX ? (sidebarWidth ?? "1/5") : "full";
+  const height = isX ? "full" : (sidebarHeight ?? "1/5");
 
   const startDirection = (side === "start" && direction) || (side === "end" && !direction);
 

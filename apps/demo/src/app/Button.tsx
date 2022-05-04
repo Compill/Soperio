@@ -127,7 +127,7 @@ export default function Page({ ...props })
                     <Button variant="default" size="x2" block mx="auto" my="5">Default button</Button>
                     <Button variant="default" size="x2" block mx="auto" my="5">Default button</Button>
                 </div> */}
-      <Sidebar show={showDialog} side={side as Side} onClose={() => setShowDialog(false)}>
+      <Sidebar show={showDialog} side={side as Side} sidebarWidth="500px" onClose={() => setShowDialog(false)}>
         <div p="8">Hello</div>
       </Sidebar>
     </Container>
