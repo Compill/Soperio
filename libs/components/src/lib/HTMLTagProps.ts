@@ -7,7 +7,7 @@ type HTMLParentComponent<T> = HTMLComponent<T> & ParentComponent;
 
 export type HTMLAnchorProps = HTMLParentComponent<HTMLAnchorElement> & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 export type HTMLButtonProps = HTMLParentComponent<HTMLButtonElement> & React.ButtonHTMLAttributes<HTMLButtonElement>;
-export type HTMLDivProps = HTMLParentComponent<HTMLDivElement> & React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type HTMLDivProps = HTMLParentComponent<HTMLDivElement>;
 export type HTMLFormProps = HTMLParentComponent<HTMLFormElement> & React.FormHTMLAttributes<HTMLFormElement>;
 export type HTMLInputProps = React.InputHTMLAttributes<HTMLInputElement>;
 export type HTMLImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
