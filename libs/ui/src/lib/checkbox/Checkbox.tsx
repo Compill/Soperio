@@ -35,11 +35,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, shape }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props)
-
-  // TODO Fix tick
+console.log(styles);
+  // TODO Fix tick , fontsize sur span c'est ok ? passage en flex pour le dysplay
   return (
-    <div {...soperioProps}>
-      <label display="inline-block" verticalAlign="middle" userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
+    <div display="flex" flexRow  alignItems="center" {...soperioProps}>
+      <label userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
         <input
           border="0"
           h="px"
@@ -70,7 +70,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
           {props.checked && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2px"><polyline points="20 6 9 17 4 12"></polyline></svg>}
         </div>
       </label>
-      {label && <span ms="3">{label}</span>}
+      {label && <span fontSize={styles.fontSize} ms="3">{label}</span>}
     </div>
   );
 });

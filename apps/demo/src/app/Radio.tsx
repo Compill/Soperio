@@ -31,7 +31,11 @@ export default function Page({ ...props })
   return (
     <Container center size="xxl" gap="20" justifyContent="center" py="20">
       <div mb="10">
-        <Checkbox shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
+      <Checkbox size="sm" shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
+      <Checkbox size="md" shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
+      <Checkbox size="lg" shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
+      <Checkbox size="xl" shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
+      <Checkbox size="x2" shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
       </div>
 
       <div mb="10" dflex flexCol spaceY="20">

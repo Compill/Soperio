@@ -52,6 +52,11 @@ export interface Components
         variant?: "default" | "bordered";
         corners?: "default" | "square";
     },
+    "Soperio.Modal":
+    {
+        variant?: "default" | "bordered";
+        corners?: "default" | "square" | "pill";
+    },
     "Soperio.Radio":
     {
         size: "sm" | "md" | "lg" | "xl" | "x2";
