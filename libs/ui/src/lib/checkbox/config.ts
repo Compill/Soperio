@@ -10,7 +10,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
       {
         "sm":
         {
-
           fontSize: "sm",
           w: "3",
           h: "3",

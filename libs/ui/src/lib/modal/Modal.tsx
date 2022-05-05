@@ -6,14 +6,16 @@ import ReactDOM from "react-dom";
 import { ComponentProps, ExtendConfig } from "./types";
 import defaultConfig from "./config"
 import { IS_DEV } from "@soperio/utils"
+import { Button } from "../button";
+import { createContext } from "@soperio/components";
+import { motion } from "framer-motion";
 
 const COMPONENT_ID = "Soperio.Modal";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 
-const DEFAULT_DURATION = "500";
-const DEFAULT_EASING = "in";
+const [ModalContextProvider, useModalContext] = createContext<ModalProps>()
 
 
 export interface ModalProps extends ComponentProps, ParentComponent, HTMLDivProps {
@@ -22,7 +24,8 @@ export interface ModalProps extends ComponentProps, ParentComponent, HTMLDivProp
   closeOnMaskClick?: boolean,
   closeOnEsc?: boolean,
   show: boolean,
-  onClose?: () => void;
+  onClose?: () => void,
+  location?: "top" | "center" | string,
 }
 
 /**
@@ -35,63 +38,79 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
   theme = "default",
   config,
   onClose,
+  location = "center",
   show = false,
   children,
   ...props
 }: ModalProps, ref) => {
   const [internalShow, setInternalShow] = React.useState(false);
-  const firstRender = useFirstRender();
-  const direction = useDirection();
-  const previousDirection = usePrevious(direction);
-  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props);
+  
+  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props)
 
-  const translateY = show ? "0" : "-full"
-  const initTranslateY = "-full";
+
+  const animate = show ? "visible" : "hidden"
+  const modalAnimation = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+    exit:{ opacity: 0, scale: 0 }
+  }
+  const context = {
+    onClose,
+    show
+  }
+
+  // initial={{ opacity: 0 }}
+  // animate={{ opacity: 1 }}
+  // exit={{ opacity: 0 }}
 
   React.useEffect(() => {
     if (show !== internalShow)
       setInternalShow(show);
   }, [show, internalShow, setInternalShow]);
 
-//TODO voir pour OnClose car cela ferme le modal quand on clique dessus et vor pour transition
   return (
 
     ReactDOM.createPortal(
-      <div
-        transition={firstRender ? "none" : "colors"}
-        onClick={onClose}
-        pointerEvents={show ? "auto" : "none"}
-        bgOpacity={internalShow ? 80 : 0}
-        {...styles.modal}
-        {...props}
-        ref={ref}>
+      <motion.div
+        animate={animate}
+        variants={modalAnimation}
+        initial='hidden'
+>
         <div
-          {...styles.modalWrapper}
-          transition={firstRender || "colors"}
-          transform
-          my={show? "24":"0"}
-          bgOpacity={internalShow ? 100 : 0}
-          easing={props.easing || DEFAULT_EASING}
-          duration={props.duration || DEFAULT_DURATION}
-          // translateY={previousDirection === direction ? translateY : initTranslateY}
-          {...props}>
+          onClick={onClose}
+          pointerEvents={show ? "auto" : "none"}
+          bgOpacity="80"
+          {...styles.modal}
+          {...props}
+          ref={ref}>
           <div
-          hidden={internalShow ? false:true}
-            {...styles.modalContent}
-            {...props}
-          >
-            <MultiPartStyleProvider value={styles}>
-              {children}
-            </MultiPartStyleProvider>
+            alignItems={location === "center" ? location : "start"}
+            mt={location}
+            {...styles.modalWrapper}
+            {...props}>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              bgOpacity="100"
+              {...styles.modalContent}
+              {...props}
+            >
+              <ModalContextProvider value={context}>
+                <MultiPartStyleProvider value={styles}  >
+                  {children}
+                </MultiPartStyleProvider>
+              </ModalContextProvider>
+            </div>
           </div>
         </div>
-      </div>, document.body)
+      </motion.div>
+      , document.body)
   );
 });
 
 export interface ModalHeaderProps extends SoperioComponent, ParentComponent {
   showBorder?: boolean;
   borderWidth?: OrString<"full" | "padded">;
+
 };
 
 export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(({
@@ -101,14 +120,21 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(({
   ...props }, ref) => {
   const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
+  const { onClose } = useModalContext()
+
+  function closeModal(event: any) {
+    event.stopPropagation()
+    onClose!()
+
+  }
 
   return (
     // Style should be flex with space between children
     // So that we get title + fill space + toolbar/more button
-    <>
+    <div dflex justifyContent="between" >
       <div
         px="7"
-        py="3"
+        py="2"
         ref={ref}
         borderColor={colorTheme.border1}
         borderB={showBorder && borderWidth === "full" ? true : "0"}
@@ -117,8 +143,22 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(({
       >
         {children}
       </div>
+      <Button mx="2"
+        my="2"
+        p='0'
+        h="24px"
+        variant="borderless"
+        onClick={closeModal}
+      >
+        <svg
+          w="24px"
+          h="24px"
+          viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+        </svg>
+      </Button>
       {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
-    </>
+    </div>
   );
 });
 

@@ -38,7 +38,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props);
-// TODO Fix tick , fontsize sur span c'est ok ? passage en flex pour le dysplay?
+// TODO Fix tick 
   return (
     <div display="flex" flexRow  alignItems="center" {...soperioProps}>
       <label  userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">

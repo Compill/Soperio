@@ -44,6 +44,7 @@
     "esm": "^3.2.25",
     "figlet": "^1.5.2",
     "formik": "^2.2.9",
+    "framer-motion": "^6.3.3",
     "import": "0.0.6",
     "lodash": "^4.17.21",
     "lodash.mergewith": "^4.6.2",

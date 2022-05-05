@@ -25,21 +25,19 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
       modalWrapper: {
         position: "fixed",
         w: "100%",
-        top: 0,
-        start: 0,
+        h:"full",
         overflowX: "hidden",
         overflowY: "auto",
         outline: "none",
         z: 1050,
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-
+        justifyContent:"center",
         
       },
       modalContent: {
 
         maxW: "500px",
+        minh:"250px",
         position: "relative",
         z: 1200,
 
@@ -55,11 +53,20 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           modalContent:
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "2",
+            border: "0",
             w: "400px",
-            borderColor: theme.border0,
             textColor: theme.textDark1
           }
+        },
+        bordered:
+        {
+          modalContent:
+          {
+            bgColor: darkMode ? theme.background2 : theme.background1,
+            border: "2",
+            w: "400px",
+            borderColor: theme.border1,
+          },
         },
       },
       corners:
