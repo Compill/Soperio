@@ -1,7 +1,7 @@
 import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useDirection, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles, usePrevious } from "@soperio/react";
 import { SpacingPositive, useColorTheme } from "@soperio/react";
 import { OrString } from "@soperio/react";
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { ComponentProps, ExtendConfig } from "./types";
 import defaultConfig from "./config"
@@ -16,16 +16,18 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 
 const [ModalContextProvider, useModalContext] = createContext<ModalProps>()
+//TODO impossible de overirder les valeurs de position de base de sopério
 
-
-export interface ModalProps extends ComponentProps, ParentComponent, HTMLDivProps {
+export interface ModalProps extends Omit<ComponentProps, "position">, ParentComponent, Omit<HTMLDivProps, "position"> {
   theme?: ComponentTheme;
   config?: ExtendConfig,
   closeOnMaskClick?: boolean,
   closeOnEsc?: boolean,
+  closeOnBgClick?: boolean,
   show: boolean,
   onClose?: () => void,
-  location?: "top" | "center" | string,
+  position?: "top" | "center" | "bottom" | string,
+  opacity?:string
 }
 
 /**
@@ -38,35 +40,49 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
   theme = "default",
   config,
   onClose,
-  location = "center",
+  closeOnBgClick = true,
+  closeOnEsc = true,
+  position = "center",
   show = false,
+  opacity ="80",
   children,
   ...props
 }: ModalProps, ref) => {
-  const [internalShow, setInternalShow] = React.useState(false);
-  
+ 
   const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props)
-
 
   const animate = show ? "visible" : "hidden"
   const modalAnimation = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
-    exit:{ opacity: 0, scale: 0 }
+    exit: { opacity: 0, scale: 0 }
   }
   const context = {
     onClose,
     show
   }
 
-  // initial={{ opacity: 0 }}
-  // animate={{ opacity: 1 }}
-  // exit={{ opacity: 0 }}
+  const positionX = position === "bottom" ? "end" : "start"
 
-  React.useEffect(() => {
-    if (show !== internalShow)
-      setInternalShow(show);
-  }, [show, internalShow, setInternalShow]);
+  function handleClick(event: any) {
+    event.stopPropagation()
+    if (closeOnBgClick) onClose?.()
+  }
+
+/**
+ * Close modal on esc Key if closeOnEsc is true
+ *
+ */
+  useEffect(() => {
+    const close = (e) => {
+      if (e.keyCode === 27 && closeOnEsc) {
+        onClose!()
+      }
+    }
+    window.addEventListener('keydown', close)
+    return () => window.removeEventListener('keydown', close)
+  }, [])
+
 
   return (
 
@@ -75,17 +91,18 @@ const ModalContainer = React.forwardRef<HTMLDivElement, ModalProps>(({
         animate={animate}
         variants={modalAnimation}
         initial='hidden'
->
+        tabIndex={-1}
+      >
         <div
-          onClick={onClose}
+          onClick={handleClick}
           pointerEvents={show ? "auto" : "none"}
-          bgOpacity="80"
+          bgOpacity={opacity}
           {...styles.modal}
           {...props}
           ref={ref}>
           <div
-            alignItems={location === "center" ? location : "start"}
-            mt={location}
+            alignItems={position === "center" ? position : positionX}
+            mt={position}
             {...styles.modalWrapper}
             {...props}>
             <div
@@ -133,7 +150,7 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(({
     // So that we get title + fill space + toolbar/more button
     <div dflex justifyContent="between" >
       <div
-        px="7"
+        px="4"
         py="2"
         ref={ref}
         borderColor={colorTheme.border1}

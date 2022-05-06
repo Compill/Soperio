@@ -1,6 +1,7 @@
 // Must "./lib/theming" be first !
 // Otherwise CLI can't work as expected buecause it doesn't
 // have a dependecy to React
+export * from './lib/accordion/';
 export * from './lib/avatar/';
 export * from './lib/badge/';
 export * from './lib/button/';

@@ -8,15 +8,16 @@ import React from "react";
 export default function Page({ ...props }) {
   const [showModal, setShowModal] = React.useState(false);
 
-
+//TODO voir pour autoimplementation position
   return (
     <div>
       <Button variant="default" block mx="auto" my="5" shadow onClick={() => setShowModal(true)} >Open Modal</Button>
-      <Modal show={showModal} onClose={() => setShowModal(false)} location="10" >
+      
+      <Modal show={showModal} onClose={() => setShowModal(false)} closeOnEsc={false} opacity="75"  >
         <Modal.Header minH="70px" dflex alignItems="center">
           <span fontSize="lg" fontWeight="600">Basic Modal</span>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body >
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled..
         </Modal.Body>
 

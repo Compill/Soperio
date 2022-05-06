@@ -32,6 +32,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         z: 1050,
         display: "flex",
         justifyContent:"center",
+        // bgColor: darkMode ? theme.background2 : theme.background1,
         
       },
       modalContent: {
