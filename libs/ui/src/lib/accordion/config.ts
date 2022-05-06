@@ -35,16 +35,19 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           accordion:
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
+            hover_bgColor: theme.background2 ,
             border: "0",
             textColor: theme.textDark1
           }
         },
         bordered:
         {
-          accordion:
+          accordionHeader:
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "2",
+            hover_bgColor: theme.background2 ,
+            borderT: "2",
+            borderB: "1",
             borderColor: theme.border1,
           },
         },
@@ -55,6 +58,10 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         default:
         {
           accordion:
+          {
+            rounded: true
+          },
+          accordionHeader:
           {
             rounded: true
           }

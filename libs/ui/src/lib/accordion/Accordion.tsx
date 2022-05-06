@@ -1,7 +1,7 @@
 import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
 import { SpacingPositive, useColorTheme } from "@soperio/react";
 import { OrString } from "@soperio/react";
-import React from "react";
+import React, { useId } from "react";
 import { ComponentProps, ExtendConfig } from "./types";
 import defaultConfig from "./config"
 import { IS_DEV } from "@soperio/utils"
@@ -19,26 +19,42 @@ const [AccordionContextProvider, useAccordionContext] = createContext<AccordionC
 export interface AccordionContext extends ComponentProps, ParentComponent, HTMLDivProps {
   expanded: false | number | string,
   setExpanded: any,
+  allowMultiple: boolean
   accordionAnimation: any,
+  expandIcon?: React.ReactNode,
+  collapseIcon?: React.ReactNode
 
 }
 
-const [AccordionContextItemProvider, useAccordionItemContext] = createContext<AccordionContextItem>()
-
-export interface AccordionContextItem extends ComponentProps, ParentComponent, HTMLDivProps {
-  isOpen: boolean,
-  accordionAnimation
-}
 
 export interface AccordionProps extends ComponentProps, ParentComponent, HTMLDivProps {
   theme?: ComponentTheme;
   config?: ExtendConfig,
+  expandIcon?: React.ReactNode,
+  collapseIcon?: React.ReactNode,
+  allowMultiple?: boolean
+}
+
+
+function ExpandSvg() {
+  return <svg w="24px" h="24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+  </svg>
+}
+
+function CollapseSvg() {
+  return <svg w="24px" h="24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M19,13H5V11H19V13Z" />
+  </svg>
 }
 
 
 const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
   variant,
   corners,
+  expandIcon = <ExpandSvg />,
+  collapseIcon = <CollapseSvg />,
+  allowMultiple = false,
   theme = "default",
   config,
   children,
@@ -71,7 +87,10 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
   const context = {
     expanded,
     setExpanded,
-    accordionAnimation
+    accordionAnimation,
+    expandIcon,
+    collapseIcon,
+    allowMultiple
   }
 
   return (
@@ -94,7 +113,6 @@ export interface AccordionHeaderProps extends SoperioComponent, ParentComponent 
   showBorder?: boolean;
   borderWidth?: OrString<"full" | "padded">;
   label: React.ReactNode,
-  i?: false | number | string
 };
 
 export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionHeaderProps>(({
@@ -102,62 +120,66 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionHeaderPro
   borderWidth,
   children,
   label,
-  i,
   ...props }, ref) => {
   const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
-  const { setExpanded, expanded, accordionAnimation } = useAccordionContext()
+  const { setExpanded, expanded, accordionAnimation, collapseIcon, expandIcon, allowMultiple } = useAccordionContext()
+  const [isOpen, setIsOpen] = React.useState<boolean>(false)
+  const id = useId()
 
-  const isOpen = i === expanded
 
-  const context = {
-    isOpen,
-    accordionAnimation
+  function handleClick() {
+    if (allowMultiple)
+      setIsOpen(!isOpen)
+    else
+      setExpanded(expanded===id ? false : id)
   }
+console.log(isOpen,expanded);
+  const show = isOpen || expanded === id
 
   return (
-    <AccordionContextItemProvider value={context}>
-      <>
-        <div dflex justifyContent="between" w="full" alignItems="center" ref={ref} {...styles.accordionHeader} {...props}>
-          <div
-            mx="4"
-            borderColor={colorTheme.border1}
-            borderB={showBorder && borderWidth === "full" ? true : "0"}
-          >
-            {label}
-          </div>
-          <Button
-            mx="4"
-            p='0'
-            h="24px"
-            variant="borderless"
-            onClick={() => setExpanded(isOpen ? false : i!)}
-          >
-            <svg w="24px" h="24px" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-            </svg>
-          </Button>
-          {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
-        </div >
-        <AccordionContent >
-          {children}
-        </AccordionContent>
-      </>
-    </AccordionContextItemProvider>
+
+    <>
+      <div onClick={handleClick} dflex justifyContent="between" w="full" alignItems="center" ref={ref} {...styles.accordionHeader} {...props}>
+        <div
+          mx="4"
+          borderColor={colorTheme.border1}
+          borderB={showBorder && borderWidth === "full" ? true : "0"}
+        >
+          {label}
+        </div>
+        <Button
+          mx="4"
+          p='0'
+          h="24px"
+          variant="borderless"
+          onClick={handleClick}
+        >
+          {show ? collapseIcon : expandIcon}
+        </Button>
+        {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
+      </div >
+      <AccordionContent show={show} accordionAnimation={accordionAnimation}>
+        {children}
+      </AccordionContent>
+    </>
+
   );
 });
 
 
-export interface AccordionContentProps extends SoperioComponent, ParentComponent { };
+export interface AccordionContentProps extends SoperioComponent, ParentComponent {
+  show:boolean,
+  accordionAnimation?:any,
+ };
 
-export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(({ children, ...props }, ref) => {
+export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(({show, children,accordionAnimation, ...props }, ref) => {
   const styles = useMultiPartStyles();
-  const { isOpen, accordionAnimation, } = useAccordionItemContext()
 
   return (
-    //TODO fix the animation du text --> text déroulant ?
+
     <AnimatePresence initial={false}>
-      {isOpen && (
+      {show && (
         <motion.div
           key="content"
           initial="collapsed"
