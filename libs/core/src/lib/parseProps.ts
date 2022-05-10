@@ -7,6 +7,7 @@ import deepmerge from "deepmerge";
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 const CACHE_TYPE = "prop"
+const REMOVE_IF_VARIANT = "remove_if_variant"
 
 const breakpointIndex = {
   sm: "0",
@@ -118,6 +119,15 @@ export function parseProps<P extends SoperioComponent>(props: P)
       if (!parsed)
       {
         parsed = CSSPropsMap[propName](newProps[prop])
+
+        if (parsed[REMOVE_IF_VARIANT])
+        {
+          if( variants.length > 0)
+            delete parsed[parsed[REMOVE_IF_VARIANT]]
+
+          delete parsed[REMOVE_IF_VARIANT]
+        }
+
         ThemeCache.get().put(CACHE_TYPE, key, parsed)
       }
 

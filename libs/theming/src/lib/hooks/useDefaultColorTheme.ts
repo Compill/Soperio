@@ -1,9 +1,7 @@
 import { ColorTheme } from "../ColorTheme";
-import { useTheme } from "./useTheme";
+import { useColorTheme } from "./useColorTheme";
 
 export function useDefaultColorTheme(): ColorTheme
 {
-  const theme = useTheme();
-
-  return theme.colorThemes.default
+  return useColorTheme("default")
 }

@@ -1,7 +1,7 @@
 export * from './lib/ColorTheme';
 export { CSSPropKeys } from "./lib/CSSProps";
 export type { ResponsiveCSSProps, ResponsiveProps } from "./lib/CSSProps";
-export type { Breakpoints, Color, Opacity, Spacing, SpacingPositive } from './lib/CSSTypes';
+export type { Breakpoints, Color, Opacity, Spacing, SpacingPositive, Width, Height, MinWidth, MinHeight, MaxWidth, MaxHeight } from './lib/CSSTypes';
 export * from './lib/ExtendTheme';
 export * from './lib/extendTheme/extendTheme';
 export * from './lib/hooks/useBreakpoint';

@@ -10,9 +10,9 @@ import { ComponentManager } from "../ComponentManager";
 
 
 type KeysOf<T> =
-{
-  [Property in keyof T]: string
-}
+  {
+    [Property in keyof T]: string
+  }
 
 type OmitStates<T> = Omit<T, "active" | "checked" | "disabled" | "invalid" | "selected" | "valid" | "activeDisabled" | "checkedDisabled" | "selectedDisabled">
 
@@ -39,7 +39,7 @@ function useMergedComponentConfig<T extends SoperioComponent>(component: string,
   const sTheme = useTheme()
   const darkMode = useDarkMode();
   const colorTheme = useColorTheme(theme);
-  
+
   const componentTheme = sTheme.components?.[component]
   const defaultConfig = ComponentManager.getComponentConfig(component) as ComponentConfig<T>
 
@@ -60,7 +60,7 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
 {
   // const [defaultConfig] = React.useState(() => ComponentManager.getComponentConfig(component) as ComponentConfig<T>);
   const defaultConfig = useMergedComponentConfig(component, theme)
-  
+
   const darkMode = useDarkMode();
 
   if (!defaultConfig && IS_DEV)
@@ -94,7 +94,7 @@ export function useComponentConfig<T extends SoperioComponent, P extends Compone
 function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(config: BaseComponentConfig<T>, componentConfig: KeysOf<P>, props: any): OmitStates<T>
 {
   // Let's start with the component default values
-  let finalProps = { ...(config.defaultProps as T)};
+  let finalProps = { ...(config.defaultProps as T) };
 
   const defaultTraits = config.defaultTraits
 
@@ -119,7 +119,7 @@ function mergeProps<T extends SoperioComponent, P extends ComponentConfig<T>>(co
 // checked, selected, disabled, ...
 function mergeStateProps<T extends SoperioComponent>(configProps: any, props: any): OmitStates<T>
 {
-  let finalProps = {...configProps};
+  let finalProps = { ...configProps };
 
   // Remove theme states from final props
   // Soperio props don't have stateActive, stateDisabled, etc
@@ -148,26 +148,35 @@ function mergeStateProps<T extends SoperioComponent>(configProps: any, props: an
   if (props[ComponentState.INVALID])
     finalProps = { ...finalProps, ...configProps[ComponentThemeState.INVALID] };
 
-  if (props[ComponentState.ACTIVE])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE] };
-
-  if (props[ComponentState.CHECKED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED] };
-
-  if (props[ComponentState.SELECTED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED] };
-
   if (props[ComponentState.DISABLED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.DISABLED] };
+  {
+    if (props[ComponentState.ACTIVE] || props[ComponentState.CHECKED] || props[ComponentState.SELECTED])
+    {
+      if (props[ComponentState.ACTIVE])
+        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.ACTIVE_DISABLED] ?? configProps[ComponentThemeState.ACTIVE]) };
 
-  if (props[ComponentState.DISABLED] && props[ComponentState.ACTIVE])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE_DISABLED] };
+      if (props[ComponentState.CHECKED])
+        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.CHECKED_DISABLED] ?? configProps[ComponentThemeState.CHECKED]) };
 
-  if (props[ComponentState.DISABLED] && props[ComponentState.CHECKED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED_DISABLED] };
+      if (props[ComponentState.SELECTED])
+        finalProps = { ...finalProps, ...(configProps[ComponentThemeState.SELECTED_DISABLED] ?? configProps[ComponentThemeState.SELECTED]) };
+    }
+    else
+    {
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.DISABLED] };
+    }
+  }
+  else
+  {
+    if (props[ComponentState.ACTIVE])
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.ACTIVE] };
 
-  if (props[ComponentState.DISABLED] && props[ComponentState.SELECTED])
-    finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED_DISABLED] };
+    if (props[ComponentState.CHECKED])
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.CHECKED] };
+
+    if (props[ComponentState.SELECTED])
+      finalProps = { ...finalProps, ...configProps[ComponentThemeState.SELECTED] };
+  }
 
   return finalProps as OmitStates<T>;
 }
