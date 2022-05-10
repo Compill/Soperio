@@ -206,16 +206,20 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
           {label}
         </div>
 
-        <Button onClick={handleClick} {...styles.itemHeaderCollapseButton}>
-          {handleIcon(firstRender)}
-        </Button>
+        {children && (
+          <Button onClick={handleClick} {...styles.itemHeaderCollapseButton}>
+            {handleIcon(firstRender)}
+          </Button>
+        )}
 
         {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
       </div >
 
-      <AccordionContent show={show} accordionAnimation={accordionAnimation}>
-        {children}
-      </AccordionContent>
+      {children && (
+        <AccordionContent show={show} accordionAnimation={accordionAnimation}>
+          {children}
+        </AccordionContent>
+      )}
     </div>
   );
 });
