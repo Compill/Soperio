@@ -16,12 +16,12 @@ export default interface Layout
   isolation?: false | true | "auto",
   objectFit?: false | "contain" | "cover" | "fill" | "none" | "scale-down",
   objectPosition?: false | "bottom" | "center" | "start" | "start-bottom" | "start-top" | "end" | "end-bottom" | "end-top" | "top",
-  overflow?: false | "auto" | "hidden" | "visible" | "scroll",
-  overflowX?: false | "auto" | "hidden" | "visible" | "scroll",
-  overflowY?: false | "auto" | "hidden" | "visible" | "scroll",
-  overscroll?: false | "auto" | "hidden" | "visible" | "scroll",
-  overscrollX?: false | "auto" | "hidden" | "visible" | "scroll",
-  overscrollY?: false | "auto" | "hidden" | "visible" | "scroll",
+  overflow?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
+  overflowX?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
+  overflowY?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
+  overscroll?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
+  overscrollX?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
+  overscrollY?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
   overscrollBehavior?: false | ""
   position?: false | "static" | "fixed" | "absolute" | "relative" | "sticky"
   top?: false | Spacing | number,
