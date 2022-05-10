@@ -24,7 +24,11 @@ export interface AccordionContext extends ComponentProps, ParentComponent, HTMLD
   expandRotationIcon?: number,
   collapseIcon?: React.ReactNode,
   setIsRotate?: any,
-  isRotate?: number
+  isRotate?: number,
+  itemHeaderStyle?: SoperioComponent,
+  itemHeaderLabelStyle?: SoperioComponent,
+  itemHeaderCollapseButtonStyle?: SoperioComponent,
+  itemContentStyle?: SoperioComponent,
 }
 
 export interface AccordionProps extends ComponentProps, ParentComponent, HTMLDivProps
