@@ -47,7 +47,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         {
           accordion:
           {
-            hover_bgColor: theme.background2,
             border: "0",
             textColor: theme.textDark1
           },

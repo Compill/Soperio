@@ -48,7 +48,7 @@ function objectPosition(value: any)
 
 export const LayoutMapping: StyleProps = {
     boxDecorationBreak: css("box-decoration-break"),
-    boxSizing: css("border-box"),
+    boxSizing: css("box-sizing"),
     block: cssValueFn("display", "block"),
     dflex: cssValueFn("display", "flex"),
     display: css("display"),
