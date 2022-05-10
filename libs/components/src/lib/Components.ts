@@ -4,6 +4,11 @@
 // Static definition that will be overwritten by CLI
 export interface Components
 {
+    "Soperio.Accordion":
+    {
+        variant?: "default" | "bordered";
+        corners?: "default" | "square" | "pill";
+    },
     "Soperio.Avatar":
     {
         size?: "sm" | "md" | "lg" | "xl" | "x2";
@@ -51,6 +56,11 @@ export interface Components
         size?: "sm" | "md" | "lg" | "xl" | "x2";
         variant?: "default" | "bordered";
         corners?: "default" | "square";
+    },
+    "Soperio.Modal":
+    {
+        variant?: "default" | "bordered";
+        corners?: "default" | "square" | "pill";
     },
     "Soperio.Radio":
     {

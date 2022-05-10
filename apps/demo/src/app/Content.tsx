@@ -15,11 +15,14 @@ import Switch from "./Switch";
 import Avatar from "./Avatar";
 import List from "./List";
 import Scrollable from "./Scrollable";
-import { Test } from "./Test";
+import Modal  from "./Modal";
+import AccordionPage  from "./Accordion";
+
+import Test  from "./Test";
 
 export function Content()
 {
-  const [state, setState] = React.useState(1);
+  const [state, setState] = React.useState(17);
   
 
   return (
@@ -41,7 +44,9 @@ export function Content()
         <Button onClick={() => setState(13)}>Avatar</Button>
         <Button onClick={() => setState(14)}>List</Button>
         <Button onClick={() => setState(15)}>Scrollable</Button>
-        <Button onClick={() => setState(16)}>Test</Button>
+        <Button onClick={() => setState(16)}>Modal</Button>
+        <Button onClick={() => setState(17)}>Accordion</Button>
+        <Button onClick={() => setState(18)}>Test</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
         {state === 1 && <ButtonPage />}
@@ -59,7 +64,9 @@ export function Content()
         {state === 13 && <Avatar/>}
         {state === 14 && <List/>}
         {state === 15 && <Scrollable/>}
-        {state === 16 && <Test />}
+        {state === 16 && <Modal />}
+        {state === 17 && <AccordionPage />}
+        {state === 18 && <Test />}
       </div>
     </>
   );

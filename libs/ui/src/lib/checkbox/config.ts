@@ -10,40 +10,33 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
       {
         "sm":
         {
-          px: "2",
-          py: "1.5",
           fontSize: "sm",
           w: "3",
           h: "3",
         },
         "md":
         {
-          px: "2.5",
-          py: "1.5",
+
           fontSize: "md",
           w: "4",
           h: "4",
         },
         "lg":
         {
-          px: "3",
-          py: "2",
+
           fontSize: "lg",
           w: "5",
           h: "5",
         },
         "xl":
         {
-          px: "3.5",
-          py: "2.5",
+
           fontSize: "xl",
           w: "6",
           h: "6",
         },
-        "2x":
+        "x2":
         {
-          px: "4",
-          py: "2.5",
           fontSize: "x2",
           w: "7",
           h: "7",
