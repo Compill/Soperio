@@ -1,6 +1,6 @@
 {
   "name": "@soperio/ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React CSS-IN-JS framework",
   "keywords": ["react", "ui", "framework"],
   "homepage": "https://github.com/jonathangerbaud/SoperioUI",
