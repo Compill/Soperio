@@ -35,7 +35,11 @@ export interface AccordionProps extends ComponentProps, ParentComponent, HTMLDiv
   expandRotationIcon?: number,
   collapseIcon?: React.ReactNode,
   allowMultiple?: boolean,
-  gap?: false | SpacingPositive
+  gap?: false | SpacingPositive,
+  itemHeaderStyle?: SoperioComponent,
+  itemHeaderLabelStyle?: SoperioComponent,
+  itemHeaderCollapseButtonStyle?: SoperioComponent,
+  itemContentStyle?: SoperioComponent,
 }
 
 function ExpandAddSvg()
@@ -67,6 +71,10 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
   expandRotationIcon = 180,
   collapseIcon = false,
   allowMultiple = false,
+  itemHeaderStyle,
+  itemHeaderLabelStyle,
+  itemHeaderCollapseButtonStyle,
+  itemContentStyle,
   gap,
   theme = "default",
   config,
@@ -118,7 +126,10 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
     expandIcon,
     collapseIcon,
     allowMultiple,
-
+    itemHeaderStyle,
+    itemHeaderLabelStyle,
+    itemHeaderCollapseButtonStyle,
+    itemContentStyle,
   }
 
   return (
@@ -153,7 +164,19 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
   const firstRender = useFirstRender()
   const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
-  const { setExpanded, expanded, accordionAnimation, collapseIcon, expandIcon, allowMultiple, expandRotationIcon } = useAccordionContext()
+  const {
+    setExpanded,
+    expanded,
+    accordionAnimation,
+    collapseIcon,
+    expandIcon,
+    allowMultiple,
+    expandRotationIcon,
+    itemHeaderStyle,
+    itemHeaderLabelStyle,
+    itemHeaderCollapseButtonStyle,
+    itemContentStyle
+  } = useAccordionContext()
   const [ isOpen, setIsOpen ] = React.useState<boolean>(false)
 
   const id = useId()
@@ -198,16 +221,18 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
         cursor="pointer"
         ref={ref}
         {...styles.itemHeader}
+        {...itemHeaderStyle}
         {...props}>
         <div
           borderB={showBorder && borderWidth === "full" ? true : "0"}
           {...styles.itemHeaderLabel}
+          {...itemHeaderLabelStyle}
         >
           {label}
         </div>
 
         {children && (
-          <Button onClick={handleClick} {...styles.itemHeaderCollapseButton}>
+          <Button onClick={handleClick} {...styles.itemHeaderCollapseButton} {...itemHeaderCollapseButtonStyle}>
             {handleIcon(firstRender)}
           </Button>
         )}
@@ -216,7 +241,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
       </div >
 
       {children && (
-        <AccordionContent show={show} accordionAnimation={accordionAnimation}>
+        <AccordionContent show={show} accordionAnimation={accordionAnimation} {...itemContentStyle}>
           {children}
         </AccordionContent>
       )}

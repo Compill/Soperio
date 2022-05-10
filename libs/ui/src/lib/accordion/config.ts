@@ -13,6 +13,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
     {
       accordion: {
         minW: "300px",
+        textColor: theme.textDark1
       },
       itemHeader: {
         py: "2",
@@ -48,7 +49,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           accordion:
           {
             border: "0",
-            textColor: theme.textDark1
           },
           itemContent:
           {
@@ -66,6 +66,17 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             borderColor: theme.border1,
           },
         },
+        menu:
+        {
+          itemHeader:
+          {
+            bgColor: "transparent"
+          },
+          itemContent:
+          {
+            bgColor: "transparent"
+          }
+        }
       },
       corners:
       {
