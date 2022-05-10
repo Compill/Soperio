@@ -16,6 +16,8 @@ import Avatar from "./Avatar";
 import List from "./List";
 import Scrollable from "./Scrollable";
 import Modal  from "./Modal";
+import AccordionPage  from "./Accordion";
+
 import Test  from "./Test";
 
 export function Content()
@@ -43,7 +45,8 @@ export function Content()
         <Button onClick={() => setState(14)}>List</Button>
         <Button onClick={() => setState(15)}>Scrollable</Button>
         <Button onClick={() => setState(16)}>Modal</Button>
-        <Button onClick={() => setState(17)}>Test</Button>
+        <Button onClick={() => setState(17)}>Accordion</Button>
+        <Button onClick={() => setState(18)}>Test</Button>
       </div>
       <div h="full" bgColor="root.bg-color-3">
         {state === 1 && <ButtonPage />}
@@ -62,7 +65,8 @@ export function Content()
         {state === 14 && <List/>}
         {state === 15 && <Scrollable/>}
         {state === 16 && <Modal />}
-        {state === 17 && <Test />}
+        {state === 17 && <AccordionPage />}
+        {state === 18 && <Test />}
       </div>
     </>
   );
