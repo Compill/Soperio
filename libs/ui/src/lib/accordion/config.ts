@@ -1,31 +1,44 @@
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
-const config: Config = (theme: ColorTheme, darkMode: boolean) => {
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
+{
   return {
     defaultTraits:
     {
       variant: "default",
       corners: "default",
-
     },
     defaultProps:
     {
       accordion: {
-        minW:"300px",
+        minW: "300px",
+      },
+      itemHeader: {
+        py: "2",
         bgColor: theme.background1,
       },
-      accordionHeader: {
-        py: "2",
-        
+      itemHeaderLabel:
+      {
+        mx: "4",
+        borderColor: theme.border1
       },
-      accordionContent: {
-        
-        
-        
+      itemHeaderCollapseButton:
+      {
+        mx: "4",
+        p: '0',
+        h: "24px",
+        variant: "borderless"
+      },
+      itemContent:
+      {
+        bgColor: theme.background1,
+        px: "4",
+        py: "4",
+        fontSize: "sm"
       }
     },
-    subComponents: ["accordion", "accordionHeader", "accordionContent",],
+    subComponents: [ "accordion", "itemHeader", "itemHeaderLabel", "itemHeaderCollapseButton", "itemContent" ],
     traits:
     {
       variant:
@@ -34,18 +47,21 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
         {
           accordion:
           {
-            bgColor: darkMode ? theme.background2 : theme.background1,
-            hover_bgColor: theme.background2 ,
+            hover_bgColor: theme.background2,
             border: "0",
             textColor: theme.textDark1
+          },
+          itemContent:
+          {
+            bgColor: darkMode ? theme.background2 : theme.background1,
           }
         },
         bordered:
         {
-          accordionHeader:
+          itemHeader:
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
-            hover_bgColor: theme.background2 ,
+            hover_bgColor: theme.background2,
             borderT: "2",
             borderB: "1",
             borderColor: theme.border1,
@@ -61,7 +77,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           {
             rounded: true
           },
-          accordionHeader:
+          itemHeader:
           {
             rounded: true
           }

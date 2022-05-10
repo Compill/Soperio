@@ -1,50 +1,59 @@
 import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
-const config: Config = (theme: ColorTheme, darkMode: boolean) => {
+const config: Config = (theme: ColorTheme, darkMode: boolean) =>
+{
   return {
     defaultTraits:
     {
       variant: "default",
       corners: "default",
-
+      size: "md"
     },
     defaultProps:
     {
-      modal: {
-        position: "fixed",
-        w: "100vw",
-        h: "100vh",
-        top: 0,
-        start: 0,
-        bgColor: "coolGray-500",
-        z: 1000,
-
-
+      backdrop:
+      {
+        bgColor: "black",
+        bgOpacity: "50"
       },
-      modalWrapper: {
-        position: "fixed",
-        w: "100%",
-        h:"full",
-        overflowX: "hidden",
-        overflowY: "auto",
-        outline: "none",
-        z: 1050,
+      modalWrapper:
+      {
         display: "flex",
-        justifyContent:"center",
+        justifyContent: "center",
         // bgColor: darkMode ? theme.background2 : theme.background1,
-        
       },
-      modalContent: {
-
-        maxW: "500px",
-        minh:"250px",
+      header:
+      {
+        ps: "4",
+        borderColor: theme.border1
+      },
+      headerCloseButton:
+      {
+        mx: "4",
+        p: '0',
+        h: "24px",
+        variant: "borderless"
+      },
+      modalContent:
+      {
         position: "relative",
         z: 1200,
-
+      },
+      body:
+      {
+        px: "4",
+        py: "2",
+        fontSize: "sm"
+      },
+      footer:
+      {
+        px: "4",
+        py: "2",
+        borderColor: theme.border1
       }
     },
-    subComponents: ["modal", "modalWrapper", "modalContent", "header", "content", "footer"],
+    subComponents: [ "backdrop", "modalWrapper", "modalContent", "header", "headerTitle", "headerCloseButton", "body", "footer" ],
     traits:
     {
       variant:
@@ -55,7 +64,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
             border: "0",
-            w: "400px",
             textColor: theme.textDark1
           }
         },
@@ -65,7 +73,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
             border: "2",
-            w: "400px",
             borderColor: theme.border1,
           },
         },
@@ -87,6 +94,79 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             rounded: "full"
           }
         }
+      },
+      size:
+      {
+        xs:
+        {
+          modalContent:
+          {
+            maxW: "20rem"
+          }
+        },
+        sm:
+        {
+          modalContent:
+          {
+            maxW: "24rem"
+          }
+        },
+        md:
+        {
+          modalContent:
+          {
+            maxW: "28rem"
+          }
+        },
+        lg:
+        {
+          modalContent:
+          {
+            maxW: "32rem"
+          }
+        },
+        xl:
+        {
+          modalContent:
+          {
+            maxW: "36rem"
+          }
+        },
+        x2:
+        {
+          modalContent:
+          {
+            maxW: "40rem"
+          }
+        },
+        x3:
+        {
+          modalContent:
+          {
+            maxW: "44rem"
+          }
+        },
+        x4:
+        {
+          modalContent:
+          {
+            maxW: "48rem"
+          }
+        },
+        x5:
+        {
+          modalContent:
+          {
+            maxW: "52rem"
+          }
+        },
+        x6:
+        {
+          modalContent:
+          {
+            maxW: "56rem"
+          }
+        },
       }
     }
   };

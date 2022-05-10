@@ -1,22 +1,21 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useMultiPartComponentConfig, useMultiPartStyles, useFirstRender } from "@soperio/react";
-import { SpacingPositive, useColorTheme } from "@soperio/react";
-import { OrString } from "@soperio/react";
+import { createContext, useFirstRender } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
+import { IS_DEV } from "@soperio/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useId } from "react";
-import { ComponentProps, ExtendConfig } from "./types";
-import defaultConfig from "./config"
-import { IS_DEV } from "@soperio/utils"
 import { Button } from "../button";
-import { createContext } from "@soperio/components";
-import { AnimatePresence, motion, } from "framer-motion";
+import defaultConfig from "./config";
+import { ComponentProps, ExtendConfig } from "./types";
 
 const COMPONENT_ID = "Soperio.Accordion";
 
 ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 
-const [AccordionContextProvider, useAccordionContext] = createContext<AccordionContext>()
+const [ AccordionContextProvider, useAccordionContext ] = createContext<AccordionContext>()
 
-export interface AccordionContext extends ComponentProps, ParentComponent, HTMLDivProps {
+export interface AccordionContext extends ComponentProps, ParentComponent, HTMLDivProps
+{
   expanded: false | number | string,
   setExpanded: any,
   allowMultiple: boolean
@@ -26,33 +25,35 @@ export interface AccordionContext extends ComponentProps, ParentComponent, HTMLD
   collapseIcon?: React.ReactNode,
   setIsRotate?: any,
   isRotate?: number
-
 }
 
-
-export interface AccordionProps extends ComponentProps, ParentComponent, HTMLDivProps {
+export interface AccordionProps extends ComponentProps, ParentComponent, HTMLDivProps
+{
   theme?: ComponentTheme;
   config?: ExtendConfig,
   expandIcon?: React.ReactNode,
   expandRotationIcon?: number,
   collapseIcon?: React.ReactNode,
-  allowMultiple?: boolean
+  allowMultiple?: boolean,
+  gap?: false | SpacingPositive
 }
 
-
-function ExpandAddSvg() {
+function ExpandAddSvg()
+{
   return <svg w="24px" h="24px" viewBox="0 0 24 24">
     <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
   </svg>
 }
 
-function CollapseMinusSvg() {
+function CollapseMinusSvg()
+{
   return <svg w="24px" h="24px" viewBox="0 0 24 24">
     <path fill="currentColor" d="M19,13H5V11H19V13Z" />
   </svg>
 }
 
-function ExpandArrowDownSvg() {
+function ExpandArrowDownSvg()
+{
   return <svg w="24px" h="24px" viewBox="0 0 24 24">
     <path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
   </svg>
@@ -66,44 +67,43 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
   expandRotationIcon = 180,
   collapseIcon = false,
   allowMultiple = false,
+  gap,
   theme = "default",
   config,
   children,
   ...props
-}: AccordionProps, ref) => {
-
+}: AccordionProps, ref) =>
+{
   const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props)
-
-  const [expanded, setExpanded] = React.useState<false | number | string>(0);
-
+  const [ expanded, setExpanded ] = React.useState<false | number | string>(0);
 
   const accordionAnimation = {
     expanded: {
       opacity: 1, height: "auto",
       transition: {
         duration: 0.5,
-        ease: [0.24, 0.62, 0.23, 0.98]
+        ease: [ 0.24, 0.62, 0.23, 0.98 ]
       }
     },
     collapsed: {
       opacity: 0, height: 0,
       transition: {
         duration: 0.5,
-        ease: [0.24, 0.62, 0.23, 0.98]
+        ease: [ 0.24, 0.62, 0.23, 0.98 ]
       }
     },
     open: {
-      rotate: [0, expandRotationIcon],
+      rotate: [ 0, expandRotationIcon ],
       transition: {
         duration: 0.5,
-        ease: [0.24, 0.62, 0.23, 0.98]
+        ease: [ 0.24, 0.62, 0.23, 0.98 ]
       }
     },
     close: {
-      rotate: [expandRotationIcon , 0],
+      rotate: [ expandRotationIcon, 0 ],
       transition: {
         duration: 0.5,
-        ease: [0.24, 0.62, 0.23, 0.98]
+        ease: [ 0.24, 0.62, 0.23, 0.98 ]
       }
     },
 
@@ -121,13 +121,11 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
 
   }
 
-
-
   return (
-
     <div
       ref={ref}
       {...styles.accordion}
+      spaceY={gap}
       {...props}>
       <AccordionContextProvider value={context}>
         <MultiPartStyleProvider value={styles}  >
@@ -135,96 +133,105 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
         </MultiPartStyleProvider>
       </AccordionContextProvider>
     </div>
-
   );
 });
 
-export interface AccordionHeaderProps extends SoperioComponent, ParentComponent {
+export interface AccordionItemProps extends SoperioComponent, ParentComponent
+{
   showBorder?: boolean;
   borderWidth?: OrString<"full" | "padded">;
   label: React.ReactNode,
 };
 
-export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionHeaderProps>(({
+export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(({
   showBorder,
   borderWidth,
   children,
   label,
-  ...props }, ref) => {
+  ...props }, ref) =>
+{
+  const firstRender = useFirstRender()
   const colorTheme = useColorTheme();
   const styles = useMultiPartStyles();
   const { setExpanded, expanded, accordionAnimation, collapseIcon, expandIcon, allowMultiple, expandRotationIcon } = useAccordionContext()
-  const [isOpen, setIsOpen] = React.useState<boolean>(false)
+  const [ isOpen, setIsOpen ] = React.useState<boolean>(false)
 
   const id = useId()
 
-  function handleClick() {
+  const handleClick = React.useCallback(() =>
+  {
     if (allowMultiple)
       setIsOpen(!isOpen)
     else
       setExpanded(expanded === id ? false : id)
-  }
+  }, [ allowMultiple, expanded, id, isOpen, setExpanded ])
 
-  
   const show = isOpen || expanded === id
 
+  const handleIcon = React.useCallback((firstRender: boolean) =>
+  {
+    if (firstRender)
+      return expandIcon
 
-  function HandleIcon(): any {
     if (expandIcon && collapseIcon)
       return show ? collapseIcon : expandIcon
 
     else if (!collapseIcon && expandRotationIcon)
       return <motion.div
-        animate={show?"open":"close"}
+        animate={show ? "open" : "close"}
         variants={accordionAnimation}
       >
         {expandIcon}
       </motion.div>
 
     else return expandIcon
-  }
+  }, [ accordionAnimation, collapseIcon, expandIcon, expandRotationIcon, show ])
 
   return (
-
-    <>
-      <div onClick={handleClick} dflex justifyContent="between" w="full" alignItems="center" ref={ref} {...styles.accordionHeader} {...props}>
+    <div>
+      <div
+        onClick={handleClick}
+        dflex
+        justifyContent="between"
+        w="full"
+        alignItems="center"
+        cursor="pointer"
+        ref={ref}
+        {...styles.itemHeader}
+        {...props}>
         <div
-          mx="4"
-          borderColor={colorTheme.border1}
           borderB={showBorder && borderWidth === "full" ? true : "0"}
+          {...styles.itemHeaderLabel}
         >
           {label}
         </div>
-        <Button
-          mx="4"
-          p='0'
-          h="24px"
-          variant="borderless"
-          onClick={handleClick}
-        >
-          <HandleIcon />
+
+        <Button onClick={handleClick} {...styles.itemHeaderCollapseButton}>
+          {handleIcon(firstRender)}
         </Button>
+
         {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
       </div >
+
       <AccordionContent show={show} accordionAnimation={accordionAnimation}>
         {children}
       </AccordionContent>
-    </>
-
+    </div>
   );
 });
 
 
-export interface AccordionContentProps extends SoperioComponent, ParentComponent {
+export interface AccordionContentProps extends SoperioComponent, ParentComponent
+{
   show: boolean,
   accordionAnimation?: any,
 };
 
-export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(({ show, children, accordionAnimation, ...props }, ref) => {
+const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(({ show, children, accordionAnimation, ...props }, ref) =>
+{
   const styles = useMultiPartStyles();
 
   return (
-
     <AnimatePresence initial={false}>
       {show && (
         <motion.div
@@ -234,9 +241,8 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
           exit="collapsed"
           variants={accordionAnimation}
           style={{ overflow: "hidden" }}
-
         >
-          <div overflow="hidden" mx="4" py="4" fontSize="sm" {...styles.accordionContent} {...props} ref={ref}>
+          <div overflow="hidden" {...styles.itemContent} {...props} ref={ref}>
             {children}
           </div>
         </motion.div>
@@ -245,14 +251,9 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
   );
 });
 
-
-
-export const Accordion = Object.assign(AccordionContainer, { Header: AccordionItem, Content: AccordionContent });
+export const Accordion = Object.assign(AccordionContainer, { AccordionItem: AccordionItem });
 
 if (IS_DEV)
   Accordion.displayName = "Soperio Accordion"
 else
   Accordion.displayName = "Accordion"
-
-
-

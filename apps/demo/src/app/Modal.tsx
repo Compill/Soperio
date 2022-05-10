@@ -12,8 +12,8 @@ export default function Page({ ...props }) {
   return (
     <div>
       <Button variant="default" block mx="auto" my="5" shadow onClick={() => setShowModal(true)} >Open Modal</Button>
-      
-      <Modal show={showModal} onClose={() => setShowModal(false)} closeOnEsc={false} opacity="75"  >
+
+      <Modal show={showModal} onClose={() => setShowModal(false)} closeOnEsc={false} size="md" >
         <Modal.Header minH="70px" dflex alignItems="center">
           <span fontSize="lg" fontWeight="600">Basic Modal</span>
         </Modal.Header>

@@ -1,4 +1,5 @@
 import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/react";
+import { ButtonProps } from "../button";
 
 type TraitProps = ComponentTypings<"Soperio.Accordion">;
 
@@ -8,8 +9,10 @@ interface ConfigStateProps extends SoperioComponent, SelectedThemeProps, Disable
 
 type AccordionComponentProps = {
   accordion?: SoperioComponent & ConfigStateProps,
-  accordionHeader?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
-  accodrionContent?: SoperioComponent & ConfigStateProps, // AccordionContentThemeProps
+  itemHeader?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
+  itemHeaderLabel?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
+  itemHeaderCollapseButton?: SoperioComponent & ConfigStateProps,
+  itemContent?: SoperioComponent & ConfigStateProps, // AccordionContentThemeProps
 }
 
 export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartTraits<TraitProps, AccordionComponentProps>>;

@@ -10,7 +10,7 @@ type ModalComponentProps = {
   modal?: SoperioComponent & ConfigStateProps,
   modalContent?: SoperioComponent & ConfigStateProps,
   header?: SoperioComponent & ConfigStateProps, // ModalHeaderThemeProps
-  content?: SoperioComponent & ConfigStateProps, // ModalContentThemeProps
+  body?: SoperioComponent & ConfigStateProps, // ModalContentThemeProps
   footer?: SoperioComponent & ConfigStateProps, // ModalFooterThemeProps
 }
 
