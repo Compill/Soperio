@@ -6,7 +6,7 @@ export interface Components
 {
   "Soperio.Accordion":
   {
-    variant?: "default" | "bordered";
+    variant?: "default" | "bordered" | "menu";
     corners?: "default" | "square" | "pill";
   },
   "Soperio.Avatar":

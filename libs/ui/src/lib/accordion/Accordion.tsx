@@ -156,13 +156,15 @@ export interface AccordionItemProps extends SoperioComponent, ParentComponent
   showBorder?: boolean;
   borderWidth?: OrString<"full" | "padded">;
   label: React.ReactNode,
+  isOpen?: boolean
 };
 
 export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(({
   showBorder,
   borderWidth,
-  children,
   label,
+  isOpen,
+  children,
   ...props }, ref) =>
 {
   const firstRender = useFirstRender()
@@ -181,19 +183,19 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
     itemHeaderCollapseButtonStyle,
     itemContentStyle
   } = useAccordionContext()
-  const [ isOpen, setIsOpen ] = React.useState<boolean>(false)
+  const [ _isOpen, setIsOpen ] = React.useState(isOpen)
 
   const id = useId()
 
   const handleClick = React.useCallback(() =>
   {
     if (allowMultiple)
-      setIsOpen(!isOpen)
+      setIsOpen(!_isOpen)
     else
       setExpanded(expanded === id ? false : id)
-  }, [ allowMultiple, expanded, id, isOpen, setExpanded ])
+  }, [ allowMultiple, expanded, id, _isOpen, setExpanded ])
 
-  const show = isOpen || expanded === id
+  const show = _isOpen || expanded === id
 
   const handleIcon = React.useCallback((firstRender: boolean) =>
   {
