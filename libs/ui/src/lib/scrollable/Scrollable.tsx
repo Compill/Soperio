@@ -1,4 +1,4 @@
-import { ComponentManager, ComponentTheme, HTMLDivProps, useComponentConfig } from "@soperio/components";
+import { ComponentManager, ComponentTheme, HTMLDivProps, useComponentConfig } from "@soperio/react";
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
 
@@ -25,7 +25,7 @@ export function Scrollable({
 
     return (
         <div {...styles} {...props}>
-            {/* 
+            {/*
                 In order to reset style for children, we need a wrapper
                 In case we have some text or a fragment for example,
                 that would not create another tag inside this div

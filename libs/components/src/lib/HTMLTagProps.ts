@@ -1,6 +1,4 @@
-export type ParentComponent = {
-    children?: React.ReactNode;
-};
+import { ParentComponent } from "@soperio/theming";
 
 type HTMLComponent<T> = React.DetailedHTMLProps<React.HTMLAttributes<T>, T>;
 type HTMLParentComponent<T> = HTMLComponent<T> & ParentComponent;

@@ -11,5 +11,4 @@ export * from "./lib/hooks/usePrevious";
 export * from "./lib/hooks/useResponsiveProps";
 export * from "./lib/HTMLTagProps";
 export * from "./lib/MultiPartStyleProvider";
-export * from "./lib/SoperioComponent";
 export * from "./lib/utils";

@@ -1,5 +1,4 @@
-import { createContext } from "@soperio/components";
-import { HTMLDivProps, ParentComponent, Rotate, SoperioComponent } from "@soperio/react";
+import { createContext, HTMLDivProps, ParentComponent, Rotate, SoperioComponent } from "@soperio/react";
 import React from "react";
 import { ComponentProps } from "./types";
 

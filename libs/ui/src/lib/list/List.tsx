@@ -1,5 +1,4 @@
-import { ComponentManager, ComponentTheme, HTMLUListProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/components";
-import { useColorTheme } from "@soperio/theming";
+import { ComponentManager, ComponentTheme, HTMLUListProps, MultiPartStyleProvider, ParentComponent, SoperioComponent, useColorTheme, useFirstRender, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
 import { OrString } from "@soperio/utils";
 import React from "react";
 import defaultConfig from "./config";
@@ -11,8 +10,8 @@ ComponentManager.registerComponent(COMPONENT_ID, defaultConfig)
 
 export interface ListProps extends ComponentProps, ParentComponent, HTMLUListProps
 {
-    theme?: ComponentTheme;
-    config?: ExtendConfig
+  theme?: ComponentTheme;
+  config?: ExtendConfig
 }
 
 /**
@@ -20,57 +19,57 @@ export interface ListProps extends ComponentProps, ParentComponent, HTMLUListPro
  *
  */
 const List = React.forwardRef<HTMLUListElement, ListProps>(({
-    variant,
-    corners,
-    size,
-    theme = "default",
-    config,
-    children,
-    ...props
+  variant,
+  corners,
+  size,
+  theme = "default",
+  config,
+  children,
+  ...props
 }: ListProps, ref) =>
 {
-    const firstRender = useFirstRender();
-    const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners, size }, props);
+  const firstRender = useFirstRender();
+  const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners, size }, props);
 
-    return (
-        <ul
-            transition={firstRender ? "none" : "all"}
-            {...styles.list}
-            {...props}
-            ref={ref}
-        >
-            <MultiPartStyleProvider value={styles}>
-                {children}
-            </MultiPartStyleProvider>
-        </ul>
-    );
+  return (
+    <ul
+      transition={firstRender ? "none" : "all"}
+      {...styles.list}
+      {...props}
+      ref={ref}
+    >
+      <MultiPartStyleProvider value={styles}>
+        {children}
+      </MultiPartStyleProvider>
+    </ul>
+  );
 });
 
 export interface ListItemProps extends SoperioComponent, ParentComponent
 {
-    showBorder?: boolean;
-    borderWidth?: OrString<"full" | "padded">;
+  showBorder?: boolean;
+  borderWidth?: OrString<"full" | "padded">;
 };
 
 export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
-    showBorder,
-    borderWidth,
-    children,
-    ...props }, ref) =>
+  showBorder,
+  borderWidth,
+  children,
+  ...props }, ref) =>
 {
-    const colorTheme = useColorTheme();
-    const styles = useMultiPartStyles();
+  const colorTheme = useColorTheme();
+  const styles = useMultiPartStyles();
 
-    return (
-        <li
-            ref={ref}
-            borderColor={colorTheme.border1}
-            borderB={showBorder && borderWidth === "full" ? true : "0"}
-            {...styles.listItem}
-            {...props}
-        >{children}
-        </li>
-    );
+  return (
+    <li
+      ref={ref}
+      borderColor={colorTheme.border1}
+      borderB={showBorder && borderWidth === "full" ? true : "0"}
+      {...styles.listItem}
+      {...props}
+    >{children}
+    </li>
+  );
 });
 
 export interface ListItemIconProps extends ComponentProps, ParentComponent
@@ -79,22 +78,22 @@ export interface ListItemIconProps extends ComponentProps, ParentComponent
 }
 
 export const ListItemIcon = React.forwardRef<HTMLSpanElement, ListItemIconProps>((
-{
+  {
     children,
-    ...props 
-}, ref) =>
+    ...props
+  }, ref) =>
 {
-    const styles = useMultiPartStyles();
+  const styles = useMultiPartStyles();
 
-    return (
-        <span
-            ref={ref}
-            {...styles.listItemIcon}
-            {...props}
-        >
-            {children}
-        </span>
-    );
+  return (
+    <span
+      ref={ref}
+      {...styles.listItemIcon}
+      {...props}
+    >
+      {children}
+    </span>
+  );
 });
 
 const ListNamespace = Object.assign(List, { ListItem: ListItem, ListItemIcon: ListItemIcon });

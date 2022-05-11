@@ -7,17 +7,15 @@ import { Theme } from "./Theme";
 import { useSetDirection } from "./hooks/useDirection";
 import { useSetTheme } from "./hooks/useTheme";
 import { ThemeCache } from "./ThemeCache";
+import { ParentComponent } from "./SoperioComponent";
 
 
-// We could extend from ParentComponent but we would have a circular
-// dependency with components library
-export interface SoperioProviderProps// extends ParentComponent
+export interface SoperioProviderProps extends ParentComponent
 {
   resetCss?: boolean,
   theme?: Theme,
   darkMode?: "light" | "dark" | "system";
   direction?: "rtl" | "ltr";
-  children?: React.ReactNode
 };
 
 // SoperioProvider is out initializer

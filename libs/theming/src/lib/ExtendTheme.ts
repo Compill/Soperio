@@ -13,6 +13,7 @@ import ThemeTypography from './Core/Typography';
 import ThemeBorder from './Core/Border';
 import { Direction, GlobalStyles, StringKeyValueObject } from './ThemeTypes';
 import { ColorTheme } from '..';
+import { SoperioComponent } from "./SoperioComponent";
 
 type OptionalAny<T> = {
     [Property in keyof T]+?: any;
@@ -66,6 +67,7 @@ export interface ExtendTheme
     transform?: OptionalAny<ThemeTransform>;
     transition?: OptionalAny<ThemeTransition>;
     typography?: OptionalAny<ThemeTypography>;
+    traits?: Record<string, SoperioComponent>,
     // components?: any
     components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
 }

@@ -1,12 +1,10 @@
-import { useColorTheme, useDarkMode, useTheme } from "@soperio/theming";
-import { ComponentTheme } from "../ComponentTheme";
-import { SoperioComponent } from "../SoperioComponent";
+import { SoperioComponent, useColorTheme, useDarkMode, useTheme } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
 import deepmerge from "deepmerge";
-import React from "react";
 import { BaseComponentConfig, ComponentConfig, ExtendComponentConfig } from "../ComponentConfig";
-import { ComponentState, ComponentThemeState } from "../ComponentStates";
 import { ComponentManager } from "../ComponentManager";
+import { ComponentState, ComponentThemeState } from "../ComponentStates";
+import { ComponentTheme } from "../ComponentTheme";
 
 
 type KeysOf<T> =

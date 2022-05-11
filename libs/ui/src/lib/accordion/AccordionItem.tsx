@@ -1,7 +1,6 @@
-import { useFirstRender } from "@soperio/components";
-import { OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme, useMultiPartStyles } from "@soperio/react";
+import { OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme, useFirstRender, useMultiPartStyles } from "@soperio/react";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useId } from "react";
+import React from "react";
 import { Button } from "../button";
 import { useAccordionContext } from "./AccordionContext";
 
@@ -21,7 +20,6 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
   children,
   ...props }, ref) =>
 {
-  console.log("acc item")
   const firstRender = useFirstRender()
   const colorTheme = useColorTheme()
   const styles = useMultiPartStyles()

@@ -1,6 +1,5 @@
+import { Container, Divider } from "@soperio/ui";
 import React from "react";
-import { SoperioComponent } from "@soperio/components";
-import { Container,  Divider} from "@soperio/ui";
 
 
 type Side = "left" | "right" | "top" | "bottom";

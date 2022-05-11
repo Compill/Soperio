@@ -1,5 +1,6 @@
 import { ColorTheme } from "./ColorTheme";
 import ThemeBreakpoints from "./Core/Breakpoints";
+import { SoperioComponent } from "./SoperioComponent";
 import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 export interface Theme
@@ -90,6 +91,7 @@ export interface Theme
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
   };
+  traits: KeyValueObject<SoperioComponent>
   components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
 }
 

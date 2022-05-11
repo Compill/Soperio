@@ -1,4 +1,4 @@
-import { ResponsiveCSSProps } from "@soperio/theming";
+import { ResponsiveCSSProps } from "./CSSProps";
 
 export interface SoperioComponent extends ResponsiveCSSProps
 {
@@ -7,3 +7,7 @@ export interface SoperioComponent extends ResponsiveCSSProps
   css?: Record<string, any>;
   // css: Interpolation<Theme>;
 }
+
+export type ParentComponent = {
+  children?: React.ReactNode;
+};

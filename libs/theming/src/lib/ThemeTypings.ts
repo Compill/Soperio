@@ -14,7 +14,8 @@ import ThemeThemes from "./Core/Themes";
 import ThemeTransform from "./Core/Transform";
 import ThemeTransition from "./Core/Transition";
 import ThemeTypography from "./Core/Typography";
-import { Direction, GlobalStyles, StringKeyValueObject } from "./ThemeTypes";
+import { SoperioComponent } from "./SoperioComponent";
+import { Direction, GlobalStyles } from "./ThemeTypes";
 
 // This file will be rewritten by CLI if the user creates a custom theme
 // This way, the user will have the right value for types in autocompletion
@@ -42,5 +43,6 @@ export interface ThemeTypings extends ThemeOpacity
   transform: ThemeTransform,
   transition: ThemeTransition,
   typography: ThemeTypography;
+  traits: Record<string, SoperioComponent>,
   components: Record<string, Record<string, string>>
 }

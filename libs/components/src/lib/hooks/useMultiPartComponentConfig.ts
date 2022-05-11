@@ -1,4 +1,4 @@
-import { SoperioComponent } from "../SoperioComponent";
+import { SoperioComponent } from "@soperio/theming";
 import { ComponentTheme } from "../ComponentTheme";
 import { useColorTheme, useDarkMode } from "@soperio/theming";
 import { IS_DEV } from "@soperio/utils";
@@ -99,9 +99,9 @@ function mergeProps<T, P extends MultiPartComponentConfig<T>>(config: BaseMultiP
     {
       const variant = traits[key];
       const selectedVariant = variant ? (variant as any)[componentConfig[key] ?? defaultTraits?.[key]] : null
-      
+
       const configProps = selectedVariant?.[subComponent];
-      
+
       if (configProps)
         finalProps = deepmerge(finalProps, configProps) as T;
     }

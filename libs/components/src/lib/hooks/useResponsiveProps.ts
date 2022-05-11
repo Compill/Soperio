@@ -1,5 +1,5 @@
 import { useBreakpoint } from "@soperio/theming"
-import { SoperioComponent } from "../SoperioComponent"
+import { SoperioComponent } from "@soperio/theming"
 
 const breakpoints = [ "default", "sm", "md", "lg", "xl", "x2"]
 

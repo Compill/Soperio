@@ -1,9 +1,8 @@
 import { css as emotionCss } from "@emotion/react";
-import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
-import murmurhash from "murmurhash";
-import { getThemeStyle, ThemeCache } from "@soperio/theming";
-import { SoperioComponent } from "@soperio/components"
+import { getThemeStyle, SoperioComponent, ThemeCache } from "@soperio/theming";
 import deepmerge from "deepmerge";
+import murmurhash from "murmurhash";
+import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
 
 const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
 const CACHE_TYPE = "prop"

@@ -1,5 +1,5 @@
 import { ComponentConfig, MultiPartComponentConfig } from "./ComponentConfig";
-import { SoperioComponent } from "./SoperioComponent";
+import { SoperioComponent } from "@soperio/theming";
 
 export class ComponentManager
 {

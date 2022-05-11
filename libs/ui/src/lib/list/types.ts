@@ -1,4 +1,4 @@
-import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/components";
+import { ComponentTypings, DisabledState, DisabledThemeProps, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits, SelectedDisabledThemeProps, SelectedState, SelectedThemeProps, SoperioComponent } from "@soperio/react";
 
 type TraitProps = ComponentTypings<"Soperio.List">;
 
@@ -13,4 +13,4 @@ type ListComponentProps = {
 }
 
 export type Config = MultiPartComponentConfig<ConfigStateProps, MultiPartTraits<TraitProps, ListComponentProps>>;
-export type ExtendConfig = ExtendMultiPartComponentConfig<Config>; 
+export type ExtendConfig = ExtendMultiPartComponentConfig<Config>;

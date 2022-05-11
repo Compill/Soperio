@@ -1,5 +1,4 @@
-import { createContext } from "@soperio/components";
-import { ComponentManager, ComponentTheme, HTMLDivProps, MultiPartStyleProvider, Opacity, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
+import { ComponentManager, ComponentTheme, createContext, HTMLDivProps, MultiPartStyleProvider, Opacity, OrString, ParentComponent, SoperioComponent, SpacingPositive, useColorTheme, useMultiPartComponentConfig, useMultiPartStyles } from "@soperio/react";
 import { IS_DEV } from "@soperio/utils";
 import { motion } from "framer-motion";
 import React from "react";

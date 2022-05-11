@@ -1,4 +1,4 @@
-import { SoperioComponent } from "./SoperioComponent";
+import { SoperioComponent } from "@soperio/theming";
 
 export const ComponentState = {
   ACTIVE: "active",
@@ -38,7 +38,7 @@ export interface ActiveDisabledThemeProps<T = SoperioComponent> { stateActiveDis
 export interface CheckedDisabledThemeProps<T = SoperioComponent> { stateCheckedDisabled?: T; };
 export interface SelectedDisabledThemeProps<T = SoperioComponent> { stateSelectedDisabled?: T; };
 
-export type ComponentStateProps<T = SoperioComponent> = Partial<ActiveThemeProps<T> 
+export type ComponentStateProps<T = SoperioComponent> = Partial<ActiveThemeProps<T>
           & CheckedThemeProps<T>
           & DisabledThemeProps<T>
           & InvalidThemeProps<T>

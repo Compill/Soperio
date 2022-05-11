@@ -1,4 +1,4 @@
-import { ColorTheme } from "@soperio/theming";
+import { ColorTheme } from "@soperio/react";
 import { Config } from "./types";
 
 const config: Config = (theme: ColorTheme, darkMode: boolean) =>
@@ -12,14 +12,14 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         },
         defaultProps:
         {
-            list: 
+            list:
             {
                 listStyle: 'none',
                 m: "0",
                 p: "0",
                 position: 'relative',
             },
-            listItem: 
+            listItem:
             {
                 display: 'flex',
                 justifyContent: 'start',
@@ -31,7 +31,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                 boxSizing: 'border-box',
                 textAlign: 'start',
             },
-            listItemIcon: 
+            listItemIcon:
             {
                 display: 'flex',
                 justifyContent: 'start',
@@ -42,15 +42,15 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         subComponents: ["list", "listItem", "listItemIcon"],
         traits:
         {
-            size: 
+            size:
             {
-                sm: 
+                sm:
                 {
-                    list: 
+                    list:
                     {
                         w: "15%",
                     },
-                    listItem: 
+                    listItem:
                     {
                         fontSize: "sm"
                     },
@@ -61,43 +61,43 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                     }
 
                 },
-                md: 
+                md:
                 {
-                    list: 
+                    list:
                     {
                         w: "25%",
                     },
-                    listItem: 
+                    listItem:
                     {
                         fontSize: "md"
                     },
-                    listItemIcon: 
+                    listItemIcon:
                     {
                         w: "24px",
                         h: "24px",
                     }
                 },
-                lg: 
+                lg:
                 {
-                    list: 
+                    list:
                     {
                         w: "35%",
                     },
-                    listItem: 
+                    listItem:
                     {
                         fontSize: "lg"
                     },
-                    listItemIcon: 
+                    listItemIcon:
                     {
                         w: "48px",
                         h: "48px",
                     }
                 },
-                xl: 
+                xl:
                 {
 
                 },
-                x2: 
+                x2:
                 {
 
                 },
@@ -106,13 +106,13 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
             {
                 default:
                 {
-                    list: 
+                    list:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
                         border: "0",
                         textColor: theme.textDark1
                     },
-                    listItem: 
+                    listItem:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
                         border: "0",
@@ -121,7 +121,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                         py: "3",
                         hover_bgColor: theme.background2
                     },
-                    listItemIcon: 
+                    listItemIcon:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
                         border: "0",
@@ -129,15 +129,15 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                         hover_bgColor: theme.background2
                     },
                 },
-                bordered: 
+                bordered:
                 {
-                    list: 
+                    list:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
                         border: "0",
                         textColor: theme.textDark1
                     },
-                    listItem: 
+                    listItem:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
                         borderB: "2",
@@ -147,7 +147,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                         py: "3",
                         hover_bgColor: theme.background2
                     },
-                    listItemIcon: 
+                    listItemIcon:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
                         borderB: "2",

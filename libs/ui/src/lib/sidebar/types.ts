@@ -1,5 +1,4 @@
-import { ParentComponent, SoperioComponent } from "@soperio/react";
-import { Width, Height } from "@soperio/theming";
+import { ParentComponent, SoperioComponent, Width, Height } from "@soperio/react";
 
 export interface SidebarProps extends SoperioComponent, ParentComponent
 {

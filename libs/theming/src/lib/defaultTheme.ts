@@ -1059,5 +1059,86 @@ export const defaultTheme: Theme = {
       '9': '2.25rem',
       '10': '2.5rem',
     },
+  },
+  traits: {
+    "typo.display1": {
+      fontSize: "5.5rem"
+    },
+    "typo.display2": {
+      fontSize: "4.5rem"
+    },
+    "typo.display3": {
+      fontSize: "3.5rem"
+    },
+    "typo.display4": {
+      fontSize: "2.5rem"
+    },
+    "typo.display5": {
+      fontSize: "1.5rem"
+    },
+    "typo.h1": {
+      fontSize: "2rem",
+      fontWeight: "500",
+      lineHeight: "1.2",
+      letterSpacing: "tighter"
+    },
+    "typo.h2": {
+      fontSize: "1.75rem",
+      fontWeight: "500",
+      lineHeight: "1.2",
+      letterSpacing: "tight"
+    },
+     "typo.h3": {
+      fontSize: "1.5rem",
+      fontWeight: "500",
+      lineHeight: "1.2"
+    },
+    "typo.h4": {
+      fontSize: "1.35rem",
+      fontWeight: "500",
+      lineHeight: "1.2",
+      letterSpacing: "wider"
+    },
+    "typo.h5": {
+      fontSize: "1.25rem",
+      fontWeight: "500",
+      lineHeight: "1.2"
+    },
+    "typo.h6": {
+      fontSize: "1.175rem",
+      fontWeight: "500",
+      lineHeight: "1.2",
+      letterSpacing: "wide"
+    },
+    "typo.subtitle1": {
+      fontSize: "lg",
+      fontWeight: "500",
+      letterSpacing: "wide"
+    },
+    "typo.subtitle2": {
+      fontSize: "md",
+      fontWeight: "500",
+      letterSpacing: "wide"
+    },
+    "typo.body1": {
+      fontSize: "lg",
+      fontWeight: "500",
+      letterSpacing: "widest"
+    },
+    "typo.body2": {
+      fontSize: "md",
+      fontWeight: "500",
+      letterSpacing: "wider"
+    },
+    "typo.caption": {
+      fontSize: "sm",
+      fontWeight: "500",
+      letterSpacing: "widest"
+    },
+    "typo.overline": {
+      fontSize: "xs",
+      fontWeight: "500",
+      letterSpacing: "wider"
+    },
   }
 };

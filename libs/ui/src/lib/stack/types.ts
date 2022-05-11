@@ -1,4 +1,3 @@
-
 import { ParentComponent, SoperioComponent, ResponsiveProps } from "@soperio/react";
 import { Breakpoints } from "@soperio/react";
 
