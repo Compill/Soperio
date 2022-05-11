@@ -17,7 +17,7 @@ export default function Test({ ...props }) {
 
 
   return (
-    <Container dflex center size="xxl" justifyContent="center" py="48" w="30%">
+    <Container dflex center size="x2" justifyContent="center" py="48" w="30%">
       <Accordion w="350px" expandIcon={<ExpandSvg/>} variant="bordered" >
         <AccordionItem label="test1">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>

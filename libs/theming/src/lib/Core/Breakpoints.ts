@@ -5,5 +5,5 @@ export default interface ThemeBreakpoints
     md: string,
     lg: string,
     xl: string,
-    xxl: string,
+    x2: string,
 }

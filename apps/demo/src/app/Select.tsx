@@ -10,7 +10,7 @@ export default function Page({ ...props })
 {
 
   return (
-    <Container center size="xxl" gap="20" justifyContent="center" py="20">
+    <Container center size="x2" gap="20" justifyContent="center" py="20">
       <div mb="10">
         <Select block size="sm" variant="default" mb="5" defaultValue="tenerife">
           <option value="tenerife">Tenerife</option>

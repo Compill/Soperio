@@ -92,6 +92,8 @@ async function findComponentFiles()
   return tsFiles.filter((f) => !f.includes("stories"))
 }
 
+const responsivePrefixes = ["sm_", "md_", "lg_", "xl_", "x2_"]
+
 /**
  * Parse files with react-doc-gen-typescript
  */
@@ -101,21 +103,34 @@ function parseInfo(filePaths: string[])
 
     propFilter: (prop, component) =>
     {
+      const isHook = component.name.startsWith("use")
+
+      if (isHook)
+      {
+        const isTypeScriptNative =
+          prop.parent?.fileName.includes("node_modules/typescript") ?? false
+
+        return !isTypeScriptNative
+      }
+
       const isStyledSystemProp = excludedPropNames.includes(prop.name)
 
+      if (isStyledSystemProp)
+        return false
 
       const isHTMLElementProp =
         prop.parent?.fileName.includes("node_modules") ?? false
 
-      const isHook = component.name.startsWith("use")
+      if (isHTMLElementProp)
+        return false
 
-      const isTypeScriptNative =
-        prop.parent?.fileName.includes("node_modules/typescript") ?? false
-      return (
+      // Component use ResponsiveProps<> type to make a prop responsive dynamically
+      const isResponsiveProp = responsivePrefixes.includes(prop.name.substring(0, 3))
 
-        (isHook && !isTypeScriptNative) ||
-        !(isStyledSystemProp || isHTMLElementProp)
-      )
+      if (isResponsiveProp)
+        return false
+
+      return true
     },
   })
 

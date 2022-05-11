@@ -111,4 +111,4 @@ export const CSSPropKeys = variants
     .concat(buildProps("md", variants))
     .concat(buildProps("lg", variants))
     .concat(buildProps("xl", variants))
-    .concat(buildProps("xxl", variants))
+    .concat(buildProps("x2", variants))

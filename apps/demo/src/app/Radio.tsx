@@ -24,7 +24,7 @@ export default function Page({ ...props })
   }
 
   return (
-    <Container center size="xxl" gap="20" justifyContent="center" py="20">
+    <Container center size="x2" gap="20" justifyContent="center" py="20">
       <div mb="10">
       <Radio size="sm" shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />
       <Radio size="md" shape="circle" label="Accept the terms and conditions" checked={checked} onClick={handleClick} onChange={handleChange} />

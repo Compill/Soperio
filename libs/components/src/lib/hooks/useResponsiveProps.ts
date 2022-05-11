@@ -1,7 +1,7 @@
 import { useBreakpoint } from "@soperio/theming"
 import { SoperioComponent } from "../SoperioComponent"
 
-const breakpoints = [ "default", "sm", "md", "lg", "xl", "xxl"]
+const breakpoints = [ "default", "sm", "md", "lg", "xl", "x2"]
 
 export function useResponsiveProp<T extends SoperioComponent>(responsiveProp: keyof T, soperioProps: T): any
 {
@@ -36,7 +36,7 @@ export function useResponsiveProp<T extends SoperioComponent>(responsiveProp: ke
     delete (soperioProps as any)[`md_${responsiveProp}`]
     delete (soperioProps as any)[`lg_${responsiveProp}`]
     delete (soperioProps as any)[`xl_${responsiveProp}`]
-    delete (soperioProps as any)[`xxl_${responsiveProp}`]
+    delete (soperioProps as any)[`x2_${responsiveProp}`]
 
     return val
 }
@@ -76,7 +76,7 @@ export function useResponsiveProps<T extends SoperioComponent>(responsiveProps: 
         delete (soperioProps as any)[`md_${prop}`]
         delete (soperioProps as any)[`lg_${prop}`]
         delete (soperioProps as any)[`xl_${prop}`]
-        delete (soperioProps as any)[`xxl_${prop}`]
+        delete (soperioProps as any)[`x2_${prop}`]
 
         return val
     })

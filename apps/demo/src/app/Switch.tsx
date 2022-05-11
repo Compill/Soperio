@@ -11,14 +11,14 @@ export default function Page({ ...props })
     // console.log("click", e)
   }
 
-  const handleChange = React.useCallback((e: any) => 
+  const handleChange = React.useCallback((e: any) =>
   {
 
     setChecked(!checked);
   }, [checked, setChecked])
-  
+
   return (
-    <Container center size="xxl" dflex gap="20" justifyContent="center" py="20">
+    <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
       <Stack lg_direction="row" gap='24px'>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} ></Switch>
         <Switch checked={checked} onClick={handleClick} onChange={handleChange} size="sm" ></Switch>

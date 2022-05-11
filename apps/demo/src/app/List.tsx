@@ -25,7 +25,7 @@ export default function Page({ ...props })
     )
 
     return (
-        <Container center size="xxl" dflex gap="5" justifyContent="center" py="20">
+        <Container center size="x2" dflex gap="5" justifyContent="center" py="20">
             <List>
                 <List.ListItem >
                     <List.ListItemIcon>

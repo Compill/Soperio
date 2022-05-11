@@ -5,7 +5,7 @@ import { Avatar, Container, } from "@soperio/ui";
 export default function Page({ ...props }) {
 
   return (
-    <Container center size="xxl" dflex gap="20" justifyContent="center" py="20">
+    <Container center size="x2" dflex gap="20" justifyContent="center" py="20">
       <Avatar src="../assets/photo.jpg" name="Yohan Gerbaud" badge badgePosition="centerStart" />
       <Avatar badgePosition="centerEnd" badge />
       <Avatar name="Yohan Gerbaud" badge badgePosition="topStart" corners="pill" />
@@ -18,4 +18,3 @@ export default function Page({ ...props }) {
     </Container>
   );
 }
-

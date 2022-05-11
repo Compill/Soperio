@@ -8,7 +8,7 @@ const breakpoints = {
   md: '768px',
   lg: '1024px',
   xl: '1280px',
-  xxl: '1560px',
+  x2: '1560px',
 };
 
 const opacity = {
@@ -644,8 +644,8 @@ export const defaultTheme: Theme = {
       default: "12px",
       lg: "16px",
       xl: "24px",
-      "2x": "40px",
-      "3x": "64px",
+      x2: "40px",
+      x3: "64px",
     },
     brightness: {
       "0": "0",
@@ -681,7 +681,7 @@ export const defaultTheme: Theme = {
       md: "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))",
       lg: "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))",
       xl: "drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))",
-      "2x": "drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))",
+      x2: "drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))",
       none: "drop-shadow(0 0 #0000)",
     },
     grayscale: {
@@ -726,8 +726,8 @@ export const defaultTheme: Theme = {
       default: "12px",
       lg: "16px",
       xl: "24px",
-      "2x": "40px",
-      "3x": "64px",
+      x2: "40px",
+      x3: "64px",
     },
     backdropBrightness: {
       "0": "0",
@@ -1016,7 +1016,7 @@ export const defaultTheme: Theme = {
     // Second argument is for line-height
     fontSize: {
       // TODO Should I really define line-heights ? Because it makes the UI weird is some cases
-      // when I try to vetically center the text and the line-height doesn't match with the 
+      // when I try to vetically center the text and the line-height doesn't match with the
       // font-size, in buttons for example
       xs: ['0.75rem', '1rem'],
       sm: ['0.875rem', "1.25rem"],

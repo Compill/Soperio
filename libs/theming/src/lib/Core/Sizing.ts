@@ -62,5 +62,5 @@ export default interface ThemeSizing
   maxWidth: "0" | "full" | "min" | "max",
   minHeight: "0" | "full" | "screen",
   minWidth: "0" | "full" | "min" | "max",
-  width: "0" | "none" | "xs" | Breakpoints | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "full" | "min" | "max" | "prose" | ScreenBreakpoints | WidthScale | Spacing,
+  width: "0" | "none" | "xs" | Breakpoints | "x3" | "x4" | "x5" | "x6" | "x7" | "full" | "min" | "max" | "prose" | ScreenBreakpoints | WidthScale | Spacing,
 }
