@@ -11,10 +11,10 @@ import ThemeRootColors from "./Core/RootColors";
 import ThemeSizing from "./Core/Sizing";
 import ThemeSpacing from "./Core/Spacing";
 import ThemeThemes from "./Core/Themes";
+import { ThemeTraits } from "./Core/Traits";
 import ThemeTransform from "./Core/Transform";
 import ThemeTransition from "./Core/Transition";
 import ThemeTypography from "./Core/Typography";
-import { SoperioComponent } from "./SoperioComponent";
 import { Direction, GlobalStyles } from "./ThemeTypes";
 
 // This file will be rewritten by CLI if the user creates a custom theme
@@ -43,6 +43,6 @@ export interface ThemeTypings extends ThemeOpacity
   transform: ThemeTransform,
   transition: ThemeTransition,
   typography: ThemeTypography;
-  traits: Record<string, SoperioComponent>,
+  traits: ThemeTraits,
   components: Record<string, Record<string, string>>
 }

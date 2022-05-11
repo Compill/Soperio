@@ -9,6 +9,7 @@ import Layout from "./CSS/Layout";
 import { Sizing } from "./CSS/Sizing";
 import { Spacing } from "./CSS/Spacing";
 import { Table } from "./CSS/Table";
+import { Traits } from "./CSS/Traits";
 import { Transform } from "./CSS/Transform";
 import { Transitions } from "./CSS/Transitions";
 import { Typography } from "./CSS/Typography";
@@ -33,6 +34,7 @@ interface CSSProps extends
     Table,
     Transform,
     Transitions,
+    Traits,
     Typography,
     FocusVariant,
     HoverVariant {};

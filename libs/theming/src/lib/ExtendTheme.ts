@@ -67,7 +67,7 @@ export interface ExtendTheme
     transform?: OptionalAny<ThemeTransform>;
     transition?: OptionalAny<ThemeTransition>;
     typography?: OptionalAny<ThemeTypography>;
-    traits?: Record<string, SoperioComponent>,
+    traits?: Record<string, Omit<SoperioComponent, "trait">>,
     // components?: any
     components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
 }

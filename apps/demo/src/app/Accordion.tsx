@@ -14,12 +14,11 @@ function CollapseArrowUpSvg() {
   </svg>
 }
 export default function AccordionPage({ ...props }) {
-  console.log("accordion page")
 
   return (
     <Container dflex center size="x2" justifyContent="center" py="48" w="30%">
       <Accordion w="350px"  variant="bordered"  allowMultiple={true} animate="" gap="4" >
-        <AccordionItem label="test1" >
+        <AccordionItem label="test1" trait="typo.display2">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
