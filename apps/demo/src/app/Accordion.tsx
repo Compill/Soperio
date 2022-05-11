@@ -14,7 +14,7 @@ function CollapseArrowUpSvg() {
   </svg>
 }
 export default function AccordionPage({ ...props }) {
-
+  console.log("accordion page")
 
   return (
     <Container dflex center size="x2" justifyContent="center" py="48" w="30%">
@@ -23,7 +23,7 @@ export default function AccordionPage({ ...props }) {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
-        <AccordionItem label="test2" >
+        <AccordionItem label="test2" isOpen>
           <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 

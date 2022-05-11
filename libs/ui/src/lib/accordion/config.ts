@@ -29,7 +29,8 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         mx: "4",
         p: '0',
         h: "24px",
-        variant: "borderless"
+        variant: "borderless",
+        corners: "pill"
       },
       itemContent:
       {

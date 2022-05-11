@@ -1,4 +1,5 @@
 import { OrString } from "@soperio/utils";
+import { AnyAngle } from "./CSS/Filters";
 import { ThemingToken } from "./ThemingToken";
 
 type AnyCSSSizeValue = "any valid css sizing value like 23px, 2rem, 14pt, etc..."
@@ -39,7 +40,7 @@ export type Spacing = OrString<ThemingToken<"spacing", "positiveNegative"> | Any
 export type SpacingPositive = OrString<ThemingToken<"spacing", "positive"> | AnyCSSSizeValue>
 
 export type Scale = OrString<ThemingToken<"transform", "scale"> | AnyCSSSizeValue>
-export type Rotate = OrString<ThemingToken<"transform", "rotate">>
+export type Rotate = OrString<ThemingToken<"transform", "rotate">> | AnyAngle
 export type Translate = OrString<ThemingToken<"transform", "translate"> | AnyCSSSizeValue>
 export type Skew = OrString<ThemingToken<"transform", "skew">>
 

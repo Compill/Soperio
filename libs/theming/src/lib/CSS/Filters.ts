@@ -1,7 +1,7 @@
 import { BackdropBlur, BackdropBrightness, BackdropContrast, BackdropGrayScale, BackdropHueRotate, BackdropInvert, BackdropOpacity, BackdropSaturate, BackdropSepia, Blur, Brightness, Contrast, DropShadow, GrayScale, HueRotate, Invert, Saturate, Sepia } from "../CSSTypes";
 
 type AnyPercentage = "any percentage between 0 and 200 (25%, 0.4, 175%, ...)"
-type AnyAngle = "any angle value(125deg, 3.124rad, -0.25turn, ...)"
+export type AnyAngle = "any angle value(125deg, 3.124rad, -0.25turn, ...)"
 
 export interface Filters
 {
