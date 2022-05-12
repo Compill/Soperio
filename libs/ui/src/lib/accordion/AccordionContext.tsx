@@ -15,6 +15,7 @@ export interface AccordionContext extends ComponentProps, ParentComponent, HTMLD
   collapseIcon?: React.ReactNode,
   setIsRotate?: any,
   isRotate?: number,
+  itemStyle?: SoperioComponent,
   itemHeaderStyle?: SoperioComponent,
   itemHeaderLabelStyle?: SoperioComponent,
   itemHeaderCollapseButtonStyle?: SoperioComponent,

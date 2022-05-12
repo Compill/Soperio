@@ -31,6 +31,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
     expandIcon,
     allowMultiple,
     expandIconRotationOnOpen,
+    itemStyle,
     itemHeaderStyle,
     itemHeaderLabelStyle,
     itemHeaderCollapseButtonStyle,
@@ -50,7 +51,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
   const show = _isOpen || expanded === id
 
   return (
-    <div>
+    <div {...styles.item} {...itemStyle}>
       <div
         onClick={handleClick}
         dflex

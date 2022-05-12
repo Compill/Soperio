@@ -9,6 +9,7 @@ interface ConfigStateProps extends SoperioComponent, SelectedThemeProps, Disable
 
 type AccordionComponentProps = {
   accordion?: SoperioComponent & ConfigStateProps,
+  item?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
   itemHeader?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
   itemHeaderLabel?: SoperioComponent & ConfigStateProps, // AccordionHeaderThemeProps
   itemHeaderCollapseButton?: SoperioComponent & ConfigStateProps,
