@@ -34,14 +34,13 @@ interface CSSProps extends
     Table,
     Transform,
     Transitions,
-    Traits,
     Typography,
     FocusVariant,
     HoverVariant {};
 
 export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
 
-export type ResponsiveCSSProps = ResponsiveProps<CSSProps>
+export type ResponsiveCSSProps = Partial<Traits> & ResponsiveProps<CSSProps>
 
 
 const accessibility = ["srOnly", "notSrOnly"];
@@ -108,7 +107,8 @@ const variants = props
     .concat(buildProps("hover", hover))
     .concat(buildProps("focus", focus))
 
-export const CSSPropKeys = variants
+export const CSSPropKeys = ["trait", "as"]
+    .concat(variants)
     .concat(buildProps("sm", variants))
     .concat(buildProps("md", variants))
     .concat(buildProps("lg", variants))

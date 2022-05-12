@@ -66,7 +66,6 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
 }: AccordionProps, ref) =>
 {
   const id = React.useId()
-  console.log("accordion", id)
   const styles = useMultiPartComponentConfig(COMPONENT_ID, theme, config, { variant, corners }, props)
   const [ expanded, setExpanded ] = React.useState<false | number | string>(0);
 
@@ -100,8 +99,6 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionProps>(({
       }
     },
   }
-
-  console.log(accordionAnimation)
 
   const context = {
     expanded,

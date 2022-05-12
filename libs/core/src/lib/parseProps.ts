@@ -62,14 +62,89 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
   return content;
 }
 
+function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
+{
+  // TODO Cache
+  // Merge trait props with rest of props
+  if ("trait" in props)
+  {
+    const newProps = { ...props }
+
+    const traitPropValue = newProps["trait"]
+
+    const key = `trait${traitPropValue}`
+    let traitProps = ThemeCache.get().get(CACHE_TYPE, key)
+
+    if (!traitProps)
+    {
+      if (typeof traitPropValue === "string")
+      {
+        traitProps = getThemeStyle("traits", traitPropValue)
+
+        if (!traitProps)
+          console.warn(`[Soperio]: you tried to use trait ${traitPropValue} but it doesn't exist in the theme`)
+        else
+          ThemeCache.get().put(CACHE_TYPE, key, traitProps)
+      }
+      else if (traitPropValue)
+      {
+        for (const trait of traitPropValue as string[])
+        {
+          const themeProps = getThemeStyle("traits", trait)
+          let hasTrait = false
+
+          if (themeProps)
+          {
+            hasTrait = true
+            traitProps = { ...traitProps, themeProps }
+          }
+          else
+          {
+            console.log(`[Soperio]: you tried to use trait ${trait} but it doesn't exist in the theme`)
+          }
+
+          if (!hasTrait)
+            traitProps = undefined
+          else
+            ThemeCache.get().put(CACHE_TYPE, key, traitProps)
+        }
+
+        delete newProps["trait"]
+      }
+    }
+
+    if (traitProps)
+    {
+      const keys = Object.keys(newProps)
+      const index = keys.indexOf("trait")
+      const length = keys.length
+
+      // Merge props with trait props
+      let o = {}
+      for (let i = 0; i < index; i++)
+        o[keys[i]] = newProps[keys[i]]
+
+      o = { ...o, ...traitProps }
+
+      for (let i = index + 1; i < length; i++)
+        o[keys[i]] = props[keys[i]]
+
+      return o
+    }
+  }
+
+  return { ...props }
+}
+
 export function parseProps<P extends SoperioComponent>(props: P)
 {
-  const keys = Object.keys(props);
+  // "trait" is a special prop, we need to parse it before the rest
+  const newProps: any = mergeTraitPropIfExist(props);
+
+  const keys = Object.keys(newProps);
 
   if (keys.length > 0)
   {
-    const newProps: any = { ...props };
-
     const css: any = {};
 
     for (const prop of keys)
@@ -121,7 +196,7 @@ export function parseProps<P extends SoperioComponent>(props: P)
 
         if (parsed[REMOVE_IF_VARIANT])
         {
-          if( variants.length > 0)
+          if (variants.length > 0)
             delete parsed[parsed[REMOVE_IF_VARIANT]]
 
           delete parsed[REMOVE_IF_VARIANT]
@@ -154,7 +229,7 @@ export function parseProps<P extends SoperioComponent>(props: P)
     return newProps;
   }
 
-  return {...props};
+  return { ...props };
 }
 
 /**

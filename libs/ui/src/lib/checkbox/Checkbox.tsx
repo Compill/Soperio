@@ -35,8 +35,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
   const styles = useComponentConfig(COMPONENT_ID, theme, config, { variant, size, shape }, props)
 
   const [soperioProps, inputProps] = splitComponentProps(props)
-console.log(styles);
-  // TODO Fix tick 
+
   return (
     <div display="flex" flexRow  alignItems="center" {...soperioProps}>
       <label userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
