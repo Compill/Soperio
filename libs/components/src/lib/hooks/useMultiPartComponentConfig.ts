@@ -51,7 +51,7 @@ export function useMultiPartComponentConfig<T, P extends MultiPartComponentConfi
   const darkMode = useDarkMode();
 
   if (!defaultConfig && IS_DEV)
-    console.log(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
+    console.warn(`[Soperio] ${component} default config does not exist. Make sure to register it by calling Soperio.registerComponent().`);
 
   const colorTheme = useColorTheme(theme);
 

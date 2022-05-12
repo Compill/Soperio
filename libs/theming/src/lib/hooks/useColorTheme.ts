@@ -27,7 +27,7 @@ export function useColorTheme(colorTheme?: false | string | ColorTheme): ColorTh
     if (!indexedColorTheme)
     {
       if (IS_DEV)
-        console.log(`[Soperio]: the color theme ${colorTheme} does not exist in your theme.`);
+        console.warn(`[Soperio]: the color theme ${colorTheme} does not exist in your theme.`);
     }
 
     return processTheme(indexedColorTheme|| {});
@@ -75,7 +75,7 @@ function processColor(color: string)
 
   if (color.startsWith("root."))
   {
-    return `var(--so-${color.substring(5)})` // Remove "root." prefix, and convert to CSS var 
+    return `var(--so-${color.substring(5)})` // Remove "root." prefix, and convert to CSS var
   }
 
   return color

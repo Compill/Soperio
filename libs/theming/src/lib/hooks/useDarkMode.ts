@@ -129,7 +129,7 @@ function replaceRootColors()
   const theme = getTheme();
 
   if (!theme.rootColors && IS_DEV)
-    console.log("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
+    console.warn("[Soperio Core]: Your theme is invalid and is missing the \"rootColors\" property object");
 
   const rootColors: RootColors = { ...theme.rootColors, ...(darkModeInternal ? theme.darkModeOverride?.rootColors : null) };
 

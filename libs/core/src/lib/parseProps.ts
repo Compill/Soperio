@@ -100,7 +100,7 @@ function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
           }
           else
           {
-            console.log(`[Soperio]: you tried to use trait ${trait} but it doesn't exist in the theme`)
+            console.warn(`[Soperio]: you tried to use trait ${trait} but it doesn't exist in the theme`)
           }
 
           if (!hasTrait)
