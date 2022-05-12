@@ -29,7 +29,9 @@ const typePropName = '__SOPERIO_TYPE_PLEASE_DO_NOT_USE__'
 
 function createSoperioProps(type: React.ElementType, props: any)
 {
-  return { ...props, [typePropName]: type };
+  const asType = props["as"]
+  delete props["as"]
+  return { ...props, [typePropName]: asType ?? type };
 }
 
 export function jsxDEV<P>(

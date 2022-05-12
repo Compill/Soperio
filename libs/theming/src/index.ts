@@ -1,6 +1,6 @@
 export * from './lib/ColorTheme';
 export { CSSPropKeys } from "./lib/CSSProps";
-export type { ResponsiveCSSProps, ResponsiveProps } from "./lib/CSSProps";
+export type { ResponsiveProps } from "./lib/CSSProps";
 export type { Breakpoints, Color, Height, MaxHeight, MaxWidth, MinHeight, MinWidth, Opacity, Rotate, Spacing, SpacingPositive, Width } from './lib/CSSTypes';
 export * from './lib/ExtendTheme';
 export * from './lib/extendTheme/extendTheme';

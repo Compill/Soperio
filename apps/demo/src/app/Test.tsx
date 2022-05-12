@@ -1,5 +1,5 @@
 
-import { Accordion, AccordionItem, Container } from "@soperio/ui";
+import { Accordion, AccordionItem, Button, Container, Stack } from "@soperio/ui";
 import React from "react";
 
 function ExpandSvg() {
@@ -17,21 +17,10 @@ export default function Test({ ...props }) {
 
 
   return (
-    <Container dflex center size="x2" justifyContent="center" py="48" w="30%">
-      <Accordion w="350px" expandIcon={<ExpandSvg/>} variant="bordered" >
-        <AccordionItem label="test1">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
-
-        </AccordionItem >
-        <AccordionItem label="test2" >
-          <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
-
-        </AccordionItem >
-        <AccordionItem label="test3" >
-          <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
-
-        </AccordionItem >
-      </Accordion>
+    <Container dflex center size="x2" justifyContent="center" py="48" w="30%" >
+      <Button w="full" type="button" as="a" size="x2">Test As anchor</Button>
+      <Stack w="full"></Stack>
+      <a bgColor="black">hola</a>
     </Container>
   );
 }

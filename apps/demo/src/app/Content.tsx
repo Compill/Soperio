@@ -1,29 +1,29 @@
 import { Button,  } from "@soperio/ui";
 import React from "react";
-import Badge from "./Badge";
-import ButtonPage from "./Button";
-import Card from "./Card";
-import Checkbox from "./Checkbox";
-import Input from "./Input";
-import Radio from "./Radio";
-import Select from "./Select";
-import Spinner from "./Spinner";
-import TextAlign from "./TextAlign";
-import TextArea from "./TextArea";
-import Divider from "./Divider";
-import Switch from "./Switch";
-import Avatar from "./Avatar";
-import List from "./List";
-import Scrollable from "./Scrollable";
-import Modal  from "./Modal";
-import AccordionPage  from "./Accordion";
+const Badge = React.lazy(() => import("./Badge"));
+const ButtonPage = React.lazy(() => import("./Button"));
+const Card = React.lazy(() => import("./Card"));
+const Checkbox = React.lazy(() => import("./Checkbox"));
+const Input = React.lazy(() => import("./Input"));
+const Radio = React.lazy(() => import("./Radio"));
+const Select = React.lazy(() => import("./Select"));
+const Spinner = React.lazy(() => import("./Spinner"));
+const TextAlign = React.lazy(() => import("./TextAlign"));
+const TextArea = React.lazy(() => import("./TextArea"));
+const Divider = React.lazy(() => import("./Divider"));
+const Switch = React.lazy(() => import ("./Switch"));
+const Avatar = React.lazy(() => import("./Avatar"));
+const List = React.lazy(() => import("./List"));
+const Scrollable = React.lazy(() => import("./Scrollable"));
+const Modal  = React.lazy(() => import("./Modal"));
+const AccordionPage  = React.lazy(() => import("./Accordion"));
 
-import Test  from "./Test";
+const Test = React.lazy(() => import("./Test"));
 
 export function Content()
 {
-  const [state, setState] = React.useState(17);
-  
+  const [state, setState] = React.useState(18);
+
 
   return (
     <>

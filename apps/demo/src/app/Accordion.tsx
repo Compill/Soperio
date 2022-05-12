@@ -22,7 +22,7 @@ export default function AccordionPage({ ...props }) {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 
-        <AccordionItem label="test2" isOpen trait="typo.subtitle">
+        <AccordionItem label="test2" isOpen trait="typo.subtitle1">
           <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda odit ad quidem possimus praesentium esse minima voluptate nesciunt omnis. Eligendi assumenda vitae deleniti fuga veritatis eum modi eveniet ipsum.</p>
         </AccordionItem >
 

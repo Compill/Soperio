@@ -1,5 +1,6 @@
 import { ThemingToken } from "../ThemingToken";
 
-export type Traits = {
+export type Special = {
   trait: keyof ThemingToken<"traits">
+  as: string
 }

@@ -106,7 +106,9 @@ function App()
 
 
       {/* <Page11 /> */}
-      <Content />
+      <React.Suspense>
+        <Content />
+      </React.Suspense>
     </SoperioProvider>
   );
 }

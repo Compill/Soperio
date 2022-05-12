@@ -9,7 +9,7 @@ import Layout from "./CSS/Layout";
 import { Sizing } from "./CSS/Sizing";
 import { Spacing } from "./CSS/Spacing";
 import { Table } from "./CSS/Table";
-import { Traits } from "./CSS/Traits";
+import { Special } from "./CSS/Special";
 import { Transform } from "./CSS/Transform";
 import { Transitions } from "./CSS/Transitions";
 import { Typography } from "./CSS/Typography";
@@ -40,7 +40,7 @@ interface CSSProps extends
 
 export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
 
-export type ResponsiveCSSProps = Partial<Traits> & ResponsiveProps<CSSProps>
+export type ResponsiveCSSProps = Partial<Special> & ResponsiveProps<CSSProps>
 
 
 const accessibility = ["srOnly", "notSrOnly"];
