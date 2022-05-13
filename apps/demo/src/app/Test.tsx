@@ -18,9 +18,7 @@ export default function Test({ ...props }) {
 
   return (
     <Container dflex center size="x2" justifyContent="center" py="48" w="30%" >
-      <Button w="full" type="button" as="a" size="x2">Test As anchor</Button>
-      <Stack w="full"></Stack>
-      <a bgColor="black">hola</a>
+      <div as="a">{"Hello, am a <div> or a <a> ?"}</div>
     </Container>
   );
 }

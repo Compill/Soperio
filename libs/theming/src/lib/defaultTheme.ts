@@ -1157,7 +1157,8 @@ export const defaultTheme: Theme = {
     {
       fontSize: "xs",
       fontWeight: "500",
-      letterSpacing: "wider"
+      letterSpacing: "wider",
+      textTransform: "uppercase"
     },
   }
 };

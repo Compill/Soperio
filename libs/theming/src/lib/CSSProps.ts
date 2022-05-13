@@ -40,7 +40,7 @@ interface CSSProps extends
 
 export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
 
-export type ResponsiveCSSProps = Partial<Special> & ResponsiveProps<CSSProps>
+export type ResponsiveCSSProps = Special & ResponsiveProps<CSSProps>
 
 
 const accessibility = ["srOnly", "notSrOnly"];
