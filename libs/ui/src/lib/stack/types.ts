@@ -1,5 +1,4 @@
-import { ParentComponent, SoperioComponent, ResponsiveProps } from "@soperio/react";
-import { Breakpoints } from "@soperio/react";
+import { ParentComponent, ResponsiveProps, SoperioComponent } from "@soperio/react";
 
 type Responsive = ResponsiveProps<{
   direction: "row" | "column"
@@ -7,6 +6,5 @@ type Responsive = ResponsiveProps<{
 
 export interface StackProps extends SoperioComponent, Responsive, ParentComponent, React.HTMLAttributes<HTMLDivElement>
 {
-  size?: Breakpoints;
-  center?: true | false;
-};
+
+}
