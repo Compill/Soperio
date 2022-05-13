@@ -96,7 +96,7 @@ function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
           if (themeProps)
           {
             hasTrait = true
-            traitProps = { ...traitProps, themeProps }
+            traitProps = { ...traitProps, ...themeProps }
           }
           else
           {
