@@ -45,5 +45,9 @@
         "access": "public"
       }
     }
-  }
+  },
+  "implicitDependencies": [
+    "jsx-runtime",
+    "jsx-dev-runtime"
+  ]
 }
