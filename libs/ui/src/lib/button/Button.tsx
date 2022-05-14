@@ -19,7 +19,6 @@ export interface ButtonProps extends ComponentProps, HTMLButtonProps
  *
  *
  */
-// TODO Fix disabled style
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     size,
     variant,

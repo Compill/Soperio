@@ -1,5 +1,5 @@
 import React from "react"
-// TODO
+// TODO use env
 // import { useEnvironment } from "@chakra-ui/react-env"
 import { useTheme } from "./useTheme"
 
@@ -71,7 +71,7 @@ export function useBreakpoint(
         const allUnregisterFns = queries.map(({ breakpoint, query }) =>
         {
             const mediaQueryList = /*env.*/window.matchMedia(query)
-            
+
             if (mediaQueryList.matches)
                 setCurrentBreakpoint(breakpoint)
 

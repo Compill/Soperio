@@ -46,7 +46,7 @@ export type ResponsiveCSSProps = Special & ResponsiveProps<CSSProps>
 
 
 const accessibility = ["srOnly", "notSrOnly"];
-const background = ["bgAtt", "bgClip", "bgColor", "bgOpacity", "bgImage", "bgOrigin", "bgPosition", "bgRepeat", "bgSize"/*, "bgGradient", "from", "via", "to"*/];
+const background = ["bgAtt", "bgClip", "bgColor", "bgOpacity", "bgImage", "bgOrigin", "bgPosition", "bgRepeat", "bgSize", "bgGradient", "bgGradientDir", "bgGradientFrom", "bgGradientVia", "bgGradientTo"];
 const border = [
     "rounded", "roundedT", "roundedB", "roundedS", "roundedE",
     "roundedTS", "roundedTE", "roundedBS", "roundedBE",

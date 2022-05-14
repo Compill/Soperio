@@ -17,8 +17,12 @@ export interface Background
   bgPosition?: false | OrString<"bottom" | "center" | "start" | "start-top" | "start-bottom" | "end" | "end-top" | "end-bottom" | "top">;
   bgRepeat?: true | false | "x" | "y" | "round" | "space" | "no-repeat",
   bgSize?: false | OrString<"auto" | "cover" | "contain">,
-  // bgGradient?: "to-t" | "to-tr" | "to-r" | "to-br" | "to-b" | "to-bl" | "to-l" | "to-tl",
-  // from?: string,
-  // via?: string,
-  // to?: string,
+  bgGradient?: true | false | "linear" | "radial" | 'conic',
+  /**
+   * Only for bgGradient="linear"
+   */
+  bgGradientDir?: OrString<"to top" | "to top right" | "to right" | "to bottom right" | "to bottom" | "to bottom left" | "to left" | "to top left" | "any valid angle value like 66deg, 0.25turn, ...">,
+  bgGradientFrom?: false | Color | "any valid gradient value like #F985C3, green 40%, red 0 50%, ...",
+  bgGradientVia?: false | Color | "any valid gradient value like #F985C3, green 40%, red 0 50%, ...",
+  bgGradientTo?: false | Color | "any valid gradient value like #F985C3, green 40%, red 0 50%, ...",
 }

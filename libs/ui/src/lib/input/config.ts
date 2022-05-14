@@ -47,7 +47,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           fontWeight: "500",
           bgColor: "transparent",
           borderColor: theme.border0,
-          placeholderColor: theme.textDark4, // TODO with CSS prop,
+          placeholderColor: theme.textDark4,
           outline: "none"
         },
         solid:
