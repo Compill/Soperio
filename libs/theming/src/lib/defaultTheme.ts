@@ -271,6 +271,8 @@ export const defaultTheme: Theme = {
     transparent: "transparent",
     current: "currentColor",
 
+    // TODO Add Black and white shades black-alpha-95, white-alpha-30, ...
+
     black: "#000",
     white: "#fff",
 

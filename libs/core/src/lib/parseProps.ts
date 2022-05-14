@@ -3,8 +3,7 @@ import { getThemeStyle, SoperioComponent, ThemeCache } from "@soperio/theming";
 import deepmerge from "deepmerge";
 import murmurhash from "murmurhash";
 import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
-
-const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
+const pseudoClasses: string[] = ["focus", "hover", "groupHover", /*"placeholder", "before", "after"*/];
 const CACHE_TYPE = "prop"
 const REMOVE_IF_VARIANT = "remove_if_variant"
 
@@ -29,7 +28,10 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
     {
       if (pseudoClasses.includes(key))
       {
-        pseudos.push(`&:${key} {\n${parseRules(css[key], false)}}`);
+        if (key === "groupHover")
+          pseudos.push(`[data-so-group]:hover & {\n${parseRules(css[key], false)}}`);
+        else
+          pseudos.push(`&:${key} {\n${parseRules(css[key], false)}}`);
       }
       else if (key.startsWith("media-"))
       {
@@ -64,7 +66,6 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
 
 function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
 {
-  // TODO Cache
   // Merge trait props with rest of props
   if ("trait" in props)
   {
@@ -140,6 +141,14 @@ export function parseProps<P extends SoperioComponent>(props: P)
 {
   // "trait" is a special prop, we need to parse it before the rest
   const newProps: any = mergeTraitPropIfExist(props);
+  delete newProps["__SOPERIO_TYPE_PLEASE_DO_NOT_USE__"]
+
+  if ("group" in newProps)
+  {
+    // Replace `group` by exploitabled html prop in css
+    delete newProps["group"]
+    newProps["data-so-group"] = ""
+  }
 
   const keys = Object.keys(newProps);
 
@@ -149,13 +158,6 @@ export function parseProps<P extends SoperioComponent>(props: P)
 
     for (const prop of keys)
     {
-      // TODO const
-      if (prop === "__SOPERIO_TYPE_PLEASE_DO_NOT_USE__")
-      {
-        delete newProps[prop];
-        continue;
-      }
-
       if (prop.startsWith("__"))
         continue;
 
@@ -226,6 +228,10 @@ export function parseProps<P extends SoperioComponent>(props: P)
     const generatedCSS = parseRules(css);
 
     newProps.css = [emotionCss(generatedCSS), soperioCss, props.css];
+
+    // if (lodash.isEmpty(newProps.css))
+      // delete newProps[css]
+
     return newProps;
   }
 

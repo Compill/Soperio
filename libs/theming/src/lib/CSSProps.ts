@@ -19,6 +19,7 @@ import { Breakpoints } from "./CSSTypes"
 
 type FocusVariant = { [Property in keyof Focus as `focus_${string & Property}`]: Focus[Property]; };
 type HoverVariant = { [Property in keyof Hover as `hover_${string & Property}`]: Hover[Property]; };
+type GroupHoverVariant = { [Property in keyof Hover as `groupHover_${string & Property}`]: Hover[Property]; };
 
 interface CSSProps extends
     Accessibility,
@@ -36,7 +37,8 @@ interface CSSProps extends
     Transitions,
     Typography,
     FocusVariant,
-    HoverVariant {};
+    HoverVariant,
+    GroupHoverVariant {};
 
 export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
 
@@ -107,7 +109,7 @@ const variants = props
     .concat(buildProps("hover", hover))
     .concat(buildProps("focus", focus))
 
-export const CSSPropKeys = ["trait", "as"]
+export const CSSPropKeys = ["group", "trait", "as"]
     .concat(variants)
     .concat(buildProps("sm", variants))
     .concat(buildProps("md", variants))
