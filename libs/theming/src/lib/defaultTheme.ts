@@ -565,8 +565,8 @@ export const defaultTheme: Theme = {
     },
     width: {
       default: "1px",
-      "1": "0",
-      "0": "1px",
+      "0": "0",
+      "1": "1px",
       "2": "2px",
       "4": "4px",
       "8": "8px",
