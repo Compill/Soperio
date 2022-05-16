@@ -53,7 +53,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         solid:
         {
           border: "0",
-          outline: "none",
+
           fontWeight: "500",
           textColor: theme.textDark2,
           bgColor: theme.background3,
@@ -64,7 +64,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           fontWeight: "500",
           textColor: theme.textDark2,
           borderColor: theme.textDark3,
-          outline: "none",
+
           rounded: false
         }
       },

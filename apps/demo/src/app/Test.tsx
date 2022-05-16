@@ -1,5 +1,6 @@
 
 import { Accordion, AccordionItem, Button, Container, Stack } from "@soperio/ui";
+import { ThemeTraits } from "libs/theming/src/lib/Core/Traits";
 import React from "react";
 
 function ExpandSvg()
@@ -15,15 +16,13 @@ function CollapseSvg()
     <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
   </svg>
 }
+
 export default function Test({ ...props })
 {
-
-
   return (
     <Container dflex center flexCol size="x2" justifyContent="center" py="48" w="30%">
-
+      <div mb="16" h="16" bgColor="pink-500" rounded outline="1" outlineColor="sky-500" outlineOffset="2" outlineOpacity="59"/>
       <div mb="16" h="16" bgColor="pink-500" rounded ring="8" ringColor="sky-500" ringOffset="4" ringOffsetColor="yellow-500" />
-      <div mb="16" h="16" bgColor="pink-500" rounded ring="8" ringColor="sky-500" ringOffset="4" ringOffsetColor="yellow-500" outline="black" outlineColor="sky-500"/>
       <div mb="16" h="16" bgColor="pink-500" rounded shadow />
 
       <div mb="16" h="16" bgGradient bgGradientDir="to top right" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500"/>

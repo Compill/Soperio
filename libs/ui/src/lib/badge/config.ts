@@ -40,14 +40,14 @@ export const config: Config = (theme: ColorTheme, darkMode: boolean) =>
       variant: {
         default: {
           bgColor: theme.default,
-          outline: "none",
+
           border: "0",
           textColor: theme.textLight1,
           fontWeight: "500"
         },
         light: {
           bgColor: theme.light,
-          outline: "none",
+
           border: "0",
           textColor: theme.default,
           fontWeight: "500"

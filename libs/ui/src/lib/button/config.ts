@@ -56,7 +56,6 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           hover_bgColor: theme.defaultHover,
           textColor: darkMode ? theme.textDark1 : theme.textLight1,//(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
-          outline: "none",
           border: "0",
           stateSelected:
           {
@@ -83,7 +82,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           // bgColor: theme.light,
           bgColor: theme.default,
           bgOpacity: darkMode ? "30" : "15",
-          outline: "none",
+
           border: "0",
           textColor: darkMode ? theme.textDark4 : theme.defaultActive,
           hover_bgColor: theme.default,
@@ -121,7 +120,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           bgColor: "transparent",
           textColor: theme.default,
           hover_textDecoration: "underline",
-          outline: "none",
+
           stateSelected:
           {
             textDecoration: "underline",
@@ -167,7 +166,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           hover_bgColor: theme.default,
           hover_bgOpacity: darkMode ? "30" : "15",
           hover_textColor: darkMode ? theme.textDark4 : theme.defaultActive,
-          outline: "none",
+
           border: "0",
           stateSelected:
           {

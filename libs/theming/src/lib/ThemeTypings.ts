@@ -5,7 +5,6 @@ import ThemeColors from "./Core/Colors";
 import ThemeEffects from "./Core/Effects";
 import ThemeFilters from "./Core/Filters";
 import ThemeFlexbox from "./Core/Flexbox";
-import ThemeInteractivity from "./Core/Interactivity";
 import ThemeOpacity from "./Core/Opacity";
 import ThemeRootColors from "./Core/RootColors";
 import ThemeSizing from "./Core/Sizing";
@@ -37,7 +36,6 @@ export interface ThemeTypings extends ThemeOpacity
   effects: ThemeEffects,
   flexbox: ThemeFlexbox,
   filters: ThemeFilters,
-  interactivity: ThemeInteractivity,
   sizing: ThemeSizing,
   spacing: ThemeSpacing,
   transform: ThemeTransform,

@@ -25,8 +25,6 @@ export type GridTemplateColumns = OrString<ThemingToken<"flexbox", "gridTemplate
 export type GridTemplateRows = OrString<ThemingToken<"flexbox", "gridTemplateRows">>
 export type Order = OrString<ThemingToken<"flexbox", "order">>
 
-export type Outline = OrString<ThemingToken<"interactivity", "outline">>
-
 export type Opacity = OrString<ThemingToken<"opacity">> | number
 
 export type Height = OrString<ThemingToken<"sizing", "height"> | AnyCSSSizeValue>

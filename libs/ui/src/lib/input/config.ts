@@ -48,12 +48,11 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           bgColor: "transparent",
           borderColor: theme.border0,
           placeholderColor: theme.textDark4,
-          outline: "none"
         },
         solid:
         {
           border: "0",
-          outline: "none",
+
           fontWeight: "500",
           textColor: theme.textDark2,
           bgColor: theme.background3,
@@ -65,7 +64,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           bgColor: "transparent",
           textColor: theme.textDark2,
           borderColor: theme.border0,
-          outline: "none",
+
           rounded: false
         }
       },

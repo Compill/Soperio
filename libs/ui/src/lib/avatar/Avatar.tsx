@@ -49,7 +49,7 @@ function initials(name: string)
 }
 
 /**
- * 
+ *
  *
  *
  */
@@ -57,7 +57,7 @@ function randomColor(str: string)
 {
   let hash = 0
 
-  if (str.length === 0) 
+  if (str.length === 0)
     return hash.toString()
 
   for (let i = 0; i < str.length; i += 1)
@@ -116,7 +116,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((
       ref={ref}
       bgColor={bg}
       {...styles["avatar"]}
-      {...props} 
+      {...props}
     >
       {activeSrc ?
         <img
@@ -136,7 +136,6 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((
         )
           : (
             <span
-              border="1"
               {...styles["image"]}
             >
               {React.cloneElement(icon, {

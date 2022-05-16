@@ -3,7 +3,6 @@ import ThemeBreakpoints from "./Core/Breakpoints";
 import ThemeColors from "./Core/Colors";
 import ThemeEffects from "./Core/Effects";
 import ThemeFlexbox from "./Core/Flexbox";
-import ThemeInteractivity from "./Core/Interactivity";
 import ThemeRootColors from "./Core/RootColors";
 import ThemeSizing from "./Core/Sizing";
 import ThemeSpacing from "./Core/Spacing";
@@ -22,7 +21,6 @@ export interface SoperioTheme
     borders: ThemeBorder,
     effects: ThemeEffects,
     flexbox: ThemeFlexbox,
-    interactivity: ThemeInteractivity,
     sizing: ThemeSizing,
     spacing: ThemeSpacing,
     transform: ThemeTransform,

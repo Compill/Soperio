@@ -56,11 +56,11 @@ function borderEndColor(value: any)
 
 function outline(value: any): Style
 {
-  const parsedValue = getThemeStyle("interactivity.outline", value)!;
+  const parsedValue = getThemeStyle("border.width", value)!;
 
   return {
-    "outline": parsedValue[0],
-    "outline-offset": parsedValue[1],
+    "outline-style": "solid",
+    "outline-width": parsedValue,
   };
 }
 
@@ -120,7 +120,7 @@ export const BorderMapping: StyleProps =
   divideStyle: css("border-style"),
   outline: outline,
   outlineOffset: css("outline-offset", "border.width"),
-  outlineColor: colorize("outline-color", "so-outline-opacity"),
+  outlineColor: colorize("outline-color", "--so-outline-opacity"),
   outlineOpacity: opacity("--so-outline-opacity"),
   ring: ringWidth,
   ringColor: colorize("--so-ring-color"),

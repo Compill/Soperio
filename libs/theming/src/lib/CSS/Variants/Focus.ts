@@ -1,4 +1,4 @@
-import { BorderWidth, Color, Opacity, Outline } from "../../CSSTypes";
+import { BorderWidth, Color, Opacity } from "../../CSSTypes";
 
 export interface Focus
 {
@@ -20,7 +20,7 @@ export interface Focus
   // via?: string,
   // to?: string,
   opacity?:Opacity,
-  outline?: false | Outline,
+  outline?: true | false | BorderWidth,
   outlineColor: false | Color,
   outlineOpacity: false | Opacity,
   outlineOffset: true | false | BorderWidth,

@@ -20,4 +20,19 @@ export type ThemeTraits = {
   "typo.body2": Trait
   "typo.caption": Trait
   "typo.overline": Trait
+
+  "text.xs": Trait
+  "text.sm": Trait
+  "text.md": Trait
+  "text.base": Trait
+  "text.lg": Trait
+  "text.xl": Trait
+  "text.x2": Trait
+  "text.x3": Trait
+  "text.x4": Trait
+  "text.x5": Trait
+  "text.x6": Trait
+  "text.x7": Trait
+  "text.x8": Trait
+  "text.x9": Trait
 }

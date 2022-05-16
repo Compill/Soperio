@@ -8,7 +8,6 @@ const requiredSoperioThemeKeys: (keyof SoperioTheme)[] = [
     "borders",
     "effects",
     "flexbox",
-    "interactivity",
     "sizing",
     "spacing",
     "transform",

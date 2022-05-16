@@ -47,7 +47,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         default:
         {
           bgColor: theme.background5,
-          outline: "none",
+
           border: "0",
           textColor: darkMode ? theme.textLight1 : theme.textDark1,
           stateChecked:
