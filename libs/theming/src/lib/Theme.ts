@@ -57,7 +57,6 @@ export interface Theme
     backdropSaturate: StringKeyValueObject,
     backdropSepia: StringKeyValueObject,
   }
-  interactivity: { outline: KeyValueObject<string[]>; },
   opacity: StringKeyValueObject,
   sizing: {
     height: StringKeyValueObject,
@@ -87,7 +86,7 @@ export interface Theme
   },
   typography: {
     font: StringKeyValueObject,
-    fontSize: KeyValueObject<string[]>,
+    fontSize: StringKeyValueObject,
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
   };

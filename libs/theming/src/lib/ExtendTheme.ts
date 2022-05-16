@@ -1,8 +1,9 @@
+import { ColorTheme } from '..';
+import ThemeBorder from './Core/Border';
 import ThemeBreakpoint from './Core/Breakpoints';
 import ThemeColor from './Core/Colors';
 import ThemeEffects from './Core/Effects';
 import ThemeFlexbox from './Core/Flexbox';
-import ThemeInteractivity from './Core/Interactivity';
 import ThemeRootColor from './Core/RootColors';
 import ThemeSizing from './Core/Sizing';
 import ThemeSpacing from './Core/Spacing';
@@ -10,10 +11,8 @@ import ThemeThemes from './Core/Themes';
 import ThemeTransform from './Core/Transform';
 import ThemeTransition from './Core/Transition';
 import ThemeTypography from './Core/Typography';
-import ThemeBorder from './Core/Border';
-import { Direction, GlobalStyles, StringKeyValueObject } from './ThemeTypes';
-import { ColorTheme } from '..';
 import { SoperioComponent } from "./SoperioComponent";
+import { Direction, GlobalStyles, StringKeyValueObject } from './ThemeTypes';
 
 type OptionalAny<T> = {
     [Property in keyof T]+?: any;
@@ -60,7 +59,6 @@ export interface ExtendTheme
         backdropSaturate?: StringKeyValueObject,
         backdropSepia?: StringKeyValueObject,
     };
-    interactivity?: OptionalAny<ThemeInteractivity>;
     opacity?: StringKeyValueObject,
     sizing?: OptionalAny<ThemeSizing>;
     spacing?: OptionalAny<ThemeSpacing>;

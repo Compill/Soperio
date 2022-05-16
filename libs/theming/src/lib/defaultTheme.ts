@@ -673,13 +673,6 @@ export const defaultTheme: Theme = {
       "12": "12",
     },
   },
-  interactivity: {
-    outline: {
-      none: ["2px solid transparent", "2px"],
-      white: ["2px solid white", "2px"],
-      black: ["2px solid black", "2px"],
-    }
-  },
   filters: {
     blur: {
       ...spacing,
@@ -1063,20 +1056,20 @@ export const defaultTheme: Theme = {
       // TODO Should I really define line-heights ? Because it makes the UI weird is some cases
       // when I try to vetically center the text and the line-height doesn"t match with the
       // font-size, in buttons for example
-      xs: ["0.75rem", "1rem"],
-      sm: ["0.875rem", "1.25rem"],
-      md: ["1rem", "1.5rem"],
-      base: ["1rem", "1.5rem"],
-      lg: ["1.125rem", "1.75rem"],
-      xl: ["1.25rem", "1.75rem"],
-      x2: ["1.5rem", "2rem"],
-      x3: ["1.875rem", "2.25rem"],
-      x4: ["2.25rem", "2.5rem"],
-      x5: ["3rem", "1"],
-      x6: ["3.75rem", "1"],
-      x7: ["4.5rem", "1"],
-      x8: ["6rem", "1"],
-      x9: ["8rem", "1"],
+      xs: "0.75rem",
+      sm: "0.875rem",
+      md: "1rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      x2: "1.5rem",
+      x3: "1.875rem",
+      x4: "2.25rem",
+      x5: "3rem",
+      x6: "3.75rem",
+      x7: "4.5rem",
+      x8: "6rem",
+      x9: "8rem",
     },
     letterSpacing: {
       tighter: "-0.05em",
@@ -1105,6 +1098,7 @@ export const defaultTheme: Theme = {
     },
   },
   traits: {
+    // TYPO traits
     "typo.display1":
     {
       fontSize: "5.5rem"
@@ -1202,5 +1196,63 @@ export const defaultTheme: Theme = {
       letterSpacing: "wider",
       textTransform: "uppercase"
     },
+
+    // TEXT traits
+    "text.xs": {
+      fontSize: "xs",
+      lineHeight: "1rem"
+    },
+    "text.sm": {
+      fontSize: "sm",
+      lineHeight: "1.25rem"
+    },
+    "text.base": {
+      fontSize: "base",
+      lineHeight: "1.5rem"
+    },
+    "text.md": {
+      fontSize: "md",
+      lineHeight: "1.5rem"
+    },
+    "text.lg": {
+      fontSize: "lg",
+      lineHeight: "1.75rem"
+    },
+    "text.xl": {
+      fontSize: "xl",
+      lineHeight: "1.75rem"
+    },
+    "text.x2": {
+      fontSize: "x2",
+      lineHeight: "2rem"
+    },
+    "text.x3": {
+      fontSize: "x3",
+      lineHeight: "2.25rem"
+    },
+    "text.x4": {
+      fontSize: "x4",
+      lineHeight: "2.5rem"
+    },
+    "text.x5": {
+      fontSize: "x5",
+      lineHeight: "1"
+    },
+    "text.x6": {
+      fontSize: "x6",
+      lineHeight: "1"
+    },
+    "text.x7": {
+      fontSize: "x7",
+      lineHeight: "1"
+    },
+    "text.x8": {
+      fontSize: "x8",
+      lineHeight: "1"
+    },
+    "text.x9": {
+      fontSize: "x9",
+      lineHeight: "1"
+    }
   }
 };

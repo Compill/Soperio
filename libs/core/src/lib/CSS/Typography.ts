@@ -2,22 +2,6 @@ import { getDirection } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, cssValue, Style, StyleProps } from "./utils";
-import { getThemeStyle } from "@soperio/theming";
-
-function fontSize(value: any): Style
-{
-  const themeValue: any = getThemeStyle("typography.fontSize", value);
-
-  if (themeValue)
-  {
-    return {
-      "font-size": themeValue[0],
-      "line-height": themeValue[1] ?? "normal"
-    };
-  }
-
-  return { "font-size": value };
-}
 
 function textOverflow(value: any): Style
 {
@@ -62,7 +46,7 @@ function textAlign(value: any)
 export const TypographyMapping: StyleProps =
 {
   font: css("font-family"),
-  fontSize: fontSize,
+  fontSize: css("font-size", "typography.fontSize"),
   italic: css("font-style", undefined, "italic"),
   notItalic: css("font-style", undefined, "normal"),
   fontWeight: css("font-weight"),
