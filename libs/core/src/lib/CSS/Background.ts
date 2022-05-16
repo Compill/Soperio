@@ -50,7 +50,7 @@ function bgGradientDir(value: any)
 function bgGradientFrom(value: any)
 {
   return {
-    ...colorize("--so-gradient-from", "--so-gradient-from-alpha")(value),
+    ...colorize("--so-gradient-from")(value),
   }
 }
 
@@ -60,7 +60,7 @@ function bgGradientVia(value: any)
   // Little trick here: add a coma so that if no `via` property is passed
   // this var is ignored
 
-  const css = colorize("--so-gradient-via", "--so-gradient-via-alpha")(value)
+  const css = colorize("--so-gradient-via")(value)
   css["--so-gradient-via"] = `${css["--so-gradient-via"]},`
 
   return css
@@ -69,7 +69,7 @@ function bgGradientVia(value: any)
 function bgGradientTo(value: any)
 {
   return {
-    ...colorize("--so-gradient-to", "--so-gradient-to-alpha")(value),
+    ...colorize("--so-gradient-to")(value),
   }
 }
 

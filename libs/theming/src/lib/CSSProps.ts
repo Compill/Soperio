@@ -22,23 +22,23 @@ type HoverVariant = { [Property in keyof Hover as `hover_${string & Property}`]:
 type GroupHoverVariant = { [Property in keyof Hover as `groupHover_${string & Property}`]: Hover[Property]; };
 
 interface CSSProps extends
-    Accessibility,
-    Background,
-    Border,
-    Effects,
-    Flexbox,
-    Filters,
-    Layout,
-    Interactivity,
-    Sizing,
-    Spacing,
-    Table,
-    Transform,
-    Transitions,
-    Typography,
-    FocusVariant,
-    HoverVariant,
-    GroupHoverVariant {};
+  Accessibility,
+  Background,
+  Border,
+  Effects,
+  Flexbox,
+  Filters,
+  Layout,
+  Interactivity,
+  Sizing,
+  Spacing,
+  Table,
+  Transform,
+  Transitions,
+  Typography,
+  FocusVariant,
+  HoverVariant,
+  GroupHoverVariant { };
 
 export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
 
@@ -48,21 +48,21 @@ export type ResponsiveCSSProps = Special & ResponsiveProps<CSSProps>
 const accessibility = ["srOnly", "notSrOnly"];
 const background = ["bgAtt", "bgClip", "bgColor", "bgOpacity", "bgImage", "bgOrigin", "bgPosition", "bgRepeat", "bgSize", "bgGradient", "bgGradientDir", "bgGradientFrom", "bgGradientVia", "bgGradientTo"];
 const border = [
-    "rounded", "roundedT", "roundedB", "roundedS", "roundedE",
-    "roundedTS", "roundedTE", "roundedBS", "roundedBE",
-    "border", "borderT", "borderB", "borderS", "borderE",
-    "borderColor", "borderTColor", "borderBColor", "borderSColor", "borderEColor",
-    "borderOpacity", "borderStyle",
-    "divideX", "divideY",
-    "divideXReverse", "divideYReverse",
-    "divideColor", "divideOpacity", "divideStyle",
-    // "ringColor", "ringOffset", "ringOffsetColor", "ringOpacity", "ringWidth"
+  "rounded", "roundedT", "roundedB", "roundedS", "roundedE",
+  "roundedTS", "roundedTE", "roundedBS", "roundedBE",
+  "border", "borderT", "borderB", "borderS", "borderE",
+  "borderColor", "borderTColor", "borderBColor", "borderSColor", "borderEColor",
+  "borderOpacity", "borderStyle",
+  "divideX", "divideY",
+  "divideXReverse", "divideYReverse",
+  "divideColor", "divideOpacity", "divideStyle",
+  "ring", "ringColor", "ringInset", "ringOffset", "ringOffsetColor"
 ];
 
 const effects = ["shadow", "shadowColor", "opacity", "mixBlend", "bgBlend"];
 const filters = [
-    "blur", "brightness", "contrast", "dropShadow", "grayscale", "hueRotate", "invert", "saturate", "sepia",
-    "backdropBlur", "backdropBrightness", "backdropContrast", "backdropDropShadow", "backdropGrayscale", "backdropHueRotate", "backdropInvert", "backdropOpacity", "backdropSaturate", "backdropSepia",
+  "blur", "brightness", "contrast", "dropShadow", "grayscale", "hueRotate", "invert", "saturate", "sepia",
+  "backdropBlur", "backdropBrightness", "backdropContrast", "backdropDropShadow", "backdropGrayscale", "backdropHueRotate", "backdropInvert", "backdropOpacity", "backdropSaturate", "backdropSepia",
 ];
 const flexbox = ["flexRow", "flexCol", "flexDirection", "flexWrap", "flex", "flexGrow", "flexShrink", "order", "gridCols", "colSpan", "colStart", "colEnd", "gridRows", "rowSpan", "rowStart", "rowEnd", "gridFlow", "gridAutoCols", "gridAutoRows", "gridTemplateCols", "gridTemplateRows", "gap", "gapX", "gapY", "justifyContent", "justifyItems", "justifySelf", "alignContent", "alignItems", "alignSelf", "placeContent", "placeItems", "placeSelf"];
 
@@ -79,40 +79,40 @@ const transform = ["transform", "transformOrigin", "scale", "scaleX", "scaleY", 
 const transitions = ["transition", "duration", "easing", "delay", "animate"];
 const typography = ["font", "fontSize", "italic", "notItalic", "fontWeight", "numericFontVariant", "letterSpacing", "lineHeight", "listStyle", "listStylePosition", "placeholderColor", "placeholderOpacity", "textAlign", "textColor", "textOpacity", "textDecoration", "textTransform", "textOverflow", "verticalAlign", "whiteSpace", "wordBreak", "textColumns", "textColumnsGap"];
 
-const hover = [ "top", "bottom", "start", "end", "bgColor", "bgOpacity", "borderColor", "borderOpacity", "shadow", "opacity", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "translateX", "translateY", "translateZ", "skewX", "skewY", "textColor", "textDecoration", "textOpacity", "transition", "duration", "easing", "delay", "animate" ]
+const hover = ["top", "bottom", "start", "end", "bgColor", "bgOpacity", "borderColor", "borderOpacity", "shadow", "opacity", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "translateX", "translateY", "translateZ", "skewX", "skewY", "textColor", "textDecoration", "textOpacity", "transition", "duration", "easing", "delay", "animate"]
 
-const focus = [ "bgColor", "bgOpacity", "borderColor", "borderOpacity", "textColor" ]
+const focus = ["bgColor", "bgOpacity", "borderColor", "borderOpacity", "textColor"]
 
 const props = ([] as string[]).concat(accessibility)
-    .concat(background)
-    .concat(border)
-    .concat(effects)
-    .concat(filters)
-    .concat(flexbox)
-    .concat(interactivity)
-    .concat(layout)
-    .concat(sizing)
-    .concat(spacing)
-    .concat(svg)
-    .concat(table)
-    .concat(transform)
-    .concat(transitions)
-    .concat(typography);
+  .concat(background)
+  .concat(border)
+  .concat(effects)
+  .concat(filters)
+  .concat(flexbox)
+  .concat(interactivity)
+  .concat(layout)
+  .concat(sizing)
+  .concat(spacing)
+  .concat(svg)
+  .concat(table)
+  .concat(transform)
+  .concat(transitions)
+  .concat(typography);
 
-function buildProps(breakpoint:string, props:string[]): string[]
+function buildProps(breakpoint: string, props: string[]): string[]
 {
-    const prefix = `${breakpoint}_`
-    return props.map((value, index) => `${prefix}${value}`)
+  const prefix = `${breakpoint}_`
+  return props.map((value, index) => `${prefix}${value}`)
 }
 
 const variants = props
-    .concat(buildProps("hover", hover))
-    .concat(buildProps("focus", focus))
+  .concat(buildProps("hover", hover))
+  .concat(buildProps("focus", focus))
 
 export const CSSPropKeys = ["group", "trait", "as"]
-    .concat(variants)
-    .concat(buildProps("sm", variants))
-    .concat(buildProps("md", variants))
-    .concat(buildProps("lg", variants))
-    .concat(buildProps("xl", variants))
-    .concat(buildProps("x2", variants))
+  .concat(variants)
+  .concat(buildProps("sm", variants))
+  .concat(buildProps("md", variants))
+  .concat(buildProps("lg", variants))
+  .concat(buildProps("xl", variants))
+  .concat(buildProps("x2", variants))
