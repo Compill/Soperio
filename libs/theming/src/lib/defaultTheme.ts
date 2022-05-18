@@ -2,6 +2,61 @@ import { applyTransparenceToRGBColor } from "@soperio/utils";
 import { ColorTheme } from "./ColorTheme";
 import { Theme } from "./Theme";
 
+/*
+  TODO Text-shadow property
+
+  textShadow: size like xs, sm, md, etc
+  textShadowColor: color
+  textShadowInset: inset textShdow
+  textShadowBlur: size like xs, md, etc
+
+  text-shadow: var(--so-text-shadow-size, 1px) var(--so-text-shadow-size, 1px) var(--so-text-shadow-blur, 1px) var(--so-text-shadow-color, #000),
+*/
+
+/* TODO
+
+Make colors not included in default theme BUT make them available by extending the theme easily
+For example
+  const customTheme = extendTheme({
+    ...withDefaultThemeColors(), // => All colors
+    ...withDefaultThemeColors(["skyblue", "pink", "orange"]) // => Only a subset of colors
+    ...withDefaultThemeColors(["skyblue", "pink", "orange"], ["100", "300", "500", "900"]) // => Only a subset of colors and a subset of shades
+    // => Accept array of keyof ThemeColors / Object
+    // If item is object, create color palette with name and base color
+    ...withDefaultThemeColors([ "skyblue", { name: "deeppurple", color: "#fb59c3" }, { name: "customcolor", color "#123456" }])
+
+  })
+
+  Only include by default black and white (and alpha) colors
+  Provide color palettes:
+    - Tailwind 2
+    - Tailwind 3
+    - Bootstrap 4
+    - Bootstrap 5
+    - Material UI
+    -
+*/
+
+/* TODO
+Make color sets not included in default theme BUT make them available by extending the theme easily
+
+const customTheme = extendTheme({
+    ...withDefaultThemeColorSets(), // => All color sets
+    ...withDefaultThemeColorSets(["success", "error", "warning"]) // => Only a subset of color sets
+  })
+
+Only include defaultTheme color, which must not use dynamic values, only RGB colors
+*/
+
+/*
+TODO Root colors: only use RGB values, since theme colors will be optional
+*/
+
+/*
+TODO Surface system
+*/
+
+
 const breakpoints = {
   default: "0px",
   sm: "640px",

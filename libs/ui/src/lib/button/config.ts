@@ -170,7 +170,8 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           border: "0",
           stateSelected:
           {
-            bgColor: theme.light,
+            bgColor: theme.default,
+            bgOpacity: darkMode ? "30" : "15",
           },
           stateDisabled:
           {
