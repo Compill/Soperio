@@ -56,6 +56,11 @@ function borderEndColor(value: any)
 
 function outline(value: any): Style
 {
+  if (value === "none" || !value)
+    return {
+      "outline-style": "none"
+    }
+
   const parsedValue = getThemeStyle("border.width", value)!;
 
   return {
