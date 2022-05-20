@@ -32,7 +32,7 @@ function deploy(lib)
   execSync(`git push`)
 
   console.log("Creating git tag...");
-  execSync(`git tag -a ${lib}-${version} -m \"${lib.toUpperCase()} Version ${version}"`)
+  execSync(`git tag -a ${lib}-${version} -m "${lib.toUpperCase()} Version ${version}"`)
 
   console.log(`[END] Finished deploying ${lib} ${version}`)
 }
