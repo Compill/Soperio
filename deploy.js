@@ -28,11 +28,11 @@ function deploy(lib)
   console.log("Committing...");
   execSync(`git commit -a -m "[${lib.toUpperCase()}] Version ${version}"`)
 
-  console.log("Pushing...");
-  execSync(`git push`)
-
   console.log("Creating git tag...");
   execSync(`git tag -a ${lib}-${version} -m "${lib.toUpperCase()} Version ${version}"`)
+
+  console.log("Pushing...");
+  execSync(`git push --tags`)
 
   console.log(`[END] Finished deploying ${lib} ${version}`)
 }
