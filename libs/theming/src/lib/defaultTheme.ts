@@ -49,7 +49,7 @@ Only include defaultTheme color, which must not use dynamic values, only RGB col
 */
 
 /*
-TODO Root colors: only use RGB values, since theme colors will be optional
+TODO Root colors: only use RGB values (e.g. not theme values), since theme colors will be optional
 */
 
 /*
@@ -894,15 +894,26 @@ export const defaultTheme: Theme = {
   sizing: {
     height: {
       auto: "auto",
-      ...spacing,
+      min: "min-content",
+      max: "max-content",
+      fit: "fit-content",
       full: "100%",
       screen: "100vh",
+      ...spacing,
     },
     maxHeight: {
       full: "100%",
       screen: "100vh",
+      min: "min-content",
+      max: "max-content",
+      fit: "fit-content",
+      ...spacing,
     },
     maxWidth: {
+      min: "min-content",
+      max: "max-content",
+      fit: "fit-content",
+      prose: "65ch",
       none: "none",
       xs: "20rem",
       sm: "24rem",
@@ -916,18 +927,30 @@ export const defaultTheme: Theme = {
       x6: "72rem",
       full: "100%",
       ...prefix(breakpoints, "screen-"),
+      ...spacing,
     },
     minHeight: {
-      "0": "0",
       full: "100%",
       screen: "100vh",
+      min: "min-content",
+      max: "max-content",
+      fit: "fit-content",
+      ...spacing,
     },
     minWidth: {
-      "0": "0",
       full: "100%",
+      min: "min-content",
+      max: "max-content",
+      fit: "fit-content",
+      ...spacing,
     },
     width: {
       auto: "auto",
+      min: "min-content",
+      max: "max-content",
+      fit: "fit-content",
+      full: "100%",
+      screen: "100vw",
       ...spacing,
       "1/2": "50%",
       "1/3": "33.333333%",
@@ -955,10 +978,6 @@ export const defaultTheme: Theme = {
       "9/12": "75%",
       "10/12": "83.333333%",
       "11/12": "91.666667%",
-      min: "min-content",
-      max: "max-content",
-      full: "100%",
-      screen: "100vw",
     }
   },
   spacing: {

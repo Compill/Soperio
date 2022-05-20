@@ -22,6 +22,8 @@ export default function Test({ ...props })
   return (
     <Container dflex center flexCol size="x2" justifyContent="center" py="48" w="30%">
 
+      <div bgColor="sky-500" shadow="x2" w="16" h="16"></div>
+
       <div dflex flexCol w="min">
         <span
           trait="typo.display3"
