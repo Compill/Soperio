@@ -1,4 +1,4 @@
-import { Breakpoints, Color, Opacity, Rotate, Scale, Skew, Spacing, Translate } from "../../CSSTypes";
+import { BoxShadow, Color, Opacity, Rotate, Scale, Skew, Spacing, Translate } from "../../CSSTypes";
 import { Transitions } from "../Transitions";
 
 export interface Hover extends Transitions
@@ -11,7 +11,7 @@ export interface Hover extends Transitions
   bgOpacity?: Opacity,
   borderColor?: Color,
   borderOpacity?: Opacity,
-  shadow?: true | false | "sm" | Breakpoints | "inner" | "none",
+  shadow?: true | false | BoxShadow,
   // from?: string,
   // via?: string,
   // to?: string,
@@ -32,5 +32,5 @@ export interface Hover extends Transitions
   textColor?: Color,
   textDecoration?: "underline" | "line-through" | "no-underline",
   textOpacity?: Opacity,
-
+}
 // TODO Add a way to add before and after elements

@@ -42,6 +42,15 @@ function textAlign(value: any)
   return css("text-align")(parsedValue);
 }
 
+function placeholderColor(value:any)
+{
+  return {
+    "&::placeholder": {
+      ...colorize("color", "--so-placeholder-opacity")
+    }
+  }
+}
+
 
 export const TypographyMapping: StyleProps =
 {
@@ -55,7 +64,7 @@ export const TypographyMapping: StyleProps =
   lineHeight: css("line-height", "typography.lineHeight"),
   listStyle: css("list-style-type"),
   listStylePosition: css("list-style-position"),
-  placeholderColor: colorize("::placeholder", "--so-placeholder-opacity"),
+  placeholderColor: placeholderColor,
   placeholderOpacity: opacity("--so-placeholder-opacity"),
   textAlign: textAlign,
   textColor: colorize("color", "--so-text-opacity"),

@@ -16,7 +16,7 @@ export default function Page({ ...props })
     <Container center size="x2" gap="20" bgColor={ darkMode ? "root.bg-color-4" : "white" } px="10" justifyContent="center" py="20">
 
       <div mb="10">
-        <Input block size="sm" variant="default" mb="5" length={50} placeholder="Hello" />
+        <Input block size="sm" variant="default" mb="5" focus_ring focus_ringColor="pink-500" length={50} placeholder="Hello" />
         <Input block size="sm" variant="solid" mb="5" length={50} placeholder="Hello" />
         <Input block size="sm" variant="underline" mb="5" length={50} placeholder="Hello" />
       </div>

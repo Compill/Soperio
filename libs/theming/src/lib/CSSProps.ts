@@ -46,7 +46,9 @@ export type ResponsiveCSSProps = Special & ResponsiveProps<CSSProps>
 
 
 const accessibility = ["srOnly", "notSrOnly"];
+
 const background = ["bgAtt", "bgClip", "bgColor", "bgOpacity", "bgImage", "bgOrigin", "bgPosition", "bgRepeat", "bgSize", "bgGradient", "bgGradientDir", "bgGradientFrom", "bgGradientVia", "bgGradientTo"];
+
 const border = [
   "rounded", "roundedT", "roundedB", "roundedS", "roundedE",
   "roundedTS", "roundedTE", "roundedBS", "roundedBE",
@@ -60,6 +62,7 @@ const border = [
 ];
 
 const effects = ["shadow", "shadowColor", "opacity", "mixBlend", "bgBlend"];
+
 const filters = [
   "blur", "brightness", "contrast", "dropShadow", "grayscale", "hueRotate", "invert", "saturate", "sepia",
   "backdropBlur", "backdropBrightness", "backdropContrast", "backdropDropShadow", "backdropGrayscale", "backdropHueRotate", "backdropInvert", "backdropOpacity", "backdropSaturate", "backdropSepia",
@@ -71,17 +74,52 @@ const interactivity = ["appearanceNone", "cursor", "outline", "pointerEvents", "
 const layout = ["boxDecorationBreak", "boxSizing", "block", "dflex", "display", "inline", "grid", "hidden", "float", "clear", "isolation", "objectFit", "objectPosition", "overflow", "overflowX", "overflowY", "overscroll", "overscrollX", "overscrollY", "overscrollBehavior", "overscrollBehaviorX", "overscrollBehaviorY", "position", "top", "bottom", "start", "end", "inset", "insetX", "insetY", "visible", "invisible", "z"];
 
 const sizing = ["w", "h", "minW", "minH", "maxW", "maxH"];
-const spacing = ["p", "pt", "pb", "ps", "pe", "px", "py", "m", "mt", "mb", "ms", "me", "mx", "my", "spaceX", "spaceY", "spaceXReverse", "spaceYReverse"];
+
+const spacing = [
+  "p", "pt", "pb", "ps", "pe", "px", "py",
+  "m", "mt", "mb", "ms", "me", "mx", "my",
+  "spaceX", "spaceY", "spaceXReverse", "spaceYReverse"
+];
 
 const svg = ["fillCurrent", "strokeCurrent", "strokeWidth"];
+
 const table = ["borderCollapse", "tableLayout"];
-const transform = ["transform", "transformOrigin", "scale", "scaleX", "scaleY", "scaleZ", "rotate", "rotateX", "rotateY", "rotateZ", "skewX", "skewY", "translateX", "translateY", "translateZ"];
+
+const transform = [
+  "transform", "transformOrigin",
+  "scale", "scaleX", "scaleY", "scaleZ",
+  "rotate", "rotateX", "rotateY", "rotateZ",
+  "skewX", "skewY",
+  "translateX", "translateY", "translateZ"
+];
+
 const transitions = ["transition", "duration", "easing", "delay", "animate"];
+
 const typography = ["font", "fontSize", "italic", "notItalic", "fontWeight", "numericFontVariant", "letterSpacing", "lineHeight", "listStyle", "listStylePosition", "placeholderColor", "placeholderOpacity", "textAlign", "textColor", "textOpacity", "textDecoration", "textTransform", "textOverflow", "verticalAlign", "whiteSpace", "wordBreak", "textColumns", "textColumnsGap"];
 
-const hover = ["top", "bottom", "start", "end", "bgColor", "bgOpacity", "borderColor", "borderOpacity", "shadow", "opacity", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "translateX", "translateY", "translateZ", "skewX", "skewY", "textColor", "textDecoration", "textOpacity", "transition", "duration", "easing", "delay", "animate"]
+const hover = [
+  "top", "bottom", "start", "end",
+  "bgColor", "bgOpacity",
+  "borderColor", "borderOpacity",
+  "shadow", "opacity",
+  "rotate", "rotateX", "rotateY", "rotateZ",
+  "scale", "scaleX", "scaleY", "scaleZ",
+  "translateX", "translateY", "translateZ",
+  "skewX", "skewY",
+  "textColor", "textDecoration", "textOpacity",
+  "transition", "duration", "easing", "delay", "animate"
+]
 
-const focus = ["bgColor", "bgOpacity", "borderColor", "borderOpacity", "textColor"]
+const focus = [
+  "bgColor", "bgOpacity",
+  "border", "borderT", "borderB", "borderS", "borderE",
+  "borderColor", "borderTColor", "borderBColor", "borderSColor", "borderEColor",
+  "borderOpacity",
+  "shadow",
+  "outline", "outlineColor", "outlineOpacity", "outlineOffset",
+  "ring", "ringColor", "ringInset", "ringOffset", "ringOfssetColor",
+  "textColor", "textOpacity"
+]
 
 const props = ([] as string[]).concat(accessibility)
   .concat(background)

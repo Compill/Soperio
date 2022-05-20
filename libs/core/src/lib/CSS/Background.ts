@@ -40,21 +40,6 @@ function bgGradient(value: any)
   }
 }
 
-function bgGradientDir(value: any)
-{
-  return {
-    "--so-gradient-dir": value,
-  }
-}
-
-function bgGradientFrom(value: any)
-{
-  return {
-    ...colorize("--so-gradient-from")(value),
-  }
-}
-
-
 function bgGradientVia(value: any)
 {
   // Little trick here: add a coma so that if no `via` property is passed
@@ -64,13 +49,6 @@ function bgGradientVia(value: any)
   css["--so-gradient-via"] = `${css["--so-gradient-via"]},`
 
   return css
-}
-
-function bgGradientTo(value: any)
-{
-  return {
-    ...colorize("--so-gradient-to")(value),
-  }
 }
 
 export const BackgroundMapping: StyleProps = {
@@ -87,8 +65,8 @@ export const BackgroundMapping: StyleProps = {
   /**
    * Only working if bgGradient = linear
    */
-  bgGradientDir: bgGradientDir,
-  bgGradientFrom: bgGradientFrom,
+  bgGradientDir: css("--so-gradient-dir"),
+  bgGradientFrom: colorize("--so-gradient-from"),
   bgGradientVia: bgGradientVia,
-  bgGradientTo: bgGradientTo,
+  bgGradientTo: colorize("--so-gradient-to"),
 }
