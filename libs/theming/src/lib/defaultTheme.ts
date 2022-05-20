@@ -1127,7 +1127,6 @@ export const defaultTheme: Theme = {
       serif: "serif",
       mono: "mono"
     },
-    // Second argument is for line-height
     fontSize: {
       xs: "0.75rem",
       sm: "0.875rem",

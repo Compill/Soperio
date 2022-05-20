@@ -57,10 +57,10 @@ export type HeightScale =
 
 export default interface ThemeSizing
 {
-  height: HeightScale | Spacing,
-  maxHeight: "full" | "screen",
-  maxWidth: "0" | "full" | "min" | "max",
-  minHeight: "0" | "full" | "screen",
-  minWidth: "0" | "full" | "min" | "max",
-  width: "0" | "none" | "xs" | Breakpoints | "x3" | "x4" | "x5" | "x6" | "x7" | "full" | "min" | "max" | "prose" | ScreenBreakpoints | WidthScale | Spacing,
+  height: HeightScale | "min" | "max" | "fit" | Spacing,
+  maxHeight: "full" | "screen" | "min" | "max" | "fit" | Spacing,
+  maxWidth: "0" | "full" | "min" | "max" | "fit" | Spacing,
+  minHeight: "0" | "full" | "screen" | "min" | "max" | "fit" | Spacing,
+  minWidth: "0" | "full" | "min" | "max" | "min" | "max" | "fit" | Spacing,
+  width: "0" | "min" | "max" | "fit" | "none" | "xs" | Breakpoints | "x3" | "x4" | "x5" | "x6" | "x7" | "full" | "min" | "max" | "prose" | ScreenBreakpoints | WidthScale | Spacing,
 }
