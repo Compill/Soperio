@@ -9,7 +9,7 @@ if (process.argv.length < 3)
 
 for (let i = 0; i < process.argv.length; i++)
 {
-  deploy(process.argv[i])
+  deploy(process.argv[i+2])
 }
 
 console.log("[DEPLOY] Finished deploy process")
@@ -23,8 +23,16 @@ function deploy(lib)
 
   console.log("Deploying...");
   execSync(`nx deploy ${lib}`);
-  console.log("Deployed! Now, commit and push");
+  console.log("Deployed!");
 
-  execSync(`git-commit -m [${lib.toUpperCase()}] Version ${version} && git push && git tag -a ${lib}-{version} -m \"${lib.toUpperCase()} Version ${version}`)
-  console.log(`[END] Finished deploying ${lib}`)
+  console.log("Committing...");
+  execSync(`git-commit -m [${lib.toUpperCase()}] Version ${version}`)
+
+  console.log("Pushing...");
+  execSync(`git push`)
+
+  console.log("Creating git tag...");
+  execSync(`git tag -a ${lib}-${version} -m \"${lib.toUpperCase()} Version ${version}`)
+
+  console.log(`[END] Finished deploying ${lib} ${version}`)
 }
