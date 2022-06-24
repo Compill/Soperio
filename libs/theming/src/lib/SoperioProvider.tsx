@@ -4,7 +4,7 @@ import { css, Global, ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "./defaultTheme";
 import { useSetDarkModeConfig } from "./hooks/useDarkMode";
 import { Theme } from "./Theme";
-import { useSetDirection } from "./hooks/useDirection";
+import { useDirection, useSetDirection } from "./hooks/useDirection";
 import { useSetTheme } from "./hooks/useTheme";
 import { ThemeCache } from "./ThemeCache";
 import { ParentComponent } from "./SoperioComponent";
@@ -66,13 +66,26 @@ export function SoperioProvider({
 
   return (
     // TODO --so should be dynamic
-    <div dir={direction || theme.direction || "ltr"} style={{ color: "rgb(var(--so-text-color-1))" }} /*textColor="root.text-color-1"*/ {...props}>
-      <ThemeProvider theme={theme} >
-        {resetCss ? <NormalizeCSS /> : null}
-        {/* TODO Implement GlobalStyle https://github.com/chakra-ui/chakra-ui/blob/f77fd9999ec1105cf846cd830019d2c3ba5a0f4e/packages/system/src/providers.tsx */}
-        {theme.globalStyles && <Global styles={css(theme.globalStyles)} />}
+    <ThemeProvider theme={theme} >
+      {resetCss ? <NormalizeCSS /> : null}
+
+      {/* TODO Implement GlobalStyle https://github.com/chakra-ui/chakra-ui/blob/f77fd9999ec1105cf846cd830019d2c3ba5a0f4e/packages/system/src/providers.tsx */}
+      {theme.globalStyles && <Global styles={css(theme.globalStyles)} />}
+
+      <ContentContainer {...props}>
         {children}
-      </ThemeProvider>
-    </div>
+      </ContentContainer>
+    </ThemeProvider>
   );
+}
+
+function ContentContainer( { children, ...props }: ParentComponent)
+{
+  const direction = useDirection()
+  console.log("direction", direction)
+  return (
+    <div dir={direction ? "ltr" : "rtl"} style={{ color: "rgb(var(--so-text-color-1))" }} /*textColor="root.text-color-1"*/ {...props}>
+      {children}
+    </div>
+  )
 }

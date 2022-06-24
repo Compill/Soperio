@@ -3,9 +3,9 @@ import { ComponentConfig, ComponentTypings, DisabledState, DisabledThemeProps, E
 
 type TraitProps = ComponentTypings<"Soperio.Button">
 
-export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState;
+export type ComponentProps = SoperioComponent & TraitProps & SelectedState & DisabledState; // & SurfaceSchemeProps
 
-interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }
+interface ConfigStateProps extends SelectedThemeProps, DisabledThemeProps, SelectedDisabledThemeProps { }// , SurfaceVariantProps
 
 export type Config = ComponentConfig<ConfigStateProps, TraitProps>;
 export type ExtendConfig = ExtendComponentConfig<Config>;

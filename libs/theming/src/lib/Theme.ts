@@ -1,7 +1,8 @@
 import { ColorTheme } from "./ColorTheme";
 import ThemeBreakpoints from "./Core/Breakpoints";
 import { SoperioComponent } from "./SoperioComponent";
-import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
+import { SurfaceSchemeSet } from "./SurfaceScheme";
+import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject, Surfaces } from "./ThemeTypes";
 
 export interface Theme
 {
@@ -14,11 +15,56 @@ export interface Theme
   darkModeFallback: "light" | "dark",
   rootColors: RootColors,
   colors: StringKeyValueObject,
-  colorThemes: ColorThemes,
+  palette: StringKeyValueObject,
+  surfaces: Surfaces,
+  colorThemes: ColorThemes, // TODO Delete
   darkModeOverride?: {
-    colorThemes?: ColorThemes;
+    colorThemes?: ColorThemes; // TODO Delete
     rootColors?: RootColors;
+    surfaces?: Surfaces;
   };
+
+  /*
+    surfaces:
+    {
+      primary:
+      {
+        bg: "#FF1199",
+        content: "#FF1199",
+        ...
+      },
+      primary-alt:
+      {
+        bg: "#FF1199",
+        content: "#FF1199",
+        ...
+      },
+      primary-plain:
+      {
+        bg: "#FF1199",
+        content: "#FF1199",
+        ...
+      },
+      primary-layer:
+      {
+        bg: "#FF1199",
+        content: "#FF1199",
+        ...
+      },
+      secondary:
+      {
+        bg: "#FF1199",
+        content: "#FF1199",
+        ...
+      },
+      neutral:
+      {
+        bg: "#FF1199",
+        content: "#FF1199",
+        ...
+      }
+    }
+  */
 
   // Global styles
   breakpoints: ThemeBreakpoints,
@@ -91,7 +137,7 @@ export interface Theme
     lineHeight: StringKeyValueObject,
   };
   traits: KeyValueObject<Omit<SoperioComponent, "trait">>
-  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
+  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig) | ((surface: SurfaceSchemeSet, darkMode: boolean) => ComponentConfig)>;
 }
 
 type ComponentConfig = {

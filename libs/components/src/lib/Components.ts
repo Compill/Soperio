@@ -85,6 +85,10 @@ export interface Components
     variant?: "default" | "track",
     size?: "sm" | "md" | "lg" | "xl" | "x2";
   },
+  "Soperio.Surface":
+  {
+    variant?: "main" | "mainInverse" | "mainInverseHoverMain" | "mainLayer" | "mainLayerHoverMain" | "alt" | "altInverse" | "altHoverMain" // TODO
+  },
   "Soperio.Switch":
   {
     size?: "sm" | "md" | "lg" | "xl" | "x2";

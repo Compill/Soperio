@@ -1,4 +1,5 @@
 import { ColorTheme } from "./ColorTheme";
+import { SurfaceSchemeSet } from "./SurfaceScheme";
 
 export type KeyValueObject<T> = Record<string, T>;
 export type StringKeyValueObject = KeyValueObject<string>;
@@ -11,6 +12,12 @@ export interface ColorThemes
 {
   default: ColorTheme,
   [k: string]: ColorTheme;
+}
+
+export interface Surfaces
+{
+  primary: SurfaceSchemeSet,
+  [k: string]: SurfaceSchemeSet;
 }
 
 export interface RootColors

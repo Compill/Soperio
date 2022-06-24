@@ -1,6 +1,6 @@
 import { Container, List, } from "@soperio/ui";
-import { ReactComponent as Inbox } from "../assets/inbox-svgrepo-com.svg"
-import { ReactComponent as Web } from "../assets/web-link-svgrepo-com.svg"
+import { ReactComponent as Inbox } from "../../assets/inbox-svgrepo-com.svg"
+import { ReactComponent as Web } from "../../assets/web-link-svgrepo-com.svg"
 
 
 export default function Page({ ...props })

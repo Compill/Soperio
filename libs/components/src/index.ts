@@ -5,6 +5,7 @@ export * from './lib/ComponentTheme';
 export * from "./lib/ComponentTypings";
 export * from "./lib/createContext";
 export * from "./lib/hooks/useComponentConfig";
+export * from "./lib/hooks/useComponentConfig2";
 export * from "./lib/hooks/useFirstRender";
 export * from "./lib/hooks/useMultiPartComponentConfig";
 export * from "./lib/hooks/usePrevious";
