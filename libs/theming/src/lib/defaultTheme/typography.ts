@@ -1,0 +1,50 @@
+const typography = {
+  font: {
+    sans: "sans",
+    serif: "serif",
+    mono: "mono"
+  },
+  fontSize: {
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    base: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+    x2: "1.5rem",
+    x3: "1.875rem",
+    x4: "2.25rem",
+    x5: "3rem",
+    x6: "3.75rem",
+    x7: "4.5rem",
+    x8: "6rem",
+    x9: "8rem",
+  },
+  letterSpacing: {
+    tighter: "-0.05em",
+    tight: "-0.025em",
+    normal: "0",
+    wide: "0.025em",
+    wider: "0.05em",
+    widest: "0.1em",
+  },
+  lineHeight: {
+    base: "1",
+    normal: "normal",
+    sm: "1.25",
+    md: "1.375",
+    lg: "1.5",
+    xl: "1.625",
+    x2: "2",
+    x3: ".75rem",
+    x4: "1rem",
+    x5: "1.25rem",
+    x6: "1.5rem",
+    x7: "1.75rem",
+    x8: "2rem",
+    x9: "2.25rem",
+    x10: "2.5rem",
+  },
+}
+
+export default typography

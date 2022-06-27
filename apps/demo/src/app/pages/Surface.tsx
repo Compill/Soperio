@@ -9,7 +9,7 @@ import React from 'react';
 export default function Page({ ...props })
 {
   return (
-    <Container center size="x2" dflex flexCol gap="20" justifyContent="center" py="20" alignItems="center">
+    <Container center size="x2" dflex flexCol gap="20" justifyContent="center" py="20" alignItems="center" bgColor="root.bg-color-1">
 
       <div dflex flexRow gap="20">
         <Surface rounded p="5" hoverable>
