@@ -15,7 +15,6 @@ const RadioPage = React.lazy(() => import("../pages/Radio"));
 const SelectPage = React.lazy(() => import("../pages/Select"));
 const ScrollablePage = React.lazy(() => import("../pages/Scrollable"));
 const SpinnerPage = React.lazy(() => import("../pages/Spinner"));
-const SurfacePage = React.lazy(() => import("../pages/Surface"));
 const SwitchPage = React.lazy(() => import("../pages/Switch"));
 const TextAlignPage = React.lazy(() => import("../pages/TextAlign"));
 const TextAreaPage = React.lazy(() => import("../pages/TextArea"));
@@ -37,7 +36,6 @@ export const menu = {
   "Select": () => <SelectPage />,
   "Scrollable": () => <ScrollablePage />,
   "Spinner": () => <SpinnerPage />,
-  "Surface": () => <SurfacePage />,
   "Switch": () => <SwitchPage />,
   "TextAlign": () => <TextAlignPage />,
   "TextArea": () => <TextAreaPage />,

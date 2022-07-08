@@ -13,7 +13,7 @@ const [ provider, useContext ] = createContext<AppContext>()
 
 function AppContextProvider({ children }: ParentComponent)
 {
-  const [page, setPage] = React.useState("Surface")
+  const [page, setPage] = React.useState("Button")
 
   const Provider = provider
   return <Provider value={{page, setPage}}>{children}</Provider>

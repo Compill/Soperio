@@ -11,7 +11,6 @@ import flexbox from "./defaultTheme/flexbox"
 import opacity from "./defaultTheme/opacity"
 import spacing from "./defaultTheme/spacing"
 import sizing from "./defaultTheme/sizing"
-import surfaces from "./defaultTheme/surfaces"
 import traits from "./defaultTheme/traits"
 import transform from "./defaultTheme/transform"
 import transition from "./defaultTheme/transition"
@@ -351,7 +350,6 @@ export const defaultTheme: Theme = {
   palette: {
 
   },
-  surfaces,
   colorThemes: {
     default: defaultColorTheme,
     success: {

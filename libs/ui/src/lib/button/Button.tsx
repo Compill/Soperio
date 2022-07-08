@@ -1,4 +1,4 @@
-import { ComponentManager, ComponentTheme, HTMLButtonProps, useComponentConfig, useFirstRender } from "@soperio/react";
+import { ComponentManager, ComponentTheme, forwardRef, HTMLButtonProps, useComponentConfig, useFirstRender } from "@soperio/react";
 import React from 'react';
 import defaultConfig from "./config";
 import { ComponentProps, ExtendConfig } from "./types";
@@ -14,12 +14,11 @@ export interface ButtonProps extends ComponentProps, HTMLButtonProps
   config?: ExtendConfig;
 }
 
-
 /**
  *
  *
  */
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
+export const Button = forwardRef<"button", ButtonProps>(({
     size,
     variant,
     corners,

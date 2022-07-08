@@ -9,7 +9,6 @@ import ThemeOpacity from "./Core/Opacity";
 import ThemeRootColors from "./Core/RootColors";
 import ThemeSizing from "./Core/Sizing";
 import ThemeSpacing from "./Core/Spacing";
-import ThemeSurfaces from "./Core/Surfaces";
 import ThemeThemes from "./Core/Themes";
 import { ThemeTraits } from "./Core/Traits";
 import ThemeTransform from "./Core/Transform";
@@ -31,7 +30,6 @@ export interface ThemeTypings extends ThemeOpacity
   },
   rootColors: ThemeRootColors,
   colors: ThemeColors,
-  surfaces: ThemeSurfaces,
   colorThemes: ThemeThemes,
   breakpoints: ThemeBreakpoints,
   borders: ThemeBorder,
@@ -44,5 +42,6 @@ export interface ThemeTypings extends ThemeOpacity
   transition: ThemeTransition,
   typography: ThemeTypography;
   traits: ThemeTraits,
-  components: Record<string, Record<string, string>>
+  components: Record<string, Record<string, string>>,
+  extras: any
 }

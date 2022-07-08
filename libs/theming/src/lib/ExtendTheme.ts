@@ -12,7 +12,6 @@ import ThemeTransform from './Core/Transform';
 import ThemeTransition from './Core/Transition';
 import ThemeTypography from './Core/Typography';
 import { SoperioComponent } from "./SoperioComponent";
-import { SurfaceSchemeSet } from "./SurfaceScheme";
 import { Direction, GlobalStyles, StringKeyValueObject } from './ThemeTypes';
 
 type OptionalAny<T> = {
@@ -68,7 +67,7 @@ export interface ExtendTheme
     typography?: OptionalAny<ThemeTypography>;
     traits?: Record<string, Omit<SoperioComponent, "trait">>,
     // components?: any
-  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig) | ((surface: SurfaceSchemeSet, darkMode: boolean) => ComponentConfig)>;
+  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
 }
 
 type ComponentConfig = {

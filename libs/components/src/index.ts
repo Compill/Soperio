@@ -1,11 +1,10 @@
-export type { ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits} from "./lib/ComponentConfig";
+export type { ComponentConfig, ExtendComponentConfig, ExtendMultiPartComponentConfig, MultiPartComponentConfig, MultiPartTraits } from "./lib/ComponentConfig";
 export * from "./lib/ComponentManager";
 export * from "./lib/ComponentStates";
 export * from './lib/ComponentTheme';
 export * from "./lib/ComponentTypings";
 export * from "./lib/createContext";
 export * from "./lib/hooks/useComponentConfig";
-export * from "./lib/hooks/useComponentConfig2";
 export * from "./lib/hooks/useFirstRender";
 export * from "./lib/hooks/useMultiPartComponentConfig";
 export * from "./lib/hooks/usePrevious";

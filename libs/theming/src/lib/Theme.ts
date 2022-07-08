@@ -1,8 +1,7 @@
 import { ColorTheme } from "./ColorTheme";
 import ThemeBreakpoints from "./Core/Breakpoints";
 import { SoperioComponent } from "./SoperioComponent";
-import { SurfaceSchemeSet } from "./SurfaceScheme";
-import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject, Surfaces } from "./ThemeTypes";
+import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 export interface Theme
 {
@@ -16,12 +15,10 @@ export interface Theme
   rootColors: RootColors,
   colors: StringKeyValueObject,
   palette: StringKeyValueObject,
-  surfaces: Surfaces,
   colorThemes: ColorThemes, // TODO Delete
   darkModeOverride?: {
     colorThemes?: ColorThemes; // TODO Delete
     rootColors?: RootColors;
-    surfaces?: Surfaces;
   };
 
   /*
@@ -137,7 +134,7 @@ export interface Theme
     lineHeight: StringKeyValueObject,
   };
   traits: KeyValueObject<Omit<SoperioComponent, "trait">>
-  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig) | ((surface: SurfaceSchemeSet, darkMode: boolean) => ComponentConfig)>;
+  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
 }
 
 type ComponentConfig = {
