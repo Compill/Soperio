@@ -26,7 +26,7 @@ function deploy(lib)
   console.log("Deployed!");
 
   console.log("Committing...");
-  execSync(`git commit -a "[${lib.toUpperCase()}] Version ${version}" -m "[${lib.toUpperCase()}] Version ${version}"`)
+  execSync(`git commit -a -m "[${lib.toUpperCase()}] Version ${version}"`)
 
   console.log("Creating git tag...");
   execSync(`git tag -a ${lib}-${version} -m "${lib.toUpperCase()} Version ${version}"`)
