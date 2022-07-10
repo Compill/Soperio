@@ -68,7 +68,7 @@ export interface ExtendTheme
   traits?: Record<string, Omit<SoperioComponent, "trait">>,
   // components?: any
   components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
-  extras?: StringKeyValueObject
+  extras?: Record<string, any>
 }
 
 type ComponentConfig = {
