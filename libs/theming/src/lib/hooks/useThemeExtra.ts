@@ -4,5 +4,5 @@ export function useThemeExtra(key: string)
 {
   const theme = useTheme()
 
-  return theme[key]
+  return theme["extras"]?.[key]
 }
