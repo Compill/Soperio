@@ -12,6 +12,7 @@ export { useDarkMode, useSetDarkMode, useToggleDarkMode } from './lib/hooks/useD
 export * from './lib/hooks/useDefaultColorTheme';
 export { getDirection, useDirection, useToggleDirection } from './lib/hooks/useDirection';
 export { useSetTheme, useTheme } from './lib/hooks/useTheme';
+export * from './lib/hooks/useThemeExtra';
 export { useThemeAwareColor } from './lib/hooks/useThemeAwareColor';
 export * from "./lib/NormalizeCSS";
 export * from "./lib/SoperioComponent";
