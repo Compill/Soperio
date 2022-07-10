@@ -15,64 +15,65 @@ import { SoperioComponent } from "./SoperioComponent";
 import { Direction, GlobalStyles, StringKeyValueObject } from './ThemeTypes';
 
 type OptionalAny<T> = {
-    [Property in keyof T]+?: any;
+  [Property in keyof T]+?: any;
 };
 
 export interface ExtendTheme
 {
-    // There's probably going to have some config props as well
-    globalStyles?: GlobalStyles;
-    direction?: Direction;
-    darkMode?: 'light' | 'dark' | 'system';
-    darkModeFallback?: 'light' | 'dark';
-    colors?: Partial<ThemeColor> & Record<string, string>;
+  // There's probably going to have some config props as well
+  globalStyles?: GlobalStyles;
+  direction?: Direction;
+  darkMode?: 'light' | 'dark' | 'system';
+  darkModeFallback?: 'light' | 'dark';
+  colors?: Partial<ThemeColor> & Record<string, string>;
+  rootColors?: Partial<ThemeRootColor>;
+  colorThemes?: {
+    // default?:  Partial<ColorTheme>,
+    [k: string]: Partial<ColorTheme>;
+  };
+  darkModeOverride?: {
+    colorThemes?: Partial<ThemeThemes>;
     rootColors?: Partial<ThemeRootColor>;
-    colorThemes?: {
-        // default?:  Partial<ColorTheme>,
-        [k: string]: Partial<ColorTheme>;
-    };
-    darkModeOverride?: {
-        colorThemes?: Partial<ThemeThemes>;
-        rootColors?: Partial<ThemeRootColor>;
-    };
-    breakpoints?: Partial<ThemeBreakpoint>;
-    border?: OptionalAny<ThemeBorder>;
-    effects?: OptionalAny<ThemeEffects>;
-    flexbox?: OptionalAny<ThemeFlexbox>;
-    filters?: {
-        blur?: StringKeyValueObject,
-        brightness?: StringKeyValueObject,
-        contrast?: StringKeyValueObject,
-        dropShadow?: StringKeyValueObject,
-        grayscale?: StringKeyValueObject,
-        hueRotate?: StringKeyValueObject,
-        invert?: StringKeyValueObject,
-        saturate?: StringKeyValueObject,
-        sepia?: StringKeyValueObject,
-        backdropBlur?: StringKeyValueObject,
-        backdropBrightness?: StringKeyValueObject,
-        backdropContrast?: StringKeyValueObject,
-        backdropGrayscale?: StringKeyValueObject,
-        backdropHueRotate?: StringKeyValueObject,
-        backdropInvert?: StringKeyValueObject,
-        backdropOpacity?: StringKeyValueObject,
-        backdropSaturate?: StringKeyValueObject,
-        backdropSepia?: StringKeyValueObject,
-    };
-    opacity?: StringKeyValueObject,
-    sizing?: OptionalAny<ThemeSizing>;
-    spacing?: OptionalAny<ThemeSpacing>;
-    transform?: OptionalAny<ThemeTransform>;
-    transition?: OptionalAny<ThemeTransition>;
-    typography?: OptionalAny<ThemeTypography>;
-    traits?: Record<string, Omit<SoperioComponent, "trait">>,
-    // components?: any
+  };
+  breakpoints?: Partial<ThemeBreakpoint>;
+  border?: OptionalAny<ThemeBorder>;
+  effects?: OptionalAny<ThemeEffects>;
+  flexbox?: OptionalAny<ThemeFlexbox>;
+  filters?: {
+    blur?: StringKeyValueObject,
+    brightness?: StringKeyValueObject,
+    contrast?: StringKeyValueObject,
+    dropShadow?: StringKeyValueObject,
+    grayscale?: StringKeyValueObject,
+    hueRotate?: StringKeyValueObject,
+    invert?: StringKeyValueObject,
+    saturate?: StringKeyValueObject,
+    sepia?: StringKeyValueObject,
+    backdropBlur?: StringKeyValueObject,
+    backdropBrightness?: StringKeyValueObject,
+    backdropContrast?: StringKeyValueObject,
+    backdropGrayscale?: StringKeyValueObject,
+    backdropHueRotate?: StringKeyValueObject,
+    backdropInvert?: StringKeyValueObject,
+    backdropOpacity?: StringKeyValueObject,
+    backdropSaturate?: StringKeyValueObject,
+    backdropSepia?: StringKeyValueObject,
+  };
+  opacity?: StringKeyValueObject,
+  sizing?: OptionalAny<ThemeSizing>;
+  spacing?: OptionalAny<ThemeSpacing>;
+  transform?: OptionalAny<ThemeTransform>;
+  transition?: OptionalAny<ThemeTransition>;
+  typography?: OptionalAny<ThemeTypography>;
+  traits?: Record<string, Omit<SoperioComponent, "trait">>,
+  // components?: any
   components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
+  extras?: StringKeyValueObject
 }
 
 type ComponentConfig = {
-    defaultProps?:/* SoperioComponent | */any,
-    defaultTraits?: Record<string, string>,
-    subComponents?: string[],
-    traits?: Record<string, Record<string, /*SoperioComponent |*/ any>> | Record<string, Record<string, /*SoperioComponent |*/ Record<string, any>>>;
+  defaultProps?:/* SoperioComponent | */any,
+  defaultTraits?: Record<string, string>,
+  subComponents?: string[],
+  traits?: Record<string, Record<string, /*SoperioComponent |*/ any>> | Record<string, Record<string, /*SoperioComponent |*/ Record<string, any>>>;
 }

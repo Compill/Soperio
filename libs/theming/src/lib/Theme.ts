@@ -135,6 +135,7 @@ export interface Theme
   };
   traits: KeyValueObject<Omit<SoperioComponent, "trait">>
   components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
+  extras?: StringKeyValueObject
 }
 
 type ComponentConfig = {
