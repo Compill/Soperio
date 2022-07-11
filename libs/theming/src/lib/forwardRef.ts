@@ -41,32 +41,56 @@ export type RightJoinProps<
   OverrideProps extends object = any,
   > = OmitCommonProps<SourceProps, keyof OverrideProps> & OverrideProps
 
-export type MergeWithAs<
+// export type MergeWithAs<
+//   ComponentProps extends object,
+//   AsProps extends object,
+//   AdditionalProps extends object = any,
+//   AsComponent extends As = As,
+//   > = RightJoinProps<ComponentProps, AdditionalProps> &
+//   RightJoinProps<AsProps, AdditionalProps> & {
+//     as?: AsComponent
+//   }
+
+export declare type MergeWithAs<
   ComponentProps extends object,
   AsProps extends object,
   AdditionalProps extends object = any,
-  AsComponent extends As = As,
-  > = RightJoinProps<ComponentProps, AdditionalProps> &
-  RightJoinProps<AsProps, AdditionalProps> & {
-    as?: AsComponent
-  }
+  AsComponent extends As = As
+  > = RightJoinProps<RightJoinProps<ComponentProps, AsProps>, AdditionalProps> & {
+    as?: AsComponent;
+  };
 
-export type ComponentWithAs<Component extends As, Props extends object = any> = {
-  <AsComponent extends As = Component>(
+// export type ComponentWithAs<Component extends As, Props extends object = any> = {
+//   <AsComponent extends As = Component>(
+//     props: MergeWithAs<
+//       React.ComponentProps<Component>,
+//       React.ComponentProps<AsComponent>,
+//       Props,
+//       AsComponent
+//     >,
+//   ): JSX.Element
+
+//   displayName?: string
+//   propTypes?: React.WeakValidationMap<any>
+//   contextTypes?: React.ValidationMap<any>
+//   defaultProps?: Partial<any>
+//   id?: string
+// }
+
+export declare type ComponentWithAs<Component extends As, Props extends object = any> = {
+  <AsComponent extends As = "div">(
     props: MergeWithAs<
       React.ComponentProps<Component>,
       React.ComponentProps<AsComponent>,
       Props,
-      AsComponent
-    >,
-  ): JSX.Element
-
-  displayName?: string
-  propTypes?: React.WeakValidationMap<any>
-  contextTypes?: React.ValidationMap<any>
-  defaultProps?: Partial<any>
-  id?: string
-}
+      AsComponent>
+  ): JSX.Element;
+  displayName?: string;
+  propTypes?: React.WeakValidationMap<any>;
+  contextTypes?: React.ValidationMap<any>;
+  defaultProps?: Partial<any>;
+  id?: string;
+};
 
 export function forwardRef<Component extends As, Props extends object>(
   component: React.ForwardRefRenderFunction<
