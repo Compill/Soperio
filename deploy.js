@@ -19,7 +19,7 @@ function deploy(lib)
   console.log(`[DEPLOY] Starting deploy process for ${lib}`)
   console.log("Updating package.json");
   const v = execSync(`cd libs/${lib} && npm version patch`);
-  const version = v.toString().trim().substr(1)
+  const version = v.toString().trim().substring(1)
   console.log(`Updated package.json to version ${version}`);
 
   console.log("Deploying...");
