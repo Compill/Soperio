@@ -1,9 +1,10 @@
-module.exports = {
-  displayName: 'theming',
+/* eslint-disable */
+export default {
+  displayName: 'react',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/theming',
+  coverageDirectory: '../../coverage/libs/react',
 };

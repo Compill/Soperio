@@ -1,9 +1,10 @@
-module.exports = {
-  displayName: 'cli',
+/* eslint-disable */
+export default {
+  displayName: 'theming',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/cli',
+  coverageDirectory: '../../coverage/libs/theming',
 };

@@ -8,6 +8,7 @@ export function useResponsiveProp<T extends SoperioComponent>(responsiveProp: ke
     const breakpoint = useBreakpoint() // Get current breakpoint
 
     let val: T[keyof T] | undefined = undefined
+    const prop = responsiveProp as string
 
     if (!breakpoint)
     {
@@ -22,21 +23,21 @@ export function useResponsiveProp<T extends SoperioComponent>(responsiveProp: ke
             const bp = i > 0 ? `${breakpoints[i]}_` : ""
 
             // eslint-disable-next-line no-prototype-builtins
-            if ((soperioProps as any).hasOwnProperty(`${bp}${responsiveProp}`))
+            if ((soperioProps as any).hasOwnProperty(`${bp}${prop}`))
             {
-                val = (soperioProps as any)[`${bp}${responsiveProp}`]
+                val = (soperioProps as any)[`${bp}${prop}`]
                 break
             }
         }
     }
 
     // Remove responsive props in case they are passed to another component
-    delete (soperioProps as any)[responsiveProp]
-    delete (soperioProps as any)[`sm_${responsiveProp}`]
-    delete (soperioProps as any)[`md_${responsiveProp}`]
-    delete (soperioProps as any)[`lg_${responsiveProp}`]
-    delete (soperioProps as any)[`xl_${responsiveProp}`]
-    delete (soperioProps as any)[`x2_${responsiveProp}`]
+    delete (soperioProps as any)[prop]
+    delete (soperioProps as any)[`sm_${prop}`]
+    delete (soperioProps as any)[`md_${prop}`]
+    delete (soperioProps as any)[`lg_${prop}`]
+    delete (soperioProps as any)[`xl_${prop}`]
+    delete (soperioProps as any)[`x2_${prop}`]
 
     return val
 }
@@ -47,6 +48,7 @@ export function useResponsiveProps<T extends SoperioComponent>(responsiveProps: 
 
     return responsiveProps.map(prop =>
     {
+        const p = prop as string
         let val: T[keyof T] | undefined = undefined
 
         if (!breakpoint)
@@ -62,21 +64,21 @@ export function useResponsiveProps<T extends SoperioComponent>(responsiveProps: 
                 const bp = i > 0 ? `${breakpoints[i]}_` : ""
 
                 // eslint-disable-next-line no-prototype-builtins
-                if ((soperioProps as any).hasOwnProperty(`${bp}${prop}`))
+                if ((soperioProps as any).hasOwnProperty(`${bp}${p}`))
                 {
-                    val = (soperioProps as any)[`${bp}${prop}`]
+                    val = (soperioProps as any)[`${bp}${p}`]
                     break
                 }
             }
         }
 
         // // Remove responsive props in case they are passed to another component
-        delete (soperioProps as any)[prop]
-        delete (soperioProps as any)[`sm_${prop}`]
-        delete (soperioProps as any)[`md_${prop}`]
-        delete (soperioProps as any)[`lg_${prop}`]
-        delete (soperioProps as any)[`xl_${prop}`]
-        delete (soperioProps as any)[`x2_${prop}`]
+        delete (soperioProps as any)[p]
+        delete (soperioProps as any)[`sm_${p}`]
+        delete (soperioProps as any)[`md_${p}`]
+        delete (soperioProps as any)[`lg_${p}`]
+        delete (soperioProps as any)[`xl_${p}`]
+        delete (soperioProps as any)[`x2_${p}`]
 
         return val
     })

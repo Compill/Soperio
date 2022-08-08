@@ -1,5 +1,5 @@
 {
-  "root": "libs/jsx-runtime",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/jsx-runtime/src",
   "projectType": "library",
   "tags": [],
@@ -36,7 +36,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/jsx-runtime"],
       "options": {
-        "jestConfig": "libs/jsx-runtime/jest.config.js",
+        "jestConfig": "libs/jsx-runtime/jest.config.ts",
         "passWithNoTests": true
       }
     },

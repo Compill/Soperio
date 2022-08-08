@@ -1,6 +1,6 @@
 import { ThemeTypings } from "./ThemeTypings";
 
-export type ThemingToken<ThemingCategory extends keyof ThemeTypings, ThemingProperty extends keyof ThemeTypings[ThemingCategory] | unknown = unknown> = ThemingProperty extends keyof ThemeTypings[ThemingCategory] ? ThemeTypings[ThemingCategory][ThemingProperty] : ThemeTypings[ThemingCategory]
+export type ThemingToken<ThemingCategory extends string & keyof ThemeTypings, ThemingProperty extends string & keyof ThemeTypings[ThemingCategory] | unknown = unknown> = ThemingProperty extends string & keyof ThemeTypings[ThemingCategory] ? ThemeTypings[ThemingCategory][ThemingProperty] : ThemeTypings[ThemingCategory]
 
 // How it will translate in CSS interfaces
 // export interface Border

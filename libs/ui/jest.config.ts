@@ -1,9 +1,10 @@
-module.exports = {
-  displayName: 'react',
+/* eslint-disable */
+export default {
+  displayName: 'ui',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/react',
+  coverageDirectory: '../../coverage/libs/ui',
 };

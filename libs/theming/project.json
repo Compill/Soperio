@@ -1,5 +1,5 @@
 {
-  "root": "libs/theming",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/theming/src",
   "projectType": "library",
   "tags": [],
@@ -36,7 +36,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/theming"],
       "options": {
-        "jestConfig": "libs/theming/jest.config.js",
+        "jestConfig": "libs/theming/jest.config.ts",
         "passWithNoTests": true
       }
     },

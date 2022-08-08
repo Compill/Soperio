@@ -1,5 +1,5 @@
 {
-  "root": "libs/react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/react/src",
   "projectType": "library",
   "tags": [],
@@ -35,7 +35,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/react"],
       "options": {
-        "jestConfig": "libs/react/jest.config.js",
+        "jestConfig": "libs/react/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -46,8 +46,5 @@
       }
     }
   },
-  "implicitDependencies": [
-    "jsx-runtime",
-    "jsx-dev-runtime"
-  ]
+  "implicitDependencies": ["jsx-runtime", "jsx-dev-runtime"]
 }

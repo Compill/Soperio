@@ -1,14 +1,12 @@
 {
-  "root": "libs/props-docs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/props-docs/src",
   "projectType": "library",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/workspace:run-script",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "nx:run-script",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "script": "build",
         "outputPath": "dist/libs/props-docs",
@@ -35,7 +33,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/props-docs"],
       "options": {
-        "jestConfig": "libs/props-docs/jest.config.js",
+        "jestConfig": "libs/props-docs/jest.config.ts",
         "passWithNoTests": true
       }
     },

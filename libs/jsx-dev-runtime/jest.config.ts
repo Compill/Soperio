@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'jsx-dev-runtime',
   preset: '../../jest.preset.js',
   transform: {

@@ -1,9 +1,10 @@
-module.exports = {
-  displayName: 'jsx-runtime',
+/* eslint-disable */
+export default {
+  displayName: 'cli',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/jsx-runtime',
+  coverageDirectory: '../../coverage/libs/cli',
 };
