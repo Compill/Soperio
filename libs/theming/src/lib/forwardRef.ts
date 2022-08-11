@@ -54,9 +54,9 @@ export type RightJoinProps<
 export declare type MergeWithAs<
   ComponentProps extends object,
   AsProps extends object,
-  AdditionalProps extends object = any,
+  AdditionalProps extends object = {},
   AsComponent extends As = As
-  > = RightJoinProps<RightJoinProps<ComponentProps, AsProps>, AdditionalProps> & {
+  > = RightJoinProps<ComponentProps, AdditionalProps> & RightJoinProps<AsProps, AdditionalProps> & {
     as?: AsComponent;
   };
 
@@ -77,8 +77,8 @@ export declare type MergeWithAs<
 //   id?: string
 // }
 
-export declare type ComponentWithAs<Component extends As, Props extends object = any> = {
-  <AsComponent extends As = "div">(
+export declare type ComponentWithAs<Component extends As, Props extends object = {}> = {
+  <AsComponent extends As = Component>(
     props: MergeWithAs<
       React.ComponentProps<Component>,
       React.ComponentProps<AsComponent>,
@@ -92,6 +92,21 @@ export declare type ComponentWithAs<Component extends As, Props extends object =
   id?: string;
 };
 
+// export function forwardRef<Component extends As, Props extends object>(
+//   component: React.ForwardRefRenderFunction<
+//     any,
+//     RightJoinProps<PropsOf<Component>, Props> & {
+//       as?: As
+//     }
+//   >,
+// )
+// {
+//   return (React.forwardRef(component) as unknown) as ComponentWithAs<
+//     Component,
+//     Props
+//   >
+// }
+
 export function forwardRef<Component extends As, Props extends object>(
   component: React.ForwardRefRenderFunction<
     any,
@@ -101,7 +116,7 @@ export function forwardRef<Component extends As, Props extends object>(
   >,
 )
 {
-  return (React.forwardRef(component) as unknown) as ComponentWithAs<
+  return React.forwardRef(component) as unknown as ComponentWithAs<
     Component,
     Props
   >

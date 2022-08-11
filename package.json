@@ -32,7 +32,7 @@
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
     "@ctrl/tinycolor": "^3.4.0",
-    "@emotion/react": "11.9.3",
+    "@emotion/react": "^11.10.0",
     "@fontsource/inter": "^4.5.1",
     "@types/node": "^16.11.7",
     "chalk": "^4.1.2",
@@ -60,7 +60,6 @@
     "ts-node": "10.8.2",
     "tsconfig-paths": "^3.11.0",
     "tslib": "^2.0.0",
-    "typescript": "^4.4.4",
     "update-notifier": "^5.0.1"
   },
   "devDependencies": {
@@ -107,6 +106,6 @@
     "react-test-renderer": "18.2.0",
     "ts-jest": "27.1.4",
     "tslib": "^2.3.1",
-    "typescript": "4.7.4"
+    "typescript": "~4.6.2"
   }
 }

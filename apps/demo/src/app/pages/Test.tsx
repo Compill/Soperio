@@ -20,7 +20,7 @@ function CollapseSvg()
 export default function Test({ ...props })
 {
   return (
-    <Container dflex center flexCol size="x2" justifyContent="center" py="48" w="30%">
+    <Container dflex center flexCol size="x2" justifyContent="center" py="48" w="30%" my="-0">
 
       <div bgColor="sky-500" shadow="x2" w="16" h="16"></div>
 
@@ -83,11 +83,12 @@ export default function Test({ ...props })
       <div mb="16" h="16" bgGradient bgGradientDir="to top right" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
       <div mb="16" h="16" bgGradient="radial" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
       <div mb="16" h="16" bgGradient="conic" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
-      <div h="16" bgColor="sky-500" hover_bgColor="pink-500" transition="colors" duration="5000ms" />
+      <div h="16" w="96" bgColor="sky-500" hover_bgColor="pink-500" transition="colors" duration="5000ms" />
       <div>
-        <div as="a">{"Hello, am a <div> or a <a> ?"}</div>
+        <div as="span" bgColor="red-500">{"Hello, am a <div> or a <a> ?"}</div>
       </div>
-      <div group p="10" bgColor="pink-500" hover_bgColor="sky-500" textColor="white" hover_textColor="black">
+      <div></div>
+      <div group p="10" bgColor="pink-500" hover_bgColor="sky-500" textColor="white" hover_textColor="black" mx="">
         <p textColor="blue-500" groupHover_textColor="white" lg_groupHover_textColor="yellow">Subtitle</p>
         <p>Text</p>
       </div>

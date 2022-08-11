@@ -3,7 +3,10 @@ function negative(positive: any)
   const neg: any = {};
 
   for (const key in positive)
-    neg["-" + key] = "-" + positive[key];
+  {
+    if (key !== "0")
+      neg["-" + key] = "-" + positive[key];
+  }
 
   return neg;
 }
