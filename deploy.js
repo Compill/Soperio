@@ -23,7 +23,7 @@ function deploy(lib)
   console.log(`Updated package.json to version ${version}`);
 
   console.log("Deploying...");
-  execSync(`nx deploy ${lib}`);
+  execSync(`nx run ${lib}:deploy`);
   console.log("Deployed!");
 
   console.log("Committing...");
