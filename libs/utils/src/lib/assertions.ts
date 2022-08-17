@@ -9,9 +9,7 @@ export function isNumber(value: any): value is number
 
 export function isNotNumber(value: any)
 {
-    return (
-        typeof value !== "number" || Number.isNaN(value) || !Number.isFinite(value)
-    )
+    return typeof value !== "number" || Number.isNaN(value) || !Number.isFinite(value)
 }
 
 export function isNumeric(value: any)
@@ -95,6 +93,6 @@ export function isEmpty(value: any): boolean
     return false
 }
 
-export const IS_DEV = process.env.NODE_ENV !== "production"
-export const IS_PROD = process.env.NODE_ENV === "production"
-export const IS_TEST = process.env.NODE_ENV === "test"
+export const IS_DEV = process.env["NODE_ENV"] !== "production"
+    export const IS_PROD = process.env["NODE_ENV"] === "production"
+    export const IS_TEST = process.env["NODE_ENV"] === "test"
