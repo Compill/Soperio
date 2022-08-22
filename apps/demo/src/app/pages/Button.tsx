@@ -13,10 +13,10 @@ const buttonConfig: ExtendButtonConfig = {
           bgColor: "#ff0000",
           textColor: "white"
         },
-        outline: {
-          bgColor: "#ff00ff",
-          textColor: "white"
-        }
+        // outline: {
+        //   bgColor: "#ff00ff",
+        //   textColor: "white"
+        // }
       }
     },
   })
@@ -56,7 +56,6 @@ export default function Page({ ...props })
 
       <div flexRow>
         <Button variant="default" block mx="auto" my="5" shadow onClick={() => openDialog("start")} z="1001">Open Left</Button>
-        <Button variant="default" selected block mx="auto" my="5" shadow onClick={() => openDialog("start")} z="1001">Open Left</Button>
         <Button config={buttonConfig} variant="light" block mx="auto" my="5">Light button</Button>
         <Button config={buttonConfig} variant="link" block mx="auto" my="5">Link button</Button>
         <Button config={buttonConfig} variant="outline" block mx="auto" my="5">Outline button</Button>

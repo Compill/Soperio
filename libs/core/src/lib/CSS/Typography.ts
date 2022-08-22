@@ -1,6 +1,7 @@
-import { Theme } from "@soperio/theming";
+import { getThemeStyle, Theme } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
+import { spacing } from "./Spacing";
 import { css, cssValue, Style, StyleProps } from "./utils";
 
 function textOverflow(value: any): Style
@@ -51,6 +52,26 @@ function placeholderColor(value: any, theme: Theme, direction: boolean, darkMode
   }
 }
 
+function textShadow(value: any, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  return {
+    ...spacing("--so-text-shadow-size", "spacing.positiveNegative")(value, theme, direction, darkMode),
+    "text-shadow": "var(--so-text-shadow-size, 1px) var(--so-text-shadow-size, 1px) var(--so-text-shadow-blur, 1px) var(--so-text-shadow-color, #00000099)"
+  }
+}
+
+function textShadowBlur(value: any, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  let parsedValue = value;
+
+  if (typeof value !== "number")
+    parsedValue = getThemeStyle(theme, "filters.blur", value === true ? "default" : value) || value;
+
+  return {
+    "--so-text-shadow-blur": parsedValue
+  }
+}
+
 
 export const TypographyMapping: StyleProps =
 {
@@ -77,4 +98,7 @@ export const TypographyMapping: StyleProps =
   wordBreak: wordBreak,
   textColumns: css("column-count"),
   textColumnsGap: css("gap", "spacing.positive"),
+  textShadow: textShadow,
+  textShadowColor: colorize("--so-text-shadow-color"),
+  textShadowBlur: textShadowBlur
 };

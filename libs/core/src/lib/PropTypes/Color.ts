@@ -7,7 +7,6 @@ const COLOR_CACHE_TYPE = "color"
 const ALPHACOLOR_CACHE_TYPE = "alphaColor"
 
 
-// TODO This does not parse root colors !?
 export function colorize(cssProperty: string, alphaVarName?: string): ThemeStyleFn
 {
   return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>

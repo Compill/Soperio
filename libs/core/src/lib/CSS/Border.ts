@@ -3,8 +3,6 @@ import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, cssValueFn, direction, Style, StyleProps } from "./utils";
 
-// TODO If we use divideX or divideY and divideColor at the same time
-// "> * + *" will be overwritten by the latter
 function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
   const dimension = value === true ? "1px" : (getThemeStyle(theme, "border.width", value) || value)

@@ -25,6 +25,17 @@ export default function Test({ ...props })
       <div bgColor="sky-500" shadow="x2" w="16" h="16"></div>
 
       <div dflex flexCol w="min">
+
+        <span
+          trait="typo.display3"
+          textColor="sky-500"
+          fontWeight="800"
+          textShadow="0.5"
+          textShadowBlur="3px"
+        >
+          GRADIENT TEXT
+        </span>
+
         <span
           trait="typo.display3"
           bgGradient
