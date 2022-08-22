@@ -62,7 +62,6 @@ export function SoperioProvider({
   return (
     // TODO --so should be dynamic
     <ThemeProvider theme={theme} >
-      {/* <DarkModeProvider> */}
       {resetCss ? <NormalizeCSS /> : null}
 
       {/* TODO Implement GlobalStyle https://github.com/chakra-ui/chakra-ui/blob/f77fd9999ec1105cf846cd830019d2c3ba5a0f4e/packages/system/src/providers.tsx */}
@@ -75,7 +74,6 @@ export function SoperioProvider({
           </ContentContainer>
         </LanguageDirectionProvider>
       </DarkModeProvider>
-      {/* </DarkModeProvider> */}
     </ThemeProvider>
   );
 }
