@@ -1,7 +1,8 @@
 import { css as emotionCss } from "@emotion/react";
-import { getThemeStyle, SoperioComponent, ThemeCache } from "@soperio/theming";
+import { getThemeStyle, SoperioComponent, Theme, ThemeCache } from "@soperio/theming";
 import deepmerge from "deepmerge";
 import murmurhash from "murmurhash";
+import { StyleFn, ThemeStyleFn } from "./CSS/utils";
 import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
 const pseudoClasses: string[] = ["focus", "hover", "groupHover", /*"placeholder", "before", "after"*/];
 const CACHE_TYPE = "prop"
@@ -15,7 +16,7 @@ const breakpointIndex = {
   x2: "4",
 }
 
-function parseRules(css: Record<string, string | any>, wrap = true): string
+function parseRules(css: Record<string, string | any>, breakpoints: any/*ThemeBreakpoints*/, wrap = true): string
 {
   let content = "";
 
@@ -29,14 +30,14 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
       if (pseudoClasses.includes(key))
       {
         if (key === "groupHover")
-          pseudos.push(`[data-so-group]:hover & {\n${parseRules(css[key], false)}}`);
+          pseudos.push(`[data-so-group]:hover & {\n${parseRules(css[key], breakpoints, false)}}`);
         else
-          pseudos.push(`&:${key} {\n${parseRules(css[key], false)}}`);
+          pseudos.push(`&:${key} {\n${parseRules(css[key], breakpoints, false)}}`);
       }
       else if (key.startsWith("media-"))
       {
         const breakpoint = key.split("-")[1];
-        mediaQueries[breakpointIndex[breakpoint as keyof typeof breakpointIndex]] = `@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`
+        mediaQueries[breakpointIndex[breakpoint as keyof typeof breakpointIndex]] = `@media screen and (min-width: ${breakpoints[breakpoint]}) {\n\t${parseRules(css[key], breakpoints, false)}\n}`
         // mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
       }
       else
@@ -64,7 +65,7 @@ function parseRules(css: Record<string, string | any>, wrap = true): string
   return content;
 }
 
-function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
+function mergeTraitPropIfExist<P extends SoperioComponent>(props: P, theme: Theme)
 {
   // Merge trait props with rest of props
   if ("trait" in props)
@@ -80,7 +81,7 @@ function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
     {
       if (typeof traitPropValue === "string")
       {
-        traitProps = getThemeStyle("traits", traitPropValue)
+        traitProps = getThemeStyle(theme, "traits", traitPropValue)
 
         if (!traitProps)
           console.warn(`[Soperio]: you tried to use trait ${traitPropValue} but it doesn't exist in the theme`)
@@ -91,7 +92,7 @@ function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
       {
         for (const trait of traitPropValue as string[])
         {
-          const themeProps = getThemeStyle("traits", trait)
+          const themeProps = getThemeStyle(theme, "traits", trait)
           let hasTrait = false
 
           if (themeProps)
@@ -137,11 +138,13 @@ function mergeTraitPropIfExist<P extends SoperioComponent>(props: P)
   return { ...props }
 }
 
-export function parseProps<P extends SoperioComponent>(props: P)
+export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, direction: boolean, darkMode: boolean)
 {
   // "trait" is a special prop, we need to parse it before the rest
-  const newProps: any = mergeTraitPropIfExist(props);
+  const newProps: any = mergeTraitPropIfExist(props, theme);
   delete newProps["__SOPERIO_TYPE_PLEASE_DO_NOT_USE__"]
+
+  const breakpoints = theme.breakpoints
 
   if ("group" in newProps)
   {
@@ -194,7 +197,14 @@ export function parseProps<P extends SoperioComponent>(props: P)
 
       if (!parsed)
       {
-        parsed = CSSPropsMap[propName](newProps[prop])
+        const func = CSSPropsMap[propName]
+
+        if (func.length == 1)
+          parsed = (func as StyleFn) .call(null, newProps[prop])
+        else
+          parsed = (func as ThemeStyleFn).call(null, newProps[prop], theme, direction, darkMode)
+
+        // parsed = CSSPropsMap[propName](newProps[prop])
 
         if (parsed[REMOVE_IF_VARIANT])
         {
@@ -225,7 +235,7 @@ export function parseProps<P extends SoperioComponent>(props: P)
     const soperioCss = css.css;
     delete css.css;
 
-    const generatedCSS = parseRules(css);
+    const generatedCSS = parseRules(css, breakpoints);
 
     newProps.css = [emotionCss(generatedCSS), soperioCss, props.css];
 

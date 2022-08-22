@@ -1,27 +1,27 @@
-import { getDirection, getThemeStyle } from "@soperio/theming";
+import { getThemeStyle, Theme } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, cssValueFn, direction, Style, StyleProps } from "./utils";
 
 // TODO If we use divideX or divideY and divideColor at the same time
 // "> * + *" will be overwritten by the latter
-function divideX(value: any): Style
+function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
-  const dimension = value === true ? "1px" : (getThemeStyle("border.width", value) || value)
+  const dimension = value === true ? "1px" : (getThemeStyle(theme, "border.width", value) || value)
 
   return {
     "--so-divide-x-reverse": 0,
     "> * + *":
     {
-      [getDirection() ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse)) !important`,
-      [getDirection() ? "border-left-width" : "border-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse))) !important`
+      [direction ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse)) !important`,
+      [direction ? "border-left-width" : "border-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse))) !important`
     }
   }
 }
 
-function divideY(value: any): Style
+function divideY(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
-  const dimension = value === true ? "1px" : (getThemeStyle("border.width", value) || value)
+  const dimension = value === true ? "1px" : (getThemeStyle(theme, "border.width", value) || value)
 
   return {
     "--so-divide-y-reverse": 0,
@@ -33,35 +33,35 @@ function divideY(value: any): Style
   };
 }
 
-function divideColor(value: any): Style
+function divideColor(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
   return {
     "--so-divide-opacity": 1,
     "> * + *":
     {
-      ...colorize("border-color", "--so-divide-opacity")(value)
+      ...colorize("border-color", "--so-divide-opacity")(value, theme, direction, darkMode)
     }
   };
 }
 
-function borderStartColor(value: any)
+function borderStartColor(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
-  return colorize(getDirection() ? "border-left-color" : "border-right-color", "--so-border-opacity")(value)
+  return colorize(direction ? "border-left-color" : "border-right-color", "--so-border-opacity")(value, theme, direction, darkMode)
 }
 
-function borderEndColor(value: any)
+function borderEndColor(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
-  return colorize(getDirection() ? "border-right-color" : "border-left-color", "--so-border-opacity")(value)
+  return colorize(direction ? "border-right-color" : "border-left-color", "--so-border-opacity")(value, theme, direction, darkMode)
 }
 
-function outline(value: any): Style
+function outline(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
   if (value === "none" || !value)
     return {
       "outline-style": "none"
     }
 
-  const parsedValue = getThemeStyle("border.width", value)!;
+  const parsedValue = getThemeStyle(theme, "border.width", value)!;
 
   return {
     "outline-style": "solid",
@@ -69,7 +69,7 @@ function outline(value: any): Style
   };
 }
 
-function ringWidth(value: any)
+function ringWidth(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   // return {
   //   // "box-shadow": "var(--so-ring-inset) 0 0 0 calc(var(--so-ring-width) + var(--so-ring-offset-width, 0)) var(--so-ring-color, rgb(59 130 246/0.5));",
@@ -80,7 +80,7 @@ function ringWidth(value: any)
   return {
     "--so-ring-offset-shadow": "var(--so-ring-inset,) 0 0 0 var(--so-ring-offset-width, 0px) var(--so-ring-offset-color, white)",
     "--so-ring-shadow": "var(--so-ring-inset,) 0 0 0 calc(var(--so-ring-width) + var(--so-ring-offset-width, 0px)) var(--so-ring-color)",
-    ...css("--so-ring-width", "border.width")(value),
+    ...css("--so-ring-width", "border.width")(value, theme, direction, darkMode),
     "box-shadow": "var(--so-ring-offset-shadow, 0 0 #0000), var(--so-ring-shadow, 0 0 #0000), var(--so-shadow, 0 0 #0000)"
   }
 }

@@ -1,5 +1,4 @@
-import { createContext } from "@soperio/components";
-import { ParentComponent } from "@soperio/theming";
+import { createContext, ParentComponent } from "@soperio/theming";
 import React from "react";
 
 const TestPage = React.lazy(() => import("../pages/Test"));

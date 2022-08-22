@@ -1,4 +1,4 @@
-import { useDirection, useToggleDarkMode, useToggleDirection, extendTheme, useSetTheme } from "@soperio/react";
+import { useDirection, useToggleDarkMode, extendTheme, useSetTheme } from "@soperio/react";
 import { Button } from "@soperio/ui";
 import React from "react";
 
@@ -49,25 +49,25 @@ const customTheme = extendTheme({
   }
 })
 
-export function Header()
+export function Header({ toggleDirection }: { toggleDirection: () => void })
 {
   const [displayCustomTheme, setDisplayCustomTheme] = React.useState(true)
 
-  const toggleDirection = useToggleDirection();
   const toggleDarkMode = useToggleDarkMode();
   const setTheme = useSetTheme()
+  const direction = useDirection() ? "ltr" : "rtl"
 
   function toggleTheme()
   {
     setDisplayCustomTheme(!displayCustomTheme)
-    setTheme(displayCustomTheme ? customTheme : defaultTheme)
+    setTheme(displayCustomTheme ? {...customTheme, direction  } : {...defaultTheme, direction})
   }
 
   return (
-    <div w="full" h="64px" dflex alignItems="center" placeContent="center">
+    <div w="full" h="64px" dflex alignItems="center" placeContent="center" gap="3">
       <Button variant="default" onClick={toggleDirection}>Toggle direction</Button>
-      <Button variant="default" onClick={toggleTheme} ms="3">Toggle theme</Button>
-      <Button onClick={() => toggleDarkMode()} ms="3">Toggle Dark Mode</Button>
+      <Button variant="default" onClick={toggleTheme}>Toggle theme</Button>
+      <Button onClick={() => toggleDarkMode()}>Toggle Dark Mode</Button>
 
     </div>
   )

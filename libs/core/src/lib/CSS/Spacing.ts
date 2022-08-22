@@ -1,12 +1,10 @@
-import { getDirection } from "@soperio/theming";
+import { getThemeStyle, Theme } from "@soperio/theming";
 import { css, cssValueFn, Style, StyleProp, StyleProps } from "./utils";
-import { getThemeStyle } from "@soperio/theming";
 
 
-function spaceX(value: any): Style
+function spaceX(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
-    const dimension = getThemeStyle("spacing.positiveNegative", value) || value;
-    const direction = getDirection();
+    const dimension = getThemeStyle(theme, "spacing.positiveNegative", value) || value;
 
     // TODO if we set spaceX and spaceY at the time,
     // ">:not([hidden])~:not([hidden])" will be overwritten by the latter
@@ -19,9 +17,9 @@ function spaceX(value: any): Style
     };
 }
 
-function spaceY(value: any): Style
+function spaceY(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
-    const dimension = getThemeStyle("spacing.positiveNegative", value) || value;
+    const dimension = getThemeStyle(theme, "spacing.positiveNegative", value) || value;
 
     return {
         "--so-space-y-reverse": 0,
@@ -34,20 +32,20 @@ function spaceY(value: any): Style
 
 export function spacing(cssProperty: string | string[], themeProperty?: string)
 {
-    return (value: StyleProp) =>
+    return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
     {
         const parsedValue = typeof value === "number" ? `${value}px` : (value === "px" ? "1px" : (value === "-px" ? "-1px" : value as string))
 
-        return css(cssProperty, themeProperty)(parsedValue)
+        return css(cssProperty, themeProperty)(parsedValue, theme, direction, darkMode)
     }
 }
 
 export function directionSpacing(cssPropertyStart: string, cssPropertyEnd: string, themeProperty?: string)
 {
-    return (value: StyleProp) =>
+    return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
     {
         const parsedValue = typeof value === "number" ? `${value}px` : (value === "px" ? "1px" : (value === "-px" ? "-1px" : value as string))
-        return css(getDirection() ? cssPropertyStart : cssPropertyEnd, themeProperty)(parsedValue)
+        return css(direction ? cssPropertyStart : cssPropertyEnd, themeProperty)(parsedValue, theme, direction, darkMode)
     }
 }
 

@@ -1,5 +1,5 @@
-import { getColor, ThemeCache } from "@soperio/theming";
-import { StyleFn, StyleProp } from "../CSS/utils";
+import { getColor, Theme, ThemeCache } from "@soperio/theming";
+import { StyleProp, ThemeStyleFn } from "../CSS/utils";
 import { parseColor } from "../utils/colorUtils";
 
 const COLORIZE_CACHE_TYPE = "colorize"
@@ -8,9 +8,9 @@ const ALPHACOLOR_CACHE_TYPE = "alphaColor"
 
 
 // TODO This does not parse root colors !?
-export function colorize(cssProperty: string, alphaVarName?: string): StyleFn
+export function colorize(cssProperty: string, alphaVarName?: string): ThemeStyleFn
 {
-  return (value: StyleProp) =>
+  return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
   {
     if (!value || value === true || typeof value === "number")
       return {};
@@ -28,7 +28,7 @@ export function colorize(cssProperty: string, alphaVarName?: string): StyleFn
 
     if (!parsedColor)
     {
-      parsedColor = getColor(value) || value
+      parsedColor = getColor(value, theme, darkMode) || value
       ThemeCache.get().put(COLOR_CACHE_TYPE, key, parsedColor);
     }
 

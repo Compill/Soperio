@@ -1,26 +1,26 @@
-import { getDirection } from "@soperio/theming";
+import { Theme } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, StyleProps } from "./utils";
 
-function bgPosition(value: any)
+function bgPosition(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   let parsedValue = value;
 
   if (value === "start")
-    parsedValue = getDirection() ? "left" : "right";
+    parsedValue = direction ? "left" : "right";
   else if (value === "start-top")
-    parsedValue = getDirection() ? "left top" : "right top";
+    parsedValue = direction ? "left top" : "right top";
   else if (value === "start-bottom")
-    parsedValue = getDirection() ? "left bottom" : "right bottom";
+    parsedValue = direction ? "left bottom" : "right bottom";
   else if (value === "end")
-    parsedValue = getDirection() ? "right" : "left";
+    parsedValue = direction ? "right" : "left";
   else if (value === "end-top")
-    parsedValue = getDirection() ? "right top" : "left top";
+    parsedValue = direction ? "right top" : "left top";
   else if (value === "end-bottom")
-    parsedValue = getDirection() ? "right bottom" : "left bottom";
+    parsedValue = direction ? "right bottom" : "left bottom";
 
-  return css("background-position")(parsedValue)
+  return css("background-position")(parsedValue, theme, direction, darkMode)
 }
 
 const LINEAR_GRADIENT = "linear-gradient(var(--so-gradient-dir, to right), var(--so-gradient-from, transparent), var(--so-gradient-via,) var(--so-gradient-to, transparent))"
@@ -40,12 +40,12 @@ function bgGradient(value: any)
   }
 }
 
-function bgGradientVia(value: any)
+function bgGradientVia(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   // Little trick here: add a coma so that if no `via` property is passed
   // this var is ignored
 
-  const css = colorize("--so-gradient-via")(value)
+  const css = colorize("--so-gradient-via")(value, theme, direction, darkMode)
   css["--so-gradient-via"] = `${css["--so-gradient-via"]},`
 
   return css

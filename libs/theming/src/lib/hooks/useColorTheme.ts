@@ -1,8 +1,9 @@
 import { IS_DEV } from "@soperio/utils";
 import { ColorTheme } from "../ColorTheme";
+import { useDarkMode } from "../providers/DarkModeProvider";
+import { Theme } from "../Theme";
 import { ThemeCache } from "../ThemeCache";
 import { getColor } from "../utils/utils";
-import { useDarkMode } from "./useDarkMode";
 import { useTheme } from "./useTheme";
 
 const CACHE_TYPE = "colorTheme"
@@ -19,7 +20,7 @@ export function useColorTheme(colorTheme?: false | string | ColorTheme): ColorTh
       const darkThemeColor = theme?.darkModeOverride?.colorThemes?.[colorTheme || "default"];
 
       if (darkThemeColor)
-        return processTheme(darkThemeColor);
+        return processTheme(darkThemeColor, theme, darkMode);
     }
 
     const indexedColorTheme = theme.colorThemes[colorTheme || "default"];
@@ -30,13 +31,13 @@ export function useColorTheme(colorTheme?: false | string | ColorTheme): ColorTh
         console.warn(`[Soperio]: the color theme ${colorTheme} does not exist in your theme.`);
     }
 
-    return processTheme(indexedColorTheme|| {});
+    return processTheme(indexedColorTheme || {}, theme, darkMode);
   }
 
-  return colorTheme ? processTheme(colorTheme) : colorTheme;
+  return colorTheme ? processTheme(colorTheme, theme, darkMode) : colorTheme;
 }
 
-function processTheme(colorTheme: ColorTheme)
+function processTheme(colorTheme: ColorTheme, theme: Theme, darkMode: boolean)
 {
   const processedColorTheme = { ...colorTheme } as any
 
@@ -52,7 +53,7 @@ function processTheme(colorTheme: ColorTheme)
     }
     else
     {
-      const color = processColor((colorTheme as any)[key])
+      const color = processColor((colorTheme as any)[key], theme, darkMode)
       ThemeCache.get().put(CACHE_TYPE, cacheKey, color)
       processedColorTheme[key] = color
     }
@@ -61,9 +62,9 @@ function processTheme(colorTheme: ColorTheme)
   return processedColorTheme
 }
 
-function processColor(color: string)
+function processColor(color: string, theme: Theme, darkMode: boolean)
 {
-  const parsedColor = getColor(color)
+  const parsedColor = getColor(color, theme, darkMode)
 
   if (parsedColor)
     return parsedColor

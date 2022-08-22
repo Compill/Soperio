@@ -1,6 +1,6 @@
 import { Color } from "../CSSTypes"; 
+import { useDarkMode } from "../providers/DarkModeProvider";
 import { useColor } from "./useColor"; 
-import { useDarkMode } from "./useDarkMode"; 
 
 export function useThemeAwareColor(lightThemeColor: Color, darkThemeColor: Color)
 {

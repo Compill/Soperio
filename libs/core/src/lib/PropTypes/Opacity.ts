@@ -1,11 +1,11 @@
-import { getThemeStyle } from "@soperio/theming";
-import { Style } from "../CSS/utils";
+import { getThemeStyle, Theme } from "@soperio/theming";
+import { Style, ThemeStyleFn } from "../CSS/utils";
 
-export function opacity(cssProperty: string): (value: any) => Style
+export function opacity(cssProperty: string): ThemeStyleFn
 {
-    return (value: any) =>
+  return (value: any, theme: Theme, direction: boolean, darkMode: boolean) =>
     {
-        let parsedValue = getThemeStyle("opacity", value)
+        let parsedValue = getThemeStyle(theme,  "opacity", value)
 
         if (parsedValue === undefined)
         {

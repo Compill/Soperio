@@ -1,16 +1,16 @@
-import { StyleFn, StyleProp, StyleProps } from "./utils";
-import { getThemeStyle } from "@soperio/theming";
+import { getThemeStyle, Theme } from "@soperio/theming";
+import { StyleProp, StyleProps, ThemeStyleFn } from "./utils";
 
-function processValue(cssProperty: string, themeProperty:string): StyleFn
+function processValue(cssProperty: string, themeProperty:string): ThemeStyleFn
 {
-    return (value: StyleProp) =>
+    return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
     {
         if (!value || value === true)
             return {}
 
         let parsedValue = value;
 
-        const themeValue = getThemeStyle(themeProperty, value);
+        const themeValue = getThemeStyle(theme, themeProperty, value);
 
         if (themeValue !== undefined)
         {

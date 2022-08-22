@@ -51,23 +51,31 @@ function App()
     })
   };
 
+  const [direction, setDirection] = React.useState(true)
+
+  const toggleDirection = React.useCallback(() => setDirection(!direction), [direction, setDirection])
+
+  const theme = extendTheme({
+    direction: direction ? "ltr" : "rtl"
+  })
+
   return (
     <AppContextProvider>
-      <SoperioProvider>
-        <AppContent />
+      <SoperioProvider theme={theme}>
+        <AppContent toggleDirection={toggleDirection} />
       </SoperioProvider>
     </AppContextProvider>
   );
 }
 
-function AppContent()
+function AppContent({ toggleDirection }: { toggleDirection: () => void })
 {
   console.log("app content")
   return (
-    <div dflex alignItems="start">
+    <div dflex flexRow alignItems="start" transition="all">
       <Menu />
-      <div flexGrow h="screen" ms="240px">
-        <Header />
+      <div flexGrow h="screen" ms="240px" transition="all">
+        <Header toggleDirection={toggleDirection} />
         <Content />
       </div>
     </div>

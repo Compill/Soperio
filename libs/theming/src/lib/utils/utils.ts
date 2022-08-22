@@ -1,15 +1,15 @@
-import { getDarkMode } from "../hooks/useDarkMode";
+import { Theme } from "../Theme";
 import { getThemeStyle } from "./getThemeStyle";
 
-export function getColor(value: string)
+export function getColor(value: string, theme: Theme, darkMode: boolean)
 {
-    if (getDarkMode())
+    if (darkMode)
     {
-        const darkColor = getThemeStyle(["darkModeOverride", "colors"], value);
+        const darkColor = getThemeStyle(theme, ["darkModeOverride", "colors"], value);
 
         if (darkColor)
             return darkColor;
     }
 
-    return getThemeStyle("colors", value);
+    return getThemeStyle(theme, "colors", value);
 }

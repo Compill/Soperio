@@ -1,4 +1,4 @@
-import { getDirection } from "@soperio/theming";
+import { Theme } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
 import { css, cssValue, Style, StyleProps } from "./utils";
@@ -30,23 +30,23 @@ function wordBreak(value: any): Style
   return cssValue("word-break", "break-" + value);
 }
 
-function textAlign(value: any)
+function textAlign(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   let parsedValue = value;
 
   if (value === "start")
-    parsedValue = getDirection() ? "left" : "right";
+    parsedValue = direction ? "left" : "right";
   else if (value === "end")
-    parsedValue = getDirection() ? "right" : "left";
+    parsedValue = direction ? "right" : "left";
 
-  return css("text-align")(parsedValue);
+  return css("text-align")(parsedValue, theme, direction, darkMode);
 }
 
-function placeholderColor(value:any)
+function placeholderColor(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   return {
     "&::placeholder": {
-      ...colorize("color", "--so-placeholder-opacity")
+      ...colorize("color", "--so-placeholder-opacity")(value, theme, direction, darkMode)
     }
   }
 }

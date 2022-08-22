@@ -66,9 +66,6 @@ Only include defaultTheme color, which must not use dynamic values, only RGB col
 TODO Root colors: only use RGB values (e.g. not theme values), since theme colors will be optional
 */
 
-/*
-TODO Surface system
-*/
 
 const defaultColorTheme: ColorTheme = {
   default: "sky-500",

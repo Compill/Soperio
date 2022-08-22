@@ -1,7 +1,6 @@
 import * as React from "react";
 
 type CreateContextReturn<T> = [React.Provider<T>, () => T, React.Context<T>];
-
 /**
  * Creates a named context, provider, and hook.
  *
@@ -16,7 +15,7 @@ export function createContext<ContextType>()
     const context = React.useContext(Context);
 
     if (!context)
-      throw new Error("[@soperio/ui createContext] Your forgot to wrap the component in its Provider before using useContext()")
+      throw new Error("[@soperio/react createContext] Your forgot to wrap the component in its Provider before using useContext()")
 
     return context;
   }

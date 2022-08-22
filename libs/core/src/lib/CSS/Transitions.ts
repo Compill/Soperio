@@ -1,6 +1,6 @@
 import { css as cssEmotion, keyframes } from "@emotion/react";
 import { css, Style, StyleProps } from "./utils";
-import { getThemeStyle } from "@soperio/theming";
+import { getThemeStyle, Theme } from "@soperio/theming";
 
 const defaultTransition =
 {
@@ -8,9 +8,9 @@ const defaultTransition =
     "transition-duration": "150ms"
 };
 
-function transition(value: any): Style
+function transition(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
-    const transitionProperty = getThemeStyle("transition.transitionProperty", value === true ? "default" : value)!;
+    const transitionProperty = getThemeStyle(theme, "transition.transitionProperty", value === true ? "default" : value)!;
 
     return {
         "transition-property": transitionProperty,
@@ -18,9 +18,9 @@ function transition(value: any): Style
     };
 }
 
-function duration(value: any)
+function duration(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
-    let parsedValue = getThemeStyle("transition.duration", value);
+    let parsedValue = getThemeStyle(theme, "transition.duration", value);
 
     if (parsedValue === undefined)
     {
@@ -33,14 +33,14 @@ function duration(value: any)
     return { "transition-duration": parsedValue };
 }
 
-function animate(value: any)
+function animate(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
     if (value === "none")
         return { animation: "none" }
 
-    const animation = getThemeStyle("transition.animation", value);
+    const animation = getThemeStyle(theme, "transition.animation", value);
 
-    const frames = keyframes(getThemeStyle("transition.keyframes", value))
+    const frames = keyframes(getThemeStyle(theme, "transition.keyframes", value))
 
     const emotion = cssEmotion`animation: ${frames} ${animation}`
 
