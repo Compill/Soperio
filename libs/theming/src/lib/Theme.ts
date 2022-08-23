@@ -21,48 +21,6 @@ export interface Theme
     rootColors?: RootColors;
   };
 
-  /*
-    surfaces:
-    {
-      primary:
-      {
-        bg: "#FF1199",
-        content: "#FF1199",
-        ...
-      },
-      primary-alt:
-      {
-        bg: "#FF1199",
-        content: "#FF1199",
-        ...
-      },
-      primary-plain:
-      {
-        bg: "#FF1199",
-        content: "#FF1199",
-        ...
-      },
-      primary-layer:
-      {
-        bg: "#FF1199",
-        content: "#FF1199",
-        ...
-      },
-      secondary:
-      {
-        bg: "#FF1199",
-        content: "#FF1199",
-        ...
-      },
-      neutral:
-      {
-        bg: "#FF1199",
-        content: "#FF1199",
-        ...
-      }
-    }
-  */
-
   // Global styles
   breakpoints: ThemeBreakpoints,
   border: {
