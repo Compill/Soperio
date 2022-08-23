@@ -24,6 +24,7 @@
       "@soperio/jsx-runtime": ["libs/jsx-runtime/src/index.ts"],
       "@soperio/props-docs": ["libs/props-docs/src/build.ts"],
       "@soperio/react": ["libs/react/src/index.ts"],
+      "@soperio/theme-extensions": ["libs/theme-extensions/src/index.ts"],
       "@soperio/theming": ["libs/theming/src/index.ts"],
       "@soperio/ui": ["libs/ui/src/index.ts"],
       "@soperio/utils": ["libs/utils/src/index.ts"]
