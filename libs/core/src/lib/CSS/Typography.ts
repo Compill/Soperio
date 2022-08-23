@@ -4,6 +4,19 @@ import { opacity } from "../PropTypes/Opacity";
 import { spacing } from "./Spacing";
 import { css, cssValue, Style, StyleProps } from "./utils";
 
+function italic(value: any): Style
+{
+  if (value)
+  {
+    // Only set italic if value == true
+    return {
+      "font-style": value === "no" ? "normal" : "italic"
+    }
+  }
+
+  return {}
+}
+
 function textOverflow(value: any): Style
 {
   if (value === "truncate")
@@ -108,8 +121,7 @@ export const TypographyMapping: StyleProps =
 {
   font: css("font-family"),
   fontSize: css("font-size", "typography.fontSize"),
-  italic: css("font-style", undefined, "italic"),
-  notItalic: css("font-style", undefined, "normal"),
+  italic: italic,
   fontWeight: css("font-weight"),
   numericFontVariant: css("font-variant-numeric"),
   letterSpacing: css("letter-spacing", "typography.letterSpacing"),

@@ -24,7 +24,7 @@ export default function Test({ ...props })
 
       <div bgColor="sky-500" shadow="x2" w="16" h="16"></div>
 
-      <div dflex flexCol w="min">
+      <div dflex flexCol w="min" italic>
 
         <span
           trait="typo.display3"

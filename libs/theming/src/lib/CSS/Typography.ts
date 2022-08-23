@@ -5,10 +5,7 @@ export interface Typography
 {
   font?: false | Font,
   fontSize?: false | FontSize,
-  italic?: boolean,
-  notItalic?: boolean;
-  // TODO alias for not-italic
-  // normal?: boolean,
+  italic?: true | false | "no",
   fontWeight?: false | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900",
   numericFontVariant?: false | "normal-nums" | "ordinal" | "slashed-zero" | "lining-nums" | "oldstyle-nums" | "proportional-nums" | "tabular-nums" | "diagonal-fractions" | "stacked-fractions",
   letterSpacing?: false | LetterSpacing,
@@ -34,7 +31,6 @@ export interface Typography
    * Alias for "gap"
    * Gap between the text columns
    */
-
   textColumnsGap?: false | SpacingPositive;
   textShadow?: false | TextShadow | Spacing | "none"
   textShadowColor?: false | Color
