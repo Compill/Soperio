@@ -30,8 +30,8 @@ export default function Test({ ...props })
           trait="typo.display3"
           textColor="sky-500"
           fontWeight="800"
-          textShadow="0.5"
-          textShadowBlur="3px"
+          textShadow="sm"
+          textShadowBlur="sm"
         >
           GRADIENT TEXT
         </span>

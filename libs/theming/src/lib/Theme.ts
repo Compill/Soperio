@@ -132,6 +132,8 @@ export interface Theme
     fontSize: StringKeyValueObject,
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
+    textShadow: StringKeyValueObject,
+    textShadowBlur: StringKeyValueObject,
   };
   traits: KeyValueObject<Omit<SoperioComponent, "trait">>
   components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;

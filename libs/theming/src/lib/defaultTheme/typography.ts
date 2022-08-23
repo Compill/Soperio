@@ -45,6 +45,36 @@ const typography = {
     x9: "2.25rem",
     x10: "2.5rem",
   },
+  textShadow:
+  {
+    px: "1px",
+    xs: "0.125rem",
+    sm: "0.25rem",
+    md: "0.375rem",
+    lg: "0.5rem",
+    xl: "0.625rem",
+    x2: "0.75rem",
+    x3: "0.875rem",
+    x4: "1rem",
+    x5: "1.25rem",
+    x6: "1.5rem",
+    x7: "1.75rem",
+  },
+  textShadowBlur:
+  {
+    px: "1px",
+    xs: "0.125rem",
+    sm: "0.25rem",
+    md: "0.375rem",
+    lg: "0.5rem",
+    xl: "0.625rem",
+    x2: "0.75rem",
+    x3: "0.875rem",
+    x4: "1rem",
+    x5: "1.25rem",
+    x6: "1.5rem",
+    x7: "1.75rem",
+  }
 }
 
 export default typography

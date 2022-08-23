@@ -1,4 +1,4 @@
-import { Blur, Color, Font, FontSize, LetterSpacing, LineHeight, Opacity, Spacing, SpacingPositive } from "../CSSTypes";
+import { Blur, Color, Font, FontSize, LetterSpacing, LineHeight, Opacity, Spacing, SpacingPositive, TextShadow, TextShadowBlur } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Typography
@@ -36,7 +36,7 @@ export interface Typography
    */
 
   textColumnsGap?: false | SpacingPositive;
-  textShadow?: false | "xs" | "sm" | "md" | "lg" | "xl" | Spacing
+  textShadow?: false | TextShadow | Spacing | "none"
   textShadowColor?: false | Color
-  textShadowBlur?: false | Blur
+  textShadowBlur?: false | TextShadowBlur | Spacing | "none"
 }

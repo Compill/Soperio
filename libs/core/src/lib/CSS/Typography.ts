@@ -54,9 +54,27 @@ function placeholderColor(value: any, theme: Theme, direction: boolean, darkMode
 
 function textShadow(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
+  let parsedValue = value;
+
+  if (value === "none")
+  {
+    parsedValue = undefined
+  }
+  else if (typeof value === "number")
+  {
+    parsedValue = value + "px"
+  }
+  else
+  {
+    parsedValue = getThemeStyle(theme, "typography.textShadow", value);
+
+    if (!parsedValue)
+      parsedValue = getThemeStyle(theme, "spacing.positiveNegative", value);
+  }
+
   return {
-    ...spacing("--so-text-shadow-size", "spacing.positiveNegative")(value, theme, direction, darkMode),
-    "text-shadow": "var(--so-text-shadow-size, 1px) var(--so-text-shadow-size, 1px) var(--so-text-shadow-blur, 1px) var(--so-text-shadow-color, #00000099)"
+    "--so-text-shadow-size": parsedValue,
+    "text-shadow": "var(--so-text-shadow-size, 1px) var(--so-text-shadow-size, 1px) var(--so-text-shadow-blur, 0px) var(--so-text-shadow-color, #00000099)"
   }
 }
 
@@ -64,8 +82,21 @@ function textShadowBlur(value: any, theme: Theme, direction: boolean, darkMode: 
 {
   let parsedValue = value;
 
-  if (typeof value !== "number")
-    parsedValue = getThemeStyle(theme, "filters.blur", value === true ? "default" : value) || value;
+  if (value === "none")
+  {
+    parsedValue = undefined
+  }
+  else if (typeof value === "number")
+  {
+    parsedValue = value + "px"
+  }
+  else
+  {
+    parsedValue = getThemeStyle(theme, "typography.textShadowBlur", value);
+
+    if (!parsedValue)
+      parsedValue = getThemeStyle(theme, "spacing.positiveNegative", value);
+  }
 
   return {
     "--so-text-shadow-blur": parsedValue
