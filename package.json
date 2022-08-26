@@ -11,7 +11,6 @@
     "[DEPLOY] 4 - jsx-runtime": "node deploy.js jsx-runtime",
     "[DEPLOY] 5 - jsx-dev-runtime": "node deploy.js jsx-dev-runtime",
     "[DEPLOY] 6 - react": "node deploy.js react",
-    "[DEPLOY] 7 - ui": "node deploy.js ui",
     "deploy props-docs": "node deploy.js props-docs",
     "deploy cli": "node deploy.js cli",
     "deploy utils": "node deploy.js utils",
