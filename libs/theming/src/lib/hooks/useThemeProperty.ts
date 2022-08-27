@@ -1,5 +1,5 @@
 import { useTheme } from "./useTheme";
-const _ = require("lodash");
+import { property as getProperty } from "lodash"
 
 export function useThemeProperty(property: string, key: string | number | undefined)
 {
@@ -8,7 +8,7 @@ export function useThemeProperty(property: string, key: string | number | undefi
     if (!key)
         return undefined
 
-    const c = _.property(property)(theme);
+    const c = getProperty(property)(theme);
 
     if (c)
         return c[key];

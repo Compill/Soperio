@@ -4,9 +4,7 @@ import { defaultTheme } from "../defaultTheme";
 import { ExtendTheme } from "../ExtendTheme";
 import { isSoperioTheme } from "../isSoperioTheme";
 import { Theme } from "../Theme";
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const _ = require("lodash");
+import { mergeWith } from "lodash"
 
 type AnyFunction<T = any> = (...args: T[]) => any;
 
@@ -84,7 +82,7 @@ export function extendTheme(...extensions: ExtendTheme[]): Theme
 
 function mergeThemeOverride(...overrides: any[]): any
 {
-    return _.mergeWith({}, ...overrides);
+    return mergeWith({}, ...overrides);
 }
 function mergeThemeCustomizer(
     source: unknown,
@@ -103,7 +101,7 @@ function mergeThemeCustomizer(
             const sourceValue = isFunction(source) ? source(...args) : source;
 
             const overrideValue = isFunction(override) ? override(...args) : override;
-            return _.mergeWith({}, sourceValue, overrideValue, mergeThemeCustomizer);
+            return mergeWith({}, sourceValue, overrideValue, mergeThemeCustomizer);
         };
     }
 
