@@ -155,6 +155,11 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
 
   const keys = Object.keys(newProps);
 
+  // TODO Find a way to sort props in a precise order
+  // => bgColor before bgOpacity
+  // => transform before scale, rotate, skew, translate
+  // => ...
+
   if (keys.length > 0)
   {
     const css: any = {};

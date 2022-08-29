@@ -65,6 +65,15 @@ function placeholderColor(value: any, theme: Theme, direction: boolean, darkMode
   }
 }
 
+function placeholderOpacity(value: any, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  return {
+    "&::placeholder": {
+      ...opacity("--so-placeholder-opacity")(value, theme, direction, darkMode)
+    }
+  }
+}
+
 function textShadow(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   let parsedValue = value;
@@ -129,7 +138,7 @@ export const TypographyMapping: StyleProps =
   listStyle: css("list-style-type"),
   listStylePosition: css("list-style-position"),
   placeholderColor: placeholderColor,
-  placeholderOpacity: opacity("--so-placeholder-opacity"),
+  placeholderOpacity: placeholderOpacity,
   textAlign: textAlign,
   textColor: colorize("color", "--so-text-opacity"),
   textOpacity: opacity("--so-text-opacity"),

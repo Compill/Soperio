@@ -22,6 +22,8 @@ export default function Test({ ...props })
   return (
     <Container dflex center flexCol size="x2" justifyContent="center" py="48" w="30%" my="-0">
 
+      <input placeholder="Hello" placeholderColor="#00ff00" placeholderOpacity="25" fontWeight="600"/>
+
       <div bgColor="sky-500" shadow="x2" w="16" h="16"></div>
 
       <div dflex flexCol w="min" italic>

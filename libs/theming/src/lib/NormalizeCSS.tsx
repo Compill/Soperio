@@ -17,7 +17,7 @@ const css = `
 
 ::before,
 ::after {
-  --tw-content: '';
+  --so-content: '';
 }
 
 /*
