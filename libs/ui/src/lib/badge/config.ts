@@ -41,27 +41,27 @@ export const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         default: {
           bgColor: theme.default,
 
-          border: "0",
+          border: "none",
           textColor: theme.textLight1,
           fontWeight: "500"
         },
         light: {
           bgColor: theme.light,
 
-          border: "0",
+          border: "none",
           textColor: theme.default,
           fontWeight: "500"
         },
         outline: {
           bgColor: "transparent",
-          border: "2",
+          border: "sm",
           borderColor: theme.default,
           textColor: theme.default,
           fontWeight: "500"
         },
         "light-outline": {
           bgColor: theme.light,
-          border: "2",
+          border: "sm",
           borderColor: theme.default,
           textColor: theme.default,
           fontWeight: "500"

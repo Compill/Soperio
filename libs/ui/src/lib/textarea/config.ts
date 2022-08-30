@@ -43,7 +43,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
       {
         default:
         {
-          border: "2",
+          border: "sm",
           textColor: theme.textDark2,
           fontWeight: "500",
           bgColor: theme.background1,
@@ -52,7 +52,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         },
         solid:
         {
-          border: "0",
+          border: "none",
 
           fontWeight: "500",
           textColor: theme.textDark2,
@@ -60,7 +60,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         },
         underline:
         {
-          borderB: "2",
+          borderB: "sm",
           fontWeight: "500",
           textColor: theme.textDark2,
           borderColor: theme.textDark3,

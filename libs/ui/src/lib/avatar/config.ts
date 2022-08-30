@@ -147,7 +147,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) => {
             textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           },
           badge: {
-            border: "2",
+            border: "sm",
             borderColor: theme.background5,
             textColor: isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
     

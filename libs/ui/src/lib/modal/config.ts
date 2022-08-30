@@ -63,7 +63,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           modalContent:
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "0",
+            border: "none",
             textColor: theme.textDark1
           }
         },
@@ -72,7 +72,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           modalContent:
           {
             bgColor: darkMode ? theme.background2 : theme.background1,
-            border: "2",
+            border: "sm",
             borderColor: theme.border1,
           },
         },

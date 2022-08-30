@@ -48,7 +48,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         {
           bgColor: theme.background5,
 
-          border: "0",
+          border: "none",
           textColor: darkMode ? theme.textLight1 : theme.textDark1,
           stateChecked:
           {
@@ -64,7 +64,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         outline:
         {
           bgColor: "transparent",
-          border: "2",
+          border: "sm",
           borderColor: theme.background5,
           textColor: "transparent",
           stateChecked:

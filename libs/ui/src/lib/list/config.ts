@@ -109,13 +109,13 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                     list:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
-                        border: "0",
+                        border: "none",
                         textColor: theme.textDark1
                     },
                     listItem:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
-                        border: "0",
+                        border: "none",
                         textColor: theme.textDark1,
                         px: "5",
                         py: "3",
@@ -124,7 +124,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                     listItemIcon:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
-                        border: "0",
+                        border: "none",
                         textColor: theme.textDark1,
                         hover_bgColor: theme.background2
                     },
@@ -134,13 +134,13 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                     list:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
-                        border: "0",
+                        border: "none",
                         textColor: theme.textDark1
                     },
                     listItem:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
-                        borderB: "2",
+                        borderB: "sm",
                         textColor: theme.textDark1,
                         borderColor: theme.border1,
                         px: "7",
@@ -150,7 +150,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
                     listItemIcon:
                     {
                         bgColor: darkMode ? theme.background2 : theme.background1,
-                        borderB: "2",
+                        borderB: "sm",
                         textColor: theme.textDark1,
                         borderColor: theme.border1,
                         hover_bgColor: theme.background2

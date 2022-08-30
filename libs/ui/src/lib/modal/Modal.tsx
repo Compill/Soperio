@@ -162,7 +162,7 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(({
     <div dflex justifyContent="between" alignItems="center" {...styles.header}>
       <div
         ref={ref}
-        borderB={showBorder && borderWidth === "full" ? true : "0"}
+        borderB={showBorder && borderWidth === "full" ? true : "none"}
         {...styles.headerTitle}
         {...props}
       >
@@ -225,7 +225,7 @@ export const ModalFooter = React.forwardRef<HTMLDivElement, ModalFooterProps>(({
       {showBorder && borderWidth !== "full" && <div borderT borderColor={colorTheme.border1} mx={borderWidth === "padded" ? "7" : borderWidth as SpacingPositive} />}
       <div
         ref={ref}
-        borderT={showBorder && borderWidth === "full" ? true : "0"}
+        borderT={showBorder && borderWidth === "full" ? true : "none"}
         {...styles.footer}
         {...props}
       >

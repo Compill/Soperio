@@ -64,7 +64,7 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
     <li
       ref={ref}
       borderColor={colorTheme.border1}
-      borderB={showBorder && borderWidth === "full" ? true : "0"}
+      borderB={showBorder && borderWidth === "full" ? true : "none"}
       {...styles.listItem}
       {...props}
     >{children}

@@ -14,13 +14,13 @@ export const config: Config = (theme: ColorTheme, darkMode: boolean) => {
       orientation:
       {
         vertical: {
-          borderS: "2", //il faut rajouter borderS || borderE|| borderWidth ||
+          borderS: "sm", //il faut rajouter borderS || borderE|| borderWidth ||
           border:"none",
           w:"1px",
           h: "100%",
         },
         horizontal: {
-          borderB: "1px",//il faut rajouter borderB || borderT|| borderWidth ||
+          borderB: "xs",//il faut rajouter borderB || borderT|| borderWidth ||
 
           w: "100%",
         },

@@ -124,7 +124,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({
         py="3"
         ref={ref}
         borderColor={colorTheme.border1}
-        borderT={showBorder && borderWidth === "full" ? true : "0"}
+        borderT={showBorder && borderWidth === "full" ? true : "none"}
         {...styles.footer}
         {...props}
       >

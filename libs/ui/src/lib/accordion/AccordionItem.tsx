@@ -64,7 +64,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
         {...itemHeaderStyle}
         {...props}>
         <div
-          borderB={showBorder && borderWidth === "full" ? true : "0"}
+          borderB={showBorder && borderWidth === "full" ? true : "none"}
           {...styles.itemHeaderLabel}
           {...itemHeaderLabelStyle}
         >

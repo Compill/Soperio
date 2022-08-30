@@ -59,11 +59,15 @@ export default function Page({ ...props })
                 </div>
 
                 <div mb="10">
-                    <Spinner w="10" h="10" me="5" thickness="2"/>
-                    <Spinner w="10" h="10" me="5" thickness="3px"/>
-                    <Spinner w="10" h="10" me="5" thickness="4"/>
-                    <Spinner w="10" h="10" me="5" thickness="6"/>
-                    <Spinner w="10" h="10" me="5" thickness="8"/>
+                    <Spinner w="10" h="10" me="5" thickness="xs"/>
+                    <Spinner w="10" h="10" me="5" thickness="sm"/>
+                    <Spinner w="10" h="10" me="5" thickness="md"/>
+                    <Spinner w="10" h="10" me="5" thickness="lg"/>
+                    <Spinner w="10" h="10" me="5" thickness="xl"/>
+                    <Spinner w="10" h="10" me="5" thickness="x2"/>
+                    <Spinner w="10" h="10" me="5" thickness="x3"/>
+                    <Spinner w="10" h="10" me="5" thickness="x4"/>
+                    <Spinner w="10" h="10" me="5" thickness="x5"/>
                 </div>
             </Container>
     );

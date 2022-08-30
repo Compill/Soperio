@@ -59,7 +59,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           hover_bgColor: theme.defaultHover,
           textColor: darkMode ? theme.textDark1 : theme.textLight1,//(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
           hover_textColor: darkMode ? theme.textDark1 : theme.textLight1, //isDark(theme.default) ? (darkMode ? theme.textDark1 : theme.textLight1) : (darkMode ? theme.textLight1 : theme.textDark1),
-          border: "0",
+          border: "none",
           stateSelected:
           {
             bgColor: theme.defaultActive,
@@ -86,7 +86,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           bgColor: theme.default,
           bgOpacity: darkMode ? "30" : "15",
 
-          border: "0",
+          border: "none",
           textColor: darkMode ? theme.textDark4 : theme.defaultActive,
           hover_bgColor: theme.default,
           hover_bgOpacity: "100",
@@ -138,7 +138,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
         outline:
         {
           bgColor: "transparent",
-          border: "2",
+          border: "sm",
           borderColor: theme.default,
           textColor: theme.default,
           hover_bgColor: theme.default,
@@ -170,7 +170,7 @@ const config: Config = (theme: ColorTheme, darkMode: boolean) =>
           hover_bgOpacity: darkMode ? "30" : "15",
           hover_textColor: darkMode ? theme.textDark4 : theme.defaultActive,
 
-          border: "0",
+          border: "none",
           stateSelected:
           {
             bgColor: theme.default,

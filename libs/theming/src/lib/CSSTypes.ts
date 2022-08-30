@@ -4,8 +4,8 @@ import { ThemingToken } from "./ThemingToken";
 
 type AnyCSSSizeValue = "any valid css sizing value like 23px, 2rem, 14pt, etc..."
 
-export type BorderRadius = OrString<ThemingToken<"borders", "radius"> | AnyCSSSizeValue>
-export type BorderWidth = OrString<ThemingToken<"borders", "width"> | AnyCSSSizeValue>
+export type BorderRadius = OrString<ThemingToken<"borders", "radius"> | SpacingPositive | AnyCSSSizeValue>
+export type BorderWidth = OrString<ThemingToken<"borders", "width"> | SpacingPositive | AnyCSSSizeValue>
 
 export type Breakpoints = keyof ThemingToken<"breakpoints">
 export type ColorThemes = ThemingToken<"colorThemes">

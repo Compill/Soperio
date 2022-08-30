@@ -40,7 +40,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((
     <div display="flex" flexRow  alignItems="center" {...soperioProps}>
       <label userSelect="none" cursor={props.disabled ? "default" : "pointer"} lineHeight="none">
         <input
-          border="0"
+          border="none"
           h="px"
           w="px"
           m="-px"
