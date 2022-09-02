@@ -1,4 +1,3 @@
-export * from './lib/ColorTheme';
 export * from './lib/createContext';
 export { CSSPropKeys } from "./lib/CSSProps";
 export type { ResponsiveProps } from "./lib/CSSProps";
@@ -8,8 +7,6 @@ export * from './lib/extendTheme/extendTheme';
 export { forwardRef } from "./lib/forwardRef";
 export * from './lib/hooks/useBreakpoint';
 export * from './lib/hooks/useColor';
-export * from './lib/hooks/useColorTheme';
-export * from './lib/hooks/useDefaultColorTheme';
 export { useSetTheme, useTheme } from './lib/hooks/useTheme';
 export { useThemeAwareColor } from './lib/hooks/useThemeAwareColor';
 export * from './lib/hooks/useThemeExtra';

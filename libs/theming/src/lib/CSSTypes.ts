@@ -8,7 +8,6 @@ export type BorderRadius = OrString<ThemingToken<"borders", "radius"> | SpacingP
 export type BorderWidth = OrString<ThemingToken<"borders", "width"> | SpacingPositive | AnyCSSSizeValue>
 
 export type Breakpoints = keyof ThemingToken<"breakpoints">
-export type ColorThemes = ThemingToken<"colorThemes">
 
 type RootColors = { [Property in keyof ThemingToken<"rootColors"> as `root.${string & Property}`]: ThemingToken<"rootColors"> };
 

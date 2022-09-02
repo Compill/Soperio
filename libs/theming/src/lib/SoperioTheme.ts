@@ -6,7 +6,6 @@ import ThemeFlexbox from "./Core/Flexbox";
 import ThemeRootColors from "./Core/RootColors";
 import ThemeSizing from "./Core/Sizing";
 import ThemeSpacing from "./Core/Spacing";
-import ThemeThemes from "./Core/Themes";
 import ThemeTransform from "./Core/Transform";
 import ThemeTransition from "./Core/Transition";
 import ThemeTypography from "./Core/Typography";
@@ -17,7 +16,6 @@ export interface SoperioTheme
     breakpoints: ThemeBreakpoints,
     rootColors: ThemeRootColors,
     colors: ThemeColors,
-    colorThemes: ThemeThemes,
     borders: ThemeBorder,
     effects: ThemeEffects,
     flexbox: ThemeFlexbox,

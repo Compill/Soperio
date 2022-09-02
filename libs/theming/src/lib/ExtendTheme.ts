@@ -1,4 +1,3 @@
-import { ColorTheme } from '..';
 import ThemeBorder from './Core/Border';
 import ThemeBreakpoint from './Core/Breakpoints';
 import ThemeColor from './Core/Colors';
@@ -7,7 +6,6 @@ import ThemeFlexbox from './Core/Flexbox';
 import ThemeRootColor from './Core/RootColors';
 import ThemeSizing from './Core/Sizing';
 import ThemeSpacing from './Core/Spacing';
-import ThemeThemes from './Core/Themes';
 import ThemeTransform from './Core/Transform';
 import ThemeTransition from './Core/Transition';
 import ThemeTypography from './Core/Typography';
@@ -27,12 +25,7 @@ export interface ExtendTheme
   darkModeFallback?: 'light' | 'dark';
   colors?: Partial<ThemeColor> & Record<string, string>;
   rootColors?: Partial<ThemeRootColor>;
-  colorThemes?: {
-    // default?:  Partial<ColorTheme>,
-    [k: string]: Partial<ColorTheme>;
-  };
   darkModeOverride?: {
-    colorThemes?: Partial<ThemeThemes>;
     rootColors?: Partial<ThemeRootColor>;
   };
   breakpoints?: Partial<ThemeBreakpoint>;
@@ -66,14 +59,5 @@ export interface ExtendTheme
   transition?: OptionalAny<ThemeTransition>;
   typography?: OptionalAny<ThemeTypography>;
   traits?: Record<string, Omit<SoperioComponent, "trait">>,
-  // components?: any
-  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
   extras?: Record<string, any>
-}
-
-type ComponentConfig = {
-  defaultProps?:/* SoperioComponent | */any,
-  defaultTraits?: Record<string, string>,
-  subComponents?: string[],
-  traits?: Record<string, Record<string, /*SoperioComponent |*/ any>> | Record<string, Record<string, /*SoperioComponent |*/ Record<string, any>>>;
 }

@@ -1,7 +1,6 @@
-import { ColorTheme } from "./ColorTheme";
 import ThemeBreakpoints from "./Core/Breakpoints";
 import { SoperioComponent } from "./SoperioComponent";
-import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
+import { Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 export interface Theme
 {
@@ -15,9 +14,7 @@ export interface Theme
   rootColors: RootColors,
   colors: StringKeyValueObject,
   palette: StringKeyValueObject,
-  colorThemes: ColorThemes, // TODO Delete
   darkModeOverride?: {
-    colorThemes?: ColorThemes; // TODO Delete
     rootColors?: RootColors;
   };
 
@@ -94,13 +91,5 @@ export interface Theme
     textShadowBlur: StringKeyValueObject,
   };
   traits: KeyValueObject<Omit<SoperioComponent, "trait">>
-  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
   extras?: Record<string, any>
 }
-
-type ComponentConfig = {
-  defaultProps?:/* SoperioComponent | */any,
-  defaultTraits?: Record<string, string>,
-  subComponents?: string[],
-  traits?: Record<string, Record<string, /*SoperioComponent |*/ any>> | Record<string, Record<string, /*SoperioComponent |*/ Record<string, any>>>;
-};

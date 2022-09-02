@@ -1,65 +1,24 @@
-import { applyTransparenceToRGBColor } from "@soperio/utils";
-import { ColorTheme } from "./ColorTheme";
+import border from "./defaultTheme/border";
+import breakpoints from "./defaultTheme/breakpoints";
+import components from "./defaultTheme/components";
+import effects from "./defaultTheme/effects";
+import filters from "./defaultTheme/filters";
+import flexbox from "./defaultTheme/flexbox";
+import opacity from "./defaultTheme/opacity";
+import sizing from "./defaultTheme/sizing";
+import spacing from "./defaultTheme/spacing";
+import traits from "./defaultTheme/traits";
+import transform from "./defaultTheme/transform";
+import transition from "./defaultTheme/transition";
+import typography from "./defaultTheme/typography";
 import { Theme } from "./Theme";
 
-import border from "./defaultTheme/border"
-import breakpoints from "./defaultTheme/breakpoints"
-import components from "./defaultTheme/components"
-import effects from "./defaultTheme/effects"
-import filters from "./defaultTheme/filters"
-import flexbox from "./defaultTheme/flexbox"
-import opacity from "./defaultTheme/opacity"
-import spacing from "./defaultTheme/spacing"
-import sizing from "./defaultTheme/sizing"
-import traits from "./defaultTheme/traits"
-import transform from "./defaultTheme/transform"
-import transition from "./defaultTheme/transition"
-import typography from "./defaultTheme/typography"
 
 
 /*
 TODO Root colors: only use RGB values (e.g. not theme values), since theme colors will be optional
 */
 
-
-const defaultColorTheme: ColorTheme = {
-  default: "sky-500",
-  defaultHover: "sky-600",
-  defaultActive: "sky-600",
-  defaultDisabled: "sky-300",
-
-  // light: applyTransparenceToRGBColor("#7dd3fc", 15), // sky-300
-  light: applyTransparenceToRGBColor("#0ea5e9", 15), // sky-500
-  // light: "sky-100", // sky-300
-  lightActive: "sky-600",
-  lightHover: "sky-500",
-  lightDisabled: "sky-50",
-
-  textDark1: "root.text-color-1",
-  textDark2: "root.text-color-2",
-  textDark3: "root.text-color-3",
-  textDark4: "root.text-color-4",
-  textDarkDisabled: "coolGray-300",
-
-  textLight1: "root.text-color-inverse-1",
-  textLight2: "root.text-color-inverse-2",
-  textLight3: "root.text-color-inverse-3",
-  textLight4: "root.text-color-inverse-4",
-  textLightDisabled: "root.text-color-inverse-disabled",
-
-  background1: "root.bg-color-1",
-  background2: "root.bg-color-2",
-  background3: "root.bg-color-3",
-  background4: "root.bg-color-4",
-  background5: "root.bg-color-5",
-  backgroundDisabled: "root.color-disabled",
-
-  border0: "root.border-color-0",
-  border1: "root.border-color-1",
-  borderDisabled: "root.border-color-disabled",
-
-  shadow: "#000000",
-}
 
 export const defaultTheme: Theme = {
   direction: "ltr",
@@ -302,57 +261,6 @@ export const defaultTheme: Theme = {
   palette: {
 
   },
-  colorThemes: {
-    default: defaultColorTheme,
-    success: {
-      ...defaultColorTheme,
-      default: "emerald-500",
-      defaultHover: "emerald-600",
-      defaultActive: "emerald-600",
-      defaultDisabled: "emerald-300",
-
-      light: applyTransparenceToRGBColor("#10b981", 10), //emerald-50,
-      lightActive: "emerald-600",
-      lightHover: "emerald-500",
-      lightDisabled: "emerald-50",
-    },
-    pink: {
-      ...defaultColorTheme,
-      default: "pink-500",
-      defaultHover: "pink-600",
-      defaultActive: "pink-600",
-      defaultDisabled: "pink-300",
-
-      light: applyTransparenceToRGBColor("#ed64a6", 10), //pink-500,
-      lightActive: "pink-600",
-      lightHover: "pink-600",
-      lightDisabled: "pink-50",
-    },
-    neutral: {
-      ...defaultColorTheme,
-      default: "coolGray-400",
-      defaultHover: "coolGray-500",
-      defaultActive: "coolGray-500",
-      defaultDisabled: "coolGray-300",
-
-      light: applyTransparenceToRGBColor("#a0aec0", 10), //coolGray-500,
-      lightActive: "coolGray-500",
-      lightHover: "coolGray-500",
-      lightDisabled: "coolGray-200",
-
-      // textLight1: "root.text-color-1",
-      // textLight2: "root.text-color-2",
-      // textLight3: "root.text-color-3",
-      // textLight4: "root.text-color-4",
-      // textLightDisabled: "coolGray-300",
-
-      // textDark1: "root.text-color-inverse-1",
-      // textDark2: "root.text-color-inverse-2",
-      // textDark3: "root.text-color-inverse-3",
-      // textDark4: "root.text-color-inverse-4",
-      // textDarkDisabled: "root.text-color-inverse-disabled",
-    },
-  },
   darkModeOverride: {
     rootColors: {
       /* Required color vars by Soperio */
@@ -412,5 +320,4 @@ export const defaultTheme: Theme = {
   transition,
   typography,
   traits,
-  components
 };

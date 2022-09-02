@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "cli": "libs/cli",
-    "components": "libs/components",
     "core": "libs/core",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
@@ -12,7 +11,6 @@
     "react": "libs/react",
     "theme-extensions": "libs/theme-extensions",
     "theming": "libs/theming",
-    "ui": "libs/ui",
     "utils": "libs/utils"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
