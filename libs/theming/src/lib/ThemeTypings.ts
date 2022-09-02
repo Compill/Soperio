@@ -9,7 +9,6 @@ import ThemeOpacity from "./Core/Opacity";
 import ThemeRootColors from "./Core/RootColors";
 import ThemeSizing from "./Core/Sizing";
 import ThemeSpacing from "./Core/Spacing";
-import ThemeThemes from "./Core/Themes";
 import { ThemeTraits } from "./Core/Traits";
 import ThemeTransform from "./Core/Transform";
 import ThemeTransition from "./Core/Transition";
@@ -25,12 +24,10 @@ export interface ThemeTypings extends ThemeOpacity
   darkMode: 'light' | 'dark' | 'system';
   darkModeFallback: 'light' | 'dark';
   darkModeOverride: {
-    colorThemes: ThemeThemes;
     rootColors: ThemeRootColors;
   },
   rootColors: ThemeRootColors,
   colors: ThemeColors,
-  colorThemes: ThemeThemes,
   breakpoints: ThemeBreakpoints,
   borders: ThemeBorder,
   effects: ThemeEffects,

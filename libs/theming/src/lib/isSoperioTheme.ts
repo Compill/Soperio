@@ -4,7 +4,6 @@ const requiredSoperioThemeKeys: (keyof SoperioTheme)[] = [
     "breakpoints",
     "rootColors",
     "colors",
-    "colorThemes",
     "borders",
     "effects",
     "flexbox",
