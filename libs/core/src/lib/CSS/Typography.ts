@@ -1,7 +1,6 @@
 import { getThemeStyle, Theme } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
-import { spacing } from "./Spacing";
 import { css, cssValue, Style, StyleProps } from "./utils";
 
 function italic(value: any): Style
