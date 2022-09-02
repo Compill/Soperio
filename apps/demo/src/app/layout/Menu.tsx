@@ -1,4 +1,4 @@
-import { HTMLDivProps, ParentComponent, SoperioComponent } from "@soperio/react";
+import { ParentComponent, SoperioComponent } from "@soperio/react";
 import { useAppContext } from "./AppContext";
 import { menu } from "./config";
 
@@ -16,7 +16,7 @@ export function Menu()
   )
 }
 
-function MenuItem({ selected, children,...props }: { selected: boolean } & SoperioComponent & ParentComponent & HTMLDivProps)
+function MenuItem({ selected, children, ...props }: { selected: boolean } & SoperioComponent & ParentComponent & React.ComponentPropsWithoutRef<"div">)
 {
   return (
     <div

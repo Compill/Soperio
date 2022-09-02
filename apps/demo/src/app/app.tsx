@@ -1,5 +1,4 @@
-import { ColorTheme, extendTheme, SoperioProvider } from "@soperio/react";
-import { ExtendButtonConfig } from "@soperio/ui";
+import { extendTheme, SoperioProvider } from "@soperio/react";
 import React from "react";
 import { AppContextProvider } from "./layout/AppContext";
 import { Content } from "./layout/Content";
@@ -32,24 +31,6 @@ function App()
   //     }
   //   }
   // };
-
-  const buttonConfig: ExtendButtonConfig = {
-    mode: "extends",
-    config: (theme: ColorTheme, darkMode: boolean) => ({
-      traits: {
-        variant: {
-          default: {
-            bgColor: "#ff0000",
-            textColor: "white"
-          },
-          outline: {
-            bgColor: "#ff00ff",
-            textColor: "white"
-          }
-        }
-      },
-    })
-  };
 
   const [direction, setDirection] = React.useState(true)
 

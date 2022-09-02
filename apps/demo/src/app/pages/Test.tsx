@@ -1,26 +1,17 @@
-
-import { Accordion, AccordionItem, Button, Container, Stack } from "@soperio/ui";
-import { ThemeTraits } from "libs/theming/src/lib/Core/Traits";
-import React from "react";
-
-function ExpandSvg()
-{
-  return <svg w="24px" h="24px" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-  </svg>
-}
-
-function CollapseSvg()
-{
-  return <svg w="24px" h="24px" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
-  </svg>
-}
-
 export default function Test({ ...props })
 {
   return (
-    <Container dflex center flexCol size="x2" justifyContent="center" py="48" w="30%" my="-0">
+    <div w="100%" alignItems="center" dflex flexCol justifyContent="center" py="10">
+
+      <div w="48" h="48" dflex flexCol alignItems="center" placeContent="center" fontWeight="600" bgColor="#0099ff" bgOpacity="50" mb="5">
+        <div>Test Opacity</div>
+        <div>Color before Opacity</div>
+      </div>
+
+      <div w="48" h="48" dflex flexCol alignItems="center" placeContent="center" fontWeight="600" bgOpacity="50" bgColor="#0099ff" mb="5">
+        <div>Test Opacity</div>
+        <div>Color after Opacity</div>
+      </div>
 
       <input placeholder="Hello" placeholderColor="#00ff00" placeholderOpacity="25" fontWeight="600"/>
 
@@ -105,6 +96,6 @@ export default function Test({ ...props })
         <p textColor="blue-500" groupHover_textColor="white" lg_groupHover_textColor="yellow">Subtitle</p>
         <p>Text</p>
       </div>
-    </Container>
+    </div>
   );
 }

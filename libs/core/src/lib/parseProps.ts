@@ -138,6 +138,30 @@ function mergeTraitPropIfExist<P extends SoperioComponent>(props: P, theme: Them
   return { ...props }
 }
 
+const lastProps = [ "opacity" ]
+
+function sortProps(keys: string[])
+{
+  // Put all "opacity" props at the end of the array
+  // This will ensure that "color" props are set first and opacity after
+  // TODO Other props like scale, translate, ... before transform
+  // and some other props too
+  const filtered: string[] = []
+  const last: string[] = []
+
+  keys.forEach((key) => 
+  {
+    const lowerCaseKey = key.toLowerCase()
+
+    if (lastProps.some((lastProp) => lowerCaseKey.includes(lastProp)))
+      last.push(key)
+    else
+      filtered.push(key)
+  })
+
+  return filtered.concat(last)
+}
+
 export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, direction: boolean, darkMode: boolean)
 {
   // "trait" is a special prop, we need to parse it before the rest
@@ -153,12 +177,8 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
     newProps["data-so-group"] = ""
   }
 
-  const keys = Object.keys(newProps);
-
-  // TODO Find a way to sort props in a precise order
-  // => bgColor before bgOpacity
-  // => transform before scale, rotate, skew, translate
-  // => ...
+  
+  const keys = sortProps(Object.keys(newProps));
 
   if (keys.length > 0)
   {
