@@ -13,7 +13,6 @@ export interface Theme
   darkModeFallback: "light" | "dark",
   rootColors: RootColors,
   colors: StringKeyValueObject,
-  palette: StringKeyValueObject,
   darkModeOverride?: {
     rootColors?: RootColors;
   };
