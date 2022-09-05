@@ -1,4 +1,4 @@
-import { getPaletteColors } from "./utils";
+import { getAliasedPaletteColors, getPaletteColors } from "./utils";
 
 const twColors = {
     gray: {
@@ -119,4 +119,9 @@ type Palette = "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "
 export function withTailwind1Colors(colors?: Colors[], palette?: Palette[])
 {
     return getPaletteColors(twColors, colors, palette)
+}
+
+export function withChakraColor(alias: string, color: Colors, palette?: Palette[])
+{
+    return getAliasedPaletteColors(twColors, alias, color, palette)
 }

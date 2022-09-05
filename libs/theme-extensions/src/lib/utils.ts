@@ -1,4 +1,9 @@
-export function getPaletteColors<COLORS extends Record<string, Record<number | string, string>>, PALETTE extends string, COLORKEY = keyof COLORS>(colors: COLORS, colorKeys?: COLORKEY[], palette?: PALETTE[])
+type COLOR = Record<number | string, string>
+type COLORS = Record<string, COLOR>
+type PALETTE = string
+type COLORKEY = keyof COLORS
+
+export function getPaletteColors(colors: COLORS, colorKeys?: COLORKEY[], palette?: PALETTE[])
 {
     let soperioColors = {};
 
@@ -18,4 +23,17 @@ export function getPaletteColors<COLORS extends Record<string, Record<number | s
         .forEach((paletteColors) => soperioColors = { ...soperioColors, ...paletteColors })
 
     return soperioColors
+}
+
+export function getAliasedPaletteColors(colors: COLORS, alias: string, color: COLORKEY, palette?: PALETTE[])
+{
+    const colorObj = colors[color]
+
+    const mappedColors = {}
+
+    const keys = palette ?? Object.keys(colors)
+
+    keys.forEach((value, index) => mappedColors[`${alias}-${index}`] = colorObj[value])
+
+    return mappedColors
 }

@@ -1,4 +1,4 @@
-import { getPaletteColors } from "./utils";
+import { getAliasedPaletteColors, getPaletteColors } from "./utils";
 
 const bsColors = {
     blue: {
@@ -130,4 +130,9 @@ type Palette = "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "
 export function withBootstrap5Colors(colors?: Colors[], palette?: Palette[])
 {
     return getPaletteColors(bsColors, colors, palette)
+}
+
+export function withBootstrap5Color(alias: string, color: Colors, palette?: Palette[])
+{
+    return getAliasedPaletteColors(bsColors, alias, color, palette)
 }
