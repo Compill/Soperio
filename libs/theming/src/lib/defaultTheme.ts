@@ -2,6 +2,7 @@ import border from "./defaultTheme/border";
 import breakpoints from "./defaultTheme/breakpoints";
 import colors from "./defaultTheme/colors";
 import effects from "./defaultTheme/effects";
+import extras from "./defaultTheme/extras";
 import filters from "./defaultTheme/filters";
 import flexbox from "./defaultTheme/flexbox";
 import opacity from "./defaultTheme/opacity";
@@ -40,4 +41,5 @@ export const defaultTheme: Theme = {
   transition,
   typography,
   traits,
+  extras
 };
