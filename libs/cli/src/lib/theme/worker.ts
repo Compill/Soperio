@@ -1,12 +1,11 @@
-import path from "path";
 import fs from "fs";
+import moduleAlias from "module-alias";
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import path from "path";
 import * as tsNode from "ts-node";
 import * as tsConfigPaths from "tsconfig-paths";
-import moduleAlias from "module-alias";
 import { themeKeyConfiguration } from "../config";
 import { createThemeTypingsInterface } from "./create-theme-typings-interface";
-import { fileURLToPath } from 'node:url';
-import { pathToFileURL } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
