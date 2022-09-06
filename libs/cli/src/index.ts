@@ -2,7 +2,6 @@ import { program } from 'commander';
 import { overwriteFrameworkFile } from "./lib/overwriteFile";
 import checkNode from "cli-check-node";
 import welcome from "cli-welcome";
-import updateNotifier from "update-notifier";
 import unhandledError from "cli-handle-unhandled";
 // NX can't use file outside of src/
 // TODO Will need to find a workaround

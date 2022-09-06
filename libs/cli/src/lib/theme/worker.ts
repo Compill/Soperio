@@ -1,4 +1,3 @@
-import "regenerator-runtime/runtime";
 import path from "path";
 import fs from "fs";
 import * as tsNode from "ts-node";
@@ -6,6 +5,10 @@ import * as tsConfigPaths from "tsconfig-paths";
 import moduleAlias from "module-alias";
 import { themeKeyConfiguration } from "../config";
 import { createThemeTypingsInterface } from "./create-theme-typings-interface";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export type Dict<T = any> = Record<string, T>;
 

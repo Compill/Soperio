@@ -3,11 +3,15 @@ import fs, { writeFile, mkdir } from "fs";
 import ora from 'ora';
 import path from 'path';
 import { promisify } from 'util';
+import { fileURLToPath } from 'url';
 
 type ErrorRecord = Record<'err', string>;
 
 const writeFileAsync = promisify(writeFile);
 const exists = promisify(fs.exists);
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export async function overwriteFrameworkFile(msg: string, themeFile: string, out: string, destinationFile: string[], workerFile: string[])
 {
