@@ -1,5 +1,4 @@
-import { fork, Serializable } from 'child_process';
-import fs, { writeFile, mkdir } from "fs";
+import fs, { mkdir, writeFile } from "fs";
 import ora from 'ora';
 import path from 'path';
 import { promisify } from 'util';

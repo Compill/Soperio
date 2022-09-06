@@ -1,5 +1,5 @@
 
-import { isObject } from "lodash"
+import lodash from "lodash"
 import { extractPropertyPaths, printUnions } from "./extract-property-paths"
 import { formatWithPrettierIfAvailable } from "../utils/format-with-prettier"
 
@@ -50,7 +50,7 @@ export async function createThemeTypingsInterface(
     ) => {
       
       const target = theme[key]
-      if (isObject(target) || Array.isArray(target)) {
+      if (lodash.isObject(target) || Array.isArray(target)) {
         allUnions[key] = extractPropertyPaths(target, maxScanDepth)
         // .filter(filter)
         // .flatMap(flatMap)

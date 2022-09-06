@@ -1,4 +1,4 @@
-import { isObject } from "lodash"
+import lodash from "lodash"
 
 const AutoCompleteStringType = "(string & {})"
 
@@ -63,7 +63,7 @@ export function printUnions(unions: any, initial = true):string
  */
 export function extractPropertyPaths(target: unknown, maxDepth = 3) 
 {
-  if ((!isObject(target) && !Array.isArray(target)) || !maxDepth) return []
+  if ((!lodash.isObject(target) && !Array.isArray(target)) || !maxDepth) return []
 
   const res = {}
   let stringRes = ""
