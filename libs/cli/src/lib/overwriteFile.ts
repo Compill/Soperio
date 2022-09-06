@@ -7,7 +7,7 @@ import { createThemeTypings } from "./theme/worker";
 const writeFileAsync = promisify(writeFile);
 const exists = promisify(fs.exists);
 
-export async function overwriteFrameworkFile(msg: string, themeFile: string, out: string, destinationFile: string[], workerFile: string[])
+export async function overwriteFrameworkFile(msg: string, themeFile: string, out: string, destinationFile: string[])
 {
   const spinner = ora(msg).start();
 

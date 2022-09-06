@@ -6,6 +6,7 @@ import moduleAlias from "module-alias";
 import { themeKeyConfiguration } from "../config";
 import { createThemeTypingsInterface } from "./create-theme-typings-interface";
 import { fileURLToPath } from 'node:url';
+import { pathToFileURL } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,7 +29,7 @@ function isObject(value: any): value is Dict {
 }
 
 async function importTheme(path: string) {
-  const module = await import(path);
+  const module = await importAbs(path);
   const theme = module.default ?? module.theme;
 
   if (!theme)
@@ -46,8 +47,10 @@ async function importTheme(path: string) {
 
 async function readTheme(themeFilePath: string) {
   const cwd = process.cwd();
-  const absoluteThemePath = fileURLToPath(path.join(cwd, themeFilePath));
+  const absoluteThemePath = path.join(cwd, themeFilePath);
   const absoluteThemeDir = path.dirname(absoluteThemePath);
+
+  console.log("absolutePath", absoluteThemePath);
 
   const tsConfig = tsConfigPaths.loadConfig(absoluteThemeDir);
   if (tsConfig.resultType === "success") {
@@ -110,6 +113,12 @@ async function readTheme(themeFilePath: string) {
       );
     }
   }
+}
+
+async function importAbs(targetPath)
+{
+  const fileUrl = pathToFileURL(targetPath).href;
+  return await import(fileUrl);
 }
 
 /**
