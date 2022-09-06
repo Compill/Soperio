@@ -29,6 +29,7 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
+    "@babel/runtime": "^7.19.0",
     "@ctrl/tinycolor": "^3.4.0",
     "@emotion/react": "11.10.0",
     "@fontsource/inter": "^4.5.1",
@@ -63,6 +64,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.18.10",
     "@babel/preset-flow": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@nrwl/cli": "14.5.6",
