@@ -1,8 +1,8 @@
-import { format, resolveConfig } from "prettier"
+import prettier from "prettier"
 
 async function createFormatFileWithPrettier(content: string) {
-  const prettierConfig = await resolveConfig(process.cwd())
-  return format(String(content), {
+  const prettierConfig = await prettier.resolveConfig(process.cwd())
+  return prettier.format(String(content), {
     ...prettierConfig,
     parser: "typescript",
   })
