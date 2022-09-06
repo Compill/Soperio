@@ -3,7 +3,7 @@ import fs, { writeFile, mkdir } from "fs";
 import ora from 'ora';
 import path from 'path';
 import { promisify } from 'util';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 type ErrorRecord = Record<'err', string>;
 
