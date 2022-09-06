@@ -32,11 +32,12 @@
           "typescript"
         ],
         "format": [
-          "cjs",
           "esm"
         ],
         "assets": [
-          "libs/cli/src/README.md"
+          "libs/cli/src/README.md",
+          "libs/cli/src/bin/index.js",
+          "libs/cli/src/bin/tsconfig.json"
         ]
       }
     },
