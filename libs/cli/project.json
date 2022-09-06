@@ -13,7 +13,20 @@
         "project": "libs/cli/package.json",
         "entryFile": "libs/cli/src/index.ts",
         "tsConfig": "libs/cli/tsconfig.lib.json",
-        "outputPath": "dist/libs/cli"
+        "outputPath": "dist/libs/cli",
+        "compiler": "babel",
+        "umdName": "OtherName",
+        "external": [
+          "typescript"
+        ],
+        "format": [
+          "esm"
+        ],
+        "assets": [
+          "libs/cli/src/README.md",
+          "libs/cli/src/bin/index.js",
+          "libs/cli/src/bin/tsconfig.json"
+        ]
       }
     },
     "package": {
@@ -40,18 +53,6 @@
           "libs/cli/src/bin/tsconfig.json"
         ]
       }
-    },
-    "publish": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "command": "node tools/scripts/publish.mjs cli {args.ver} {args.tag}"
-      },
-      "dependsOn": [
-        {
-          "projects": "self",
-          "target": "build"
-        }
-      ]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
