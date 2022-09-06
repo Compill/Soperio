@@ -43,6 +43,7 @@
     "core-js": "^3.6.5",
     "esm": "^3.2.25",
     "figlet": "^1.5.2",
+    "file-url": "^4.0.0",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.3",
     "import": "0.0.6",
