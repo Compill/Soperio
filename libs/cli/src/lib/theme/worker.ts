@@ -46,7 +46,7 @@ async function importTheme(path: string) {
 
 async function readTheme(themeFilePath: string) {
   const cwd = process.cwd();
-  const absoluteThemePath = path.join(cwd, themeFilePath);
+  const absoluteThemePath = fileURLToPath(path.join(cwd, themeFilePath));
   const absoluteThemeDir = path.dirname(absoluteThemePath);
 
   const tsConfig = tsConfigPaths.loadConfig(absoluteThemeDir);
