@@ -33,8 +33,7 @@
         ],
         "format": [
           "cjs",
-          "esm",
-          "umd"
+          "esm"
         ],
         "assets": [
           "libs/cli/src/README.md"
