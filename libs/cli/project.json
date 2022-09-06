@@ -5,16 +5,39 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/web:rollup",
       "outputs": [
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/libs/cli",
-        "main": "libs/cli/src/index.ts",
+        "project": "libs/cli/package.json",
+        "entryFile": "libs/cli/src/index.ts",
         "tsConfig": "libs/cli/tsconfig.lib.json",
+        "outputPath": "dist/libs/cli"
+      }
+    },
+    "package": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "project": "libs/cli/package.json",
+        "outputPath": "dist/libs/cli",
+        "entryFile": "libs/cli/src/index.ts",
+        "tsConfig": "libs/cli/tsconfig.lib.json",
+        "compiler": "babel",
+        "umdName": "OtherName",
+        "external": [
+          "typescript"
+        ],
+        "format": [
+          "cjs",
+          "esm",
+          "umd"
+        ],
         "assets": [
-          "libs/cli/*.md"
+          "libs/cli/src/README.md"
         ]
       }
     },

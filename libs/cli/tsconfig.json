@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "ESNext",
+    "moduleResolution": "node",
     "allowJs": true,
     "strict": false,
     "noImplicitAny": false,
@@ -19,9 +20,6 @@
   "references": [
     {
       "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
     }
   ]
 }
