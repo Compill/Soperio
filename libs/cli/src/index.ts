@@ -1,5 +1,4 @@
 import { program } from 'commander';
-import 'regenerator-runtime/runtime';
 import { overwriteFrameworkFile } from "./lib/overwriteFile";
 import checkNode from "cli-check-node";
 import welcome from "cli-welcome";
