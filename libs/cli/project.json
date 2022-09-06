@@ -6,22 +6,29 @@
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "buildableProjectDepsInPackageJsonType": "dependencies",
         "outputPath": "dist/libs/cli",
-        "tsConfig": "libs/cli/tsconfig.lib.json",
-        "project": "libs/cli/package.json",
         "main": "libs/cli/src/index.ts",
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "tsConfig": "libs/cli/tsconfig.lib.json",
         "assets": [
-          {
-            "glob": "libs/cli/README.md",
-            "input": ".",
-            "output": "."
-          }
+          "libs/cli/*.md"
         ]
       }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs cli {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
