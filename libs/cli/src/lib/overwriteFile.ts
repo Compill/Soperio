@@ -3,15 +3,10 @@ import fs, { writeFile, mkdir } from "fs";
 import ora from 'ora';
 import path from 'path';
 import { promisify } from 'util';
-import { fileURLToPath } from 'node:url';
-
-type ErrorRecord = Record<'err', string>;
+import { createThemeTypings } from "./theme/worker";
 
 const writeFileAsync = promisify(writeFile);
 const exists = promisify(fs.exists);
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export async function overwriteFrameworkFile(msg: string, themeFile: string, out: string, destinationFile: string[], workerFile: string[])
 {
@@ -20,7 +15,7 @@ export async function overwriteFrameworkFile(msg: string, themeFile: string, out
   try
   {
     const outPath = await resolveOutputPath(out, destinationFile);
-    const templateComponent = await runTemplateWorker(themeFile, workerFile);
+    const templateComponent = await createThemeTypings(themeFile)
 
     spinner.info();
     spinner.text = `Write file "${outPath}"...`;
@@ -91,48 +86,4 @@ export async function resolveOutputPath(overridePath: string, themeInterfaceDest
   }
 
   return themingDefinitionFilePath;
-}
-
-async function runTemplateWorker(themeFile: string, workerFile: string[]): Promise<string>
-{
-  const worker = fork(
-    path.join(__dirname, '.', ...workerFile),
-    [themeFile],
-    {
-      stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
-      cwd: process.cwd(),
-    }
-  );
-
-  return new Promise((resolve, reject) =>
-  {
-    worker.on('message', (message: ErrorRecord | Serializable) =>
-    {
-      const errMessage = (message as ErrorRecord)?.err;
-
-      if (errMessage)
-      {
-        console.log("error", errMessage);
-        reject(new Error(errMessage));
-      }
-
-      return resolve(String(message));
-    });
-
-    worker.on('error', (error) =>
-    {
-      console.log("error", error);
-      reject(error);
-    });
-
-    worker.stdout?.on('data', (data) =>
-    {
-      console.log(`child stdout:\n${data}`);
-    });
-
-    worker.stderr?.on('data', (data) =>
-    {
-      console.error(`child stderr:\n${data}`);
-    });
-  });
 }

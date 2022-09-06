@@ -8,6 +8,7 @@
       "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "buildableProjectDepsInPackageJsonType": "dependencies",
         "project": "libs/cli/package.json",
         "entryFile": "libs/cli/src/index.ts",
         "tsConfig": "libs/cli/tsconfig.lib.json",
@@ -60,7 +61,8 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "access": "public"
+        "access": "public",
+        "dryRun": true
       }
     }
   }

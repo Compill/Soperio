@@ -1,4 +1,3 @@
-import "regenerator-runtime/runtime";
 import path from "path";
 import fs from "fs";
 import * as tsNode from "ts-node";
@@ -116,39 +115,20 @@ async function readTheme(themeFilePath: string) {
 /**
  * Reads the theme file, generates the typings interface and prints it to stdout
  */
-export async function run(file = null) {
-  const themeFile = file ? file : process.argv[2];
-  const strictComponentTypes = process.argv.includes(
-    "--strict-component-types",
-  );
-
-  if (!themeFile) {
+export async function createThemeTypings(themeFile ) 
+{
+  if (!themeFile)
     throw new Error("No path to theme file provided.");
-  }
+  
   const theme = await readTheme(themeFile);
-  if (!isObject(theme)) {
-    throw new Error("Theme not found in default or named `theme` export");
-  }
 
+  if (!isObject(theme))
+    throw new Error("Theme not found in default or named `theme` export");
  
   const template = await createThemeTypingsInterface(theme, {
     config: themeKeyConfiguration,
-    strictComponentTypes,
+    strictComponentTypes: false,
   });
 
-  if (process.send) {
-
-    process.send(template);
-  } else {
-    process.stdout.write(template);
-  }
+  return template
 }
-
-run().catch((e) => {
-  if (process.send) {
-    process.send({ err: e.toString() });
-  } else {
-    process.stderr.write("e.message", e.message);
-  }
-  process.exit(1);
-});
