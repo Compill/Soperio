@@ -20,7 +20,12 @@
         "assets": [
           "libs/cli/src/README.md",
           "libs/cli/src/bin/index.js",
-          "libs/cli/src/bin/tsconfig.json"
+          "libs/cli/src/bin/tsconfig.json",
+          "libs/cli/src/lib/theme/create-theme-typings-interface.ts",
+          "libs/cli/src/lib/theme/extract-property-paths.ts",
+          "libs/cli/src/lib/theme/worker.ts",
+          "libs/cli/src/lib/config.ts",
+          "libs/cli/src/lib/utils/format-with-prettier.ts"
         ]
       }
     },
@@ -39,7 +44,12 @@
         "assets": [
           "libs/cli/src/README.md",
           "libs/cli/src/bin/index.js",
-          "libs/cli/src/bin/tsconfig.json"
+          "libs/cli/src/bin/tsconfig.json",
+          "libs/cli/src/lib/theme/create-theme-typings-interface.ts",
+          "libs/cli/src/lib/theme/extract-property-paths.ts",
+          "libs/cli/src/lib/theme/worker.ts",
+          "libs/cli/src/lib/config.ts",
+          "libs/cli/src/lib/utils/format-with-prettier.ts"
         ]
       }
     },
