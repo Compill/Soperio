@@ -1,34 +1,37 @@
+import { fork, Serializable } from 'child_process';
 import fs, { mkdir, writeFile } from "fs";
 import ora from 'ora';
 import path from 'path';
 import { promisify } from 'util';
 import { createThemeTypings } from "./theme/worker";
 
+type ErrorRecord = Record<'err', string>;
+
 const writeFileAsync = promisify(writeFile);
 const exists = promisify(fs.exists);
 
-export async function overwriteFrameworkFile(msg: string, themeFile: string, out: string, destinationFile: string[])
+export async function overwriteFrameworkFile(msg: string, themeFile: string, out: string, destinationFile: string[], workerFile: string[])
 {
   const spinner = ora(msg).start();
 
   try
   {
     const outPath = await resolveOutputPath(out, destinationFile);
-    const templateComponent = await createThemeTypings(themeFile)
+    const templateComponent = await runTemplateWorker(themeFile, workerFile);
 
     spinner.info();
     spinner.text = `Write file "${outPath}"...`;
 
     await writeFileAsync(outPath, templateComponent, 'utf8');
     spinner.succeed('Done');
-  } 
+  }
   catch (e)
   {
     spinner.fail('An error occurred');
 
     if (e instanceof Error)
       console.log(e);
-  } 
+  }
   finally
   {
     spinner.stop();
@@ -85,4 +88,49 @@ export async function resolveOutputPath(overridePath: string, themeInterfaceDest
   }
 
   return themingDefinitionFilePath;
+}
+
+
+async function runTemplateWorker(themeFile: string, workerFile: string[]): Promise<string>
+{
+  const worker = fork(
+    path.join(__dirname, '.', ...workerFile),
+    [themeFile],
+    {
+      stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
+      cwd: process.cwd(),
+    }
+  );
+
+  return new Promise((resolve, reject) =>
+  {
+    worker.on('message', (message: ErrorRecord | Serializable) =>
+    {
+      const errMessage = (message as ErrorRecord)?.err;
+
+      if (errMessage)
+      {
+        console.log("error", errMessage);
+        reject(new Error(errMessage));
+      }
+
+      return resolve(String(message));
+    });
+
+    worker.on('error', (error) =>
+    {
+      console.log("error", error);
+      reject(error);
+    });
+
+    worker.stdout?.on('data', (data) =>
+    {
+      console.log(`child stdout:\n${data}`);
+    });
+
+    worker.stderr?.on('data', (data) =>
+    {
+      console.error(`child stderr:\n${data}`);
+    });
+  });
 }
