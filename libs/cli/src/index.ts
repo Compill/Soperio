@@ -44,7 +44,7 @@ export async function run()
       const { out } = options;
 
       const themeInterface = ["node_modules", "@soperio", "theming", "lib", "ThemeTypings.d.ts"];
-      await overwriteFrameworkFile("Generating Soperio theme typings", themeFile, out, themeInterface, ["theme", "worker.ts"]);
+      await overwriteFrameworkFile("Generating Soperio theme typings", themeFile, out, themeInterface, ["lib", "theme", "worker.ts"]);
     });
 
     // TODO Commands to generate either theme or components typings
