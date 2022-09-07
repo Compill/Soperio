@@ -1,9 +1,12 @@
 import { fork, Serializable } from 'child_process';
 import fs, { mkdir, writeFile } from "fs";
+import { fileURLToPath } from 'node:url';
 import ora from 'ora';
 import path from 'path';
 import { promisify } from 'util';
-import { createThemeTypings } from "./theme/worker";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 type ErrorRecord = Record<'err', string>;
 
