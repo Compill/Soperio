@@ -1,6 +1,6 @@
 {
   "name": "@soperio/cli",
-  "version": "1.0.53",
+  "version": "1.0.54",
   "description": "A CLI to create custom themes and components",
   "bin": {
     "soperio-cli": "bin/index.js"
@@ -9,7 +9,7 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "build2": "clear & rimraf dist & cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist  --source-maps",
     "devSoperio": "clear & node bin/index.js build-theme ./src/lib/test/theme.ts",
