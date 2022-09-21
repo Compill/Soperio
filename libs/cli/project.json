@@ -15,6 +15,7 @@
         "entryFile": "libs/cli/src/index.ts",
         "javascriptEnabled": true,
         "compiler": "babel",
+        "skipTypeField": true,
         "assets": [
           {
             "glob": "libs/cli/README.md",
