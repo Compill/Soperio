@@ -5,19 +5,31 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "buildableProjectDepsInPackageJsonType": "dependencies",
         "outputPath": "dist/libs/cli",
         "tsConfig": "libs/cli/tsconfig.lib.json",
         "project": "libs/cli/package.json",
-        "main": "libs/cli/src/index.ts",
+        "entryFile": "libs/cli/src/index.ts",
+        "javascriptEnabled": true,
+        "compiler": "babel",
         "assets": [
           {
-            "glob": "README.md",
-            "input": "libs/cli",
-            "output": "/"
+            "glob": "libs/cli/README.md",
+            "input": ".",
+            "output": "."
+          }, 
+          {
+            "glob": "libs/cli/src/lib",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "libs/cli/src/bin",
+            "input": ".",
+            "output": "."
           }
         ]
       }
