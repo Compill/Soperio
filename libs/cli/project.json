@@ -1,5 +1,5 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "libs/cli",
   "sourceRoot": "libs/cli/src",
   "projectType": "library",
   "tags": [],
@@ -13,11 +13,21 @@
         "tsConfig": "libs/cli/tsconfig.lib.json",
         "project": "libs/cli/package.json",
         "entryFile": "libs/cli/src/index.ts",
-        "external": ["react/jsx-runtime"],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "javascriptEnabled": true,
+        "compiler": "babel",
         "assets": [
           {
             "glob": "libs/cli/README.md",
+            "input": ".",
+            "output": "."
+          }, 
+          {
+            "glob": "libs/cli/src/lib",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "libs/cli/src/bin",
             "input": ".",
             "output": "."
           }
