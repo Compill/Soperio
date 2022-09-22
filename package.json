@@ -11,7 +11,7 @@
     "[DEPLOY] 4 - jsx-dev-runtime": "node deploy.js jsx-dev-runtime",
     "[DEPLOY] 5 - react": "node deploy.js react",
     "deploy props-docs": "node deploy.js props-docs",
-    "deploy cli": "node deploy.js cli",
+    "deploy cli": "cd libs/cli && node deploy.js",
     "deploy utils": "node deploy.js utils",
     "update nx step 1": "nx migrate latest",
     "update nx step 2": "npm install",

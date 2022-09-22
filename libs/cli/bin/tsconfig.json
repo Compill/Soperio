@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "esModuleInterop": true
+  },
+  "ts-node": {
+    "transpileOnly": true
+  }
+}
