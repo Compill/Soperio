@@ -10,7 +10,11 @@
         "outputPath": "dist/libs/theme-extensions",
         "main": "libs/theme-extensions/src/index.ts",
         "tsConfig": "libs/theme-extensions/tsconfig.lib.json",
-        "assets": ["libs/theme-extensions/*.md"]
+        "assets": ["libs/theme-extensions/*.md"],
+        "format": [
+          "esm",
+          "cjs"
+        ]
       }
     },
     "publish": {

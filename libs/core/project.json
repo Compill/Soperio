@@ -12,6 +12,10 @@
         "outputPath": "dist/libs/core",
         "tsConfig": "libs/core/tsconfig.lib.json",
         "project": "libs/core/package.json",
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "entryFile": "libs/core/src/index.ts",
         "external": ["react/jsx-runtime"],
         "styles": ["normalize.module.css"],

@@ -15,6 +15,10 @@
         "entryFile": "libs/react/src/index.ts",
         "external": ["react/jsx-runtime", "react/jsx-dev-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "assets": [
           {
             "glob": "libs/react/README.md",

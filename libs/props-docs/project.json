@@ -13,6 +13,10 @@
         "tsConfig": "libs/props-docs/tsconfig.lib.json",
         "project": "libs/props-docs/package.json",
         "entryFile": "libs/props-docs/src/index.ts",
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "assets": [
           {
             "glob": "libs/props-docs/README.md",
