@@ -1,5 +1,5 @@
-import { CSSPropKeys } from "@soperio/theming";
 import { omit, split } from "@soperio/utils";
+import { CSSPropKeys } from "./CSSProps";
 
 /**
    * Returns all props that are not base Soperio props (like bgColor, m, hover_xx, ...)

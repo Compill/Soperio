@@ -10,6 +10,7 @@
       "options": {
         "buildableProjectDepsInPackageJsonType": "dependencies",
         "updateBuildableProjectDepsInPackageJson": true,
+        "format": ["esm", "cjs"],
         "outputPath": "dist/libs/theming",
         "tsConfig": "libs/theming/tsconfig.lib.json",
         "project": "libs/theming/package.json",
