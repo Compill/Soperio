@@ -12,13 +12,6 @@ function deploy()
   console.log("Cleaning previous archive");
   execSync(`rm -r ${dest} || true`);
   
-  console.log("Updating package.json");
-  
-  const v = execSync(`npm version patch`);
-  const version = v.toString().trim().substring(1)
-  
-  console.log(`Updated package.json to version ${version}`);
-  
   console.log("Building...")
   execSync(`npm run build`);
   
@@ -27,9 +20,17 @@ function deploy()
   execSync(`cd ../../dist/libs && mkdir ${lib}`);
   execSync(`mv dist ${dest}/dist`);
   execSync(`cp -r bin ${dest}`);
-  execSync(`cp package.json ${dest}`);
   execSync(`cp LICENSE ${dest}`);
   execSync(`cp README.md ${dest}`);
+  
+  console.log("Updating package.json");
+
+  const v = execSync(`npm version patch`);
+  const version = v.toString().trim().substring(1);
+
+  console.log(`Updated package.json to version ${version}`);
+
+  execSync(`cp package.json ${dest}`);
 
   console.log("Assembling complete.");
 
