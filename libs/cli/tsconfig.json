@@ -1,27 +1,30 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "allowJs": true,
-    "strict": false,
-    "noImplicitAny": false,
+    "target": "esnext",
+    "module": "esnext",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "declaration": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react-jsx",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true
   },
-  "paths": {
-    "*": ["node_modules/*", "src/types/*", "src/scripts/*"]
-  },
-  "ts-node": {
-    "transpileOnly": true
-  },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
+  "include": [
+    "src",
+    "index.ts",
+    "types"
+  ],
+  "exclude": [
+    "**/node_modules"
   ]
 }
