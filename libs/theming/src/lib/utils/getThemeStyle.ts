@@ -3,7 +3,7 @@ import { Theme } from "../Theme";
 
 export function getThemeStyle(theme: Theme, themeProperty: string | string[], key: string | number): any
 {
-    const c = property(themeProperty)(theme);
+    const c:any = property(themeProperty)(theme);
 
     if (c)
         return c[key];

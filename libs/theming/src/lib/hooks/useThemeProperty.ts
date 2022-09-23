@@ -8,7 +8,7 @@ export function useThemeProperty(property: string, key: string | number | undefi
     if (!key)
         return undefined
 
-    const c = getProperty(property)(theme);
+    const c:any = getProperty(property)(theme);
 
     if (c)
         return c[key];
