@@ -9,7 +9,8 @@ if (process.argv.length < 3)
 
 for (let i = 0; i < process.argv.length; i++)
 {
-  deploy(process.argv[i+2])
+  if (process.argv[i + 2])
+    deploy(process.argv[i+2])
 }
 
 console.log("[DEPLOY] Finished deploy process")
