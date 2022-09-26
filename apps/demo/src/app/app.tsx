@@ -37,7 +37,25 @@ function App()
   const toggleDirection = React.useCallback(() => setDirection(!direction), [direction, setDirection])
 
   const theme = extendTheme({
-    direction: direction ? "ltr" : "rtl"
+    direction: direction ? "ltr" : "rtl",
+    colors:
+    {
+      "sky-500": "#0ea5e9",
+      "pink-500": "#ec4899",
+      "yellow-500": "#eab308",
+      "red-500": "#ef4444",
+    },
+    rootColors: 
+    {
+      "bg": "#efefef"
+    },
+    darkModeOverride:
+    {
+      rootColors:
+      {
+        bg: "#111111"
+      }
+    }
   })
 
   return (
@@ -53,7 +71,7 @@ function AppContent({ toggleDirection }: { toggleDirection: () => void })
 {
   console.log("app content")
   return (
-    <div dflex flexRow alignItems="start" transition="all">
+    <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
       <Menu />
       <div flexGrow h="screen" ms="240px" transition="all">
         <Header toggleDirection={toggleDirection} />

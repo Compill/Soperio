@@ -24,7 +24,7 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
 
     const alpha = alphaCSSVarName ? `var(${alphaCSSVarName}, 1)` : 1
 
-    if (value.startsWith("root."))
+    if (value.startsWith("--"))
     {
         // Global vars (from theme's rootColors) are defined
         // like this: --so-my-var: 255, 0, 255 // That would be equal to #FF00FF
@@ -33,7 +33,7 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
         // We just have to add the alpha value (from the opacity var)
         // and we're done!
 
-        value = `var(--so-${value.substring(5)})` // Remove "root." prefix, and convert to CSS var
+        value = `var(--so-${value.substring(2)})` // Remove "--" prefix, and convert to CSS var
         return `rgba(${value}, ${alpha})`
     }
     else if (value.startsWith("var("))

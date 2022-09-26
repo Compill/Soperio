@@ -8,7 +8,7 @@ export function Content()
   const reactElement = menu[page]()
 
   return (
-    <div minH="calc(100% - 64px)" bgColor="root.bg-color-3" transition="colors">
+    <div minH="calc(100% - 64px)" bgColor="--bg" transition="colors">
       <React.Suspense>
         {reactElement}
       </React.Suspense>

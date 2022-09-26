@@ -13,9 +13,6 @@ export interface Theme
   darkModeFallback: "light" | "dark",
   rootColors: RootColors,
   colors: StringKeyValueObject,
-  darkModeOverride?: {
-    rootColors?: RootColors;
-  };
 
   // Global styles
   breakpoints: ThemeBreakpoints,
@@ -90,5 +87,11 @@ export interface Theme
     textShadowBlur: StringKeyValueObject,
   };
   traits: KeyValueObject<Omit<SoperioComponent, "trait">>
-  extras?: Record<string, any>
+  extras?: StringKeyValueObject
+
+  // Anything we could want to change when the theme goes from light to dark
+  darkModeOverride?: {
+    rootColors?: RootColors;
+    extras?: StringKeyValueObject
+  };
 }

@@ -9,7 +9,7 @@ export type BorderWidth = OrString<ThemingToken<"borders", "width"> | SpacingPos
 
 export type Breakpoints = keyof ThemingToken<"breakpoints">
 
-type RootColors = { [Property in keyof ThemingToken<"rootColors"> as `root.${string & Property}`]: ThemingToken<"rootColors"> };
+type RootColors = { [Property in keyof ThemingToken<"rootColors"> as `--${string & Property}`]: ThemingToken<"rootColors"> };
 
 export type Color = OrString<keyof ThemingToken<"colors"> | keyof RootColors | "Color value like blue, #ff00cc, rgb(0, 253, 255), etc...">
 

@@ -18,12 +18,13 @@ import { Theme } from "./Theme";
 export const defaultTheme: Theme = {
   direction: "ltr",
 
-  // Colors that will be added to :root {} in CSS
-  // Since those are CSS vars, the prefix "--" will be added for each var
-  // But you can just reference them in the code as "root.myvar" on any color prop,
-  // "myvar" being the name of the color var
   darkMode: "light",
   darkModeFallback: "light",
+
+  // Colors that will be added to :root {} in CSS
+  // Since those are CSS vars, the prefix "--" will be added for each var
+  // But you can just reference them in the code as "--myvar" on any color prop,
+  // "myvar" being the name of the color var
   rootColors: rootColors,
   colors,
   darkModeOverride: {

@@ -25,9 +25,7 @@ export interface ExtendTheme
   darkModeFallback?: 'light' | 'dark';
   colors?: Partial<ThemeColor> & Record<string, string>;
   rootColors?: Partial<ThemeRootColor>;
-  darkModeOverride?: {
-    rootColors?: Partial<ThemeRootColor>;
-  };
+  
   breakpoints?: Partial<ThemeBreakpoint>;
   border?: OptionalAny<ThemeBorder>;
   effects?: OptionalAny<ThemeEffects>;
@@ -59,5 +57,9 @@ export interface ExtendTheme
   transition?: OptionalAny<ThemeTransition>;
   typography?: OptionalAny<ThemeTypography>;
   traits?: Record<string, Omit<SoperioComponent, "trait">>,
-  extras?: Record<string, any>
+  extras?: Record<string, any>;
+  darkModeOverride?: {
+    rootColors?: Partial<ThemeRootColor>;
+    extras?: StringKeyValueObject;
+  };
 }
