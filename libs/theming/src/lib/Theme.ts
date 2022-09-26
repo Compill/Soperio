@@ -87,11 +87,11 @@ export interface Theme
     textShadowBlur: StringKeyValueObject,
   };
   traits: KeyValueObject<Omit<SoperioComponent, "trait">>
-  extras?: StringKeyValueObject
+  extras?: Record<string, any>
 
   // Anything we could want to change when the theme goes from light to dark
   darkModeOverride?: {
     rootColors?: RootColors;
-    extras?: StringKeyValueObject
+    extras?: Record<string, any>
   };
 }

@@ -60,6 +60,6 @@ export interface ExtendTheme
   extras?: Record<string, any>;
   darkModeOverride?: {
     rootColors?: Partial<ThemeRootColor>;
-    extras?: StringKeyValueObject;
+    extras?: Record<string, any>;
   };
 }
