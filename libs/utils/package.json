@@ -7,15 +7,15 @@
     "ui",
     "framework"
   ],
-  "homepage": "https://github.com/jonathangerbaud/SoperioUI",
+  "homepage": "https://github.com/Compill/Soperio",
   "bugs": {
-    "url": "https://github.com/jonathangerbaud/SoperioUI/issues",
+    "url": "https://github.com/Compill/Soperio/issues",
     "email": "dev@soperio-ui.com"
   },
   "license": "MIT",
   "author": "Jonathan Gerbaud",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonathangerbaud/SoperioUI.git"
+    "url": "https://github.com/Compill/Soperio.git"
   }
 }
