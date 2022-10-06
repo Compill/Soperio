@@ -15,7 +15,7 @@
         "tsConfig": "libs/theming/tsconfig.lib.json",
         "project": "libs/theming/package.json",
         "entryFile": "libs/theming/src/index.ts",
-        "external": ["react/jsx-runtime", "@ctrl/tinycolor"],
+        "external": ["react/jsx-runtime", "@ctrl/tinycolor", "@emotion/react"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "assets": [
           {

@@ -17,7 +17,7 @@
           "cjs"
         ],
         "entryFile": "libs/core/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": ["react/jsx-runtime", "@emotion/react"],
         "styles": ["normalize.module.css"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "webpackConfig": "./webpack.config.js",

@@ -16,8 +16,8 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "devSoperio": "clear & node bin/index.js build-theme ./src/lib/test/theme.ts",
-    "devSoperioOut": "clear & node bin/index.js build-theme ./src/lib/test/theme.ts  --out ./src/lib/test/out"
+    "devSoperio": "clear & node bin/index.js tokens ./src/test/theme.ts",
+    "devSoperioOut": "clear & node bin/index.js tokens ./src/test/theme.ts  --out ./src/test/out.ts"
   },
   "dependencies": {
     "@swc/core": "^1.2.177",
