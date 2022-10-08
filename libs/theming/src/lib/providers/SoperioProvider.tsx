@@ -83,7 +83,7 @@ function ContentContainer({ children, ...props }: ParentComponent)
   const direction = useDirection()
   
   return (
-    <div dir={direction ? "ltr" : "rtl"} style={{ color: "rgb(var(--so-text-color-1))" }} /*textColor="root.text-color-1"*/ {...props}>
+    <div dir={direction ? "ltr" : "rtl"} {...props}>
       {children}
     </div>
   )
