@@ -52,20 +52,20 @@ export async function createThemeTypingsInterface(
             { key, maxScanDepth, filter = () => true, flatMap = (value) => value },
         ) =>
         {
+
             const target = theme[key]
-
-            allUnions[key] = []
-
             if (isObject(target) || Array.isArray(target))
             {
                 allUnions[key] = extractPropertyPaths(target, maxScanDepth)
-                    .filter(filter)
-                    .flatMap(flatMap)
+                // .filter(filter)
+                // .flatMap(flatMap)
+            } else
+            {
+                allUnions[key] = []
             }
-
             return allUnions
         },
-        {} as Record<string, string[]>,
+        {} as Record<string, any>,
     )
 
     const template =
