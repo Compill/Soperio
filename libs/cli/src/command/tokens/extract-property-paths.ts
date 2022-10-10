@@ -63,27 +63,36 @@ export function printUnions(unions: any, initial = true): string
 /**
  * Extract recursively all property paths with a max depth
  */
-export function extractPropertyPaths(target: unknown, maxDepth = 3)
+export function extractPropertyPaths(target: unknown, maxDepth = 3) 
 {
-    if ((!isObject(target) && !Array.isArray(target)) || !maxDepth)
+    if ((!isObject(target) && !Array.isArray(target)) || !maxDepth) return []
+
+    const res = {}
+    let stringRes = ""
+
+    const keys = Object.keys(target)
+
+    if (maxDepth === 1)
+        return keys.map(item => "\"" + item + "\"").join(" | ")
+
+    for (const key of keys) 
     {
-        return []
+        const entry = target[key]
+
+        if (typeof entry === "string") 
+        {
+            if (stringRes.length === 0)
+                stringRes = "\"" + key + "\""
+            else
+                stringRes += " | " + "\"" + key + "\""
+        }
+        else
+        {
+            res[key] = extractPropertyPaths(entry, maxDepth - 1)
+        }
     }
 
-    return Object.entries(target).reduce((allPropertyPaths, [key, value]) =>
-    {
-        if (isObject(value))
-        {
-            extractPropertyPaths(value, maxDepth - 1).forEach((childKey) =>
-                // e.g. gray.500
-                allPropertyPaths.push(`${key}.${childKey}`),
-            )
-        } else
-        {
-            // e.g. transparent
-            allPropertyPaths.push(key)
-        }
 
-        return allPropertyPaths
-    }, [] as string[])
+
+    return stringRes.length === 0 ? res : stringRes
 }
