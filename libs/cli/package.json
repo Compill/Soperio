@@ -1,6 +1,6 @@
 {
   "name": "@soperio/cli",
-  "version": "1.0.61",
+  "version": "1.0.62",
   "description": "A CLI to create custom themes for Soperio UI",
   "bin": {
     "soperio-cli": "bin/index.js"
