@@ -1,6 +1,6 @@
 import { formatWithPrettierIfAvailable } from "../../utils/format-with-prettier"
 import { isObject } from "../../utils/is-object"
-import { extractPropertyPaths, printUnionMap } from "./extract-property-paths"
+import { extractPropertyPaths, printUnionMap, printUnions } from "./extract-property-paths"
 
 export interface ThemeKeyOptions
 {
@@ -74,7 +74,7 @@ export async function createThemeTypingsInterface(
 // npx @soperio/cli tokens path/to/your/theme.(js|ts)
 export interface ThemeTypings 
 {
-  ${printUnionMap(unions)}
+  ${printUnions(unions)}
 }
 
 `

@@ -37,6 +37,29 @@ export function printUnionMap(
         .join("\n")
 }
 
+export function printUnions(unions: any, initial = true): string
+{
+    let res = initial ? "" : "{ "
+    const keys = Object.keys(unions)
+    const length = keys.length
+
+    keys.forEach((key, index) =>
+    {
+        if (typeof unions[key] === "string")
+            res += `${key}: ${unions[key]}`
+        else
+            res += `${key}: ${printUnions(unions[key], false)}`
+
+        if (index < length - 1)
+            res += ","
+    })
+
+    if (!initial)
+        res += " }"
+
+    return res
+}
+
 /**
  * Extract recursively all property paths with a max depth
  */
