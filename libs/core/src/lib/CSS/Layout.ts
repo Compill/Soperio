@@ -64,7 +64,7 @@ export const LayoutMapping: StyleProps = {
     overflowX: css("overflow-x"),
     overflowY: css("overflow-y"),
     overscrollX: css("overscroll-x"),
-    overscrollY: css("overscroll-x"),
+    overscrollY: css("overscroll-y"),
     overscrollBehavior: css("overscroll-behavior"),
     overscrollBehaviorX: css("overscroll-behavior-x"),
     overscrollBehaviorY: css("overscroll-behavior-y"),

@@ -22,7 +22,9 @@ export default interface Layout
   overscroll?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
   overscrollX?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
   overscrollY?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
-  overscrollBehavior?: false | ""
+  overscrollBehavior?: false | "auto" | "contain" | "none"
+  overscrollBehaviorX?: false | "auto" | "contain" | "none"
+  overscrollBehaviorY?: false | "auto" | "contain" | "none"
   position?: false | "static" | "fixed" | "absolute" | "relative" | "sticky"
   top?: false | Spacing | number,
   bottom?: false | Spacing | number,
