@@ -1,49 +1,49 @@
-export default interface ThemeColors
-{
-  transparent: string,
-  current: string,
+type ThemeColors =
+  "transparent" |
+  "current" |
 
-  "black-alpha-100": string,
-  "black-alpha-95": string,
-  "black-alpha-90": string,
-  "black-alpha-85": string,
-  "black-alpha-80": string,
-  "black-alpha-75": string,
-  "black-alpha-70": string,
-  "black-alpha-65": string,
-  "black-alpha-60": string,
-  "black-alpha-55": string,
-  "black-alpha-50": string,
-  "black-alpha-45": string,
-  "black-alpha-40": string,
-  "black-alpha-35": string,
-  "black-alpha-30": string,
-  "black-alpha-25": string,
-  "black-alpha-20": string,
-  "black-alpha-15": string,
-  "black-alpha-10": string,
-  "black-alpha-05": string,
-  "black-alpha-0": string,
+  "black-alpha-100" |
+  "black-alpha-95" |
+  "black-alpha-90" |
+  "black-alpha-85" |
+  "black-alpha-80" |
+  "black-alpha-75" |
+  "black-alpha-70" |
+  "black-alpha-65" |
+  "black-alpha-60" |
+  "black-alpha-55" |
+  "black-alpha-50" |
+  "black-alpha-45" |
+  "black-alpha-40" |
+  "black-alpha-35" |
+  "black-alpha-30" |
+  "black-alpha-25" |
+  "black-alpha-20" |
+  "black-alpha-15" |
+  "black-alpha-10" |
+  "black-alpha-05" |
+  "black-alpha-0" |
 
-  "white-alpha-100": string,
-  "white-alpha-95": string,
-  "white-alpha-90": string,
-  "white-alpha-85": string,
-  "white-alpha-80": string,
-  "white-alpha-75": string,
-  "white-alpha-70": string,
-  "white-alpha-65": string,
-  "white-alpha-60": string,
-  "white-alpha-55": string,
-  "white-alpha-50": string,
-  "white-alpha-45": string,
-  "white-alpha-40": string,
-  "white-alpha-35": string,
-  "white-alpha-30": string,
-  "white-alpha-25": string,
-  "white-alpha-20": string,
-  "white-alpha-15": string,
-  "white-alpha-10": string,
-  "white-alpha-05": string,
-  "white-alpha-0": string
-}
+  "white-alpha-100" |
+  "white-alpha-95" |
+  "white-alpha-90" |
+  "white-alpha-85" |
+  "white-alpha-80" |
+  "white-alpha-75" |
+  "white-alpha-70" |
+  "white-alpha-65" |
+  "white-alpha-60" |
+  "white-alpha-55" |
+  "white-alpha-50" |
+  "white-alpha-45" |
+  "white-alpha-40" |
+  "white-alpha-35" |
+  "white-alpha-30" |
+  "white-alpha-25" |
+  "white-alpha-20" |
+  "white-alpha-15" |
+  "white-alpha-10" |
+  "white-alpha-05" |
+  "white-alpha-0"
+
+  export default ThemeColors

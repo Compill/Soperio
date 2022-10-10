@@ -1,4 +1,3 @@
-export default interface ThemeRootColors
-{
-    
-}
+type ThemeRootColors = unknown
+
+export default ThemeRootColors

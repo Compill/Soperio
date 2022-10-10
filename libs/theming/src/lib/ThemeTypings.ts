@@ -9,7 +9,7 @@ import ThemeOpacity from "./Core/Opacity";
 import ThemeRootColors from "./Core/RootColors";
 import ThemeSizing from "./Core/Sizing";
 import ThemeSpacing from "./Core/Spacing";
-import { ThemeTraits } from "./Core/Traits";
+import ThemeTraits from "./Core/Traits";
 import ThemeTransform from "./Core/Transform";
 import ThemeTransition from "./Core/Transition";
 import ThemeTypography from "./Core/Typography";
@@ -17,7 +17,7 @@ import { Direction, GlobalStyles } from "./ThemeTypes";
 
 // This file will be rewritten by CLI if the user creates a custom theme
 // This way, the user will have the right value for types in autocompletion
-export interface ThemeTypings extends ThemeOpacity
+export interface ThemeTypings
 {
   globalStyles: GlobalStyles;
   direction: Direction;
@@ -33,6 +33,7 @@ export interface ThemeTypings extends ThemeOpacity
   effects: ThemeEffects,
   flexbox: ThemeFlexbox,
   filters: ThemeFilters,
+  opacity: ThemeOpacity,
   sizing: ThemeSizing,
   spacing: ThemeSpacing,
   transform: ThemeTransform,

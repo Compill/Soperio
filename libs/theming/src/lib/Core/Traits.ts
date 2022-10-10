@@ -1,38 +1,36 @@
-import { SoperioComponent } from "../SoperioComponent";
 
-type Trait = Omit<SoperioComponent, "trait">
+type ThemeTraits = 
+  "typo.display1" |
+  "typo.display2" |
+  "typo.display3" |
+  "typo.display4" |
+  "typo.display5" |
+  "typo.h1" |
+  "typo.h2" |
+  "typo.h3" |
+  "typo.h4" |
+  "typo.h5" |
+  "typo.h6" |
+  "typo.subtitle1" |
+  "typo.subtitle2" |
+  "typo.body1" |
+  "typo.body2" |
+  "typo.caption" |
+  "typo.overline" |
 
-export type ThemeTraits = {
-  "typo.display1": Trait
-  "typo.display2": Trait
-  "typo.display3": Trait
-  "typo.display4": Trait
-  "typo.display5": Trait
-  "typo.h1": Trait
-  "typo.h2": Trait
-  "typo.h3": Trait
-  "typo.h4": Trait
-  "typo.h5": Trait
-  "typo.h6": Trait
-  "typo.subtitle1": Trait
-  "typo.subtitle2": Trait
-  "typo.body1": Trait
-  "typo.body2": Trait
-  "typo.caption": Trait
-  "typo.overline": Trait
+  "text.xs" |
+  "text.sm" |
+  "text.md" |
+  "text.base" |
+  "text.lg" |
+  "text.xl" |
+  "text.x2" |
+  "text.x3" |
+  "text.x4" |
+  "text.x5" |
+  "text.x6" |
+  "text.x7" |
+  "text.x8" |
+  "text.x9"
 
-  "text.xs": Trait
-  "text.sm": Trait
-  "text.md": Trait
-  "text.base": Trait
-  "text.lg": Trait
-  "text.xl": Trait
-  "text.x2": Trait
-  "text.x3": Trait
-  "text.x4": Trait
-  "text.x5": Trait
-  "text.x6": Trait
-  "text.x7": Trait
-  "text.x8": Trait
-  "text.x9": Trait
-}
+  export default ThemeTraits

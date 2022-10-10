@@ -7,11 +7,14 @@ type AnyCSSSizeValue = "any valid css sizing value like 23px, 2rem, 14pt, etc...
 export type BorderRadius = OrString<ThemingToken<"borders", "radius"> | SpacingPositive | AnyCSSSizeValue>
 export type BorderWidth = OrString<ThemingToken<"borders", "width"> | SpacingPositive | AnyCSSSizeValue>
 
-export type Breakpoints = keyof ThemingToken<"breakpoints">
+export type Breakpoints = ThemingToken<"breakpoints">
 
-type RootColors = { [Property in keyof ThemingToken<"rootColors"> as `--${string & Property}`]: ThemingToken<"rootColors"> };
+// If user hasn't defined custom root colors and regenerated typings, since root colros if empty, create an empty object to avoid
+// getting an empty "--" mapping on the color type
+type RootColors = ThemingToken<"rootColors"> extends string ? { [Property in ThemingToken<"rootColors"> as `--${string & Property}`]: ThemingToken<"rootColors"> } : {};
 
-export type Color = OrString<keyof ThemingToken<"colors"> | keyof RootColors | "Color value like blue, #ff00cc, rgb(0, 253, 255), etc...">
+type Colors = ThemingToken<"colors">
+export type Color = OrString<Colors | keyof RootColors | "Color value like blue, #ff00cc, rgb(0, 253, 255), etc...">
 
 export type BoxShadow = OrString<ThemingToken<"effects", "boxShadow">>
 
