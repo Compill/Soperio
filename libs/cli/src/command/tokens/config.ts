@@ -15,5 +15,5 @@ export const themeKeyConfiguration: ThemeKeyOptions[] = [
     { key: "transform" },
     { key: "transition" },
     { key: "typography", maxScanDepth: 2 },
-    { key: "traits" }
+    { key: "traits", maxScanDepth: 2 }
 ]
