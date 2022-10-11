@@ -15,7 +15,14 @@ export interface Theme
   colors: StringKeyValueObject,
 
   // Global styles
-  breakpoints: ThemeBreakpoints,
+  breakpoints: {
+    default: string,
+    sm: string,
+    md: string,
+    lg: string,
+    xl: string,
+    x2: string,
+  },
   border: {
     radius: StringKeyValueObject,
     width: StringKeyValueObject;
