@@ -1,4 +1,4 @@
-import { useDirection, useToggleDarkMode, useToggleDirection, extendTheme, useSetTheme, HTMLDivProps } from "@soperio/react";
+import { useDirection, useToggleDarkMode, extendTheme, useSetTheme, HTMLDivProps } from "@soperio/react";
 import React from "react";
 
 const defaultTheme = extendTheme({
