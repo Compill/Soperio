@@ -1,7 +1,16 @@
+import { useDirection } from "@soperio/theming";
+
 export default function Test({ ...props })
 {
+  const direction = useDirection()
   return (
     <div w="100%" alignItems="center" dflex flexCol justifyContent="center" py="10">
+
+      <div dflex flexRow spaceX="2">
+        <div>Direction</div>
+        <div>is</div>
+        <div>{direction ? "LTR" : "RTL"}</div>
+      </div>
 
       <div w="48" h="48" dflex flexCol alignItems="center" placeContent="center" fontWeight="600" bgColor="#0099ff" bgOpacity="50" mb="5">
         <div>Test Opacity</div>

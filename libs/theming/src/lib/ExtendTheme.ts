@@ -16,6 +16,10 @@ type OptionalAny<T> = {
   [Property in keyof T]+?: any;
 };
 
+type OptionalString<T> = {
+  [Property in keyof T]+?: string;
+};
+
 export interface ExtendTheme
 {
   // There's probably going to have some config props as well
@@ -23,10 +27,10 @@ export interface ExtendTheme
   direction?: Direction;
   darkMode?: 'light' | 'dark' | 'system';
   darkModeFallback?: 'light' | 'dark';
-  colors?: Partial<ThemeColor> & Record<string, string>;
-  rootColors?: Partial<ThemeRootColor>;
+  colors?: StringKeyValueObject;
+  rootColors?: StringKeyValueObject;
   
-  breakpoints?: Partial<ThemeBreakpoint>;
+  breakpoints?: StringKeyValueObject;//OptionalString<ThemeBreakpoint>;
   border?: OptionalAny<ThemeBorder>;
   effects?: OptionalAny<ThemeEffects>;
   flexbox?: OptionalAny<ThemeFlexbox>;

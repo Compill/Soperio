@@ -3,6 +3,6 @@ import { ThemingToken } from "../ThemingToken";
 
 export type Special = {
   group?: boolean,
-  trait?: keyof ThemingToken<"traits"> | (keyof ThemingToken<"traits">)[]
+  trait?: ThemingToken<"traits"> | (ThemingToken<"traits">)[]
   // as?: As,
 }

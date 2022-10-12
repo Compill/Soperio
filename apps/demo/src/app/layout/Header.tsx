@@ -1,4 +1,4 @@
-import { useDirection, useToggleDarkMode, extendTheme, useSetTheme, HTMLDivProps } from "@soperio/react";
+import { useDirection, useToggleDarkMode, useToggleDirection, extendTheme, useSetTheme, HTMLDivProps } from "@soperio/react";
 import React from "react";
 
 const defaultTheme = extendTheme({
@@ -31,7 +31,7 @@ export function Header({ toggleDirection }: { toggleDirection: () => void })
 
   return (
     <div w="full" h="64px" dflex alignItems="center" placeContent="center" gap="3">
-      {/* <Button variant="default" onClick={toggleDirection}>Toggle direction</Button> */}
+      <Button onClick={toggleDirection}>Toggle direction</Button>
       {/* <Button variant="default" onClick={toggleTheme}>Toggle theme</Button> */}
       <Button onClick={() => {console.log("click"), toggleDarkMode()}}>Toggle Dark Mode</Button>
 

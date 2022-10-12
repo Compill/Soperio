@@ -41,19 +41,3 @@ export function useDirection()
 
     return direction
 }
-
-export function useSetDirection()
-{
-    const { setDirection } = useDirectionContext()
-
-    return setDirection
-}
-
-export function useToggleDirection()
-{
-    const { direction, setDirection } = useDirectionContext()
-
-    const toggleDirection = React.useCallback(() => setDirection(!direction), [direction, setDirection])
-
-    return toggleDirection
-}
