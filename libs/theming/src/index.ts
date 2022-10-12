@@ -16,7 +16,7 @@ export * from './lib/hooks/useThemeProperty';
 export * from "./lib/HTMLTagProps";
 export * from "./lib/NormalizeCSS";
 export { useDarkMode, useSetDarkMode, useToggleDarkMode } from './lib/providers/DarkModeProvider';
-export { useDirection } from './lib/providers/LanguageDirectionProvider';
+export { useDirection, useSetDirection, useToggleDirection } from './lib/providers/LanguageDirectionProvider';
 export * from "./lib/providers/SoperioProvider";
 export * from "./lib/SoperioComponent";
 export * from './lib/SoperioTheme';
