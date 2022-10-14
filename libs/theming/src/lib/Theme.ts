@@ -1,4 +1,3 @@
-import ThemeBreakpoints from "./Core/Breakpoints";
 import { SoperioComponent } from "./SoperioComponent";
 import { Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 

@@ -275,7 +275,7 @@ export function withTailwind3Colors(colors?: Colors[], palette?: Palette[])
     return getPaletteColors(twColors, colors, palette)
 }
 
-export function withChakraColor(alias: string, color: Colors, palette?: Palette[])
+export function withTailwind3Color(alias: string, color: Colors, palette?: Palette[])
 {
     return getAliasedPaletteColors(twColors, alias, color, palette)
 }

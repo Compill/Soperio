@@ -303,7 +303,7 @@ export function withMaterial2Colors(colors?: Colors[], palette?: Palette[])
     return getPaletteColors(materialColors, colors, palette)
 }
 
-export function withChakraColor(alias: string, color: Colors, palette?: Palette[])
+export function withMaterial2Color(alias: string, color: Colors, palette?: Palette[])
 {
     return getAliasedPaletteColors(materialColors, alias, color, palette)
 }
