@@ -50,7 +50,7 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
         const r = parseInt(hex[1], 16)
         const g = parseInt(hex[2], 16)
         const b = parseInt(hex[3], 16)
-        const a = hex[4] ? (parseInt(hex[4], 16) / 255).toPrecision(2).toString() : alpha
+        const a = processAlpha(hex[4] ? (parseInt(hex[4], 16) / 255).toPrecision(2).toString() : undefined, alphaCSSVarName)
         return `rgba(${r}, ${g}, ${b}, ${a})`
     }
 
@@ -58,11 +58,11 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
 
     if (rgb !== null)
     {
-        const h = rgb[2]
-        const s = rgb[3]
-        const l = rgb[4]
-        const a = rgb[5] ? rgb[5] : alpha;
-        return `rgba(${h}, ${s}, ${l}, ${a})`
+        const r = rgb[2]
+        const g = rgb[3]
+        const b = rgb[4]
+        const a = processAlpha(rgb[5], alphaCSSVarName);
+        return `rgba(${r}, ${g}, ${b}, ${a})`
     }
 
     const match = value.match(HSL);
@@ -72,9 +72,22 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
         const h = match[2]
         const s = match[3]
         const l = match[4]
-        const a = match[5] ? match[5] : alpha;
+        const a = processAlpha(match[5], alphaCSSVarName);
         return `hsl(${h}, ${s}, ${l}, ${a})`
     }
 
     return value;
+}
+
+function processAlpha(alphaValue: string | undefined, alphaCSSVar: string | undefined)
+{
+    if (alphaValue)
+    {
+        if (alphaCSSVar)
+            return `calc(${alphaValue} * var(${alphaCSSVar}, 1))`
+
+        return alphaValue
+    }
+
+    return alphaCSSVar ? `var(${alphaCSSVar}, 1)` : 1
 }

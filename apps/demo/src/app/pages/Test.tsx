@@ -6,6 +6,16 @@ export default function Test({ ...props })
   return (
     <div w="100%" alignItems="center" dflex flexCol justifyContent="center" py="10">
 
+      <div w="48" h="48" bgColor="#0099ff">Blue RGB</div>
+      <div w="48" h="48" bgColor="#0099ff" bgOpacity="50">Blue RGB 50% opacity</div>
+      <div w="48" h="48" bgColor="#0099ff80">Blue RGBA 50% alpha</div>
+      <div w="48" h="48" bgColor="#0099ff80" bgOpacity="50">Blue RGBA 50% alpha 50% opacity</div>
+      <div w="48" h="48" bgColor="rgb(0, 153, 255)">Blue rgb()</div>
+      <div w="48" h="48" bgColor="rgb(0, 153, 255)" bgOpacity="50">Blue rgb() 50% opacity</div>
+      <div w="48" h="48" bgColor="rgb(0, 153, 255, 0.5)" bgOpacity="50">Blue rgb() 50% alpha 50% opacity</div>
+
+
+
       <div dflex flexRow spaceX="2">
         <div>Direction</div>
         <div>is</div>
