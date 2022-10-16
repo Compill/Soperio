@@ -1,47 +1,15 @@
-import { BorderWidth, BoxShadow, Color, Opacity } from "../../CSSTypes";
+import { Background } from "../Background";
+import { Border } from "../Border";
+import { Effects } from "../Effects";
+import { Layout } from "../Layout";
+import { Typography } from "../Typography";
 
-export interface Focus
+export interface Focus extends
+  Pick<Background, "bgColor" | "bgOpacity">,
+  Pick<Border, "border" | "borderB" | "borderE" | "borderS" | "borderT" | "borderColor" | "borderBColor" | "borderEColor" | "borderSColor" | "borderTColor" | "borderOpacity" | "outline" | "outlineColor" | "outlineOpacity" | "outlineOffset" | "ring" | "ringColor" | "ringInset" | "ringOffset" | "ringOffsetColor">,
+  Pick<Effects, "opacity" | "shadow" | "shadowColor">,
+  Pick<Layout, "bottom" | "end" | "start" | "top">,
+  Pick<Typography, "fontWeight" | "placeholderColor" | "placeholderOpacity" | "textAlign" | "textColor" | "textDecoration" | "textOpacity">
 {
-  bgColor?: Color,
-  bgOpacity?: Opacity,
-  border?: true | false | BorderWidth,
-  borderT?: true | false | BorderWidth,
-  borderB?: true | false | BorderWidth,
-  borderS?: true | false | BorderWidth,
-  borderE?: true | false | BorderWidth,
-  borderColor?: Color,
-  borderTColor?: false | Color,
-  borderBColor?: false | Color,
-  borderSColor?: false | Color,
-  borderEColor?: false | Color,
-  borderOpacity?: Opacity,
-  shadow?: true | false | BoxShadow,
-  // from?: string,
-  // via?: string,
-  // to?: string,
-  opacity?:Opacity,
-  outline?: true | false | BorderWidth,
-  outlineColor: false | Color,
-  outlineOpacity: false | Opacity,
-  outlineOffset: true | false | BorderWidth,
-  // placeholderColor?: string,
-  // placeholderOpacity?: Opacity,
-  ring?: true | false | BorderWidth,
-  ringColor?: string,
-  ringInset?: true | false,
-  ringOffset?: true | false | BorderWidth,
-  ringOffsetColor?: false | Color;
-  // rotate?: "0" | "1" | "2" | "2" | "6" | "12" | "45" | "90" | "180";
-  // scale?: ScalingScale,
-  // scaleX?: ScalingScale,
-  // scaleY?: ScalingScale,
-  // skewX?: "0" | "1" | "2" | "2" | "6" | "12",
-  // skewY?: "0" | "1" | "2" | "2" | "6" | "12",
-  textColor?: Color,
-  textOpacity?: Opacity,
-  // textDecoration?: "underline" | "line-through" | "no-underline",
-  // textOpacity?: Opacity,
-  // translateX?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
-  // translateY?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
-  // z?: "0" | "10" | "20" | "30" | "40" | "50" | "auto"
+
 }

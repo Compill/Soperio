@@ -5,7 +5,7 @@ import { Effects } from "./CSS/Effects";
 import { Filters } from "./CSS/Filters";
 import { Flexbox } from "./CSS/Flexbox";
 import { Interactivity } from "./CSS/Interactivity";
-import Layout from "./CSS/Layout";
+import { Layout } from "./CSS/Layout";
 import { Sizing } from "./CSS/Sizing";
 import { Spacing } from "./CSS/Spacing";
 import { Table } from "./CSS/Table";

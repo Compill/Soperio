@@ -1,7 +1,7 @@
 import { Spacing } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
-export default interface Layout
+export interface Layout
 {
   boxDecorationBreak?: false | "slice" | "clone",
   boxSizing?: false | "border-box" | "content-box",

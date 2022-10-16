@@ -1,36 +1,21 @@
-import { BoxShadow, Color, Opacity, Rotate, Scale, Skew, Spacing, Translate } from "../../CSSTypes";
+import { Background } from "../Background";
+import { Border } from "../Border";
+import { Effects } from "../Effects";
+import { Layout } from "../Layout";
+import { Transform } from "../Transform";
 import { Transitions } from "../Transitions";
+import { Typography } from "../Typography";
 
-export interface Hover extends Transitions
+export interface Hover extends
+  Pick<Background, "bgColor" | "bgOpacity">,
+  Pick<Border, "border" | "borderB" | "borderE" | "borderS" | "borderT" | "borderColor" | "borderBColor" | "borderEColor" | "borderSColor" | "borderTColor" | "borderOpacity">,
+  Pick<Effects, "opacity" | "shadow" | "shadowColor">,
+  Pick<Layout, "bottom" | "end" | "start" | "top">,
+  Transform,
+  Transitions,
+  Pick<Typography, "fontWeight" | "textAlign" | "textColor" | "textDecoration" | "textOpacity">
 {
-  top?: false | Spacing | number,
-  bottom?: false | Spacing | number,
-  start?: false | Spacing | number,
-  end?: false | Spacing | number,
-  bgColor?: Color,
-  bgOpacity?: Opacity,
-  borderColor?: Color,
-  borderOpacity?: Opacity,
-  shadow?: true | false | BoxShadow,
-  // from?: string,
-  // via?: string,
-  // to?: string,
-  opacity?: Opacity,
-  scale?: false | Scale | number,
-  scaleX?: false | Scale | number,
-  scaleY?: false | Scale | number,
-  scaleZ?: false | Scale | number,
-  rotate?: false | Rotate;
-  rotateX?: false | Rotate;
-  rotateY?: false | Rotate;
-  rotateZ?: false | Rotate;
-  translateX?: false | Spacing | Translate,
-  translateY?: false | Spacing | Translate,
-  translateZ?: false | Spacing | Translate,
-  skewX?: false | Skew;
-  skewY?: false | Skew;
-  textColor?: Color,
-  textDecoration?: "underline" | "line-through" | "no-underline",
-  textOpacity?: Opacity,
+
 }
+
 // TODO Add a way to add before and after elements
