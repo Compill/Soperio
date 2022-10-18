@@ -1,4 +1,4 @@
-export default function withDefaultRootColors()
+export function withDefaultRootColors()
 {
     return {
         rootColors:
