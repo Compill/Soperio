@@ -4,30 +4,26 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/theme-extensions",
-        "main": "libs/theme-extensions/src/index.ts",
+        "entryFile": "libs/theme-extensions/src/index.ts",
+        "project": "libs/theme-extensions/package.json",
         "tsConfig": "libs/theme-extensions/tsconfig.lib.json",
-        "assets": ["libs/theme-extensions/*.md"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "format": [
           "esm",
           "cjs"
+        ],
+        "assets": [
+          {
+            "glob": "libs/theme-extensions/README.md",
+            "input": ".",
+            "output": "."
+          }
         ]
       }
-    },
-    "publish": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "command": "node tools/scripts/publish.mjs theme-extensions {args.ver} {args.tag}"
-      },
-      "dependsOn": [
-        {
-          "projects": "self",
-          "target": "build"
-        }
-      ]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -42,6 +38,12 @@
       "options": {
         "jestConfig": "libs/theme-extensions/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
       }
     }
   },
