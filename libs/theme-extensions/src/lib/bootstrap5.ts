@@ -129,7 +129,7 @@ type Palette = "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "
 
 export function withBootstrap5Colors(colors?: Colors[], palette?: Palette[])
 {
-    return getPaletteColors(bsColors, colors, palette)
+    return { colors: getPaletteColors(bsColors, colors, palette) }
 }
 
 export function withBootstrap5Color(alias: string, color: Colors, palette?: Palette[])

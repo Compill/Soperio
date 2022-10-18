@@ -118,7 +118,7 @@ type Palette = "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "
 
 export function withTailwind1Colors(colors?: Colors[], palette?: Palette[])
 {
-    return getPaletteColors(twColors, colors, palette)
+    return { colors: getPaletteColors(twColors, colors, palette) }
 }
 
 export function withTailwind1Color(alias: string, color: Colors, palette?: Palette[])

@@ -14,9 +14,9 @@ export function getPaletteColors(colors: COLORS, colorKeys?: COLORKEY[], palette
 
             const mappedColors = {}
 
-            const keys = palette ?? Object.keys(colors)
+            const keys = palette ?? Object.keys(colorObj)
 
-            keys.forEach((value, index) => mappedColors[`${color}-${index}`] = colorObj[value])
+            keys.forEach((key, index) => mappedColors[`${color}-${key}`] = colorObj[key])
 
             return mappedColors
         })
@@ -31,9 +31,9 @@ export function getAliasedPaletteColors(colors: COLORS, alias: string, color: CO
 
     const mappedColors = {}
 
-    const keys = palette ?? Object.keys(colors)
+    const keys = palette ?? Object.keys(colorObj)
 
-    keys.forEach((value, index) => mappedColors[`${alias}-${index}`] = colorObj[value])
+    keys.forEach((key, index) => mappedColors[`${alias}-${key}`] = colorObj[key])
 
     return mappedColors
 }

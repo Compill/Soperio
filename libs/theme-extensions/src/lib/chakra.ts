@@ -128,7 +128,7 @@ type Palette = "50" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "8
 
 export function withChakraColors(colors?: Colors[], palette?: Palette[])
 {
-    return getPaletteColors(chakraColors, colors, palette)
+    return { colors: getPaletteColors(chakraColors, colors, palette) }
 }
 
 export function withChakraColor(alias: string, color: Colors, palette?: Palette[])
