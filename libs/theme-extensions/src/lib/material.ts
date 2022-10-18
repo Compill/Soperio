@@ -298,12 +298,12 @@ const materialColors = {
 type Colors = keyof typeof materialColors;
 type Palette = "50" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"
 
-export function withMaterial2Colors(colors?: Colors[], palette?: Palette[])
+export function withMaterialColors(colors?: Colors[], palette?: Palette[])
 {
     return getPaletteColors(materialColors, colors, palette)
 }
 
-export function withMaterial2Color(alias: string, color: Colors, palette?: Palette[])
+export function withMaterialColor(alias: string, color: Colors, palette?: Palette[])
 {
     return getAliasedPaletteColors(materialColors, alias, color, palette)
 }

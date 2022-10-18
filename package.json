@@ -13,6 +13,7 @@
     "deploy props-docs": "node deploy.js props-docs",
     "deploy cli": "cd libs/cli && node deploy.js",
     "deploy utils": "node deploy.js utils",
+    "deploy theme-extensions": "node deploy.js theme-extensions",
     "update nx step 1": "nx migrate latest",
     "update nx step 2": "npm install",
     "update nx step 3": "nx migrate --run-migrations",

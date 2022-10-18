@@ -1,5 +1,22 @@
 {
   "name": "@soperio/theme-extensions",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "description": "Theme extensions for Soperio UI",
+  "keywords": [
+    "react",
+    "ui",
+    "framework"
+  ],
+  "homepage": "https://github.com/Compill/Soperio",
+  "bugs": {
+    "url": "https://github.com/Compill/Soperio/issues",
+    "email": "dev@compill.com"
+  },
+  "license": "MIT",
+  "author": "Jonathan Gerbaud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Compill/Soperio.git"
+  }
 }
