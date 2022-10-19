@@ -10,11 +10,11 @@ export function withDefaultRootColors()
             "bg-5": "#d1d5db",
             "bg-disabled": "#f3f4f6",
 
-            "text-1": "#111827",
-            "text-2": "#1f2937",
-            "text-3": "#374151",
-            "text-4": "#4b5563",
-            "text-disabled": "#d1d5db",
+            "text-1": "#0F172A",
+            "text-2": "#1E293B",
+            "text-3": "#334155",
+            "text-4": "#475569",
+            "text-disabled": "#CBD5E1",
         },
         darkModeOverride:
         {
@@ -28,10 +28,10 @@ export function withDefaultRootColors()
                 "bg-disabled": "#6b7280",
 
                 "text-1": "#FFFFFF",
-                "text-2": "#F9F9F9",
-                "text-3": "#F0F0F0",
-                "text-4": "#E9E9E9",
-                "text-disabled": "#E0E0E0",
+                "text-2": "#F8FAFC",
+                "text-3": "#F1F5F9",
+                "text-4": "#E2E8F0",
+                "text-disabled": "#6B7280",
             }
         },
     }
