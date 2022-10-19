@@ -10,7 +10,6 @@
     "[DEPLOY] 3 - jsx-runtime": "node deploy.js jsx-runtime",
     "[DEPLOY] 4 - jsx-dev-runtime": "node deploy.js jsx-dev-runtime",
     "[DEPLOY] 5 - react": "node deploy.js react",
-    "deploy props-docs": "node deploy.js props-docs",
     "deploy cli": "cd libs/cli && node deploy.js",
     "deploy utils": "node deploy.js utils",
     "deploy theme-extensions": "node deploy.js theme-extensions",
