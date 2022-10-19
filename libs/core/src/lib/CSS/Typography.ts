@@ -128,7 +128,7 @@ function textShadowBlur(value: any, theme: Theme, direction: boolean, darkMode: 
 export const TypographyMapping: StyleProps =
 {
   font: css("font-family"),
-  fontSize: css("font-size", "typography.fontSize"),
+  textSize: css("font-size", "typography.textSize"),
   italic: italic,
   fontWeight: css("font-weight"),
   numericFontVariant: css("font-variant-numeric"),

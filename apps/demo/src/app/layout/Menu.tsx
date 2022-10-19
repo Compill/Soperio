@@ -27,7 +27,7 @@ function MenuItem({ selected, children, ...props }: { selected: boolean } & Sope
       rounded
       px="5"
       py="2"
-      fontSize="lg"
+      textSize="lg"
       {...props}
     >
       {children}

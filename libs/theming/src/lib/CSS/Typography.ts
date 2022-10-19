@@ -1,10 +1,10 @@
-import { Blur, Color, Font, FontSize, LetterSpacing, LineHeight, Opacity, Spacing, SpacingPositive, TextShadow, TextShadowBlur } from "../CSSTypes";
+import { Blur, Color, Font, TextSize, LetterSpacing, LineHeight, Opacity, Spacing, SpacingPositive, TextShadow, TextShadowBlur } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Typography
 {
   font?: false | Font,
-  fontSize?: false | FontSize,
+  textSize?: false | TextSize,
   italic?: true | false | "no",
   fontWeight?: false | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900",
   numericFontVariant?: false | "normal-nums" | "ordinal" | "slashed-zero" | "lining-nums" | "oldstyle-nums" | "proportional-nums" | "tabular-nums" | "diagonal-fractions" | "stacked-fractions",

@@ -5,97 +5,97 @@ const traits:KeyValueObject<SoperioComponent> = {
   // TYPO traits
   "typo.display1":
   {
-    fontSize: "5.5rem"
+    textSize: "5.5rem"
   },
   "typo.display2":
   {
-    fontSize: "4.5rem"
+    textSize: "4.5rem"
   },
   "typo.display3":
   {
-    fontSize: "3.5rem"
+    textSize: "3.5rem"
   },
   "typo.display4":
   {
-    fontSize: "2.5rem"
+    textSize: "2.5rem"
   },
   "typo.display5":
   {
-    fontSize: "1.5rem"
+    textSize: "1.5rem"
   },
   "typo.h1":
   {
-    fontSize: "2rem",
+    textSize: "2rem",
     fontWeight: "500",
     lineHeight: "1.2",
     letterSpacing: "tighter"
   },
   "typo.h2":
   {
-    fontSize: "1.75rem",
+    textSize: "1.75rem",
     fontWeight: "500",
     lineHeight: "1.2",
     letterSpacing: "tight"
   },
   "typo.h3":
   {
-    fontSize: "1.5rem",
+    textSize: "1.5rem",
     fontWeight: "500",
     lineHeight: "1.2"
   },
   "typo.h4":
   {
-    fontSize: "1.35rem",
+    textSize: "1.35rem",
     fontWeight: "500",
     lineHeight: "1.2",
     letterSpacing: "wider"
   },
   "typo.h5":
   {
-    fontSize: "1.25rem",
+    textSize: "1.25rem",
     fontWeight: "500",
     lineHeight: "1.2"
   },
   "typo.h6":
   {
-    fontSize: "1.175rem",
+    textSize: "1.175rem",
     fontWeight: "500",
     lineHeight: "1.2",
     letterSpacing: "wide"
   },
   "typo.subtitle1":
   {
-    fontSize: "lg",
+    textSize: "lg",
     fontWeight: "500",
     letterSpacing: "wide"
   },
   "typo.subtitle2":
   {
-    fontSize: "md",
+    textSize: "md",
     fontWeight: "500",
     letterSpacing: "wide"
   },
   "typo.body1":
   {
-    fontSize: "lg",
+    textSize: "lg",
     fontWeight: "500",
     letterSpacing: "widest"
   },
   "typo.body2":
   {
-    fontSize: "md",
+    textSize: "md",
     fontWeight: "500",
     letterSpacing: "wider"
   },
   "typo.caption":
   {
-    fontSize: "sm",
+    textSize: "sm",
     fontWeight: "500",
     letterSpacing: "widest"
   },
   "typo.overline":
   {
-    fontSize: "xs",
+    textSize: "xs",
     fontWeight: "500",
     letterSpacing: "wider",
     textTransform: "uppercase"
@@ -103,59 +103,59 @@ const traits:KeyValueObject<SoperioComponent> = {
 
   // TEXT traits
   "text.xs": {
-    fontSize: "xs",
+    textSize: "xs",
     lineHeight: "1rem"
   },
   "text.sm": {
-    fontSize: "sm",
+    textSize: "sm",
     lineHeight: "1.25rem"
   },
   "text.base": {
-    fontSize: "base",
+    textSize: "base",
     lineHeight: "1.5rem"
   },
   "text.md": {
-    fontSize: "md",
+    textSize: "md",
     lineHeight: "1.5rem"
   },
   "text.lg": {
-    fontSize: "lg",
+    textSize: "lg",
     lineHeight: "1.75rem"
   },
   "text.xl": {
-    fontSize: "xl",
+    textSize: "xl",
     lineHeight: "1.75rem"
   },
   "text.x2": {
-    fontSize: "x2",
+    textSize: "x2",
     lineHeight: "2rem"
   },
   "text.x3": {
-    fontSize: "x3",
+    textSize: "x3",
     lineHeight: "2.25rem"
   },
   "text.x4": {
-    fontSize: "x4",
+    textSize: "x4",
     lineHeight: "2.5rem"
   },
   "text.x5": {
-    fontSize: "x5",
+    textSize: "x5",
     lineHeight: "1"
   },
   "text.x6": {
-    fontSize: "x6",
+    textSize: "x6",
     lineHeight: "1"
   },
   "text.x7": {
-    fontSize: "x7",
+    textSize: "x7",
     lineHeight: "1"
   },
   "text.x8": {
-    fontSize: "x8",
+    textSize: "x8",
     lineHeight: "1"
   },
   "text.x9": {
-    fontSize: "x9",
+    textSize: "x9",
     lineHeight: "1"
   }
 }

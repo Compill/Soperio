@@ -4,7 +4,7 @@ const typography = {
     serif: "serif",
     mono: "mono"
   },
-  fontSize: {
+  textSize: {
     xs: "0.75rem",
     sm: "0.875rem",
     md: "1rem",

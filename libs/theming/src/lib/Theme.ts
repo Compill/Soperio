@@ -86,7 +86,7 @@ export interface Theme
   },
   typography: {
     font: StringKeyValueObject,
-    fontSize: StringKeyValueObject,
+    textSize: StringKeyValueObject,
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
     textShadow: StringKeyValueObject,
