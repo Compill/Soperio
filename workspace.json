@@ -7,7 +7,6 @@
     "demo-e2e": "apps/demo-e2e",
     "jsx-dev-runtime": "libs/jsx-dev-runtime",
     "jsx-runtime": "libs/jsx-runtime",
-    "props-docs": "libs/props-docs",
     "react": "libs/react",
     "theme-extensions": "libs/theme-extensions",
     "theming": "libs/theming",
