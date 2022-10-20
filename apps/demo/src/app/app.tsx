@@ -1,6 +1,6 @@
 import { extendTheme, SoperioProvider } from "@soperio/react";
 import React from "react";
-import { AppContextProvider } from "./layout/AppContext";
+import { AppContextProvider, useAppContext } from "./layout/AppContext";
 import { Content } from "./layout/Content";
 import { Header } from "./layout/Header";
 import { Menu } from "./layout/Menu";
@@ -32,52 +32,30 @@ function App()
   //   }
   // };
 
-  const [direction, setDirection] = React.useState(true)
 
-  const toggleDirection = React.useCallback(() => setDirection(!direction), [direction, setDirection])
-
-  const theme = extendTheme({
-    direction: direction ? "ltr" : "rtl",
-    colors:
-    {
-      "sky-500": "#0ea5e9",
-      "pink-500": "#ec4899",
-      "yellow-500": "#eab308",
-      "red-500": "#ef4444",
-    },
-    rootColors: 
-    {
-      "bg": "#efefef"
-    },
-    darkModeOverride:
-    {
-      rootColors:
-      {
-        bg: "#111111"
-      }
-    }
-  })
 
   return (
     <AppContextProvider>
-      <SoperioProvider theme={theme}>
-        <AppContent toggleDirection={toggleDirection} />
-      </SoperioProvider>
+      <AppContent />
     </AppContextProvider>
   );
 }
 
-function AppContent({ toggleDirection }: { toggleDirection: () => void })
+function AppContent()
 {
   console.log("app content")
+  const { theme } = useAppContext()
+
   return (
-    <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
-      <Menu />
-      <div flexGrow h="screen" ms="240px" transition="all">
-        <Header toggleDirection={toggleDirection} />
-        <Content />
+    <SoperioProvider theme={theme}>
+      <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
+        <Menu />
+        <div flexGrow h="screen" ms="240px" transition="all">
+          <Header />
+          <Content />
+        </div>
       </div>
-    </div>
+    </SoperioProvider>
   )
 }
 

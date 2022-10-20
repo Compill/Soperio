@@ -4,7 +4,6 @@ import { css, Global, ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "../defaultTheme";
 // import { useSetDarkModeConfig } from "./hooks/useDarkMode";
 import { Theme } from "../Theme";
-import { useSetTheme } from "../hooks/useTheme";
 import { ThemeCache } from "../ThemeCache";
 import { ParentComponent } from "../SoperioComponent";
 import { DarkModeProvider } from "./DarkModeProvider";
@@ -30,34 +29,11 @@ export function SoperioProvider({
   ...props
 }: SoperioProviderProps)
 {
-  const ref = React.useRef(0);
-  const setTheme = useSetTheme();
-
-  // The idea is that the UI is not built yet
-  // So we do the first initialization of the theme and darkMode
-  // instantly, and not in useEffect
-  // Otherwise, if we use useEffect, the component will be built, then our initialization
-  // in useEffect will be called, meaning there might be some flickering if
-  // the theme or dark mode change from its default values
-  if (ref.current === 0)
-  {
-    setTheme(theme);
-  }
-
-  // Use useEffect only when theme or dark mode props change
+  // If the theme changes, clear the theme cache
   React.useEffect(() =>
   {
-    if (ref.current === 0)
-    {
-      ref.current = 1;
-    }
-    else
-    {
-      // Something like Soperio.initTheme(theme, darkMode)
-      setTheme(theme);
       ThemeCache.get().clear()
-    }
-  }, [theme, setTheme]);
+  }, [theme]);
 
   return (
     // TODO --so should be dynamic
