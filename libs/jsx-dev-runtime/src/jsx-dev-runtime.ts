@@ -34,6 +34,8 @@ function createSoperioProps(type: React.ElementType, props: any)
   return { ...props, [typePropName]: asType ?? type };
 }
 
+const nonStyleableHtmlTags = [ "html", "head", "link", "meta", "title", "body" , "style", "base" ]
+
 export function jsxDEV<P>(
   type: React.ElementType<P>,
   props: P,
@@ -47,7 +49,7 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
-  if (typeof type === "string")
+  if (typeof type === "string" && !nonStyleableHtmlTags.includes(type))
   {
     // @ts-ignore
     return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
