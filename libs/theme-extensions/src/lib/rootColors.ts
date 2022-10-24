@@ -4,10 +4,10 @@ export function withDefaultRootColors()
         rootColors:
         {
             "bg-1": "#FFFFFFFF",
-            "bg-2": "#f9fafb",
-            "bg-3": "#f3f4f6",
-            "bg-4": "#e5e7eb",
-            "bg-5": "#d1d5db",
+            "bg-2": "#f3f4f6",
+            "bg-3": "#e5e7eb",
+            "bg-4": "#d1d5db",
+            "bg-5": "#9ca3af",
             "bg-disabled": "#f3f4f6",
 
             "text-1": "#0F172A",
@@ -27,10 +27,10 @@ export function withDefaultRootColors()
                 "bg-5": "#6b7280",
                 "bg-disabled": "#6b7280",
 
-                "text-1": "#FFFFFF",
-                "text-2": "#F8FAFC",
-                "text-3": "#F1F5F9",
-                "text-4": "#E2E8F0",
+                "text-1": "#f3f4f6",
+                "text-2": "#e5e7eb",
+                "text-3": "#d1d5db",
+                "text-4": "#9ca3af",
                 "text-disabled": "#6B7280",
             }
         },
