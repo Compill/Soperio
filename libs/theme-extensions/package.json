@@ -1,6 +1,6 @@
 {
   "name": "@soperio/theme-extensions",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "commonjs",
   "description": "Theme extensions for Soperio UI",
   "keywords": [
