@@ -133,5 +133,5 @@ export function withChakraColors(colors?: Colors[], palette?: Palette[])
 
 export function withChakraColor(alias: string, color: Colors, palette?: Palette[])
 {
-    return getAliasedPaletteColors(chakraColors, alias, color, palette)
+    return { colors: getAliasedPaletteColors(chakraColors, alias, color, palette) }
 }

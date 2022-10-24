@@ -305,5 +305,5 @@ export function withMaterialColors(colors?: Colors[], palette?: Palette[])
 
 export function withMaterialColor(alias: string, color: Colors, palette?: Palette[])
 {
-    return getAliasedPaletteColors(materialColors, alias, color, palette)
+    return { colors: getAliasedPaletteColors(materialColors, alias, color, palette) }
 }

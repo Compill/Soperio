@@ -134,5 +134,5 @@ export function withBootstrap5Colors(colors?: Colors[], palette?: Palette[])
 
 export function withBootstrap5Color(alias: string, color: Colors, palette?: Palette[])
 {
-    return getAliasedPaletteColors(bsColors, alias, color, palette)
+    return { colors: getAliasedPaletteColors(bsColors, alias, color, palette) }
 }

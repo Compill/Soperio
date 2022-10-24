@@ -123,5 +123,5 @@ export function withTailwind1Colors(colors?: Colors[], palette?: Palette[])
 
 export function withTailwind1Color(alias: string, color: Colors, palette?: Palette[])
 {
-    return getAliasedPaletteColors(twColors, alias, color, palette)
+    return { colors: getAliasedPaletteColors(twColors, alias, color, palette) }
 }
