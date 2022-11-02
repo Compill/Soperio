@@ -72,7 +72,7 @@ yarn add @soperio/react @emotion/react@^11
 
 In your `tsconfig.json` file, set the `jsxImportSource` property as follow:
 
-```json
+```js
 // tsconfig.json
 
 {
@@ -89,7 +89,7 @@ In your `tsconfig.json` file, set the `jsxImportSource` property as follow:
 
 If you have a babel config file (babelrc.json or babel.config.js or babel.config.json), set the following configuration:
 
-```json
+```js
 //.babelrc config
 
 {
@@ -105,7 +105,7 @@ If you have a babel config file (babelrc.json or babel.config.js or babel.config
 }
 ```
 
-```json
+```js
 {
   "presets": [
     [
