@@ -1,5 +1,5 @@
-import { getThemeStyle } from "@soperio/theming";
-import { css, Style, StyleFn, StyleProp, StyleProps } from "./utils";
+import { getThemeStyle, Theme } from "@soperio/theming";
+import { css, Style, StyleProp, StyleProps, ThemeStyleFn } from "./utils";
 
 
 function content(cssProperty: any)
@@ -62,30 +62,30 @@ function placeContent(cssProperty: any)
   };
 }
 
-function blur(backdrop?: boolean): StyleFn
+function blur(backdrop?: boolean): ThemeStyleFn
 {
-  return (value: any): Style =>
+  return (value: any, theme: Theme, direction: boolean, darkMode: boolean): Style =>
   {
     let parsedValue = value;
 
     if (typeof value === "number")
       parsedValue = `${value}px`;
     else
-      parsedValue = value === true ? "1px" : (getThemeStyle("filters.blur", value) || value);
+      parsedValue = value === true ? "1px" : (getThemeStyle(theme, "filters.blur", value) || value);
 
     // return { filter: `${backdrop ? "backdrop-" : ""}blur(${parsedValue})` };
     return processFilterObject("blur", parsedValue, backdrop)
   };
 }
 
-function filter(themeProperty: string, filter:string, backdrop?: boolean): StyleFn
+function filter(themeProperty: string, filter:string, backdrop?: boolean): ThemeStyleFn
 {
-  return (value: any): Style =>
+  return (value: any, theme: Theme, direction: boolean, darkMode: boolean): Style =>
   {
     let parsedValue = value;
 
     if (typeof value !== "number")
-      parsedValue = getThemeStyle(`filters.${themeProperty}`, value === true ? "default" : value) || value;
+      parsedValue = getThemeStyle(theme, `filters.${themeProperty}`, value === true ? "default" : value) || value;
 
     return processFilterObject(filter, parsedValue, backdrop)
   };

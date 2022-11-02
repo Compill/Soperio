@@ -1,54 +1,54 @@
-import { getDirection } from "@soperio/theming";
+import { Theme } from "@soperio/theming";
 import { directionSpacing, spacing } from "./Spacing";
 import { css, cssValueFn, StyleProps } from "./utils";
 
-function float(value: any)
+function float(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
     let parsedValue = value;
 
     if (value === "start")
-        parsedValue = getDirection() ? "left" : "right";
+        parsedValue = direction ? "left" : "right";
     else if (value === "end")
-        parsedValue = getDirection() ? "right" : "left";
+        parsedValue = direction ? "right" : "left";
 
-    return css("float")(parsedValue)
+    return css("float")(parsedValue, theme, direction, darkMode)
 }
 
-function clear(value: any)
+function clear(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
     let parsedValue = value;
 
     if (value === "start")
-        parsedValue = getDirection() ? "left" : "right";
+        parsedValue = direction ? "left" : "right";
     else if (value === "end")
-        parsedValue = getDirection() ? "right" : "left";
+        parsedValue = direction ? "right" : "left";
 
-    return css("clear")(parsedValue)
+    return css("clear")(parsedValue, theme, direction, darkMode)
 }
 
-function objectPosition(value: any)
+function objectPosition(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
     let parsedValue = value;
 
     if (value === "start")
-        parsedValue = getDirection() ? "left" : "right";
+        parsedValue = direction ? "left" : "right";
         else if (value === "start-top")
-        parsedValue = getDirection() ? "left top" : "right top";
+        parsedValue = direction ? "left top" : "right top";
     else if (value === "start-bottom")
-        parsedValue = getDirection() ? "left bottom" : "right bottom";
+        parsedValue = direction ? "left bottom" : "right bottom";
     else if (value === "end")
-        parsedValue = getDirection() ? "right" : "left";
+        parsedValue = direction ? "right" : "left";
     else if (value === "end-top")
-        parsedValue = getDirection() ? "right top" : "left top";
+        parsedValue = direction ? "right top" : "left top";
     else if (value === "end-bottom")
-        parsedValue = getDirection() ? "right bottom" : "left bottom";
+        parsedValue = direction ? "right bottom" : "left bottom";
 
-    return css("object-position")(parsedValue)
+    return css("object-position")(parsedValue, theme, direction, darkMode)
 }
 
 export const LayoutMapping: StyleProps = {
     boxDecorationBreak: css("box-decoration-break"),
-    boxSizing: css("border-box"),
+    boxSizing: css("box-sizing"),
     block: cssValueFn("display", "block"),
     dflex: cssValueFn("display", "flex"),
     display: css("display"),
@@ -64,7 +64,7 @@ export const LayoutMapping: StyleProps = {
     overflowX: css("overflow-x"),
     overflowY: css("overflow-y"),
     overscrollX: css("overscroll-x"),
-    overscrollY: css("overscroll-x"),
+    overscrollY: css("overscroll-y"),
     overscrollBehavior: css("overscroll-behavior"),
     overscrollBehaviorX: css("overscroll-behavior-x"),
     overscrollBehaviorY: css("overscroll-behavior-y"),

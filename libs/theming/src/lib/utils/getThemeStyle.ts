@@ -1,11 +1,9 @@
-import { getTheme } from "../hooks/useTheme";
+import { property } from "lodash";
+import { Theme } from "../Theme";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const _ = require("lodash");
-
-export function getThemeStyle(themeProperty: string | string[], key: string | number): any
+export function getThemeStyle(theme: Theme, themeProperty: string | string[], key: string | number): any
 {
-    const c = _.property(themeProperty)(getTheme());
+    const c:any = property(themeProperty)(theme);
 
     if (c)
         return c[key];

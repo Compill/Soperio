@@ -1,4 +1,5 @@
-import { SoperioComponent } from "@soperio/components";
+import { SoperioComponent } from "@soperio/theming";
+import React from "react";
 import * as ReactJSXRuntime from "react/jsx-runtime";
 import { SoperioJSX } from "./jsx-namespace";
 import { Soperio } from "./Soperio";
@@ -26,8 +27,12 @@ const typePropName = '__SOPERIO_TYPE_PLEASE_DO_NOT_USE__';
 
 function createSoperioProps(type: React.ElementType, props: any)
 {
-  return { ...props, [typePropName]: type };
+  const asType = props["as"]
+  delete props["as"]
+  return { ...props, [typePropName]: asType ?? type };
 }
+
+const nonStyleableHtmlTags = ["html", "head", "link", "meta", "title", "body", "style", "base"]
 
 export function jsx<P>(
   type: React.ElementType<P>,
@@ -37,7 +42,7 @@ export function jsx<P>(
 {
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
-  if (typeof type === "string")
+  if (typeof type === "string" && !nonStyleableHtmlTags.includes(type))
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
@@ -58,7 +63,7 @@ export function jsxs<P>(
   // return emotionJsx(type, parseProps(props), key);
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
-  if (typeof type === "string")
+  if (typeof type === "string" && !nonStyleableHtmlTags.includes(type))
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore

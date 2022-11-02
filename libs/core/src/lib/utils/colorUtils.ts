@@ -4,7 +4,8 @@ const SHORT_HEX = /^#([a-f\d])([a-f\d])([a-f\d])([a-f\d])?$/i;
 const VALUE = `(?:\\d+|\\d*\\.\\d+)%?`;
 const SEP = `(?:\\s*,\\s*|\\s+)`;
 const ALPHA_SEP = `\\s*[,/]\\s*`;
-const RGB_HSL = new RegExp(`^(rgb|hsl)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`);
+const RGB = new RegExp(`^(rgb)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`);
+const HSL = new RegExp(`^(hsl)a?\\(\\s*(${VALUE})${SEP}(${VALUE})${SEP}(${VALUE})(?:${ALPHA_SEP}(${VALUE}))?\\s*\\)$`);
 
 
 export function parseColor(value: string, alphaCSSVarName?: string): string
@@ -23,7 +24,7 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
 
     const alpha = alphaCSSVarName ? `var(${alphaCSSVarName}, 1)` : 1
 
-    if (value.startsWith("root."))
+    if (value.startsWith("--"))
     {
         // Global vars (from theme's rootColors) are defined
         // like this: --so-my-var: 255, 0, 255 // That would be equal to #FF00FF
@@ -32,7 +33,11 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
         // We just have to add the alpha value (from the opacity var)
         // and we're done!
 
-        value = `var(--so-${value.substring(5)})` // Remove "root." prefix, and convert to CSS var
+        value = `var(--so-${value.substring(2)})` // Remove "--" prefix, and convert to CSS var
+        return `rgba(${value}, ${alpha})`
+    }
+    else if (value.startsWith("var("))
+    {
         return `rgba(${value}, ${alpha})`
     }
 
@@ -45,20 +50,44 @@ export function parseColor(value: string, alphaCSSVarName?: string): string
         const r = parseInt(hex[1], 16)
         const g = parseInt(hex[2], 16)
         const b = parseInt(hex[3], 16)
-        const a = hex[4] ? (parseInt(hex[4], 16) / 255).toPrecision(2).toString() : alpha
+        const a = processAlpha(hex[4] ? (parseInt(hex[4], 16) / 255).toPrecision(2).toString() : undefined, alphaCSSVarName)
         return `rgba(${r}, ${g}, ${b}, ${a})`
     }
 
-    const match = value.match(RGB_HSL);
+    const rgb = value.match(RGB);
+
+    if (rgb !== null)
+    {
+        const r = rgb[2]
+        const g = rgb[3]
+        const b = rgb[4]
+        const a = processAlpha(rgb[5], alphaCSSVarName);
+        return `rgba(${r}, ${g}, ${b}, ${a})`
+    }
+
+    const match = value.match(HSL);
 
     if (match !== null)
     {
         const h = match[2]
         const s = match[3]
         const l = match[4]
-        const a = match[5] ? match[5] : alpha;
+        const a = processAlpha(match[5], alphaCSSVarName);
         return `hsl(${h}, ${s}, ${l}, ${a})`
     }
 
     return value;
+}
+
+function processAlpha(alphaValue: string | undefined, alphaCSSVar: string | undefined)
+{
+    if (alphaValue)
+    {
+        if (alphaCSSVar)
+            return `calc(${alphaValue} * var(${alphaCSSVar}, 1))`
+
+        return alphaValue
+    }
+
+    return alphaCSSVar ? `var(${alphaCSSVar}, 1)` : 1
 }

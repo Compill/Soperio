@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { SoperioComponent } from "@soperio/components";
+import { SoperioComponent } from "@soperio/theming";
 
 type WithConditionalSoperioProp<P> = 'className' extends keyof P
   ? string extends P['className']

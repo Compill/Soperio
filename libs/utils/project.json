@@ -1,5 +1,5 @@
 {
-  "root": "libs/utils",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/utils/src",
   "projectType": "library",
   "tags": [],
@@ -16,6 +16,10 @@
         "entryFile": "libs/utils/src/index.ts",
         "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "assets": [
           {
             "glob": "libs/utils/README.md",
@@ -36,7 +40,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/utils"],
       "options": {
-        "jestConfig": "libs/utils/jest.config.js",
+        "jestConfig": "libs/utils/jest.config.ts",
         "passWithNoTests": true
       }
     },

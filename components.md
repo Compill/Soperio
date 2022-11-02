@@ -55,7 +55,6 @@ export type VariantProps = {
 };
 export type GeneratedProps = SoperioComponent & VariantProps & SelectedState & DisabledState;
 
-// TODO Export in other file, and import
 type ConfigVariants<V extends { [k: string]: any; }, T> = {
   [key in keyof V]: { [Property in NonNullable<V[key]>]?: T; }
 };

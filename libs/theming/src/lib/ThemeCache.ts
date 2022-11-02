@@ -1,43 +1,43 @@
-import { defaultTheme } from "./defaultTheme";
-import { Theme } from "./Theme";
-
-export default class ThemeCache
+export class ThemeCache
 {
-    static instance = new ThemeCache();
+    private static instance = new ThemeCache();
 
     static get()
     {
         return this.instance;
     }
 
-    theme: Theme;
-    private listeners: any[] = []
+    private cache:any;
 
     private constructor()
     {
-        this.theme = defaultTheme;
+        this.cache = {
+            color: {},
+            colorize: {},
+            colorTheme: {},
+            alphaColor: {},
+            prop: {}
+        }
     }
 
-    private merge(newTheme: Theme): Theme
+    clear()
     {
-        // TODO Future : add the possibilty to override and extends
-        // default condif the same way Tailwind does it
-        return { ...defaultTheme, ...newTheme };
+        this.cache = {
+            color: {},
+            colorize: {},
+            colorTheme: {},
+            alphaColor: {},
+            prop: {}
+        }
     }
 
-    switchTheme(newTheme: Theme)
+    put(type: string, property: string, value: any)
     {
-        this.theme = this.merge(newTheme);
-        this.listeners.forEach(listener => listener())
+        this.cache[type][property] = value
     }
 
-    addListener(listener: any)
+    get(type:string, property:string): any
     {
-        this.listeners.push(listener);
-    }
-
-    removeListener(listener: any)
-    {
-        this.listeners = this.listeners.filter(item => item !== listener)
+        return this.cache[type][property]
     }
 }

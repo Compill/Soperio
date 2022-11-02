@@ -1,5 +1,5 @@
 {
-  "root": "libs/jsx-runtime",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/jsx-runtime/src",
   "projectType": "library",
   "tags": [],
@@ -14,8 +14,12 @@
         "tsConfig": "libs/jsx-runtime/tsconfig.lib.json",
         "project": "libs/jsx-runtime/package.json",
         "entryFile": "libs/jsx-runtime/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": ["react/jsx-runtime", "@emotion/react"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "format": [
+          "esm",
+          "cjs"
+        ],
         "assets": [
           {
             "glob": "libs/jsx-runtime/README.md",
@@ -36,7 +40,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/jsx-runtime"],
       "options": {
-        "jestConfig": "libs/jsx-runtime/jest.config.js",
+        "jestConfig": "libs/jsx-runtime/jest.config.ts",
         "passWithNoTests": true
       }
     },

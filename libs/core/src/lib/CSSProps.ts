@@ -13,8 +13,9 @@ import { TableMapping } from "./CSS/Table";
 import { TransformMapping } from "./CSS/Transform";
 import { TransitionsMapping } from "./CSS/Transitions";
 import { TypographyMapping } from "./CSS/Typography";
+import { StyleProps } from "./CSS/utils";
 
-export const CSSPropsMap:any = {
+export const CSSPropsMap: StyleProps = {
     ...AccessibilityMapping,
     ...BackgroundMapping,
     ...BorderMapping,

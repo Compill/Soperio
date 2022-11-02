@@ -1,15 +1,28 @@
-import { getDarkMode } from "../hooks/useDarkMode";
+import { Theme } from "../Theme";
 import { getThemeStyle } from "./getThemeStyle";
 
-export function getColor(value: string)
+export function getColor(value: string, theme: Theme, darkMode: boolean)
 {
-    if (getDarkMode())
+    if (darkMode)
     {
-        const darkColor = getThemeStyle(["darkModeOverride", "colors"], value);
+        if (value.startsWith("--"))
+        {
+            const color = getThemeStyle(theme, ["darkModeOverride", "rootColors"], value);
+
+            if (color)
+                return color
+        }
+            
+        // This is not supposed to be possible
+        // Because switching to dark mode does not refresh the components
+        const darkColor = getThemeStyle(theme, ["darkModeOverride", "colors"], value);
 
         if (darkColor)
             return darkColor;
     }
 
-    return getThemeStyle("colors", value);
+    if (value.startsWith("--"))
+        return getThemeStyle(theme, "rootColors", value);
+
+    return getThemeStyle(theme, "colors", value);
 }

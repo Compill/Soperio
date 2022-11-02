@@ -1,14 +1,16 @@
-import { getDirection, getThemeStyle } from "@soperio/theming";
+import { getThemeStyle, Theme } from "@soperio/theming";
 
 
 export type Style = Record<string, string | number | Record<string, string | number> | any>;
 export type StyleProp = boolean | string | number;
+// export type StyleFn = (value: StyleProp) => Style;
 export type StyleFn = (value: StyleProp) => Style;
-export type StyleProps = Record<string, StyleFn>;
+export type ThemeStyleFn = (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) => Style;
+export type StyleProps = Record<string, StyleFn | ThemeStyleFn>;
 
-export function css(cssProperty: string | string[], themeProperty?: string, defaultValue?: string): StyleFn
+export function css(cssProperty: string | string[], themeProperty?: string, defaultValue?: string): ThemeStyleFn
 {
-    return (value: StyleProp) =>
+    return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
     {
         if (!value || value === undefined)
             return {}
@@ -16,7 +18,7 @@ export function css(cssProperty: string | string[], themeProperty?: string, defa
         let parsedValue:string | number | undefined
 
         if (themeProperty)
-            parsedValue = getThemeStyle(themeProperty, value === true ? "default" : value);
+            parsedValue = getThemeStyle(theme, themeProperty, value === true ? "default" : value);
 
         if (parsedValue === undefined && value === true)
             parsedValue = defaultValue
@@ -33,9 +35,9 @@ export function css(cssProperty: string | string[], themeProperty?: string, defa
     };
 }
 
-export function direction(cssPropertyStart: string | string[], cssPropertyEnd: string | string[], themeProperty?: string, defaultValue?: string): StyleFn
+export function direction(cssPropertyStart: string | string[], cssPropertyEnd: string | string[], themeProperty?: string, defaultValue?: string): ThemeStyleFn
 {
-    return (value: StyleProp) =>
+    return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
     {
         if (!value || value === undefined)
             return {}
@@ -43,7 +45,7 @@ export function direction(cssPropertyStart: string | string[], cssPropertyEnd: s
         let parsedValue:string | number | undefined
 
         if (themeProperty)
-            parsedValue = getThemeStyle(themeProperty, value === true ? "default" : value);
+            parsedValue = getThemeStyle(theme, themeProperty, value === true ? "default" : value);
 
         if (parsedValue === undefined && value === true)
             parsedValue = defaultValue
@@ -53,12 +55,12 @@ export function direction(cssPropertyStart: string | string[], cssPropertyEnd: s
 
         if (typeof cssPropertyStart === "string" && typeof cssPropertyEnd === "string")
         {
-            return { [getDirection() ? cssPropertyStart : cssPropertyEnd]: parsedValue as string | number };
+            return { [direction ? cssPropertyStart : cssPropertyEnd]: parsedValue as string | number };
         }
         else if (Array.isArray(cssPropertyStart) && Array.isArray(cssPropertyEnd))
         {
             const style: Style = {};
-            const cssProperty = getDirection() ? cssPropertyStart : cssPropertyEnd;
+            const cssProperty = direction ? cssPropertyStart : cssPropertyEnd;
             cssProperty.forEach(property => style[property] = parsedValue as string | number);
             return style;
         }

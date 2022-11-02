@@ -1,0 +1,51 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/theme-extensions/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/theme-extensions",
+        "entryFile": "libs/theme-extensions/src/index.ts",
+        "project": "libs/theme-extensions/package.json",
+        "tsConfig": "libs/theme-extensions/tsconfig.lib.json",
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "format": [
+          "esm",
+          "cjs"
+        ],
+        "assets": [
+          {
+            "glob": "libs/theme-extensions/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/theme-extensions/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/theme-extensions"],
+      "options": {
+        "jestConfig": "libs/theme-extensions/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "tags": []
+}

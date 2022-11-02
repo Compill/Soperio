@@ -1,14 +1,11 @@
-import { Color, Font, FontSize, LetterSpacing, LineHeight, Opacity, SpacingPositive } from "../CSSTypes";
+import { Blur, Color, Font, TextSize, LetterSpacing, LineHeight, Opacity, Spacing, SpacingPositive, TextShadow, TextShadowBlur } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Typography
 {
   font?: false | Font,
-  fontSize?: false | FontSize,
-  italic?: boolean,
-  notItalic?: boolean;
-  // TODO alias for not-italic
-  // normal?: boolean,
+  textSize?: false | TextSize,
+  italic?: true | false | "no",
   fontWeight?: false | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900",
   numericFontVariant?: false | "normal-nums" | "ordinal" | "slashed-zero" | "lining-nums" | "oldstyle-nums" | "proportional-nums" | "tabular-nums" | "diagonal-fractions" | "stacked-fractions",
   letterSpacing?: false | LetterSpacing,
@@ -27,13 +24,15 @@ export interface Typography
   textTransform?: false | "uppercase" | "lowercase" | "capitalize" | "normal-case",
   textOverflow?: false | "truncate" | "overflow-ellipsis" | "overflow-clip",
   verticalAlign?: false | "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
-  whitespace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
+  whiteSpace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
   wordBreak?: false | "normal" | "words" | "all",
   textColumns?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">,
   /**
    * Alias for "gap"
    * Gap between the text columns
    */
-
   textColumnsGap?: false | SpacingPositive;
+  textShadow?: false | TextShadow | Spacing | "none"
+  textShadowColor?: false | Color
+  textShadowBlur?: false | TextShadowBlur | Spacing | "none"
 }

@@ -1,4 +1,4 @@
-import { SoperioComponent } from '@soperio/components';
+import { SoperioComponent } from '@soperio/theming';
 import React from "react";
 import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
 import { SoperioJSX } from "./jsx-namespace";
@@ -29,8 +29,12 @@ const typePropName = '__SOPERIO_TYPE_PLEASE_DO_NOT_USE__'
 
 function createSoperioProps(type: React.ElementType, props: any)
 {
-  return { ...props, [typePropName]: type };
+  const asType = props["as"]
+  delete props["as"]
+  return { ...props, [typePropName]: asType ?? type };
 }
+
+const nonStyleableHtmlTags = [ "html", "head", "link", "meta", "title", "body" , "style", "base" ]
 
 export function jsxDEV<P>(
   type: React.ElementType<P>,
@@ -45,7 +49,7 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
-  if (typeof type === "string")
+  if (typeof type === "string" && !nonStyleableHtmlTags.includes(type))
   {
     // @ts-ignore
     return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);

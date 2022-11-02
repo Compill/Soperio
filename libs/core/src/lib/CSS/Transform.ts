@@ -1,4 +1,4 @@
-import { getDirection } from "@soperio/theming";
+import { Theme } from "@soperio/theming";
 import { css, Style, StyleProps } from "./utils";
 
 function transform(value: any): Style
@@ -43,24 +43,24 @@ function transform(value: any): Style
   return { transform: "none" };
 }
 
-export function transformOrigin(value: any)
+export function transformOrigin(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   let parsedValue = value;
 
   if (value === "start")
-    parsedValue = getDirection() ? "left" : "right";
+    parsedValue = direction ? "left" : "right";
   else if (value === "top-start")
-    parsedValue = getDirection() ? "top left" : "top right";
+    parsedValue = direction ? "top left" : "top right";
   else if (value === "bottom-start")
-    parsedValue = getDirection() ? "bottom left" : "bottom right";
+    parsedValue = direction ? "bottom left" : "bottom right";
   else if (value === "end")
-    parsedValue = getDirection() ? "right" : "left";
+    parsedValue = direction ? "right" : "left";
   else if (value === "top-end")
-    parsedValue = getDirection() ? "top right" : "top left";
+    parsedValue = direction ? "top right" : "top left";
   else if (value === "bottom-end")
-    parsedValue = getDirection() ? "bottom right" : "bottom left";
+    parsedValue = direction ? "bottom right" : "bottom left";
 
-  return css("transform-origin")(parsedValue);
+  return css("transform-origin")(parsedValue, theme, direction, darkMode);
 }
 
 export const TransformMapping: StyleProps = {

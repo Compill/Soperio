@@ -1,70 +1,191 @@
 import { css as emotionCss } from "@emotion/react";
-import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
+import { getThemeStyle, SoperioComponent, Theme, ThemeCache } from "@soperio/theming";
+import deepmerge from "deepmerge";
 import murmurhash from "murmurhash";
-import { getThemeStyle } from "@soperio/theming";
-import { SoperioComponent } from "@soperio/components"
+import { StyleFn, ThemeStyleFn } from "./CSS/utils";
+import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
+const pseudoClasses: string[] = ["focus", "hover", "groupHover", /*"placeholder", "before", "after"*/];
+const CACHE_TYPE = "prop"
+const REMOVE_IF_VARIANT = "remove_if_variant"
 
-const pseudoClasses: string[] = ["focus", "hover", "placeholder", "before", "after"];
+const breakpointIndex = {
+  sm: "0",
+  md: "1",
+  lg: "2",
+  xl: "3",
+  x2: "4",
+}
 
-function parseRules(css: Record<string, string | any>, wrap = true): string
+function parseRules(css: Record<string, string | any>, breakpoints: any/*ThemeBreakpoints*/, wrap = true): string
 {
   let content = "";
-  const pseudos: string[] = [];
-  const mediaQueries: string[] = [];
 
-  Object.keys(css).sort().forEach(key =>
+  if (css)
   {
-    if (pseudoClasses.includes(key))
-    {
-      pseudos.push(`&:${key} {\n${parseRules(css[key], false)}}`);
-    }
-    else if (key.startsWith("media-"))
-    {
-      const breakpoint = key.split("-")[1];
-      mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
-    }
-    else
-    {
-      const cssRule = css[key];
+    const pseudos: string[] = [];
+    const mediaQueries: Record<string, string> = {};
 
-      if (typeof cssRule === "string" || typeof cssRule === "number")
-        content += `\t${key}: ${css[key]};\n`;
+    Object.keys(css).sort().forEach(key =>
+    {
+      if (pseudoClasses.includes(key))
+      {
+        if (key === "groupHover")
+          pseudos.push(`[data-so-group]:hover & {\n${parseRules(css[key], breakpoints, false)}}`);
+        else
+          pseudos.push(`&:${key} {\n${parseRules(css[key], breakpoints, false)}}`);
+      }
+      else if (key.startsWith("media-"))
+      {
+        const breakpoint = key.split("-")[1];
+        mediaQueries[breakpointIndex[breakpoint as keyof typeof breakpointIndex]] = `@media screen and (min-width: ${breakpoints[breakpoint]}) {\n\t${parseRules(css[key], breakpoints, false)}\n}`
+        // mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
+      }
       else
-        pseudos.push(`&${key} {\n${parseRules(css[key], false)}}`);
-    }
-  });
+      {
+        const cssRule = css[key];
 
-  // if (wrap)
-  //     content = `.${className} {\n${content}}`;
+        if (typeof cssRule === "string" || typeof cssRule === "number")
+          content += `\t${key}: ${cssRule};\n`;
+        else
+          pseudos.push(`&${key} {\n${parseRules(cssRule, false)}}`);
+      }
+    });
 
-  if (pseudos)
-    content += `${wrap ? "\n\n" : ""}${pseudos.join("\n\n")}`;
+    // if (wrap)
+    //     content = `.${className} {\n${content}}`;
 
-  if (mediaQueries)
-    content += `${wrap ? "\n\n" : ""}${mediaQueries.join("\n\n")}`;
+    if (pseudos)
+      content += `${wrap ? "\n\n" : ""}${pseudos.join("\n\n")}`;
+
+    if (mediaQueries)
+      // Make sure mediaQueries are inserted in the right order, from  smaller to larger breakpoint
+      content += `${wrap ? "\n\n" : ""}${Object.keys(mediaQueries).sort().map(key => mediaQueries[key as keyof typeof mediaQueries]).join("\n\n")}`;
+  }
 
   return content;
 }
 
-export function parseProps<P extends SoperioComponent>(props: P)
+function mergeTraitPropIfExist<P extends SoperioComponent>(props: P, theme: Theme)
 {
-  const keys = Object.keys(props);
+  // Merge trait props with rest of props
+  if ("trait" in props)
+  {
+    const newProps = { ...props }
+
+    const traitPropValue = newProps["trait"]
+
+    const key = `trait${traitPropValue}`
+    let traitProps = ThemeCache.get().get(CACHE_TYPE, key)
+
+    if (!traitProps)
+    {
+      if (typeof traitPropValue === "string")
+      {
+        traitProps = getThemeStyle(theme, "traits", traitPropValue)
+
+        if (!traitProps)
+          console.warn(`[Soperio]: you tried to use trait ${traitPropValue} but it doesn't exist in the theme`)
+        else
+          ThemeCache.get().put(CACHE_TYPE, key, traitProps)
+      }
+      else if (traitPropValue)
+      {
+        for (const trait of traitPropValue as string[])
+        {
+          const themeProps = getThemeStyle(theme, "traits", trait)
+          let hasTrait = false
+
+          if (themeProps)
+          {
+            hasTrait = true
+            traitProps = { ...traitProps, ...themeProps }
+          }
+          else
+          {
+            console.warn(`[Soperio]: you tried to use trait ${trait} but it doesn't exist in the theme`)
+          }
+
+          if (!hasTrait)
+            traitProps = undefined
+          else
+            ThemeCache.get().put(CACHE_TYPE, key, traitProps)
+        }
+
+        delete newProps["trait"]
+      }
+    }
+
+    if (traitProps)
+    {
+      const keys = Object.keys(newProps)
+      const index = keys.indexOf("trait")
+      const length = keys.length
+
+      // Merge props with trait props
+      let o = {}
+      for (let i = 0; i < index; i++)
+        o[keys[i]] = newProps[keys[i]]
+
+      o = { ...o, ...traitProps }
+
+      for (let i = index + 1; i < length; i++)
+        o[keys[i]] = props[keys[i]]
+
+      return o
+    }
+  }
+
+  return { ...props }
+}
+
+const lastProps = [ "opacity" ]
+
+function sortProps(keys: string[])
+{
+  // Put all "opacity" props at the end of the array
+  // This will ensure that "color" props are set first and opacity after
+  // TODO Other props like scale, translate, ... before transform
+  // and some other props too
+  const filtered: string[] = []
+  const last: string[] = []
+
+  keys.forEach((key) => 
+  {
+    const lowerCaseKey = key.toLowerCase()
+
+    if (lastProps.some((lastProp) => lowerCaseKey.includes(lastProp)))
+      last.push(key)
+    else
+      filtered.push(key)
+  })
+
+  return filtered.concat(last)
+}
+
+export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  // "trait" is a special prop, we need to parse it before the rest
+  const newProps: any = mergeTraitPropIfExist(props, theme);
+  delete newProps["__SOPERIO_TYPE_PLEASE_DO_NOT_USE__"]
+
+  const breakpoints = theme.breakpoints
+
+  if ("group" in newProps)
+  {
+    // Replace `group` by exploitabled html prop in css
+    delete newProps["group"]
+    newProps["data-so-group"] = ""
+  }
+
+  
+  const keys = sortProps(Object.keys(newProps));
 
   if (keys.length > 0)
   {
-    const newProps: any = { ...props };
-
     const css: any = {};
 
     for (const prop of keys)
     {
-      // TODO const
-      if (prop === "__SOPERIO_TYPE_PLEASE_DO_NOT_USE__")
-      {
-        delete newProps[prop];
-        continue;
-      }
-
       if (prop.startsWith("__"))
         continue;
 
@@ -95,7 +216,36 @@ export function parseProps<P extends SoperioComponent>(props: P)
         }
       });
 
-      Object.assign(current, CSSPropsMap[propName](newProps[prop]));
+      const propValue = newProps[prop]
+      const key = `${propName}${propValue}`
+      let parsed = ThemeCache.get().get(CACHE_TYPE, key)
+
+      if (!parsed)
+      {
+        const func = CSSPropsMap[propName]
+
+        if (func.length == 1)
+          parsed = (func as StyleFn) .call(null, newProps[prop])
+        else
+          parsed = (func as ThemeStyleFn).call(null, newProps[prop], theme, direction, darkMode)
+
+        // parsed = CSSPropsMap[propName](newProps[prop])
+
+        if (parsed[REMOVE_IF_VARIANT])
+        {
+          if (variants.length > 0)
+            delete parsed[parsed[REMOVE_IF_VARIANT]]
+
+          delete parsed[REMOVE_IF_VARIANT]
+        }
+
+        ThemeCache.get().put(CACHE_TYPE, key, parsed)
+      }
+
+      // Need to merge since some rare props are generating the
+      // same objects with different css props
+      Object.assign(current, deepmerge(current, parsed));
+      // Object.assign(current, parsed);
 
       // css = { ...css, ...style };
       delete newProps[prop];
@@ -110,13 +260,17 @@ export function parseProps<P extends SoperioComponent>(props: P)
     const soperioCss = css.css;
     delete css.css;
 
-    const generatedCSS = parseRules(css);
+    const generatedCSS = parseRules(css, breakpoints);
 
     newProps.css = [emotionCss(generatedCSS), soperioCss, props.css];
+
+    // if (lodash.isEmpty(newProps.css))
+      // delete newProps[css]
+
     return newProps;
   }
 
-  return props;
+  return { ...newProps };
 }
 
 /**

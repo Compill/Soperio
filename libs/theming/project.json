@@ -1,5 +1,5 @@
 {
-  "root": "libs/theming",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/theming/src",
   "projectType": "library",
   "tags": [],
@@ -10,11 +10,12 @@
       "options": {
         "buildableProjectDepsInPackageJsonType": "dependencies",
         "updateBuildableProjectDepsInPackageJson": true,
+        "format": ["esm", "cjs"],
         "outputPath": "dist/libs/theming",
         "tsConfig": "libs/theming/tsconfig.lib.json",
         "project": "libs/theming/package.json",
         "entryFile": "libs/theming/src/index.ts",
-        "external": ["react/jsx-runtime", "@ctrl/tinycolor"],
+        "external": ["react/jsx-runtime", "@ctrl/tinycolor", "@emotion/react"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "assets": [
           {
@@ -36,7 +37,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/theming"],
       "options": {
-        "jestConfig": "libs/theming/jest.config.js",
+        "jestConfig": "libs/theming/jest.config.ts",
         "passWithNoTests": true
       }
     },

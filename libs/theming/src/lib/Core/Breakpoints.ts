@@ -1,8 +1,9 @@
-export default interface ThemeBreakpoints
-{
-    sm: string,
-    md: string,
-    lg: string,
-    xl: string,
-    xxl: string,
-}
+type ThemeBreakpoints =
+    "default" |
+    "sm" |
+    "md" |
+    "lg" |
+    "xl" |
+    "x2"
+
+export default ThemeBreakpoints

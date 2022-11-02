@@ -1,5 +1,5 @@
-import { ColorTheme } from "./ColorTheme";
-import { ColorThemes, Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
+import { SoperioComponent } from "./SoperioComponent";
+import { Direction, GlobalStyles, KeyValueObject, RootColors, StringKeyValueObject } from "./ThemeTypes";
 
 export interface Theme
 {
@@ -12,14 +12,16 @@ export interface Theme
   darkModeFallback: "light" | "dark",
   rootColors: RootColors,
   colors: StringKeyValueObject,
-  colorThemes: ColorThemes,
-  darkModeOverride?: {
-    colorThemes?: ColorThemes;
-    rootColors?: RootColors;
-  };
 
   // Global styles
-  breakpoints: StringKeyValueObject,
+  breakpoints: {
+    default: string,
+    sm: string,
+    md: string,
+    lg: string,
+    xl: string,
+    x2: string,
+  },
   border: {
     radius: StringKeyValueObject,
     width: StringKeyValueObject;
@@ -29,8 +31,8 @@ export interface Theme
     flex: StringKeyValueObject,
     gridAutoColumns: StringKeyValueObject,
     gridAutoRows: StringKeyValueObject,
-    gridColumn: StringKeyValueObject,
-    gridRow: StringKeyValueObject,
+    gridColumnSpan: StringKeyValueObject,
+    gridRowSpan: StringKeyValueObject,
     gridTemplateColumns: StringKeyValueObject,
     gridTemplateRows: StringKeyValueObject,
     order: StringKeyValueObject,
@@ -55,7 +57,6 @@ export interface Theme
     backdropSaturate: StringKeyValueObject,
     backdropSepia: StringKeyValueObject,
   }
-  interactivity: { outline: KeyValueObject<string[]>; },
   opacity: StringKeyValueObject,
   sizing: {
     height: StringKeyValueObject,
@@ -85,16 +86,18 @@ export interface Theme
   },
   typography: {
     font: StringKeyValueObject,
-    fontSize: KeyValueObject<string[]>,
+    textSize: StringKeyValueObject,
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
+    textShadow: StringKeyValueObject,
+    textShadowBlur: StringKeyValueObject,
   };
-  components?: Record<string, ComponentConfig | ((colorTheme: ColorTheme, darkMode: boolean) => ComponentConfig)>;
-}
+  traits: KeyValueObject<Omit<SoperioComponent, "trait">>
+  extras?: Record<string, any>
 
-type ComponentConfig = {
-  defaultProps?:/* SoperioComponent | */any,
-  defaultTraits?: Record<string, string>,
-  subComponents?: string[],
-  traits?: Record<string, Record<string, /*SoperioComponent |*/ any>> | Record<string, Record<string, /*SoperioComponent |*/ Record<string, any>>>;
-};
+  // Anything we could want to change when the theme goes from light to dark
+  darkModeOverride?: {
+    rootColors?: RootColors;
+    extras?: Record<string, any>
+  };
+}

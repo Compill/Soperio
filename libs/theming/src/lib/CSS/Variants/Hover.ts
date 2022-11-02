@@ -1,26 +1,21 @@
-import { Breakpoints, Color, Opacity } from "../../CSSTypes";
+import { Background } from "../Background";
+import { Border } from "../Border";
+import { Effects } from "../Effects";
+import { Layout } from "../Layout";
+import { Transform } from "../Transform";
 import { Transitions } from "../Transitions";
+import { Typography } from "../Typography";
 
-export interface Hover extends Transitions
+export interface Hover extends
+  Pick<Background, "bgColor" | "bgOpacity">,
+  Pick<Border, "border" | "borderB" | "borderE" | "borderS" | "borderT" | "borderColor" | "borderBColor" | "borderEColor" | "borderSColor" | "borderTColor" | "borderOpacity">,
+  Pick<Effects, "opacity" | "shadow" | "shadowColor">,
+  Pick<Layout, "bottom" | "end" | "start" | "top">,
+  Transform,
+  Transitions,
+  Pick<Typography, "fontWeight" | "textAlign" | "textColor" | "textDecoration" | "textOpacity">
 {
-  bgColor?: Color,
-  bgOpacity?: Opacity,
-  borderColor?: Color,
-  borderOpacity?: Opacity,
-  shadow?: true | false | "sm" | Breakpoints | "inner" | "none",
-  // from?: string,
-  // via?: string,
-  // to?: string,
-  // opacity?: Opacity,
-  // rotate?: "0" | "1" | "2" | "2" | "6" | "12" | "45" | "90" | "180";
-  // scale?: ScalingScale,
-  // scaleX?: ScalingScale,
-  // scaleY?: ScalingScale,
-  // skewX?: "0" | "1" | "2" | "2" | "6" | "12",
-  // skewY?: "0" | "1" | "2" | "2" | "6" | "12",
-  textColor?: Color,
-  textDecoration?: "underline" | "line-through" | "no-underline",
-  textOpacity?: Opacity,
-  // translateX?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
-  // translateY?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
+
 }
+
+// TODO Add a way to add before and after elements

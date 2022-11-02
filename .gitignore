@@ -40,3 +40,6 @@ testem.log
 Thumbs.db
 
 libs/cli/dist
+libs/props-docs/dist
+
+package-lock.json

@@ -1,44 +1,25 @@
-import { ColorTheme, extendTheme, SoperioProvider, useDirection, useToggleDirection, useToggleDarkMode } from "@soperio/react";
-import { Button, ExtendButtonConfig } from "@soperio/ui";
+import { extendTheme, SoperioProvider } from "@soperio/react";
 import React from "react";
-import { Content } from "./Content";
+import { AppContextProvider, useAppContext } from "./layout/AppContext";
+import { Content } from "./layout/Content";
+import { Header } from "./layout/Header";
+import { Menu } from "./layout/Menu";
 // import { Content } from "./Content";
 // import Page11 from "./Page11"
 // jsx("div", {});
 
-const defaultTheme = extendTheme({})
-const customTheme = extendTheme({
-  colorThemes: {
-    default: {
-      default: "#ffff0099"
-    },
-  },
-  spacing: {
-    positive: {
-      "5": "100px"
-    },
-    positiveNegative: {
-      "5": "100px"
-    }
-  }
-})
+
 
 function App()
 {
-  const direction = useDirection();
-  const toggleDirection = useToggleDirection();
-  const toggleDarkMode = useToggleDarkMode();
-  const [theme, setTheme] = React.useState(false)
+
 
   React.useEffect(() =>
   {
     // init();
   }, []);
 
-  function toggleTheme()
-  {
-    setTheme(!theme)
-  }
+
 
   // const customTheme = {
   //   ...defaultTheme, globalStyles: {
@@ -51,35 +32,31 @@ function App()
   //   }
   // };
 
-  const buttonConfig: ExtendButtonConfig = {
-    mode: "extends",
-    config: (theme: ColorTheme, darkMode: boolean) => ({
-      traits: {
-        variant: {
-          default: {
-            bgColor: "#ff0000",
-            textColor: "white"
-          },
-          outline: {
-            bgColor: "#ff00ff",
-            textColor: "white"
-          }
-        }
-      },
-    })
-  };
+
 
   return (
-    <SoperioProvider direction={direction ? "ltr" : "rtl"} theme={theme ? customTheme : defaultTheme}>
-      <Button variant="default" onClick={toggleDirection}>Toggle direction</Button>
-      <Button variant="default" onClick={toggleTheme} ms="3">Toggle theme</Button>
-      <Button onClick={() => toggleDarkMode()} ms="3">Toggle Dark Mode</Button>
-
-
-      {/* <Page11 /> */}
-      <Content />
-    </SoperioProvider>
+    <AppContextProvider>
+      <AppContent />
+    </AppContextProvider>
   );
+}
+
+function AppContent()
+{
+  console.log("app content")
+  const { theme } = useAppContext()
+
+  return (
+    <SoperioProvider theme={theme}>
+      <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
+        <Menu />
+        <div flexGrow h="screen" ms="240px" transition="all">
+          <Header />
+          <Content />
+        </div>
+      </div>
+    </SoperioProvider>
+  )
 }
 
 export default App;

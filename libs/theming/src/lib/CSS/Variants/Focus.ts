@@ -1,38 +1,15 @@
-// import { Accessibility, AccessibilityMapping } from "../Utilities/Accessibility";
-// import { SpacingScale } from "../Utilities/Spacing";
+import { Background } from "../Background";
+import { Border } from "../Border";
+import { Effects } from "../Effects";
+import { Layout } from "../Layout";
+import { Typography } from "../Typography";
 
-import { Opacity } from "../../CSSTypes";
-
-// import { ScalingScale } from "../Utilities/Transform";
-export interface Focus/* extends Accessibility*/
+export interface Focus extends
+  Pick<Background, "bgColor" | "bgOpacity">,
+  Pick<Border, "border" | "borderB" | "borderE" | "borderS" | "borderT" | "borderColor" | "borderBColor" | "borderEColor" | "borderSColor" | "borderTColor" | "borderOpacity" | "outline" | "outlineColor" | "outlineOpacity" | "outlineOffset" | "ring" | "ringColor" | "ringInset" | "ringOffset" | "ringOffsetColor">,
+  Pick<Effects, "opacity" | "shadow" | "shadowColor">,
+  Pick<Layout, "bottom" | "end" | "start" | "top">,
+  Pick<Typography, "fontWeight" | "placeholderColor" | "placeholderOpacity" | "textAlign" | "textColor" | "textDecoration" | "textOpacity">
 {
-    bgColor?: string,
-    bgOpacity?: Opacity,
-    borderColor?: string,
-    borderOpacity?: Opacity,
-    // shadow?: true | false | "sm" | Breakpoints | "inner" | "none",
-    // from?: string,
-    // via?: string,
-    // to?: string,
-    // opacity?:Opacity,
-    // outline?: "none" | "white" | "black",
-    // placeholderColor?: string,
-    // placeholderOpacity?: Opacity,
-    // ringColor?: string,
-    // ringOffset?: "0" | "1" | "2" | "4" | "8",
-    // ringOffsetColor?: string;
-    // ringOpacity?: Opacity,
-    // ringWidth?: true | false | "0" | "1" | "2" | "4" | "8" | "inset",
-    // rotate?: "0" | "1" | "2" | "2" | "6" | "12" | "45" | "90" | "180";
-    // scale?: ScalingScale,
-    // scaleX?: ScalingScale,
-    // scaleY?: ScalingScale,
-    // skewX?: "0" | "1" | "2" | "2" | "6" | "12",
-    // skewY?: "0" | "1" | "2" | "2" | "6" | "12",
-    // textColor?: string,
-    // textDecoration?: "underline" | "line-through" | "no-underline",
-    // textOpacity?: Opacity,
-    // translateX?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
-    // translateY?: SpacingScale | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "full",
-    // z?: "0" | "10" | "20" | "30" | "40" | "50" | "auto"
+
 }

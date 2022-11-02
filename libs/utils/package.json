@@ -1,17 +1,21 @@
 {
   "name": "@soperio/utils",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "React CSS-IN-JS framework",
-  "keywords": ["react", "ui", "framework"],
-  "homepage": "https://github.com/jonathangerbaud/SoperioUI",
+  "keywords": [
+    "react",
+    "ui",
+    "framework"
+  ],
+  "homepage": "https://github.com/Compill/Soperio",
   "bugs": {
-    "url": "https://github.com/jonathangerbaud/SoperioUI/issues",
-    "email": "dev@soperio-ui.com"
+    "url": "https://github.com/Compill/Soperio/issues",
+    "email": "dev@compill.com"
   },
   "license": "MIT",
   "author": "Jonathan Gerbaud",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonathangerbaud/SoperioUI.git"
+    "url": "https://github.com/Compill/Soperio.git"
   }
 }
