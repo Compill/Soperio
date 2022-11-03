@@ -24,7 +24,16 @@ function deploy(lib)
   console.log(`Updated package.json to version ${version}`);
 
   console.log("Deploying...");
-  execSync(`nx run ${lib}:deploy`);
+  try {
+    execSync(`nx run ${lib}:deploy`);
+  }
+  catch(err)
+  {
+    console.log("Error");
+    console.log("output", err);
+    console.log("sdterr", err.stderr.toString())
+    exit(0);
+  }
   console.log("Deployed!");
 
   console.log("Committing...");
