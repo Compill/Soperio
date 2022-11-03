@@ -71,7 +71,7 @@ const flexbox = ["flexRow", "flexCol", "flexDirection", "flexWrap", "flex", "fle
 
 const interactivity = ["appearanceNone", "cursor", "outline", "pointerEvents", "resize", "userSelect"];
 
-const layout = ["boxDecorationBreak", "boxSizing", "block", "dflex", "display", "inline", "grid", "hidden", "float", "clear", "isolation", "objectFit", "objectPosition", "overflow", "overflowX", "overflowY", "overscroll", "overscrollX", "overscrollY", "overscrollBehavior", "overscrollBehaviorX", "overscrollBehaviorY", "position", "top", "bottom", "start", "end", "inset", "insetX", "insetY", "visible", "invisible", "z"];
+const layout = ["boxDecorationBreak", "boxSizing", "block", "dflex", "display", "inline", "grid", "hidden", "float", "clear", "isolation", "objectFit", "objectPosition", "overflow", "overflowX", "overflowY", "overscrollBehavior", "overscrollBehaviorX", "overscrollBehaviorY", "position", "top", "bottom", "start", "end", "inset", "insetX", "insetY", "visible", "invisible", "z"];
 
 const sizing = ["w", "h", "minW", "minH", "maxW", "maxH"];
 

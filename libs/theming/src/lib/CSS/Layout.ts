@@ -16,12 +16,9 @@ export interface Layout
   isolation?: false | true | "auto",
   objectFit?: false | "contain" | "cover" | "fill" | "none" | "scale-down",
   objectPosition?: false | "bottom" | "center" | "start" | "start-bottom" | "start-top" | "end" | "end-bottom" | "end-top" | "top",
-  overflow?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
-  overflowX?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
-  overflowY?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
-  overscroll?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
-  overscrollX?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
-  overscrollY?: false | "auto" | "hidden" | "visible" | "scroll" | "overlay",
+  overflow?: false | "auto" | "hidden" | "visible" | "scroll" | "clip",
+  overflowX?: false | "auto" | "hidden" | "visible" | "scroll" | "clip",
+  overflowY?: false | "auto" | "hidden" | "visible" | "scroll" | "clip",
   overscrollBehavior?: false | "auto" | "contain" | "none"
   overscrollBehaviorX?: false | "auto" | "contain" | "none"
   overscrollBehaviorY?: false | "auto" | "contain" | "none"
