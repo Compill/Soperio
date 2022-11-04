@@ -6,6 +6,13 @@ export default function Test({ ...props })
   return (
     <div w="100%" alignItems="center" dflex flexCol justifyContent="center" py="10">
 
+      <div dflex flexRow gap="10" w="full">
+        <div h="20" bgColor="sky-500" flexBasis="1/3" />
+        <div h="20" bgColor="sky-500" flexBasis="1/3" />
+        <div h="20" bgColor="sky-500" flexBasis="1/3" />
+      </div>
+
+
       <div w="48" h="48" bgColor="#0099ff">Blue RGB</div>
       <div w="48" h="48" bgColor="#0099ff" bgOpacity="50">Blue RGB 50% opacity</div>
       <div w="48" h="48" bgColor="#0099ff80">Blue RGBA 50% alpha</div>

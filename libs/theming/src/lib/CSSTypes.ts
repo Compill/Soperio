@@ -19,6 +19,7 @@ export type Color = OrString<Colors | keyof RootColors | "Color value like blue,
 export type BoxShadow = OrString<ThemingToken<"effects", "boxShadow">>
 
 export type Flex = OrString<ThemingToken<"flexbox", "flex">>
+export type FlexBasis = OrString<ThemingToken<"flexbox", "flexBasis">>
 export type GridAutoColumns = OrString<ThemingToken<"flexbox", "gridAutoColumns">>
 export type GridAutoRows = OrString<ThemingToken<"flexbox", "gridAutoRows">>
 export type GridColumnSpan = OrString<ThemingToken<"flexbox", "gridColumnSpan">>

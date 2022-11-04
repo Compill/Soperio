@@ -1,4 +1,4 @@
-type SpacingPositiveScale =
+export type SpacingPositiveScale =
   "0"
   | "px"
   | "0.5"

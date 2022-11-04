@@ -1,5 +1,5 @@
 import { OrString } from "@soperio/utils";
-import { Flex, GridAutoColumns, GridAutoRows, GridColumnSpan, GridRowSpan, GridTemplateColumns, GridTemplateRows, Order, SpacingPositive } from "../CSSTypes";
+import { Flex, FlexBasis, GridAutoColumns, GridAutoRows, GridColumnSpan, GridRowSpan, GridTemplateColumns, GridTemplateRows, Order, SpacingPositive } from "../CSSTypes";
 
 export interface Flexbox
 {
@@ -7,6 +7,7 @@ export interface Flexbox
   flexCol?: true | false | "reverse",
   flexDirection?: true | false | "row" | "column" | "row-reverse" | "col-reverse",
   flexWrap?: true | "reverse" | "no",
+  flexBasis: SpacingPositive | "full" | "auto" | FlexBasis
   flex?: false | Flex;
   flexGrow?: true | string | number,
   flexShrink?: true | string | number,

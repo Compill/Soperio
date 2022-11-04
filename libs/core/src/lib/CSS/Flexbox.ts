@@ -69,6 +69,7 @@ export const FlexboxMapping: StyleProps = {
   flex: css("flex", "flexbox.flex"),
   flexGrow: css("flex-grow", undefined, "1"),
   flexShrink: css("flex-shrink", undefined, "1"),
+  flexBasis: css("flex-basis", "flexbox.flexBasis"),
   order: css("order", "flexbox.order"),
   gridCols: css("grid-template-columns", "flexbox.gridTemplateColumns"),
   colSpan: css("grid-column", "flexbox.gridColumnSpan"),
