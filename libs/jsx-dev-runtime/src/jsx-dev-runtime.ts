@@ -34,7 +34,7 @@ function createSoperioProps(type: React.ElementType, props: any)
   return { ...props, [typePropName]: asType ?? type };
 }
 
-const nonStyleableHtmlTags = [ "html", "head", "link", "meta", "title", "body" , "style", "base" ]
+const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body" , "style", "base" ]
 
 export function jsxDEV<P>(
   type: React.ElementType<P>,
