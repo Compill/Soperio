@@ -22,7 +22,7 @@ export interface Typography
   textDecoration?: false | "underline" | "line-through" | "no-underline",
   textOpacity?: false | Opacity,
   textTransform?: false | "uppercase" | "lowercase" | "capitalize" | "normal-case",
-  textOverflow?: false | "truncate" | "overflow-ellipsis" | "overflow-clip",
+  textOverflow?: false | "truncate" | "ellipsis" | "clip",
   verticalAlign?: false | "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
   whiteSpace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
   wordBreak?: false | "normal" | "words" | "all",
