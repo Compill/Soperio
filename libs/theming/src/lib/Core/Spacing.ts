@@ -34,7 +34,14 @@ export type SpacingPositiveScale =
   | "64"
   | "72"
   | "80"
-  | "96";
+  | "96"
+  | "128"
+  | "144"
+  | "160"
+  | "192"
+  | "224"
+  | "256"
+  | "288"
 
 type SpacingNegativeScale =
   "-0"
@@ -72,7 +79,14 @@ type SpacingNegativeScale =
   | "-64"
   | "-72"
   | "-80"
-  | "-96";
+  | "-96"
+  | "-128"
+  | "-144"
+  | "-160"
+  | "-192"
+  | "-224"
+  | "-256"
+  | "-288";
 
 export default interface ThemeSpacing
 {
