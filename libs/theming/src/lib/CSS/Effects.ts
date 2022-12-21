@@ -6,7 +6,7 @@ export interface Effects
 {
     shadow?: true | false | BoxShadow,
     shadowColor: Color,
-    opacity?: false | Opacity,
+    opacity?: Opacity,
     mixBlend?: false | BlendMode,
     bgBlend?: false | BlendMode,
 }
