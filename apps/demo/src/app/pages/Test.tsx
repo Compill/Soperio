@@ -12,6 +12,8 @@ export default function Test({ ...props })
         <div h="20" bgColor="sky-500" flexBasis="1/3" />
       </div>
 
+      <svg opacity={"100"}/>
+
 
       <div w="48" h="48" bgColor="#0099ff">Blue RGB</div>
       <div w="48" h="48" bgColor="#0099ff" bgOpacity="50">Blue RGB 50% opacity</div>

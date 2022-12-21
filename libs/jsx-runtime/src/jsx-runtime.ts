@@ -14,7 +14,7 @@ declare module "react" {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface SVGAttributes<T> extends React.AriaAttributes, React.DOMAttributes<T>, SVGSoperioProps
+  interface SVGAttributes<T> extends SVGSoperioProps
   {
     
   }
