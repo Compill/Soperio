@@ -20,7 +20,7 @@ export function omitComponentProps(props: Record<string, any>): Record<string, a
  * @param props
  * @returns
  */
-export function splitComponentProps(props: Record<string, any>): [SoperioComponent, Record<string, any>[]]
+export function splitComponentProps(props: Record<string, any>): [SoperioComponent, Record<string, any>]
 {
-    return split(props, CSSPropKeys) as [SoperioComponent, Record<string, any>[]];
+    return split(props, CSSPropKeys)// as [SoperioComponent, Record<string, any>[]];
 };
