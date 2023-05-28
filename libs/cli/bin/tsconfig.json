@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "baseUrl": "./",
-    "allowJs": true,
+    "allowJs": false,
     "strict": false,
     "noImplicitAny": false,
     "esModuleInterop": true
