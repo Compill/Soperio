@@ -1,5 +1,6 @@
 import { omit, split } from "@soperio/utils";
 import { CSSPropKeys } from "./CSSProps";
+import { SoperioComponent } from "./SoperioComponent";
 
 /**
    * Returns all props that are not base Soperio props (like bgColor, m, hover_xx, ...)
@@ -19,7 +20,7 @@ export function omitComponentProps(props: Record<string, any>): Record<string, a
  * @param props
  * @returns
  */
-export function splitComponentProps(props: Record<string, any>): Record<string, any>[]
+export function splitComponentProps(props: Record<string, any>): [SoperioComponent, Record<string, any>[]]
 {
-    return split(props, CSSPropKeys);
+    return split(props, CSSPropKeys) as [SoperioComponent, Record<string, any>[]];
 };
