@@ -22,7 +22,7 @@ import React from "react"
 //   >
 // }
 
-export type As<Props = any> = React.ElementType<Props>
+export type As = React.ElementType
 
 /**
  * Extract the props of a React element or component
@@ -37,8 +37,8 @@ export type OmitCommonProps<
   > = Omit<Target, "transition" | "as" | "color" | OmitAdditionalProps>
 
 export type RightJoinProps<
-  SourceProps extends object = any,
-  OverrideProps extends object = any,
+  SourceProps extends object = {},
+  OverrideProps extends object = {},
   > = OmitCommonProps<SourceProps, keyof OverrideProps> & OverrideProps
 
 // export type MergeWithAs<
@@ -56,7 +56,10 @@ export declare type MergeWithAs<
   AsProps extends object,
   AdditionalProps extends object = {},
   AsComponent extends As = As
-  > = RightJoinProps<ComponentProps, AdditionalProps> & RightJoinProps<AsProps, AdditionalProps> & {
+  > = (
+    | RightJoinProps<ComponentProps, AdditionalProps>
+    | RightJoinProps<AsProps, AdditionalProps>
+  ) & {
     as?: AsComponent;
   };
 
