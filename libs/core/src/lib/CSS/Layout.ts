@@ -74,7 +74,7 @@ export const LayoutMapping: StyleProps = {
     inset: css(["top", "bottom", "left", "right"], "spacing.positiveNegative"),
     insetX: css(["left", "right"], "spacing.positiveNegative"),
     insetY: css(["top", "bottom"], "spacing.positiveNegative"),
-    visible: css("visibility", "visible"),
-    invisible: css("visibility", "hidden"),
+    visible: css("visibility", undefined, "visible"),
+    invisible: css("visibility", undefined, "hidden"),
     z: css("z-index")
 }
