@@ -20,7 +20,7 @@ export interface Flexbox
   rowSpan?: false | GridRowSpan | number,
   rowStart?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
   rowEnd?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "auto"> | number,
-  gridFlow?: false | "row" | "col" | "dense" | "row dense" | "col dense",
+  gridFlow?: false | "row" | "column" | "dense" | "row dense" | "column dense",
   gridAutoCols?: false | GridAutoColumns,
   gridAutoRows?: false | GridAutoRows,
   gap?: false | SpacingPositive,
