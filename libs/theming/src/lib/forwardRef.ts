@@ -110,7 +110,8 @@ export declare type ComponentWithAs<Component extends As, Props extends object =
 //   >
 // }
 
-export function forwardRef<Component extends As, Props extends object>(
+// Version with As
+export function forwardRefWithAs<Component extends As, Props extends object>(
   component: React.ForwardRefRenderFunction<
     any,
     RightJoinProps<PropsOf<Component>, Props> & {
@@ -123,4 +124,14 @@ export function forwardRef<Component extends As, Props extends object>(
     Component,
     Props
   >
+}
+
+export function forwardRef<Component extends As, Props extends object>(
+  component: React.ForwardRefRenderFunction<
+    any,
+    RightJoinProps<PropsOf<Component>, Props>
+  >
+)
+{
+  return React.forwardRef(component)
 }

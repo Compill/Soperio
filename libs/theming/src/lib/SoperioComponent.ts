@@ -7,9 +7,11 @@ export interface SoperioComponent extends ResponsiveCSSProps
   style?: React.CSSProperties | undefined;
   css?: Record<string, any>;
   id?: string,
-  as?: As
+  // as?: As
   // css: Interpolation<Theme>;
 }
+
+export type SoperioComponentWithAs = SoperioComponent & { as?: As }
 
 // export type As<Props = any> = React.ElementType<Props>
 
