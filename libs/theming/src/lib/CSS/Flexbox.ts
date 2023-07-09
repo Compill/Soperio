@@ -7,7 +7,7 @@ export interface Flexbox
   flexCol?: true | false | "reverse",
   flexDirection?: true | false | "row" | "column" | "row-reverse" | "col-reverse",
   flexWrap?: true | "reverse" | "no",
-  flexBasis: SpacingPositive | "full" | "auto" | FlexBasis
+  flexBasis?: SpacingPositive | "full" | "auto" | FlexBasis
   flex?: false | Flex;
   flexGrow?: true | string | number,
   flexShrink?: true | string | number,

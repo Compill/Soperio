@@ -106,7 +106,7 @@ export default function Test({ ...props })
         Text test example gradient background
       </div>
 
-      <div mb="16" h="16" bgColor="pink-500" rounded outline="1" outlineColor="sky-500" outlineOffset="2" outlineOpacity="59" py="2" textAlign="center">
+      <div mb="16" h="16" bgColor="pink-500" rounded="" outline="1" outlineColor="sky-500" outlineOffset="2" outlineOpacity="59" py="2" textAlign="center">
         <span textColor="white" shadow="x2" trait="typo.display4" style={{ textShadow: "1px 1px 1px #000" }}>Text test example</span>
       </div>
       <div mb="16" h="16" w="16" bgColor="pink-500" rounded ring="8" ringColor="sky-500" ringOffset="4" ringOffsetColor="yellow-500" />
@@ -117,10 +117,10 @@ export default function Test({ ...props })
       <div mb="16" h="16" w="16" bgGradient="conic" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
       <div h="16" w="96" bgColor="sky-500" hover_bgColor="pink-500" transition="colors" duration="5000ms" />
       <div>
-        <div as="span" bgColor="red-500">{"Hello, am a <div> or a <a> ?"}</div>
+        {/* <div as="span" bgColor="red-500">{"Hello, am a <div> or a <a> ?"}</div> */}
       </div>
       <div></div>
-      <div group p="10" bgColor="pink-500" hover_bgColor="sky-500" textColor="white" hover_textColor="black" mx="">
+      <div group p="10" bgColor="pink-500" hover_bgColor="sky-500" textColor="white" hover_textColor="black">
         <p textColor="blue-500" groupHover_textColor="white" lg_groupHover_textColor="yellow">Subtitle</p>
         <p>Text</p>
       </div>

@@ -5,7 +5,7 @@ type BlendMode = "normal" | "multiply" | "screen" | "overlay" | "darken" | "ligh
 export interface Effects
 {
     shadow?: true | false | BoxShadow,
-    shadowColor: Color,
+    shadowColor?: Color,
     opacity?: Opacity,
     mixBlend?: false | BlendMode,
     bgBlend?: false | BlendMode,

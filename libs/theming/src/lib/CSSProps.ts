@@ -21,28 +21,33 @@ type FocusVariant = { [Property in keyof Focus as `focus_${string & Property}`]:
 type HoverVariant = { [Property in keyof Hover as `hover_${string & Property}`]: Hover[Property]; };
 type GroupHoverVariant = { [Property in keyof Hover as `groupHover_${string & Property}`]: Hover[Property]; };
 
-interface CSSProps extends
-  Accessibility,
-  Background,
-  Border,
-  Effects,
-  Flexbox,
-  Filters,
-  Layout,
-  Interactivity,
-  Sizing,
-  Spacing,
-  Table,
-  Transform,
-  Transitions,
-  Typography,
-  FocusVariant,
-  HoverVariant,
-  GroupHoverVariant { };
+type CSSProps =
+  Accessibility &
+  Background &
+  Border &
+  Effects &
+  Flexbox &
+  Filters &
+  Layout &
+  Interactivity &
+  Sizing &
+  Spacing &
+  Table &
+  Transform &
+  Transitions &
+  Typography &
+  FocusVariant &
+  HoverVariant &
+  GroupHoverVariant
 
-export type ResponsiveProps<Type> = Partial<Type> & Partial<{ [Property in keyof Type as `${string & Exclude<Breakpoints, "default">}_${string & Property}`]: Type[Property]; }>;
+type BreakpointsWithoutDefault = Exclude<Breakpoints, "default">
 
-export type ResponsiveCSSProps = Special & ResponsiveProps<CSSProps>
+export type ResponsiveProps<Type> = Partial<Type> & { [Property in keyof Type as `${string & BreakpointsWithoutDefault}_${string & Property}`]?: Type[Property]; };
+
+// export type ResponsiveCSSProps = Special & ResponsiveProps<CSSProps>
+export type ResponsiveCSSProps = Special
+  & CSSProps
+  & { [Property in keyof CSSProps as `${string & BreakpointsWithoutDefault}_${string & Property}`]?: CSSProps[Property]; };
 
 
 const accessibility = ["srOnly", "notSrOnly"];
