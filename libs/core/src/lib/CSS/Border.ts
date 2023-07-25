@@ -54,6 +54,24 @@ function divideColor(value: any, theme: Theme, direction: boolean, darkMode: boo
   };
 }
 
+function divideOpacity(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
+{
+  console.log("divide opacity returns ", (
+    {
+      "> * + *":
+      {
+        ...opacity("--so-divide-opacity")(value, theme, direction, darkMode),
+      }
+    }
+  ))
+  return {
+    "> * + *":
+    {
+      ...opacity("--so-divide-opacity")(value, theme, direction, darkMode),
+    }
+  };
+}
+
 function borderStartColor(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
   return colorize(direction ? "border-left-color" : "border-right-color", "--so-border-opacity")(value, theme, direction, darkMode)
@@ -162,7 +180,7 @@ export const BorderMapping: StyleProps =
   divideXReverse: cssValueFn("--so-divide-x-reverse", 1),
   divideYReverse: cssValueFn("--so-divide-y-reverse", 1),
   divideColor: divideColor,
-  divideOpacity: opacity("--so-divide-opacity"),
+  divideOpacity: divideOpacity,
   divideStyle: css("border-style"),
   outline: outline,
   outlineOffset: border("outline-offset"),

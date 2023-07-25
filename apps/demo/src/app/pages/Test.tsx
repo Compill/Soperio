@@ -124,6 +124,16 @@ export default function Test({ ...props })
         <p textColor="blue-500" groupHover_textColor="white" lg_groupHover_textColor="yellow">Subtitle</p>
         <p>Text</p>
       </div>
+
+
+
+      <div bgColor="white" divideColor="black" divideOpacity="25" divideY="px">
+        <div px="5" py="3">Hello</div>
+        <div px="5" py="3">Hello</div>
+        <div px="5" py="3">Hello</div>
+        <div px="5" py="3">Hello</div>
+        <div px="5" py="3">Hello</div>
+      </div>
     </div>
   );
 }

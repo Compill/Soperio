@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "start demo": "nx serve demo --port 4201",
+    "start demo": "nx serve demo --port 4202",
     "[DEPLOY] ALL": "node deploy theming core jsx-runtime jsx-dev-runtime react",
     "[DEPLOY] 1 - theming": "node deploy.js theming",
     "[DEPLOY] 2 - core": "node deploy.js core",
