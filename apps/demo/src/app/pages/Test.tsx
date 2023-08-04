@@ -6,7 +6,23 @@ export default function Test({ ...props })
   return (
     <div w="100%" alignItems="center" dflex flexCol justifyContent="center" py="10">
 
-      <div dflex flexRow gap="10" w="full">
+      <div
+        w="96"
+        h="96"
+        lg_bgColor="black"
+        css={{ backgroundColor: "blue"}}
+        sm_css={{ backgroundColor: "pink"}}
+        md_css={{ backgroundColor: "green"}}
+        lg_css={{ backgroundColor: "red"}}
+        xl_css={{ backgroundColor: "indigo"}}
+        x2_css={{ backgroundColor: "brown"}}
+
+        >
+          Test responsive emotion css prop
+        </div>
+
+
+      {/* <div dflex flexRow gap="10" w="full">
         <div h="20" bgColor="sky-500" flexBasis="1/3" />
         <div h="20" bgColor="sky-500" flexBasis="1/3" />
         <div h="20" bgColor="sky-500" flexBasis="1/3" />
@@ -116,9 +132,7 @@ export default function Test({ ...props })
       <div mb="16" h="16" w="16" bgGradient="radial" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
       <div mb="16" h="16" w="16" bgGradient="conic" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
       <div h="16" w="96" bgColor="sky-500" hover_bgColor="pink-500" transition="colors" duration="5000ms" />
-      <div>
-        {/* <div as="span" bgColor="red-500">{"Hello, am a <div> or a <a> ?"}</div> */}
-      </div>
+      
       <div></div>
       <div group p="10" bgColor="pink-500" hover_bgColor="sky-500" textColor="white" hover_textColor="black">
         <p textColor="blue-500" groupHover_textColor="white" lg_groupHover_textColor="yellow">Subtitle</p>
@@ -133,7 +147,7 @@ export default function Test({ ...props })
         <div px="5" py="3">Hello</div>
         <div px="5" py="3">Hello</div>
         <div px="5" py="3">Hello</div>
-      </div>
+      </div> */}
     </div>
   );
 }

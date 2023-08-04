@@ -1,11 +1,14 @@
-import { ResponsiveCSSProps } from "./CSSProps";
+import { ResponsiveCSSProps, ResponsiveProps } from "./CSSProps";
 import { As } from "./forwardRef";
+import { CSSObject } from "@emotion/react";
 
-export interface SoperioComponent extends ResponsiveCSSProps
+type ResponsiveCSS = ResponsiveProps<{
+  css?: CSSObject
+}>
+export interface SoperioComponent extends ResponsiveCSSProps, ResponsiveCSS
 {
   className?: string | undefined,
   style?: React.CSSProperties | undefined;
-  css?: Record<string, any>;
   id?: string,
   // as?: As
   // css: Interpolation<Theme>;

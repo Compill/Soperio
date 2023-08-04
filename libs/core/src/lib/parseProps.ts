@@ -16,6 +16,11 @@ const breakpointIndex = {
   x2: "4",
 }
 
+function getMediaQuery(minWidth: string)
+{
+  return `@media screen and (min-width: ${minWidth})`
+}
+
 function parseRules(css: Record<string, string | any>, breakpoints: any/*ThemeBreakpoints*/, wrap = true): string
 {
   let content = "";
@@ -37,7 +42,7 @@ function parseRules(css: Record<string, string | any>, breakpoints: any/*ThemeBr
       else if (key.startsWith("media-"))
       {
         const breakpoint = key.split("-")[1];
-        mediaQueries[breakpointIndex[breakpoint as keyof typeof breakpointIndex]] = `@media screen and (min-width: ${breakpoints[breakpoint]}) {\n\t${parseRules(css[key], breakpoints, false)}\n}`
+        mediaQueries[breakpointIndex[breakpoint as keyof typeof breakpointIndex]] = `${getMediaQuery(breakpoints[breakpoint])} {\n\t${parseRules(css[key], breakpoints, false)}\n}`
         // mediaQueries.push(`@media screen and (min-width: ${getThemeStyle("breakpoints", breakpoint)}) {\n\t${parseRules(css[key], false)}\n}`);
       }
       else
@@ -255,14 +260,35 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
       // delete newProps[prop];
     }
 
-    // Our props might generate the emotion css prop
-    // So remove it before parsing
-    const soperioCss = css.css;
-    delete css.css;
+    // Taking care of responsive css prop
+    // We're just adding media queries into Emotion's css prop
+    // And removing sm_css, md_css, lg_css, ...
+    const emotionCSS = newProps.css ?? {}
+    delete newProps.css
+    
+    Object.keys(breakpoints).forEach(breakpoint => {
+      const prop = `${breakpoint}_css`
+
+      const bp_css = newProps[prop]
+
+      if (bp_css)
+      {
+        delete newProps[prop]
+
+        const mediaQuery = getMediaQuery(breakpoints[breakpoint])
+        emotionCSS[mediaQuery] = bp_css
+      }
+    });
 
     const generatedCSS = parseRules(css, breakpoints);
 
-    newProps.css = [emotionCss(generatedCSS), soperioCss, props.css];
+    // TODO I need a way to merge generatedCSS and emotionCSS
+    // emotionCSS is an object
+    // while generatedCSS is a string
+    // Adding those two to the array below does not merge them
+    // so it does not produce the expected CSS output regarding 
+    // media queries for example
+    newProps.css = [emotionCSS, generatedCSS];
 
     // if (lodash.isEmpty(newProps.css))
       // delete newProps[css]
