@@ -154,7 +154,7 @@ function sortProps(keys: string[])
   const filtered: string[] = []
   const last: string[] = []
 
-  keys.forEach((key) => 
+  keys.forEach((key) =>
   {
     const lowerCaseKey = key.toLowerCase()
 
@@ -182,7 +182,7 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
     newProps["data-so-group"] = ""
   }
 
-  
+
   const keys = sortProps(Object.keys(newProps));
 
   if (keys.length > 0)
@@ -265,7 +265,7 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
     // And removing sm_css, md_css, lg_css, ...
     const emotionCSS = newProps.css ?? {}
     delete newProps.css
-    
+
     Object.keys(breakpoints).forEach(breakpoint => {
       const prop = `${breakpoint}_css`
 
@@ -286,9 +286,9 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
     // emotionCSS is an object
     // while generatedCSS is a string
     // Adding those two to the array below does not merge them
-    // so it does not produce the expected CSS output regarding 
+    // so it does not produce the expected CSS output regarding
     // media queries for example
-    newProps.css = [emotionCSS, generatedCSS];
+    newProps.css = [emotionCSS, generatedCSS, props.css];
 
     // if (lodash.isEmpty(newProps.css))
       // delete newProps[css]
