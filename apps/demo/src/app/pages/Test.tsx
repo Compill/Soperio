@@ -9,7 +9,11 @@ export default function Test({ ...props })
       <div
         w="96"
         h="96"
+        textColor="white"
         lg_bgColor="black"
+        spaceX="3"
+        x2_bgColor="yellow"
+        bgColor="teal"
         css={{ backgroundColor: "blue"}}
         sm_css={{ backgroundColor: "pink"}}
         md_css={{ backgroundColor: "green"}}
@@ -132,7 +136,7 @@ export default function Test({ ...props })
       <div mb="16" h="16" w="16" bgGradient="radial" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
       <div mb="16" h="16" w="16" bgGradient="conic" bgGradientFrom="pink-500" bgGradientVia="yellow-500" bgGradientTo="sky-500" />
       <div h="16" w="96" bgColor="sky-500" hover_bgColor="pink-500" transition="colors" duration="5000ms" />
-      
+
       <div></div>
       <div group p="10" bgColor="pink-500" hover_bgColor="sky-500" textColor="white" hover_textColor="black">
         <p textColor="blue-500" groupHover_textColor="white" lg_groupHover_textColor="yellow">Subtitle</p>

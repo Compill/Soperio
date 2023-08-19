@@ -4,6 +4,9 @@ import deepmerge from "deepmerge";
 import murmurhash from "murmurhash";
 import { StyleFn, ThemeStyleFn } from "./CSS/utils";
 import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
+import { isObject } from "@soperio/utils";
+
+
 const pseudoClasses: string[] = ["focus", "hover", "groupHover", /*"placeholder", "before", "after"*/];
 const CACHE_TYPE = "prop"
 const REMOVE_IF_VARIANT = "remove_if_variant"
@@ -30,6 +33,8 @@ function parseRules(css: Record<string, string | any>, breakpoints: any/*ThemeBr
     const pseudos: string[] = [];
     const mediaQueries: Record<string, string> = {};
 
+    let encounteredCssProp = false
+
     Object.keys(css).sort().forEach(key =>
     {
       if (pseudoClasses.includes(key))
@@ -49,7 +54,12 @@ function parseRules(css: Record<string, string | any>, breakpoints: any/*ThemeBr
       {
         const cssRule = css[key];
 
-        if (typeof cssRule === "string" || typeof cssRule === "number")
+        if (!encounteredCssProp && key === "css")
+        {
+          content += `\n\n${cssRule}\n\n`
+          encounteredCssProp = true
+        }
+        else if (typeof cssRule === "string" || typeof cssRule === "number")
           content += `\t${key}: ${cssRule};\n`;
         else
           pseudos.push(`&${key} {\n${parseRules(cssRule, false)}}`);
@@ -222,14 +232,15 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
       });
 
       const propValue = newProps[prop]
-      const key = `${propName}${propValue}`
+      const key = `${propName}${isObject(propValue) ? JSON.stringify(propValue) : propValue}`
+
       let parsed = ThemeCache.get().get(CACHE_TYPE, key)
 
       if (!parsed)
       {
         const func = CSSPropsMap[propName]
 
-        if (func.length == 1)
+        if (func.length === 1)
           parsed = (func as StyleFn) .call(null, newProps[prop])
         else
           parsed = (func as ThemeStyleFn).call(null, newProps[prop], theme, direction, darkMode)
@@ -260,35 +271,9 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
       // delete newProps[prop];
     }
 
-    // Taking care of responsive css prop
-    // We're just adding media queries into Emotion's css prop
-    // And removing sm_css, md_css, lg_css, ...
-    const emotionCSS = newProps.css ?? {}
-    delete newProps.css
-
-    Object.keys(breakpoints).forEach(breakpoint => {
-      const prop = `${breakpoint}_css`
-
-      const bp_css = newProps[prop]
-
-      if (bp_css)
-      {
-        delete newProps[prop]
-
-        const mediaQuery = getMediaQuery(breakpoints[breakpoint])
-        emotionCSS[mediaQuery] = bp_css
-      }
-    });
-
     const generatedCSS = parseRules(css, breakpoints);
 
-    // TODO I need a way to merge generatedCSS and emotionCSS
-    // emotionCSS is an object
-    // while generatedCSS is a string
-    // Adding those two to the array below does not merge them
-    // so it does not produce the expected CSS output regarding
-    // media queries for example
-    newProps.css = [emotionCSS, generatedCSS, props.css];
+    newProps.css = [emotionCss(generatedCSS)]
 
     // if (lodash.isEmpty(newProps.css))
       // delete newProps[css]

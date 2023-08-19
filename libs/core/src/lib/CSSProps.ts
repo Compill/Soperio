@@ -8,6 +8,7 @@ import { InteractivityMapping } from "./CSS/Interactivity";
 import { LayoutMapping } from "./CSS/Layout";
 import { SizingMapping } from "./CSS/Sizing";
 import { SpacingMapping } from "./CSS/Spacing";
+import { SpecialMapping } from "./CSS/Special";
 import { SVGMapping } from "./CSS/SVG";
 import { TableMapping } from "./CSS/Table";
 import { TransformMapping } from "./CSS/Transform";
@@ -26,6 +27,7 @@ export const CSSPropsMap: StyleProps = {
     ...LayoutMapping,
     ...SizingMapping,
     ...SpacingMapping,
+    ...SpecialMapping,
     ...SVGMapping,
     ...TableMapping,
     ...TransformMapping,
