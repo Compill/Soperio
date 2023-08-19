@@ -1,6 +1,6 @@
-import { css as cssEmotion, keyframes } from "@emotion/react";
-import { css, Style, StyleProps } from "./utils";
-import { getThemeStyle, Theme } from "@soperio/theming";
+import { keyframes } from "@emotion/react";
+import { Theme, getThemeStyle } from "@soperio/theming";
+import { Style, StyleProps, css } from "./utils";
 
 const defaultTransition =
 {
@@ -42,10 +42,11 @@ function animate(value: any, theme: Theme, direction: boolean, darkMode: boolean
 
     const frames = keyframes(getThemeStyle(theme, "transition.keyframes", value))
 
-    const emotion = cssEmotion`animation: ${frames} ${animation}`
-
     return {
-        css: emotion
+        css:
+        {
+          animation: `${frames} ${animation}`
+        }
     }
 }
 

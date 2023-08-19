@@ -17,10 +17,9 @@ export default function Test({ ...props })
         css={{ backgroundColor: "blue"}}
         sm_css={{ backgroundColor: "pink"}}
         md_css={{ backgroundColor: "green"}}
-        lg_css={{ backgroundColor: "red"}}
+        // lg_css={{ backgroundColor: "red"}}
         xl_css={{ backgroundColor: "indigo"}}
         x2_css={{ backgroundColor: "brown"}}
-
         >
           Test responsive emotion css prop
         </div>
