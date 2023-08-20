@@ -218,24 +218,11 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
       delete newProps[prop];
     }
 
-    /*
-      TODO
-      Other subject
 
-      Why does emotion removes styles when not used anymore ?
-
-      That's a performance issue
-
-      If Emotion was just adding styles without removing them, then the browser wouldn't need to refresh
-      everytime a style is readded to the css
-
-      So basically, when the app starts, just starts with the minimum CSS of the current state app
-      and when the app "evolves", just add styles on the go, without removing the unused ones
-
-      It's like having an app with full-css files for a whole app, but at the beginning, we only have what's needed
-    */
-
-    // TODO What does take precedence ? Soperio props or Emotion css prop ?
+    // Emotion css rules take precedence over soperio rules
+    // This is the logical choice since one wouldn't use the "css"
+    // prop to set a rule that can be done with regular soperio
+    // responsive props
 
     if (css.css)
       Object.assign(css, deepmerge(css, css.css))
