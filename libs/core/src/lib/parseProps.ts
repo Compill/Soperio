@@ -5,6 +5,7 @@ import murmurhash from "murmurhash";
 import { StyleFn, ThemeStyleFn } from "./CSS/utils";
 import { CSSPropKeys, CSSPropsMap } from "./CSSProps";
 import { isObject } from "@soperio/utils";
+import { serializeStyles } from "@emotion/serialize";
 
 
 const pseudoClasses: string[] = ["focus", "hover", "groupHover", /*"placeholder", "before", "after"*/];
@@ -56,6 +57,7 @@ function parseRules(css: Record<string, string | any>, breakpoints: any/*ThemeBr
 
         if (!encounteredCssProp && key === "css")
         {
+          console.log("css rule", cssRule)
           content += `\n\n${cssRule}\n\n`
           encounteredCssProp = true
         }
@@ -183,6 +185,23 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
   const newProps: any = mergeTraitPropIfExist(props, theme);
   delete newProps["__SOPERIO_TYPE_PLEASE_DO_NOT_USE__"]
 
+  const responsiveCss = {
+    css: props.css ?? {},
+    "media-sm": { css: props.sm_css ?? {} },
+    "media-md": { css: props.md_css ?? {} },
+    "media-lg": { css: props.lg_css ?? {} },
+    "media-xl": { css: props.xl_css ?? {} },
+    "media-x2": { css: props.x2_css ?? {} },
+  }
+
+  // const cssProps = {...newProps.css }
+  delete newProps.css
+  delete newProps.sm_css
+  delete newProps.md_css
+  delete newProps.lg_css
+  delete newProps.xl_css
+  delete newProps.x2_css
+
   const breakpoints = theme.breakpoints
 
   if ("group" in newProps)
@@ -271,9 +290,39 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
       // delete newProps[prop];
     }
 
+    /*
+      Remove css, sm_css, md_css, ... from newProps
+
+      process all props
+
+      Merge responsive props with responsive props from processed props
+      Remove responsive props from processed props
+
+      Build Interpolation object with media queries for responsiveprops
+
+      Final line: newProps.css = [emotionCss(generatedCSS, responsiveCSS)]
+
+
+    */
+
+    const mergedResponsiveCss: any = {...responsiveCss.css, ...css.css}
+    delete css.css
+
+    const bps:any = {...breakpoints}
+    delete bps.default
+
+    for (const bp in bps)
+    {
+      mergedResponsiveCss[getMediaQuery(bps[bp])] = { ...responsiveCss[`media-${bp}`]?.css, ...css[`media-${bp}`]?.css }
+      // mergedResponsiveCss[getMediaQuery(bps[bp])] = { css: { ...responsiveCss[`media-${bp}`]?.css, ...css[`media-${bp}`]?.css}}
+      delete css[`media-${bp}`]?.css
+    }
+
     const generatedCSS = parseRules(css, breakpoints);
 
-    newProps.css = [emotionCss(generatedCSS)]
+    // TODO Should soperio responsive props have precedence over css responsive props
+    // Or the other way around ?
+    newProps.css = [emotionCss(generatedCSS), emotionCss(mergedResponsiveCss)]
 
     // if (lodash.isEmpty(newProps.css))
       // delete newProps[css]

@@ -5,6 +5,7 @@ import { serializeStyles } from "@emotion/serialize"
 
 function serializeCss(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
+  console.log("serialize", value)
   return {
     css: serializeStyles([value]).styles
   }
