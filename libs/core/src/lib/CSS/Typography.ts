@@ -9,7 +9,7 @@ function italic(value: any): Style
   {
     // Only set italic if value == true
     return {
-      "font-style": value === "no" ? "normal" : "italic"
+      fontStyle: value === "no" ? "normal" : "italic"
     }
   }
 
@@ -22,12 +22,12 @@ function textOverflow(value: any): Style
   {
     return {
       overflow: "hidden",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap"
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
     };
   }
 
-  return cssValue("text-overflow", value);
+  return cssValue("textOverflow", value);
 }
 
 function wordBreak(value: any): Style
@@ -35,12 +35,12 @@ function wordBreak(value: any): Style
   if (value === "normal")
   {
     return {
-      "overflow-wrap": "normal",
-      "word-break": "normal",
+      overflowWrap: "normal",
+      wordBreak: "normal",
     };
   }
 
-  return cssValue("word-break", "break-" + value);
+  return cssValue("wordBreak", "break-" + value);
 }
 
 function textAlign(value: any, theme: Theme, direction: boolean, darkMode: boolean)
@@ -52,7 +52,7 @@ function textAlign(value: any, theme: Theme, direction: boolean, darkMode: boole
   else if (value === "end")
     parsedValue = direction ? "right" : "left";
 
-  return css("text-align")(parsedValue, theme, direction, darkMode);
+  return css("textAlign")(parsedValue, theme, direction, darkMode);
 }
 
 function placeholderColor(value: any, theme: Theme, direction: boolean, darkMode: boolean)
@@ -95,7 +95,7 @@ function textShadow(value: any, theme: Theme, direction: boolean, darkMode: bool
 
   return {
     "--so-text-shadow-size": parsedValue,
-    "text-shadow": "var(--so-text-shadow-size, 1px) var(--so-text-shadow-size, 1px) var(--so-text-shadow-blur, 0px) var(--so-text-shadow-color, #00000099)"
+    textShadow: "var(--so-text-shadow-size, 1px) var(--so-text-shadow-size, 1px) var(--so-text-shadow-blur, 0px) var(--so-text-shadow-color, #00000099)"
   }
 }
 
@@ -127,27 +127,27 @@ function textShadowBlur(value: any, theme: Theme, direction: boolean, darkMode: 
 
 export const TypographyMapping: StyleProps =
 {
-  font: css("font-family", "typography.font"),
-  textSize: css("font-size", "typography.textSize"),
+  font: css("fontFamily", "typography.font"),
+  textSize: css("fontSize", "typography.textSize"),
   italic: italic,
-  fontWeight: css("font-weight"),
-  numericFontVariant: css("font-variant-numeric"),
-  letterSpacing: css("letter-spacing", "typography.letterSpacing"),
-  lineHeight: css("line-height", "typography.lineHeight"),
-  listStyle: css("list-style-type"),
-  listStylePosition: css("list-style-position"),
+  fontWeight: css("fontWeight"),
+  numericFontVariant: css("fontVariantNumeric"),
+  letterSpacing: css("letterSpacing", "typography.letterSpacing"),
+  lineHeight: css("lineHeight", "typography.lineHeight"),
+  listStyle: css("listStyleType"),
+  listStylePosition: css("listStylePosition"),
   placeholderColor: placeholderColor,
   placeholderOpacity: placeholderOpacity,
   textAlign: textAlign,
   textColor: colorize("color", "--so-text-opacity"),
   textOpacity: opacity("--so-text-opacity"),
-  textDecoration: css("text-decoration"),
-  textTransform: css("text-transform"),
+  textDecoration: css("textDecoration"),
+  textTransform: css("textTransform"),
   textOverflow: textOverflow,
-  verticalAlign: css("vertical-align"),
-  whiteSpace: css("white-space"),
+  verticalAlign: css("verticalAlign"),
+  whiteSpace: css("whiteSpace"),
   wordBreak: wordBreak,
-  textColumns: css("column-count"),
+  textColumns: css("columnCount"),
   textColumnsGap: css("gap", "spacing.positive"),
   textShadow: textShadow,
   textShadowColor: colorize("--so-text-shadow-color"),

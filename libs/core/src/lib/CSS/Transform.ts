@@ -60,12 +60,12 @@ export function transformOrigin(value: any, theme: Theme, direction: boolean, da
   else if (value === "bottom-end")
     parsedValue = direction ? "bottom right" : "bottom left";
 
-  return css("transform-origin")(parsedValue, theme, direction, darkMode);
+  return css("transformOrigin")(parsedValue, theme, direction, darkMode);
 }
 
 export const TransformMapping: StyleProps = {
   transform: transform,
-  transformOrigin: css("transform-origin"),
+  transformOrigin: css("transformOrigin"),
   scale: css(["--so-scale-x", "--so-scale-y"], "transform.scale"),
   scaleX: css("--so-scale-x", "transform.scale"),
   scaleY: css("--so-scale-y", "transform.scale"),

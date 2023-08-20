@@ -23,8 +23,8 @@ function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean
     "--so-divide-x-reverse": 0,
     "> * + *":
     {
-      [direction ? "border-right-width" : "border-left-width"]: `calc(${dimension} * var(--so-divide-x-reverse)) !important`,
-      [direction ? "border-left-width" : "border-right-width"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse))) !important`
+      [direction ? "borderRightWidth" : "borderLeftWidth"]: `calc(${dimension} * var(--so-divide-x-reverse)) !important`,
+      [direction ? "borderLeftWidth" : "borderRightWidth"]: `calc(${dimension} * calc(1 - var(--so-divide-x-reverse))) !important`
     }
   }
 }
@@ -37,8 +37,8 @@ function divideY(value: any, theme: Theme, direction: boolean, darkMode: boolean
     "--so-divide-y-reverse": 0,
     "> * + *":
     {
-      "border-top-width": `calc(${dimension} * calc(1 - var(--so-divide-y-reverse))) !important`,
-      "border-bottom-width": `calc(${dimension} * var(--so-divide-y-reverse)) !important`
+      borderTopWidth: `calc(${dimension} * calc(1 - var(--so-divide-y-reverse))) !important`,
+      borderBottomWidth: `calc(${dimension} * var(--so-divide-y-reverse)) !important`
     }
   };
 }
@@ -49,21 +49,13 @@ function divideColor(value: any, theme: Theme, direction: boolean, darkMode: boo
     "--so-divide-opacity": 1,
     "> * + *":
     {
-      ...colorize("border-color", "--so-divide-opacity")(value, theme, direction, darkMode)
+      ...colorize("borderColor", "--so-divide-opacity")(value, theme, direction, darkMode)
     }
   };
 }
 
 function divideOpacity(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
-  console.log("divide opacity returns ", (
-    {
-      "> * + *":
-      {
-        ...opacity("--so-divide-opacity")(value, theme, direction, darkMode),
-      }
-    }
-  ))
   return {
     "> * + *":
     {
@@ -74,24 +66,24 @@ function divideOpacity(value: any, theme: Theme, direction: boolean, darkMode: b
 
 function borderStartColor(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
-  return colorize(direction ? "border-left-color" : "border-right-color", "--so-border-opacity")(value, theme, direction, darkMode)
+  return colorize(direction ? "borderLeftColor" : "borderRighColor", "--so-border-opacity")(value, theme, direction, darkMode)
 }
 
 function borderEndColor(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
-  return colorize(direction ? "border-right-color" : "border-left-color", "--so-border-opacity")(value, theme, direction, darkMode)
+  return colorize(direction ? "borderRightColor" : "borderLeftColor", "--so-border-opacity")(value, theme, direction, darkMode)
 }
 
 function outline(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
   if (value === "none" || !value)
     return {
-      "outline-style": "none"
+      outlineStyle: "none"
     }
 
   return {
-    "outline-style": "solid",
-    ...border("outline-width")(value, theme, direction, darkMode)
+    outlineStyle: "solid",
+    ...border("outlineWidth")(value, theme, direction, darkMode)
   };
 }
 
@@ -101,7 +93,7 @@ function ringWidth(value: any, theme: Theme, direction: boolean, darkMode: boole
     "--so-ring-offset-shadow": "var(--so-ring-inset,) 0 0 0 var(--so-ring-offset-width, 0px) var(--so-ring-offset-color, white)",
     "--so-ring-shadow": "var(--so-ring-inset,) 0 0 0 calc(var(--so-ring-width) + var(--so-ring-offset-width, 0px)) var(--so-ring-color)",
     ...border("--so-ring-width")(value, theme, direction, darkMode),
-    "box-shadow": "var(--so-ring-offset-shadow, 0 0 #0000), var(--so-ring-shadow, 0 0 #0000), var(--so-shadow, 0 0 #0000)"
+    boxShadow: "var(--so-ring-offset-shadow, 0 0 #0000), var(--so-ring-shadow, 0 0 #0000), var(--so-shadow, 0 0 #0000)"
   }
 }
 
@@ -154,37 +146,37 @@ function directionBorder(cssPropertyStart: string, cssPropertyEnd: string)
 
 export const BorderMapping: StyleProps =
 {
-  rounded: css(["border-top-left-radius", "border-top-right-radius", "border-bottom-left-radius", "border-bottom-right-radius"], "border.radius"),
-  roundedT: css(["border-top-left-radius", "border-top-right-radius"], "border.radius"),
-  roundedB: css(["border-bottom-left-radius", "border-bottom-right-radius"], "border.radius"),
-  roundedS: direction(["border-top-left-radius", "border-bottom-left-radius"], ["border-top-right-radius", "border-bottom-right-radius"], "border.radius"),
-  roundedE: direction(["border-top-right-radius", "border-bottom-right-radius"], ["border-top-left-radius", "border-bottom-left-radius"], "border.radius"),
-  roundedTS: direction("border-top-left-radius", "border-top-right-radius", "border.radius"),
-  roundedTE: direction("border-top-right-radius", "border-top-left-radius", "border.radius"),
-  roundedBS: direction("border-bottom-left-radius", "border-bottom-right-radius", "border.radius"),
-  roundedBE: direction("border-bottom-right-radius", "border-bottom-left-radius", "border.radius"),
-  border: border(["border-top-width", "border-bottom-width", "border-left-width", "border-right-width"]),
-  borderT: border("border-top-width"),
-  borderB: border("border-bottom-width"),
-  borderS: directionBorder("border-left-width", "border-right-width"),
-  borderE: directionBorder("border-right-width", "border-left-width"),
-  borderColor: colorize("border-color", "--so-border-opacity"),
-  borderTColor: colorize("border-top-color", "--so-border-opacity"),
-  borderBColor: colorize("border-bottom-color", "--so-border-opacity"),
+  rounded: css(["borderTopLeftRadius", "borderTopRightRadius", "borderBottomLeftRadius", "borderBottomRightRadius"], "border.radius"),
+  roundedT: css(["borderTopLeftRadius", "borderTopRightRadius"], "border.radius"),
+  roundedB: css(["borderBottomLeftRadius", "borderBottomRightRadius"], "border.radius"),
+  roundedS: direction(["borderTopLeftRadius", "borderBottomLeftRadius"], ["borderTopRightRadius", "borderBottomRightRadius"], "border.radius"),
+  roundedE: direction(["borderTopRightRadius", "borderBottomRightRadius"], ["borderTopLeftRadius", "borderBottomLeftRadius"], "border.radius"),
+  roundedTS: direction("borderTopLeftRadius", "borderTopRightRadius", "border.radius"),
+  roundedTE: direction("borderTopRightRadius", "borderTopLeftRadius", "border.radius"),
+  roundedBS: direction("borderBottomLeftRadius", "borderBottomRightRadius", "border.radius"),
+  roundedBE: direction("borderBottomRightRadius", "borderBottomLeftRadius", "border.radius"),
+  border: border(["borderTopWidth", "borderBottomWidth", "borderLeftWidth", "borderRightWidth"]),
+  borderT: border("borderTopWidth"),
+  borderB: border("borderBottomWidth"),
+  borderS: directionBorder("borderLeftWidth", "borderRightWidth"),
+  borderE: directionBorder("borderRightWidth", "borderLeftWidth"),
+  borderColor: colorize("borderColor", "--so-border-opacity"),
+  borderTColor: colorize("borderTopColor", "--so-border-opacity"),
+  borderBColor: colorize("borderBottomColor", "--so-border-opacity"),
   borderSColor: borderStartColor,
   borderEColor: borderEndColor,
   borderOpacity: opacity("--so-border-opacity"),
-  borderStyle: css("border-style"),
+  borderStyle: css("borderStyle"),
   divideX: divideX,
   divideY: divideY,
   divideXReverse: cssValueFn("--so-divide-x-reverse", 1),
   divideYReverse: cssValueFn("--so-divide-y-reverse", 1),
   divideColor: divideColor,
   divideOpacity: divideOpacity,
-  divideStyle: css("border-style"),
+  divideStyle: css("borderStyle"),
   outline: outline,
-  outlineOffset: border("outline-offset"),
-  outlineColor: colorize("outline-color", "--so-outline-opacity"),
+  outlineOffset: border("outlineOffset"),
+  outlineColor: colorize("outlineColor", "--so-outline-opacity"),
   outlineOpacity: opacity("--so-outline-opacity"),
   ring: ringWidth,
   ringColor: colorize("--so-ring-color"),

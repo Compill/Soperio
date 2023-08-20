@@ -98,7 +98,7 @@ function processFilterObject(filter:string, value: string, backdrop?: boolean)
   return {
     [varName]: `${filter}(${value})`,
     // [`${backdrop ? "backdrop-" : ""}filter`]: `var(--so-${backdrop ? "backdrop-" : ""}filter-blur) var(--so-${backdrop ? "backdrop-" : ""}filter-brightness) var(--so-${backdrop ? "backdrop-" : ""}filter-contrast) ${!backdrop ? `var(--so-${backdrop ? "backdrop-" : ""}filter-drop-shadow)}` : ""} var(--so-${backdrop ? "backdrop-" : ""}filter-grayscale) var(--so-${backdrop ? "backdrop-" : ""}filter-hue-rotate) var(--so-${backdrop ? "backdrop-" : ""}filter-invert) ${backdrop ? `var(--so-${backdrop ? "backdrop-" : ""}filter-opacity)}` : ""} var(--so-${backdrop ? "backdrop-" : ""}filter-saturate) var(--so-${backdrop ? "backdrop-" : ""}filter-sepia)`
-    [`${backdrop ? "backdrop-" : ""}filter`]: `var(--so-${backdrop ? "backdrop-" : ""}filter-blur) var(--so-${backdrop ? "backdrop-" : ""}filter-brightness) var(--so-${backdrop ? "backdrop-" : ""}filter-contrast) var(--so-${backdrop ? "backdrop-" : ""}filter-grayscale) var(--so-${backdrop ? "backdrop-" : ""}filter-hue-rotate) var(--so-${backdrop ? "backdrop-" : ""}filter-invert) var(--so-${backdrop ? "backdrop-" : ""}filter-saturate) var(--so-${backdrop ? "backdrop-" : ""}filter-sepia)`
+    [backdrop ? "backdropFilter" : "filter"]: `var(--so-${backdrop ? "backdrop-" : ""}filter-blur) var(--so-${backdrop ? "backdrop-" : ""}filter-brightness) var(--so-${backdrop ? "backdrop-" : ""}filter-contrast) var(--so-${backdrop ? "backdrop-" : ""}filter-grayscale) var(--so-${backdrop ? "backdrop-" : ""}filter-hue-rotate) var(--so-${backdrop ? "backdrop-" : ""}filter-invert) var(--so-${backdrop ? "backdrop-" : ""}filter-saturate) var(--so-${backdrop ? "backdrop-" : ""}filter-sepia)`
   };
 }
 

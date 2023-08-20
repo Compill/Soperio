@@ -10,6 +10,7 @@ export default function Test({ ...props })
         w="96"
         h="96"
         textColor="white"
+        lg_textColor="red"
         lg_bgColor="black"
         spaceX="3"
         x2_bgColor="yellow"

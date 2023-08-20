@@ -9,8 +9,8 @@ function spaceX(value: any, theme: Theme, direction: boolean, darkMode: boolean)
     return {
         "--so-space-x-reverse": 0,
         ">:not([hidden])~:not([hidden])": {
-            [direction ? "margin-right" : "margin-left"]: `calc(${dimension} * var(--so-space-x-reverse)) !important`,
-            [direction ? "margin-left" : "margin-right"]: `calc(${dimension} * calc(1 - var(--so-space-x-reverse))) !important`
+            [direction ? "marginRight" : "marginLeft"]: `calc(${dimension} * var(--so-space-x-reverse)) !important`,
+            [direction ? "marginLeft" : "marginRight"]: `calc(${dimension} * calc(1 - var(--so-space-x-reverse))) !important`
         }
     };
 }
@@ -22,8 +22,8 @@ function spaceY(value: any, theme: Theme, direction: boolean, darkMode: boolean)
     return {
         "--so-space-y-reverse": 0,
         ">:not([hidden])~:not([hidden])": {
-            "margin-top": `calc(${dimension} * calc(1 - var(--so-space-y-reverse))) !important`,
-            "margin-bottom": `calc(${dimension} * var(--so-space-y-reverse)) !important`
+            marginTop: `calc(${dimension} * calc(1 - var(--so-space-y-reverse))) !important`,
+            marginBottom: `calc(${dimension} * var(--so-space-y-reverse)) !important`
         }
     };
 }
@@ -49,20 +49,20 @@ export function directionSpacing(cssPropertyStart: string, cssPropertyEnd: strin
 
 
 export const SpacingMapping: StyleProps = {
-    p: spacing(["padding-top", "padding-bottom", "padding-left", "padding-right"], "spacing.positive"),
-    pt: spacing("padding-top", "spacing.positive"),
-    pb: spacing("padding-bottom", "spacing.positive"),
-    ps: directionSpacing("padding-left", "padding-right", "spacing.positive"),
-    pe: directionSpacing("padding-right", "padding-left", "spacing.positive"),
-    px: spacing(["padding-left", "padding-right"], "spacing.positive"),
-    py: spacing(["padding-top", "padding-bottom"], "spacing.positive"),
-    m: spacing(["margin-top", "margin-bottom", "margin-left", "margin-right"], "spacing.positiveNegative"),
-    mt: spacing("margin-top", "spacing.positiveNegative"),
-    mb: spacing("margin-bottom", "spacing.positiveNegative"),
-    ms: directionSpacing("margin-left", "margin-right", "spacing.positiveNegative"),
-    me: directionSpacing("margin-right", "margin-right", "spacing.positiveNegative"),
-    mx: spacing(["margin-left", "margin-right"], "spacing.positiveNegative"),
-    my: spacing(["margin-top", "margin-bottom"], "spacing.positiveNegative"),
+    p: spacing(["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"], "spacing.positive"),
+    pt: spacing("paddingTop", "spacing.positive"),
+    pb: spacing("paddingBottom", "spacing.positive"),
+    ps: directionSpacing("paddingLeft", "paddingRight", "spacing.positive"),
+    pe: directionSpacing("paddingRight", "paddingLeft", "spacing.positive"),
+    px: spacing(["paddingLeft", "paddingRight"], "spacing.positive"),
+    py: spacing(["paddingTop", "paddingBottom"], "spacing.positive"),
+    m: spacing(["marginTop", "marginBottom", "marginLeft", "marginRight"], "spacing.positiveNegative"),
+    mt: spacing("marginTop", "spacing.positiveNegative"),
+    mb: spacing("marginBottom", "spacing.positiveNegative"),
+    ms: directionSpacing("marginLeft", "marginRight", "spacing.positiveNegative"),
+    me: directionSpacing("marginRight", "marginLeft", "spacing.positiveNegative"),
+    mx: spacing(["marginLeft", "marginRight"], "spacing.positiveNegative"),
+    my: spacing(["marginTop", "marginBottom"], "spacing.positiveNegative"),
     spaceX: spaceX,
     spaceY: spaceY,
     spaceXReverse: cssValueFn("--so-space-x-reverse", 1),

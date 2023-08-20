@@ -43,12 +43,12 @@ function objectPosition(value: any, theme: Theme, direction: boolean, darkMode: 
     else if (value === "end-bottom")
         parsedValue = direction ? "right bottom" : "left bottom";
 
-    return css("object-position")(parsedValue, theme, direction, darkMode)
+    return css("objectPosition")(parsedValue, theme, direction, darkMode)
 }
 
 export const LayoutMapping: StyleProps = {
-    boxDecorationBreak: css("box-decoration-break"),
-    boxSizing: css("box-sizing"),
+    boxDecorationBreak: css("boxDecorationBreak"),
+    boxSizing: css("boxSizing"),
     block: cssValueFn("display", "block"),
     dflex: cssValueFn("display", "flex"),
     display: css("display"),
@@ -58,14 +58,14 @@ export const LayoutMapping: StyleProps = {
     float: float,
     clear: clear,
     isolation: css("isolation", undefined, "isolate"),
-    objectFit: css("object-fit"),
+    objectFit: css("objectFit"),
     objectPosition: objectPosition,
     overflow: css("overflow"),
-    overflowX: css("overflow-x"),
-    overflowY: css("overflow-y"),
-    overscrollBehavior: css("overscroll-behavior"),
-    overscrollBehaviorX: css("overscroll-behavior-x"),
-    overscrollBehaviorY: css("overscroll-behavior-y"),
+    overflowX: css("overflowX"),
+    overflowY: css("overflowY"),
+    overscrollBehavior: css("overscrollBehavior"),
+    overscrollBehaviorX: css("overscrollBehaviorX"),
+    overscrollBehaviorY: css("overscrollBehaviorY"),
     position: css("position"),
     top: spacing("top", "spacing.positiveNegative"),
     bottom: spacing("bottom", "spacing.positiveNegative"),
@@ -76,5 +76,5 @@ export const LayoutMapping: StyleProps = {
     insetY: css(["top", "bottom"], "spacing.positiveNegative"),
     visible: css("visibility", undefined, "visible"),
     invisible: css("visibility", undefined, "hidden"),
-    z: css("z-index")
+    z: css("zIndex")
 }

@@ -20,7 +20,7 @@ function bgPosition(value: any, theme: Theme, direction: boolean, darkMode: bool
   else if (value === "end-bottom")
     parsedValue = direction ? "right bottom" : "left bottom";
 
-  return css("background-position")(parsedValue, theme, direction, darkMode)
+  return css("backgroundPosition")(parsedValue, theme, direction, darkMode)
 }
 
 const LINEAR_GRADIENT = "linear-gradient(var(--so-gradient-dir, to right), var(--so-gradient-from, transparent), var(--so-gradient-via,) var(--so-gradient-to, transparent))"
@@ -36,7 +36,7 @@ const gradients = {
 function bgGradient(value: any)
 {
   return {
-    "background-image": gradients[value] ?? LINEAR_GRADIENT
+    backgroundImage: gradients[value] ?? LINEAR_GRADIENT
   }
 }
 
@@ -52,15 +52,15 @@ function bgGradientVia(value: any, theme: Theme, direction: boolean, darkMode: b
 }
 
 export const BackgroundMapping: StyleProps = {
-  bgAtt: css("background-attachment"),
-  bgClip: css("background-clip"),
-  bgColor: colorize("background-color", "--so-bg-opacity"),
+  bgAtt: css("backgroundAttachment"),
+  bgClip: css("backgroundClip"),
+  bgColor: colorize("backgroundColor", "--so-bg-opacity"),
   bgOpacity: opacity("--so-bg-opacity"),
-  bgImage: css("background-image"),
-  bgOrigin: css("background-origin"),
+  bgImage: css("backgroundImage"),
+  bgOrigin: css("backgroundOrigin"),
   bgPosition: bgPosition,
-  bgRepeat: css("background-repeat", undefined, "repeat"),
-  bgSize: css("background-size"),
+  bgRepeat: css("backgroundRepeat", undefined, "repeat"),
+  bgSize: css("backgroundSize"),
   bgGradient: bgGradient,
   /**
    * Only working if bgGradient = linear

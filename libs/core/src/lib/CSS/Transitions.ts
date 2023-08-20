@@ -4,8 +4,8 @@ import { Style, StyleProps, css } from "./utils";
 
 const defaultTransition =
 {
-    "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
-    "transition-duration": "150ms"
+    transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+    transitionDuration: "150ms"
 };
 
 function transition(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
@@ -13,7 +13,7 @@ function transition(value: any, theme: Theme, direction: boolean, darkMode: bool
     const transitionProperty = getThemeStyle(theme, "transition.transitionProperty", value === true ? "default" : value)!;
 
     return {
-        "transition-property": transitionProperty,
+        transitionProperty: transitionProperty,
         ...defaultTransition
     };
 }
@@ -30,7 +30,7 @@ function duration(value: any, theme: Theme, direction: boolean, darkMode: boolea
         parsedValue = value
     }
 
-    return { "transition-duration": parsedValue };
+    return { transitionDuration: parsedValue };
 }
 
 function animate(value: any, theme: Theme, direction: boolean, darkMode: boolean)
@@ -54,7 +54,7 @@ export const TransitionsMapping: StyleProps =
 {
     transition: transition,
     duration: duration,
-    easing: css("transition-timing-function", "transition.ease"),
-    delay: css("transition-delay", "transition.delay"),
+    easing: css("transitionTimingFunction", "transition.ease"),
+    delay: css("transitionDelay", "transition.delay"),
     animate: animate,
 };

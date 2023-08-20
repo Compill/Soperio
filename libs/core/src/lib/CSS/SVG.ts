@@ -4,5 +4,5 @@ export const SVGMapping: StyleProps =
 {
     fillCurrent: cssValueFn("fill", "currentColor"),
     strokeCurrent: cssValueFn("stroke", "currentColor"),
-    strokeWidth: css("stroke-width"),
+    strokeWidth: css("strokeWidth"),
 };

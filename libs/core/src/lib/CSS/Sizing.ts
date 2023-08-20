@@ -29,8 +29,8 @@ function processValue(cssProperty: string, themeProperty:string): ThemeStyleFn
 export const SizingMapping: StyleProps = {
     w: processValue("width", "sizing.width"),
     h: processValue("height", "sizing.height"),
-    minW: processValue("min-width", "sizing.minWidth"),
-    minH: processValue("min-height", "sizing.minHeight"),
-    maxW: processValue("max-width", "sizing.maxWidth"),
-    maxH: processValue("max-height", "sizing.maxHeight"),
+    minW: processValue("minWidth", "sizing.minWidth"),
+    minH: processValue("minHeight", "sizing.minHeight"),
+    maxW: processValue("maxWidth", "sizing.maxWidth"),
+    maxH: processValue("maxHeight", "sizing.maxHeight"),
 }

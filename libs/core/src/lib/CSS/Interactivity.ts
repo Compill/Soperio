@@ -4,7 +4,7 @@ export const InteractivityMapping: StyleProps =
 {
     appearanceNone: css("appearance", undefined, "none"),
     cursor: css("cursor"),
-    pointerEvents: css("pointer-events"),
+    pointerEvents: css("pointerEvents"),
     resize: css("resize", undefined, "both"),
-    userSelect: css("user-select")
+    userSelect: css("userSelect")
 };
