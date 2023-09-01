@@ -1,4 +1,4 @@
-import { Blur, Color, Font, TextSize, LetterSpacing, LineHeight, Opacity, Spacing, SpacingPositive, TextShadow, TextShadowBlur } from "../CSSTypes";
+import { Blur, Color, Font, TextSize, LetterSpacing, LineHeight, Opacity, Spacing, SpacingPositive, TextShadow, TextShadowBlur, TextDecorationThickness } from "../CSSTypes";
 import { OrString } from "@soperio/utils";
 
 export interface Typography
@@ -19,7 +19,12 @@ export interface Typography
    * Utilities for controlling the text color of an element.
    */
   textColor?: false | Color,
+  textIndent?: false | SpacingPositive
   textDecoration?: false | "underline" | "line-through" | "no-underline",
+  textDecorationColor?: false | Color
+  textDecorationStyle?: false | "solid" | "double" | "dotted" | "dashed" | "wavy"
+  textDecorationThickness?: false | "auto" | "from-font" | TextDecorationThickness
+  textUnderlineOffset?: false | "auto" | SpacingPositive
   textOpacity?: false | Opacity,
   textTransform?: false | "uppercase" | "lowercase" | "capitalize" | "normal-case",
   textOverflow?: false | "truncate" | "ellipsis" | "clip",
@@ -35,4 +40,13 @@ export interface Typography
   textShadow?: false | TextShadow | Spacing | "none"
   textShadowColor?: false | Color
   textShadowBlur?: false | TextShadowBlur | Spacing | "none"
+
+  antialias?: false | true | "subpixel"
+
+  lineClamp?: false | OrString<"none" | "1" | "2" | "3" | "4" | "5" |" 6">
+
+  /**
+   * Use line break suggestion &shy; in your text in addition to this prop
+   */
+  hyphens?: false | "none" | "manual" | "auto"
 }

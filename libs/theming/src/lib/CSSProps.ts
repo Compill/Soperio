@@ -100,7 +100,7 @@ const transform = [
 
 const transitions = ["transition", "duration", "easing", "delay", "animate"];
 
-const typography = ["font", "textSize", "italic", "fontWeight", "numericFontVariant", "letterSpacing", "lineHeight", "listStyle", "listStylePosition", "placeholderColor", "placeholderOpacity", "textAlign", "textColor", "textOpacity", "textDecoration", "textTransform", "textOverflow", "verticalAlign", "whiteSpace", "wordBreak", "textColumns", "textColumnsGap", "textShadow", "textShadowColor", "textShadowBlur"];
+const typography = ["font", "textSize", "italic", "fontWeight", "numericFontVariant", "letterSpacing", "lineHeight", "listStyle", "listStylePosition", "placeholderColor", "placeholderOpacity", "textAlign", "textColor", "textOpacity", "textDecoration", "textTransform", "textOverflow", "verticalAlign", "whiteSpace", "wordBreak", "textColumns", "textColumnsGap", "textShadow", "textShadowColor", "textShadowBlur", "antialias", "lineClamp", "hyphen", "textIndent", "textDecorationColor", "textDecorationStyle", "textDecorationThickness", "textUnderlineOffset"];
 
 const hover = [
   "top", "bottom", "start", "end",

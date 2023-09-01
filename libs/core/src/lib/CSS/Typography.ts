@@ -1,7 +1,8 @@
 import { getThemeStyle, Theme } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
-import { css, cssValue, Style, StyleProps } from "./utils";
+import { css, cssValue, Style, StyleFn, StyleProps } from "./utils";
+import { spacing } from "./Spacing";
 
 function italic(value: any): Style
 {
@@ -124,6 +125,48 @@ function textShadowBlur(value: any, theme: Theme, direction: boolean, darkMode: 
   }
 }
 
+function antialias(value: any, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  if (value === true)
+  {
+    return {
+      "WebkitFontSmoothing": "antialiased",
+      "MozOsxFontSmoothing": "grayscale"
+    }
+  }
+
+  if (value === "subpixel")
+  {
+    return {
+      "WebkitFontSmoothing": "auto",
+      "MozOsxFontSmoothing": "auto"
+    }
+  }
+
+  return {}
+}
+
+function lineClamp(value: any, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  if (value === "none")
+  {
+    return {
+      overflow: "visible",
+      display: "block",
+      "WebkitBoxOrient": "horizontal",
+      "WebkitLineClamp": "none"
+    }
+  }
+
+  // const parsedValue = getThemeStyle(theme, "spacing.positive", value)
+
+  return {
+    overflow: "hidden",
+    display: "-webkit-box",
+    "WebkitBoxOrient": "vertical",
+    "WebkitLineClamp": value
+  }
+}
 
 export const TypographyMapping: StyleProps =
 {
@@ -151,5 +194,14 @@ export const TypographyMapping: StyleProps =
   textColumnsGap: css("gap", "spacing.positive"),
   textShadow: textShadow,
   textShadowColor: colorize("--so-text-shadow-color"),
-  textShadowBlur: textShadowBlur
+  textShadowBlur: textShadowBlur,
+  antialias: antialias,
+  lineClamp: lineClamp,
+  hyphens: css("hyphens"),
+  textIndent: spacing("textIndent", "spacing.positive"),
+  textDecorationColor: colorize("textDecorationColor"),
+  textDecorationStyle: css("textDecorationStyle"),
+  textDecorationThickness: css("textDecorationThickness", "typography.textDecorationThickness"),
+  textUnderlineOffset: spacing("textUnderlineOffset", "spacing.positive")
+
 };

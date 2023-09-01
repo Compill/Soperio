@@ -45,6 +45,14 @@ const typography = {
     x9: "2.25rem",
     x10: "2.5rem",
   },
+  textDecorationThickness:
+  {
+    "none": "0",
+    "sm": "1px",
+    "md": "2px",
+    "lg": "4px",
+    "xl": "8px",
+  },
   textShadow:
   {
     px: "1px",

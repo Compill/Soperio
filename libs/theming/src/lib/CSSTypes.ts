@@ -55,6 +55,7 @@ export type Font = OrString<ThemingToken<"typography", "font">>
 export type TextSize = OrString<ThemingToken<"typography", "textSize"> | AnyCSSSizeValue>
 export type LetterSpacing = OrString<ThemingToken<"typography", "letterSpacing">>
 export type LineHeight = OrString<ThemingToken<"typography", "lineHeight">>
+export type TextDecorationThickness = OrString<ThemingToken<"typography", "textDecorationThickness">>
 export type TextShadow = OrString<ThemingToken<"typography", "textShadow">>
 export type TextShadowBlur = OrString<ThemingToken<"typography", "textShadowBlur">>
 

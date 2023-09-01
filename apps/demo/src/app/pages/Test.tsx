@@ -4,9 +4,9 @@ export default function Test({ ...props })
 {
   const direction = useDirection()
   return (
-    <div w="100%" alignItems="center" dflex flexCol justifyContent="center" py="10">
+    <div w="100%" dflex flexCol  py="10">
 
-      <div
+      {/* <div
         w="96"
         h="96"
         textColor="white"
@@ -24,7 +24,44 @@ export default function Test({ ...props })
         animate="spin"
         >
           Test responsive emotion css prop
-        </div>
+        </div> */}
+
+
+      <p>This is a text without indent<br />on two lines of content</p>
+      <p lineClamp="5" textSize="xl">
+          This is a text without indent line 1<br/>
+          This is a text without indent line 2<br/>
+          This is a text without indent line 3<br/>
+          This is a text without indent line 4<br/>
+          This is a text without indent line 5<br/>
+          This is a text without indent line 6<br/>
+          This is a text without indent line 7<br/>
+          This is a text without indent line 8<br/>
+        </p>
+      <br />
+      <br />
+      <div lineClamp="5" textSize="xl">
+        <p>This is a text without indent line 1</p>
+        <p>This is a text without indent line 2</p>
+        <p>This is a text without indent line 3</p>
+        <p textDecoration="underline" textDecorationStyle="wavy" textDecorationColor="red">This is a text without indent line 4</p>
+        <p>This is a text without indent line 5</p>
+        <p>This is a text without indent line 6</p>
+        <p>This is a text without indent line 7</p>
+        <p>This is a text without indent line 8</p>
+      </div>
+      <br />
+      <br />
+      <div lineClamp="5" textSize="xl" antialias>
+        <p>This is a text without indent line 1</p>
+        <p>This is a text without indent line 2</p>
+        <p>This is a text without indent line 3</p>
+        <p>This is a text without indent line 4</p>
+        <p>This is a text without indent line 5</p>
+        <p>This is a text without indent line 6</p>
+        <p>This is a text without indent line 7</p>
+        <p>This is a text without indent line 8</p>
+      </div>
 
 
       {/* <div dflex flexRow gap="10" w="full">

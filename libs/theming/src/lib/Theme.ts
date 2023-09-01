@@ -89,6 +89,7 @@ export interface Theme
     textSize: StringKeyValueObject,
     letterSpacing: StringKeyValueObject,
     lineHeight: StringKeyValueObject,
+    textDecorationThickness: StringKeyValueObject,
     textShadow: StringKeyValueObject,
     textShadowBlur: StringKeyValueObject,
   };
