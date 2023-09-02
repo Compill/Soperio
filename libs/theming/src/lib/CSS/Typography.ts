@@ -43,7 +43,7 @@ export interface Typography
 
   antialias?: false | true | "subpixel"
 
-  lineClamp?: false | OrString<"none" | "1" | "2" | "3" | "4" | "5" |" 6">
+  lineClamp?: false | OrString<"none" | "1" | "2" | "3" | "4" | "5" | "6">
 
   /**
    * Use line break suggestion &shy; in your text in addition to this prop
