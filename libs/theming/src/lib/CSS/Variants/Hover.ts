@@ -10,7 +10,7 @@ export interface Hover extends
   Pick<Background, "bgColor" | "bgOpacity">,
   Pick<Border, "border" | "borderB" | "borderE" | "borderS" | "borderT" | "borderColor" | "borderBColor" | "borderEColor" | "borderSColor" | "borderTColor" | "borderOpacity">,
   Pick<Effects, "opacity" | "shadow" | "shadowColor">,
-  Pick<Layout, "bottom" | "end" | "start" | "top">,
+  Pick<Layout, "bottom" | "end" | "start" | "top" | "display">,
   Transform,
   Transitions,
   Pick<Typography, "fontWeight" | "textAlign" | "textColor" | "textDecoration" | "textOpacity">
