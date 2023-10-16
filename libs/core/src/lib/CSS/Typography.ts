@@ -41,6 +41,13 @@ function wordBreak(value: any): Style
     };
   }
 
+  if (value === "words")
+  {
+    return {
+      overflowWrap: "break-word"
+    }
+  }
+
   return cssValue("wordBreak", "break-" + value);
 }
 
