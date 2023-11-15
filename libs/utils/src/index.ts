@@ -8,12 +8,12 @@ export * from './lib/types';
 export type LiteralUnion<T extends U, U = string> = T | (U & { zz_IGNORE_ME?: never; });
 export type OrString<T extends string> = LiteralUnion<T, string>;
 
-export function runIfFn<T>(
-  valueOrFn: T | ((...fnArgs: any[]) => T),
-  ...args: any[]
+export function runIfFn<T, U>(
+  valueOrFn: T | ((...fnArgs: U[]) => T),
+  ...args: U[]
 ): T
 {
-  return isFunction(valueOrFn) ? valueOrFn(...args) as T : valueOrFn as T;
+  return isFunction(valueOrFn) ? valueOrFn(...args) : valueOrFn;
 }
 
 export function omit<T extends Dict, K extends keyof T>(object: T, keys: K[])
