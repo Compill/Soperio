@@ -61,9 +61,61 @@ function placeContent(cssProperty: any)
   };
 }
 
+function flexCol(value: StyleProp)
+{
+  let parsedValue = value;
+
+  switch (value)
+  {
+    case true:
+    {
+      parsedValue = "column";
+      break;
+    }
+    case false:
+    {
+      parsedValue = false;
+      break;
+    }
+    case "reverse":
+    {
+      parsedValue = "column-reverse";
+      break;
+    }
+  }
+
+  return { "flexDirection": parsedValue };
+}
+
+function flexRow(value: StyleProp)
+{
+  let parsedValue = value;
+
+  switch (value)
+  {
+    case true:
+    {
+      parsedValue = "row";
+      break;
+    }
+    case false:
+    {
+      parsedValue = false;
+      break;
+    }
+    case "reverse":
+    {
+      parsedValue = "row-reverse";
+      break;
+    }
+  }
+
+  return { "flexDirection": parsedValue };
+}
+
 export const FlexboxMapping: StyleProps = {
-  flexRow: css("flexDirection", undefined, "row"),
-  flexCol: css("flexDirection", undefined, "column"),
+  flexRow: flexRow,
+  flexCol: flexCol,
   flexDirection: css("flexDirection"),
   flexWrap: css("flexWrap", undefined, "wrap"),
   flex: css("flex", "flexbox.flex"),
