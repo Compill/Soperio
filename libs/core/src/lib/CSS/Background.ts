@@ -23,9 +23,9 @@ function bgPosition(value: any, theme: Theme, direction: boolean, darkMode: bool
   return css("backgroundPosition")(parsedValue, theme, direction, darkMode)
 }
 
-const LINEAR_GRADIENT = "linear-gradient(var(--so-gradient-dir, to right), var(--so-gradient-from, transparent), var(--so-gradient-via,) var(--so-gradient-to, transparent))"
-const RADIAL_GRADIENT = "radial-gradient(var(--so-gradient-from, transparent), var(--so-gradient-via,) var(--so-gradient-to, transparent))"
-const CONIC_GRADIENT = "conic-gradient(var(--so-gradient-from, transparent), var(--so-gradient-via,) var(--so-gradient-to, transparent))"
+const LINEAR_GRADIENT = "linear-gradient(var(--so-gradient-dir, to right), var(--so-gradient-from, transparent), var(--so-gradient-via) var(--so-gradient-to, transparent))"
+const RADIAL_GRADIENT = "radial-gradient(var(--so-gradient-from, transparent), var(--so-gradient-via) var(--so-gradient-to, transparent))"
+const CONIC_GRADIENT = "conic-gradient(var(--so-gradient-from, transparent), var(--so-gradient-via) var(--so-gradient-to, transparent))"
 
 const gradients = {
   linear : LINEAR_GRADIENT,
