@@ -57,6 +57,7 @@ export type HeightScale =
 
 export default interface ThemeSizing
 {
+  aspectRatio: "square" | "16/9" | "16/10" | "3/2" | "4/3" | "9/16" | "10/16" | "3/4" | "2/3" | "1/2" | "2/1",
   height: HeightScale | "min" | "max" | "fit" | Spacing,
   maxHeight: "full" | "screen" | "min" | "max" | "fit" | Spacing,
   maxWidth: "0" | "full" | "min" | "max" | "fit" | Spacing,

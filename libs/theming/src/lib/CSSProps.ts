@@ -78,7 +78,7 @@ const interactivity = ["appearanceNone", "cursor", "outline", "pointerEvents", "
 
 const layout = ["boxDecorationBreak", "boxSizing", "block", "dflex", "display", "inline", "grid", "hidden", "float", "clear", "isolation", "objectFit", "objectPosition", "overflow", "overflowX", "overflowY", "overscrollBehavior", "overscrollBehaviorX", "overscrollBehaviorY", "position", "top", "bottom", "start", "end", "inset", "insetX", "insetY", "visible", "invisible", "z"];
 
-const sizing = ["w", "h", "minW", "minH", "maxW", "maxH"];
+const sizing = ["aspectRatio", "w", "h", "minW", "minH", "maxW", "maxH"];
 
 const spacing = [
   "p", "pt", "pb", "ps", "pe", "px", "py",

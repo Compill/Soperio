@@ -14,6 +14,20 @@ function prefix(config: Record<string, string>, prefix: string): Record<string, 
 }
 
 const sizing = {
+  aspectRatio:
+  {
+    square: "1",
+    "16/9": "16/9",
+    "16/10": "16/10",
+    "3/2": "3/2",
+    "4/3": "4/3",
+    "9/16": "9/16",
+    "10/16": "10/16",
+    "3/4": "3/4",
+    "2/3": "2/3",
+    "1/2": "1/2",
+    "2/1": "2/1"
+  },
   height: {
     auto: "auto",
     min: "min-content",

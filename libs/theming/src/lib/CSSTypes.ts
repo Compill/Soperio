@@ -30,6 +30,7 @@ export type Order = OrString<ThemingToken<"flexbox", "order">>
 
 export type Opacity = OrString<ThemingToken<"opacity">> | number
 
+export type AspectRatio = OrString<ThemingToken<"sizing", "aspectRatio">>
 export type Height = OrString<ThemingToken<"sizing", "height"> | AnyCSSSizeValue>
 export type MinHeight = OrString<ThemingToken<"sizing", "minHeight"> | AnyCSSSizeValue>
 export type MinWidth = OrString<ThemingToken<"sizing", "minWidth"> | AnyCSSSizeValue>
