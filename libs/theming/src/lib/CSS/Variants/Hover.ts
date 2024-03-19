@@ -3,6 +3,7 @@ import { Border } from "../Border";
 import { Effects } from "../Effects";
 import { Layout } from "../Layout";
 import { Sizing } from "../Sizing";
+import { Spacing } from "../Spacing";
 import { Transform } from "../Transform";
 import { Transitions } from "../Transitions";
 import { Typography } from "../Typography";
@@ -13,6 +14,7 @@ export interface Hover extends
   Pick<Effects, "opacity" | "shadow" | "shadowColor">,
   Pick<Layout, "bottom" | "end" | "start" | "top" | "display">,
   Pick<Sizing, "w" | "h">,
+  Pick<Spacing, "m" | "mt" | "mb" | "ms" | "me" | "mx" | "my">,
   Transform,
   Transitions,
   Pick<Typography, "fontWeight" | "textAlign" | "textColor" | "textDecoration" | "textOpacity">
