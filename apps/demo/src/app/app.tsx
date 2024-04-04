@@ -48,13 +48,14 @@ function AppContent()
 
   return (
     <SoperioProvider theme={theme}>
-      <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
+          <Content />
+      {/* <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
         <Menu />
         <div flexGrow h="screen" ms="240px" transition="all">
           <Header />
           <Content />
         </div>
-      </div>
+      </div> */}
     </SoperioProvider>
   )
 }

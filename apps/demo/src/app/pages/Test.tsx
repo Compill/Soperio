@@ -1,10 +1,18 @@
+import { ServerComponent } from "@soperio/react";
 import { useDirection } from "@soperio/theming";
+import { Suspense } from "react";
 
 export default function Test({ ...props })
 {
   const direction = useDirection()
   return (
-    <div w="100%" dflex flexCol  py="10">
+    <div w="100%" dflex flexCol  py="10" gap="5">
+
+      {/* <TestFunctionComponent />
+      <TestConstComponent /> */}
+      <ServerComponent as="ul">
+        <li>List Item</li>
+      </ServerComponent>
 
       {/* <div
         w="96"
@@ -24,7 +32,7 @@ export default function Test({ ...props })
         animate="spin"
         >
           Test responsive emotion css prop
-        </div> */}
+        </div>
 
 
       <p>This is a text without indent<br />on two lines of content</p>
@@ -61,7 +69,7 @@ export default function Test({ ...props })
         <p>This is a text without indent line 6</p>
         <p>This is a text without indent line 7</p>
         <p>This is a text without indent line 8</p>
-      </div>
+      </div> */}
 
 
       {/* <div dflex flexRow gap="10" w="full">
@@ -193,3 +201,16 @@ export default function Test({ ...props })
     </div>
   );
 }
+
+function TestFunctionComponent()
+{
+  return <blockquote w="48" h="16" bgColor="red" />
+}
+
+const TestConstComponent = () =>
+{
+  return <span w="48" h="16" bgColor="red" />
+}
+
+TestFunctionComponent.IS_SERVER_COMPONENT = true
+TestConstComponent.IS_SERVER_COMPONENT = true

@@ -16,7 +16,7 @@ declare module "react" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface SVGAttributes<T> extends SVGSoperioProps
   {
-    
+
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -40,9 +40,14 @@ export function jsx<P>(
   key?: string
 ): SoperioJSX.Element
 {
+  // Idea: create a SoperioServerComponent
+  // This would prevent generating an Emotion component
+  // Would be great for anything that doesn't use styles and states/context
+
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
-  if (typeof type === "string" && !nonStyleableHtmlTags.includes(type))
+  // @ts-ignore
+  if (typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
@@ -63,7 +68,8 @@ export function jsxs<P>(
   // return emotionJsx(type, parseProps(props), key);
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
-  if (typeof type === "string" && !nonStyleableHtmlTags.includes(type))
+  // @ts-ignore
+  if (typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore

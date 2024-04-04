@@ -49,12 +49,14 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
-  if (typeof type === "string" && !nonStyleableHtmlTags.includes(type))
+  // console.log("soperio dev jsx, typeof", typeof type, type, props);
+
+  // @ts-ignore
+  if (typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
   {
     // @ts-ignore
     return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
   }
-
   // That's how emotion is doing it!
   //  instead of passing type, they put the type in a special prop
   // and use type "Emotion" to create the component
