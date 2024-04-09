@@ -32,6 +32,7 @@ function createSoperioProps(type: React.ElementType, props: any)
   return { ...props, [typePropName]: asType ?? type };
 }
 
+// TODO Add SVG sub elements like path, g, polyline, ...
 const nonStyleableHtmlTags = ["html", "head", "link", "meta", "title", "script", "body", "style", "base"]
 
 export function jsx<P>(
@@ -43,7 +44,7 @@ export function jsx<P>(
   // Idea: create a SoperioServerComponent
   // This would prevent generating an Emotion component
   // Would be great for anything that doesn't use styles and states/context
-  console.log("soperio dev jsx, typeof", typeof type, type, props);
+  // console.log("soperio dev jsx, typeof", typeof type, type, props);
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
   // @ts-ignore

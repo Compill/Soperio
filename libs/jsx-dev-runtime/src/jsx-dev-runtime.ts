@@ -49,7 +49,7 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
-  console.log("soperio dev jsx, typeof", typeof type, type, props);
+  // console.log("soperio dev jsx, typeof", typeof type, type, props);
 
   // @ts-ignore
   if (typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
