@@ -27,7 +27,7 @@ function processValue(cssProperty: string, themeProperty:string): ThemeStyleFn
     }
 }
 export const SizingMapping: StyleProps = {
-    aspectRatio: css("aspect-ratio", "sizing.aspectRatio"),
+    aspectRatio: css("aspectRatio", "sizing.aspectRatio"),
     w: processValue("width", "sizing.width"),
     h: processValue("height", "sizing.height"),
     minW: processValue("minWidth", "sizing.minWidth"),
