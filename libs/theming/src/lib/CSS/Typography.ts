@@ -6,7 +6,7 @@ export interface Typography
   font?: false | Font,
   textSize?: false | TextSize,
   italic?: true | false | "no",
-  fontWeight?: false | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900",
+  fontWeight?: false | OrString<"100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900">,
   numericFontVariant?: false | "normal-nums" | "ordinal" | "slashed-zero" | "lining-nums" | "oldstyle-nums" | "proportional-nums" | "tabular-nums" | "diagonal-fractions" | "stacked-fractions",
   letterSpacing?: false | LetterSpacing,
   lineHeight?: false | LineHeight,
