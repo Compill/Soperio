@@ -82,7 +82,7 @@ export function extendTheme(...extensions: ExtendTheme[]): Theme
 
 function mergeThemeOverride(...overrides: any[]): any
 {
-    return mergeWith({}, ...overrides);
+    return mergeWith({}, ...overrides, mergeThemeCustomizer);
 }
 function mergeThemeCustomizer(
     source: unknown,
