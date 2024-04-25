@@ -19,7 +19,7 @@ function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean
 {
   const dimension = getBorderValue(value, theme)
 
-  if (value != 0 && !value)
+  if (dimension != 0 && !dimension)
     return {}
 
   return {
@@ -36,7 +36,7 @@ function divideY(value: any, theme: Theme, direction: boolean, darkMode: boolean
 {
   const dimension = value === true ? "1px" : getBorderValue(value, theme)
 
-  if (value != 0 && !value)
+  if (dimension != 0 && !dimension)
     return {}
 
   return {
