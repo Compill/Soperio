@@ -19,6 +19,9 @@ function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean
 {
   const dimension = getBorderValue(value, theme)
 
+  if (value != 0 && !value)
+    return {}
+
   return {
     "--so-divide-x-reverse": 0,
     "> * + *":
@@ -32,6 +35,9 @@ function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean
 function divideY(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
   const dimension = value === true ? "1px" : getBorderValue(value, theme)
+
+  if (value != 0 && !value)
+    return {}
 
   return {
     "--so-divide-y-reverse": 0,
