@@ -8,6 +8,11 @@ export default function Test({ ...props })
   return (
     <div w="100%" dflex flexCol  py="10" gap="5">
 
+      <div divideY={undefined} divideColor={"red"}>
+        <div>Hello</div>
+        <div>Hello</div>
+      </div>
+
       {/* <TestFunctionComponent />
       <TestConstComponent /> */}
       <ServerComponent as="ul">

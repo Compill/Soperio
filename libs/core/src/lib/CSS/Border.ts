@@ -17,6 +17,9 @@ function getBorderValue(value: any, theme: Theme)
 
 function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
+  if (!value)
+    return {}
+
   const dimension = getBorderValue(value, theme)
 
   return {
@@ -31,6 +34,9 @@ function divideX(value: any, theme: Theme, direction: boolean, darkMode: boolean
 
 function divideY(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
+  if (!value)
+    return {}
+
   const dimension = value === true ? "1px" : getBorderValue(value, theme)
 
   return {
@@ -45,6 +51,9 @@ function divideY(value: any, theme: Theme, direction: boolean, darkMode: boolean
 
 function divideColor(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
+  if (!value)
+    return {}
+
   return {
     "--so-divide-opacity": 1,
     "> * + *":
@@ -56,6 +65,9 @@ function divideColor(value: any, theme: Theme, direction: boolean, darkMode: boo
 
 function divideOpacity(value: any, theme: Theme, direction: boolean, darkMode: boolean): Style
 {
+  if (!value)
+    return {}
+
   return {
     "> * + *":
     {
