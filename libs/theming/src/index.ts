@@ -8,6 +8,7 @@ export { forwardRef, forwardRefWithAs } from "./lib/forwardRef";
 export type { RightJoinProps } from "./lib/forwardRef";
 export * from './lib/hooks/useBreakpoint';
 export * from './lib/hooks/useColor';
+export * from './lib/hooks/useSpacing';
 export * from './lib/hooks/useResponsiveProps';
 export * from './lib/hooks/useTheme';
 export *from './lib/hooks/useThemeAwareColor';
