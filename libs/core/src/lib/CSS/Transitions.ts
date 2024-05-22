@@ -33,6 +33,21 @@ function duration(value: any, theme: Theme, direction: boolean, darkMode: boolea
     return { transitionDuration: parsedValue };
 }
 
+function delay(value: any, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  let parsedValue = getThemeStyle(theme, "transition.delay", value);
+
+  if (parsedValue === undefined)
+  {
+    if (typeof value === "number")
+      parsedValue = `${value}ms`;
+    else
+      parsedValue = value
+  }
+
+  return { transitionDelay: parsedValue };
+}
+
 function animate(value: any, theme: Theme, direction: boolean, darkMode: boolean)
 {
     if (value === "none")
@@ -55,6 +70,6 @@ export const TransitionsMapping: StyleProps =
     transition: transition,
     duration: duration,
     easing: css("transitionTimingFunction", "transition.ease"),
-    delay: css("transitionDelay", "transition.delay"),
+    delay: delay,
     animate: animate,
 };

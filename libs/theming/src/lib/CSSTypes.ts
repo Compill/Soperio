@@ -48,7 +48,7 @@ export type Skew = OrString<ThemingToken<"transform", "skew">>
 
 export type Ease = OrString<ThemingToken<"transition", "ease">>
 export type Duration = OrString<ThemingToken<"transition", "duration">>
-export type Delay = OrString<ThemingToken<"transition", "delay">>
+export type Delay = OrString<ThemingToken<"transition", "delay">> | number
 export type Animation = OrString<ThemingToken<"transition", "animation">>
 export type TransitionProperty = OrString<ThemingToken<"transition", "transitionProperty">>
 
