@@ -6,7 +6,7 @@ export interface Flexbox
   flexRow?: true | false | "reverse",
   flexCol?: true | false | "reverse",
   flexDirection?: true | false | "row" | "column" | "row-reverse" | "col-reverse",
-  flexWrap?: true | "reverse" | "no",
+  flexWrap?: true | "reverse" | "noWrap",
   flexBasis?: SpacingPositive | "full" | "auto" | FlexBasis
   flex?: false | Flex;
   flexGrow?: true | string | number,
@@ -26,7 +26,7 @@ export interface Flexbox
   gap?: false | SpacingPositive,
   gapX?: false | SpacingPositive,
   gapY?: false | SpacingPositive,
-  justifyContent?: false | "start" | "end" | "center" | "between" | "around" | "evenly",
+  justifyContent?: false | "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch",
   justifyItems?: false | "start" | "end" | "center" | "stretch",
   justifySelf?: false | "auto" | "start" | "end" | "center" | "stretch",
   alignContent?: false | "start" | "end" | "center" | "between" | "around" | "evenly",
