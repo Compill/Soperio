@@ -193,6 +193,7 @@ export const TypographyMapping: StyleProps =
   textOpacity: opacity("--so-text-opacity"),
   textDecoration: css("textDecoration"),
   textTransform: css("textTransform"),
+  textWrap: css("textWrap"),
   textOverflow: textOverflow,
   verticalAlign: css("verticalAlign"),
   whiteSpace: css("whiteSpace"),

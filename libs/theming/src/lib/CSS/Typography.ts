@@ -28,6 +28,7 @@ export interface Typography
   textOpacity?: false | Opacity,
   textTransform?: false | "uppercase" | "lowercase" | "capitalize" | "normal-case",
   textOverflow?: false | "truncate" | "ellipsis" | "clip",
+  textWrap?: false | "wrap" | "nowrap" | "balance" | "pretty"
   verticalAlign?: false | "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
   whiteSpace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
   wordBreak?: false | "normal" | "words" | "all",
