@@ -1,8 +1,32 @@
 import { getThemeStyle, Theme } from "@soperio/theming";
 import { colorize } from "../PropTypes/Color";
 import { opacity } from "../PropTypes/Opacity";
-import { css, cssValue, Style, StyleFn, StyleProps } from "./utils";
+import { css, cssValue, Style, StyleFn, StyleProp, StyleProps, ThemeStyleFn } from "./utils";
 import { spacing } from "./Spacing";
+
+function processDimension(cssProperty: string, themeProperty: string): ThemeStyleFn
+{
+  return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
+  {
+    if (!value || value === true)
+      return {}
+
+    let parsedValue = value;
+
+    const themeValue = getThemeStyle(theme, themeProperty, value);
+
+    if (themeValue !== undefined || typeof value === "string")
+    {
+      parsedValue = themeValue;
+    }
+    else if (typeof value === "number")
+    {
+      parsedValue = `${value}px`;
+    }
+
+    return { [cssProperty]: parsedValue };
+  }
+}
 
 function italic(value: any): Style
 {
@@ -178,7 +202,7 @@ function lineClamp(value: any, theme: Theme, direction: boolean, darkMode: boole
 export const TypographyMapping: StyleProps =
 {
   font: css("fontFamily", "typography.font"),
-  textSize: css("fontSize", "typography.textSize"),
+  textSize: processDimension("fontSize", "typography.textSize"),
   italic: italic,
   fontWeight: css("fontWeight"),
   numericFontVariant: css("fontVariantNumeric"),
@@ -199,7 +223,7 @@ export const TypographyMapping: StyleProps =
   whiteSpace: css("whiteSpace"),
   wordBreak: wordBreak,
   textColumns: css("columnCount"),
-  textColumnsGap: css("gap", "spacing.positive"),
+  textColumnsGap: processDimension("gap", "spacing.positive"),
   textShadow: textShadow,
   textShadowColor: colorize("--so-text-shadow-color"),
   textShadowBlur: textShadowBlur,

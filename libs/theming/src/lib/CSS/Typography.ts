@@ -4,7 +4,7 @@ import { OrString } from "@soperio/utils";
 export interface Typography
 {
   font?: false | Font,
-  textSize?: false | TextSize,
+  textSize?: false | OrString<TextSize> | number,
   italic?: true | false | "no",
   fontWeight?: false | OrString<"100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900">,
   numericFontVariant?: false | "normal-nums" | "ordinal" | "slashed-zero" | "lining-nums" | "oldstyle-nums" | "proportional-nums" | "tabular-nums" | "diagonal-fractions" | "stacked-fractions",
@@ -32,12 +32,12 @@ export interface Typography
   verticalAlign?: false | "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
   whiteSpace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
   wordBreak?: false | "normal" | "words" | "all",
-  textColumns?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">,
+  textColumns?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8"> | number,
   /**
    * Alias for "gap"
    * Gap between the text columns
    */
-  textColumnsGap?: false | SpacingPositive;
+  textColumnsGap?: false | SpacingPositive | number;
   textShadow?: false | TextShadow | Spacing | "none"
   textShadowColor?: false | Color
   textShadowBlur?: false | TextShadowBlur | Spacing | "none"
