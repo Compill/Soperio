@@ -171,7 +171,12 @@ export function parseProps<P extends SoperioComponent>(props: P, theme: Theme, d
         continue;
 
       const propValue = newProps[prop]
-      const key = `${propName}${isObject(propValue) ? JSON.stringify(propValue) : propValue}`
+      const isObjectType = isObject(propValue)
+      // We need to differentiate strings from numbers
+      // For spacing values for example, strings are mapped to the theme
+      // While numbers are trasnformed into pixed values
+      const valueKey = isObjectType ? "" : `${propValue}-${typeof propValue}`
+      const key = `${propName}${isObjectType ? JSON.stringify(propValue) : valueKey}`
 
       let parsed = ThemeCache.get().get(CACHE_TYPE, key)
 

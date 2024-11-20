@@ -8,6 +8,13 @@ export default function Test({ ...props })
   return (
     <div w="100%" dflex flexCol  py="10" gap="5">
 
+      <div bgColor="blue" textColor="white" pb="4">Hello</div>
+      <div bgColor="blue" textColor="white" pb="5">Hello</div>
+      <div bgColor="blue" textColor="white" pb={4}>Hello</div>
+      <div bgColor="blue" textColor="white" pb={5}>Hello</div>
+      <div bgColor="blue" textColor="white" pb="4">Hello</div>
+      <div bgColor="blue" textColor="white" pb="5">Hello</div>
+
       <div divideY={undefined} divideColor={"red"}>
         <div>Hello</div>
         <div>Hello</div>
@@ -15,11 +22,11 @@ export default function Test({ ...props })
 
       {/* <TestFunctionComponent />
       <TestConstComponent /> */}
-      <ServerComponent as="ul">
+      {/* <ServerComponent as="ul">
         <li>List Item</li>
-      </ServerComponent>
+      </ServerComponent> */}
 
-      {/* <div
+      <div
         w="96"
         h="96"
         textColor="white"
@@ -74,7 +81,7 @@ export default function Test({ ...props })
         <p>This is a text without indent line 6</p>
         <p>This is a text without indent line 7</p>
         <p>This is a text without indent line 8</p>
-      </div> */}
+      </div>
 
 
       {/* <div dflex flexRow gap="10" w="full">
