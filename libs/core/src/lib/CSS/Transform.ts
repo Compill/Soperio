@@ -1,5 +1,5 @@
 import { Theme } from "@soperio/theming";
-import { css, Style, StyleProps } from "./utils";
+import { css, Style, StyleProp, StyleProps } from "./utils";
 
 function transform(value: any): Style
 {
@@ -63,6 +63,26 @@ export function transformOrigin(value: any, theme: Theme, direction: boolean, da
   return css("transformOrigin")(parsedValue, theme, direction, darkMode);
 }
 
+export function spacing(cssProperty: string | string[], themeProperty?: string)
+{
+  return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
+  {
+    const parsedValue = typeof value == "number" ? `${value}px` : (value === "px" ? "1px" : (value === "-px" ? "-1px" : value as string))
+
+    return css(cssProperty, themeProperty)(parsedValue, theme, direction, darkMode)
+  }
+}
+
+export function angle(cssProperty: string | string[], themeProperty?: string)
+{
+  return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
+  {
+    const parsedValue = typeof value == "number" ? `${value}deg` : value as string
+
+    return css(cssProperty, themeProperty)(parsedValue, theme, direction, darkMode)
+  }
+}
+
 export const TransformMapping: StyleProps = {
   transform: transform,
   transformOrigin: css("transformOrigin"),
@@ -70,13 +90,13 @@ export const TransformMapping: StyleProps = {
   scaleX: css("--so-scale-x", "transform.scale"),
   scaleY: css("--so-scale-y", "transform.scale"),
   scaleZ: css("--so-scale-z", "transform.scale"),
-  rotate: css("--so-rotate", "transform.rotate"),
-  rotateX: css("--so-rotate-x", "transform.rotate"),
-  rotateY: css("--so-rotate-y", "transform.rotate"),
-  rotateZ: css("--so-rotate-z", "transform.rotate"),
-  skewX: css("--so-skew-x", "transform.scale"),
-  skewY: css("--so-skew-y", "transform.scale"),
-  translateX: css("--so-translate-x", "transform.translate"),
-  translateY: css("--so-translate-y", "transform.translate"),
-  translateZ: css("--so-translate-z", "transform.translate"),
+  rotate: angle("--so-rotate", "transform.rotate"),
+  rotateX: angle("--so-rotate-x", "transform.rotate"),
+  rotateY: angle("--so-rotate-y", "transform.rotate"),
+  rotateZ: angle("--so-rotate-z", "transform.rotate"),
+  skewX: angle("--so-skew-x", "transform.scale"),
+  skewY: angle("--so-skew-y", "transform.scale"),
+  translateX: spacing("--so-translate-x", "transform.translate"),
+  translateY: spacing("--so-translate-y", "transform.translate"),
+  translateZ: spacing("--so-translate-z", "transform.translate"),
 };

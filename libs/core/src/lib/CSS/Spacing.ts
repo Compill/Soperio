@@ -32,7 +32,6 @@ export function spacing(cssProperty: string | string[], themeProperty?: string)
 {
     return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
     {
-        console.log("spacing", value, typeof value)
         const parsedValue = typeof value == "number" ? `${value}px` : (value === "px" ? "1px" : (value === "-px" ? "-1px" : value as string))
 
         return css(cssProperty, themeProperty)(parsedValue, theme, direction, darkMode)
