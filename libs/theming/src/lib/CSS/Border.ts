@@ -2,20 +2,20 @@ import { BorderRadius, BorderWidth, Color, Opacity } from "../CSSTypes";
 
 export interface Border
 {
-  rounded?: true | false | BorderRadius,
-  roundedT?: true | false | BorderRadius,
-  roundedB?: true | false | BorderRadius,
-  roundedS?: true | false | BorderRadius,
-  roundedE?: true | false | BorderRadius,
-  roundedTS?: true | false | BorderRadius,
-  roundedTE?: true | false | BorderRadius,
-  roundedBS?: true | false | BorderRadius,
-  roundedBE?: true | false | BorderRadius,
-  border?: true | false | BorderWidth,
-  borderT?: true | false | BorderWidth,
-  borderB?: true | false | BorderWidth,
-  borderS?: true | false | BorderWidth,
-  borderE?: true | false | BorderWidth,
+  rounded?: true | false | BorderRadius | number,
+  roundedT?: true | false | BorderRadius | number,
+  roundedB?: true | false | BorderRadius | number,
+  roundedS?: true | false | BorderRadius | number,
+  roundedE?: true | false | BorderRadius | number,
+  roundedTS?: true | false | BorderRadius | number,
+  roundedTE?: true | false | BorderRadius | number,
+  roundedBS?: true | false | BorderRadius | number,
+  roundedBE?: true | false | BorderRadius | number,
+  border?: true | false | BorderWidth | number,
+  borderT?: true | false | BorderWidth | number,
+  borderB?: true | false | BorderWidth | number,
+  borderS?: true | false | BorderWidth | number,
+  borderE?: true | false | BorderWidth | number,
   borderColor?: false | Color,
   borderTColor?: false | Color,
   borderBColor?: false | Color,
@@ -27,23 +27,23 @@ export interface Border
   /**
    * true is equal to (inexisting, default) value 1
    */
-  divideX?: true | false | BorderWidth,
+  divideX?: true | false | BorderWidth | number,
   /**
    * true is equal to (inexisting, default) value 1
    */
-  divideY?: true | false | BorderWidth,
+  divideY?: true | false | BorderWidth | number,
   divideXReverse?: boolean,
   divideYReverse?: boolean,
   divideColor?: false | string,
   divideOpacity?: false | Opacity,
   divideStyle?: false | "solid" | "dashed" | "dotted" | "double" | "none",
-  outline?: true | false | BorderWidth,
+  outline?: true | false | BorderWidth | number,
   outlineColor?: false | Color,
   outlineOpacity?: false | Opacity,
-  outlineOffset?: true |false | BorderWidth,
-  ring?: true | false | BorderWidth,
+  outlineOffset?: true | false | BorderWidth | number,
+  ring?: true | false | BorderWidth | number,
   ringColor?: false | Color,
   ringInset?: true | false,
-  ringOffset?: true | false | BorderWidth,
+  ringOffset?: true | false | BorderWidth | number,
   ringOffsetColor?: false | Color;
 }
