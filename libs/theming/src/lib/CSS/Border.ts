@@ -1,4 +1,4 @@
-import { BorderRadius, BorderWidth, Color, Opacity } from "../CSSTypes";
+import { BorderRadius, BorderWidth, Color, Opacity, Spacing } from "../CSSTypes";
 
 export interface Border
 {
@@ -37,7 +37,7 @@ export interface Border
   divideColor?: false | string,
   divideOpacity?: false | Opacity,
   divideStyle?: false | "solid" | "dashed" | "dotted" | "double" | "none",
-  outline?: true | false | BorderWidth | number,
+  outline?: true | false | BorderWidth | Spacing | number,
   outlineColor?: false | Color,
   outlineOpacity?: false | Opacity,
   outlineOffset?: true | false | BorderWidth | number,

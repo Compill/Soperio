@@ -117,7 +117,7 @@ function ringInset(value: any)
   return {}
 }
 
-function border(cssProperty: string | string[])
+function border(cssProperty: string | string[], positiveOnly: boolean = true)
 {
   return (value: StyleProp, theme: Theme, direction: boolean, darkMode: boolean) =>
   {
@@ -128,7 +128,7 @@ function border(cssProperty: string | string[])
 
     if (parsedValue === undefined)
     {
-      const styles = spacing(cssProperty, "spacing.positive")(value === true ? "default" : value, theme, direction, darkMode)
+      const styles = spacing(cssProperty, positiveOnly ? "spacing.positive" : "spacing.positiveNegative")(value === true ? "default" : value, theme, direction, darkMode)
 
       if (styles && Object.keys(styles).length > 0)
         return styles
@@ -187,7 +187,7 @@ export const BorderMapping: StyleProps =
   divideOpacity: divideOpacity,
   divideStyle: css("borderStyle"),
   outline: outline,
-  outlineOffset: border("outlineOffset"),
+  outlineOffset: border("outlineOffset", false),
   outlineColor: colorize("outlineColor", "--so-outline-opacity"),
   outlineOpacity: opacity("--so-outline-opacity"),
   ring: ringWidth,
