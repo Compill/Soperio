@@ -1,12 +1,20 @@
+import { usePropsAsStyleObject } from "@soperio/core";
 import { ServerComponent } from "@soperio/react";
-import { useDirection } from "@soperio/theming";
+import { ParentComponent, SoperioComponent, useDirection } from "@soperio/theming";
 import { Suspense } from "react";
+
+function TestUseAsStyle({ children, ...props }: SoperioComponent & ParentComponent)
+{
+  const style = usePropsAsStyleObject(props)
+
+  return <div style={style}>{children}</div>
+}
 
 export default function Test({ ...props })
 {
   const direction = useDirection()
   return (
-    <div w="100%" dflex flexCol  py="10" gap="5">
+    <div w="100%" dflex flexCol py="10" gap="5">
 
       <div bgColor="blue" textColor="white" pb="4">Hello</div>
       <div bgColor="blue" textColor="white" pb="5">Hello</div>
@@ -26,6 +34,26 @@ export default function Test({ ...props })
         <li>List Item</li>
       </ServerComponent> */}
 
+      <TestUseAsStyle
+        w="96"
+        h="96"
+        textColor="white"
+        lg_textColor="red"
+        lg_bgColor="black"
+        spaceX="3"
+        x2_bgColor="yellow"
+        bgColor="teal"
+        css={{ backgroundColor: "blue" }}
+        sm_css={{ backgroundColor: "pink" }}
+        md_css={{ backgroundColor: "green" }}
+        // lg_css={{ backgroundColor: "red"}}
+        xl_css={{ backgroundColor: "indigo" }}
+        x2_css={{ backgroundColor: "brown" }}
+        // animate="spin"
+      >
+        Test responsive emotion css prop
+      </TestUseAsStyle>
+
       <div
         w="96"
         h="96"
@@ -35,29 +63,28 @@ export default function Test({ ...props })
         spaceX="3"
         x2_bgColor="yellow"
         bgColor="teal"
-        css={{ backgroundColor: "blue"}}
-        sm_css={{ backgroundColor: "pink"}}
-        md_css={{ backgroundColor: "green"}}
+        css={{ backgroundColor: "blue" }}
+        sm_css={{ backgroundColor: "pink" }}
+        md_css={{ backgroundColor: "green" }}
         // lg_css={{ backgroundColor: "red"}}
-        xl_css={{ backgroundColor: "indigo"}}
-        x2_css={{ backgroundColor: "brown"}}
-        animate="spin"
-        >
-          Test responsive emotion css prop
-        </div>
-
+        xl_css={{ backgroundColor: "indigo" }}
+        x2_css={{ backgroundColor: "brown" }}
+      // animate="spin"
+      >
+        Test responsive emotion css prop
+      </div>
 
       <p>This is a text without indent<br />on two lines of content</p>
       <p lineClamp="5" textSize="xl">
-          This is a text without indent line 1<br/>
-          This is a text without indent line 2<br/>
-          This is a text without indent line 3<br/>
-          This is a text without indent line 4<br/>
-          This is a text without indent line 5<br/>
-          This is a text without indent line 6<br/>
-          This is a text without indent line 7<br/>
-          This is a text without indent line 8<br/>
-        </p>
+        This is a text without indent line 1<br />
+        This is a text without indent line 2<br />
+        This is a text without indent line 3<br />
+        This is a text without indent line 4<br />
+        This is a text without indent line 5<br />
+        This is a text without indent line 6<br />
+        This is a text without indent line 7<br />
+        This is a text without indent line 8<br />
+      </p>
       <br />
       <br />
       <div lineClamp="5" textSize="xl">
