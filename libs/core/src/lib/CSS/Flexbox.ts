@@ -1,3 +1,4 @@
+import { Theme } from "@soperio/theming";
 import { css, StyleProp, StyleProps } from "./utils";
 
 
@@ -115,7 +116,7 @@ function flexRow(value: StyleProp)
 
 function gap(cssProperty: string)
 {
-  return (value: StyleProp) =>
+  return (value: any, theme: Theme, direction: boolean, darkMode: boolean) =>
   {
 
     let parsedValue = value
@@ -123,7 +124,7 @@ function gap(cssProperty: string)
     if (typeof parsedValue == "number")
       parsedValue = `${parsedValue}px`
 
-    return css(cssProperty, "spacing.positive")
+    return css(cssProperty, "spacing.positive")(parsedValue, theme, direction, darkMode)
   }
 }
 

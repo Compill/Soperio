@@ -14,7 +14,7 @@ export default function Test({ ...props })
 {
   const direction = useDirection()
   return (
-    <div w="100%" dflex flexCol py="10" gap="5">
+    <div w="100%" dflex flexCol p="10" gap="12">
 
       <div bgColor="blue" textColor="white" pb="4">Hello</div>
       <div bgColor="blue" textColor="white" pb="5">Hello</div>
