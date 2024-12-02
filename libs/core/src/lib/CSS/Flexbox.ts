@@ -113,6 +113,20 @@ function flexRow(value: StyleProp)
   return { "flexDirection": parsedValue };
 }
 
+function gap(cssProperty: string)
+{
+  return (value: StyleProp) =>
+  {
+
+    let parsedValue = value
+
+    if (typeof parsedValue == "number")
+      parsedValue = `${parsedValue}px`
+
+    return css(cssProperty, "spacing.positive")
+  }
+}
+
 export const FlexboxMapping: StyleProps = {
   flexRow: flexRow,
   flexCol: flexCol,
@@ -134,9 +148,9 @@ export const FlexboxMapping: StyleProps = {
   gridFlow: css("gridAutoFlow"),
   gridAutoCols: css("gridAutoColumns", "flexbox.gridAutoColumns"),
   gridAutoRows: css("gridAutoRows", "flexbox.gridAutoRows"),
-  gap: css("gap", "spacing.positive"),
-  gapX: css("columnGap", "spacing.positive"),
-  gapY: css("rowGap", "spacing.positive"),
+  gap: gap("gap"),
+  gapX: gap("columnGap"),
+  gapY: gap("rowGap"),
   justifyContent: content("justifyContent"),
   justifyItems: css("justifyItems"),
   justifySelf: css("justifySelf"),
