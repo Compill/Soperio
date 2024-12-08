@@ -16,6 +16,10 @@ function processValue(cssProperty: string, themeProperty:string): ThemeStyleFn
         {
             parsedValue = themeValue;
         }
+        else if (typeof value == "number")
+        {
+          parsedValue = `${value}px`
+        }
         else if (typeof value === "string" && value.includes("/"))
         {
             const dividers = value.split("/");

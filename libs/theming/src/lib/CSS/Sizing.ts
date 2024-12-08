@@ -2,10 +2,10 @@ import { AspectRatio, Height, MaxHeight, MaxWidth, MinHeight, MinWidth, SpacingP
 
 export interface Sizing {
     aspectRatio?: false | AspectRatio,
-    w?: false | Width,
-    h?: false | Height,
-    minW?: false | MinWidth,
-    minH?: false | MinHeight,
-    maxW?: false | MaxWidth,
-    maxH?: false | SpacingPositive | MaxHeight,
+    w?: false | Width | number,
+  h?: false | Height | number,
+  minW?: false | MinWidth | number,
+  minH?: false | MinHeight | number,
+  maxW?: false | MaxWidth | number,
+  maxH?: false | SpacingPositive | MaxHeight | number,
 }
