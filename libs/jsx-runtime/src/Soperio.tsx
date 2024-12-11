@@ -5,7 +5,7 @@ import { useDarkMode, useDirection, useTheme } from "@soperio/theming";
 
 export const SOPERIO_TYPE = "__SOPERIO_TYPE_PLEASE_DO_NOT_USE__"
 
-export const Soperio = React.forwardRef((props:any, ref) =>
+export const Soperio = React.forwardRef((props: any, ref) =>
 {
   const theme = useTheme()
   const direction = useDirection()
@@ -13,8 +13,13 @@ export const Soperio = React.forwardRef((props:any, ref) =>
 
   const type = props[SOPERIO_TYPE];
 
-  const newProps = typeof type === "string" ? parseProps(props, theme, direction, darkMode) : {...props};
-  newProps.ref = ref;
+  const newProps = React.useMemo(() =>
+  {
+    const p = typeof type === "string" ? parseProps(props, theme, direction, darkMode) : { ...props }
+    p.ref = ref
+
+    return p
+  }, [props, type, theme, direction, darkMode, ref]);
 
   return EmotionJSX(type, newProps, newProps.children);
 });
