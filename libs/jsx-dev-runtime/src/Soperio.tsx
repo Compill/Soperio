@@ -13,7 +13,7 @@ export const Soperio = React.forwardRef((props: any, ref) =>
 
   const type = props[SOPERIO_TYPE];
 
-  if (theme !== undefined && direction !== undefined && darkMode !== undefined)
+  if (typeof theme !== "undefined" && typeof direction !== "undefined" && typeof darkMode !== "undefined")
   {
     const newProps = React.useMemo(() =>
       {
