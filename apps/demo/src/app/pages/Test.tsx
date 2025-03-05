@@ -2,6 +2,7 @@ import { usePropsAsStyleObject } from "@soperio/core";
 import { ServerComponent } from "@soperio/react";
 import { ParentComponent, SoperioComponent, useDirection } from "@soperio/theming";
 import { Suspense } from "react";
+import { AppContextProvider } from "../layout/AppContext";
 
 function TestUseAsStyle({ children, ...props }: SoperioComponent & ParentComponent)
 {
@@ -12,7 +13,6 @@ function TestUseAsStyle({ children, ...props }: SoperioComponent & ParentCompone
 
 export default function Test({ ...props })
 {
-  const direction = useDirection()
   return (
     <div w="100%" dflex flexCol p="10" gap="12">
 
@@ -27,6 +27,8 @@ export default function Test({ ...props })
         <div>Hello</div>
         <div>Hello</div>
       </div>
+
+      <AppContextProvider></AppContextProvider>
 
       {/* <TestFunctionComponent />
       <TestConstComponent /> */}

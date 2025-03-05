@@ -13,13 +13,18 @@ export const Soperio = React.forwardRef((props: any, ref) =>
 
   const type = props[SOPERIO_TYPE];
 
-  const newProps = React.useMemo(() =>
+  if (theme !== undefined && direction !== undefined && darkMode !== undefined)
   {
-    const p = typeof type === "string" ? parseProps(props, theme, direction, darkMode) : { ...props }
-    p.ref = ref
+    const newProps = React.useMemo(() =>
+      {
+        const p = typeof type === "string" ? parseProps(props, theme, direction, darkMode) : { ...props }
+        p.ref = ref
 
-    return p
-  }, [props, type, theme, direction, darkMode, ref]);
+        return p
+      }, [props, type, theme, direction, darkMode, ref]);
 
-  return EmotionJSX(type, newProps, newProps.children);
+      return EmotionJSX(type, newProps, newProps.children);
+  }
+
+  return EmotionJSX(type, props, props.children);
 });

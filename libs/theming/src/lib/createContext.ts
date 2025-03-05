@@ -14,8 +14,14 @@ export function createContext<ContextType>()
   {
     const context = React.useContext(Context);
 
+    // Don't throw error anymore to be compatible with other libraries
     if (!context)
-      throw new Error("[@soperio/react createContext] Your forgot to wrap the component in its Provider before using useContext()")
+    {
+      console.warn("[@soperio/react createContext] Your forgot to wrap the component in its Provider before using useContext()")
+
+      return {}
+    }
+      // throw new Error("[@soperio/react createContext] Your forgot to wrap the component in its Provider before using useContext()")
 
     return context;
   }

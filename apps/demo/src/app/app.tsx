@@ -43,20 +43,23 @@ function App()
 
 function AppContent()
 {
-  console.log("app content")
   const { theme } = useAppContext()
 
   return (
-    <SoperioProvider theme={theme}>
+    <div>
+      <AppContextProvider>
+        <SoperioProvider theme={theme}>
           <Content />
-      {/* <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
+          {/* <div dflex flexRow alignItems="start" transition="all" bgColor="--bg">
         <Menu />
         <div flexGrow h="screen" ms="240px" transition="all">
           <Header />
           <Content />
         </div>
       </div> */}
-    </SoperioProvider>
+        </SoperioProvider>
+      </AppContextProvider>
+    </div>
   )
 }
 

@@ -34,7 +34,7 @@ function createSoperioProps(type: React.ElementType, props: any)
   return { ...props, [typePropName]: asType ?? type };
 }
 
-const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body" , "style", "base" ]
+const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body", "style", "base"]
 
 export function jsxDEV<P>(
   type: React.ElementType<P>,
@@ -54,8 +54,8 @@ export function jsxDEV<P>(
   // @ts-ignore
   if (typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
   {
-    // @ts-ignore
-    return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
+      // @ts-ignore
+      return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
   }
   // That's how emotion is doing it!
   //  instead of passing type, they put the type in a special prop
@@ -63,7 +63,7 @@ export function jsxDEV<P>(
   // return emotionJsxDEV(Soperio, parseProps(props), key, isStaticChildren, source, self);
   // @ts-ignore
   return ReactJSXRuntimeDev.jsxDEV(type, props, key, isStaticChildren, source, self);
-    // return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
+  // return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
 }
 
 /**
