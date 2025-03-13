@@ -30,7 +30,7 @@ export interface Typography
   textOverflow?: false | "truncate" | "ellipsis" | "clip",
   textWrap?: false | "wrap" | "nowrap" | "balance" | "pretty"
   verticalAlign?: false | "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
-  whiteSpace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap",
+  whiteSpace?: false | "normal" | "nowrap" | "pre" | "pre-line" | "pre-wrap" | "words",
   wordBreak?: false | "normal" | "words" | "all",
   textColumns?: false | OrString<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8"> | number,
   /**
