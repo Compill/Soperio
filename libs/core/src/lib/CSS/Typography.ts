@@ -15,7 +15,7 @@ function processDimension(cssProperty: string, themeProperty: string): ThemeStyl
 
     const themeValue = getThemeStyle(theme, themeProperty, value);
 
-    if (themeValue !== undefined || typeof value === "string")
+    if (themeValue !== undefined)
     {
       parsedValue = themeValue;
     }
