@@ -26,7 +26,7 @@ export interface Typography
   textDecorationThickness?: false | "auto" | "from-font" | TextDecorationThickness
   textUnderlineOffset?: false | "auto" | SpacingPositive
   textOpacity?: false | Opacity,
-  textTransform?: false | "uppercase" | "lowercase" | "capitalize" | "normal-case",
+  textTransform?: false | "uppercase" | "lowercase" | "capitalize" | "none",
   textOverflow?: false | "truncate" | "ellipsis" | "clip",
   textWrap?: false | "wrap" | "nowrap" | "balance" | "pretty"
   verticalAlign?: false | "baseline" | "top" | "middle" | "bottom" | "text-top" | "text-bottom",
