@@ -21,6 +21,11 @@ export function usePropsAsStyleObject(props: SoperioComponent)
   return parseProps(props, theme, direction, darkMode)
 }
 
+export function getPropsAsStyleObject(props: SoperioComponent, theme: Theme, direction: boolean, darkMode: boolean)
+{
+  return parseProps(props, theme, direction, darkMode)
+}
+
 const CACHE_TYPE = "prop"
 const REMOVE_IF_VARIANT = "remove_if_variant"
 
