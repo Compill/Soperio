@@ -10,7 +10,7 @@ import { Typography } from "../Typography";
 
 export interface Hover extends
   Pick<Background, "bgColor" | "bgOpacity">,
-  Pick<Border, "border" | "borderB" | "borderE" | "borderS" | "borderT" | "borderColor" | "borderBColor" | "borderEColor" | "borderSColor" | "borderTColor" | "borderOpacity">,
+  Pick<Border, "border" | "borderB" | "borderE" | "borderS" | "borderT" | "borderColor" | "borderBColor" | "borderEColor" | "borderSColor" | "borderTColor" | "borderOpacity" | "outline" | "outlineColor">,
   Pick<Effects, "opacity" | "shadow" | "shadowColor">,
   Pick<Layout, "bottom" | "end" | "start" | "top" | "display">,
   Pick<Sizing, "w" | "h">,
