@@ -41,7 +41,7 @@ export function jsx<P>(
   key?: string
 ): SoperioJSX.Element
 {
-  const isServerSide = window === undefined
+  const isClient = typeof window !== "undefined";
 
   // Idea: create a SoperioServerComponent
   // This would prevent generating an Emotion component
@@ -50,7 +50,7 @@ export function jsx<P>(
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
   // @ts-ignore
-  if (!isServerSide && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
+  if (!isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
