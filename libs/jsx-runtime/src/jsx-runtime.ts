@@ -50,7 +50,7 @@ export function jsx<P>(
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
   // @ts-ignore
-  if (!isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
+  if (isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
