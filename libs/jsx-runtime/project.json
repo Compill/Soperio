@@ -5,7 +5,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
+      "executor": "@nrwl/js:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "buildableProjectDepsInPackageJsonType": "dependencies",
@@ -21,7 +21,6 @@
           "@soperio/theming",
           "@soperio/utils"
         ],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "format": [
           "esm",
           "cjs"
