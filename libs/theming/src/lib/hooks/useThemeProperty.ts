@@ -1,5 +1,5 @@
 import { useTheme } from "./useTheme";
-import { property as getProperty } from "lodash"
+import { property as getProperty } from "es-toolkit/compat"
 
 // TODO Stringly type property and key
 export function useThemeProperty(property: string, key: string | number | undefined)

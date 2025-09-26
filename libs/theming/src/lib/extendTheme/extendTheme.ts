@@ -4,7 +4,7 @@ import { defaultTheme } from "../defaultTheme";
 import { ExtendTheme } from "../ExtendTheme";
 import { isSoperioTheme } from "../isSoperioTheme";
 import { Theme } from "../Theme";
-import { mergeWith } from "lodash"
+import { mergeWith } from "es-toolkit/compat"
 
 type AnyFunction<T = any> = (...args: T[]) => any;
 

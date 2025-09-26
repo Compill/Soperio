@@ -1,5 +1,5 @@
-import { property } from "lodash";
 import { Theme } from "../Theme";
+import { property } from "es-toolkit/compat"
 
 export function getThemeStyle(theme: Theme, themeProperty: string | string[], key: string | number): any
 {
