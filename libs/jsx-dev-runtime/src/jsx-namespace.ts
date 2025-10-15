@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { SoperioComponent } from "@soperio/theming";
-import React from "react";
+import React, { JSX } from "react";
 
 type WithConditionalSoperioProp<P> = 'className' extends keyof P
   ? string extends P['className']

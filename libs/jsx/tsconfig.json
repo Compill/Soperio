@@ -8,13 +8,10 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "typeRoots": [
-      "../../src/types"
-    ]
+    "noFallthroughCasesInSwitch": true
   },
   "files": [],
-  "include": ["../../src/types/**/*"],
+  "include": [],
   "references": [
     {
       "path": "./tsconfig.lib.json"

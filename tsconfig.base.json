@@ -14,14 +14,19 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ],
     "baseUrl": ".",
     "paths": {
       "@soperio/cli": ["libs/cli/src/index.ts"],
       "@soperio/components": ["libs/components/src/index.ts"],
       "@soperio/core": ["libs/core/src/index.ts"],
       "@soperio/css": ["libs/css/src/index.ts"],
-      "@soperio/jsx-dev-runtime": ["libs/jsx-dev-runtime/src/index.ts"],
-      "@soperio/jsx-runtime": ["libs/jsx-runtime/src/index.ts"],
+      "@soperio/jsx": ["libs/jsx/src/index.ts"],
+      "@soperio/jsx/jsx-runtime": ["libs/jsx/src/jsx-runtime.ts"],
+      "@soperio/jsx/jsx-dev-runtime": ["libs/jsx/src/jsx-dev-runtime.ts"],
       "@soperio/props-docs": ["libs/props-docs/src/index.ts"],
       "@soperio/react": ["libs/react/src/index.ts"],
       "@soperio/theme-extensions": ["libs/theme-extensions/src/index.ts"],
@@ -30,5 +35,9 @@
       "@soperio/utils": ["libs/utils/src/index.ts"]
     }
   },
+  "include": [
+    "src/**/*",
+    "src/types/**/*"
+  ],
   "exclude": ["node_modules", "tmp"]
 }

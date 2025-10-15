@@ -1,0 +1,30 @@
+{
+  "name": "@soperio/jsx",
+  "version": "0.2.119",
+  "description": "React CSS-IN-JS framework",
+  "keywords": [
+    "react",
+    "ui",
+    "framework"
+  ],
+  "homepage": "https://github.com/Compill/Soperio",
+  "bugs": {
+    "url": "https://github.com/Compill/Soperio/issues",
+    "email": "dev@compill.com"
+  },
+  "license": "MIT",
+  "author": "Jonathan Gerbaud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Compill/Soperio.git"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2 || ^18.0.0",
+    "@emotion/react": "^11.9.0"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./jsx-runtime": "./jsx-runtime.ts",
+    "./jsx-dev-runtime": "./jsx-dev-runtime.ts"
+  }
+}

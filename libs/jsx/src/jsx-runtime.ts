@@ -41,7 +41,6 @@ export function jsx<P>(
   key?: string
 ): SoperioJSX.Element
 {
-  console.log("jsx runtime")
   const isClient = typeof window !== "undefined";
 
   // Idea: create a SoperioServerComponent

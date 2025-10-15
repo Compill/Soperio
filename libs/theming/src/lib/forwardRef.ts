@@ -80,20 +80,20 @@ export declare type MergeWithAs<
 //   id?: string
 // }
 
-export declare type ComponentWithAs<Component extends As, Props extends object = {}> = {
-  <AsComponent extends As = Component>(
-    props: MergeWithAs<
-      React.ComponentProps<Component>,
-      React.ComponentProps<AsComponent>,
-      Props,
-      AsComponent>
-  ): JSX.Element;
-  displayName?: string;
-  propTypes?: React.WeakValidationMap<any>;
-  contextTypes?: React.ValidationMap<any>;
-  defaultProps?: Partial<any>;
-  id?: string;
-};
+// export declare type ComponentWithAs<Component extends As, Props extends object = {}> = {
+//   <AsComponent extends As = Component>(
+//     props: MergeWithAs<
+//       React.ComponentProps<Component>,
+//       React.ComponentProps<AsComponent>,
+//       Props,
+//       AsComponent>
+//   ): React.JSX.Element;
+//   displayName?: string;
+//   propTypes?: React.WeakValidationMap<any>;
+//   contextTypes?: React.ValidationMap<any>;
+//   defaultProps?: Partial<any>;
+//   id?: string;
+// };
 
 // export function forwardRef<Component extends As, Props extends object>(
 //   component: React.ForwardRefRenderFunction<
@@ -120,10 +120,11 @@ export function forwardRefWithAs<Component extends As, Props extends object>(
   >,
 )
 {
-  return React.forwardRef(component) as unknown as ComponentWithAs<
-    Component,
-    Props
-  >
+  // @ts-ignore
+  return React.forwardRef(component)// as unknown as ComponentWithAs<
+  //   Component,
+  //   Props
+  // >
 }
 
 export function forwardRef<Component extends As, Props extends object>(
@@ -133,5 +134,6 @@ export function forwardRef<Component extends As, Props extends object>(
   >
 )
 {
+  // @ts-ignore
   return React.forwardRef(component)
 }

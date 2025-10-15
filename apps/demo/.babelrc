@@ -1,5 +1,5 @@
 {
   "presets": [
-    ["@nrwl/react/babel", { "runtime": "automatic", "importSource": "@soperio" }]
+    ["@nrwl/react/babel", { "runtime": "automatic", "importSource": "@soperio/jsx" }]
   ],
 }

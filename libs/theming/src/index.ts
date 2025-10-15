@@ -4,7 +4,6 @@ export type { ResponsiveProps } from "./lib/CSSProps";
 export type { Breakpoints, Color, Height, MaxHeight, MaxWidth, MinHeight, MinWidth, Opacity, Rotate, Spacing, SpacingPositive, Width } from './lib/CSSTypes';
 export * from './lib/ExtendTheme';
 export * from './lib/extendTheme/extendTheme';
-export { forwardRef, forwardRefWithAs } from "./lib/forwardRef";
 export type { RightJoinProps } from "./lib/forwardRef";
 export * from './lib/hooks/useBreakpoint';
 export * from './lib/hooks/useColor';
