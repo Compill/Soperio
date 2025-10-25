@@ -3,7 +3,6 @@ import React from "react";
 import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
 import { SoperioJSX } from "./jsx-namespace";
 import { SVGSoperioProps } from "./SVG";
-import { Soperio } from "./Soperio";
 
 export { Fragment } from 'react';
 export type { SoperioJSX as JSX } from './jsx-namespace';
@@ -35,6 +34,8 @@ function createSoperioProps(type: React.ElementType, props: any)
 }
 
 const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body", "style", "base"]
+
+let Soperio: any = null;
 
 export function jsxDEV<P>(
   type: React.ElementType<P>,
