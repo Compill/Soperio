@@ -42,7 +42,7 @@ export function jsx<P>(
   key?: string
 ): SoperioJSX.Element
 {
-  const isClient = typeof window !== "undefined";
+  // const isClient = typeof window !== "undefined";
 
   // @ts-ignore
   const isServer = props.server
@@ -54,7 +54,7 @@ export function jsx<P>(
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
   // @ts-ignore
-  if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
+  if (!isServer /*&& isClient*/ && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
     if (!Soperio)
       Soperio = require("./Soperio").Soperio;
@@ -78,7 +78,7 @@ export function jsxs<P>(
   key?: string
 ): SoperioJSX.Element
 {
-  const isClient = typeof window !== "undefined";
+  // const isClient = typeof window !== "undefined";
 
   // @ts-ignore
   const isServer = props.server
@@ -87,7 +87,7 @@ export function jsxs<P>(
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
   // @ts-ignore
-  if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
+  if (!isServer /*&& isClient */&& typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
     if (!Soperio)
       Soperio = require("./Soperio").Soperio;

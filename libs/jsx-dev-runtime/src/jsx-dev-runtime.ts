@@ -51,13 +51,13 @@ export function jsxDEV<P>(
 ): SoperioJSX.Element
 {
   // console.log("soperio dev jsx, typeof", typeof type, type, props);
-  const isClient = typeof window !== "undefined";
+  // const isClient = typeof window !== "undefined";
 
   // @ts-ignore
   const isServer = props.server
 
   // @ts-ignore
-  if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
+  if (!isServer && /*isClient &&*/ typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
   {
     if (!Soperio)
       Soperio = require("./Soperio").Soperio;
