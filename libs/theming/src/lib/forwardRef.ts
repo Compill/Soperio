@@ -87,9 +87,11 @@ export declare type ComponentWithAs<Component extends As, Props extends object =
       React.ComponentProps<AsComponent>,
       Props,
       AsComponent>
-  ): JSX.Element;
+  ): React.JSX.Element;
   displayName?: string;
+  // @ts-ignore
   propTypes?: React.WeakValidationMap<any>;
+  // @ts-ignore
   contextTypes?: React.ValidationMap<any>;
   defaultProps?: Partial<any>;
   id?: string;
@@ -120,6 +122,7 @@ export function forwardRefWithAs<Component extends As, Props extends object>(
   >,
 )
 {
+  // @ts-ignore
   return React.forwardRef(component) as unknown as ComponentWithAs<
     Component,
     Props
@@ -133,5 +136,6 @@ export function forwardRef<Component extends As, Props extends object>(
   >
 )
 {
+  // @ts-ignore
   return React.forwardRef(component)
 }
