@@ -2,7 +2,6 @@ import { SoperioComponent } from "@soperio/theming";
 import React from "react";
 import * as ReactJSXRuntime from "react/jsx-runtime";
 import { SoperioJSX } from "./jsx-namespace";
-import { Soperio } from "./Soperio";
 import { SVGSoperioProps } from "./SVG";
 export { Fragment } from 'react';
 export type { SoperioJSX as JSX } from './jsx-namespace';
@@ -32,6 +31,8 @@ function createSoperioProps(type: React.ElementType, props: any)
   return { ...props, [typePropName]: asType ?? type };
 }
 
+let Soperio: any = null;
+
 // TODO Add SVG sub elements like path, g, polyline, ...
 const nonStyleableHtmlTags = ["html", "head", "link", "meta", "title", "script", "body", "style", "base"]
 
@@ -55,6 +56,9 @@ export function jsx<P>(
   // @ts-ignore
   if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
+    if (!Soperio)
+      Soperio = require("./Soperio").Soperio;
+
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
     return ReactJSXRuntime.jsx(Soperio, createSoperioProps(type, props), key);
@@ -85,6 +89,8 @@ export function jsxs<P>(
   // @ts-ignore
   if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
+    if (!Soperio)
+      Soperio = require("./Soperio").Soperio;
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
     return ReactJSXRuntime.jsxs(Soperio, createSoperioProps(type, props), key);

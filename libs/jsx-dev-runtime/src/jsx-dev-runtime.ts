@@ -2,7 +2,6 @@ import { SoperioComponent } from '@soperio/theming';
 import React from "react";
 import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
 import { SoperioJSX } from "./jsx-namespace";
-import { Soperio } from "./Soperio";
 import { SVGSoperioProps } from "./SVG";
 
 export { Fragment } from 'react';
@@ -36,6 +35,8 @@ function createSoperioProps(type: React.ElementType, props: any)
 
 const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body", "style", "base"]
 
+let Soperio: any = null;
+
 export function jsxDEV<P>(
   type: React.ElementType<P>,
   props: P,
@@ -58,8 +59,11 @@ export function jsxDEV<P>(
   // @ts-ignore
   if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
   {
-      // @ts-ignore
-      return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
+    if (!Soperio)
+      Soperio = require("./Soperio").Soperio;
+
+    // @ts-ignore
+    return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
   }
   // That's how emotion is doing it!
   //  instead of passing type, they put the type in a special prop
@@ -67,7 +71,7 @@ export function jsxDEV<P>(
   // return emotionJsxDEV(Soperio, parseProps(props), key, isStaticChildren, source, self);
 
 
-  const _props = {...props}
+  const _props = { ...props }
   delete _props["server"]
 
   // @ts-ignore
