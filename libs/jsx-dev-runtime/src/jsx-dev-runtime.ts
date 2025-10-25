@@ -50,9 +50,13 @@ export function jsxDEV<P>(
 ): SoperioJSX.Element
 {
   // console.log("soperio dev jsx, typeof", typeof type, type, props);
+  const isClient = typeof window !== "undefined";
 
   // @ts-ignore
-  if (typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
+  const isServer = props.server
+
+  // @ts-ignore
+  if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
   {
       // @ts-ignore
       return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
@@ -61,8 +65,13 @@ export function jsxDEV<P>(
   //  instead of passing type, they put the type in a special prop
   // and use type "Emotion" to create the component
   // return emotionJsxDEV(Soperio, parseProps(props), key, isStaticChildren, source, self);
+
+
+  const _props = {...props}
+  delete _props["server"]
+
   // @ts-ignore
-  return ReactJSXRuntimeDev.jsxDEV(type, props, key, isStaticChildren, source, self);
+  return ReactJSXRuntimeDev.jsxDEV(type, _props, key, isStaticChildren, source, self);
   // return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
 }
 
