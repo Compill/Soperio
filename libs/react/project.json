@@ -13,7 +13,9 @@
         "tsConfig": "libs/react/tsconfig.lib.json",
         "project": "libs/react/package.json",
         "entryFile": "libs/react/src/index.ts",
-        "external": ["react/jsx-runtime", "react/jsx-dev-runtime", "@emotion/react", "tslib"],
+        "external": ["react/jsx-runtime", "react/jsx-runtime-server",
+          "react/jsx-dev-runtime", "react/jsx-dev-runtime-server",
+          "@emotion/react", "tslib"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "format": [
           "esm",

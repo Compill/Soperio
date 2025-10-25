@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/jsx-runtime/src",
+  "sourceRoot": "libs/jsx-runtime-server/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -10,10 +10,10 @@
       "options": {
         "buildableProjectDepsInPackageJsonType": "dependencies",
         "updateBuildableProjectDepsInPackageJson": true,
-        "outputPath": "dist/libs/jsx-runtime",
-        "tsConfig": "libs/jsx-runtime/tsconfig.lib.json",
-        "project": "libs/jsx-runtime/package.json",
-        "entryFile": "libs/jsx-runtime/src/index.ts",
+        "outputPath": "dist/libs/jsx-runtime-server",
+        "tsConfig": "libs/jsx-runtime-server/tsconfig.lib.json",
+        "project": "libs/jsx-runtime-server/package.json",
+        "entryFile": "libs/jsx-runtime-server/src/index.ts",
         "external": [
           "react/jsx-runtime",
           "@emotion/react",
@@ -29,7 +29,7 @@
         ],
         "assets": [
           {
-            "glob": "libs/jsx-runtime/README.md",
+            "glob": "libs/jsx-runtime-server/README.md",
             "input": ".",
             "output": "."
           }
@@ -40,14 +40,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/jsx-runtime/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/jsx-runtime-server/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/jsx-runtime"],
+      "outputs": ["coverage/libs/jsx-runtime-server"],
       "options": {
-        "jestConfig": "libs/jsx-runtime/jest.config.ts",
+        "jestConfig": "libs/jsx-runtime-server/jest.config.ts",
         "passWithNoTests": true
       }
     },

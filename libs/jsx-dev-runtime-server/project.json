@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/jsx-dev-runtime/src",
+  "sourceRoot": "libs/jsx-dev-runtime-server/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -10,10 +10,10 @@
       "options": {
         "buildableProjectDepsInPackageJsonType": "dependencies",
         "updateBuildableProjectDepsInPackageJson": true,
-        "outputPath": "dist/libs/jsx-dev-runtime",
-        "tsConfig": "libs/jsx-dev-runtime/tsconfig.lib.json",
-        "project": "libs/jsx-dev-runtime/package.json",
-        "entryFile": "libs/jsx-dev-runtime/src/index.ts",
+        "outputPath": "dist/libs/jsx-dev-runtime-server",
+        "tsConfig": "libs/jsx-dev-runtime-server/tsconfig.lib.json",
+        "project": "libs/jsx-dev-runtime-server/package.json",
+        "entryFile": "libs/jsx-dev-runtime-server/src/index.ts",
         "external": ["react/jsx-dev-runtime", "@emotion/react"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "format": [
@@ -22,7 +22,7 @@
         ],
         "assets": [
           {
-            "glob": "libs/jsx-dev-runtime/README.md",
+            "glob": "libs/jsx-dev-runtime-server/README.md",
             "input": ".",
             "output": "."
           }
@@ -33,14 +33,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/jsx-dev-runtime/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/jsx-dev-runtime-server/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/jsx-dev-runtime"],
+      "outputs": ["coverage/libs/jsx-dev-runtime-server"],
       "options": {
-        "jestConfig": "libs/jsx-dev-runtime/jest.config.ts",
+        "jestConfig": "libs/jsx-dev-runtime-server/jest.config.ts",
         "passWithNoTests": true
       }
     },

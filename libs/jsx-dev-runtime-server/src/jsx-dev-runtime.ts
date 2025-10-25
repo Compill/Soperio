@@ -26,17 +26,6 @@ declare module "react" {
 
 const typePropName = '__SOPERIO_TYPE_PLEASE_DO_NOT_USE__'
 
-function createSoperioProps(type: React.ElementType, props: any)
-{
-  const asType = props["as"]
-  delete props["as"]
-  return { ...props, [typePropName]: asType ?? type };
-}
-
-const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body", "style", "base"]
-
-let Soperio: any = null;
-
 export function jsxDEV<P>(
   type: React.ElementType<P>,
   props: P,
@@ -50,33 +39,15 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
-  // console.log("soperio dev jsx, typeof", typeof type, type, props);
-  // const isClient = typeof window !== "undefined";
-
-  // @ts-ignore
-  const isServer = props.server
-
-  // @ts-ignore
-  if (!isServer && /*isClient &&*/ typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !props.isSoperioServerComponent && !nonStyleableHtmlTags.includes(type))
-  {
-    // @ts-ignore
-    return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
-  }
-  // That's how emotion is doing it!
-  //  instead of passing type, they put the type in a special prop
-  // and use type "Emotion" to create the component
-  // return emotionJsxDEV(Soperio, parseProps(props), key, isStaticChildren, source, self);
-
-
   const _props = { ...props }
+  const asType = props["as"]
+  delete _props["as"]
   delete _props["server"]
+  _props[typePropName] = asType ?? type
+
+  if (typeof _props[typePropName] === "string")
+    delete _props[typePropName]
 
   // @ts-ignore
   return ReactJSXRuntimeDev.jsxDEV(type, _props, key, isStaticChildren, source, self);
-  // return ReactJSXRuntimeDev.jsxDEV(Soperio, createSoperioProps(type, props), key, isStaticChildren, source, self);
 }
-
-/**
- * Alright so basically the idea is to create a fucking Soperio component
- * that will parse the props and then return an Emotion component that will parse the CSS...
- */
