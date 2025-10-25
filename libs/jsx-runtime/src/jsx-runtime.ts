@@ -74,16 +74,24 @@ export function jsxs<P>(
   key?: string
 ): SoperioJSX.Element
 {
+  const isClient = typeof window !== "undefined";
+
+  // @ts-ignore
+  const isServer = props.server
+
   // return emotionJsx(type, parseProps(props), key);
   // Basically, the idea is to use Emotion's jsx instead of React
   // and just add the css prop to the props with the CSS we have generated
   // @ts-ignore
-  if (typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
+  if (!isServer && isClient && typeof type === "string" && !type.SOPERIO_SERVER_COMPONENT && !nonStyleableHtmlTags.includes(type))
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
     return ReactJSXRuntime.jsxs(Soperio, createSoperioProps(type, props), key);
   }
+
+  const _props = { ...props }
+  delete _props["server"]
 
   // return emotionJsx(type, props, key);
   // @ts-ignore
