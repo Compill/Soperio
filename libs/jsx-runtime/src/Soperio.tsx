@@ -1,3 +1,5 @@
+"use client"
+
 import { parseProps } from "@soperio/core";
 import { jsx as EmotionJSX } from "@emotion/react";
 import React from "react";
