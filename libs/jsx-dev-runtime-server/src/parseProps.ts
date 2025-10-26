@@ -37,7 +37,7 @@ export function parseProps<P extends {}>(props: P)
       delete newProps[prop];
     }
 
-    newProps.css = {} //emotionCss(css, ...mqArray)
+    //newProps.css = {} //emotionCss(css, ...mqArray)
 
     return newProps;
   }
