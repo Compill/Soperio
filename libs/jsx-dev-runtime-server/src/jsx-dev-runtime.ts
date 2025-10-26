@@ -1,30 +1,11 @@
-import { SoperioComponent } from '@soperio/theming';
-import { AriaAttributes, DOMAttributes, ElementType } from "react";
+import { ElementType } from "react";
 import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
 import { SoperioJSX } from "./jsx-namespace";
-import { SVGSoperioProps } from "./SVG";
 import { parseProps } from "./parseProps";
 
 
 export { Fragment } from 'react';
 export type { SoperioJSX as JSX } from './jsx-namespace';
-
-declare module "react" {
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T>, SoperioComponent
-  {
-
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface SVGAttributes<T> extends SVGSoperioProps
-  {
-
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface Attributes extends SoperioComponent { }
-
-}
 
 const typePropName = '__SOPERIO_TYPE_PLEASE_DO_NOT_USE__'
 
