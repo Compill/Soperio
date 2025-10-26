@@ -50,6 +50,7 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
+  console.log("JSX-DEV-RUNTIME-SERVER", type, props)
   // @ts-ignore
   const isServer = props.server
 
