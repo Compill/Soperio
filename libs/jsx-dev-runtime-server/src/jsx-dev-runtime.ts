@@ -26,6 +26,15 @@ declare module "react" {
 
 const typePropName = '__SOPERIO_TYPE_PLEASE_DO_NOT_USE__'
 
+function createSoperioProps(type: React.ElementType, props: any)
+{
+  const asType = props["as"]
+  delete props["as"]
+  return { ...props, [typePropName]: asType ?? type };
+}
+
+const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body", "style", "base"]
+
 export function jsxDEV<P>(
   type: React.ElementType<P>,
   props: P,
@@ -39,14 +48,14 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
-  const _props = { ...props }
-  const asType = props["as"]
-  delete _props["as"]
-  delete _props["server"]
-  _props[typePropName] = asType ?? type
+  // @ts-ignore
+  const isServer = props.server
 
-  if (typeof _props[typePropName] === "string")
-    delete _props[typePropName]
+  if (!isServer && /*isClient &&*/ typeof type === "string" && !nonStyleableHtmlTags.includes(type))
+  {
+    // @ts-ignore
+    return ReactJSXRuntimeDev.jsxDEV(type, createSoperioProps(type, props), key, isStaticChildren, source, self);
+  }
 
   // @ts-ignore
   return ReactJSXRuntimeDev.jsxDEV(type, _props, key, isStaticChildren, source, self);
