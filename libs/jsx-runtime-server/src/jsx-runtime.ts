@@ -41,6 +41,8 @@ export function jsx<P>(
   key?: string
 ): SoperioJSX.Element
 {
+  console.log("JSX-RUNTIME-SERVER jsx", type, props)
+
   // const isClient = typeof window !== "undefined";
 
   // @ts-ignore
@@ -57,7 +59,7 @@ export function jsx<P>(
   {
     // return emotionJsx(type, parseProps(props), key);
     // @ts-ignore
-    return ReactJSXRuntime.jsx(Soperio, createSoperioProps(type, props), key);
+    return ReactJSXRuntime.jsx(type, parseProps(createSoperioProps(type, props)), key);
   }
 
   const _props = { ...props }
@@ -74,6 +76,8 @@ export function jsxs<P>(
   key?: string
 ): SoperioJSX.Element
 {
+  console.log("JSX-RUNTIME-SERVER jsxs", type, props)
+
   // const isClient = typeof window !== "undefined";
 
   // @ts-ignore
