@@ -3,6 +3,7 @@ import React from "react";
 import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
 import { SoperioJSX } from "./jsx-namespace";
 import { SVGSoperioProps } from "./SVG";
+import { parseProps } from "libs/jsx-dev-runtime-server/src/parseProps";
 
 export { Fragment } from 'react';
 export type { SoperioJSX as JSX } from './jsx-namespace';
@@ -54,8 +55,11 @@ export function jsxDEV<P>(
   if (!isServer && /*isClient &&*/ typeof type === "string" && !nonStyleableHtmlTags.includes(type))
   {
     // @ts-ignore
-    return ReactJSXRuntimeDev.jsxDEV(type, createSoperioProps(type, props), key, isStaticChildren, source, self);
+    return ReactJSXRuntimeDev.jsxDEV(type, parseProps(createSoperioProps(type, props)), key, isStaticChildren, source, self);
   }
+
+  const _props = { ...props }
+  delete _props["server"]
 
   // @ts-ignore
   return ReactJSXRuntimeDev.jsxDEV(type, _props, key, isStaticChildren, source, self);
