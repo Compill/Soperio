@@ -41,6 +41,8 @@ export function jsx<P>(
   key?: string
 ): SoperioJSX.Element
 {
+  console.log("JSX-RUNTIME jsx", type, props)
+
   // const isClient = typeof window !== "undefined";
 
   // @ts-ignore
@@ -74,6 +76,8 @@ export function jsxs<P>(
   key?: string
 ): SoperioJSX.Element
 {
+  console.log("JSX-RUNTIME jsxs", type, props)
+
   // const isClient = typeof window !== "undefined";
 
   // @ts-ignore

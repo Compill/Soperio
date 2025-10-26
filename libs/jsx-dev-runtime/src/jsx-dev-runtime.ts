@@ -49,6 +49,8 @@ export function jsxDEV<P>(
   self: any
 ): SoperioJSX.Element
 {
+  console.log("JSX-DEV-RUNTIME jsx", type, props)
+
   // console.log("soperio dev jsx, typeof", typeof type, type, props);
   // const isClient = typeof window !== "undefined";
 
