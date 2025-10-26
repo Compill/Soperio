@@ -3,7 +3,8 @@ import React from "react";
 import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
 import { SoperioJSX } from "./jsx-namespace";
 import { SVGSoperioProps } from "./SVG";
-import { parseProps } from "libs/jsx-dev-runtime-server/src/parseProps";
+import { parseProps } from "@soperio/core";
+
 
 export { Fragment } from 'react';
 export type { SoperioJSX as JSX } from './jsx-namespace';
