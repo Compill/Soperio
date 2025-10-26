@@ -1,5 +1,5 @@
 import { SoperioComponent } from '@soperio/theming';
-import React from "react";
+import { AriaAttributes, DOMAttributes, ElementType } from "react";
 import * as ReactJSXRuntimeDev from 'react/jsx-dev-runtime';
 import { SoperioJSX } from "./jsx-namespace";
 import { SVGSoperioProps } from "./SVG";
@@ -10,7 +10,7 @@ export { Fragment } from 'react';
 export type { SoperioJSX as JSX } from './jsx-namespace';
 
 declare module "react" {
-  interface HTMLAttributes<T> extends React.AriaAttributes, React.DOMAttributes<T>, SoperioComponent
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T>, SoperioComponent
   {
 
   }
@@ -28,7 +28,7 @@ declare module "react" {
 
 const typePropName = '__SOPERIO_TYPE_PLEASE_DO_NOT_USE__'
 
-function createSoperioProps(type: React.ElementType, props: any)
+function createSoperioProps(type: ElementType, props: any)
 {
   const asType = props["as"]
   delete props["as"]
@@ -38,7 +38,7 @@ function createSoperioProps(type: React.ElementType, props: any)
 const nonStyleableHtmlTags = ["html", "head", "link", "meta", "script", "title", "body", "style", "base"]
 
 export function jsxDEV<P>(
-  type: React.ElementType<P>,
+  type: ElementType<P>,
   props: P,
   key: string | undefined,
   isStaticChildren: boolean,
